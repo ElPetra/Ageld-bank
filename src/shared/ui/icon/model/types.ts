@@ -1,0 +1,3 @@
+export const PngImageNames = '';
+
+export type SvgIconNames = 'eye-open' | 'eye-close' | 'logo' | 'location' | 'monetization' | 'app-store' | 'google-play'

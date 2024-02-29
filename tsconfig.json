@@ -19,7 +19,8 @@
       "DOM",
       "ES2021.String",
       "ES6"
-    ]
+    ],
+    "baseUrl": "./src"
   },
   "include": [
     "src"

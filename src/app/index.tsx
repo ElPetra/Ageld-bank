@@ -1,12 +1,12 @@
-import React from "react";
-import { Routing } from "../pages";
+import { withProviders } from './providers';
+import { AppRouter } from './router';
+
+import './styles/reset.scss';
 
 const App = () => {
-  return (
-    <div className="app">
-      <Routing />
-    </div>
-  );
+    return (
+        <AppRouter />
+    );
 };
 
-export default App;
+export default withProviders(App);
