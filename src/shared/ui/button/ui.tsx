@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, memo, ReactNode } from 'react';
+import React, { ButtonHTMLAttributes, memo, ReactNode } from 'react';
 
 import './styles.scss';
 

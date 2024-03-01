@@ -2,8 +2,8 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { Icon } from './ui';
 
-import 'src/app/styles/reset.scss'
-import 'src/app/styles/index.scss'
+import 'src/app/styles/reset.scss';
+import 'src/app/styles/index.scss';
 
 const meta: Meta<typeof Icon> = {
     component: Icon,
@@ -17,7 +17,7 @@ const meta: Meta<typeof Icon> = {
         height: {
             description: 'Высота',
             defaultValue: { summary: '24' }
-        },
+        }
     }
 };
 export default meta;

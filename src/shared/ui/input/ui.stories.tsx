@@ -2,9 +2,9 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { Input } from './ui';
 
-import 'src/app/styles/reset.scss'
-import 'src/app/styles/index.scss'
-import './styles.scss'
+import 'src/app/styles/reset.scss';
+import 'src/app/styles/index.scss';
+import './styles.scss';
 
 const meta: Meta<typeof Input> = {
     component: Input,
@@ -13,7 +13,10 @@ const meta: Meta<typeof Input> = {
     argTypes: {
         type: {
             description: 'Стандартный type input',
-            defaultValue: { summary: 'button' }
+            defaultValue: { summary: 'text' }
+        },
+        label: {
+            description: 'Нужно передать когда начался ввод в поле и type != \'search\' && size != \'medium\''
         },
         size: {
             description: 'Размер',
@@ -23,8 +26,8 @@ const meta: Meta<typeof Input> = {
             description: 'Ширина кнопки, либо стандарт, либо 100% от родителя',
             defaultValue: { summary: 'auto' }
         },
-        status: {
-            description: 'Статус',
+        error: {
+            description: 'Текст ошибки'
         }
     }
 };
@@ -36,8 +39,9 @@ export const Default: Story = {
     args: {
         type: 'text',
         placeholder: 'Номер телефона',
-        size: 'medium',
+        label: 'Номер телефона',
+        size: 'large',
         width: 'auto',
-        status: undefined
+        error: 'Ошибка'
     }
 };
