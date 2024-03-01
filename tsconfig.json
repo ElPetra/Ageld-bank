@@ -20,7 +20,10 @@
       "ES2021.String",
       "ES6"
     ],
-    "baseUrl": "./src"
+    "baseUrl": ".",
+    "paths": {
+      "src/*": ["./src/*"]
+    }
   },
   "include": [
     "src"
