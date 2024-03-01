@@ -7,6 +7,11 @@ export interface Props extends ImgHTMLAttributes<HTMLImageElement> {
     widthAndHeight?: string;
 }
 
-export const Image = memo(({ image, width, height, widthAndHeight }: Props) =>
-    <img src={image + '.png'} width={widthAndHeight | width} height={widthAndHeight | height} alt='' />
-);
+export const Image = memo(({ image, width, height, widthAndHeight }: Props) => (
+    <img
+        src={image + '.png'}
+        width={widthAndHeight || width}
+        height={widthAndHeight || height}
+        alt=''
+    />
+));
