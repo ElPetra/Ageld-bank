@@ -1,0 +1,29 @@
+:root {
+  --text-primary: #2B3E78;
+  --text-secondary: #FEFEFE;
+  --text-primary-buttons: #2B3E78;
+  --text-secondary-buttons: #FEFEFE;
+  --text-buttons-disable: #414650;
+  --bg-primary: #FEFEFE;
+  --bg-secondary: #2B3E78;
+  --bg-primary-buttons: #FEFEFE;
+  --bg-secondary-buttons: #2B3E78;
+  --bg-buttons-disable: #babec5;
+  --bg-primary-buttons-hover: #eaf2ff;
+  --bg-primary-buttons-pressed: #d9e7ff;
+  --bg-secondary-buttons-hover: #3c5293;
+  --bg-secondary-buttons-pressed: #586fb4;
+  --bg-primary-input: #FEFEFE;
+  --text-primary-input: #3c5293;
+  --text-error: #c93f21;
+  --text-success: #4CAF50;
+  --border-radius: 8px;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--text-primary);
+  background: var(--bg-primary);
+}

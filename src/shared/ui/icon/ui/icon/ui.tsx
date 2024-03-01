@@ -9,7 +9,7 @@ export interface Props extends ImgHTMLAttributes<HTMLImageElement> {
     widthAndHeight?: number;
 }
 
-export const Icon = memo(({ icon, width = '24', height = '24', widthAndHeight }: Props) =>
+export const Icon = memo(({ icon, width = 24, height = 24, widthAndHeight }: Props) =>
     <img src={'src/shared/ui/icon/assets/icons/' + icon + '.svg'} width={widthAndHeight | width}
          height={widthAndHeight | height} alt='' />
 );
