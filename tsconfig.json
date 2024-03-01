@@ -5,8 +5,8 @@
     "allowImportingTsExtensions": true,
     "preserveConstEnums": true,
     "target": "ES6",
-    "module": "ES2022",
-    "moduleResolution": "Bundler",
+    "module": "esnext",
+    "moduleResolution": "node",
     "noEmit": true,
     "allowSyntheticDefaultImports": true,
     "alwaysStrict": true,
@@ -22,7 +22,9 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "src/*": ["./src/*"]
+      "src/*": [
+        "./src/*"
+      ]
     }
   },
   "include": [

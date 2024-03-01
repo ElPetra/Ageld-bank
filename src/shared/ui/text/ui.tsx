@@ -9,12 +9,11 @@ interface Props {
     children: ReactNode;
 }
 
-export const Text = memo(({ tag, size = 's', weight = 'regular', children }: Props) => {
-    const Element = tag || 'div';
-    return (
-        <Element className={`text ${size} ${weight}`}>
-            {children}
-        </Element>
-    );
-});
-
+export const Text = memo(
+    ({ tag, size = 's', weight = 'regular', children }: Props) => {
+        const Element = tag || 'div';
+        return (
+            <Element className={`text ${size} ${weight}`}>{children}</Element>
+        );
+    }
+);

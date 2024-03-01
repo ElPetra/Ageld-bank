@@ -16,7 +16,7 @@ const meta: Meta<typeof Input> = {
             defaultValue: { summary: 'text' }
         },
         label: {
-            description: 'Нужно передать когда начался ввод в поле и type != \'search\' && size != \'medium\''
+            description: 'Динамический placeholder'
         },
         size: {
             description: 'Размер',

@@ -1,10 +1,11 @@
-import { AppRouter } from './router/app-router';
-import { withProviders } from './providers/with-providers';
+import { AppRouter } from './router';
+import { withProviders } from './providers';
+
 import './styles/reset.scss';
 import './styles/index.scss';
 
-const App = () => {
+function App() {
     return <AppRouter />;
-};
+}
 
 export default withProviders(App);

@@ -7,16 +7,11 @@ interface Props extends FormHTMLAttributes<HTMLFormElement> {
     error?: string;
 }
 
-export const Form = memo(({ children, error, ...props }: Props) =>
+export const Form = memo(({ children, error, ...props }: Props) => (
     <div className='form-div'>
-        <form {...props}
-              className={`form`}>
+        <form {...props} className='form'>
             {children}
         </form>
-        {error &&
-            <div className='error'>
-                {error}
-            </div>
-        }
+        {error && <div className='error'>{error}</div>}
     </div>
-);
+));

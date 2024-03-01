@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 import { AuthPage } from 'src/pages/auth';
 import { MainPage } from 'src/pages/main';
