@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes, memo, ReactNode } from 'react';
+import { InputHTMLAttributes, memo, ReactNode } from 'react';
 
 import './styles.scss';
 

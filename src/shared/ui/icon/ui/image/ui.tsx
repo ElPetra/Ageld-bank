@@ -1,4 +1,4 @@
-import React, { ImgHTMLAttributes, memo } from 'react';
+import { ImgHTMLAttributes, memo } from 'react';
 
 import { PngImageNames } from '../../model/types';
 

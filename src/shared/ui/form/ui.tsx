@@ -1,4 +1,4 @@
-import React, { FormHTMLAttributes, memo, ReactNode } from 'react';
+import { FormHTMLAttributes, memo, ReactNode } from 'react';
 
 import './styles.scss';
 

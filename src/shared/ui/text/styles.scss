@@ -1,0 +1,33 @@
+.text {
+  &.s {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  &.m {
+    font-size: 20px;
+    line-height: 36px;
+  }
+
+  &.l {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  &.xl {
+    font-size: 48px;
+    line-height: 56px;
+  }
+
+  &.regular {
+    font-weight: 400;
+  }
+
+  &.medium {
+    font-weight: 500;
+  }
+
+  &.bold {
+    font-weight: 700;
+  }
+}
