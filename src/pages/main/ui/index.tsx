@@ -1,9 +1,3 @@
-import React from 'react';
-
 export const MainPage = () => {
-    return (
-        <div>
-            Главная
-        </div>
-    );
+    return <div>Главная</div>;
 };

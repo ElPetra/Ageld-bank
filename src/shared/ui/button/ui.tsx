@@ -1,4 +1,4 @@
-import React, { ButtonHTMLAttributes, memo, ReactNode } from 'react';
+import { ButtonHTMLAttributes, memo, ReactNode } from 'react';
 
 import './styles.scss';
 
@@ -12,19 +12,26 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
     children: ReactNode;
 }
 
-export const Button = memo(({
-                                type,
-                                size = 'medium',
-                                disabled = false,
-                                variant = 'primary',
-                                width = 'auto',
-                                status,
-                                children,
-                                ...props
-                            }: Props) =>
-    <button type={type || 'button'} disabled={disabled}
-            className={`button ${size} ${!disabled && variant} ${width} ${status}`} {...props}>
-        {children}
-    </button>
+export const Button = memo(
+    ({
+        type,
+        size = 'medium',
+        disabled = false,
+        variant = 'primary',
+        width = 'auto',
+        status,
+        children,
+        ...props
+    }: Props) => (
+        <button
+            type={type || 'button'}
+            disabled={disabled}
+            className={`button ${size} ${
+                !disabled && variant
+            } ${width} ${status}`}
+            {...props}
+        >
+            {children}
+        </button>
+    )
 );
-
