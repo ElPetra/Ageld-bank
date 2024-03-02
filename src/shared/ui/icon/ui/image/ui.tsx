@@ -1,6 +1,8 @@
-import { ImgHTMLAttributes, memo } from 'react';
+import { memo } from 'react';
 
-import { PngImageNames } from '../../model/types';
+import type { ImgHTMLAttributes } from 'react';
+
+import type { PngImageNames } from '../../model/types';
 
 export interface Props extends ImgHTMLAttributes<HTMLImageElement> {
     image: PngImageNames;

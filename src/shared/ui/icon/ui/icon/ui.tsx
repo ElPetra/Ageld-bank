@@ -1,6 +1,8 @@
-import { ImgHTMLAttributes, memo } from 'react';
+import { memo } from 'react';
 
-import { SvgIconNames } from '../../model/types';
+import type { ImgHTMLAttributes } from 'react';
+
+import type { SvgIconNames } from '../../model/types';
 
 export interface Props extends ImgHTMLAttributes<HTMLImageElement> {
     icon: SvgIconNames;

@@ -1,7 +1,11 @@
-import { memo, ReactNode } from 'react';
-import { NavLink, NavLinkProps } from 'react-router-dom';
-
 import './styles.scss';
+
+import { memo } from 'react';
+
+import { NavLink } from 'react-router-dom';
+
+import type { ReactNode } from 'react';
+import type { NavLinkProps } from 'react-router-dom';
 
 interface Props extends NavLinkProps {
     to?: string;

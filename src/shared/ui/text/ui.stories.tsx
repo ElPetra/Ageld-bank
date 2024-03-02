@@ -1,6 +1,6 @@
-import { Meta, StoryObj } from '@storybook/react';
-
 import { Text } from './ui';
+
+import type { Meta, StoryObj } from '@storybook/react';
 
 import 'src/app/styles/reset.scss';
 import 'src/app/styles/index.scss';
