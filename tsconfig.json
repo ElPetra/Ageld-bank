@@ -10,15 +10,28 @@
     "forceConsistentCasingInFileNames": true,
     "allowJs": true,
     "strict": true,
+    "jsx": "react-jsx",
+    "composite": true,
+    "skipLibCheck": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
     "lib": [
       "DOM",
       "ES2021.String",
       "ES6"
-    ]
-  },
-  "references": [
-    {
-      "path": "./tsconfig.node.json"
+    ],   
+    "baseUrl": ".",
+    "paths": {
+      "src/*": [
+        "src/*"
+      ]
     }
+  },
+  "include": [
+    "vite.config.ts",
+    "**/*.tsx",
+    "**/*.ts"
   ]
 }
