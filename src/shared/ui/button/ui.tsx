@@ -10,7 +10,7 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
     size?: 'medium' | 'large';
     variant?: 'primary' | 'secondary';
     width?: 'auto' | 'max';
-    status?: 'active';
+    status?: 'active' | undefined;
     children: ReactNode;
 }
 
