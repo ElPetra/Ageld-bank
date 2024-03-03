@@ -5,31 +5,17 @@
     "allowImportingTsExtensions": true,
     "preserveConstEnums": true,
     "target": "ES6",
-    "module": "esnext",
-    "moduleResolution": "node",
     "noEmit": true,
-    "allowSyntheticDefaultImports": true,
     "alwaysStrict": true,
     "forceConsistentCasingInFileNames": true,
     "allowJs": true,
-    "resolveJsonModule": true,
     "strict": true,
-    "jsx": "react",
     "lib": [
       "DOM",
       "ES2021.String",
       "ES6"
-    ],
-    "baseUrl": ".",
-    "paths": {
-      "src/*": [
-        "./src/*"
-      ]
-    }
+    ]
   },
-  "include": [
-    "src"
-  ],
   "references": [
     {
       "path": "./tsconfig.node.json"
