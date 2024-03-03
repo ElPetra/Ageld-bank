@@ -21,6 +21,7 @@ module.exports = {
         'no-console': ['error', { allow: ['warn', 'error'] }],
         quotes: ['error', 'single'],
         'react/display-name': 'off',
+        'react/react-in-jsx-scope': 'off',
         'prettier/prettier': [
             'warn',
             {

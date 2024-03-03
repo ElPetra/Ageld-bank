@@ -8,7 +8,6 @@ import type { ReactNode } from 'react';
 import type { NavLinkProps } from 'react-router-dom';
 
 interface Props extends NavLinkProps {
-    to?: string;
     size?: 'small' | 'medium';
     children: ReactNode;
 }
