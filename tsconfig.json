@@ -14,7 +14,7 @@
     "allowJs": true,
     "resolveJsonModule": true,
     "strict": true,
-    "jsx": "react",
+    "jsx": "react-jsx",
     "lib": [
       "DOM",
       "ES2021.String",

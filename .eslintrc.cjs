@@ -13,6 +13,7 @@ module.exports = {
     rules: {
         'no-console': ['error', { allow: ['warn', 'error'] }],
         quotes: ['error', 'single'],
+        'react/jsx-uses-react': 'off',
         'react/react-in-jsx-scope': 'off',
         'react/display-name': 'off',
         'prettier/prettier': [
