@@ -14,7 +14,14 @@
       "DOM",
       "ES2021.String",
       "ES6"
-    ]
+    ],
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "src/*": [
+        "src/*"
+      ]
+    }
   },
   "references": [
     {
