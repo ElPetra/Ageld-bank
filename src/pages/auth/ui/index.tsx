@@ -1,9 +1,11 @@
 import { Link } from 'src/shared/ui';
+import { Header } from 'src/widgets/header';
 
 export const AuthPage = () => {
     return (
         <div>
-            <Link>Main</Link>
+            <Header />
+            <Link to='/'>Main</Link>
             <br />
             Регистрация
         </div>
