@@ -1,7 +1,8 @@
 import { type InputHTMLAttributes, useState } from 'react';
-import { FieldValues, UseFormRegister } from 'react-hook-form';
 
 import { Icon, Input } from 'src/shared/ui';
+
+import type { FieldValues, UseFormRegister } from 'react-hook-form';
 
 interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
     width?: 'auto' | 'max';

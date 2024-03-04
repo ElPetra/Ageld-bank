@@ -1,6 +1,8 @@
-import type { InputHTMLAttributes, ReactNode } from 'react';
 import { memo } from 'react';
-import { FieldValues, UseFormRegister } from 'react-hook-form';
+
+import type { FieldValues, UseFormRegister } from 'react-hook-form';
+
+import type { InputHTMLAttributes, ReactNode } from 'react';
 
 import './styles.scss';
 

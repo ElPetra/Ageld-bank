@@ -1,4 +1,4 @@
-import { SvgIconNames } from 'src/shared/ui';
+import type { SvgIconNames } from 'src/shared/ui';
 
 interface Social {
     icon: SvgIconNames;

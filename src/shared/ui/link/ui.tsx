@@ -1,8 +1,10 @@
-import type { ReactNode } from 'react';
 import { memo } from 'react';
 
-import type { NavLinkProps } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
+
+import type { ReactNode } from 'react';
+
+import type { NavLinkProps } from 'react-router-dom';
 
 import './styles.scss';
 
