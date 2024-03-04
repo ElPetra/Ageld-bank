@@ -17,7 +17,8 @@ interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
         | 'image'
         | 'month'
         | 'number'
-        | 'text';
+        | 'text'
+        | 'tel';
     label?: string;
     placeholder?: string;
     size?: 'small' | 'medium' | 'large';

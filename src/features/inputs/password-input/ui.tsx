@@ -20,7 +20,7 @@ export const PasswordInput = ({ ...props }: Props) => {
             placeholder='Пароль'
             {...props}
         >
-            <button onClick={() => setOpen(!open)}>
+            <button type='button' onClick={() => setOpen(!open)}>
                 <Icon icon={open ? 'eye-open' : 'eye-close'} />
             </button>
         </Input>
