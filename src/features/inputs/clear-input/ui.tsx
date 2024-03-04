@@ -1,55 +1,20 @@
-import { type ChangeEvent, type InputHTMLAttributes, useState } from 'react';
+import { type InputHTMLAttributes } from 'react';
+import { FieldValues, UseFormRegister } from 'react-hook-form';
 
 import { Icon, Input } from 'src/shared/ui';
 
-interface Props
-    extends Omit<Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>, 'type'> {
-    type?:
-        | 'search'
-        | 'checkbox'
-        | 'color'
-        | 'date'
-        | 'password'
-        | 'email'
-        | 'file'
-        | 'hidden'
-        | 'image'
-        | 'month'
-        | 'number'
-        | 'text'
-        | 'tel';
+interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
     width?: 'auto' | 'max';
     error?: string;
-    setValue: (value: string) => void;
+    clear: () => void;
+    label: string;
+    register: UseFormRegister<FieldValues>;
 }
 
-export const ClearInput = ({ placeholder, setValue, ...props }: Props) => {
-    const [label, setLabel] = useState<string>('');
-
-    const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
-        setValue(e.target.value);
-        if (e.target.value === '') {
-            setLabel('');
-        } else {
-            setLabel(placeholder || '');
-        }
-    };
-
+export const ClearInput = ({ clear, ...props }: Props) => {
     return (
-        <Input
-            placeholder={placeholder}
-            label={label}
-            size='large'
-            onChange={handleChange}
-            {...props}
-        >
-            <button
-                type='button'
-                onClick={() => {
-                    setValue('');
-                    setLabel('');
-                }}
-            >
+        <Input size='large' {...props}>
+            <button type='button' onClick={clear}>
                 <Icon icon='clear' />
             </button>
         </Input>

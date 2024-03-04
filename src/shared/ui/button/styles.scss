@@ -27,7 +27,7 @@
     color: var(--text-primary-buttons);
     background: var(--bg-primary-buttons);
     box-shadow: inset 0 0 0 1px var(--bg-secondary-buttons);
-    transition: background ease 0.5ms;
+    transition: background ease .5s;
 
     &:hover {
       background: var(--bg-primary-buttons-hover);

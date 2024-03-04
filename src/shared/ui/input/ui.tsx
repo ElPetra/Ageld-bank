@@ -1,55 +1,54 @@
-import { memo } from 'react';
-
 import type { InputHTMLAttributes, ReactNode } from 'react';
+import { memo } from 'react';
+import { FieldValues, UseFormRegister } from 'react-hook-form';
 
 import './styles.scss';
 
 interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
-    type?:
-        | 'search'
-        | 'checkbox'
-        | 'color'
-        | 'date'
-        | 'password'
-        | 'email'
-        | 'file'
-        | 'hidden'
-        | 'image'
-        | 'month'
-        | 'number'
-        | 'text'
-        | 'tel';
-    label?: string;
     placeholder?: string;
     size?: 'small' | 'medium' | 'large';
     width?: 'auto' | 'max';
     error?: string;
+    label: string;
+    register: UseFormRegister<FieldValues>;
     children?: ReactNode;
 }
 
 export const Input = memo(
     ({
         type,
-        label,
         placeholder,
+        value,
         size = 'medium',
         width = 'auto',
         children,
         error,
+        pattern = '',
+        minLength,
+        label,
+        register,
+        required,
         ...props
-    }: Props) => (
-        <div className={`field ${error && 'error'} ${size} ${width}`}>
-            {type != 'search' && size != 'medium' && label && (
-                <div className='label'>{label}</div>
-            )}
-            <input
-                type={type || 'text'}
-                placeholder={placeholder || ''}
-                className={`input ${type != 'search' && size != 'medium' && label && 'with-label'} ${error && 'error'} `}
-                {...props}
-            />
-            {children && <div className='input-icon'>{children}</div>}
-            {error && <div className='error-text'>{error}</div>}
-        </div>
-    )
+    }: Props) => {
+        console.log(value);
+        return (
+            <div className={`field ${error && 'error'} ${size} ${width}`}>
+                {type != 'search' && size != 'medium' && value && (
+                    <div className='label'>{placeholder}</div>
+                )}
+                <input
+                    {...register(label, {
+                        pattern: new RegExp(pattern),
+                        minLength
+                    })}
+                    type={type || 'text'}
+                    placeholder={placeholder || ''}
+                    className={`input ${type != 'search' && size != 'medium' && value && 'with-label'} ${error && 'error'} `}
+                    {...props}
+                />
+                {children && <div className='input-icon'>{children}</div>}
+                {error && <div className='error-text'>{error}</div>}
+            </div>
+        );
+    }
 );

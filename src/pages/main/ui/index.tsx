@@ -1,50 +1,44 @@
-import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 
-import { Form, Link } from 'src/shared/ui';
+import { Button, Form, Link } from 'src/shared/ui';
 import { Header } from 'src/widgets/header';
 import { Footer } from 'src/widgets/footer';
 import { ClearInput, PasswordInput } from 'src/features/inputs';
 
 export const MainPage = () => {
-    const [phone, setPhone] = useState<string>('');
-    const [phoneError, setPhoneError] = useState<string>('');
-    const [password, setPassword] = useState<string>('');
-    const [passwordError, setPasswordError] = useState<string>('');
-
-    const handleErrorPhone = (): void => {
-        if (phone.length >= 8) {
-            setPhoneError('');
-        } else {
-            setPhoneError('Введите, пожалуйста, валидный номер телефона');
-        }
-    };
-
-    const handleErrorPassword = (): void => {
-        if (password.length >= 8) {
-            setPasswordError('');
-        } else {
-            setPasswordError('Пароль должен состоять из 8 символов или более');
-        }
-    };
+    const {
+        register,
+        setValue,
+        getValues,
+        handleSubmit,
+        formState: { errors }
+    } = useForm();
 
     return (
         <div>
             <Header />
-            <Form>
+            <Form onSubmit={handleSubmit(data => console.log(data))}>
                 <ClearInput
                     type='tel'
                     placeholder='Номер телефона'
-                    value={phone}
-                    setValue={setPhone}
-                    error={phoneError}
-                    onBlur={handleErrorPhone}
+                    pattern='8[0-9]{10}'
+                    clear={() => setValue('phone', '')}
+                    label='phone'
+                    register={register}
+                    value={getValues('phone')}
+                    error={
+                        errors?.phone &&
+                        'Введите, пожалуйста, валидный номер телефона'
+                    }
                 />
                 <PasswordInput
-                    value={password}
-                    setValue={setPassword}
-                    error={passwordError}
-                    onBlur={handleErrorPassword}
+                    register={register}
+                    value={getValues('password')}
+                    error={!!errors?.password}
                 />
+                <Button variant='secondary' size='large' type='submit'>
+                    Далее
+                </Button>
             </Form>
             <Link to={'/auth'}>Auth</Link>
             <br />
