@@ -9,13 +9,14 @@ import type { NavLinkProps } from 'react-router-dom';
 
 interface Props extends NavLinkProps {
     size?: 'small' | 'medium';
+    color?: 'none' | 'link';
     children: ReactNode;
 }
 
 export const Link = memo(
-    ({ to, size = 'small', children, ...props }: Props) => {
+    ({ to, size = 'small', color = 'link', children, ...props }: Props) => {
         return (
-            <NavLink to={to} className={`link ${size}`} {...props}>
+            <NavLink to={to} className={`${color} ${size}`} {...props}>
                 {children}
             </NavLink>
         );
