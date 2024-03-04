@@ -7,4 +7,5 @@ export type SvgIconNames =
     | 'location'
     | 'monetization'
     | 'app-store'
-    | 'google-play';
+    | 'google-play'
+    | 'phone';
