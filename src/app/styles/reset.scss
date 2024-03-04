@@ -41,11 +41,16 @@ address {
   font-style: normal;
 }
 
-input, textarea, button, select {
+input, textarea, button, select, input:-webkit-autofill {
   font-family: inherit;
   font-size: inherit;
   color: inherit;
   background-color: transparent;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 0s 600000s, color 0s 600000s !important;
 }
 
 input {

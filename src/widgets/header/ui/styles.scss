@@ -1,11 +1,6 @@
 .header {
-  background-color: var(--bg-secondary);
-  color: var(--text-secondary);
-  padding: 30px 130px;
+  padding-top: 30px;
+  padding-bottom: 30px;
   display: flex;
-  &__nav {
-    display: flex;
-    margin-left: 55px;
-    gap: 32px;
-  }
+  gap: 60px;
 }

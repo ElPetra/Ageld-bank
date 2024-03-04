@@ -1,26 +1,22 @@
-import { Link, Text, Container } from 'src/shared/ui';
-import { Footer } from 'src/widgets/footer';
-import { Header } from 'src/widgets/header';
+import { Link, Text } from 'src/shared/ui';
 
 export const AuthPage = () => {
     return (
         <div>
-            <Header />
             <br />
-            <Container variant='tertiary'>
-                Пример
-                <br />
-                <Text size='xs'>
-                    Нажав кнопку «Далее», вы соглашаетесь с и Политикой
-                    конфиденциальности &nbsp;
-                    <Link to='/'>Правилами пользования СДБО</Link> &nbsp; и
-                    даёте согласие на сбор, обработку и &nbsp;
-                    <Link to='/'>Хранение ваших персональных данных</Link>
-                </Text>
-            </Container>
+            <Text size='xs'>
+                Нажав кнопку «Далее», вы соглашаетесь с и Политикой
+                конфиденциальности &nbsp;
+                <Link to='/' variant='action'>
+                    Правилами пользования СДБО
+                </Link>{' '}
+                &nbsp; и даёте согласие на сбор, обработку и &nbsp;
+                <Link to='/' variant='action'>
+                    Хранение ваших персональных данных
+                </Link>
+            </Text>
             <br />
             Регистрация
-            <Footer />
         </div>
     );
 };

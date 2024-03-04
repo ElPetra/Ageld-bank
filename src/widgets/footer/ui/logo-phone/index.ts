@@ -1,0 +1,1 @@
+export { LogoPhone } from './ui';

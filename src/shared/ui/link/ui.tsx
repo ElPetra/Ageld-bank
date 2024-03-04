@@ -1,24 +1,20 @@
-import './styles.scss';
-
+import type { ReactNode } from 'react';
 import { memo } from 'react';
 
+import type { NavLinkProps } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 
-import type { ReactNode } from 'react';
-import type { NavLinkProps } from 'react-router-dom';
+import './styles.scss';
 
 interface Props extends NavLinkProps {
-    size?: 'small' | 'medium';
-    color?: 'none' | 'link';
+    variant?: 'action';
     children: ReactNode;
 }
 
-export const Link = memo(
-    ({ to, size = 'small', color = 'link', children, ...props }: Props) => {
-        return (
-            <NavLink to={to} className={`${color} ${size}`} {...props}>
-                {children}
-            </NavLink>
-        );
-    }
-);
+export const Link = memo(({ variant, children, ...props }: Props) => {
+    return (
+        <NavLink className={`${variant}`} {...props}>
+            {children}
+        </NavLink>
+    );
+});
