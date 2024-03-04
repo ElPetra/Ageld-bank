@@ -1,8 +1,8 @@
 import { memo } from 'react';
 
-import type { FieldValues, UseFormRegister } from 'react-hook-form';
-
 import type { InputHTMLAttributes, ReactNode } from 'react';
+
+import type { FieldValues, UseFormRegister } from 'react-hook-form';
 
 import './styles.scss';
 
@@ -29,10 +29,9 @@ export const Input = memo(
         minLength,
         label,
         register,
-        required,
+        onChange,
         ...props
     }: Props) => {
-        console.log(value);
         return (
             <div className={`field ${error && 'error'} ${size} ${width}`}>
                 {type != 'search' && size != 'medium' && value && (
@@ -41,7 +40,9 @@ export const Input = memo(
                 <input
                     {...register(label, {
                         pattern: new RegExp(pattern),
-                        minLength
+                        minLength,
+                        required: true,
+                        onChange
                     })}
                     type={type || 'text'}
                     placeholder={placeholder || ''}

@@ -12,6 +12,7 @@ interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
 
 export const PasswordInput = ({ error, ...props }: Props) => {
     const [open, setOpen] = useState<boolean>(false);
+    const [value, setValue] = useState<string>('');
 
     return (
         <Input
@@ -20,6 +21,8 @@ export const PasswordInput = ({ error, ...props }: Props) => {
             size='large'
             label='password'
             minLength={8}
+            value={value}
+            onChange={e => setValue(e.target.value)}
             error={error ? 'Введите, пожалуйста, валидный пароль' : ''}
             {...props}
         >

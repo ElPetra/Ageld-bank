@@ -7,10 +7,9 @@ export const MainPage = () => {
     const {
         register,
         setValue,
-        getValues,
         handleSubmit,
         formState: { errors }
-    } = useForm();
+    } = useForm({ mode: 'onTouched', reValidateMode: 'onSubmit' });
 
     return (
         <div>
@@ -22,17 +21,12 @@ export const MainPage = () => {
                     clear={() => setValue('phone', '')}
                     label='phone'
                     register={register}
-                    value={getValues('phone')}
                     error={
                         errors?.phone &&
                         'Введите, пожалуйста, валидный номер телефона'
                     }
                 />
-                <PasswordInput
-                    register={register}
-                    value={getValues('password')}
-                    error={!!errors?.password}
-                />
+                <PasswordInput register={register} error={!!errors?.password} />
                 <Button variant='secondary' size='large' type='submit'>
                     Далее
                 </Button>
