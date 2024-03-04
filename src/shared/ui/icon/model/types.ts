@@ -10,4 +10,9 @@ export type SvgIconNames =
     | 'google-play'
     | 'phone'
     | 'search'
-    | 'clear';
+    | 'clear'
+    | 'telegram'
+    | 'odnoklassniki'
+    | 'twitter'
+    | 'vkontakte'
+    | 'youtube';
