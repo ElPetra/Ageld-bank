@@ -1,19 +1,11 @@
 .header {
   background-color: var(--bg-secondary);
   color: var(--text-secondary);
-  padding: 30px 50px 50px;
+  padding: 30px 130px;
   display: flex;
   &__nav {
     display: flex;
-    align-items: center;
-  }
-  .nav {
     margin-left: 55px;
     gap: 32px;
-    &__item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
   }
 }

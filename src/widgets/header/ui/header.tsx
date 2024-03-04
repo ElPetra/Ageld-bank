@@ -1,28 +1,35 @@
 import { Layout } from 'src/pages/layout';
-import { Icon } from 'src/shared/ui';
-import { NavItem } from 'src/widgets/header/ui/navItem.tsx';
-
+import { Icon, Link } from 'src/shared/ui';
 import './styles.scss';
 
 export const Header = () => (
     <Layout.Header>
         <div className='header'>
-            <Icon icon={'logo'} width={68} height={60} />
-            <div className='header__nav nav'>
-                <NavItem icon={'location'} width={32} height={32} linkTo='/'>
-                    Банкоматы и отделения
-                </NavItem>
-                <NavItem
-                    icon={'monetization'}
-                    width={32}
-                    height={32}
-                    linkTo='/'
-                >
+            <Link to='/'>
+                <Icon icon={'logo'} width={40} height={46} />
+            </Link>
+            <div className='header__nav'>
+                <Link to='/' size='medium' color='none'>
+                    О банке
+                </Link>
+                <Link to='/' size='medium' color='none'>
+                    Точки пополнения и Банкоматы
+                </Link>
+                <Link to='/' size='medium' color='none'>
                     Курсы валют
-                </NavItem>
-                <NavItem icon={'phone'} width={28} height={28} linkTo='/'>
+                </Link>
+                <Link to='/' size='medium' color='none'>
                     Контакты
-                </NavItem>
+                </Link>
+                <Link to='/' size='medium' color='none'>
+                    Помощь
+                </Link>
+                <Link to='/' size='medium' color='none'>
+                    Новости
+                </Link>
+                <Link to='/' size='medium' color='none'>
+                    Работа
+                </Link>
             </div>
         </div>
     </Layout.Header>
