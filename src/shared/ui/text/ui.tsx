@@ -6,7 +6,7 @@ import './styles.scss';
 
 interface Props {
     tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'div';
-    size?: 's' | 'm' | 'l' | 'xl';
+    size?: 'xs' | 's' | 'm' | 'l' | 'xl';
     weight?: 'regular' | 'medium' | 'bold';
     children: ReactNode;
 }

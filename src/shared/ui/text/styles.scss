@@ -1,4 +1,9 @@
 .text {
+  &.xs {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
   &.s {
     font-size: 16px;
     line-height: 24px;

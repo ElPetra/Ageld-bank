@@ -15,7 +15,7 @@ interface Props extends NavLinkProps {
 export const Link = memo(
     ({ to, size = 'small', children, ...props }: Props) => {
         return (
-            <NavLink to={to || '/'} className={`link ${size}`} {...props}>
+            <NavLink to={to} className={`link ${size}`} {...props}>
                 {children}
             </NavLink>
         );
