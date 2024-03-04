@@ -1,4 +1,4 @@
-import { type InputHTMLAttributes } from 'react';
+import { type ChangeEvent, type InputHTMLAttributes, useState } from 'react';
 
 import { Icon, Input } from 'src/shared/ui';
 
@@ -18,17 +18,31 @@ interface Props
         | 'number'
         | 'text'
         | 'tel';
-    label?: string;
-    size?: 'large';
     width?: 'auto' | 'max';
     error?: string;
     setValue: (value: string) => void;
-    setLabel: (value: string) => void;
 }
 
-export const ClearInput = ({ setValue, setLabel, ...props }: Props) => {
+export const ClearInput = ({ placeholder, setValue, ...props }: Props) => {
+    const [label, setLabel] = useState<string>('');
+
+    const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
+        setValue(e.target.value);
+        if (e.target.value === '') {
+            setLabel('');
+        } else {
+            setLabel(placeholder || '');
+        }
+    };
+
     return (
-        <Input size='large' {...props}>
+        <Input
+            placeholder={placeholder}
+            label={label}
+            size='large'
+            onChange={handleChange}
+            {...props}
+        >
             <button
                 type='button'
                 onClick={() => {
