@@ -4,3 +4,4 @@ export * from './input';
 export * from './form';
 export * from './text';
 export * from './link';
+export * from './container';
