@@ -1,4 +1,6 @@
-import { Icon, Link } from 'src/shared/ui';
+import { NavLink } from 'react-router-dom';
+
+import { Icon } from 'src/shared/ui';
 
 import type { ReactNode } from 'react';
 import type { SvgIconNames } from 'src/shared/ui/icon/model/types.ts';
@@ -15,8 +17,6 @@ interface Props {
 export const NavItem = ({ icon, width, height, linkTo, children }: Props) => (
     <div className='nav__item'>
         <Icon icon={icon} width={width} height={height} />
-        <Link size={'small'} to={linkTo}>
-            {children}
-        </Link>
+        <NavLink to={linkTo}>{children}</NavLink>
     </div>
 );

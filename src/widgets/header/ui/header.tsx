@@ -1,7 +1,8 @@
 import { Layout } from 'src/pages/layout';
-import './styles.scss';
 import { Icon } from 'src/shared/ui';
 import { NavItem } from 'src/widgets/header/ui/navItem.tsx';
+
+import './styles.scss';
 
 export const Header = () => (
     <Layout.Header>
