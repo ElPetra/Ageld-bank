@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import { Form, Link } from 'src/shared/ui';
 import { Header } from 'src/widgets/header';
+import { Footer } from 'src/widgets/footer';
 import { ClearInput, PasswordInput } from 'src/features/inputs';
 
 export const MainPage = () => {
@@ -48,6 +49,7 @@ export const MainPage = () => {
             <Link to={'/auth'}>Auth</Link>
             <br />
             Главная
+            <Footer />
         </div>
     );
 };

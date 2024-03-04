@@ -1,4 +1,5 @@
 import { Link, Text, Container } from 'src/shared/ui';
+import { Footer } from 'src/widgets/footer';
 import { Header } from 'src/widgets/header';
 
 export const AuthPage = () => {
@@ -19,6 +20,7 @@ export const AuthPage = () => {
             </Container>
             <br />
             Регистрация
+            <Footer />
         </div>
     );
 };
