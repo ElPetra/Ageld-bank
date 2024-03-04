@@ -39,9 +39,9 @@ export const Default: Story = {
     args: {
         type: 'text',
         placeholder: 'Номер телефона',
-        label: 'Номер телефона',
+        label: '',
         size: 'large',
         width: 'auto',
-        error: 'Ошибка'
+        error: ''
     }
 };

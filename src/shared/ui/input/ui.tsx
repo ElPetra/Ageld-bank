@@ -20,7 +20,7 @@ interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
         | 'text';
     label?: string;
     placeholder?: string;
-    size?: 'medium' | 'large';
+    size?: 'small' | 'medium' | 'large';
     width?: 'auto' | 'max';
     error?: string;
     children?: ReactNode;
@@ -37,19 +37,18 @@ export const Input = memo(
         error,
         ...props
     }: Props) => (
-        <div className={`field ${error && 'error'}`}>
+        <div className={`field ${error && 'error'} ${size} ${width}`}>
             {type != 'search' && size != 'medium' && label && (
                 <div className='label'>{label}</div>
             )}
             <input
                 type={type || 'text'}
                 placeholder={placeholder || ''}
-                className={`input ${type != 'search' && size != 'medium' && label && 'with-label'} ${error && 'error'} ${size} ${width}`}
+                className={`input ${type != 'search' && size != 'medium' && label && 'with-label'} ${error && 'error'} `}
                 {...props}
-            >
-                {children}
-            </input>
-            {error && <div>{error}</div>}
+            />
+            {children && <div className='input-icon'>{children}</div>}
+            {error && <div className='error-text'>{error}</div>}
         </div>
     )
 );
