@@ -1,9 +1,13 @@
 export const links = [
-    { text: 'О банке', href: '/' },
-    { text: 'Точки пополнения и Банкоматы', href: '/' },
+    { text: 'Банкоматы и отеделения', href: '/' },
     { text: 'Курсы валют', href: '/' },
     { text: 'Контакты', href: '/' },
-    { text: 'Помощь', href: '/' },
-    { text: 'Новости', href: '/' },
-    { text: 'Работа', href: '/' }
+    { text: 'Список услуг', href: '/' },
+    { text: 'Документы', href: '/' },
+    { text: 'Вопросы и ответы', href: '/' }
+];
+
+export const privateLinks = [
+    { text: 'Личные данные', href: '/' },
+    { text: 'Выйти', href: '/' }
 ];
