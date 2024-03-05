@@ -2,13 +2,18 @@ import { type InputHTMLAttributes, useState } from 'react';
 
 import { Icon, Input } from 'src/shared/ui';
 
-import type { FieldValues, UseFormRegister } from 'react-hook-form';
+import type {
+    FieldValues,
+    UseFormClearErrors,
+    UseFormRegister
+} from 'react-hook-form';
 
 interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
     width?: 'auto' | 'max';
     error?: string;
     clear: () => void;
     label: string;
+    clearErrors: UseFormClearErrors<FieldValues>;
     register: UseFormRegister<FieldValues>;
 }
 
@@ -18,7 +23,7 @@ export const ClearInput = ({ clear, ...props }: Props) => {
         <Input
             size='large'
             value={value}
-            onChange={e => setValue(e.target.value)}
+            onChange={e => setValue((e.target as HTMLInputElement).value)}
             {...props}
         >
             <button type='button' onClick={clear}>

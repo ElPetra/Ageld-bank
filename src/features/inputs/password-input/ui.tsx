@@ -2,32 +2,32 @@ import { type InputHTMLAttributes, useState } from 'react';
 
 import { Icon, Input } from 'src/shared/ui';
 
-import type { FieldValues, UseFormRegister } from 'react-hook-form';
+import type {
+    FieldValues,
+    UseFormClearErrors,
+    UseFormRegister
+} from 'react-hook-form';
 
 interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
     width?: 'auto' | 'max';
-    error?: boolean;
+    error?: string;
+    label: string;
+    clearErrors: UseFormClearErrors<FieldValues>;
     register: UseFormRegister<FieldValues>;
 }
 
-export const PasswordInput = ({ error, ...props }: Props) => {
+export const PasswordInput = (props: Props) => {
     const [open, setOpen] = useState<boolean>(false);
-    const [value, setValue] = useState<string>('');
-
+    const [pass, setPass] = useState<string>('');
     return (
         <Input
             type={open ? 'text' : 'password'}
-            placeholder='Пароль'
             size='large'
-            label='password'
-            minLength={8}
-            value={value}
-            onChange={e => setValue(e.target.value)}
-            error={error ? 'Введите, пожалуйста, валидный пароль' : ''}
+            value={pass}
+            onChange={e => setPass(e.target.value)}
             {...props}
         >
-            {error}
-            <button type='button' onClick={() => setOpen(!open)}>
+            <button type='button' onClick={() => setOpen(prev => !prev)}>
                 <Icon icon={open ? 'eye-open' : 'eye-close'} />
             </button>
         </Input>
