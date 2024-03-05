@@ -1,1 +1,0 @@
-export { ClearInput } from './ui';

@@ -19,14 +19,14 @@ export const PasswordInput = ({ error, ...props }: Props) => {
         <Input
             type={open ? 'text' : 'password'}
             placeholder='Пароль'
-            size='large'
             minLength={8}
+            size='large'
             value={value}
             onChange={e => setValue(e.target.value)}
             error={error ? 'Введите, пожалуйста, валидный пароль' : ''}
             {...props}
         >
-            <button type='button' onClick={() => setOpen(!open)}>
+            <button type='button' onClick={() => setOpen(o => !o)}>
                 <Icon icon={open ? 'eye-open' : 'eye-close'} />
             </button>
         </Input>
