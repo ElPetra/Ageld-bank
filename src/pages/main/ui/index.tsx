@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form';
 
 import { Button, Form, Link } from 'src/shared/ui';
 import { ClearInput, PasswordInput } from 'src/features/inputs';
+import { CodeInput } from 'src/features/inputs/code-input';
 
 export const MainPage = () => {
     const {
@@ -9,11 +10,16 @@ export const MainPage = () => {
         setValue,
         handleSubmit,
         formState: { errors }
-    } = useForm({ mode: 'onTouched', reValidateMode: 'onSubmit' });
+    } = useForm({ mode: 'onBlur', reValidateMode: 'onChange' });
 
     return (
         <div>
-            <Form onSubmit={handleSubmit(data => console.log(data))}>
+            <Form
+                onSubmit={handleSubmit(data => {
+                    console.log(data);
+                })}
+            >
+                <CodeInput label='sms' register={register} error={''} />
                 <ClearInput
                     type='tel'
                     placeholder='Номер телефона'
@@ -26,7 +32,11 @@ export const MainPage = () => {
                         'Введите, пожалуйста, валидный номер телефона'
                     }
                 />
-                <PasswordInput register={register} error={!!errors?.password} />
+                <PasswordInput
+                    register={register}
+                    label='password'
+                    error={!!errors?.password}
+                />
                 <Button variant='secondary' size='large' type='submit'>
                     Далее
                 </Button>

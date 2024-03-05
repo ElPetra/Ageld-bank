@@ -7,6 +7,7 @@ import type { FieldValues, UseFormRegister } from 'react-hook-form';
 interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
     width?: 'auto' | 'max';
     error?: boolean;
+    label: string;
     register: UseFormRegister<FieldValues>;
 }
 
@@ -19,7 +20,6 @@ export const PasswordInput = ({ error, ...props }: Props) => {
             type={open ? 'text' : 'password'}
             placeholder='Пароль'
             size='large'
-            label='password'
             minLength={8}
             value={value}
             onChange={e => setValue(e.target.value)}

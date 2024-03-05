@@ -33,24 +33,28 @@ export const Input = memo(
         ...props
     }: Props) => {
         return (
-            <div className={`field ${error && 'error'} ${size} ${width}`}>
-                {type != 'search' && size != 'medium' && value && (
-                    <div className='label'>{placeholder}</div>
+            <div className={`field ${error && 'error'} ${size}`}>
+                <div className={`input ${error && 'error'} ${size} ${width}`}>
+                    {type != 'search' && size != 'medium' && value && (
+                        <div className='label'>{placeholder}</div>
+                    )}
+                    <input
+                        {...register(label, {
+                            pattern: new RegExp(pattern),
+                            minLength,
+                            required: true,
+                            onChange
+                        })}
+                        type={type || 'text'}
+                        placeholder={placeholder || ''}
+                        className={`${type != 'search' && size != 'medium' && value && 'with-label'} ${error && 'error'} `}
+                        {...props}
+                    />
+                    {children && <div className='input-icon'>{children}</div>}
+                </div>
+                {error && size != 'small' && (
+                    <div className='input-error'>{error}</div>
                 )}
-                <input
-                    {...register(label, {
-                        pattern: new RegExp(pattern),
-                        minLength,
-                        required: true,
-                        onChange
-                    })}
-                    type={type || 'text'}
-                    placeholder={placeholder || ''}
-                    className={`input ${type != 'search' && size != 'medium' && value && 'with-label'} ${error && 'error'} `}
-                    {...props}
-                />
-                {children && <div className='input-icon'>{children}</div>}
-                {error && <div className='error-text'>{error}</div>}
             </div>
         );
     }
