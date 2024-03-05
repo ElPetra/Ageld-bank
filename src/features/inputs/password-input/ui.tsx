@@ -26,7 +26,6 @@ export const PasswordInput = ({ error, ...props }: Props) => {
             error={error ? 'Введите, пожалуйста, валидный пароль' : ''}
             {...props}
         >
-            {error}
             <button type='button' onClick={() => setOpen(!open)}>
                 <Icon icon={open ? 'eye-open' : 'eye-close'} />
             </button>
