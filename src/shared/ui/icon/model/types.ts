@@ -15,4 +15,5 @@ export type SvgIconNames =
     | 'odnoklassniki'
     | 'twitter'
     | 'vkontakte'
-    | 'youtube';
+    | 'youtube'
+    | 'logo-title';
