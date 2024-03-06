@@ -29,13 +29,6 @@ export const MainPage = () => {
                     }
                 ]}
             />
-            <MultiStepForm
-                isFork={true}
-                document={{
-                    title: 'Правила пользования СДБО',
-                    pdf: 'src/pages/main/txt2pdf_65e87a0c52c4d.pdf'
-                }}
-            />
             <br />
             <Form onSubmit={handleSubmit(data => console.log(data))}>
                 <CodeInput label='sms' register={register} error={''} />
