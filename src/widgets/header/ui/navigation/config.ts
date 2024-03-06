@@ -11,3 +11,8 @@ export const privateLinks = [
     { text: 'Личные данные', href: '/' },
     { text: 'Выйти', href: '/' }
 ];
+
+export const publicLinks = [
+    { text: 'Войти', href: '/auth' },
+    { text: 'Регистрация', href: '/register' }
+];

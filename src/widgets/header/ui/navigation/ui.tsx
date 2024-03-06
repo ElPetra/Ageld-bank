@@ -1,6 +1,6 @@
 import { Link } from 'src/shared/ui';
 
-import { links, privateLinks } from './config';
+import { links, privateLinks, publicLinks } from './config';
 
 import './styles.scss';
 
@@ -21,6 +21,15 @@ export const Navigation = () => {
                 {isAuth && (
                     <>
                         {privateLinks.map(el => (
+                            <Link key={el.text} to={el.href}>
+                                {el.text}
+                            </Link>
+                        ))}
+                    </>
+                )}
+                {!isAuth && (
+                    <>
+                        {publicLinks.map(el => (
                             <Link key={el.text} to={el.href}>
                                 {el.text}
                             </Link>
