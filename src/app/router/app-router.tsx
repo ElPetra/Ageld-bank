@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import { AuthPage } from 'src/pages/auth';
 import { Layout } from 'src/pages/layout';
 import { MainPage } from 'src/pages/main';
-import { PublicContractPage } from 'src/pages/publicContract';
+import { PublicContractPage } from 'src/pages/public-contract';
 import { RegisterPage } from 'src/pages/register';
 
 export const AppRouter = () => {
