@@ -12,6 +12,7 @@ export const MainPage = () => {
         handleSubmit,
         formState: { errors }
     } = useForm({ mode: 'onBlur', reValidateMode: 'onChange' });
+
     return (
         <div>
             <MultiStepForm
@@ -20,12 +21,17 @@ export const MainPage = () => {
                     {
                         id: 1,
                         title: 'Регистрация',
-                        component: <Registration />
+                        component: <Registration variant={'phone'} />
                     },
                     {
                         id: 2,
-                        title: 'Регистрация2',
-                        component: <Registration />
+                        title: 'Регистрация',
+                        component: <Registration variant={'code'} />
+                    },
+                    {
+                        id: 3,
+                        title: 'Придумайте пароль',
+                        component: <Registration variant={'password'} />
                     }
                 ]}
             />
