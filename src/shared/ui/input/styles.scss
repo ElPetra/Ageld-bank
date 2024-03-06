@@ -21,7 +21,7 @@
     border-radius: var(--border-radius);
     transition: box-shadow ease .5s;
 
-    &:hover, &:focus, &:active, &.active {
+    &:hover, &.focus, &:active, &.active {
       box-shadow: inset 0 0 0 1px var(--text-primary-input);
     }
 

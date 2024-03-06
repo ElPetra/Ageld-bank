@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useState } from 'react';
 
 import type { InputHTMLAttributes, ReactNode } from 'react';
 
@@ -11,8 +11,8 @@ interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
     size?: 'small' | 'medium' | 'large';
     width?: 'auto' | 'max';
     error?: string;
-    label: string;
-    register: UseFormRegister<FieldValues>;
+    label?: string;
+    register?: UseFormRegister<FieldValues>;
     children?: ReactNode;
 }
 
@@ -27,24 +27,40 @@ export const Input = memo(
         error,
         pattern = '',
         minLength,
-        label,
+        label = 'label',
         register,
         onChange,
         ...props
     }: Props) => {
+        const [isFocus, setIsFocus] = useState<boolean>(false);
+
+        const handleOnBlur = () => {
+            setIsFocus(false);
+        };
+
+        const handleOnFocus = () => {
+            setIsFocus(true);
+        };
+
         return (
             <div className={`field ${error && 'error'} ${size}`}>
-                <div className={`input ${error && 'error'} ${size} ${width}`}>
+                <div
+                    className={`input ${error && 'error'} ${isFocus && 'focus'} ${size} ${width}`}
+                >
                     {type != 'search' && size != 'medium' && value && (
                         <div className='label'>{placeholder}</div>
                     )}
                     <input
-                        {...register(label, {
-                            pattern: new RegExp(pattern),
-                            minLength,
-                            required: true,
-                            onChange
-                        })}
+                        {...(register
+                            ? register(label, {
+                                  pattern: new RegExp(pattern),
+                                  minLength,
+                                  required: true,
+                                  onChange
+                              })
+                            : null)}
+                        onBlur={handleOnBlur}
+                        onFocus={handleOnFocus}
                         type={type || 'text'}
                         placeholder={placeholder || ''}
                         className={`${type != 'search' && size != 'medium' && value && 'with-label'} ${error && 'error'} `}
@@ -52,6 +68,7 @@ export const Input = memo(
                     />
                     {children && <div className='input-icon'>{children}</div>}
                 </div>
+                <span className={`field-border ${error && 'error'}`} />
                 {error && size != 'small' && (
                     <div className='input-error'>{error}</div>
                 )}

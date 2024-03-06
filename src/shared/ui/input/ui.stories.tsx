@@ -15,9 +15,6 @@ const meta: Meta<typeof Input> = {
             description: 'Стандартный type input',
             defaultValue: { summary: 'text' }
         },
-        label: {
-            description: 'Динамический placeholder'
-        },
         size: {
             description: 'Размер',
             defaultValue: { summary: 'medium' }
@@ -39,7 +36,6 @@ export const Default: Story = {
     args: {
         type: 'text',
         placeholder: 'Номер телефона',
-        label: '',
         size: 'large',
         width: 'auto',
         error: ''

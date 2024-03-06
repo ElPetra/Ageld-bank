@@ -8,7 +8,7 @@ import type { FieldValues, UseFormRegister } from 'react-hook-form';
 
 import './styles.scss';
 
-const values = [1, 2, 3, 4, 5, 6];
+const values = [0, 1, 2, 3, 4, 5];
 
 interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
     width?: 'auto' | 'max';
@@ -76,7 +76,7 @@ export const CodeInput = ({ label, error, ...props }: Props) => {
                         size='small'
                         onKeyDown={inputOnKeyDown}
                         onChange={inputOnChange}
-                        label={label + el}
+                        label={label + '.' + el}
                         error={error}
                         {...props}
                     ></Input>
