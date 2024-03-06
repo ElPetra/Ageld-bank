@@ -1,54 +1,60 @@
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-
-import { CodeInput, PhoneInput } from 'src/features/inputs';
-import { Button, Form } from 'src/shared/ui';
+import { cloneElement, useState } from 'react';
+import { useNavigate } from 'react-router';
 
 import { BackButton } from './go-back';
 import { FormCard } from './form-card';
 
+import type { Form } from 'src/shared/model';
+
 import './styles.scss';
+import type { Condition } from 'src/features/multi-step-form/model';
 
 interface Props {
+    forms?: Form[];
+    document?: Condition;
     variant?: 'login' | 'registration' | 'none';
+    isFork?: boolean;
+    to?: string;
 }
-export const MultiStepForm = ({ variant = 'none' }: Props) => {
-    const {
-        register,
-        setValue,
-        handleSubmit,
-        formState: { errors }
-    } = useForm({ mode: 'onBlur', reValidateMode: 'onChange' });
-    const [formStep, setFormStep] = useState<number>(0);
 
-    const onSubmit = (data: Props) => {
-        console.log(data);
-        setFormStep(curr => curr + 1);
-    };
+export const MultiStepForm = ({
+    forms,
+    document,
+    variant = 'none',
+    isFork,
+    to
+}: Props) => {
+    const [formStep, setFormStep] = useState<number>(1);
+
+    const navigate = useNavigate();
 
     return (
         <div className='multi-step-form'>
-            {formStep > 0 && (
-                <BackButton onClick={() => setFormStep(curr => curr - 1)} />
+            {(formStep > 1 || isFork) && (
+                <BackButton
+                    onClick={() => {
+                        if (isFork) {
+                            navigate(to || '/');
+                        } else {
+                            setFormStep(curr => curr - 1);
+                        }
+                    }}
+                />
             )}
-            <FormCard title='Регистрация' variant={variant}>
-                <Form onSubmit={handleSubmit(onSubmit)}>
-                    {formStep === 0 && (
-                        <PhoneInput
-                            clear={() => setValue('phone', '')}
-                            label={'phone'}
-                            register={register}
-                            error={!!errors?.phone}
-                        />
-                    )}
-                    {formStep === 1 && (
-                        <CodeInput label='sms' register={register} error={''} />
-                    )}
-                    <Button variant='secondary' size='large' type='submit'>
-                        Далее
-                    </Button>
-                </Form>
-            </FormCard>
+            {forms && (
+                <FormCard title={forms[formStep - 1].title} variant={variant}>
+                    {forms[formStep - 1].component &&
+                        cloneElement(forms[formStep - 1].component, {
+                            isLast: forms.length === formStep,
+                            setFormStep
+                        })}
+                </FormCard>
+            )}
+            {isFork && document && (
+                <FormCard title={document.title} variant={variant}>
+                    <embed src={document.pdf} type='application/pdf' />
+                </FormCard>
+            )}
         </div>
     );
 };
