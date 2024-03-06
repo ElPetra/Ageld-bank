@@ -52,7 +52,12 @@ export const MultiStepForm = ({
             )}
             {isFork && document && (
                 <FormCard title={document.title} variant={variant}>
-                    <embed src={document.pdf} type='application/pdf' />
+                    <embed
+                        src={document.pdf}
+                        type='application/pdf'
+                        width={document.width}
+                        height={document.height}
+                    />
                 </FormCard>
             )}
         </div>
