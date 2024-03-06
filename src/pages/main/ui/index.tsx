@@ -12,7 +12,6 @@ export const MainPage = () => {
         handleSubmit,
         formState: { errors }
     } = useForm({ mode: 'onBlur', reValidateMode: 'onChange' });
-
     return (
         <div>
             <MultiStepForm variant={'registration'} />
