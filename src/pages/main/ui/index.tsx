@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { Button, Form, Link } from 'src/shared/ui';
 import { PasswordInput, PhoneInput, CodeInput } from 'src/features/inputs';
 import { DocumentInput } from 'src/features/inputs/document-input';
+import { MultiStepForm } from 'src/features/multi-step-form';
 
 export const MainPage = () => {
     const {
@@ -14,6 +15,8 @@ export const MainPage = () => {
 
     return (
         <div>
+            <MultiStepForm variant={'registration'} />
+            <br />
             <Form onSubmit={handleSubmit(data => console.log(data))}>
                 <CodeInput label='sms' register={register} error={''} />
                 <PhoneInput

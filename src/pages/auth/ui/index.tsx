@@ -9,7 +9,7 @@ export const AuthPage = () => {
                 конфиденциальности &nbsp;
                 <Link to='/' variant='action'>
                     Правилами пользования СДБО
-                </Link>{' '}
+                </Link>
                 &nbsp; и даёте согласие на сбор, обработку и &nbsp;
                 <Link to='/' variant='action'>
                     Хранение ваших персональных данных

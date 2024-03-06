@@ -16,4 +16,5 @@ export type SvgIconNames =
     | 'twitter'
     | 'vkontakte'
     | 'youtube'
-    | 'logo-title';
+    | 'logo-title'
+    | 'arrow';

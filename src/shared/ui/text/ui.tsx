@@ -8,14 +8,23 @@ interface Props {
     tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'div';
     size?: 'xs' | 's' | 'm' | 'l' | 'xl';
     weight?: 'regular' | 'medium' | 'bold';
+    align?: 'center' | 'left' | 'right';
     children: ReactNode;
 }
 
 export const Text = memo(
-    ({ tag, size = 's', weight = 'regular', children }: Props) => {
+    ({
+        tag,
+        size = 's',
+        weight = 'regular',
+        align = 'left',
+        children
+    }: Props) => {
         const Element = tag || 'div';
         return (
-            <Element className={`text ${size} ${weight}`}>{children}</Element>
+            <Element className={`text ${size} ${weight} ${align}`}>
+                {children}
+            </Element>
         );
     }
 );
