@@ -37,7 +37,6 @@ export const Input = memo(
         const handleOnBlur = () => {
             setIsFocus(false);
         };
-
         const handleOnFocus = () => {
             setIsFocus(true);
         };
@@ -64,7 +63,7 @@ export const Input = memo(
                         onFocus={handleOnFocus}
                         type={type || 'text'}
                         placeholder={placeholder || ''}
-                        className={`${type != 'search' && size != 'medium' && value && 'with-label'} ${error && 'error'} `}
+                        className={`${type != 'search' && size != 'medium' && value && 'with-label'} ${error && 'error'} ${type === 'tel' && 'phone-input'}`}
                         {...props}
                     />
                     {children && <div className='input-icon'>{children}</div>}

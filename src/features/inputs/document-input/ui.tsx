@@ -32,7 +32,7 @@ export const DocumentInput = ({ clear, error, ...props }: Props) => {
 
     return (
         <Input
-            type='tel'
+            type='text'
             maxLength={20}
             minLength={6}
             placeholder='Серия и номер паспорта/ВНЖ'
