@@ -55,11 +55,11 @@ export const Input = memo(
                                   pattern: new RegExp(pattern),
                                   minLength,
                                   required: true,
-                                  onChange
+                                  onChange,
+                                  onBlur: handleOnBlur
                               })
                             : null)}
                         value={value}
-                        onBlur={handleOnBlur}
                         onFocus={handleOnFocus}
                         type={type || 'text'}
                         placeholder={placeholder || ''}

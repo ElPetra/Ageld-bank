@@ -1,7 +1,14 @@
+export const formatPhoneInputValue = (str: string): string => {
+    const newStr =
+        str.length > 1
+            ? '+7' + str.replaceAll(/\D/gm, '').slice(1, 12)
+            : '+7' + str.replace(/\D/gm, '');
+    return newStr;
+};
+
 export const maskPhoneInputValue = (val: string): string => {
     const valArray = val.split('');
     valArray.length = 12;
-    console.log('то, что лежит в велью стейта', val); // то, что лежит в велью стейта
     const formated =
         val === ''
             ? val
@@ -22,6 +29,5 @@ export const maskPhoneInputValue = (val: string): string => {
                       }
                   })
                   .join('');
-    console.log('то, что лежит в велью инпута', formated); // то, что лежит в велью инпута
     return formated;
 };

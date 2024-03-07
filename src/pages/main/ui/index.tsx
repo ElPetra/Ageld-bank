@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 
-import { Button, Form, Link } from 'src/shared/ui';
+import { Button, Form } from 'src/shared/ui';
 import { CodeInput, PasswordInput, PhoneInput } from 'src/features/inputs';
 import { DocumentInput } from 'src/features/inputs/document-input';
 import { MultiStepForm, Registration } from 'src/features/multi-step-form';
@@ -12,6 +12,7 @@ export const MainPage = () => {
         handleSubmit,
         formState: { errors }
     } = useForm({ mode: 'onBlur', reValidateMode: 'onChange' });
+
     return (
         <div>
             <MultiStepForm
@@ -20,21 +21,19 @@ export const MainPage = () => {
                     {
                         id: 1,
                         title: 'Регистрация',
-                        component: <Registration />
+                        component: <Registration variant={'phone'} />
                     },
                     {
                         id: 2,
-                        title: 'Регистрация2',
-                        component: <Registration />
+                        title: 'Регистрация',
+                        component: <Registration variant={'code'} />
+                    },
+                    {
+                        id: 3,
+                        title: 'Придумайте пароль',
+                        component: <Registration variant={'password'} />
                     }
                 ]}
-            />
-            <MultiStepForm
-                isFork={true}
-                document={{
-                    title: 'Правила пользования СДБО',
-                    pdf: 'src/pages/main/txt2pdf_65e87a0c52c4d.pdf'
-                }}
             />
             <br />
             <Form onSubmit={handleSubmit(data => console.log(data))}>
@@ -60,9 +59,6 @@ export const MainPage = () => {
                     Далее
                 </Button>
             </Form>
-            <Link to={'/auth'}>Auth</Link>
-            <br />
-            Главная
         </div>
     );
 };

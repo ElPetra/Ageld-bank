@@ -1,13 +1,14 @@
 import { NavLink } from 'react-router-dom';
 
 import { Icon, Link, Text } from 'src/shared/ui';
+import { RouteName } from 'src/shared/model';
 
 import './styles.scss';
 
 export const LogoPhone = () => (
     <div className='logo-phone'>
         <div className='contacts'>
-            <Link to='/'>
+            <Link to={RouteName.MAIN_PAGE}>
                 <Icon icon='logo' width={59} height={67} />
             </Link>
             <div>
@@ -28,10 +29,10 @@ export const LogoPhone = () => (
                 Наше приложение
             </Text>
             <div className='download-icons'>
-                <Link to='/'>
+                <Link to={RouteName.MAIN_PAGE}>
                     <Icon icon='app-store' width={155} height={46} />
                 </Link>
-                <Link to='/'>
+                <Link to={RouteName.MAIN_PAGE}>
                     <Icon icon='google-play' width={155} height={46} />
                 </Link>
             </div>
