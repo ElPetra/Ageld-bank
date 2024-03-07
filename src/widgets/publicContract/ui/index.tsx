@@ -1,12 +1,18 @@
 import { MultiStepForm } from 'src/features/multi-step-form';
+interface Props {
+    document: {
+        title: string,
+        pdf: string
+    };
+}
 
-export const PublicContract = () => {
+export const PublicContract = ({ document }: Props) => {
     return (
         <MultiStepForm
             isFork={true}
             document={{
-                title: 'Правила пользования СДБО',
-                pdf: 'src/widgets/publicContract/assets/public-contract.pdf',
+                title: document.title,
+                pdf: document.pdf,
                 height: window.innerHeight,
                 width: 580
             }}
