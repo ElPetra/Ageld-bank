@@ -21,7 +21,7 @@ export const Registration = ({ isLast, setFormStep, variant }: Props) => {
         setValue,
         handleSubmit,
         formState: { errors }
-    } = useForm({ mode: 'onBlur', reValidateMode: 'onChange' });
+    } = useForm({ mode: 'onTouched', reValidateMode: 'onChange' });
     const inputs: Inputs = {
         phone: (
             <PhoneInput
@@ -40,6 +40,7 @@ export const Registration = ({ isLast, setFormStep, variant }: Props) => {
             />
         )
     };
+
     return (
         <Form
             onSubmit={handleSubmit(data => {
@@ -50,7 +51,12 @@ export const Registration = ({ isLast, setFormStep, variant }: Props) => {
             })}
         >
             {inputs[variant]}
-            <Button variant='secondary' size='large' type='submit'>
+            <Button
+                variant='secondary'
+                size='large'
+                type='submit'
+                disabled={!!errors?.[variant]}
+            >
                 Далее
             </Button>
         </Form>
