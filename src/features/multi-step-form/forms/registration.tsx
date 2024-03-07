@@ -1,8 +1,16 @@
 import { useForm } from 'react-hook-form';
 
 import { PhoneInput } from 'src/features/inputs';
+<<<<<<< Updated upstream
 import { Button, Form, Link, Text } from 'src/shared/ui';
 import { RouteName } from 'src/shared/model';
+=======
+import { Button, Form } from 'src/shared/ui';
+
+import { useForm } from 'react-hook-form';
+
+import { PrivacyPolicyText } from 'src/widgets/privacyPolicyText';
+>>>>>>> Stashed changes
 
 import type { FieldValues } from 'react-hook-form';
 
@@ -40,6 +48,7 @@ export const Registration = ({ isLast, setFormStep }: Props) => {
                 register={register}
                 isError={!!errors?.phone}
             />
+<<<<<<< Updated upstream
             <Text size='xs'>
                 Нажав кнопку «Далее», вы соглашаетесь с и Политикой
                 конфиденциальности &nbsp;
@@ -51,6 +60,9 @@ export const Registration = ({ isLast, setFormStep }: Props) => {
                     Хранение ваших персональных данных
                 </Link>
             </Text>
+=======
+            <PrivacyPolicyText />
+>>>>>>> Stashed changes
             <Button
                 variant='secondary'
                 size='large'
