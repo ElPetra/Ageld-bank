@@ -1,4 +1,4 @@
-import { PhoneInput } from 'src/features/inputs';
+import { PasswordInput } from 'src/features/inputs';
 import { Button, Form } from 'src/shared/ui';
 import { FieldValues, useForm } from 'react-hook-form';
 
@@ -9,16 +9,15 @@ interface Props {
     setFormStep?: Dispatch<SetStateAction<number>>;
 }
 
-export const Registration = ({ isLast, setFormStep }: Props) => {
+export const CreatePassword = ({ isLast, setFormStep }: Props) => {
     const {
         register,
-        setValue,
         handleSubmit,
         formState: { errors, isDirty, isValid }
     } = useForm<FieldValues>({
         mode: 'onTouched',
         reValidateMode: 'onChange',
-        defaultValues: { phone: '' }
+        defaultValues: { password1: '', password2: '' }
     });
 
     return (
@@ -30,11 +29,15 @@ export const Registration = ({ isLast, setFormStep }: Props) => {
                 console.log(data);
             })}
         >
-            <PhoneInput
-                clear={() => setValue('phone', '')}
-                label={'phone'}
+            <PasswordInput
                 register={register}
-                error={!!errors?.phone}
+                label='password1'
+                error={!!errors?.password1}
+            />
+            <PasswordInput
+                register={register}
+                label='password2'
+                error={!!errors?.password2}
             />
             <Button
                 variant='secondary'

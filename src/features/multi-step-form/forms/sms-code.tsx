@@ -1,4 +1,4 @@
-import { PhoneInput } from 'src/features/inputs';
+import { CodeInput } from 'src/features/inputs';
 import { Button, Form } from 'src/shared/ui';
 import { FieldValues, useForm } from 'react-hook-form';
 
@@ -9,16 +9,15 @@ interface Props {
     setFormStep?: Dispatch<SetStateAction<number>>;
 }
 
-export const Registration = ({ isLast, setFormStep }: Props) => {
+export const SmsCode = ({ isLast, setFormStep }: Props) => {
     const {
         register,
-        setValue,
         handleSubmit,
-        formState: { errors, isDirty, isValid }
+        formState: { isDirty, isValid }
     } = useForm<FieldValues>({
         mode: 'onTouched',
         reValidateMode: 'onChange',
-        defaultValues: { phone: '' }
+        defaultValues: { sms: '' }
     });
 
     return (
@@ -30,12 +29,7 @@ export const Registration = ({ isLast, setFormStep }: Props) => {
                 console.log(data);
             })}
         >
-            <PhoneInput
-                clear={() => setValue('phone', '')}
-                label={'phone'}
-                register={register}
-                error={!!errors?.phone}
-            />
+            <CodeInput label='sms' register={register} error={''} />
             <Button
                 variant='secondary'
                 size='large'

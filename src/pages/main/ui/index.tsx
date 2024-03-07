@@ -3,7 +3,12 @@ import { useForm } from 'react-hook-form';
 import { Button, Form } from 'src/shared/ui';
 import { CodeInput, PasswordInput, PhoneInput } from 'src/features/inputs';
 import { DocumentInput } from 'src/features/inputs/document-input';
-import { MultiStepForm, Registration } from 'src/features/multi-step-form';
+import {
+    CreatePassword,
+    MultiStepForm,
+    Registration,
+    SmsCode
+} from 'src/features/multi-step-form';
 
 export const MainPage = () => {
     const {
@@ -21,17 +26,17 @@ export const MainPage = () => {
                     {
                         id: 1,
                         title: 'Регистрация',
-                        component: <Registration variant={'phone'} />
+                        component: <Registration />
                     },
                     {
                         id: 2,
-                        title: 'Регистрация',
-                        component: <Registration variant={'code'} />
+                        title: 'Введите код из смс',
+                        component: <SmsCode />
                     },
                     {
                         id: 3,
                         title: 'Придумайте пароль',
-                        component: <Registration variant={'password'} />
+                        component: <CreatePassword />
                     }
                 ]}
             />
