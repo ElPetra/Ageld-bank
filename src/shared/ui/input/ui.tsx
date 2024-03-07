@@ -42,8 +42,6 @@ export const Input = memo(
             setIsFocus(true);
         };
 
-        console.log(value);
-
         return (
             <div className={`field ${error && 'error'} ${size}`}>
                 <div

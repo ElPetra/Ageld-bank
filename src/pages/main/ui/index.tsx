@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 
-import { Button, Form, Link } from 'src/shared/ui';
+import { Button, Form } from 'src/shared/ui';
 import { CodeInput, PasswordInput, PhoneInput } from 'src/features/inputs';
 import { DocumentInput } from 'src/features/inputs/document-input';
 import { MultiStepForm, Registration } from 'src/features/multi-step-form';
@@ -59,9 +59,6 @@ export const MainPage = () => {
                     Далее
                 </Button>
             </Form>
-            <Link to={'/auth'}>Auth</Link>
-            <br />
-            Главная
         </div>
     );
 };

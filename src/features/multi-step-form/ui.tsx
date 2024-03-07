@@ -1,6 +1,8 @@
 import { cloneElement, useState } from 'react';
 import { useNavigate } from 'react-router';
 
+import { RouteName } from 'src/shared/model';
+
 import { BackButton } from './go-back';
 import { FormCard } from './form-card';
 
@@ -34,7 +36,7 @@ export const MultiStepForm = ({
                 <BackButton
                     onClick={() => {
                         if (isFork) {
-                            navigate(to || '/');
+                            navigate(to || RouteName.MAIN_PAGE);
                         } else {
                             setFormStep(curr => curr - 1);
                         }

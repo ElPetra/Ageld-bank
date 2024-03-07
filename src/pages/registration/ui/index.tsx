@@ -1,8 +1,9 @@
 import { Text } from 'src/shared/ui';
 import { Greeting } from 'src/widgets/greeting';
+
 import './styles.scss';
 
-export const RegisterPage = () => {
+export const RegistrationPage = () => {
     return (
         <div className='register'>
             <div className='greeting'>
