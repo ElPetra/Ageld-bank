@@ -1,8 +1,7 @@
 import { type InputHTMLAttributes, useState } from 'react';
 
 import { Icon, Input } from 'src/shared/ui';
-import { formatPhoneInputValue } from 'src/shared/utils/formatPhoneInputValue';
-import { maskPhoneInputValue } from 'src/shared/utils/maskPhoneInputValue';
+import { maskPhoneInputValue, formatPhoneInputValue } from 'src/shared/lib';
 
 import type { ChangeEvent, ClipboardEvent } from 'react';
 import type { FieldValues, UseFormRegister } from 'react-hook-form';
