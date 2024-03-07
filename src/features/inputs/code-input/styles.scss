@@ -9,12 +9,13 @@
     gap: 10px;
   }
 
-  &__info {
+  &__error {
+    color: var(--text-error);
     margin-top: 8px;
   }
 
-  &__error {
-    color: var(--text-error);
+  &__info {
+    margin-top: 4px;
   }
 }
 

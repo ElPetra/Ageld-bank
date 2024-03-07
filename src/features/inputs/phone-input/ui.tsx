@@ -1,51 +1,62 @@
-import { type InputHTMLAttributes, useState } from 'react';
+import { useState } from 'react';
 
 import { Icon, Input } from 'src/shared/ui';
-import { maskPhoneInputValue, formatPhoneInputValue } from 'src/shared/lib';
 
-import type { ChangeEvent, ClipboardEvent } from 'react';
+import type { ChangeEvent, InputHTMLAttributes } from 'react';
 import type { FieldValues, UseFormRegister } from 'react-hook-form';
-
-import './styles.scss';
 
 interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
     width?: 'auto' | 'max';
-    error?: boolean;
+    isError?: boolean;
+    error?: string;
     clear: () => void;
     label: string;
     register: UseFormRegister<FieldValues>;
 }
 
-export const PhoneInput = ({ clear, error, ...props }: Props) => {
+export const PhoneInput = ({ clear, isError, error, ...props }: Props) => {
     const [value, setValue] = useState<string>('');
-    const handleChange = ({
-        target,
-        nativeEvent
-    }: ChangeEvent<HTMLInputElement>) => {
-        const currentVal =
-            (nativeEvent as InputEvent).inputType === 'deleteContentBackward'
-                ? value.length > 2
-                    ? value.slice(0, value.length - 1)
-                    : value
-                : formatPhoneInputValue((target as HTMLInputElement).value);
-        setValue(currentVal);
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+        let inputValue = e.target.value;
+        inputValue = inputValue.replace(/\D/gm, '');
+        if (inputValue.length == 0) {
+            e.target.value = inputValue;
+        } else if (inputValue.length == 1) {
+            if (!/\+/.test(e.target.value)) {
+                // если не удаление
+                e.target.value = inputValue.replace(/(\d)/, '+7 (');
+            }
+        } else if (inputValue.length == 5) {
+            e.target.value = inputValue.replace(
+                /(\d)(\d{3})(\d)/,
+                '+7 ($2) $3'
+            );
+        } else if (inputValue.length == 8) {
+            e.target.value = inputValue.replace(
+                /(\d)(\d{3})(\d{3})(\d)/,
+                '+7 ($2) $3-$4'
+            );
+        } else if (inputValue.length == 10 || inputValue.length == 11) {
+            e.target.value = inputValue.replace(
+                /(\d)(\d{3})(\d{3})(\d{2})(\d)/,
+                '+7 ($2) $3-$4-$5'
+            );
+        }
+        setValue(e.target.value);
     };
-    const handlePaste = (e: ClipboardEvent<HTMLInputElement>): void => {
-        (e.target as HTMLInputElement).value = formatPhoneInputValue(
-            (e.target as HTMLInputElement).value
-        );
-        setValue((e.target as HTMLInputElement).value);
-    };
+
     return (
         <Input
-            type='tel'
-            pattern='\+7\([0-9]{3}\)[0-9]{3}\-[0-9]{2}\-[0-9]{1}'
+            type='text'
+            maxLength={18}
             placeholder='Номер телефона'
             size='large'
-            value={maskPhoneInputValue(value)}
-            onPaste={handlePaste}
+            value={value}
             onChange={handleChange}
-            error={error ? 'Введите, пожалуйста, валидный номер телефона' : ''}
+            error={
+                error ||
+                (isError ? 'Номер телефона должен содержать 11 цифр' : '')
+            }
             {...props}
         >
             <button

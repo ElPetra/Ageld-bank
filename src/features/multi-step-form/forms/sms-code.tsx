@@ -1,6 +1,9 @@
+import { useForm } from 'react-hook-form';
+
 import { CodeInput } from 'src/features/inputs';
 import { Button, Form } from 'src/shared/ui';
-import { FieldValues, useForm } from 'react-hook-form';
+
+import type { FieldValues } from 'react-hook-form';
 
 import type { Dispatch, SetStateAction } from 'react';
 

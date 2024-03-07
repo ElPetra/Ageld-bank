@@ -6,12 +6,13 @@ import type { FieldValues, UseFormRegister } from 'react-hook-form';
 
 interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
     width?: 'auto' | 'max';
-    error?: boolean;
+    isError?: boolean;
+    error?: string;
     label: string;
     register: UseFormRegister<FieldValues>;
 }
 
-export const PasswordInput = ({ error, ...props }: Props) => {
+export const DocumentInput = ({ isError, error, ...props }: Props) => {
     const [open, setOpen] = useState<boolean>(false);
     const [value, setValue] = useState<string>('');
 
@@ -19,11 +20,14 @@ export const PasswordInput = ({ error, ...props }: Props) => {
         <Input
             type={open ? 'text' : 'password'}
             placeholder='Пароль'
-            minLength={8}
+            pattern='^.{6,20}$'
             size='large'
             value={value}
             onChange={e => setValue(e.target.value)}
-            error={error ? 'Введите, пожалуйста, валидный пароль' : ''}
+            error={
+                error ||
+                (isError ? 'Пароль должен содержать от 6 до 20 символов' : '')
+            }
             {...props}
         >
             <button type='button' onClick={() => setOpen(o => !o)}>

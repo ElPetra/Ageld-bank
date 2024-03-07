@@ -1,9 +1,8 @@
 import { type InputHTMLAttributes, useEffect, useState } from 'react';
 
-import { Input, Link, Text } from 'src/shared/ui';
+import { Button, Input, Text } from 'src/shared/ui';
 
 import type { ChangeEvent, KeyboardEvent } from 'react';
-
 import type { FieldValues, UseFormRegister } from 'react-hook-form';
 
 import './styles.scss';
@@ -82,6 +81,11 @@ export const CodeInput = ({ label, error, ...props }: Props) => {
                     ></Input>
                 ))}
             </div>
+            {error && (
+                <div className='code-input__error'>
+                    <Text size='xs'>{error}</Text>
+                </div>
+            )}
             <div className='code-input__info'>
                 {seconds > 0 ? (
                     <Text size='xs'>
@@ -89,20 +93,11 @@ export const CodeInput = ({ label, error, ...props }: Props) => {
                         {seconds}
                     </Text>
                 ) : (
-                    <button>
-                        <Text size='xs'>
-                            <Link variant='action' to={'/'}>
-                                Отправить смс еще раз
-                            </Link>
-                        </Text>
-                    </button>
+                    <Button variant='link'>
+                        <Text size='xs'>Отправить смс еще раз</Text>
+                    </Button>
                 )}
             </div>
-            {error && (
-                <div className='code-input__error'>
-                    <Text size='xs'>{error}</Text>
-                </div>
-            )}
         </div>
     );
 };

@@ -59,7 +59,6 @@ export const Input = memo(
                                   onBlur: handleOnBlur
                               })
                             : null)}
-                        value={value}
                         onFocus={handleOnFocus}
                         type={type || 'text'}
                         placeholder={placeholder || ''}

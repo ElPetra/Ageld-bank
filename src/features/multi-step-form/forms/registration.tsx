@@ -1,6 +1,10 @@
+import { useForm } from 'react-hook-form';
+
 import { PhoneInput } from 'src/features/inputs';
-import { Button, Form } from 'src/shared/ui';
-import { FieldValues, useForm } from 'react-hook-form';
+import { Button, Form, Link, Text } from 'src/shared/ui';
+import { RouteName } from 'src/shared/model';
+
+import type { FieldValues } from 'react-hook-form';
 
 import type { Dispatch, SetStateAction } from 'react';
 
@@ -34,8 +38,19 @@ export const Registration = ({ isLast, setFormStep }: Props) => {
                 clear={() => setValue('phone', '')}
                 label={'phone'}
                 register={register}
-                error={!!errors?.phone}
+                isError={!!errors?.phone}
             />
+            <Text size='xs'>
+                Нажав кнопку «Далее», вы соглашаетесь с и Политикой
+                конфиденциальности &nbsp;
+                <Link to={RouteName.PUBLIC_CONTRACT_PAGE} variant='action'>
+                    Правилами пользования СДБО
+                </Link>
+                &nbsp; и даёте согласие на сбор, обработку и &nbsp;
+                <Link to={RouteName.PUBLIC_CONTRACT_PAGE} variant='action'>
+                    Хранение ваших персональных данных
+                </Link>
+            </Text>
             <Button
                 variant='secondary'
                 size='large'

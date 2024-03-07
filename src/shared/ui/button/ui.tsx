@@ -8,7 +8,7 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
     type?: 'submit' | 'reset' | 'button';
     disabled?: boolean;
     size?: 'medium' | 'large';
-    variant?: 'primary' | 'secondary';
+    variant?: 'primary' | 'secondary' | 'link';
     width?: 'auto' | 'max';
     status?: 'active' | undefined;
     children: ReactNode;
@@ -28,7 +28,7 @@ export const Button = memo(
         <button
             type={type || 'button'}
             disabled={disabled}
-            className={`button ${size} ${
+            className={`${variant !== 'link' && 'button'} ${size} ${
                 !disabled && variant
             } ${width} ${status}`}
             {...props}

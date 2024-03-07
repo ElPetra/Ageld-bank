@@ -62,3 +62,8 @@
     box-shadow: inset 0 0 0 1px var(--text-buttons-disable);
   }
 }
+
+.link {
+  color: var(--text-action);
+  text-decoration: underline;
+}

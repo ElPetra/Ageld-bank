@@ -1,6 +1,9 @@
+import { useForm } from 'react-hook-form';
+
 import { PasswordInput } from 'src/features/inputs';
 import { Button, Form } from 'src/shared/ui';
-import { FieldValues, useForm } from 'react-hook-form';
+
+import type { FieldValues } from 'react-hook-form';
 
 import type { Dispatch, SetStateAction } from 'react';
 
@@ -32,12 +35,14 @@ export const CreatePassword = ({ isLast, setFormStep }: Props) => {
             <PasswordInput
                 register={register}
                 label='password1'
-                error={!!errors?.password1}
+                isError={!!errors?.password1}
+                error={''}
             />
             <PasswordInput
                 register={register}
                 label='password2'
-                error={!!errors?.password2}
+                isError={!!errors?.password2}
+                error={''}
             />
             <Button
                 variant='secondary'
