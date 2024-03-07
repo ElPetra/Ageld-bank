@@ -3,11 +3,6 @@ import { useForm } from 'react-hook-form';
 import { CodeInput } from 'src/features/inputs';
 import { Button, Form, Text } from 'src/shared/ui';
 
-<<<<<<< Updated upstream
-=======
-import { useForm } from 'react-hook-form';
-
->>>>>>> Stashed changes
 import type { FieldValues } from 'react-hook-form';
 
 import type { Dispatch, SetStateAction } from 'react';

@@ -67,7 +67,6 @@ export const Input = memo(
                     />
                     {children && <div className='input-icon'>{children}</div>}
                 </div>
-                <span className={`field-border ${error && 'error'}`} />
                 {error && size != 'small' && (
                     <div className='input-error'>{error}</div>
                 )}

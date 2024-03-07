@@ -1,28 +1,14 @@
-import { PublicContract } from 'src/widgets/publicContract';
 import { useParams } from 'react-router';
-type DocumentType = 'privacyPolicy' | 'termsRBS' | 'personalDataStorage';
 
-type DocumentInfo = {
-    title: string,
-    pdf: string
-};
+import { MultiStepForm } from 'src/features/multi-step-form';
+import { RouteName } from 'src/shared/model';
+
+import { documents } from '../model';
+
+import type { DocumentType } from '../model';
+
 export const PublicContractPage = () => {
     const { documentType } = useParams<{ documentType?: DocumentType }>();
-
-    const documents: Record<DocumentType, DocumentInfo> = {
-        privacyPolicy: {
-            title: 'Политика конфиденциальности',
-            pdf: 'src/widgets/publicContract/assets/privacy-policy.pdf'
-        },
-        personalDataStorage: {
-            title: 'Хранение персональных данных',
-            pdf: 'src/widgets/publicContract/assets/personal-data-storage.pdf'
-        },
-        termsRBS: {
-            title: 'Правила пользования СДБО',
-            pdf: 'src/widgets/publicContract/assets/terms-RBS.pdf'
-        }
-    };
 
     const document = documentType
         ? documents[documentType]
@@ -30,7 +16,16 @@ export const PublicContractPage = () => {
 
     return (
         <div className='public-contract'>
-            <PublicContract document={document} />
+            <MultiStepForm
+                isFork={true}
+                to={RouteName.REGISTRATION_PAGE}
+                document={{
+                    title: document.title,
+                    pdf: document.pdf,
+                    height: window.innerHeight,
+                    width: 580
+                }}
+            />
         </div>
     );
 };

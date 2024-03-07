@@ -48,6 +48,7 @@ export const PhoneInput = ({ clear, isError, error, ...props }: Props) => {
     return (
         <Input
             type='text'
+            minLength={18}
             maxLength={18}
             placeholder='Номер телефона'
             size='large'
