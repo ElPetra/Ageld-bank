@@ -50,7 +50,7 @@ export const CreatePassword = ({ isLast, setFormStep }: Props) => {
                 type='submit'
                 disabled={!isDirty || !isValid}
             >
-                Далее
+                Зарегистрироваться
             </Button>
         </Form>
     );

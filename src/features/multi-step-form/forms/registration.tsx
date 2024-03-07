@@ -31,7 +31,7 @@ export const Registration = ({ isLast, setFormStep }: Props) => {
                 if (setFormStep && !isLast) {
                     setFormStep(curr => curr + 1);
                 }
-                console.log(data);
+                console.log(data.phone.replace(/\D/gm, ''));
             })}
         >
             <PhoneInput

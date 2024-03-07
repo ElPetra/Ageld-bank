@@ -12,7 +12,7 @@ interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
     register: UseFormRegister<FieldValues>;
 }
 
-export const DocumentInput = ({ isError, error, ...props }: Props) => {
+export const PasswordInput = ({ isError, error, ...props }: Props) => {
     const [open, setOpen] = useState<boolean>(false);
     const [value, setValue] = useState<string>('');
 

@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 
 import { CodeInput } from 'src/features/inputs';
-import { Button, Form } from 'src/shared/ui';
+import { Button, Form, Text } from 'src/shared/ui';
 
 import type { FieldValues } from 'react-hook-form';
 
@@ -29,9 +29,12 @@ export const SmsCode = ({ isLast, setFormStep }: Props) => {
                 if (setFormStep && !isLast) {
                     setFormStep(curr => curr + 1);
                 }
-                console.log(data);
+                console.log(data.sms.join(''));
             })}
         >
+            <Text size='xs'>
+                На Ваш номер телефона отправлен 6-значный код подтверждения
+            </Text>
             <CodeInput label='sms' register={register} error={''} />
             <Button
                 variant='secondary'
