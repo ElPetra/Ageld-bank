@@ -47,4 +47,14 @@
   &.right {
     text-align: right;
   }
+  &.success{
+    color: var(--text-success);
+  }
+  &.inherit{
+    color: inherit;
+
+  }
+  &.error{
+    color: var(--text-error);
+  }
 }

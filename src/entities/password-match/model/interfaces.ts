@@ -1,0 +1,17 @@
+export interface PasswordRules {
+    length: { matcher: (str: string) => string, message: string };
+    existsAllRegisters: { matcher: string, message: string };
+    existsDigit: { matcher: string, message: string };
+    onlyLatin: { matcher: string, message: string };
+    existsSymbol: { matcher: (str: string) => string, message: string };
+}
+
+export interface MatchesResult {
+    isMatches: boolean;
+    message: string;
+}
+
+export interface PasswordMatchArgs {
+    password: string;
+    requirments: Record<string, boolean | string>;
+}

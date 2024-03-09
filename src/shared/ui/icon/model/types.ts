@@ -17,4 +17,6 @@ export type SvgIconNames =
     | 'vkontakte'
     | 'youtube'
     | 'logo-title'
+    | 'success'
+    | 'error'
     | 'arrow';

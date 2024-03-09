@@ -23,7 +23,6 @@ export const PhoneInput = ({ clear, isError, error, ...props }: Props) => {
             e.target.value = inputValue;
         } else if (inputValue.length == 1) {
             if (!/\+/.test(e.target.value)) {
-                // если не удаление
                 e.target.value = inputValue.replace(/(\d)/, '+7 (');
             }
         } else if (inputValue.length == 5) {
