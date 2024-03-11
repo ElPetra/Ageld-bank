@@ -36,7 +36,6 @@ export const Input = memo(
         onChange,
         ...props
     }: Props) => {
-        console.log(value);
         return (
             <div className={`field ${error && 'error'} ${size}`}>
                 <div

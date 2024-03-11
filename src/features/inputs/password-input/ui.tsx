@@ -1,4 +1,4 @@
-import { type InputHTMLAttributes, useState } from 'react';
+import { type InputHTMLAttributes, useState, useRef } from 'react';
 
 import { Icon, Input } from 'src/shared/ui';
 import { PasswordMatchDisplay } from 'src/entities/password-match/ui';
@@ -29,7 +29,7 @@ export const PasswordInput = ({
     const [value, setValue] = useState<string>('');
     const [isFocused, setFocused] = useState<boolean>(false);
     const capslockFlag = useCapslock();
-
+    const inputRef = useRef<HTMLInputElement>(null);
     return (
         <>
             <Input
@@ -42,15 +42,24 @@ export const PasswordInput = ({
                 value={value}
                 onChange={e => setValue(e.target.value)}
                 onFocus={() => setFocused(true)}
-                // onBlur={() => setFocused(false)}
-                error={error || isError}
+                onBlur={e => {
+                    e.preventDefault();
+                    setFocused(false);
+                }}
+                reference={inputRef}
+                error={
+                    error ||
+                    (isError
+                        ? 'Пароль должен содержать от 6 до 20 символов'
+                        : '')
+                }
                 {...props}
             >
                 <button
                     type='button'
-                    onClick={e => {
-                        e.stopPropagation();
+                    onClick={() => {
                         setOpen(o => !o);
+                        console.log(inputRef.current?.firstChild);
                     }}
                 >
                     <Icon icon={open ? 'eye-open' : 'eye-close'} />
