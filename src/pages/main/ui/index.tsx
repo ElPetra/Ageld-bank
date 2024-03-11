@@ -1,17 +1,7 @@
-import { useForm } from 'react-hook-form';
-
-import { Button, Form, Text } from 'src/shared/ui';
-import { DocumentInput } from 'src/features/inputs';
+import { Text } from 'src/shared/ui';
 import { Greeting } from 'src/widgets/greeting';
 
 export const MainPage = () => {
-    const {
-        register,
-        setValue,
-        handleSubmit,
-        formState: { errors }
-    } = useForm({ mode: 'onBlur', reValidateMode: 'onChange' });
-
     return (
         <div>
             <div className='greeting'>
@@ -26,19 +16,6 @@ export const MainPage = () => {
                         РЕГИСТРАЦИЯ.
                     </Text>
                 </div>
-            </div>
-            <div className='action-box'>
-                <Form onSubmit={handleSubmit(data => console.log(data))}>
-                    <DocumentInput
-                        clear={() => setValue('document', '')}
-                        label={'document'}
-                        register={register}
-                        isError={!!errors?.document}
-                    />
-                    <Button variant='secondary' size='large' type='submit'>
-                        Далее
-                    </Button>
-                </Form>
             </div>
         </div>
     );

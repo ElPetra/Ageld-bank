@@ -18,7 +18,7 @@ export const PublicContractPage = () => {
         <div className='public-contract'>
             <MultiStepForm
                 isFork={true}
-                to={RouteName.REGISTRATION_PAGE}
+                to={RouteName.MAIN_PAGE}
                 document={{
                     title: document.title,
                     pdf: document.pdf,

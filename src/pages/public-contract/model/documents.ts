@@ -1,4 +1,4 @@
-export type DocumentType = 'privacyPolicy' | 'termsRBS' | 'personalDataStorage';
+export type DocumentType = 'privacyPolicy' | 'termsRBS';
 
 interface DocumentInfo {
     title: string;
@@ -10,12 +10,8 @@ export const documents: Record<DocumentType, DocumentInfo> = {
         title: 'Политика конфиденциальности',
         pdf: 'src/pages/public-contract/assets/privacy-policy.pdf'
     },
-    personalDataStorage: {
-        title: 'Хранение персональных данных',
-        pdf: 'src/pages/public-contract/assets/personal-data-storage.pdf'
-    },
     termsRBS: {
-        title: 'Правила пользования СДБО',
+        title: 'Правила дистанционного банковского обслуживания',
         pdf: 'src/pages/public-contract/assets/terms-RBS.pdf'
     }
 };

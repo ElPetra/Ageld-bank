@@ -3,8 +3,9 @@ import { useForm } from 'react-hook-form';
 import { PhoneInput } from 'src/features/inputs';
 import { Button, Form, Link, Text } from 'src/shared/ui';
 import { RouteName } from 'src/shared/model';
+import './styles.scss';
 
-import { type Dispatch, type SetStateAction } from 'react';
+import { type Dispatch, type SetStateAction, useState } from 'react';
 
 import type { FieldValues } from 'react-hook-form';
 
@@ -13,6 +14,7 @@ interface Props {
     setFormStep?: Dispatch<SetStateAction<number>>;
 }
 export const Registration = ({ isLast, setFormStep }: Props) => {
+    const [clickedLinks, setClickedLinks] = useState<number[]>([]);
     const {
         register,
         setValue,
@@ -23,7 +25,12 @@ export const Registration = ({ isLast, setFormStep }: Props) => {
         reValidateMode: 'onChange',
         defaultValues: { phone: '' }
     });
-
+    const handleLinkClick = (linkId: number) => {
+        if (!clickedLinks.includes(linkId)) {
+            setClickedLinks([...clickedLinks, linkId]);
+        }
+    };
+    const allLinksClicked = clickedLinks.length === 2;
     return (
         <Form
             onSubmit={handleSubmit(data => {
@@ -41,35 +48,38 @@ export const Registration = ({ isLast, setFormStep }: Props) => {
             />
             <Text size='xs'>
                 Нажав кнопку «Далее», вы соглашаетесь с &nbsp;
-                <Link
-                    to={`${RouteName.PUBLIC_CONTRACT_PAGE.replace(':documentType', 'termsRBS')}`}
-                    variant='action'
+                <a
+                    onClick={() => handleLinkClick(1)}
+                    href={`${RouteName.PUBLIC_CONTRACT_PAGE}/terms-RBS.pdf`}
+                    target='_blank'
+                    rel='noreferrer'
+                    className='document-link'
                 >
-                    Правилами пользования СДБО
-                </Link>
+                    Правилами дистанционного банковского обслуживания
+                </a>
                 &nbsp; и &nbsp;
-                <Link
-                    to={`${RouteName.PUBLIC_CONTRACT_PAGE.replace(':documentType', 'privacyPolicy')}`}
-                    variant='action'
+                <a
+                    href={`${RouteName.PUBLIC_CONTRACT_PAGE}/privacy-policy.pdf`}
+                    onClick={() => handleLinkClick(2)}
+                    target='_blank'
+                    rel='noreferrer'
+                    className='document-link'
                 >
                     Политикой конфиденциальности
-                </Link>
-                &nbsp; и даёте согласие на сбор, обработку и &nbsp;
-                <Link
-                    to={`${RouteName.PUBLIC_CONTRACT_PAGE.replace(':documentType', 'personalDataStorage')}`}
-                    variant='action'
-                >
-                    Хранение ваших персональных данных
-                </Link>
+                </a>
+                &nbsp; и даёте согласие на сбор и обработку информации
             </Text>
 
+            <Button variant='secondary' size='large' type='button'>
+                <Link to={RouteName.MAIN_PAGE}>Отклонить</Link>
+            </Button>
             <Button
                 variant='secondary'
                 size='large'
                 type='submit'
-                disabled={!isDirty || !isValid}
+                disabled={!isDirty || !isValid || !allLinksClicked}
             >
-                Далее
+                Принять
             </Button>
         </Form>
     );
