@@ -15,7 +15,7 @@ export const passwordRules: PasswordRules = {
     existsDigit: { matcher: '^(?=.*\\d).*$', message: 'Есть цифры' },
     onlyLatin: {
         matcher:
-            /* eslint-disable */ /* prettier-ignore */ '^[A-Za-z0-9!\\\\"#$%&\'()*+,\\-.\\/:;<=>?@[\\]^_`{|}~].*$',
+            /* prettier-ignore */ '^[A-Za-z0-9!\\\\"#$%&\'()*+,\\-.\\/:;<=>?@[\\]^_`{|}~].*$',
         message:
             'Используйте только буквы (a-z, A-Z), цифры и символы ! @ # & % ^ & * ( )- _ + ; : , . / ?  | ` ~ {  }'
     },

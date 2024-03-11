@@ -16,6 +16,7 @@ export const CreatePassword = ({ isLast, setFormStep }: Props) => {
     const {
         register,
         handleSubmit,
+        watch,
         formState: { errors, isDirty, isValid }
     } = useForm<FieldValues>({
         mode: 'onTouched',
@@ -36,19 +37,28 @@ export const CreatePassword = ({ isLast, setFormStep }: Props) => {
                 register={register}
                 label='password1'
                 isError={!!errors?.password1}
+                isCreating={true}
                 error={''}
             />
             <PasswordInput
                 register={register}
                 label='password2'
                 isError={!!errors?.password2}
-                error={''}
+                error={
+                    isDirty && watch('password1') !== watch('password2')
+                        ? 'Пароли не совпадают'
+                        : ''
+                }
             />
             <Button
                 variant='secondary'
                 size='large'
                 type='submit'
-                disabled={!isDirty || !isValid}
+                disabled={
+                    !isDirty ||
+                    !isValid ||
+                    watch('password1') !== watch('password2')
+                }
             >
                 Зарегистрироваться
             </Button>

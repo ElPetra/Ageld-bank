@@ -8,8 +8,9 @@ import { FormCard } from './form-card';
 
 import type { Form } from 'src/shared/model';
 
-import './styles.scss';
 import type { Condition } from 'src/features/multi-step-form/model';
+
+import './styles.scss';
 
 interface Props {
     forms?: Form[];

@@ -8,12 +8,18 @@ import type { FieldValues, UseFormRegister } from 'react-hook-form';
 interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
     width?: 'auto' | 'max';
     isError?: boolean;
+    isCreating?: boolean;
     error?: string;
     label: string;
     register: UseFormRegister<FieldValues>;
 }
 
-export const PasswordInput = ({ isError, error, ...props }: Props) => {
+export const PasswordInput = ({
+    isError,
+    isCreating,
+    error,
+    ...props
+}: Props) => {
     const [open, setOpen] = useState<boolean>(false);
     const [value, setValue] = useState<string>('');
     const [isFocused, setFocused] = useState<boolean>(false);
@@ -46,7 +52,7 @@ export const PasswordInput = ({ isError, error, ...props }: Props) => {
                     <Icon icon={open ? 'eye-open' : 'eye-close'} />
                 </button>
             </Input>
-            {isFocused && (
+            {isFocused && isCreating && (
                 <PasswordMatchDisplay
                     key={value}
                     password={value}
@@ -55,7 +61,7 @@ export const PasswordInput = ({ isError, error, ...props }: Props) => {
                         existsAllRegisters: true,
                         existsDigit: true,
                         existsSymbol:
-                            /* eslint-disable */ /* prettier-ignore */ '!\\\\"#$%&\'()*+,\\-.\\/:;<=>?@[\\]^_`{|}~',
+                            /* prettier-ignore */ '!\\\\"#$%&\'()*+,\\-.\\/:;<=>?@[\\]^_`{|}~',
                         onlyLatin: true
                     }}
                 />
