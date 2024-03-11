@@ -1,9 +1,12 @@
-import { type InputHTMLAttributes, useEffect, useState } from 'react';
+import { type InputHTMLAttributes } from 'react';
 
-import { Button, Input, Text } from 'src/shared/ui';
+import { Input, Text } from 'src/shared/ui';
+
+import { Info } from './info';
+
+import type { FieldValues, UseFormRegister } from 'react-hook-form';
 
 import type { ChangeEvent, KeyboardEvent } from 'react';
-import type { FieldValues, UseFormRegister } from 'react-hook-form';
 
 import './styles.scss';
 
@@ -17,18 +20,6 @@ interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
 }
 
 export const CodeInput = ({ label, error, ...props }: Props) => {
-    const [seconds, setSeconds] = useState<number>(25);
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setSeconds(seconds => seconds - 1);
-        }, 1000);
-        if (seconds <= 0) {
-            clearInterval(interval);
-        }
-        return () => clearInterval(interval);
-    }, [seconds]);
-
     const inputOnKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
         const target = e.target as HTMLInputElement;
 
@@ -86,18 +77,7 @@ export const CodeInput = ({ label, error, ...props }: Props) => {
                     <Text size='xs'>{error}</Text>
                 </div>
             )}
-            <div className='code-input__info'>
-                {seconds > 0 ? (
-                    <Text size='xs'>
-                        Повторная отправка через 0:{seconds < 10 ? '0' : ''}
-                        {seconds}
-                    </Text>
-                ) : (
-                    <Button variant='link'>
-                        <Text size='xs'>Отправить смс еще раз</Text>
-                    </Button>
-                )}
-            </div>
+            <Info />
         </div>
     );
 };
