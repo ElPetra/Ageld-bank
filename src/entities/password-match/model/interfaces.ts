@@ -13,5 +13,5 @@ export interface MatchesResult {
 
 export interface PasswordMatchArgs {
     password: string;
-    requirments: Record<string, boolean | string>;
+    requirements: Record<string, boolean | string>;
 }

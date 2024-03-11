@@ -11,11 +11,13 @@ interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
     isCreating?: boolean;
     error?: string;
     label: string;
+    placeholder?: string;
     register: UseFormRegister<FieldValues>;
 }
 
 export const PasswordInput = ({
     isError,
+    placeholder = 'Пароль',
     isCreating,
     error,
     ...props
@@ -27,7 +29,7 @@ export const PasswordInput = ({
         <>
             <Input
                 type={open ? 'text' : 'password'}
-                placeholder='Пароль'
+                placeholder={placeholder}
                 pattern='^.{6,20}$'
                 size='large'
                 value={value}
@@ -56,7 +58,7 @@ export const PasswordInput = ({
                 <PasswordMatchDisplay
                     key={value}
                     password={value}
-                    requirments={{
+                    requirements={{
                         length: '6,20',
                         existsAllRegisters: true,
                         existsDigit: true,
