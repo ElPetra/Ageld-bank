@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 import { Icon, Input } from 'src/shared/ui';
 
@@ -16,6 +16,8 @@ interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
 
 export const PhoneInput = ({ clear, isError, error, ...props }: Props) => {
     const [value, setValue] = useState<string>('');
+    const inputRef = useRef<HTMLInputElement>(null);
+
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         let inputValue = e.target.value;
         inputValue = inputValue.replace(/\D/gm, '');
@@ -53,6 +55,7 @@ export const PhoneInput = ({ clear, isError, error, ...props }: Props) => {
             size='large'
             value={value}
             onChange={handleChange}
+            reference={inputRef}
             error={
                 error ||
                 (isError ? 'Номер телефона должен содержать 11 цифр' : '')
@@ -63,6 +66,7 @@ export const PhoneInput = ({ clear, isError, error, ...props }: Props) => {
                 type='button'
                 onClick={() => {
                     clear();
+                    (inputRef.current?.children[1] as HTMLInputElement).focus(); //да, это костыль, но как сделать иначе я не нашел, к сожалению.
                     setValue('');
                 }}
             >

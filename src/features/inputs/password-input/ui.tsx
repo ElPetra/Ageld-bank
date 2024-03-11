@@ -59,7 +59,9 @@ export const PasswordInput = ({
                     type='button'
                     onClick={() => {
                         setOpen(o => !o);
-                        console.log(inputRef.current?.firstChild);
+                        (
+                            inputRef.current?.children[1] as HTMLInputElement
+                        ).focus(); //да, это костыль, но как сделать иначе я не нашел, к сожалению.
                     }}
                 >
                     <Icon icon={open ? 'eye-open' : 'eye-close'} />
