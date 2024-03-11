@@ -4,15 +4,14 @@ import { PhoneInput } from 'src/features/inputs';
 import { Button, Form, Link, Text } from 'src/shared/ui';
 import { RouteName } from 'src/shared/model';
 
-import type { FieldValues } from 'react-hook-form';
+import { type Dispatch, type SetStateAction } from 'react';
 
-import type { Dispatch, SetStateAction } from 'react';
+import type { FieldValues } from 'react-hook-form';
 
 interface Props {
     isLast?: boolean;
     setFormStep?: Dispatch<SetStateAction<number>>;
 }
-
 export const Registration = ({ isLast, setFormStep }: Props) => {
     const {
         register,
@@ -40,7 +39,6 @@ export const Registration = ({ isLast, setFormStep }: Props) => {
                 register={register}
                 isError={!!errors?.phone}
             />
-
             <Text size='xs'>
                 Нажав кнопку «Далее», вы соглашаетесь с &nbsp;
                 <Link

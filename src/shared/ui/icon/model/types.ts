@@ -13,6 +13,7 @@ export type SvgIconNames =
     | 'clear'
     | 'telegram'
     | 'odnoklassniki'
+    | 'warning'
     | 'twitter'
     | 'vkontakte'
     | 'youtube'

@@ -2,6 +2,9 @@ import { type InputHTMLAttributes, useState } from 'react';
 
 import { Icon, Input } from 'src/shared/ui';
 import { PasswordMatchDisplay } from 'src/entities/password-match/ui';
+import { InfoCard } from 'src/shared/info-card';
+
+import { useCapslock } from './lib/useCapslock';
 
 import type { FieldValues, UseFormRegister } from 'react-hook-form';
 
@@ -17,6 +20,8 @@ export const PasswordInput = ({ isError, error, ...props }: Props) => {
     const [open, setOpen] = useState<boolean>(false);
     const [value, setValue] = useState<string>('');
     const [isFocused, setFocused] = useState<boolean>(false);
+    const capslockFlag = useCapslock();
+
     return (
         <>
             <Input
@@ -46,6 +51,9 @@ export const PasswordInput = ({ isError, error, ...props }: Props) => {
                     <Icon icon={open ? 'eye-open' : 'eye-close'} />
                 </button>
             </Input>
+            {capslockFlag && (
+                <InfoCard icon='warning' message='Включен CapsLock' />
+            )}
             {isFocused && (
                 <PasswordMatchDisplay
                     key={value}

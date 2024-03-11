@@ -1,1 +1,0 @@
-export { PasswordMatchCard } from './ui';
