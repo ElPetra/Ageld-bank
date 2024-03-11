@@ -35,18 +35,15 @@ export const PasswordInput = ({
             <Input
                 type={open ? 'text' : 'password'}
                 placeholder={placeholder}
-                pattern='^.{6,20}$'
+                pattern={
+                    '^[A-Za-z0-9!\\\\"#$%&\'()*+,\\-.\\/:;<=>?@[\\]^_`{|}~]{6,20}$'
+                }
                 size='large'
                 value={value}
                 onChange={e => setValue(e.target.value)}
                 onFocus={() => setFocused(true)}
-                onBlur={() => setFocused(false)}
-                error={
-                    error ||
-                    (isError
-                        ? 'Пароль должен содержать от 6 до 20 символов'
-                        : '')
-                }
+                // onBlur={() => setFocused(false)}
+                error={error || isError}
                 {...props}
             >
                 <button

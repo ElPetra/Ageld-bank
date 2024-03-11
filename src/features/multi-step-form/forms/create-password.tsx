@@ -38,7 +38,6 @@ export const CreatePassword = ({ isLast, setFormStep }: Props) => {
                 label='password1'
                 isError={!!errors?.password1}
                 isCreating={true}
-                error={''}
             />
             <PasswordInput
                 register={register}

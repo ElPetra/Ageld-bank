@@ -10,7 +10,7 @@ interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
     placeholder?: string;
     size?: 'small' | 'medium' | 'large';
     width?: 'auto' | 'max';
-    error?: string;
+    error?: string | boolean;
     label?: string;
     register?: UseFormRegister<FieldValues>;
     reference?: RefObject<HTMLInputElement>;
