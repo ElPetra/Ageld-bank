@@ -1,6 +1,6 @@
-import { memo, useState } from 'react';
+import { memo } from 'react';
 
-import type { InputHTMLAttributes, ReactNode } from 'react';
+import type { InputHTMLAttributes, ReactNode, RefObject } from 'react';
 
 import type { FieldValues, UseFormRegister } from 'react-hook-form';
 
@@ -13,6 +13,7 @@ interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
     error?: string;
     label?: string;
     register?: UseFormRegister<FieldValues>;
+    reference?: RefObject<HTMLInputElement>;
     children?: ReactNode;
 }
 
@@ -21,6 +22,7 @@ export const Input = memo(
         type,
         placeholder,
         value,
+        reference,
         size = 'medium',
         width = 'auto',
         children,
@@ -29,22 +31,17 @@ export const Input = memo(
         minLength,
         label = 'label',
         register,
+        onFocus,
+        onBlur,
         onChange,
         ...props
     }: Props) => {
-        const [isFocus, setIsFocus] = useState<boolean>(false);
-
-        const handleOnBlur = () => {
-            setIsFocus(false);
-        };
-        const handleOnFocus = () => {
-            setIsFocus(true);
-        };
-
+        console.log(value);
         return (
             <div className={`field ${error && 'error'} ${size}`}>
                 <div
-                    className={`input ${error && 'error'} ${isFocus && 'focus'} ${size} ${width}`}
+                    className={`input ${error && 'error'}  ${size} ${width}`}
+                    ref={reference}
                 >
                     {type != 'search' && size != 'medium' && value && (
                         <div className='label'>{placeholder}</div>
@@ -56,10 +53,10 @@ export const Input = memo(
                                   minLength,
                                   required: true,
                                   onChange,
-                                  onBlur: handleOnBlur
+                                  onBlur: onBlur
                               })
                             : null)}
-                        onFocus={handleOnFocus}
+                        onFocus={onFocus}
                         type={type || 'text'}
                         placeholder={placeholder || ''}
                         className={`${type != 'search' && size != 'medium' && value && 'with-label'} ${error && 'error'} ${type === 'tel' && 'phone-input'}`}
