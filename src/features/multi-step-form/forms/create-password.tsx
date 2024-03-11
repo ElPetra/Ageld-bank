@@ -42,8 +42,7 @@ export const CreatePassword = ({ isLast, setFormStep }: Props) => {
             <PasswordInput
                 register={register}
                 label='password2'
-                isError={!!errors?.password2}
-                placeholder='Введите пароль ещё раз'
+                placeholder='Подтвердите пароль'
                 placeholderLabel='Подтвердите пароль'
                 error={
                     isDirty && watch('password1') !== watch('password2')

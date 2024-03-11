@@ -32,6 +32,7 @@ export const PasswordInput = ({
     const [isFocused, setFocused] = useState<boolean>(false);
     const capslockFlag = useCapslock();
     const inputRef = useRef<HTMLInputElement>(null);
+
     return (
         <>
             <Input
@@ -45,17 +46,15 @@ export const PasswordInput = ({
                 value={value}
                 onChange={e => setValue(e.target.value)}
                 onFocus={() => setFocused(true)}
-                onBlur={e => {
-                    e.preventDefault();
-                    setFocused(false);
-                }}
+                onBlur={() => setFocused(false)}
                 reference={inputRef}
                 error={
                     error ||
-                    (isError
+                    (isError && !isCreating
                         ? 'Пароль должен содержать от 6 до 20 символов'
                         : '')
                 }
+                isError={!!value && isError}
                 {...props}
             >
                 <button

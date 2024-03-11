@@ -11,7 +11,8 @@ interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
     placeholderLabel?: string;
     size?: 'small' | 'medium' | 'large';
     width?: 'auto' | 'max';
-    error?: string | boolean;
+    isError?: boolean;
+    error?: string;
     label?: string;
     register?: UseFormRegister<FieldValues>;
     reference?: RefObject<HTMLInputElement>;
@@ -29,19 +30,19 @@ export const Input = memo(
         width = 'auto',
         children,
         error,
+        isError,
         pattern = '',
         minLength,
         label = 'label',
         register,
-        onFocus,
         onBlur,
         onChange,
         ...props
     }: Props) => {
         return (
-            <div className={`field ${error && 'error'} ${size}`}>
+            <div className={`field ${(error || isError) && 'error'} ${size}`}>
                 <div
-                    className={`input ${error && 'error'}  ${size} ${width}`}
+                    className={`input ${(error || isError) && 'error'}  ${size} ${width}`}
                     ref={reference}
                 >
                     {type != 'search' && size != 'medium' && value && (
@@ -56,10 +57,9 @@ export const Input = memo(
                                   minLength,
                                   required: true,
                                   onChange,
-                                  onBlur: onBlur
+                                  onBlur
                               })
                             : null)}
-                        onFocus={onFocus}
                         type={type || 'text'}
                         placeholder={placeholder || ''}
                         className={`${type != 'search' && size != 'medium' && value && 'with-label'} ${error && 'error'} ${type === 'tel' && 'phone-input'}`}
