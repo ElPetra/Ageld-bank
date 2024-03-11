@@ -15,12 +15,14 @@ interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
     error?: string;
     label: string;
     placeholder?: string;
+    placeholderLabel?: string;
     register: UseFormRegister<FieldValues>;
 }
 
 export const PasswordInput = ({
     isError,
     placeholder = 'Пароль',
+    placeholderLabel,
     isCreating,
     error,
     ...props
@@ -35,6 +37,7 @@ export const PasswordInput = ({
             <Input
                 type={open ? 'text' : 'password'}
                 placeholder={placeholder}
+                placeholderLabel={placeholderLabel}
                 pattern={
                     '^[A-Za-z0-9!\\\\"#$%&\'()*+,\\-.\\/:;<=>?@[\\]^_`{|}~]{6,20}$'
                 }

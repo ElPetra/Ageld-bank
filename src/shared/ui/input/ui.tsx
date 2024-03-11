@@ -8,6 +8,7 @@ import './styles.scss';
 
 interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
     placeholder?: string;
+    placeholderLabel?: string;
     size?: 'small' | 'medium' | 'large';
     width?: 'auto' | 'max';
     error?: string | boolean;
@@ -21,6 +22,7 @@ export const Input = memo(
     ({
         type,
         placeholder,
+        placeholderLabel,
         value,
         reference,
         size = 'medium',
@@ -43,7 +45,9 @@ export const Input = memo(
                     ref={reference}
                 >
                     {type != 'search' && size != 'medium' && value && (
-                        <div className='label'>{placeholder}</div>
+                        <div className='label'>
+                            {placeholderLabel || placeholder}
+                        </div>
                     )}
                     <input
                         {...(register
