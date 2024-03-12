@@ -1,1 +1,0 @@
-export { PublicContractPage } from './ui';

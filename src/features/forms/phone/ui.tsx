@@ -9,10 +9,15 @@ import { type Dispatch, type SetStateAction, useState } from 'react';
 import type { FieldValues } from 'react-hook-form';
 
 interface Props {
+    variant?: 'login' | 'registration';
     isLast?: boolean;
     setFormStep?: Dispatch<SetStateAction<number>>;
 }
-export const PhoneForm = ({ isLast, setFormStep }: Props) => {
+export const PhoneForm = ({
+    variant = 'login',
+    isLast,
+    setFormStep
+}: Props) => {
     const [clickedLinks, setClickedLinks] = useState<number[]>([]);
     const {
         register,
@@ -45,40 +50,53 @@ export const PhoneForm = ({ isLast, setFormStep }: Props) => {
                 register={register}
                 isError={!!errors?.phone}
             />
-            <Text size='xs'>
-                Нажав кнопку «Далее», вы соглашаетесь с &nbsp;
-                <Link
-                    onClick={() => handleLinkClick(1)}
-                    to={RouteName.PUBLIC_CONTRACT_PAGE + '/terms-RBS.pdf'}
-                    target='_blank'
-                    rel='noreferrer'
-                    variant='action'
-                >
-                    Правилами дистанционного банковского обслуживания
-                </Link>
-                &nbsp; и &nbsp;
-                <Link
-                    to={RouteName.PUBLIC_CONTRACT_PAGE + '/privacy-policy.pdf'}
-                    onClick={() => handleLinkClick(2)}
-                    target='_blank'
-                    rel='noreferrer'
-                    variant='action'
-                >
-                    Политикой конфиденциальности
-                </Link>
-                &nbsp; и даёте согласие на сбор и обработку информации
-            </Text>
-
-            <Button variant='secondary' size='large' type='button'>
-                <Link to={RouteName.MAIN_PAGE}>Отклонить</Link>
-            </Button>
+            {variant === 'registration' && (
+                <>
+                    <Text size='xs'>
+                        Нажав кнопку «Далее», вы соглашаетесь с &nbsp;
+                        <Link
+                            onClick={() => handleLinkClick(1)}
+                            to={
+                                RouteName.MAIN_PAGE +
+                                'src/shared/ui/document/assets/terms-RBS.pdf'
+                            }
+                            target='_blank'
+                            rel='noreferrer'
+                            variant='action'
+                        >
+                            Правилами дистанционного банковского обслуживания
+                        </Link>
+                        &nbsp; и &nbsp;
+                        <Link
+                            to={
+                                RouteName.MAIN_PAGE +
+                                'src/shared/ui/document/assets/terms-RBS.pdf'
+                            }
+                            onClick={() => handleLinkClick(2)}
+                            target='_blank'
+                            rel='noreferrer'
+                            variant='action'
+                        >
+                            Политикой конфиденциальности
+                        </Link>
+                        &nbsp; и даёте согласие на сбор и обработку информации
+                    </Text>
+                    <Button variant='secondary' size='large' type='button'>
+                        <Link to={RouteName.MAIN_PAGE}>Отклонить</Link>
+                    </Button>
+                </>
+            )}
             <Button
                 variant='secondary'
                 size='large'
                 type='submit'
-                disabled={!isDirty || !isValid || !allLinksClicked}
+                disabled={
+                    !isDirty ||
+                    !isValid ||
+                    (variant === 'registration' ? !allLinksClicked : false)
+                }
             >
-                Принять
+                Далее
             </Button>
         </Form>
     );

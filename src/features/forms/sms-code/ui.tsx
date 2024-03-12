@@ -8,11 +8,16 @@ import type { FieldValues } from 'react-hook-form';
 import type { Dispatch, SetStateAction } from 'react';
 
 interface Props {
+    variant?: 'login' | 'registration';
     isLast?: boolean;
     setFormStep?: Dispatch<SetStateAction<number>>;
 }
 
-export const SmsCodeForm = ({ isLast, setFormStep }: Props) => {
+export const SmsCodeForm = ({
+    variant = 'login',
+    isLast,
+    setFormStep
+}: Props) => {
     const {
         register,
         handleSubmit,

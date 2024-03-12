@@ -9,12 +9,12 @@ export const AuthorizationPage = () => {
                 {
                     id: 1,
                     title: 'Войдите в личный кабинет',
-                    component: <PhoneForm />
+                    component: <PhoneForm variant='login' />
                 },
                 {
                     id: 2,
                     title: 'Введите код из смс',
-                    component: <SmsCodeForm />
+                    component: <SmsCodeForm variant='login' />
                 },
                 {
                     id: 3,

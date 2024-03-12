@@ -13,12 +13,12 @@ export const RegistrationPage = () => {
                 {
                     id: 1,
                     title: 'Регистрация',
-                    component: <PhoneForm />
+                    component: <PhoneForm variant='registration' />
                 },
                 {
                     id: 2,
                     title: 'Введите код из смс',
-                    component: <SmsCodeForm />
+                    component: <SmsCodeForm variant='registration' />
                 },
                 {
                     id: 3,
