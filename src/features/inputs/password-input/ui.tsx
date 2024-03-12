@@ -72,7 +72,7 @@ export const PasswordInput = ({
             {capslockFlag && (
                 <InfoCard icon='warning' message='Включен CapsLock' />
             )}
-            {isFocused && isCreating && (
+            {!isFocused && isCreating && (
                 <PasswordMatchDisplay
                     key={value}
                     password={value}
