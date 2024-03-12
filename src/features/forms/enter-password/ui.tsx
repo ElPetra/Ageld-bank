@@ -3,6 +3,8 @@ import { Button, Form } from 'src/shared/ui';
 
 import { type FieldValues, useForm } from 'react-hook-form';
 
+import { useNavigate } from 'react-router-dom';
+
 import type { Dispatch, SetStateAction } from 'react';
 
 interface Props {
@@ -20,16 +22,23 @@ export const EnterPasswordForm = ({ isLast, setFormStep }: Props) => {
         reValidateMode: 'onChange',
         defaultValues: { password1: '' }
     });
+    const navigate = useNavigate();
+    const onSubmit = (data: FieldValues) => {
+        if (setFormStep && !isLast) {
+            setFormStep(curr => curr + 1);
+        }
+        console.log(data);
+
+        navigate('/success', {
+            state: {
+                message: 'Вход выполнен.',
+                button: false
+            }
+        });
+    };
 
     return (
-        <Form
-            onSubmit={handleSubmit(data => {
-                if (setFormStep && !isLast) {
-                    setFormStep(curr => curr + 1);
-                }
-                console.log(data);
-            })}
-        >
+        <Form onSubmit={handleSubmit(onSubmit)}>
             <PasswordInput
                 register={register}
                 label='password1'

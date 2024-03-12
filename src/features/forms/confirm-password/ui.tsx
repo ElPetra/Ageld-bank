@@ -28,16 +28,15 @@ export const ConfirmPasswordForm = ({ isLast, setFormStep }: Props) => {
     const onSubmit = (data: FieldValues) => {
         if (setFormStep && !isLast) {
             setFormStep(curr => curr + 1);
-        } else {
-            console.log(data);
-
-            navigate('/success', {
-                state: {
-                    message: 'Кабинет пользователя успешно зарегистрирован.',
-                    button: true
-                }
-            });
         }
+        console.log(data);
+
+        navigate('/success', {
+            state: {
+                message: 'Кабинет пользователя успешно зарегистрирован.',
+                button: true
+            }
+        });
     };
     return (
         <Form onSubmit={handleSubmit(onSubmit)}>
