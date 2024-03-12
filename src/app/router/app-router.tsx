@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { AuthPage } from 'src/pages/auth';
+import { AuthorizationPage } from 'src/pages/authorization';
 import { Layout } from 'src/pages/layout';
 import { MainPage } from 'src/pages/main';
 import { PublicContractPage } from 'src/pages/public-contract';
@@ -23,7 +23,7 @@ const publicRoutes: RouteDescription[] = [
     },
     {
         path: LOGIN_PAGE,
-        component: AuthPage
+        component: AuthorizationPage
     },
     {
         path: PUBLIC_CONTRACT_PAGE,
