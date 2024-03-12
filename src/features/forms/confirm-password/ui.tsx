@@ -12,7 +12,7 @@ interface Props {
     setFormStep?: Dispatch<SetStateAction<number>>;
 }
 
-export const CreatePassword = ({ isLast, setFormStep }: Props) => {
+export const ConfirmPasswordForm = ({ isLast, setFormStep }: Props) => {
     const {
         register,
         handleSubmit,

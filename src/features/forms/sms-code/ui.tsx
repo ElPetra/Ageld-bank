@@ -12,7 +12,7 @@ interface Props {
     setFormStep?: Dispatch<SetStateAction<number>>;
 }
 
-export const SmsCode = ({ isLast, setFormStep }: Props) => {
+export const SmsCodeForm = ({ isLast, setFormStep }: Props) => {
     const {
         register,
         handleSubmit,

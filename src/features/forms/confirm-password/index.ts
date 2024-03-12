@@ -1,0 +1,1 @@
+export { ConfirmPasswordForm } from './ui';

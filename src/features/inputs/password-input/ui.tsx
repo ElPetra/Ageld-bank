@@ -1,10 +1,10 @@
 import { type InputHTMLAttributes, useState, useRef } from 'react';
 
 import { Icon, Input } from 'src/shared/ui';
-import { PasswordMatchDisplay } from 'src/entities/password-match/ui';
-import { InfoCard } from 'src/shared/info-card';
 
-import { useCapslock } from './lib/useCapslock';
+import { useCapslock } from './lib';
+import { PasswordMatchDisplay } from './password-match';
+import { InfoCard } from './info-card';
 
 import type { FieldValues, UseFormRegister } from 'react-hook-form';
 

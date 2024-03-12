@@ -8,7 +8,7 @@ import { FormCard } from './form-card';
 
 import type { Form } from 'src/shared/model';
 
-import type { Condition } from 'src/features/multi-step-form/model';
+import type { Condition } from './model';
 
 import './styles.scss';
 

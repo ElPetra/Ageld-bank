@@ -8,10 +8,10 @@ interface DocumentInfo {
 export const documents: Record<DocumentType, DocumentInfo> = {
     privacyPolicy: {
         title: 'Политика конфиденциальности',
-        pdf: 'src/pages/public-contract/assets/privacy-policy.pdf'
+        pdf: 'src/page/public-contract/assets/privacy-policy.pdf'
     },
     termsRBS: {
         title: 'Правила дистанционного банковского обслуживания',
-        pdf: 'src/pages/public-contract/assets/terms-RBS.pdf'
+        pdf: 'src/page/public-contract/assets/terms-RBS.pdf'
     }
 };

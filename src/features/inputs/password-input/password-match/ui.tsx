@@ -1,6 +1,6 @@
 import { memo, useMemo } from 'react';
 
-import { InfoCard } from '../../shared/info-card';
+import { InfoCard } from '../info-card';
 
 import { type MatchesResult, type PasswordRules, passwordRules } from './model';
 
@@ -29,7 +29,7 @@ export const PasswordMatchDisplay = memo(
                 }
             });
             return result;
-        }, [requirements]);
+        }, [requirements, password]);
         return (
             <div className='password-match_display'>
                 {Object.keys(matchesResult)

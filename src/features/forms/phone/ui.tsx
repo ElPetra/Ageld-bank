@@ -3,7 +3,6 @@ import { useForm } from 'react-hook-form';
 import { PhoneInput } from 'src/features/inputs';
 import { Button, Form, Link, Text } from 'src/shared/ui';
 import { RouteName } from 'src/shared/model';
-import './styles.scss';
 
 import { type Dispatch, type SetStateAction, useState } from 'react';
 
@@ -13,7 +12,7 @@ interface Props {
     isLast?: boolean;
     setFormStep?: Dispatch<SetStateAction<number>>;
 }
-export const Registration = ({ isLast, setFormStep }: Props) => {
+export const PhoneForm = ({ isLast, setFormStep }: Props) => {
     const [clickedLinks, setClickedLinks] = useState<number[]>([]);
     const {
         register,
@@ -48,25 +47,25 @@ export const Registration = ({ isLast, setFormStep }: Props) => {
             />
             <Text size='xs'>
                 Нажав кнопку «Далее», вы соглашаетесь с &nbsp;
-                <a
+                <Link
                     onClick={() => handleLinkClick(1)}
-                    href={`${RouteName.PUBLIC_CONTRACT_PAGE}/terms-RBS.pdf`}
+                    to={RouteName.PUBLIC_CONTRACT_PAGE + '/terms-RBS.pdf'}
                     target='_blank'
                     rel='noreferrer'
-                    className='document-link'
+                    variant='action'
                 >
                     Правилами дистанционного банковского обслуживания
-                </a>
+                </Link>
                 &nbsp; и &nbsp;
-                <a
-                    href={`${RouteName.PUBLIC_CONTRACT_PAGE}/privacy-policy.pdf`}
+                <Link
+                    to={RouteName.PUBLIC_CONTRACT_PAGE + '/privacy-policy.pdf'}
                     onClick={() => handleLinkClick(2)}
                     target='_blank'
                     rel='noreferrer'
-                    className='document-link'
+                    variant='action'
                 >
                     Политикой конфиденциальности
-                </a>
+                </Link>
                 &nbsp; и даёте согласие на сбор и обработку информации
             </Text>
 
