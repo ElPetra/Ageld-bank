@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form';
 
 import { PasswordInput } from 'src/features/inputs';
 import { Button, Form } from 'src/shared/ui';
+import { useNavigate } from 'react-router-dom';
 
 import type { FieldValues } from 'react-hook-form';
 
@@ -23,16 +24,23 @@ export const ConfirmPasswordForm = ({ isLast, setFormStep }: Props) => {
         reValidateMode: 'onChange',
         defaultValues: { password1: '', password2: '' }
     });
+    const navigate = useNavigate();
+    const onSubmit = (data: FieldValues) => {
+        if (setFormStep && !isLast) {
+            setFormStep(curr => curr + 1);
+        } else {
+            console.log(data);
 
-    return (
-        <Form
-            onSubmit={handleSubmit(data => {
-                if (setFormStep && !isLast) {
-                    setFormStep(curr => curr + 1);
+            navigate('/success', {
+                state: {
+                    message: 'Кабинет пользователя успешно зарегистрирован.',
+                    button: true
                 }
-                console.log(data);
-            })}
-        >
+            });
+        }
+    };
+    return (
+        <Form onSubmit={handleSubmit(onSubmit)}>
             <PasswordInput
                 register={register}
                 label='password1'

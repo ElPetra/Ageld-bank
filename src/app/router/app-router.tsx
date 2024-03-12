@@ -6,9 +6,11 @@ import { RegistrationPage } from 'src/pages/registration';
 
 import { RouteName } from 'src/shared/model';
 
+import { SuccessPage } from 'src/pages/success';
+
 import type { RouteDescription } from 'src/shared/model';
 
-const { MAIN_PAGE, REGISTRATION_PAGE, LOGIN_PAGE } = RouteName;
+const { MAIN_PAGE, REGISTRATION_PAGE, LOGIN_PAGE, SUCCESS_PAGE } = RouteName;
 
 const publicRoutes: RouteDescription[] = [
     {
@@ -22,6 +24,10 @@ const publicRoutes: RouteDescription[] = [
     {
         path: LOGIN_PAGE,
         component: AuthorizationPage
+    },
+    {
+        path: SUCCESS_PAGE,
+        component: SuccessPage
     }
 ];
 
