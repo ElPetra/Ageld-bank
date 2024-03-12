@@ -62,7 +62,7 @@ export const Input = memo(
                             : null)}
                         type={type || 'text'}
                         placeholder={placeholder || ''}
-                        className={`${type != 'search' && size != 'medium' && value && 'with-label'} ${error && 'error'} ${type === 'tel' && 'phone-input'}`}
+                        className={`${type != 'search' && size != 'medium' && value && 'with-label'} ${error && 'error'}`}
                         {...props}
                     />
                     {children && <div className='input-icon'>{children}</div>}

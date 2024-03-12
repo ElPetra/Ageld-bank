@@ -66,7 +66,7 @@ export const PhoneInput = ({ clear, isError, error, ...props }: Props) => {
                 type='button'
                 onClick={() => {
                     clear();
-                    (inputRef.current?.children[1] as HTMLInputElement).focus(); //да, это костыль, но как сделать иначе я не нашел, к сожалению.
+                    (inputRef.current?.children[1] as HTMLInputElement).focus(); // так сделано, потому что реакт хук форм не разрешает передавать в подконтрольный ей инпут реф.
                     setValue('');
                 }}
             >

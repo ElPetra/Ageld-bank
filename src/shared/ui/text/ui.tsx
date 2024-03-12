@@ -24,7 +24,9 @@ export const Text = memo(
     }: Props) => {
         const Element = tag || 'div';
         return (
-            <Element className={`text ${color} ${size} ${weight} ${align}`}>
+            <Element
+                className={`text text-${color} ${size} ${weight} ${align}`}
+            >
                 {children}
             </Element>
         );

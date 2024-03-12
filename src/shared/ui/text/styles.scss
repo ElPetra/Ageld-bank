@@ -48,13 +48,13 @@
     text-align: right;
   }
 
-  &success{
+  &.text-success{
     color: var(--text-success);
   }
-  &error{
+  &.text-error{
     color: var(--text-error);
   }
-  &inherit{
+  &.text-inherit{
     color: inherit;
   }
 }

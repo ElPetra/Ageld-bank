@@ -39,7 +39,9 @@ export const PhoneForm = ({
         <Form
             onSubmit={handleSubmit(data => {
                 if (setFormStep && !isLast) {
-                    setFormStep(curr => curr + 1);
+                    setFormStep(curr => {
+                        return curr + 1;
+                    });
                 }
                 console.log(data.phone.replace(/\D/gm, ''));
             })}

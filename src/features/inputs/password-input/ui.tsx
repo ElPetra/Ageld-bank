@@ -46,7 +46,9 @@ export const PasswordInput = ({
                 value={value}
                 onChange={e => setValue(e.target.value)}
                 onFocus={() => setFocused(true)}
-                onBlur={() => setFocused(false)}
+                onBlur={() => {
+                    setTimeout(setFocused, 300, false);
+                }}
                 reference={inputRef}
                 error={
                     error ||
@@ -63,7 +65,7 @@ export const PasswordInput = ({
                         setOpen(o => !o);
                         (
                             inputRef.current?.children[1] as HTMLInputElement
-                        ).focus(); //да, это костыль, но как сделать иначе я не нашел, к сожалению.
+                        ).focus();
                     }}
                 >
                     <Icon icon={open ? 'eye-open' : 'eye-close'} />
