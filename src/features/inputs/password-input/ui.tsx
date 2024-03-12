@@ -40,7 +40,7 @@ export const PasswordInput = ({
                 placeholder={placeholder}
                 placeholderLabel={placeholderLabel}
                 pattern={
-                    '^[A-Za-z0-9!\\\\"#$%&\'()*+,\\-.\\/:;<=>?@[\\]^_`{|}~]{6,20}$'
+                    '^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!\\\\"#$%&\'()*+,\\-.\\/:;<=>?@[\\]^_{|}~])+[A-Za-z0-9!\\\\"#$%&\'()*+,\\-.\\/:;<=>?@[\\]^_{|}~]{6,20}$'
                 }
                 size='large'
                 value={value}
@@ -72,7 +72,7 @@ export const PasswordInput = ({
             {capslockFlag && (
                 <InfoCard icon='warning' message='Включен CapsLock' />
             )}
-            {!isFocused && isCreating && (
+            {isFocused && isCreating && (
                 <PasswordMatchDisplay
                     key={value}
                     password={value}
