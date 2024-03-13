@@ -18,7 +18,7 @@ export const MainPage = () => {
                             Войти
                         </Link>
                         &nbsp;/&nbsp;
-                        <Link variant='action' to={RouteName.LOGIN_PAGE}>
+                        <Link variant='action' to={RouteName.REGISTRATION_PAGE}>
                             Зарегистрироваться
                         </Link>
                         .
