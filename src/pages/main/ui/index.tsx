@@ -1,4 +1,5 @@
-import { Text } from 'src/shared/ui';
+import { RouteName } from 'src/shared/model';
+import { Link, Text } from 'src/shared/ui';
 import { Greeting } from 'src/widgets/greeting';
 
 export const MainPage = () => {
@@ -12,8 +13,15 @@ export const MainPage = () => {
                         указанного при открытии счёта в нашем банке.
                         <br />
                         <br />
-                        Для создания кабинета пользователя нажмите кнопку
-                        РЕГИСТРАЦИЯ.
+                        Для входа в личный кабинет &nbsp;
+                        <Link variant='action' to={RouteName.LOGIN_PAGE}>
+                            Войти
+                        </Link>
+                        &nbsp;/&nbsp;
+                        <Link variant='action' to={RouteName.LOGIN_PAGE}>
+                            Зарегистрироваться
+                        </Link>
+                        .
                     </Text>
                 </div>
             </div>
