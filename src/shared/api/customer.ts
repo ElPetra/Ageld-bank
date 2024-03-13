@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query';
 export const customerApi = createApi({
     reducerPath: 'customerApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'https://a-geld.ru/api/v1/customer/auth'
+        baseUrl: 'https://a-geld.ru/api/v1/customer/'
     }),
     tagTypes: ['Customer'],
     endpoints: builder => ({
@@ -11,9 +11,12 @@ export const customerApi = createApi({
             query: () => '/',
             providesTags: ['Customer']
         }),
-        checkRegistration: builder.mutation<{ uuid: string }, string>({
+        checkRegistration: builder.mutation<
+            { uuid: string },
+            { phoneNumber: string }
+        >({
             query: phoneNumber => ({
-                url: '/check_registration',
+                url: '/auth/check_registration',
                 method: 'POST',
                 headers: {
                     ContentType: 'application/json'
@@ -21,9 +24,12 @@ export const customerApi = createApi({
                 body: { phone_number: phoneNumber }
             })
         }),
-        checkStatus: builder.mutation<{ statusType: string }, string>({
+        checkStatus: builder.mutation<
+            { statusType: string },
+            { phoneNumber: string }
+        >({
             query: phoneNumber => ({
-                url: '/check_status',
+                url: '/auth/check_status',
                 method: 'POST',
                 headers: {
                     ContentType: 'application/json'
@@ -36,9 +42,12 @@ export const customerApi = createApi({
                 return { statusType: data.status_type };
             }
         }),
-        generateCode: builder.mutation<{ customerId: string }, string>({
+        generateCode: builder.mutation<
+            { customerId: string },
+            { phoneNumber: string }
+        >({
             query: phoneNumber => ({
-                url: '/verification/generate_code',
+                url: '/auth/verification/generate_code',
                 method: 'POST',
                 headers: {
                     ContentType: 'application/json'
@@ -56,39 +65,55 @@ export const customerApi = createApi({
             { code: string, phoneNumber: string }
         >({
             query: ({ code, phoneNumber }) => ({
-                url: '/verification/check_code',
+                url: '/auth/verification/check_code',
                 method: 'POST',
+                headers: {
+                    ContentType: 'application/json'
+                },
                 body: { code: code, phoneNumber: phoneNumber }
-            })
+            }),
+            transformResponse: (data: {
+                status: string,
+                phone_number: string
+            }): { status: string, phoneNumber: string } => {
+                return {
+                    status: data.status,
+                    phoneNumber: data.phone_number
+                };
+            }
         }),
         createAccount: builder.mutation<
-            void,
+            { status: string },
             { customerId: string, password: string }
         >({
             query: ({ customerId, password }) => ({
-                url: '/create_account',
+                url: '/auth/create_account',
                 method: 'POST',
+                headers: {
+                    ContentType: 'application/json'
+                },
                 body: { customer_id: customerId, password: password }
-            }),
-            invalidatesTags: ['Customer']
+            })
         }),
         password: builder.mutation<
-            void,
+            { message: string },
             { phoneNumber: string, password: string }
         >({
             query: ({ phoneNumber, password }) => ({
-                url: '/password',
+                url: '/customer-service/password', //нужно уточнить URL
                 method: 'POST',
+                headers: {
+                    ContentType: 'application/json'
+                },
                 body: { phone_number: phoneNumber, password: password }
-            }),
-            invalidatesTags: ['Customer']
+            })
         }),
         generateToken: builder.mutation<
             { accessToken: string, refreshToken: string },
             { phoneNumber: string }
         >({
             query: ({ phoneNumber }) => ({
-                url: '/generate_token',
+                url: '/auth/generate_token',
                 method: 'POST',
                 body: { phone_number: phoneNumber }
             }),
@@ -100,8 +125,136 @@ export const customerApi = createApi({
                     accessToken: data.access_token,
                     refreshToken: data.refresh_token
                 };
+            }
+        }),
+        refreshToken: builder.mutation<
+            { accessToken: string, refreshToken: string },
+            { refreshToken: string }
+        >({
+            query: ({ refreshToken }) => ({
+                url: '/auth/refresh_token',
+                method: 'POST',
+                headers: {
+                    ContentType: 'application/json'
+                },
+                body: { refresh_token: refreshToken }
+            }),
+            transformResponse: (data: {
+                access_token: string,
+                refresh_token: string
+            }): { accessToken: string, refreshToken: string } => {
+                return {
+                    accessToken: data.access_token,
+                    refreshToken: data.refresh_token
+                };
+            }
+        }),
+        getCustomerInfo: builder.mutation<
+            {
+                firstName: string,
+                lastName: string,
+                middleName: string,
+                phoneNumber: string,
+                email: string,
+                birthDate: string,
+                childCount: string,
+                registrationDateBank: string
             },
-            invalidatesTags: ['Customer']
+            { Authorization: string }
+        >({
+            query: ({ Authorization }) => ({
+                url: '/settings/info',
+                method: 'GET',
+                headers: {
+                    ContentType: 'application/json',
+                    Authorization: Authorization
+                }
+            }),
+            transformResponse: (data: {
+                first_name: string,
+                last_name: string,
+                middle_name: string,
+                phone_number: string,
+                email: string,
+                birth_date: string,
+                child_count: string,
+                registration_date_bank: string
+            }): {
+                firstName: string,
+                lastName: string,
+                middleName: string,
+                phoneNumber: string,
+                email: string,
+                birthDate: string,
+                childCount: string,
+                registrationDateBank: string
+            } => {
+                return {
+                    firstName: data.first_name,
+                    lastName: data.last_name,
+                    middleName: data.middle_name,
+                    phoneNumber: data.phone_number,
+                    email: data.email,
+                    birthDate: data.birth_date,
+                    childCount: data.child_count,
+                    registrationDateBank: data.registration_date_bank
+                };
+            }
+        }),
+        addEmail: builder.mutation<
+            { status: string, message: string },
+            { Authorization: string, email: string }
+        >({
+            query: ({ Authorization, email }) => ({
+                url: '/settings/add_email',
+                method: 'POST',
+                headers: {
+                    ContentType: 'application/json',
+                    Authorization: Authorization
+                },
+                body: { email: email }
+            })
+        }),
+        changeEmail: builder.mutation<
+            { status: string, message: string },
+            { Authorization: string, email: string }
+        >({
+            query: ({ Authorization, email }) => ({
+                url: '/settings/new_email',
+                method: 'PATCH',
+                headers: {
+                    ContentType: 'application/json',
+                    Authorization: Authorization
+                },
+                body: { email: email }
+            })
+        }),
+        changePassword: builder.mutation<
+            { message: string },
+            { accessToken: string, password: string, newPassword: string }
+        >({
+            query: ({ accessToken, password, newPassword }) => ({
+                url: '/profile/change_password',
+                method: 'PATCH',
+                headers: {
+                    ContentType: 'application/json',
+                    access_token: accessToken
+                },
+                body: { password: password, new_password: newPassword }
+            })
+        }),
+        recoveryPassword: builder.mutation<
+            { status: string },
+            { password: string, customerId: string }
+        >({
+            query: ({ password, customerId }) => ({
+                url: '/auth/recovery_password',
+                method: 'POST',
+                headers: {
+                    ContentType: 'application/json'
+                },
+                body: { password: password, customer_id: customerId }
+            })
         })
     })
 });
