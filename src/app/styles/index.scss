@@ -30,3 +30,13 @@ body {
   color: var(--text-primary);
   background: var(--bg-primary);
 }
+#root{
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 146px 1fr 390px;
+}
+main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
