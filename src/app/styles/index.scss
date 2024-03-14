@@ -31,6 +31,8 @@ body {
   background: var(--bg-primary);
 }
 #root{
+  padding: 0;
+  margin: 0;
   height: 100vh;
   display: grid;
   grid-template-rows: 146px 1fr 390px;

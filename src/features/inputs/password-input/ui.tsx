@@ -46,12 +46,12 @@ export const PasswordInput = ({
                 value={value}
                 onChange={e => setValue(e.target.value)}
                 onFocus={() => setFocused(true)}
-                onBlur={() => {
-                    setTimeout(setFocused, 300, false);
-                }}
+                // onBlur={() => {
+                //     setTimeout(setFocused, 300, false);
+                // }}
                 reference={inputRef}
                 error={
-                    error ||
+                    (value !== '' && error) ||
                     (isError && !isCreating
                         ? 'Пароль должен содержать от 6 до 20 символов'
                         : '')
