@@ -44,15 +44,17 @@ export const ConfirmPasswordForm = ({ isLast, setFormStep }: Props) => {
                 register={register}
                 label='password1'
                 isError={!!errors?.password1}
-                isCreating={true}
+                variant='create'
             />
             <PasswordInput
                 register={register}
                 label='password2'
                 placeholder='Подтвердите пароль'
-                placeholderLabel='Подтвердите пароль'
+                variant='confirm'
                 error={
-                    isDirty && watch('password1') !== watch('password2')
+                    isDirty &&
+                    watch('password2') !== '' &&
+                    watch('password1') !== watch('password2')
                         ? 'Пароли не совпадают'
                         : ''
                 }

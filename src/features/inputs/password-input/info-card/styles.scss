@@ -1,7 +1,9 @@
-.info_card{
+.info_card {
     display: flex;
-    padding: 0;
-    margin: 0;
-    gap: 10px;
-    height: 18px;
+    gap: 8px;
+
+    div {
+        display: flex;
+        align-items: center;
+    }
   }

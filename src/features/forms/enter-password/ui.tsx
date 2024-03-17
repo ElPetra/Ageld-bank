@@ -42,8 +42,10 @@ export const EnterPasswordForm = ({ isLast, setFormStep }: Props) => {
             <PasswordInput
                 register={register}
                 label='password1'
-                isError={!!errors?.password1}
-                isCreating={true}
+                error={
+                    errors?.password1 &&
+                    'Пароль должен содержать от 6 до 20 символов'
+                }
             />
             <Button
                 variant='secondary'

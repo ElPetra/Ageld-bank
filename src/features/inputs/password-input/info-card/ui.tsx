@@ -5,17 +5,19 @@ import './styles.scss';
 
 interface Props {
     icon: SvgIconNames;
+    color?: 'inherit' | 'success' | 'error';
     message: string;
 }
 
-export const InfoCard = memo(({ icon, message }: Props) => {
+export const InfoCard = memo(({ icon, color, message }: Props) => {
     return (
         <div className='info_card'>
-            <Icon icon={icon} width={16} height={18} />
+            <Icon icon={icon} width={16} height={16} />
             <Text
                 size='xs'
                 color={
-                    icon === 'success' || icon === 'error' ? icon : 'inherit'
+                    color ||
+                    (icon === 'success' || icon === 'error' ? icon : 'inherit')
                 }
             >
                 {message}

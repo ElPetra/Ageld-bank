@@ -1,29 +1,30 @@
-import { type InputHTMLAttributes, useState, useRef } from 'react';
+import { type InputHTMLAttributes, useRef, useState } from 'react';
 
-import { Icon, Input } from 'src/shared/ui';
+import { RouteName } from 'src/shared/model';
+import { Icon, Input, Link, Text } from 'src/shared/ui';
 
 import { useCapslock } from './lib';
-import { PasswordMatchDisplay } from './password-match';
+import { PasswordRequirements } from './password-requirements';
 import { InfoCard } from './info-card';
 
 import type { FieldValues, UseFormRegister } from 'react-hook-form';
 
+import './styles.scss';
+
 interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
     width?: 'auto' | 'max';
     isError?: boolean;
-    isCreating?: boolean;
+    variant?: 'exist' | 'create' | 'confirm';
     error?: string;
     label: string;
     placeholder?: string;
-    placeholderLabel?: string;
     register: UseFormRegister<FieldValues>;
 }
 
 export const PasswordInput = ({
     isError,
     placeholder = 'Пароль',
-    placeholderLabel,
-    isCreating,
+    variant = 'exist',
     error,
     ...props
 }: Props) => {
@@ -34,28 +35,23 @@ export const PasswordInput = ({
     const inputRef = useRef<HTMLInputElement>(null);
 
     return (
-        <>
+        <div className='password-input'>
             <Input
                 type={open ? 'text' : 'password'}
                 placeholder={placeholder}
-                placeholderLabel={placeholderLabel}
                 pattern={
-                    '^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!\\\\"#$%&\'()*+,\\-.\\/:;<=>?@[\\]^_{|}~])+[A-Za-z0-9!\\\\"#$%&\'()*+,\\-.\\/:;<=>?@[\\]^_{|}~]{6,20}$'
+                    variant === 'create'
+                        ? '^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!\\\\"#$%&\'()*+,\\-.\\/:;<=>?@[\\]^_{|}~])+[A-Za-z0-9!\\\\"#$%&\'()*+,\\-.\\/:;<=>?@[\\]^_{|}~]{6,20}$'
+                        : ''
                 }
+                minLength={6}
+                maxLength={20}
                 size='large'
                 value={value}
                 onChange={e => setValue(e.target.value)}
                 onFocus={() => setFocused(true)}
-                // onBlur={() => {
-                //     setTimeout(setFocused, 300, false);
-                // }}
                 reference={inputRef}
-                error={
-                    (value !== '' && error) ||
-                    (isError && !isCreating
-                        ? 'Пароль должен содержать от 6 до 20 символов'
-                        : '')
-                }
+                error={value !== '' ? error : ''}
                 isError={!!value && isError}
                 {...props}
             >
@@ -72,10 +68,23 @@ export const PasswordInput = ({
                 </button>
             </Input>
             {capslockFlag && (
-                <InfoCard icon='warning' message='Включен CapsLock' />
+                <InfoCard
+                    icon='warning'
+                    color='error'
+                    message='Включен CapsLock'
+                />
             )}
-            {isFocused && isCreating && (
-                <PasswordMatchDisplay
+            {variant === 'exist' && (
+                <div className='forgot-password-link'>
+                    <Text size='xs'>
+                        <Link to={RouteName.MAIN_PAGE} variant='action'>
+                            Забыли пароль?
+                        </Link>
+                    </Text>
+                </div>
+            )}
+            {isFocused && variant === 'create' && (
+                <PasswordRequirements
                     key={value}
                     password={value}
                     requirements={{
@@ -88,6 +97,6 @@ export const PasswordInput = ({
                     }}
                 />
             )}
-        </>
+        </div>
     );
 };

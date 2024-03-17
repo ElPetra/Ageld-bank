@@ -11,7 +11,7 @@ interface Props {
     requirements: Record<string, boolean | string>;
 }
 
-export const PasswordMatchDisplay = memo(
+export const PasswordRequirements = memo(
     ({ password, requirements }: Props) => {
         const matchesResult: Record<string, MatchesResult> = useMemo(() => {
             const result: Record<string, MatchesResult> = {};
@@ -30,8 +30,9 @@ export const PasswordMatchDisplay = memo(
             });
             return result;
         }, [requirements, password]);
+
         return (
-            <div className='password-match_display'>
+            <div className='password-requirements'>
                 {Object.keys(matchesResult)
                     .sort()
                     .map((el, i) => (
