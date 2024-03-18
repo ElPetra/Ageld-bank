@@ -4,7 +4,8 @@ export const RouteName = {
     MAIN_PAGE: '/',
     REGISTRATION_PAGE: '/signup',
     LOGIN_PAGE: '/signin',
-    SUCCESS_PAGE: '/success'
+    SUCCESS_PAGE: '/success',
+    NOTIFICATION_PAGE: '/notifications'
 };
 
 export interface RouteDescription {
