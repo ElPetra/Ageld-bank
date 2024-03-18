@@ -1,0 +1,33 @@
+.contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .contacts_row {
+    display: flex;
+    gap: 20px;
+  }
+
+  .contacts_phone, .contacts_email {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1 0 33%;
+
+  }
+
+  .contacts_phone {
+
+
+  }
+
+  .contacts_email {
+
+  }
+}
+
+
+
+
+
+

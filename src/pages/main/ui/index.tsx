@@ -1,7 +1,8 @@
 import { RouteName } from 'src/shared/model';
 import { Link, Text } from 'src/shared/ui';
 import { Greeting } from 'src/widgets/greeting';
-import { UserCard } from 'src/entities/user';
+import { Contacts, UserCard } from 'src/entities/user';
+import { Address } from 'src/entities/user/address';
 
 export const MainPage = () => {
     return (
@@ -28,16 +29,8 @@ export const MainPage = () => {
             </div>
 
             <UserCard fullName={'Константинов Константин Константинович'}>
-                <Text>
-                    Text в Text Text возможен с Text номера, указанного Text
-                    открытии счёта в нашем Text Text TextTextTextTextText
-                    TextTextText Text
-                </Text>
-                <Text>
-                    Text в Text Text возможен с Text номера, указанного Text
-                    открытии счёта в нашем Text Text TextTextTextTextText
-                    TextTextText Text
-                </Text>
+                <Contacts />
+                <Address />
             </UserCard>
         </div>
     );

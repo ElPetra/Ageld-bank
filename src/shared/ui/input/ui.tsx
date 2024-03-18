@@ -10,6 +10,7 @@ interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
     placeholder?: string;
     size?: 'small' | 'medium' | 'large';
     width?: 'auto' | 'max';
+    variant?: 'primary' | 'secondary'
     isError?: boolean;
     error?: string;
     label?: string;
@@ -24,6 +25,7 @@ export const Input = memo(
         placeholder,
         value,
         reference,
+         variant = 'primary',
         size = 'medium',
         width = 'auto',
         children,
@@ -38,9 +40,9 @@ export const Input = memo(
         ...props
     }: Props) => {
         return (
-            <div className={`field ${(error || isError) && 'error'} ${size}`}>
+            <div className={`field ${(error || isError) && 'error'} ${size} ${width}`}>
                 <div
-                    className={`input ${(error || isError) && 'error'}  ${size} ${width}`}
+                    className={`input ${(error || isError) && 'error'}  ${size} ${width} ${variant}`}
                     ref={reference}
                 >
                     {type != 'search' && size != 'medium' && value && (
