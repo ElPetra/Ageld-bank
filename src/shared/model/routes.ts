@@ -4,6 +4,7 @@ export const RouteName = {
     MAIN_PAGE: '/',
     REGISTRATION_PAGE: '/signup',
     LOGIN_PAGE: '/signin',
+    PERSONAL_AREA_PAGE: '/personal',
     SUCCESS_PAGE: '/success'
 };
 
