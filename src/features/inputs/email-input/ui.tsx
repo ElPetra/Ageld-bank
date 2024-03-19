@@ -1,7 +1,8 @@
-import type { ChangeEvent, InputHTMLAttributes } from 'react';
 import { useState } from 'react';
 
 import { Input } from 'src/shared/ui';
+
+import type { ChangeEvent, InputHTMLAttributes } from 'react';
 import type { FieldValues, UseFormRegister } from 'react-hook-form';
 
 interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
