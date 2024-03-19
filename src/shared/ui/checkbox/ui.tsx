@@ -1,14 +1,21 @@
-import { memo, useState } from 'react';
+import { useState } from 'react';
 
 import './styles.scss';
 
 interface Props {
     label: string;
     handleCheckboxChange: (label: string) => void;
+    defaultIsChecked?: boolean;
 }
 
-export const Checkbox = memo(({ label, handleCheckboxChange }: Props) => {
-    const [isChecked, setIsChecked] = useState<boolean>(false);
+export const Checkbox = ({
+    label,
+    handleCheckboxChange,
+    defaultIsChecked
+}: Props) => {
+    const [isChecked, setIsChecked] = useState<boolean>(
+        defaultIsChecked || false
+    );
 
     const toggleCheckboxChange = () => {
         setIsChecked(!isChecked);
@@ -17,8 +24,9 @@ export const Checkbox = memo(({ label, handleCheckboxChange }: Props) => {
 
     return (
         <div className='custom-checkbox'>
-            <label>
+            <label className='custom-checkbox__label'>
                 <input
+                    className='custom-checkbox__input'
                     type='checkbox'
                     value={label}
                     checked={isChecked}
@@ -29,4 +37,4 @@ export const Checkbox = memo(({ label, handleCheckboxChange }: Props) => {
             </label>
         </div>
     );
-});
+};
