@@ -3,8 +3,30 @@
   flex-direction: column;
   gap: 16px;
 
-  &_row {
+  .address_col {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
 
+  .address_inputs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    @media screen and (max-width: 1000px) {
+      > div {
+        flex: 1 1 50%!important;
+      }
+    }
+
+    > div {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1 1 33%;
+      max-width: calc((100% - 8px)/2);
+    }
   }
 }
 

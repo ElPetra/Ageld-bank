@@ -1,6 +1,6 @@
-import { ReactNode } from 'react';
-
 import { Text } from 'src/shared/ui';
+
+import type { ReactNode } from 'react';
 
 import './styles.scss';
 

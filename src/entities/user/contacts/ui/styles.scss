@@ -5,24 +5,21 @@
 
   .contacts_row {
     display: flex;
+    flex-wrap: wrap;
     gap: 20px;
-  }
 
-  .contacts_phone, .contacts_email {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    flex: 1 0 33%;
+    @media screen and (max-width: 1000px) {
+      > div {
+        flex: 1 1 50%!important;
+      }
+    }
 
-  }
-
-  .contacts_phone {
-
-
-  }
-
-  .contacts_email {
-
+    > div {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1 1 33%;
+    }
   }
 }
 

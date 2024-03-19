@@ -10,7 +10,7 @@ interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
     placeholder?: string;
     size?: 'small' | 'medium' | 'large';
     width?: 'auto' | 'max';
-    variant?: 'primary' | 'secondary'
+    variant?: 'primary' | 'secondary';
     isError?: boolean;
     error?: string;
     label?: string;
@@ -25,7 +25,7 @@ export const Input = memo(
         placeholder,
         value,
         reference,
-         variant = 'primary',
+        variant = 'primary',
         size = 'medium',
         width = 'auto',
         children,
@@ -37,32 +37,48 @@ export const Input = memo(
         register,
         onBlur,
         onChange,
+        disabled,
         ...props
     }: Props) => {
         return (
-            <div className={`field ${(error || isError) && 'error'} ${size} ${width}`}>
+            <div
+                className={`field ${(error || isError) && 'error'} ${size} ${width}`}
+            >
                 <div
-                    className={`input ${(error || isError) && 'error'}  ${size} ${width} ${variant}`}
+                    className={`input ${(error || isError) && 'error'} ${disabled && 'disabled'} ${size} ${width} ${variant}`}
                     ref={reference}
                 >
                     {type != 'search' && size != 'medium' && value && (
                         <div className='label'>{placeholder}</div>
                     )}
-                    <input
-                        {...(register
-                            ? register(label, {
-                                  pattern: new RegExp(pattern),
-                                  minLength,
-                                  required: true,
-                                  onChange,
-                                  onBlur
-                              })
-                            : null)}
-                        type={type || 'text'}
-                        placeholder={placeholder || ''}
-                        className={`${type != 'search' && size != 'medium' && value && 'with-label'} ${error && 'error'}`}
-                        {...props}
-                    />
+                    {register ? (
+                        <input
+                            {...register(label, {
+                                pattern: new RegExp(pattern),
+                                minLength,
+                                required: true,
+                                onChange,
+                                onBlur
+                            })}
+                            type={type || 'text'}
+                            placeholder={placeholder || ''}
+                            className={`${type != 'search' && size != 'medium' && value && 'with-label'} ${error && 'error'}`}
+                            {...props}
+                        />
+                    ) : (
+                        <input
+                            value={value}
+                            pattern={pattern}
+                            minLength={minLength}
+                            onBlur={onBlur}
+                            onChange={onChange}
+                            type={type || 'text'}
+                            placeholder={placeholder || ''}
+                            disabled={disabled}
+                            className={`${type != 'search' && size != 'medium' && value && 'with-label'} ${error && 'error'}`}
+                            {...props}
+                        />
+                    )}
                     {children && <div className='input-icon'>{children}</div>}
                 </div>
                 {error && size != 'small' && (

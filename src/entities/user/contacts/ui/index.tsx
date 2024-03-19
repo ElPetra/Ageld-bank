@@ -1,27 +1,30 @@
-import { ReactNode } from 'react';
-
 import { Text, Input } from 'src/shared/ui';
+
+import type { ReactNode } from 'react';
 
 import './styles.scss';
 
 interface Props {
+    phone: string;
     children?: ReactNode;
 }
 
-export const Contacts = ({}: Props) => {
+export const Contacts = ({ phone, children }: Props) => {
     return (
         <div className='contacts'>
-            Контактные данные
+            <Text size='m' weight='medium'>
+                Контактные данные
+            </Text>
             <div className='contacts_row'>
-                <div className='contacts_phone'>
+                <div>
                     <Text size='xs'>
-                        Нужен для того, чтобы подтверждать операции и настройки
-                        счета
+                        Телефон нужен для того, чтобы подтверждать операции и
+                        настройки счета
                     </Text>
                     <Input
                         placeholder='Телефон'
+                        value={phone}
                         disabled={true}
-                        variant='secondary'
                         size='large'
                         width='max'
                     />
@@ -30,15 +33,9 @@ export const Contacts = ({}: Props) => {
                         666-99-98. Звонок бесплатный
                     </Text>
                 </div>
-                <div className='contacts_email'>
+                <div>
                     <Text size='xs'>На почту приходят счета и справки</Text>
-                    <Input
-                        placeholder='E-mail'
-                        variant='secondary'
-                        size='large'
-                        width='max'
-                    />
-                    Заменить на фичу
+                    {children}
                 </div>
             </div>
         </div>
