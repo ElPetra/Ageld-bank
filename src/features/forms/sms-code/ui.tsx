@@ -8,7 +8,7 @@ import type { FieldValues } from 'react-hook-form';
 import type { Dispatch, SetStateAction } from 'react';
 
 interface Props {
-    variant?: 'login' | 'registration';
+    variant?: 'login' | 'registration' | 'password-create';
     isLast?: boolean;
     setFormStep?: Dispatch<SetStateAction<number>>;
 }
@@ -27,7 +27,6 @@ export const SmsCodeForm = ({
         reValidateMode: 'onChange',
         defaultValues: { sms: '' }
     });
-
     return (
         <Form
             onSubmit={handleSubmit(data => {
@@ -43,11 +42,11 @@ export const SmsCodeForm = ({
             <CodeInput label='sms' register={register} error={''} />
             <Button
                 variant='secondary'
-                size='large'
+                size={variant === 'password-create' ? 'medium' : 'large'}
                 type='submit'
                 disabled={!isDirty || !isValid}
             >
-                Далее
+                {variant === 'password-create' ? 'Сменить пароль' : 'Далее'}
             </Button>
         </Form>
     );

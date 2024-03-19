@@ -1,6 +1,9 @@
 .multi-step-form {
   margin: 100px auto;
   max-width: 580px;
+  &.change-password {
+    max-width: 100%;
+  }
 }
 
 

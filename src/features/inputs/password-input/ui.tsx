@@ -13,6 +13,7 @@ import './styles.scss';
 
 interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
     width?: 'auto' | 'max';
+    size?: 'large' | 'medium';
     isError?: boolean;
     variant?: 'exist' | 'create' | 'confirm';
     error?: string;
@@ -26,6 +27,7 @@ export const PasswordInput = ({
     placeholder = 'Пароль',
     variant = 'exist',
     error,
+    size = 'large',
     ...props
 }: Props) => {
     const [open, setOpen] = useState<boolean>(false);
@@ -46,7 +48,7 @@ export const PasswordInput = ({
                 }
                 minLength={6}
                 maxLength={20}
-                size='large'
+                size={size}
                 value={value}
                 onChange={e => setValue(e.target.value)}
                 onFocus={() => setFocused(true)}
