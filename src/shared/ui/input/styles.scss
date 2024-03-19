@@ -10,10 +10,6 @@
     width: 580px;
   }
 
-  &.medium {
-    width: 280px;
-  }
-
   .input {
     position: relative;
     padding: 16px 24px;
@@ -34,7 +30,7 @@
     }
 
     &.medium {
-      height: 56px;
+      height: 72px;
     }
 
     &.small {
@@ -107,6 +103,7 @@
   }
 
   .input-error {
+    text-align: left;
     margin-top: 8px;
     font-size: 12px;
     line-height: 18px;
