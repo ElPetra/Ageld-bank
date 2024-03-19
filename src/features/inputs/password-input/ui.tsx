@@ -27,6 +27,7 @@ export const PasswordInput = ({
     placeholder = 'Пароль',
     variant = 'exist',
     error,
+    width = 'max',
     size = 'large',
     ...props
 }: Props) => {
@@ -49,6 +50,7 @@ export const PasswordInput = ({
                 minLength={6}
                 maxLength={20}
                 size={size}
+                width={width}
                 value={value}
                 onChange={e => setValue(e.target.value)}
                 onFocus={() => setFocused(true)}

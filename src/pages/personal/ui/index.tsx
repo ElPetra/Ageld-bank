@@ -1,7 +1,8 @@
 import { Contacts, UserCard } from 'src/entities/user';
 import { Address } from 'src/entities/user';
 import { Menu } from 'src/features/menu';
-import { EmailForm } from 'src/features/forms';
+import { ChangePasswordForm, EmailForm, SmsCodeForm } from 'src/features/forms';
+import { MultiStepForm } from 'src/features/multi-step-form';
 
 export const PersonalPage = () => {
     return (
@@ -30,7 +31,25 @@ export const PersonalPage = () => {
                 {
                     id: 2,
                     name: 'Безопасность',
-                    component: <div>Безопасность</div>
+                    component: (
+                        <MultiStepForm
+                            variant='change-password'
+                            forms={[
+                                {
+                                    id: 1,
+                                    title: 'Изменить пароль',
+                                    component: <ChangePasswordForm />
+                                },
+                                {
+                                    id: 2,
+                                    title: 'Введите код из смс',
+                                    component: (
+                                        <SmsCodeForm variant='password-create' />
+                                    )
+                                }
+                            ]}
+                        />
+                    )
                 },
                 {
                     id: 3,
