@@ -6,7 +6,7 @@ export const RouteName = {
     LOGIN_PAGE: '/signin',
     PERSONAL_AREA_PAGE: '/personal',
     SUCCESS_PAGE: '/success',
-    NOTIFICATION_PAGE: '/notifications'
+    NOTIFICATION_HISTORY_PAGE: '/notifications'
 };
 
 export interface RouteDescription {

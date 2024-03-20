@@ -3,6 +3,7 @@ import { Address } from 'src/entities/user';
 import { Menu } from 'src/features/menu';
 import { ChangePasswordForm, EmailForm, SmsCodeForm } from 'src/features/forms';
 import { MultiStepForm } from 'src/features/multi-step-form';
+import { CheckboxGroup } from 'src/features/notifications/checkbox-group';
 
 export const PersonalPage = () => {
     return (
@@ -54,7 +55,7 @@ export const PersonalPage = () => {
                 {
                     id: 3,
                     name: 'Уведомления',
-                    component: <div>Уведомления</div>
+                    component: <CheckboxGroup />
                 }
             ]}
         />
