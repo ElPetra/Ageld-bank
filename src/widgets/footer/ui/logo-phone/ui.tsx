@@ -7,7 +7,7 @@ import './styles.scss';
 
 export const LogoPhone = () => (
     <div className='logo-phone'>
-        <div className='contacts'>
+        <div className='footer__contacts'>
             <Link to={RouteName.MAIN_PAGE}>
                 <Icon icon='logo' width={59} height={67} />
             </Link>
