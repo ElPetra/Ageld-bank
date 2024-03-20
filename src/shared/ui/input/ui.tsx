@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import cn from 'classnames';
 
 import type { InputHTMLAttributes, ReactNode, RefObject } from 'react';
 
@@ -40,14 +41,20 @@ export const Input = memo(
         disabled,
         ...props
     }: Props) => {
+        const fieldClass = cn(`field ${size} ${width}`, {
+            error: error || isError
+        });
+        const inputContainerClass = cn(`input ${size} ${width} ${variant}`, {
+            error: error || isError,
+            disabled: disabled
+        });
+        const inputClass = cn({
+            'with-label': type != 'search' && size != 'medium' && value,
+            error: error
+        });
         return (
-            <div
-                className={`field ${(error || isError) && 'error'} ${size} ${width}`}
-            >
-                <div
-                    className={`input ${(error || isError) && 'error'} ${disabled && 'disabled'} ${size} ${width} ${variant}`}
-                    ref={reference}
-                >
+            <div className={fieldClass}>
+                <div className={inputContainerClass} ref={reference}>
                     {type != 'search' && size != 'medium' && value && (
                         <div className='label'>{placeholder}</div>
                     )}
@@ -62,7 +69,7 @@ export const Input = memo(
                             })}
                             type={type || 'text'}
                             placeholder={placeholder || ''}
-                            className={`${type != 'search' && size != 'medium' && value && 'with-label'} ${error && 'error'}`}
+                            className={inputClass}
                             {...props}
                         />
                     ) : (
@@ -75,7 +82,7 @@ export const Input = memo(
                             type={type || 'text'}
                             placeholder={placeholder || ''}
                             disabled={disabled}
-                            className={`${type != 'search' && size != 'medium' && value && 'with-label'} ${error && 'error'}`}
+                            className={inputClass}
                             {...props}
                         />
                     )}
