@@ -9,6 +9,7 @@ import { RouteName } from 'src/shared/model';
 import { SuccessPage } from 'src/pages/success';
 
 import { PersonalPage } from 'src/pages/personal';
+import { NotificationPage } from 'src/pages/notification';
 
 import type { RouteDescription } from 'src/shared/model';
 
@@ -17,7 +18,8 @@ const {
     REGISTRATION_PAGE,
     LOGIN_PAGE,
     PERSONAL_AREA_PAGE,
-    SUCCESS_PAGE
+    SUCCESS_PAGE,
+    NOTIFICATION_PAGE
 } = RouteName;
 
 const publicRoutes: RouteDescription[] = [
@@ -40,6 +42,10 @@ const publicRoutes: RouteDescription[] = [
     {
         path: SUCCESS_PAGE,
         component: SuccessPage
+    },
+    {
+        path: NOTIFICATION_PAGE,
+        component: NotificationPage
     }
 ];
 
