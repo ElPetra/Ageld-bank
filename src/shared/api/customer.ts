@@ -1,9 +1,9 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query';
+import { fetchBaseQuery, createApi } from '@reduxjs/toolkit/query/react';
 
 export const customerApi = createApi({
     reducerPath: 'customerApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'https://a-geld.ru/api/v1/customer/'
+        baseUrl: 'http://172.17.1.76:8082/api/v1/customer'
     }),
     tagTypes: ['Customer'],
     endpoints: builder => ({
@@ -12,7 +12,7 @@ export const customerApi = createApi({
             providesTags: ['Customer']
         }),
         checkRegistration: builder.mutation<
-            { uuid: string },
+            { customerId: string },
             { phoneNumber: string }
         >({
             query: phoneNumber => ({
@@ -22,10 +22,15 @@ export const customerApi = createApi({
                     ContentType: 'application/json'
                 },
                 body: { phone_number: phoneNumber }
-            })
+            }),
+            transformResponse: (data: {
+                customer_id: string
+            }): { customerId: string } => {
+                return { customerId: data.customer_id };
+            }
         }),
         checkStatus: builder.mutation<
-            { statusType: string },
+            { statusType: string, message: string },
             { phoneNumber: string }
         >({
             query: phoneNumber => ({
@@ -37,9 +42,10 @@ export const customerApi = createApi({
                 body: { phone_number: phoneNumber }
             }),
             transformResponse: (data: {
-                status_type: string
-            }): { statusType: string } => {
-                return { statusType: data.status_type };
+                status_type: string,
+                message: string
+            }): { statusType: string, message: string } => {
+                return { statusType: data.status_type, message: data.message };
             }
         }),
         generateCode: builder.mutation<
@@ -95,27 +101,14 @@ export const customerApi = createApi({
                 body: { customer_id: customerId, password: password }
             })
         }),
-        password: builder.mutation<
-            { message: string },
+        generateToken: builder.mutation<
+            { accessToken: string, refreshToken: string },
             { phoneNumber: string, password: string }
         >({
             query: ({ phoneNumber, password }) => ({
-                url: '/customer-service/password', //нужно уточнить URL
-                method: 'POST',
-                headers: {
-                    ContentType: 'application/json'
-                },
-                body: { phone_number: phoneNumber, password: password }
-            })
-        }),
-        generateToken: builder.mutation<
-            { accessToken: string, refreshToken: string },
-            { phoneNumber: string }
-        >({
-            query: ({ phoneNumber }) => ({
                 url: '/auth/generate_token',
                 method: 'POST',
-                body: { phone_number: phoneNumber }
+                body: { phone_number: phoneNumber, password }
             }),
             transformResponse: (data: {
                 access_token: string,
@@ -127,6 +120,7 @@ export const customerApi = createApi({
                 };
             }
         }),
+        //refreshToken не допилен запрос
         refreshToken: builder.mutation<
             { accessToken: string, refreshToken: string },
             { refreshToken: string }
@@ -149,6 +143,7 @@ export const customerApi = createApi({
                 };
             }
         }),
+        //нужно переделать на запрос без мутации
         getCustomerInfo: builder.mutation<
             {
                 firstName: string,
@@ -259,4 +254,4 @@ export const customerApi = createApi({
     })
 });
 
-export const {} = customerApi;
+export const { useGenerateTokenMutation } = customerApi;
