@@ -4,7 +4,7 @@ import './styles.scss';
 
 import { type FieldValues, useForm } from 'react-hook-form';
 
-import { useState, type Dispatch, type SetStateAction } from 'react';
+import { type Dispatch, type SetStateAction } from 'react';
 
 interface Props {
     isLast?: boolean;
@@ -22,17 +22,11 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
         reValidateMode: 'onChange',
         defaultValues: { password1: '' }
     });
-    const [samePassword, setSamePassword] = useState<boolean>(false);
     const onSubmit = (data: FieldValues) => {
-        if (watch('current-password') === watch('password1')) {
-            setSamePassword(curr => !curr);
-            return;
-        }
-        if (setFormStep && !isLast && !samePassword) {
+        if (setFormStep && !isLast) {
             setFormStep(curr => curr + 1);
         }
         console.log(data);
-        console.log(samePassword);
     };
     return (
         <Form onSubmit={handleSubmit(onSubmit)}>
@@ -44,7 +38,7 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
                     variant='confirm'
                     placeholder='Текущий пароль'
                     error={
-                        samePassword
+                        watch('current-password') === watch('password1')
                             ? 'Новый пароль должен отличаться от старого'
                             : ''
                     }
@@ -53,7 +47,7 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
                     size='medium'
                     register={register}
                     label='password1'
-                    isError={isDirty}
+                    isError={!!errors?.password1}
                     variant='create'
                     placeholder='Новый пароль'
                 />
@@ -67,7 +61,7 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
                         isDirty &&
                         watch('password2') !== '' &&
                         watch('password1') !== watch('password2')
-                            ? 'Пароли не совпадают'
+                            ? 'Новые пароли не совпадают'
                             : ''
                     }
                 />
@@ -79,7 +73,8 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
                 disabled={
                     !isDirty ||
                     !isValid ||
-                    watch('password1') !== watch('password2')
+                    watch('password1') !== watch('password2') ||
+                    watch('current-password') === watch('password1')
                 }
             >
                 Продолжить
