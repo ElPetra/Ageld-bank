@@ -1,9 +1,9 @@
-.contacts {
+.user-contacts {
   display: flex;
   flex-direction: column;
   gap: 16px;
 
-  .contacts_row {
+  .user-contacts__row {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
