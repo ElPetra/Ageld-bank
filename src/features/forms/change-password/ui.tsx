@@ -37,11 +37,6 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
                     label='current-password'
                     variant='confirm'
                     placeholder='Текущий пароль'
-                    error={
-                        watch('current-password') === watch('password1')
-                            ? 'Новый пароль должен отличаться от старого'
-                            : ''
-                    }
                 />
                 <PasswordInput
                     size='medium'
@@ -50,6 +45,11 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
                     isError={!!errors?.password1}
                     variant='create'
                     placeholder='Новый пароль'
+                    error={
+                        watch('current-password') === watch('password1')
+                            ? 'Новый пароль должен отличаться от старого'
+                            : ''
+                    }
                 />
                 <PasswordInput
                     size='medium'
