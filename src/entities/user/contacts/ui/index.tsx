@@ -11,11 +11,11 @@ interface Props {
 
 export const Contacts = ({ phone, children }: Props) => {
     return (
-        <div className='contacts'>
+        <div className='user-contacts'>
             <Text size='m' weight='medium'>
                 Контактные данные
             </Text>
-            <div className='contacts_row'>
+            <div className='user-contacts__row'>
                 <div>
                     <Text size='xs'>
                         Телефон нужен для того, чтобы подтверждать операции и

@@ -15,15 +15,15 @@ interface Props {
 
 export const Address = ({ street, house, apartment, city, index }: Props) => {
     return (
-        <div className='address'>
+        <div className='user-address'>
             <Text size='m' weight='medium'>
                 Адрес
             </Text>
-            <div className='address_col'>
+            <div className='user-address__col'>
                 <Text size='xs'>
                     Адрес куда банк будет направлять почтовую корреспонденцию
                 </Text>
-                <div className='address_inputs'>
+                <div className='user-address__inputs'>
                     <Input
                         placeholder='Улица'
                         value={street}

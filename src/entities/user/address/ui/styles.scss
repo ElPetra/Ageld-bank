@@ -1,15 +1,15 @@
-.address {
+.user-address {
   display: flex;
   flex-direction: column;
   gap: 16px;
 
-  .address_col {
+  .user-address__col {
     display: flex;
     flex-direction: column;
     gap: 8px;
   }
 
-  .address_inputs {
+  .user-address__inputs {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;

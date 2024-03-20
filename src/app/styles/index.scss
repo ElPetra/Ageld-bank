@@ -32,10 +32,16 @@ body {
   color: var(--text-primary);
   background: var(--bg-primary);
 }
-#root{
+#root {
   padding: 0;
   margin: 0;
   height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
+
+  > * {
+    min-width: 0;
+  }
 }
+
+
