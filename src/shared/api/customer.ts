@@ -129,12 +129,12 @@ export const customerApi = createApi({
                 body: { email }
             })
         }),
-        getInfo: builder.query<CustomerInfo, { customerPhone: string }>({
-            query: ({ customerPhone }) => ({
+        getInfo: builder.query<CustomerInfo, { Authorization: string }>({
+            query: ({ Authorization }) => ({
                 url: '/settings/info',
                 method: 'GET',
                 headers: {
-                    'Customer-Phone': customerPhone
+                    Authorization
                 }
             })
         })
