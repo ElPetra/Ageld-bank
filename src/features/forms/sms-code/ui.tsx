@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form';
 
 import { CodeInput } from 'src/features/inputs';
 import { Button, Form, Text } from 'src/shared/ui';
+import { useCheckCodeMutation } from 'src/shared/api';
 
 import type { FieldValues } from 'react-hook-form';
 
@@ -28,13 +29,16 @@ export const SmsCodeForm = ({
         defaultValues: { sms: '' }
     });
 
+    const [checkCode] = useCheckCodeMutation();
+
     return (
         <Form
-            onSubmit={handleSubmit(data => {
+            onSubmit={handleSubmit(async data => {
+                const sms = data.sms.join('');
+                await checkCode(sms);
                 if (setFormStep && !isLast) {
                     setFormStep(curr => curr + 1);
                 }
-                console.log(data.sms.join(''));
             })}
         >
             <Text size='xs'>

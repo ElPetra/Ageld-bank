@@ -1,8 +1,11 @@
 import { RouteName } from 'src/shared/model';
 import { Link, Text } from 'src/shared/ui';
 import { Greeting } from 'src/widgets/greeting';
+//import { useGetInfoQuery } from 'src/shared/api';
 
 export const MainPage = () => {
+    //useGetInfoQuery({ customerPhone: '79234251422' });
+
     return (
         <div>
             <div className='greeting'>

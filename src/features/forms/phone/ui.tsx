@@ -7,6 +7,10 @@ import { RouteName } from 'src/shared/model';
 import { type Dispatch, type SetStateAction, useState } from 'react';
 
 import type { FieldValues } from 'react-hook-form';
+import {
+    useCheckStatusMutation,
+    useGenerateCodeMutation
+} from 'src/shared/api';
 
 interface Props {
     variant?: 'login' | 'registration';
@@ -29,6 +33,9 @@ export const PhoneForm = ({
         reValidateMode: 'onChange',
         defaultValues: { phone: '' }
     });
+    const [checkStatus] = useCheckStatusMutation();
+    const [generateCode] = useGenerateCodeMutation();
+
     const handleLinkClick = (linkId: number) => {
         if (!clickedLinks.includes(linkId)) {
             setClickedLinks([...clickedLinks, linkId]);
@@ -37,13 +44,18 @@ export const PhoneForm = ({
     const allLinksClicked = clickedLinks.length === 2;
     return (
         <Form
-            onSubmit={handleSubmit(data => {
+            onSubmit={handleSubmit(async data => {
+                const phone = data.phone.replace(/\D/gm, '');
+                if (variant === 'registration') {
+                    const data = await checkStatus(phone);
+                    console.log(data);
+                    await generateCode(phone);
+                }
                 if (setFormStep && !isLast) {
                     setFormStep(curr => {
                         return curr + 1;
                     });
                 }
-                console.log(data.phone.replace(/\D/gm, ''));
             })}
         >
             <PhoneInput
