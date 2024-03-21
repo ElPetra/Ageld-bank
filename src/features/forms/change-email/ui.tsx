@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { EmailInput } from 'src/features/inputs';
 import { Button, Form } from 'src/shared/ui';
 
-import { type Dispatch, type SetStateAction, useState } from 'react';
+import { useState } from 'react';
 
 import type { FieldValues } from 'react-hook-form';
 
@@ -11,10 +11,8 @@ import './styles.scss';
 
 interface Props {
     email?: string;
-    isLast?: boolean;
-    setFormStep?: Dispatch<SetStateAction<number>>;
 }
-export const EmailForm = ({ email, isLast, setFormStep }: Props) => {
+export const EmailForm = ({ email }: Props) => {
     const {
         register,
         handleSubmit,
@@ -30,11 +28,6 @@ export const EmailForm = ({ email, isLast, setFormStep }: Props) => {
     return (
         <Form
             onSubmit={handleSubmit(data => {
-                if (setFormStep && !isLast) {
-                    setFormStep(curr => {
-                        return curr + 1;
-                    });
-                }
                 console.log(data.phone.replace(/\D/gm, ''));
             })}
         >
