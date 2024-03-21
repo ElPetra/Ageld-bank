@@ -29,14 +29,14 @@ export const SmsCodeForm = ({
         defaultValues: { sms: '' }
     });
 
-    const [checkCode] = useCheckCodeMutation();
+    const [checkCode, { error: checkCodeError }] = useCheckCodeMutation();
 
     return (
         <Form
             onSubmit={handleSubmit(async data => {
                 const sms = data.sms.join('');
                 await checkCode(sms);
-                if (setFormStep && !isLast) {
+                if (!checkCodeError && setFormStep && !isLast) {
                     setFormStep(curr => curr + 1);
                 }
             })}
@@ -44,7 +44,11 @@ export const SmsCodeForm = ({
             <Text size='xs'>
                 На Ваш номер телефона отправлен 6-значный код подтверждения
             </Text>
-            <CodeInput label='sms' register={register} error={''} />
+            <CodeInput
+                label='sms'
+                register={register}
+                error={checkCodeError?.data?.message || ''}
+            />
             <Button
                 variant='secondary'
                 size='large'

@@ -6,6 +6,7 @@ import { type FieldValues, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
 import type { Dispatch, SetStateAction } from 'react';
+import { useGenerateTokenMutation } from 'src/shared/api';
 
 interface Props {
     isLast?: boolean;
@@ -20,15 +21,19 @@ export const EnterPasswordForm = ({ isLast, setFormStep }: Props) => {
     } = useForm<FieldValues>({
         mode: 'onTouched',
         reValidateMode: 'onChange',
-        defaultValues: { password1: '' }
+        defaultValues: { password: '' }
     });
     const navigate = useNavigate();
-    const onSubmit = (data: FieldValues) => {
+    const [generateToken] = useGenerateTokenMutation();
+
+    const onSubmit = async (data: FieldValues) => {
+        await generateToken({
+            phoneNumber: '79234251422',
+            password: data.password
+        });
         if (setFormStep && !isLast) {
             setFormStep(curr => curr + 1);
         }
-        console.log(data);
-
         navigate('/success', {
             state: {
                 message: 'Вход выполнен.',
@@ -41,8 +46,8 @@ export const EnterPasswordForm = ({ isLast, setFormStep }: Props) => {
         <Form onSubmit={handleSubmit(onSubmit)}>
             <PasswordInput
                 register={register}
-                label='password1'
-                isError={!!errors?.password1}
+                label='password'
+                isError={!!errors?.password}
                 isCreating={true}
             />
             <Button

@@ -8,7 +8,7 @@ import { type Dispatch, type SetStateAction, useState } from 'react';
 
 import type { FieldValues } from 'react-hook-form';
 import {
-    useCheckStatusMutation,
+    useCheckRegistrationMutation,
     useGenerateCodeMutation
 } from 'src/shared/api';
 
@@ -33,7 +33,7 @@ export const PhoneForm = ({
         reValidateMode: 'onChange',
         defaultValues: { phone: '' }
     });
-    const [checkStatus] = useCheckStatusMutation();
+    const [checkRegistration] = useCheckRegistrationMutation();
     const [generateCode] = useGenerateCodeMutation();
 
     const handleLinkClick = (linkId: number) => {
@@ -42,13 +42,13 @@ export const PhoneForm = ({
         }
     };
     const allLinksClicked = clickedLinks.length === 2;
+
     return (
         <Form
             onSubmit={handleSubmit(async data => {
                 const phone = data.phone.replace(/\D/gm, '');
                 if (variant === 'registration') {
-                    const data = await checkStatus(phone);
-                    console.log(data);
+                    await checkRegistration(phone);
                     await generateCode(phone);
                 }
                 if (setFormStep && !isLast) {

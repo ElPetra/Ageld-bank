@@ -7,6 +7,10 @@ import { useNavigate } from 'react-router-dom';
 import type { FieldValues } from 'react-hook-form';
 
 import type { Dispatch, SetStateAction } from 'react';
+import {
+    useCheckRegistrationMutation,
+    useCreateAccountMutation
+} from 'src/shared/api';
 
 interface Props {
     isLast?: boolean;
@@ -25,7 +29,17 @@ export const ConfirmPasswordForm = ({ isLast, setFormStep }: Props) => {
         defaultValues: { password1: '', password2: '' }
     });
     const navigate = useNavigate();
+    const [createAccount] = useCreateAccountMutation();
+    const [, { data: customerData }] = useCheckRegistrationMutation();
+
     const onSubmit = (data: FieldValues) => {
+        if (customerData?.customerId) {
+            createAccount({
+                uuid: customerData?.customerId,
+                password: data.password1
+            });
+        }
+
         if (setFormStep && !isLast) {
             setFormStep(curr => curr + 1);
         }
@@ -38,6 +52,7 @@ export const ConfirmPasswordForm = ({ isLast, setFormStep }: Props) => {
             }
         });
     };
+
     return (
         <Form onSubmit={handleSubmit(onSubmit)}>
             <PasswordInput
