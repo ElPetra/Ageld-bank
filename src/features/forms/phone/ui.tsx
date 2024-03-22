@@ -33,7 +33,7 @@ export const PhoneForm = ({
         reValidateMode: 'onChange',
         defaultValues: { phone: '' }
     });
-    const [checkRegistration] = useCheckRegistrationMutation();
+    const [checkRegistration, { error }] = useCheckRegistrationMutation();
     const [generateCode] = useGenerateCodeMutation();
 
     const handleLinkClick = (linkId: number) => {
@@ -51,6 +51,10 @@ export const PhoneForm = ({
                     await checkRegistration(phone);
                     await generateCode(phone);
                 }
+                if (variant === 'login') {
+                    await checkRegistration(phone);
+                    await generateCode(phone);
+                }
                 if (setFormStep && !isLast) {
                     setFormStep(curr => {
                         return curr + 1;
@@ -63,6 +67,7 @@ export const PhoneForm = ({
                 label={'phone'}
                 register={register}
                 isError={!!errors?.phone}
+                error={(error && !('status' in error) && error.message) || ''}
             />
             {variant === 'registration' && (
                 <>

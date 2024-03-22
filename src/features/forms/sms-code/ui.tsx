@@ -9,16 +9,11 @@ import type { FieldValues } from 'react-hook-form';
 import type { Dispatch, SetStateAction } from 'react';
 
 interface Props {
-    variant?: 'login' | 'registration';
     isLast?: boolean;
     setFormStep?: Dispatch<SetStateAction<number>>;
 }
 
-export const SmsCodeForm = ({
-    variant = 'login',
-    isLast,
-    setFormStep
-}: Props) => {
+export const SmsCodeForm = ({ isLast, setFormStep }: Props) => {
     const {
         register,
         handleSubmit,
@@ -29,14 +24,14 @@ export const SmsCodeForm = ({
         defaultValues: { sms: '' }
     });
 
-    const [checkCode, { error: checkCodeError }] = useCheckCodeMutation();
+    const [checkCode, { error }] = useCheckCodeMutation();
 
     return (
         <Form
             onSubmit={handleSubmit(async data => {
                 const sms = data.sms.join('');
                 await checkCode(sms);
-                if (!checkCodeError && setFormStep && !isLast) {
+                if (!error && setFormStep && !isLast) {
                     setFormStep(curr => curr + 1);
                 }
             })}
@@ -47,7 +42,7 @@ export const SmsCodeForm = ({
             <CodeInput
                 label='sms'
                 register={register}
-                error={checkCodeError?.data?.message || ''}
+                error={(error && !('status' in error) && error.message) || ''}
             />
             <Button
                 variant='secondary'
