@@ -41,10 +41,10 @@ export const Input = memo(
         disabled,
         ...props
     }: Props) => {
-        const fieldClass = cn(`field ${size} ${width}`, {
+        const fieldClass = cn('field', size, width, {
             error: error || isError
         });
-        const inputContainerClass = cn(`input ${size} ${width} ${variant}`, {
+        const inputContainerClass = cn('input', size, width, variant, {
             error: error || isError,
             disabled: disabled
         });
