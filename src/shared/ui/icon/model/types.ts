@@ -39,4 +39,5 @@ export type SvgIconNames =
     | 'translations'
     | 'wallet'
     | 'phone'
-    | 'requisites';
+    | 'requisites'
+    | 'question-lady';
