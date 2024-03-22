@@ -5,8 +5,10 @@
     justify-content: space-between;
     width: 100%;
     gap: 32px;
+
     ul{
         display: flex;
+        flex-wrap: wrap;
         gap: 32px;
     }
 }

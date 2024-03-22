@@ -6,7 +6,9 @@ export const RouteName = {
     MAIN_PAGE: '/',
     REGISTRATION_PAGE: '/signup',
     LOGIN_PAGE: '/signin',
-    SUCCESS_PAGE: '/success'
+    PERSONAL_AREA_PAGE: '/personal',
+    SUCCESS_PAGE: '/success',
+    NOTIFICATION_HISTORY_PAGE: '/notifications'
 };
 
 export interface RouteDescription {

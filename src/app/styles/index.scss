@@ -27,6 +27,7 @@
   --bg-warning: #F6BE2C;
   --bg-error: #F53C14;
   --bg-primary-input: #F3F4F8;
+  --bg-secondary-input: #FEFEFE;
   --border-radius: 8px;
 }
 
@@ -43,11 +44,8 @@ body {
   height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
-  gap: 10px;
-}
-main{
-  display: flex;
-  height: inherit;
-  justify-content: center;
-  align-items: start;
+
+  > * {
+    min-width: 0;
+  }
 }

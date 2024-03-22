@@ -1,13 +1,13 @@
 .logo-phone {
-    padding-top: 30px;
-    padding-bottom: 30px;
+    padding: 10px 0;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 32px;
 
-    .contacts{
+    .footer__contacts{
         display: flex;
+        align-items: center;
         gap: 32px;
         &-subtitle{
             margin-top: 8px;

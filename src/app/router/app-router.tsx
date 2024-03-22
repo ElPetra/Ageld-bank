@@ -3,22 +3,20 @@ import { AuthorizationPage } from 'src/pages/authorization';
 import { Layout } from 'src/pages/layout';
 import { MainPage } from 'src/pages/main';
 import { RegistrationPage } from 'src/pages/registration';
+
 import { RouteName } from 'src/shared/model';
 
 import { SuccessPage } from 'src/pages/success';
 import { Accounts } from 'src/widgets/accounts/ui/accounts';
 import { AccountInfo } from 'src/widgets/accounts/ui/info/ui';
 
+import { PersonalPage } from 'src/pages/personal';
+
+import { NotificationHistoryPage } from 'src/pages/notification/ui';
+
 import type { RouteDescription } from 'src/shared/model';
 
-const {
-    ACCOUNT,
-    ACCOUNTS,
-    MAIN_PAGE,
-    REGISTRATION_PAGE,
-    LOGIN_PAGE,
-    SUCCESS_PAGE
-} = RouteName;
+const { MAIN_PAGE, REGISTRATION_PAGE, LOGIN_PAGE, SUCCESS_PAGE } = RouteName;
 
 const publicRoutes: RouteDescription[] = [
     {
@@ -44,8 +42,16 @@ const publicRoutes: RouteDescription[] = [
         component: AuthorizationPage
     },
     {
+        path: PERSONAL_AREA_PAGE,
+        component: PersonalPage
+    },
+    {
         path: SUCCESS_PAGE,
         component: SuccessPage
+    },
+    {
+        path: NOTIFICATION_HISTORY_PAGE,
+        component: NotificationHistoryPage
     }
 ];
 

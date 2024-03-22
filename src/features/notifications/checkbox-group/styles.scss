@@ -1,0 +1,18 @@
+.notifications {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &__list {
+    margin-top: 15px;
+  }
+
+  &__item {
+    margin-bottom: 15px;
+  }
+
+  &__link, &__link:link {
+    text-decoration: underline;
+    display: block;
+  }
+}

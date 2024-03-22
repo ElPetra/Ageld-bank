@@ -1,0 +1,24 @@
+.menu {
+  display: block;
+  .menu__items {
+    padding-top: 16px;
+    min-height: 56px;
+    display: flex;
+    gap: 24px;
+
+    .menu__item {
+      padding: 8px 0;
+
+      &.active {
+        box-shadow: inset 0 -3px 0 0;
+      }
+    }
+  }
+
+  .menu__content {
+    margin: 56px 0;
+  }
+}
+
+
+
