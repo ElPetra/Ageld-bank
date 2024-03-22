@@ -14,7 +14,7 @@
     "composite": true,
     "skipLibCheck": true,
     "module": "ESNext",
-    "moduleResolution": "bundler",
+    "moduleResolution": "Node10",
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "lib": [
