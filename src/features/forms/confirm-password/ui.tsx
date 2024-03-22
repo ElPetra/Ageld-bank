@@ -4,8 +4,11 @@ import { PasswordInput } from 'src/features/inputs';
 import { Button, Form } from 'src/shared/ui';
 import { useNavigate } from 'react-router-dom';
 
-import type { FieldValues } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 
+import { confirmPasswordSchema } from './confirmPasswordSchema';
+
+import type { FieldValues } from 'react-hook-form';
 import type { Dispatch, SetStateAction } from 'react';
 
 interface Props {
@@ -17,12 +20,12 @@ export const ConfirmPasswordForm = ({ isLast, setFormStep }: Props) => {
     const {
         register,
         handleSubmit,
-        watch,
         formState: { errors, isDirty, isValid }
     } = useForm<FieldValues>({
         mode: 'onTouched',
         reValidateMode: 'onChange',
-        defaultValues: { password1: '', password2: '' }
+        defaultValues: { password1: '', password2: '' },
+        resolver: yupResolver<FieldValues>(confirmPasswordSchema)
     });
     const navigate = useNavigate();
     const onSubmit = (data: FieldValues) => {
@@ -43,8 +46,12 @@ export const ConfirmPasswordForm = ({ isLast, setFormStep }: Props) => {
             <PasswordInput
                 register={register}
                 label='password1'
-                isError={!!errors?.password1}
                 variant='create'
+                error={
+                    (typeof errors.password1?.message === 'string' &&
+                        errors.password1?.message) ||
+                    ''
+                }
             />
             <PasswordInput
                 register={register}
@@ -52,22 +59,16 @@ export const ConfirmPasswordForm = ({ isLast, setFormStep }: Props) => {
                 placeholder='Подтвердите пароль'
                 variant='confirm'
                 error={
-                    isDirty &&
-                    watch('password2') !== '' &&
-                    watch('password1') !== watch('password2')
-                        ? 'Пароли не совпадают'
-                        : ''
+                    (typeof errors.password2?.message === 'string' &&
+                        errors.password2?.message) ||
+                    ''
                 }
             />
             <Button
                 variant='secondary'
                 size='large'
                 type='submit'
-                disabled={
-                    !isDirty ||
-                    !isValid ||
-                    watch('password1') !== watch('password2')
-                }
+                disabled={!isDirty || !isValid}
             >
                 Зарегистрироваться
             </Button>

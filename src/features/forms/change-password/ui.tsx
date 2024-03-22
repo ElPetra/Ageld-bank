@@ -5,6 +5,9 @@ import './styles.scss';
 import { type FieldValues, useForm } from 'react-hook-form';
 
 import { type Dispatch, type SetStateAction } from 'react';
+import { yupResolver } from '@hookform/resolvers/yup';
+
+import { changePasswordSchema } from './changePasswordShema';
 
 interface Props {
     isLast?: boolean;
@@ -15,12 +18,12 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
     const {
         register,
         handleSubmit,
-        watch,
         formState: { errors, isDirty, isValid }
     } = useForm<FieldValues>({
         mode: 'onTouched',
         reValidateMode: 'onChange',
-        defaultValues: { password1: '' }
+        defaultValues: { password1: '' },
+        resolver: yupResolver<FieldValues>(changePasswordSchema)
     });
     const onSubmit = (data: FieldValues) => {
         if (setFormStep && !isLast) {
@@ -34,21 +37,25 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
                 <PasswordInput
                     size='medium'
                     register={register}
-                    label='current-password'
+                    label='current_password'
                     variant='confirm'
                     placeholder='Текущий пароль'
+                    error={
+                        (typeof errors.current_password?.message === 'string' &&
+                            errors.current_password?.message) ||
+                        ''
+                    }
                 />
                 <PasswordInput
                     size='medium'
                     register={register}
                     label='password1'
-                    isError={!!errors?.password1}
                     variant='create'
                     placeholder='Новый пароль'
                     error={
-                        watch('current-password') === watch('password1')
-                            ? 'Новый пароль должен отличаться от старого'
-                            : ''
+                        (typeof errors.password1?.message === 'string' &&
+                            errors.password1?.message) ||
+                        ''
                     }
                 />
                 <PasswordInput
@@ -58,11 +65,9 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
                     placeholder='Подтвердите новый пароль'
                     variant='confirm'
                     error={
-                        isDirty &&
-                        watch('password2') !== '' &&
-                        watch('password1') !== watch('password2')
-                            ? 'Новые пароли не совпадают'
-                            : ''
+                        (typeof errors.password2?.message === 'string' &&
+                            errors.password2?.message) ||
+                        ''
                     }
                 />
             </div>
@@ -70,12 +75,7 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
                 variant='secondary'
                 size='medium'
                 type='submit'
-                disabled={
-                    !isDirty ||
-                    !isValid ||
-                    watch('password1') !== watch('password2') ||
-                    watch('current-password') === watch('password1')
-                }
+                disabled={!isDirty || !isValid}
             >
                 Продолжить
             </Button>

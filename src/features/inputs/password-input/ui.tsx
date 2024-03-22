@@ -14,7 +14,6 @@ import './styles.scss';
 interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
     width?: 'auto' | 'max';
     size?: 'large' | 'medium';
-    isError?: boolean;
     variant?: 'exist' | 'create' | 'confirm';
     error?: string;
     label: string;
@@ -23,7 +22,6 @@ interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
 }
 
 export const PasswordInput = ({
-    isError,
     placeholder = 'Пароль',
     variant = 'exist',
     error,
@@ -42,21 +40,13 @@ export const PasswordInput = ({
             <Input
                 type={open ? 'text' : 'password'}
                 placeholder={placeholder}
-                pattern={
-                    variant === 'create'
-                        ? '^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!\\\\"#$%&\'()*+,\\-.\\/:;<=>?@[\\]^_{|}~])+[A-Za-z0-9!\\\\"#$%&\'()*+,\\-.\\/:;<=>?@[\\]^_{|}~]{6,20}$'
-                        : ''
-                }
-                minLength={6}
-                maxLength={20}
                 size={size}
                 width={width}
                 value={value}
                 onChange={e => setValue(e.target.value)}
                 onFocus={() => setFocused(true)}
                 reference={inputRef}
-                error={value !== '' ? error : ''}
-                isError={!!value && isError}
+                error={error}
                 {...props}
             >
                 <button
