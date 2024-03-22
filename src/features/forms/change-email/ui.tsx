@@ -1,13 +1,29 @@
+import type { FieldValues } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 
 import { EmailInput } from 'src/features/inputs';
 import { Button, Form } from 'src/shared/ui';
 
 import { useState } from 'react';
 
-import type { FieldValues } from 'react-hook-form';
-
 import './styles.scss';
+
+const schema = yup
+    .object()
+    .shape({
+        email: yup
+            .string()
+            .matches(
+                /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/,
+                'Email должен быть валидным'
+            )
+            .min(8, 'Email должен содержать от 8 до 50 символов')
+            .max(50, 'Email должен содержать от 8 до 50 символов')
+            .required()
+    })
+    .required();
 
 interface Props {
     email?: string;
@@ -21,20 +37,21 @@ export const EmailForm = ({ email }: Props) => {
     } = useForm<FieldValues>({
         mode: 'onTouched',
         reValidateMode: 'onChange',
-        defaultValues: { email: email || '' }
+        defaultValues: { email: email || '' },
+        resolver: yupResolver<FieldValues>(schema)
     });
     const [isClicked, setIsClicked] = useState<boolean>(false);
 
     return (
-        <Form
-            onSubmit={handleSubmit(data => {
-                console.log(data.phone.replace(/\D/gm, ''));
-            })}
-        >
+        <Form onSubmit={handleSubmit(data => {})}>
             <EmailInput
                 label={'email'}
                 register={register}
-                isError={!!errors?.email}
+                error={
+                    (typeof errors.email?.message === 'string' &&
+                        errors.email?.message) ||
+                    ''
+                }
                 value={email || ''}
             />
             {isClicked ? (
