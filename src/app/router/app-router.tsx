@@ -16,7 +16,16 @@ import { NotificationHistoryPage } from 'src/pages/notification/ui';
 
 import type { RouteDescription } from 'src/shared/model';
 
-const { MAIN_PAGE, REGISTRATION_PAGE, LOGIN_PAGE, SUCCESS_PAGE } = RouteName;
+const {
+    MAIN_PAGE,
+    REGISTRATION_PAGE,
+    LOGIN_PAGE,
+    SUCCESS_PAGE,
+    ACCOUNTS,
+    ACCOUNT,
+    PERSONAL_AREA_PAGE,
+    NOTIFICATION_HISTORY_PAGE
+} = RouteName;
 
 const publicRoutes: RouteDescription[] = [
     {
