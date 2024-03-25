@@ -85,7 +85,7 @@ export const customerApi = createApi({
         }),
         checkStatus: builder.mutation<
             { statusType: string, message: string },
-            { phoneNumber: string }
+            string
         >({
             query: phoneNumber => ({
                 url: '/auth/check_status',
@@ -93,10 +93,7 @@ export const customerApi = createApi({
                 body: { phoneNumber }
             })
         }),
-        checkRegistration: builder.mutation<
-            { customerId: string },
-            { phoneNumber: string }
-        >({
+        checkRegistration: builder.mutation<{ customerId: string }, string>({
             query: phoneNumber => ({
                 url: '/auth/check_registration',
                 method: 'POST',
@@ -105,26 +102,26 @@ export const customerApi = createApi({
         }),
         addEmail: builder.mutation<
             void,
-            { customerPhone: string, email: string }
+            { Authorization: string, email: string }
         >({
-            query: ({ customerPhone, email }) => ({
+            query: ({ Authorization, email }) => ({
                 url: '/settings/add_email',
                 method: 'POST',
                 headers: {
-                    'Customer-Phone': customerPhone
+                    Authorization: `Bearer ${Authorization}`
                 },
                 body: { email }
             })
         }),
         newEmail: builder.mutation<
             void,
-            { customerPhone: string, email: string }
+            { Authorization: string, email: string }
         >({
-            query: ({ customerPhone, email }) => ({
+            query: ({ Authorization, email }) => ({
                 url: '/settings/new_email',
                 method: 'PATCH',
                 headers: {
-                    'Customer-Phone': customerPhone
+                    Authorization: `Bearer ${Authorization}`
                 },
                 body: { email }
             })
@@ -134,8 +131,20 @@ export const customerApi = createApi({
                 url: '/settings/info',
                 method: 'GET',
                 headers: {
-                    Authorization
+                    Authorization: `Bearer ${Authorization}`
                 }
+            })
+        }),
+        getTest: builder.query<
+            {
+                statusType: number,
+                message: string
+            },
+            void
+        >({
+            query: () => ({
+                url: '/auth/test3',
+                method: 'GET'
             })
         })
     })
@@ -153,5 +162,6 @@ export const {
     useCheckRegistrationMutation,
     useAddEmailMutation,
     useNewEmailMutation,
-    useGetInfoQuery
+    useGetInfoQuery,
+    useGetTestQuery
 } = customerApi;
