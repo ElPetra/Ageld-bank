@@ -15,6 +15,7 @@ import { PersonalPage } from 'src/pages/personal';
 import { NotificationHistoryPage } from 'src/pages/notification/ui';
 
 import type { RouteDescription } from 'src/shared/model';
+import { RecoveryPasswordPage } from 'src/pages/recovery/index.js';
 
 const {
     MAIN_PAGE,
@@ -24,7 +25,8 @@ const {
     ACCOUNTS,
     ACCOUNT,
     PERSONAL_AREA_PAGE,
-    NOTIFICATION_HISTORY_PAGE
+    NOTIFICATION_HISTORY_PAGE,
+    RECOVERY_PASSWORD_PAGE
 } = RouteName;
 
 const publicRoutes: RouteDescription[] = [
@@ -61,6 +63,10 @@ const publicRoutes: RouteDescription[] = [
     {
         path: NOTIFICATION_HISTORY_PAGE,
         component: NotificationHistoryPage
+    },
+    {
+        path: RECOVERY_PASSWORD_PAGE,
+        component: RecoveryPasswordPage
     }
 ];
 

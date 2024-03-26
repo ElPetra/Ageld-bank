@@ -72,7 +72,7 @@ export const PasswordInput = ({
                 <div className='forgot-password-link'>
                     <Text size='xs'>
                         <Link to={RouteName.MAIN_PAGE} variant='action'>
-                            Забыли пароль?
+                            Восстановление пароля
                         </Link>
                     </Text>
                 </div>
