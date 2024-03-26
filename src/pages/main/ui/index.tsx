@@ -8,7 +8,6 @@ import {
 import { useEffect } from 'react';
 
 export const MainPage = () => {
-    return <Greeting />;
     useGetInfoQuery({
         Authorization:
             'eyJhbGciOiJIUzM4NCJ9.eyJDdXN0b21lci1JZCI6IjdjY2JkMzJlLWNkZDctNDkwYy05NDQ2LWRkNzE2ZDIzNmZjNSIsInN1YiI6Ijc5MjM0MjUxNDIyIiwiaWF0IjoxNzExMTEyMjczLCJleHAiOjE3MTExMTIzOTN9.cRMIK35q40XpyJW83yKe3BPLg_V4vk1kQTjxFPHUVlirzf-gIAOKMF7N5j_Zo6uX'
