@@ -22,7 +22,15 @@ export const MainPage = () => {
 
     useEffect(() => {
         func('79234251422');
-        func1({ phoneNumber: '79234251422', password: 'Password@123' });
+        func1({
+            phoneNumber: '79234251422',
+            password: 'Password@123'
+        }).then(data => {
+            if ('data' in data) {
+                localStorage.setItem('accessToken', data.data.accessToken);
+                localStorage.setItem('refreshToken', data.data.refreshToken);
+            }
+        });
     }, []);
 
     return <Greeting />;
