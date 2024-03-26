@@ -13,6 +13,8 @@ import { AccountInfo } from 'src/widgets/accounts/ui/info/ui';
 import { PersonalPage } from 'src/pages/personal';
 
 import { NotificationHistoryPage } from 'src/pages/notification/ui';
+import { useEffect } from 'react';
+import { useRefreshTokenMutation } from 'src/shared/api/index.js';
 
 import type { RouteDescription } from 'src/shared/model';
 
@@ -65,7 +67,18 @@ const publicRoutes: RouteDescription[] = [
 ];
 
 export const AppRouter = () => {
-    return (
+    const [refreshToken, { isError, isLoading }] = useRefreshTokenMutation();
+
+    useEffect(() => {
+        const data = localStorage.getItem('refreshToken');
+        if (data) {
+            refreshToken({ refreshToken: data });
+        }
+    }, [refreshToken]);
+
+    return isLoading ? (
+        <div>Загрузка...</div>
+    ) : (
         <Routes>
             <Route path='/' element={<Layout />}>
                 {publicRoutes.map(({ path, component: Component }) => (

@@ -3,14 +3,15 @@ import { useForm } from 'react-hook-form';
 import { PhoneInput } from 'src/features/inputs';
 import { Button, Form, Link, Text } from 'src/shared/ui';
 import { RouteName } from 'src/shared/model';
+import { getErrorMessage } from 'src/shared/lib';
 
 import { type Dispatch, type SetStateAction, useState } from 'react';
-
-import type { FieldValues } from 'react-hook-form';
 import {
     useCheckRegistrationMutation,
     useGenerateCodeMutation
 } from 'src/shared/api';
+
+import type { FieldValues } from 'react-hook-form';
 
 interface Props {
     variant?: 'login' | 'registration';
@@ -55,7 +56,10 @@ export const PhoneForm = ({
                     await checkRegistration(phone);
                     await generateCode(phone);
                 }
-                if (setFormStep && !isLast) {
+                if (!error) {
+                    localStorage.setItem('phone', phone);
+                }
+                if (!error && setFormStep && !isLast) {
                     setFormStep(curr => {
                         return curr + 1;
                     });
@@ -67,7 +71,7 @@ export const PhoneForm = ({
                 label={'phone'}
                 register={register}
                 isError={!!errors?.phone}
-                error={(error && !('status' in error) && error.message) || ''}
+                error={getErrorMessage(error)}
             />
             {variant === 'registration' && (
                 <>

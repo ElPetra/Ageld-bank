@@ -1,12 +1,12 @@
+import { useNavigate } from 'react-router-dom';
+
 import { PasswordInput } from 'src/features/inputs';
 import { Button, Form } from 'src/shared/ui';
+import { useGenerateTokenMutation } from 'src/shared/api';
 
 import { type FieldValues, useForm } from 'react-hook-form';
 
-import { useNavigate } from 'react-router-dom';
-
 import type { Dispatch, SetStateAction } from 'react';
-import { useGenerateTokenMutation } from 'src/shared/api';
 
 interface Props {
     isLast?: boolean;
@@ -24,33 +24,42 @@ export const EnterPasswordForm = ({ isLast, setFormStep }: Props) => {
         defaultValues: { password: '' }
     });
     const navigate = useNavigate();
-    const [generateToken] = useGenerateTokenMutation();
+    const [generateToken, { error }] = useGenerateTokenMutation();
 
-    const onSubmit = async (data: FieldValues) => {
-        await generateToken({
-            phoneNumber: '79234251422',
-            password: data.password
-        });
-        if (setFormStep && !isLast) {
-            setFormStep(curr => curr + 1);
-        }
-        console.log(data);
-
-        navigate('/success', {
-            state: {
-                message: 'Вход выполнен.',
-                button: false
+    const onSubmit = (data: FieldValues) => {
+        const phone = localStorage.getItem('phone');
+        if (phone) {
+            generateToken({
+                phoneNumber: phone,
+                password: data.password
+            }).then(data => {
+                if ('data' in data) {
+                    localStorage.setItem('accessToken', data.data.accessToken);
+                    localStorage.setItem(
+                        'refreshToken',
+                        data.data.refreshToken
+                    );
+                }
+            });
+            if (!error && setFormStep && !isLast) {
+                setFormStep(curr => curr + 1);
             }
-        });
+            navigate('/success', {
+                state: {
+                    message: 'Вход выполнен.',
+                    button: false
+                }
+            });
+        }
     };
 
     return (
         <Form onSubmit={handleSubmit(onSubmit)}>
             <PasswordInput
                 register={register}
-                label='password1'
+                label='password'
                 error={
-                    errors?.password1 &&
+                    errors?.password &&
                     'Пароль должен содержать от 6 до 20 символов'
                 }
             />

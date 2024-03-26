@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { CustomerInfo } from 'src/shared/model';
+
+import type { CustomerInfo } from 'src/shared/model';
 
 export const customerApi = createApi({
     reducerPath: 'customerApi',
@@ -31,13 +32,13 @@ export const customerApi = createApi({
         }),
         changePassword: builder.mutation<
             void,
-            { oldPassword: string, newPassword: string, customerPhone: string }
+            { oldPassword: string, newPassword: string, Authorization: string }
         >({
-            query: ({ oldPassword, newPassword, customerPhone }) => ({
+            query: ({ oldPassword, newPassword, Authorization }) => ({
                 url: '/profile/change_password',
                 method: 'PATCH',
                 headers: {
-                    'Customer-Phone': customerPhone
+                    Authorization: `Bearer ${Authorization}`
                 },
                 body: { oldPassword, newPassword }
             })

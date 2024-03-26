@@ -1,13 +1,16 @@
-import { PasswordInput } from 'src/features/inputs';
-import { Button, Form } from 'src/shared/ui';
-import './styles.scss';
-
-import { type FieldValues, useForm } from 'react-hook-form';
-
-import { type Dispatch, type SetStateAction } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 
+import { PasswordInput } from 'src/features/inputs';
+import { Button, Form } from 'src/shared/ui';
+import { useChangePasswordMutation } from 'src/shared/api';
+import { getErrorMessage } from 'src/shared/lib';
+
+import { type FieldValues, useForm } from 'react-hook-form';
+import { type Dispatch, type SetStateAction } from 'react';
+
 import { changePasswordSchema } from './changePasswordShema';
+
+import './styles.scss';
 
 interface Props {
     isLast?: boolean;
@@ -22,15 +25,26 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
     } = useForm<FieldValues>({
         mode: 'onTouched',
         reValidateMode: 'onChange',
-        defaultValues: { password1: '' },
+        defaultValues: { password1: '', current_password: '' },
         resolver: yupResolver<FieldValues>(changePasswordSchema)
     });
+
+    const [changePassword, { error }] = useChangePasswordMutation();
+
     const onSubmit = (data: FieldValues) => {
-        if (setFormStep && !isLast) {
-            setFormStep(curr => curr + 1);
+        const accessToken = localStorage.getItem('accessToken');
+        if (accessToken) {
+            changePassword({
+                oldPassword: data.current_password,
+                newPassword: data.password1,
+                Authorization: accessToken
+            });
+            if (setFormStep && !isLast) {
+                setFormStep(curr => curr + 1);
+            }
         }
-        console.log(data);
     };
+
     return (
         <Form onSubmit={handleSubmit(onSubmit)}>
             <div className='row'>
@@ -41,6 +55,7 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
                     variant='confirm'
                     placeholder='Текущий пароль'
                     error={
+                        getErrorMessage(error) ||
                         (typeof errors.current_password?.message === 'string' &&
                             errors.current_password?.message) ||
                         ''

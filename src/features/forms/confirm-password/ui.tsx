@@ -1,19 +1,18 @@
+import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 import { PasswordInput } from 'src/features/inputs';
 import { Button, Form } from 'src/shared/ui';
-import { useNavigate } from 'react-router-dom';
-
-import { yupResolver } from '@hookform/resolvers/yup';
+import {
+    useCheckRegistrationMutation,
+    useCreateAccountMutation
+} from 'src/shared/api';
 
 import { confirmPasswordSchema } from './confirmPasswordSchema';
 
 import type { FieldValues } from 'react-hook-form';
 import type { Dispatch, SetStateAction } from 'react';
-import {
-    useCheckRegistrationMutation,
-    useCreateAccountMutation
-} from 'src/shared/api';
 
 interface Props {
     isLast?: boolean;
@@ -41,19 +40,16 @@ export const ConfirmPasswordForm = ({ isLast, setFormStep }: Props) => {
                 uuid: customerData?.customerId,
                 password: data.password1
             });
-        }
-
-        if (setFormStep && !isLast) {
-            setFormStep(curr => curr + 1);
-        }
-        console.log(data);
-
-        navigate('/success', {
-            state: {
-                message: 'Кабинет пользователя успешно зарегистрирован.',
-                button: true
+            if (setFormStep && !isLast) {
+                setFormStep(curr => curr + 1);
             }
-        });
+            navigate('/success', {
+                state: {
+                    message: 'Кабинет пользователя успешно зарегистрирован.',
+                    button: true
+                }
+            });
+        }
     };
 
     return (
