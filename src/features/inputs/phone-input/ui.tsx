@@ -19,31 +19,31 @@ export const PhoneInput = ({ clear, isError, error, ...props }: Props) => {
     const inputRef = useRef<HTMLInputElement>(null);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-        let inputValue = e.target.value;
-        inputValue = inputValue.replace(/\D/gm, '');
-        if (inputValue.length == 0) {
-            e.target.value = inputValue;
-        } else if (inputValue.length == 1) {
+        let inputValue = e.target.value.replaceAll(/\D/gm, '');
+        if (inputValue.length == 1) {
             if (!/\+/.test(e.target.value)) {
-                e.target.value = inputValue.replace(/(\d)/, '+7 (');
+                inputValue =
+                    inputValue === '8'
+                        ? inputValue.replace(/(\d)/, '+7 (')
+                        : inputValue.replace(/(\d)/, '+7 ($1');
             }
-        } else if (inputValue.length == 5) {
-            e.target.value = inputValue.replace(
-                /(\d)(\d{3})(\d)/,
-                '+7 ($2) $3'
-            );
-        } else if (inputValue.length == 8) {
-            e.target.value = inputValue.replace(
+        } else if (1 < inputValue.length && inputValue.length < 5) {
+            inputValue = inputValue.replace(/(\d)(\d{0,3})/, '+7 ($2');
+        } else if (inputValue.length >= 5 && inputValue.length < 8) {
+            inputValue = inputValue.replace(/(\d)(\d{3})(\d)/, '+7 ($2) $3');
+        } else if (inputValue.length == 8 || inputValue.length == 9) {
+            inputValue = inputValue.replace(
                 /(\d)(\d{3})(\d{3})(\d)/,
                 '+7 ($2) $3-$4'
             );
         } else if (inputValue.length == 10 || inputValue.length == 11) {
-            e.target.value = inputValue.replace(
+            inputValue = inputValue.replace(
                 /(\d)(\d{3})(\d{3})(\d{2})(\d)/,
                 '+7 ($2) $3-$4-$5'
             );
         }
-        setValue(e.target.value);
+        e.target.value = inputValue;
+        setValue(inputValue);
     };
 
     return (
@@ -58,7 +58,9 @@ export const PhoneInput = ({ clear, isError, error, ...props }: Props) => {
             reference={inputRef}
             error={
                 error ||
-                (isError ? 'Номер телефона должен содержать 11 цифр' : '')
+                (isError || (value !== '' && value.length < 18)
+                    ? 'Номер телефона должен содержать 11 цифр'
+                    : '')
             }
             {...props}
         >

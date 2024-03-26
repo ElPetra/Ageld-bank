@@ -1,0 +1,33 @@
+.custom-checkbox {
+
+  &__label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+
+  &__input {
+    display: none;
+  }
+
+  &__control {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    margin-right: 10px;
+    position: relative;
+    background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 81.77%);
+  }
+
+  &__input:checked + &__control::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 3px;
+    width: 6px;
+    height: 10px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+}

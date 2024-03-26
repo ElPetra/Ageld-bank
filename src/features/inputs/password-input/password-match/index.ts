@@ -1,1 +1,0 @@
-export { PasswordMatchDisplay } from './ui';

@@ -6,7 +6,7 @@ import './styles.scss';
 
 interface Props {
     title: string;
-    variant?: 'login' | 'registration' | 'none';
+    variant?: 'login' | 'registration' | 'change-password' | 'none';
     children: ReactNode;
 }
 

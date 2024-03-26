@@ -34,6 +34,8 @@ export const EnterPasswordForm = ({ isLast, setFormStep }: Props) => {
         if (setFormStep && !isLast) {
             setFormStep(curr => curr + 1);
         }
+        console.log(data);
+
         navigate('/success', {
             state: {
                 message: 'Вход выполнен.',
@@ -46,9 +48,11 @@ export const EnterPasswordForm = ({ isLast, setFormStep }: Props) => {
         <Form onSubmit={handleSubmit(onSubmit)}>
             <PasswordInput
                 register={register}
-                label='password'
-                isError={!!errors?.password}
-                isCreating={true}
+                label='password1'
+                error={
+                    errors?.password1 &&
+                    'Пароль должен содержать от 6 до 20 символов'
+                }
             />
             <Button
                 variant='secondary'

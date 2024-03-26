@@ -1,10 +1,14 @@
 import type { ComponentType } from 'react';
 
 export const RouteName = {
+    ACCOUNT: '/accounts/:id?', // временное решение для удобства работы над фичей
+    ACCOUNTS: '/accounts', // временное решение для удобства работы над фичей
     MAIN_PAGE: '/',
     REGISTRATION_PAGE: '/signup',
     LOGIN_PAGE: '/signin',
-    SUCCESS_PAGE: '/success'
+    PERSONAL_AREA_PAGE: '/personal',
+    SUCCESS_PAGE: '/success',
+    NOTIFICATION_HISTORY_PAGE: '/notifications'
 };
 
 export interface RouteDescription {

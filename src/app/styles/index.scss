@@ -1,13 +1,21 @@
 :root {
+  //тексты
   --text-primary: #2B3E78;
   --text-secondary: #FEFEFE;
   --text-tertiary: #FEFEFE;
   --text-primary-buttons: #2B3E78;
   --text-secondary-buttons: #FEFEFE;
   --text-buttons-disable: #414650;
+  --text-action: #1640de; // ссылки, акценты
+  --text-primary-input: #3c5293;
+  --text-primary-day:#001A34;
+  --text-error: #F53C14;
+  --text-success: #4CAF50;
+  //фоны
   --bg-primary: #FEFEFE;
   --bg-secondary: #2B3E78;
   --bg-tertiary: #33457c; // нижняя часть футера
+  --bg-quadruple: #F3F4F8;
   --bg-primary-buttons: #FEFEFE;
   --bg-secondary-buttons: #2B3E78;
   --bg-buttons-disable: #babec5;
@@ -15,11 +23,11 @@
   --bg-primary-buttons-pressed: #d9e7ff;
   --bg-secondary-buttons-hover: #3c5293;
   --bg-secondary-buttons-pressed: #586fb4;
+  --bg-success: #4CAF50;
+  --bg-warning: #F6BE2C;
+  --bg-error: #F53C14;
   --bg-primary-input: #F3F4F8;
-  --text-action: #1640de; // ссылки, акценты
-  --text-primary-input: #3c5293;
-  --text-error: #F53C14;
-  --text-success: #4CAF50;
+  --bg-secondary-input: #FEFEFE;
   --border-radius: 8px;
 }
 
@@ -31,12 +39,13 @@ body {
   background: var(--bg-primary);
 }
 #root{
+  padding: 0;
+  margin: 0;
   height: 100vh;
   display: grid;
-  grid-template-rows: 146px 1fr 372px;
-}
-main{
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  grid-template-rows: auto 1fr auto;
+
+  > * {
+    min-width: 0;
+  }
 }

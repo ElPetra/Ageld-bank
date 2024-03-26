@@ -15,7 +15,7 @@ import './styles.scss';
 interface Props {
     forms?: Form[];
     document?: Condition;
-    variant?: 'login' | 'registration' | 'none';
+    variant?: 'login' | 'registration' | 'change-password' | 'none';
     isFork?: boolean;
     to?: string;
 }
@@ -32,7 +32,7 @@ export const MultiStepForm = ({
     const navigate = useNavigate();
 
     return (
-        <div className='multi-step-form'>
+        <div className={`multi-step-form ${variant}`}>
             {(formStep > 1 || isFork) && (
                 <BackButton
                     onClick={() => {

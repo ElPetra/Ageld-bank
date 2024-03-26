@@ -1,15 +1,10 @@
 .info {
-    margin-top: 48px;
-
-    &__first-row {
-        padding-bottom: 24px;
-        border-bottom: 1px solid;
-    }
-    &__second-row {
+    &__about {
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
-        padding: 24px 0;
+        padding: 10px 0;
+        border-top: 1px solid;
     }
 
     .social-links {

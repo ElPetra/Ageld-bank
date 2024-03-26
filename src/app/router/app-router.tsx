@@ -7,15 +7,40 @@ import { RegistrationPage } from 'src/pages/registration';
 import { RouteName } from 'src/shared/model';
 
 import { SuccessPage } from 'src/pages/success';
+import { Accounts } from 'src/widgets/accounts/ui/accounts';
+import { AccountInfo } from 'src/widgets/accounts/ui/info/ui';
+
+import { PersonalPage } from 'src/pages/personal';
+
+import { NotificationHistoryPage } from 'src/pages/notification/ui';
 
 import type { RouteDescription } from 'src/shared/model';
 
-const { MAIN_PAGE, REGISTRATION_PAGE, LOGIN_PAGE, SUCCESS_PAGE } = RouteName;
+const {
+    MAIN_PAGE,
+    REGISTRATION_PAGE,
+    LOGIN_PAGE,
+    SUCCESS_PAGE,
+    ACCOUNTS,
+    ACCOUNT,
+    PERSONAL_AREA_PAGE,
+    NOTIFICATION_HISTORY_PAGE
+} = RouteName;
 
 const publicRoutes: RouteDescription[] = [
     {
         path: MAIN_PAGE,
         component: MainPage
+    },
+    {
+        // временное решение для удобства работы над фичей
+        path: ACCOUNTS,
+        component: Accounts
+    },
+    {
+        // временное решение для удобства работы над фичей
+        path: ACCOUNT,
+        component: AccountInfo
     },
     {
         path: REGISTRATION_PAGE,
@@ -26,8 +51,16 @@ const publicRoutes: RouteDescription[] = [
         component: AuthorizationPage
     },
     {
+        path: PERSONAL_AREA_PAGE,
+        component: PersonalPage
+    },
+    {
         path: SUCCESS_PAGE,
         component: SuccessPage
+    },
+    {
+        path: NOTIFICATION_HISTORY_PAGE,
+        component: NotificationHistoryPage
     }
 ];
 

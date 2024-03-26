@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import cn from 'classnames';
 
 import type { InputHTMLAttributes, ReactNode, RefObject } from 'react';
 
@@ -8,9 +9,9 @@ import './styles.scss';
 
 interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
     placeholder?: string;
-    placeholderLabel?: string;
     size?: 'small' | 'medium' | 'large';
     width?: 'auto' | 'max';
+    variant?: 'primary' | 'secondary';
     isError?: boolean;
     error?: string;
     label?: string;
@@ -23,9 +24,9 @@ export const Input = memo(
     ({
         type,
         placeholder,
-        placeholderLabel,
         value,
         reference,
+        variant = 'primary',
         size = 'medium',
         width = 'auto',
         children,
@@ -37,34 +38,54 @@ export const Input = memo(
         register,
         onBlur,
         onChange,
+        disabled,
         ...props
     }: Props) => {
+        const fieldClass = cn('field', size, width, {
+            error: error || isError
+        });
+        const inputContainerClass = cn('input', size, width, variant, {
+            error: error || isError,
+            disabled: disabled
+        });
+        const inputClass = cn({
+            'with-label': type != 'search' && size != 'medium' && value,
+            error: error
+        });
         return (
-            <div className={`field ${(error || isError) && 'error'} ${size}`}>
-                <div
-                    className={`input ${(error || isError) && 'error'}  ${size} ${width}`}
-                    ref={reference}
-                >
+            <div className={fieldClass}>
+                <div className={inputContainerClass} ref={reference}>
                     {type != 'search' && size != 'medium' && value && (
-                        <div className='label'>
-                            {placeholderLabel || placeholder}
-                        </div>
+                        <div className='label'>{placeholder}</div>
                     )}
-                    <input
-                        {...(register
-                            ? register(label, {
-                                  pattern: new RegExp(pattern),
-                                  minLength,
-                                  required: true,
-                                  onChange,
-                                  onBlur
-                              })
-                            : null)}
-                        type={type || 'text'}
-                        placeholder={placeholder || ''}
-                        className={`${type != 'search' && size != 'medium' && value && 'with-label'} ${error && 'error'}`}
-                        {...props}
-                    />
+                    {register ? (
+                        <input
+                            {...register(label, {
+                                pattern: new RegExp(pattern),
+                                minLength,
+                                required: true,
+                                onChange,
+                                onBlur
+                            })}
+                            type={type || 'text'}
+                            placeholder={placeholder || ''}
+                            className={inputClass}
+                            {...props}
+                        />
+                    ) : (
+                        <input
+                            value={value}
+                            pattern={pattern}
+                            minLength={minLength}
+                            onBlur={onBlur}
+                            onChange={onChange}
+                            type={type || 'text'}
+                            placeholder={placeholder || ''}
+                            disabled={disabled}
+                            className={inputClass}
+                            {...props}
+                        />
+                    )}
                     {children && <div className='input-icon'>{children}</div>}
                 </div>
                 {error && size != 'small' && (

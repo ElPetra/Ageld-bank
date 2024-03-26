@@ -9,11 +9,16 @@ import type { FieldValues } from 'react-hook-form';
 import type { Dispatch, SetStateAction } from 'react';
 
 interface Props {
+    variant?: 'login' | 'registration' | 'password-create';
     isLast?: boolean;
     setFormStep?: Dispatch<SetStateAction<number>>;
 }
 
-export const SmsCodeForm = ({ isLast, setFormStep }: Props) => {
+export const SmsCodeForm = ({
+    variant = 'login',
+    isLast,
+    setFormStep
+}: Props) => {
     const {
         register,
         handleSubmit,
@@ -34,6 +39,7 @@ export const SmsCodeForm = ({ isLast, setFormStep }: Props) => {
                 if (!error && setFormStep && !isLast) {
                     setFormStep(curr => curr + 1);
                 }
+                console.log(data.sms.join(''));
             })}
         >
             <Text size='xs'>
@@ -46,11 +52,11 @@ export const SmsCodeForm = ({ isLast, setFormStep }: Props) => {
             />
             <Button
                 variant='secondary'
-                size='large'
+                size={variant === 'password-create' ? 'medium' : 'large'}
                 type='submit'
                 disabled={!isDirty || !isValid}
             >
-                Далее
+                {variant === 'password-create' ? 'Сменить пароль' : 'Далее'}
             </Button>
         </Form>
     );
