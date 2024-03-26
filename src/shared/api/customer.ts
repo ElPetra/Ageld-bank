@@ -134,18 +134,6 @@ export const customerApi = createApi({
                     Authorization: `Bearer ${Authorization}`
                 }
             })
-        }),
-        getTest: builder.query<
-            {
-                statusType: number,
-                message: string
-            },
-            void
-        >({
-            query: () => ({
-                url: '/auth/test3',
-                method: 'GET'
-            })
         })
     })
 });
@@ -162,6 +150,5 @@ export const {
     useCheckRegistrationMutation,
     useAddEmailMutation,
     useNewEmailMutation,
-    useGetInfoQuery,
-    useGetTestQuery
+    useGetInfoQuery
 } = customerApi;
