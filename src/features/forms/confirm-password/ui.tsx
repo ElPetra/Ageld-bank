@@ -14,9 +14,14 @@ import type { Dispatch, SetStateAction } from 'react';
 interface Props {
     isLast?: boolean;
     setFormStep?: Dispatch<SetStateAction<number>>;
+    variant?: string;
 }
 
-export const ConfirmPasswordForm = ({ isLast, setFormStep }: Props) => {
+export const ConfirmPasswordForm = ({
+    isLast,
+    setFormStep,
+    variant
+}: Props) => {
     const {
         register,
         handleSubmit,
@@ -36,7 +41,10 @@ export const ConfirmPasswordForm = ({ isLast, setFormStep }: Props) => {
 
         navigate('/success', {
             state: {
-                message: 'Кабинет пользователя успешно зарегистрирован.',
+                message:
+                    variant === 'recovery'
+                        ? 'Пароль успешно восстановлен'
+                        : 'Кабинет пользователя успешно зарегистрирован.',
                 button: true
             }
         });
@@ -70,7 +78,7 @@ export const ConfirmPasswordForm = ({ isLast, setFormStep }: Props) => {
                 type='submit'
                 disabled={!isDirty || !isValid}
             >
-                Зарегистрироваться
+                Отправить
             </Button>
         </Form>
     );

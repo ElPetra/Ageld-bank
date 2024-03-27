@@ -9,7 +9,7 @@ import { type Dispatch, type SetStateAction, useState } from 'react';
 import type { FieldValues } from 'react-hook-form';
 
 interface Props {
-    variant?: 'login' | 'registration';
+    variant?: 'login' | 'registration' | 'recovery';
     isLast?: boolean;
     setFormStep?: Dispatch<SetStateAction<number>>;
 }

@@ -15,7 +15,12 @@ import './styles.scss';
 interface Props {
     forms?: Form[];
     document?: Condition;
-    variant?: 'login' | 'registration' | 'change-password' | 'none';
+    variant?:
+        | 'login'
+        | 'registration'
+        | 'change-password'
+        | 'recovery'
+        | 'none';
     isFork?: boolean;
     to?: string;
 }
