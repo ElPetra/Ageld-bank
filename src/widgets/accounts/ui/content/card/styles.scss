@@ -1,0 +1,67 @@
+.account__card {
+    padding: 16px;
+    border-radius: var(--border-radius);
+    background: var(--bg-quadruple);
+
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+
+        > div {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+
+        :last-child {
+            color: var(--text-quadruple);
+        }
+    }
+
+    &__statuses {
+        height: 56px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 8px;
+        color: var(--text-secondary);
+    }
+
+    &__status {
+        padding: 4px 12px;
+        border-radius: 12px;
+        width: max-content;
+
+        &-type {
+            &__main {
+                background-color: var(--bg-action);
+            }
+            &__active{
+                background-color: var(--bg-success);
+            }
+            &__closed{
+                background-color: var(--bg-warning);
+            }
+            &__blocked{
+                background-color: var(--bg-error);
+            }
+        }
+    }
+
+    &__balance {
+        display: flex;
+        justify-content: flex-end;
+        gap: 4px;
+
+        &-currency {
+            padding-top: 1px;
+        }
+    }
+}

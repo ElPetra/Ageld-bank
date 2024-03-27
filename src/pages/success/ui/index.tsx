@@ -1,7 +1,9 @@
-import { Button, Icon, Link, Text } from 'src/shared/ui';
-import './styles.scss';
-import { RouteName } from 'src/shared/model';
 import { useLocation } from 'react-router-dom';
+
+import { Button, Icon, Link, Text } from 'src/shared/ui';
+import { RouteName } from 'src/shared/model';
+
+import './styles.scss';
 
 export const SuccessPage = () => {
     const location = useLocation();

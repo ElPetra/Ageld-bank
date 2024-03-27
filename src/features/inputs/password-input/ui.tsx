@@ -16,12 +16,14 @@ interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
     size?: 'large' | 'medium';
     variant?: 'exist' | 'create' | 'confirm';
     error?: string;
+    isError?: boolean;
     label: string;
     placeholder?: string;
     register: UseFormRegister<FieldValues>;
 }
 
 export const PasswordInput = ({
+    isError,
     placeholder = 'Пароль',
     variant = 'exist',
     error,
@@ -46,7 +48,8 @@ export const PasswordInput = ({
                 onChange={e => setValue(e.target.value)}
                 onFocus={() => setFocused(true)}
                 reference={inputRef}
-                error={error}
+                error={value !== '' ? error : ''}
+                isError={!!value && isError}
                 {...props}
             >
                 <button

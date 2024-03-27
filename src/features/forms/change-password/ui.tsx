@@ -52,11 +52,7 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
                     label='password1'
                     variant='create'
                     placeholder='Новый пароль'
-                    error={
-                        (typeof errors.password1?.message === 'string' &&
-                            errors.password1?.message) ||
-                        ''
-                    }
+                    isError={!!errors.password1?.message}
                 />
                 <PasswordInput
                     size='medium'

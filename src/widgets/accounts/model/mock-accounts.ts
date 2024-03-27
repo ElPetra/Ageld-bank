@@ -1,7 +1,7 @@
 import { type SvgIconNames } from 'src/shared/ui';
 
 export interface Account {
-    status: 'active' | 'closed' | 'blocked';
+    status: 'active' | 'closed' | 'requested' | 'blocked';
     id: string;
     balance: string;
     account_number: string;

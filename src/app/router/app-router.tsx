@@ -7,8 +7,7 @@ import { RegistrationPage } from 'src/pages/registration';
 import { RouteName } from 'src/shared/model';
 
 import { SuccessPage } from 'src/pages/success';
-import { Accounts } from 'src/widgets/accounts/ui/accounts';
-import { AccountInfo } from 'src/widgets/accounts/ui/info/ui';
+import { AccountInfo } from 'src/widgets/account-info';
 
 import { PersonalPage } from 'src/pages/personal';
 
@@ -21,7 +20,6 @@ const {
     REGISTRATION_PAGE,
     LOGIN_PAGE,
     SUCCESS_PAGE,
-    ACCOUNTS,
     ACCOUNT,
     PERSONAL_AREA_PAGE,
     NOTIFICATION_HISTORY_PAGE
@@ -33,12 +31,6 @@ const publicRoutes: RouteDescription[] = [
         component: MainPage
     },
     {
-        // временное решение для удобства работы над фичей
-        path: ACCOUNTS,
-        component: Accounts
-    },
-    {
-        // временное решение для удобства работы над фичей
         path: ACCOUNT,
         component: AccountInfo
     },

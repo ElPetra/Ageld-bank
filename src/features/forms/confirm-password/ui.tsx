@@ -47,11 +47,7 @@ export const ConfirmPasswordForm = ({ isLast, setFormStep }: Props) => {
                 register={register}
                 label='password1'
                 variant='create'
-                error={
-                    (typeof errors.password1?.message === 'string' &&
-                        errors.password1?.message) ||
-                    ''
-                }
+                isError={!!errors.password1?.message}
             />
             <PasswordInput
                 register={register}

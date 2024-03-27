@@ -1,9 +1,12 @@
-import { Contacts, UserCard } from 'src/entities/user';
-import { Address } from 'src/entities/user';
+import { Link } from 'src/shared/ui';
+import { Address, Contacts, UserCard } from 'src/entities/user';
 import { Menu } from 'src/features/menu';
 import { ChangePasswordForm, EmailForm, SmsCodeForm } from 'src/features/forms';
 import { MultiStepForm } from 'src/features/multi-step-form';
-import { CheckboxGroup } from 'src/features/notifications/checkbox-group';
+import { CheckboxGroup } from 'src/widgets/notifications';
+import { Accounts } from 'src/widgets/accounts';
+
+import { options } from '../model';
 
 export const PersonalPage = () => {
     return (
@@ -55,7 +58,19 @@ export const PersonalPage = () => {
                 {
                     id: 3,
                     name: 'Уведомления',
-                    component: <CheckboxGroup />
+                    component: (
+                        <>
+                            <CheckboxGroup options={options} />
+                            <Link variant='underline' to='/'>
+                                История уведомлений
+                            </Link>
+                        </>
+                    )
+                },
+                {
+                    id: 4,
+                    name: 'Счета',
+                    component: <Accounts />
                 }
             ]}
         />
