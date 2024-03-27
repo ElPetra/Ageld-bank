@@ -22,8 +22,8 @@ export const RecoveryPasswordPage = () => {
                 },
                 {
                     id: 3,
-                    title: 'Придумайте пароль',
-                    component: <ConfirmPasswordForm variant='recovery' />
+                    title: 'Придумайте новый пароль',
+                    component: <ConfirmPasswordForm type='recovery' />
                 }
             ]}
         />

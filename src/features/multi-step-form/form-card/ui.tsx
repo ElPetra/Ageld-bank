@@ -6,7 +6,12 @@ import './styles.scss';
 
 interface Props {
     title: string;
-    variant?: 'login' | 'registration' | 'change-password' | 'none';
+    variant?:
+        | 'login'
+        | 'registration'
+        | 'change-password'
+        | 'recovery'
+        | 'none';
     children: ReactNode;
 }
 
