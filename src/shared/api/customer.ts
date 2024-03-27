@@ -44,7 +44,6 @@ export const customerApi = createApi({
             })
         }),
         refreshToken: builder.mutation<
-            //refreshToken не допилен запрос
             { accessToken: string, refreshToken: string },
             { refreshToken: string }
         >({
@@ -69,7 +68,7 @@ export const customerApi = createApi({
             { password: string, customerId: string }
         >({
             query: ({ password, customerId }) => ({
-                url: '/auth/recovery_password',
+                url: '/registry/recovery_password',
                 method: 'POST',
                 body: { password, customerId }
             })
@@ -79,7 +78,7 @@ export const customerApi = createApi({
             { uuid: string, password: string }
         >({
             query: ({ uuid, password }) => ({
-                url: '/auth/create_account',
+                url: '/registry/create_account',
                 method: 'POST',
                 body: { uuid, password }
             })
@@ -89,14 +88,14 @@ export const customerApi = createApi({
             string
         >({
             query: phoneNumber => ({
-                url: '/auth/check_status',
+                url: '/registry/check_status',
                 method: 'POST',
                 body: { phoneNumber }
             })
         }),
         checkRegistration: builder.mutation<{ customerId: string }, string>({
             query: phoneNumber => ({
-                url: '/auth/check_registration',
+                url: '/registry/check_registration',
                 method: 'POST',
                 body: { phoneNumber }
             })

@@ -35,7 +35,10 @@ export const SmsCodeForm = ({
         <Form
             onSubmit={handleSubmit(async data => {
                 const sms = data.sms.join('');
-                await checkCode(sms);
+                const phone = localStorage.getItem('phone');
+                if (phone) {
+                    await checkCode({ phoneNumber: phone, code: sms });
+                }
                 if (!error && setFormStep && !isLast) {
                     setFormStep(curr => curr + 1);
                 }
