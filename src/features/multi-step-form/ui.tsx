@@ -12,7 +12,7 @@ import type { Condition } from './model';
 
 import './styles.scss';
 
-type VariantType =
+export type VariantType =
     | 'login'
     | 'registration'
     | 'change-password'
