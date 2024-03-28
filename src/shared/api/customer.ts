@@ -13,7 +13,7 @@ export const customerApi = createApi({
     }),
     tagTypes: ['Customer'],
     endpoints: builder => ({
-        generateCode: builder.mutation<void, { phoneNumber: string }>({
+        generateCode: builder.mutation<string, { phoneNumber: string }>({
             query: phoneNumber => ({
                 url: '/auth/verification/generate_code',
                 method: 'POST',
@@ -21,7 +21,7 @@ export const customerApi = createApi({
             })
         }),
         checkCode: builder.mutation<
-            void,
+            string,
             { phoneNumber: string, code: string }
         >({
             query: ({ code, phoneNumber }) => ({
@@ -31,7 +31,7 @@ export const customerApi = createApi({
             })
         }),
         changePassword: builder.mutation<
-            void,
+            string,
             { oldPassword: string, newPassword: string, Authorization: string }
         >({
             query: ({ oldPassword, newPassword, Authorization }) => ({
@@ -50,7 +50,9 @@ export const customerApi = createApi({
             query: ({ refreshToken }) => ({
                 url: '/auth/refresh_token',
                 method: 'POST',
-                body: { refreshToken }
+                headers: {
+                    Refresh: `Bearer ${refreshToken}`
+                }
             })
         }),
         generateToken: builder.mutation<
@@ -75,12 +77,12 @@ export const customerApi = createApi({
         }),
         createAccount: builder.mutation<
             void,
-            { uuid: string, password: string }
+            { customerId: string, password: string }
         >({
-            query: ({ uuid, password }) => ({
+            query: ({ customerId, password }) => ({
                 url: '/registry/create_account',
                 method: 'POST',
-                body: { uuid, password }
+                body: { customerId, password }
             })
         }),
         checkStatus: builder.mutation<

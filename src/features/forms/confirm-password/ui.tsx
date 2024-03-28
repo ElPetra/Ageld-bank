@@ -37,7 +37,7 @@ export const ConfirmPasswordForm = ({ isLast, setFormStep }: Props) => {
     const onSubmit = (data: FieldValues) => {
         if (customerData?.customerId) {
             createAccount({
-                uuid: customerData?.customerId,
+                customerId: customerData?.customerId,
                 password: data.password1
             });
             if (setFormStep && !isLast) {
