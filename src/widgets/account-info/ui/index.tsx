@@ -1,6 +1,8 @@
 import { useParams } from 'react-router-dom';
 
-import { accounts } from 'src/widgets/accounts/model/mockAccounts';
+import { accounts } from 'src/widgets/accounts/model';
+
+import './styles.scss';
 
 export const AccountInfo = () => {
     const { id } = useParams();

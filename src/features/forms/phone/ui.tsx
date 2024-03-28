@@ -14,7 +14,7 @@ import {
 import type { FieldValues } from 'react-hook-form';
 
 interface Props {
-    variant?: 'login' | 'registration';
+    variant?: 'login' | 'registration' | 'recovery';
     isLast?: boolean;
     setFormStep?: Dispatch<SetStateAction<number>>;
 }
@@ -80,8 +80,7 @@ export const PhoneForm = ({
                         <Link
                             onClick={() => handleLinkClick(1)}
                             to={
-                                RouteName.MAIN_PAGE +
-                                'src/shared/ui/document/assets/terms-RBS.pdf'
+                                RouteName.MAIN_PAGE + 'src/assets/terms-RBS.pdf'
                             }
                             target='_blank'
                             rel='noreferrer'
@@ -92,8 +91,7 @@ export const PhoneForm = ({
                         &nbsp; и &nbsp;
                         <Link
                             to={
-                                RouteName.MAIN_PAGE +
-                                'src/shared/ui/document/assets/terms-RBS.pdf'
+                                RouteName.MAIN_PAGE + 'src/assets/terms-RBS.pdf'
                             }
                             onClick={() => handleLinkClick(2)}
                             target='_blank'

@@ -9,7 +9,7 @@ import type { NavLinkProps } from 'react-router-dom';
 import './styles.scss';
 
 interface Props extends NavLinkProps {
-    variant?: 'action';
+    variant?: 'action' | 'underline';
     children: ReactNode;
 }
 

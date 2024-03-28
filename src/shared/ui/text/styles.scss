@@ -39,9 +39,11 @@
   &.bold {
     font-weight: 700;
   }
+
   &.extra-bold {
-    font-weight: 700;
+    font-weight: 800;
   }
+
   &.center {
     text-align: center;
   }
@@ -57,9 +59,11 @@
   &.text-success{
     color: var(--text-success);
   }
+
   &.text-error{
     color: var(--text-error);
   }
+
   &.text-inherit{
     color: inherit;
   }

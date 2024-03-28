@@ -7,14 +7,15 @@ import { RegistrationPage } from 'src/pages/registration';
 import { RouteName } from 'src/shared/model';
 
 import { SuccessPage } from 'src/pages/success';
-import { Accounts } from 'src/widgets/accounts/ui/accounts';
-import { AccountInfo } from 'src/widgets/accounts/ui/info/ui';
+import { AccountInfo } from 'src/widgets/account-info';
 
 import { PersonalPage } from 'src/pages/personal';
 
 import { NotificationHistoryPage } from 'src/pages/notification/ui';
 import { useEffect } from 'react';
 import { useRefreshTokenMutation } from 'src/shared/api/index.js';
+
+import { RecoveryPasswordPage } from 'src/pages/recovery';
 
 import type { RouteDescription } from 'src/shared/model';
 
@@ -23,10 +24,10 @@ const {
     REGISTRATION_PAGE,
     LOGIN_PAGE,
     SUCCESS_PAGE,
-    ACCOUNTS,
     ACCOUNT,
     PERSONAL_AREA_PAGE,
-    NOTIFICATION_HISTORY_PAGE
+    NOTIFICATION_HISTORY_PAGE,
+    RECOVERY_PASSWORD_PAGE
 } = RouteName;
 
 const publicRoutes: RouteDescription[] = [
@@ -35,12 +36,6 @@ const publicRoutes: RouteDescription[] = [
         component: MainPage
     },
     {
-        // временное решение для удобства работы над фичей
-        path: ACCOUNTS,
-        component: Accounts
-    },
-    {
-        // временное решение для удобства работы над фичей
         path: ACCOUNT,
         component: AccountInfo
     },
@@ -63,6 +58,10 @@ const publicRoutes: RouteDescription[] = [
     {
         path: NOTIFICATION_HISTORY_PAGE,
         component: NotificationHistoryPage
+    },
+    {
+        path: RECOVERY_PASSWORD_PAGE,
+        component: RecoveryPasswordPage
     }
 ];
 

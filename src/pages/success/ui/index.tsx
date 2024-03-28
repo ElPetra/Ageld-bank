@@ -1,7 +1,9 @@
-import { Button, Icon, Link, Text } from 'src/shared/ui';
-import './styles.scss';
-import { RouteName } from 'src/shared/model';
 import { useLocation } from 'react-router-dom';
+
+import { Button, Icon, Link, Text } from 'src/shared/ui';
+import { RouteName } from 'src/shared/model';
+
+import './styles.scss';
 
 export const SuccessPage = () => {
     const location = useLocation();
@@ -20,7 +22,7 @@ export const SuccessPage = () => {
 
             {button && (
                 <Button type='button' variant='secondary'>
-                    <Link to={RouteName.MAIN_PAGE}>Войти в кабинет</Link>
+                    <Link to={RouteName.LOGIN_PAGE}>Войти в кабинет</Link>
                 </Button>
             )}
         </div>

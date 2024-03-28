@@ -17,9 +17,10 @@ import type { Dispatch, SetStateAction } from 'react';
 interface Props {
     isLast?: boolean;
     setFormStep?: Dispatch<SetStateAction<number>>;
+    type?: string;
 }
 
-export const ConfirmPasswordForm = ({ isLast, setFormStep }: Props) => {
+export const ConfirmPasswordForm = ({ isLast, setFormStep, type }: Props) => {
     const {
         register,
         handleSubmit,
@@ -58,16 +59,16 @@ export const ConfirmPasswordForm = ({ isLast, setFormStep }: Props) => {
                 register={register}
                 label='password1'
                 variant='create'
-                error={
-                    (typeof errors.password1?.message === 'string' &&
-                        errors.password1?.message) ||
-                    ''
-                }
+                isError={!!errors.password1?.message}
             />
             <PasswordInput
                 register={register}
                 label='password2'
-                placeholder='Подтвердите пароль'
+                placeholder={
+                    type === 'recovery'
+                        ? 'Подтвердите новый пароль'
+                        : 'Подтвердите пароль'
+                }
                 variant='confirm'
                 error={
                     (typeof errors.password2?.message === 'string' &&
@@ -81,7 +82,7 @@ export const ConfirmPasswordForm = ({ isLast, setFormStep }: Props) => {
                 type='submit'
                 disabled={!isDirty || !isValid}
             >
-                Зарегистрироваться
+                Отправить
             </Button>
         </Form>
     );

@@ -12,18 +12,25 @@ import type { Condition } from './model';
 
 import './styles.scss';
 
+export type VariantType =
+    | 'login'
+    | 'registration'
+    | 'change-password'
+    | 'recovery'
+    | 'none';
+
 interface Props {
+    variant?: VariantType;
     forms?: Form[];
     document?: Condition;
-    variant?: 'login' | 'registration' | 'change-password' | 'none';
     isFork?: boolean;
     to?: string;
 }
 
 export const MultiStepForm = ({
+    variant,
     forms,
     document,
-    variant = 'none',
     isFork,
     to
 }: Props) => {
