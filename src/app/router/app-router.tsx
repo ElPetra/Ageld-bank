@@ -14,7 +14,7 @@ import { PersonalPage } from 'src/pages/personal';
 
 import { NotificationHistoryPage } from 'src/pages/notification/ui';
 
-import { RecoveryPasswordPage } from 'src/pages/recovery/index.js';
+import { RecoveryPasswordPage } from 'src/pages/recovery';
 
 import type { RouteDescription } from 'src/shared/model';
 
