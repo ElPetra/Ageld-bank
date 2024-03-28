@@ -40,4 +40,6 @@ export type SvgIconNames =
     | 'wallet'
     | 'phone'
     | 'requisites'
-    | 'question-lady';
+    | 'question-lady'
+    | 'success-popup'
+    | 'error-popup';
