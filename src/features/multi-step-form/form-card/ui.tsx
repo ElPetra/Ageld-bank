@@ -1,12 +1,13 @@
 import { Link, Text } from 'src/shared/ui';
 
 import type { ReactNode } from 'react';
+import type { VariantType } from 'src/features/multi-step-form/ui';
 
 import './styles.scss';
 
 interface Props {
     title: string;
-    variant?: 'login' | 'registration' | 'change-password' | 'none';
+    variant?: VariantType;
     children: ReactNode;
 }
 

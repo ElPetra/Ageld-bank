@@ -74,8 +74,11 @@ export const PasswordInput = ({
             {variant === 'exist' && (
                 <div className='forgot-password-link'>
                     <Text size='xs'>
-                        <Link to={RouteName.MAIN_PAGE} variant='action'>
-                            Забыли пароль?
+                        <Link
+                            to={RouteName.RECOVERY_PASSWORD_PAGE}
+                            variant='action'
+                        >
+                            Восстановление пароля
                         </Link>
                     </Text>
                 </div>

@@ -14,9 +14,10 @@ import type { Dispatch, SetStateAction } from 'react';
 interface Props {
     isLast?: boolean;
     setFormStep?: Dispatch<SetStateAction<number>>;
+    type?: string;
 }
 
-export const ConfirmPasswordForm = ({ isLast, setFormStep }: Props) => {
+export const ConfirmPasswordForm = ({ isLast, setFormStep, type }: Props) => {
     const {
         register,
         handleSubmit,
@@ -36,7 +37,10 @@ export const ConfirmPasswordForm = ({ isLast, setFormStep }: Props) => {
 
         navigate('/success', {
             state: {
-                message: 'Кабинет пользователя успешно зарегистрирован.',
+                message:
+                    type === 'recovery'
+                        ? 'Пароль успешно восстановлен'
+                        : 'Кабинет пользователя успешно зарегистрирован.',
                 button: true
             }
         });
@@ -52,7 +56,11 @@ export const ConfirmPasswordForm = ({ isLast, setFormStep }: Props) => {
             <PasswordInput
                 register={register}
                 label='password2'
-                placeholder='Подтвердите пароль'
+                placeholder={
+                    type === 'recovery'
+                        ? 'Подтвердите новый пароль'
+                        : 'Подтвердите пароль'
+                }
                 variant='confirm'
                 error={
                     (typeof errors.password2?.message === 'string' &&
@@ -66,7 +74,7 @@ export const ConfirmPasswordForm = ({ isLast, setFormStep }: Props) => {
                 type='submit'
                 disabled={!isDirty || !isValid}
             >
-                Зарегистрироваться
+                Отправить
             </Button>
         </Form>
     );

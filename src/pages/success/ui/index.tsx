@@ -22,7 +22,7 @@ export const SuccessPage = () => {
 
             {button && (
                 <Button type='button' variant='secondary'>
-                    <Link to={RouteName.MAIN_PAGE}>Войти в кабинет</Link>
+                    <Link to={RouteName.LOGIN_PAGE}>Войти в кабинет</Link>
                 </Button>
             )}
         </div>
