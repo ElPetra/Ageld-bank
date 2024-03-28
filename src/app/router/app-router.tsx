@@ -67,18 +67,19 @@ const publicRoutes: RouteDescription[] = [
 ];
 
 export const AppRouter = () => {
-    const [refreshToken, { isError, isLoading }] = useRefreshTokenMutation();
+    // const [refreshToken, { isError, isLoading }] = useRefreshTokenMutation();
 
-    useEffect(() => {
-        const data = localStorage.getItem('refreshToken');
-        if (data) {
-            refreshToken({ refreshToken: data });
-        }
-    }, [refreshToken]);
+    // useEffect(() => {
+    //     const data = localStorage.getItem('refreshToken');
+    //     if (data) {
+    //         refreshToken({ refreshToken: data });
+    //     }
+    // }, [refreshToken]);
 
-    return isLoading ? (
-        <div>Загрузка...</div>
-    ) : (
+    // return isLoading ? (
+    //     <div>Загрузка...</div>
+    // ) :
+    return (
         <Routes>
             <Route path='/' element={<Layout />}>
                 {publicRoutes.map(({ path, component: Component }) => (

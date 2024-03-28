@@ -1,13 +1,15 @@
 import { Link } from 'src/shared/ui';
+import { useAuth } from 'src/shared/hooks/useAuth';
+import { useAppDispatch } from 'src/app/store/dispatch';
+import { removeUser } from 'src/app/store/slices/userSlice';
 
 import { links, privateLinks, publicLinks } from './config';
 
 import './styles.scss';
 
 export const Navigation = () => {
-    const isAuth = false;
-    // для будущего хука
-
+    const { isAuth } = useAuth();
+    const dispatch = useAppDispatch();
     return (
         <nav className='navigation'>
             <ul className='navigation-default'>
@@ -21,7 +23,14 @@ export const Navigation = () => {
                 {isAuth && (
                     <>
                         {privateLinks.map(el => (
-                            <Link key={el.text} to={el.href}>
+                            <Link
+                                key={el.text}
+                                to={el.href}
+                                onClick={() =>
+                                    el.text === 'Выйти' &&
+                                    dispatch(removeUser())
+                                }
+                            >
                                 {el.text}
                             </Link>
                         ))}

@@ -3,10 +3,21 @@ import { Icon, Link, Text } from 'src/shared/ui';
 import { RouteName } from 'src/shared/model';
 
 import './styles.scss';
+import { Modal } from 'src/shared/ui/modal';
 
 export const Greeting = () => {
+    // const messages = [
+    //     [
+    //         '300',
+    //         'This could be due to syntax errors or importing non-existent modulessyntax errors or importing non-existent modulessyntax errors or importing non-existent modulessyntax errors or importing non-existent modules'
+    //     ],
+    //     ['2', 'success'],
+    //     ['3', 'success'],
+    //     ['404', 'error']
+    // ];
     return (
         <div className='greeting'>
+            {/* <Modal messages={messages} /> */}
             <div className='greeting__logo'>
                 <Icon icon='logo-title' width={129} height={108} />
                 <Text tag='h1' size='xl' weight='bold' align='center'>
