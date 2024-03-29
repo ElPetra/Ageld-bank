@@ -12,6 +12,8 @@ export const BLOCKED_ACCOUNT = 'Заблокированный';
 export const CURRENT_ACCOUNT = 'Текущий счет';
 export const CREDIT_ACCOUNT = 'Кредитный счет';
 export const DEPOSIT_ACCOUNT = 'Депозитный счет';
+export const REQUESTED_ACCOUNT = 'Заявка на открытие счета';
+
 //валюты (фильтр)
 export const ALL_CURRENCY = 'Все';
 export const RUB = 'RUB';

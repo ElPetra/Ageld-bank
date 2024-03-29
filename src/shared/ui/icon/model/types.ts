@@ -9,6 +9,7 @@ export type SvgIconNames =
     | 'search'
     | 'clear'
     | 'telegram'
+    | 'copy'
     | 'odnoklassniki'
     | 'warning'
     | 'twitter'
@@ -40,4 +41,5 @@ export type SvgIconNames =
     | 'wallet'
     | 'phone'
     | 'requisites'
-    | 'question-lady';
+    | 'question-lady'
+    | 'more';

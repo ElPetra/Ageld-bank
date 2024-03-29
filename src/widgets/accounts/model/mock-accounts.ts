@@ -1,13 +1,19 @@
 import { type SvgIconNames } from 'src/shared/ui';
 
+export type Status = 'active' | 'closed' | 'requested' | 'blocked';
+
 export interface Account {
-    status: 'active' | 'closed' | 'requested' | 'blocked';
+    status: Status;
     id: string;
     balance: string;
     account_number: string;
     currency: Extract<'rub' | 'usd' | 'eur', SvgIconNames>;
     type: 'credit' | 'deposit' | 'current';
     main: boolean;
+    created: Date;
+    contract_number: string;
+    closed?: Date;
+    block_reason?: string;
 }
 
 export const accounts: Account[] = [
@@ -18,7 +24,9 @@ export const accounts: Account[] = [
         balance: '550',
         currency: 'rub',
         type: 'credit',
-        main: true
+        main: true,
+        created: new Date(),
+        contract_number: '12312312132211212312'
     },
     {
         status: 'closed',
@@ -27,7 +35,10 @@ export const accounts: Account[] = [
         balance: '900',
         currency: 'eur',
         type: 'credit',
-        main: false
+        main: false,
+        created: new Date(),
+        contract_number: '12312312132211212312',
+        closed: new Date()
     },
     {
         status: 'blocked',
@@ -36,7 +47,10 @@ export const accounts: Account[] = [
         balance: '10000',
         currency: 'usd',
         type: 'deposit',
-        main: false
+        main: false,
+        created: new Date(),
+        contract_number: '12312312132211212312',
+        block_reason: 'Плохо себя вёл'
     },
     {
         status: 'active',
@@ -45,6 +59,8 @@ export const accounts: Account[] = [
         balance: '10000',
         currency: 'usd',
         type: 'deposit',
-        main: false
+        main: false,
+        created: new Date(),
+        contract_number: '12312312132211212312'
     }
 ];

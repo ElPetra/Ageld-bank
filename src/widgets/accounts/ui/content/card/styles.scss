@@ -38,7 +38,8 @@
         padding: 4px 12px;
         border-radius: 12px;
         width: max-content;
-
+        display: flex;
+        align-items: center;
         &-type {
             &__main {
                 background-color: var(--bg-action);

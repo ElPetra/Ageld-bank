@@ -1,6 +1,7 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import { Icon, Text } from 'src/shared/ui';
+import { checkAccountAvailable } from 'src/widgets/accounts/lib';
 import { RouteName } from 'src/shared/model';
 
 import {
@@ -11,37 +12,47 @@ import {
     CLOSED_ACCOUNT,
     CREDIT_ACCOUNT,
     CURRENT_ACCOUNT,
-    DEPOSIT_ACCOUNT
+    DEPOSIT_ACCOUNT,
+    REQUESTED_ACCOUNT
 } from '../../../model';
 
 import './styles.scss';
 
-const accountTypes = {
+export const accountTypes = {
     credit: CREDIT_ACCOUNT,
     deposit: DEPOSIT_ACCOUNT,
     current: CURRENT_ACCOUNT
 };
 
-const accountStatuses = {
+export const accountStatuses = {
     active: ACTIVE_ACCOUNT,
     closed: CLOSED_ACCOUNT,
-    blocked: BLOCKED_ACCOUNT
+    blocked: BLOCKED_ACCOUNT,
+    requested: REQUESTED_ACCOUNT
 };
 
 interface Props {
     account: Account;
 }
 
-const currencyMatcher = {
+export const currencyMatcher = {
     rub: '₽',
     usd: '$',
     eur: '€'
 };
 
 export const AccountCard = ({ account }: Props) => {
+    const { pathname } = useLocation();
+    const isAvailable = checkAccountAvailable(account);
+    if (!isAvailable) {
+        return null;
+    }
     return (
         <div key={account.id} className='account__card'>
-            <Link to={RouteName.ACCOUNTS + '/' + account.id}>
+            <Link
+                to={RouteName.ACCOUNTS + '/' + account.id}
+                state={{ from: pathname }}
+            >
                 <div className='account__card__container'>
                     <div>
                         <Icon widthAndHeight={40} icon={account.currency} />
