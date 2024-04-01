@@ -9,6 +9,7 @@ export type SvgIconNames =
     | 'search'
     | 'clear'
     | 'telegram'
+    | 'copy'
     | 'odnoklassniki'
     | 'warning'
     | 'twitter'
@@ -42,4 +43,5 @@ export type SvgIconNames =
     | 'requisites'
     | 'question-lady'
     | 'success-popup'
-    | 'error-popup';
+    | 'error-popup'
+    | 'more';

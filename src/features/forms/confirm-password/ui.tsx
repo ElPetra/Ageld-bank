@@ -24,10 +24,10 @@ export const ConfirmPasswordForm = ({ isLast, setFormStep, type }: Props) => {
     const {
         register,
         handleSubmit,
-        formState: { errors, isDirty, isValid }
+        formState: { errors, isDirty }
     } = useForm<FieldValues>({
-        mode: 'onTouched',
-        reValidateMode: 'onChange',
+        mode: 'onSubmit',
+        reValidateMode: 'onSubmit',
         defaultValues: { password1: '', password2: '' },
         resolver: yupResolver<FieldValues>(confirmPasswordSchema)
     });
@@ -80,7 +80,7 @@ export const ConfirmPasswordForm = ({ isLast, setFormStep, type }: Props) => {
                 variant='secondary'
                 size='large'
                 type='submit'
-                disabled={!isDirty || !isValid}
+                disabled={!isDirty}
             >
                 Отправить
             </Button>

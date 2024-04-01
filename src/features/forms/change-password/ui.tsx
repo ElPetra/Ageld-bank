@@ -21,11 +21,11 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
     const {
         register,
         handleSubmit,
-        formState: { errors, isDirty, isValid }
+        formState: { errors, isDirty }
     } = useForm<FieldValues>({
-        mode: 'onTouched',
-        reValidateMode: 'onChange',
-        defaultValues: { password1: '', current_password: '' },
+        mode: 'onSubmit',
+        reValidateMode: 'onSubmit',
+        defaultValues: { password1: '' },
         resolver: yupResolver<FieldValues>(changePasswordSchema)
     });
 
@@ -67,7 +67,11 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
                     label='password1'
                     variant='create'
                     placeholder='Новый пароль'
-                    isError={!!errors.password1?.message}
+                    error={
+                        (typeof errors.password1?.message === 'string' &&
+                            errors.password1?.message) ||
+                        ''
+                    }
                 />
                 <PasswordInput
                     size='medium'
@@ -86,7 +90,7 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
                 variant='secondary'
                 size='medium'
                 type='submit'
-                disabled={!isDirty || !isValid}
+                disabled={!isDirty}
             >
                 Продолжить
             </Button>
