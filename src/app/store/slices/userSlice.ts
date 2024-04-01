@@ -25,6 +25,9 @@ const userSlice = createSlice({
             state.phone = null;
             state.accessToken = null;
             state.refreshToken = null;
+            localStorage.removeItem('refreshToken');
+            localStorage.removeItem('accessToken');
+            localStorage.removeItem('phone');
         }
     }
 });
