@@ -6,6 +6,8 @@ import { MultiStepForm } from 'src/features/multi-step-form';
 import { CheckboxGroup } from 'src/widgets/notifications';
 import { Accounts } from 'src/widgets/accounts';
 
+import { Cards } from 'src/widgets/cards/index.js';
+
 import { options } from '../model';
 
 export const PersonalPage = () => {
@@ -71,6 +73,11 @@ export const PersonalPage = () => {
                     id: 4,
                     name: 'Счета',
                     component: <Accounts />
+                },
+                {
+                    id: 5,
+                    name: 'Карты',
+                    component: <Cards />
                 }
             ]}
         />
