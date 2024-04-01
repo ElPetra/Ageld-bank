@@ -18,10 +18,10 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
     const {
         register,
         handleSubmit,
-        formState: { errors, isDirty, isValid }
+        formState: { errors, isDirty }
     } = useForm<FieldValues>({
-        mode: 'onTouched',
-        reValidateMode: 'onChange',
+        mode: 'onSubmit',
+        reValidateMode: 'onSubmit',
         defaultValues: { password1: '' },
         resolver: yupResolver<FieldValues>(changePasswordSchema)
     });
@@ -75,7 +75,7 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
                 variant='secondary'
                 size='medium'
                 type='submit'
-                disabled={!isDirty || !isValid}
+                disabled={!isDirty}
             >
                 Продолжить
             </Button>
