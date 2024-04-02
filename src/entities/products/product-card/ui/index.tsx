@@ -1,4 +1,4 @@
-import { Text, Icon } from 'src/shared/ui';
+import { Icon, Text } from 'src/shared/ui';
 
 import type { Product } from 'src/shared/model';
 
@@ -21,11 +21,14 @@ export const ProductCard = ({ product }: Props) => {
                 </div>
             </div>
             <div className='product-card__second-row'>
-                <Text size='s'>
-                    {product.cardNumber.substring(12, 16) +
-                        ' ' +
-                        product.paymentSystem}
-                </Text>
+                <div className={`product-card__preview ${product.level}`}>
+                    <div className='product-card__number'>
+                        {product.cardNumber.substring(12, 16)}
+                    </div>
+                    <div className='product-card__payment-system'>
+                        {product.paymentSystem}
+                    </div>
+                </div>
                 <Text size='xs'>
                     {product.expirationAt.split('-')[1] +
                         '/' +

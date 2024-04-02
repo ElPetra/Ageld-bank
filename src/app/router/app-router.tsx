@@ -18,19 +18,19 @@ import { RecoveryPasswordPage } from 'src/pages/recovery';
 import type { RouteDescription } from 'src/shared/model';
 
 const {
-    MAIN_PAGE,
+    MAIN_PAGE_BASE,
     REGISTRATION_PAGE,
     LOGIN_PAGE,
     SUCCESS_PAGE,
     ACCOUNT,
-    PERSONAL_AREA_PAGE,
+    PERSONAL_PAGE_BASE,
     NOTIFICATION_HISTORY_PAGE,
     RECOVERY_PASSWORD_PAGE
 } = RouteName;
 
 const publicRoutes: RouteDescription[] = [
     {
-        path: MAIN_PAGE,
+        path: MAIN_PAGE_BASE + '/:id',
         component: MainPage
     },
     {
@@ -46,7 +46,7 @@ const publicRoutes: RouteDescription[] = [
         component: AuthorizationPage
     },
     {
-        path: PERSONAL_AREA_PAGE,
+        path: PERSONAL_PAGE_BASE + '/:id',
         component: PersonalPage
     },
     {

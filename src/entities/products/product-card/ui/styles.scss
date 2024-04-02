@@ -23,6 +23,46 @@
       display: flex;
       align-items: flex-end;
     }
+
+    .product-card__preview {
+      width: 50px;
+      height: 30px;
+      border-radius: 4px;
+      padding: 4px;
+      color: var(--text-secondary);
+      display: flex;
+      justify-content: space-between;
+
+      &.classic {
+        background: #e6342a;
+      }
+
+      &.classic-junior {
+        background: #f76705;
+      }
+
+      &.gold {
+        background: #ebc500;
+      }
+
+      &.platinum {
+        background: #c5c1b4;
+      }
+
+      &.premium {
+        background: #000000;
+      }
+
+      .product-card__number {
+        font-size: 10px;
+        line-height: 12px;
+      }
+
+      .product-card__payment-system {
+        font-size: 6px;
+        line-height: 12px;
+      }
+    }
   }
 }
 
