@@ -15,6 +15,8 @@ import { NotificationHistoryPage } from 'src/pages/notification/ui';
 
 import { RecoveryPasswordPage } from 'src/pages/recovery';
 
+import { CardInfo } from 'src/widgets/card-info/index.js';
+
 import type { RouteDescription } from 'src/shared/model';
 
 const {
@@ -23,6 +25,7 @@ const {
     LOGIN_PAGE,
     SUCCESS_PAGE,
     ACCOUNT,
+    CARD,
     PERSONAL_AREA_PAGE,
     NOTIFICATION_HISTORY_PAGE,
     RECOVERY_PASSWORD_PAGE
@@ -36,6 +39,10 @@ const publicRoutes: RouteDescription[] = [
     {
         path: ACCOUNT,
         component: AccountInfo
+    },
+    {
+        path: CARD,
+        component: CardInfo
     },
     {
         path: REGISTRATION_PAGE,
