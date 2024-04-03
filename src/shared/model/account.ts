@@ -1,3 +1,5 @@
+import { currency } from 'src/shared/model';
+
 export type Status = 'active' | 'closed' | 'requested' | 'blocked';
 
 export interface Account {
@@ -6,7 +8,7 @@ export interface Account {
     type: 'credit' | 'deposit' | 'current';
     balance: string;
     status: Status;
-    currency: 'rub' | 'usd' | 'eur';
+    currency: currency;
     master: boolean;
     created: Date;
     closed?: Date;

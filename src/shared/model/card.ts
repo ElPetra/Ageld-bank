@@ -1,3 +1,5 @@
+import { currency } from 'src/shared/model';
+
 export interface Card {
     balance: number;
     number: string;
@@ -5,5 +7,5 @@ export interface Card {
     name: string;
     level: 'classic' | 'classic-junior' | 'gold' | 'platinum' | 'premium';
     paymentSystem: 'МИР' | 'VISA';
-    currency: 'rub' | 'usd' | 'eur';
+    currency: currency;
 }
