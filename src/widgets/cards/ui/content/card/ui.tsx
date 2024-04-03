@@ -2,11 +2,11 @@ import { Link, useLocation } from 'react-router-dom';
 import { Button, Text } from 'src/shared/ui';
 import { RouteName } from 'src/shared/model';
 
+import { Icon } from 'src/shared/ui';
+
 import type { Card } from 'src/widgets/cards/model';
 
 import './styles.scss';
-import { Icon } from 'src/shared/ui';
-import { useEffect } from 'react';
 
 interface Props {
     card: Card;
@@ -14,9 +14,6 @@ interface Props {
 
 export const FinanceCard = ({ card }: Props) => {
     const { pathname } = useLocation();
-    useEffect(() => {
-        //console.log(card);
-    }, []);
 
     return (
         <Link to={RouteName.CARDS + '/' + card.id} state={{ from: pathname }}>

@@ -1,20 +1,17 @@
 import { Text } from 'src/shared/ui';
 
-import { cards, ALL_CURRENCY, DEBET_CARD, СREDIT_CARD } from '../../model';
+import { ALL_CURRENCY, DEBET_CARD, СREDIT_CARD } from '../../model';
 
 import './styles.scss';
-import { FiltersBar } from 'src/widgets/accounts/ui/filter/index.js';
-import { useAccountsFilter } from 'src/widgets/accounts/lib/index.js';
-import { accounts } from 'src/widgets/accounts/model/index.js';
-import { useCardsFilter } from 'src/widgets/cards/lib/index.js';
+import type { Dispatch, SetStateAction } from 'react';
 
 interface CardFilter {
     text: string;
 }
-
-interface Props {
-    current: string;
-    setCurrent: (el: string) => void;
+type CurrencyType = 'Кредитная' | 'Дебетовая' | 'Все';
+interface FiltersCardBarProps {
+    current: CurrencyType;
+    setCurrent: Dispatch<SetStateAction<CurrencyType>>;
 }
 
 const filters: CardFilter[] = [
@@ -23,15 +20,16 @@ const filters: CardFilter[] = [
     { text: СREDIT_CARD }
 ];
 
-export const FiltersCardBar = ({ current, setCurrent }: Props) => {
-    const [[currency, setCurrency], getSelectedAccounts] =
-        useCardsFilter(cards);
+export const FiltersCardBar = ({
+    current,
+    setCurrent
+}: FiltersCardBarProps) => {
     return (
         <div className='filters'>
             <div className='account__filters-bar'>
                 {filters.map((el, i) => (
                     <button
-                        onClick={() => setCurrent(el.text)}
+                        onClick={() => setCurrent(el.text as CurrencyType)}
                         key={i}
                         className={`account__filters-bar__button ${current === el.text ? 'active' : ''}`}
                     >
@@ -39,7 +37,6 @@ export const FiltersCardBar = ({ current, setCurrent }: Props) => {
                     </button>
                 ))}
             </div>
-            <FiltersBar current={currency} setCurrent={setCurrency} />
         </div>
     );
 };
