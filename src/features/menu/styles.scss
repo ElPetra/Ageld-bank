@@ -14,9 +14,16 @@
     padding-top: 16px;
     min-height: 56px;
     display: flex;
-    column-gap: 24px;
     row-gap: 8px;
     flex-wrap: wrap;
+
+    &.primary {
+      column-gap: 32px;
+    }
+
+    &.secondary {
+      column-gap: 24px;
+    }
   }
 
   &__item {
