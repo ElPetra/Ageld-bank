@@ -5,6 +5,7 @@ import { Button, Form } from 'src/shared/ui';
 import { useGenerateTokenMutation } from 'src/shared/api';
 import { setUser } from 'src/app/store/slices/userSlice';
 import { useAppDispatch } from 'src/app/store/dispatch';
+import { getErrorMessage } from 'src/shared/lib';
 
 import { type FieldValues, useForm } from 'react-hook-form';
 
@@ -19,7 +20,7 @@ export const EnterPasswordForm = ({ isLast, setFormStep }: Props) => {
     const {
         register,
         handleSubmit,
-        formState: { errors, isDirty, isValid }
+        formState: { isDirty, isValid }
     } = useForm<FieldValues>({
         mode: 'onTouched',
         reValidateMode: 'onChange',
@@ -36,30 +37,29 @@ export const EnterPasswordForm = ({ isLast, setFormStep }: Props) => {
                 phoneNumber: phone,
                 password: data.password
             })
+                .unwrap()
                 .then(data => {
-                    if ('data' in data) {
-                        const accessToken = data.data.accessToken;
-                        const refreshToken = data.data.refreshToken;
-                        dispatch(
-                            setUser({
-                                phone: phone,
-                                accessToken: accessToken,
-                                refreshToken: refreshToken
-                            })
-                        );
-                        localStorage.setItem('accessToken', accessToken);
-                        localStorage.setItem('refreshToken', refreshToken);
+                    const accessToken = data.accessToken;
+                    const refreshToken = data.refreshToken;
+                    dispatch(
+                        setUser({
+                            phone: phone,
+                            accessToken: accessToken,
+                            refreshToken: refreshToken
+                        })
+                    );
+                    localStorage.setItem('accessToken', accessToken);
+                    localStorage.setItem('refreshToken', refreshToken);
+                    if (accessToken && refreshToken) {
+                        navigate('/success', {
+                            state: {
+                                message: 'Вход выполнен.',
+                                button: false
+                            }
+                        });
                     }
-                })
-                .then(() =>
-                    navigate('/success', {
-                        state: {
-                            message: 'Вход выполнен.',
-                            button: false
-                        }
-                    })
-                );
-            if (!error && setFormStep && !isLast) {
+                });
+            if (setFormStep && !isLast) {
                 setFormStep(curr => curr + 1);
             }
         }
@@ -70,10 +70,7 @@ export const EnterPasswordForm = ({ isLast, setFormStep }: Props) => {
             <PasswordInput
                 register={register}
                 label='password'
-                error={
-                    errors?.password &&
-                    'Пароль должен содержать от 6 до 20 символов'
-                }
+                error={getErrorMessage(error)}
             />
             <Button
                 variant='secondary'

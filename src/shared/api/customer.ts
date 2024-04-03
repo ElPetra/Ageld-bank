@@ -9,7 +9,8 @@ export const customerApi = createApi({
         prepareHeaders: headers => {
             headers.set('content-type', 'application/json');
             return headers;
-        }
+        },
+        responseHandler: response => response.text()
     }),
     tagTypes: ['Customer'],
     endpoints: builder => ({
@@ -52,7 +53,8 @@ export const customerApi = createApi({
                 method: 'POST',
                 headers: {
                     Refresh: `Bearer ${refreshToken}`
-                }
+                },
+                responseHandler: response => response.json()
             })
         }),
         generateToken: builder.mutation<
@@ -62,7 +64,8 @@ export const customerApi = createApi({
             query: ({ phoneNumber, password }) => ({
                 url: '/auth/generate_token',
                 method: 'POST',
-                body: { phoneNumber, password }
+                body: { phoneNumber, password },
+                responseHandler: response => response.json()
             })
         }),
         recoveryPassword: builder.mutation<

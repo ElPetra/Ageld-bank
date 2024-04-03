@@ -29,28 +29,29 @@ export const SmsCodeForm = ({
         defaultValues: { sms: '' }
     });
 
-    const [checkCode, { error }] = useCheckCodeMutation();
-
+    const [checkCode, { error: checkCodeError }] = useCheckCodeMutation();
+    const onSubmit = (data: FieldValues) => {
+        const sms = data.sms.join('');
+        const phone = localStorage.getItem('phone');
+        if (phone) {
+            checkCode({ phoneNumber: phone, code: sms })
+                .unwrap()
+                .then(() => {
+                    if (setFormStep && !isLast) {
+                        setFormStep(curr => curr + 1);
+                    }
+                });
+        }
+    };
     return (
-        <Form
-            onSubmit={handleSubmit(async data => {
-                const sms = data.sms.join('');
-                const phone = localStorage.getItem('phone');
-                if (phone) {
-                    await checkCode({ phoneNumber: phone, code: sms });
-                }
-                if (!error && setFormStep && !isLast) {
-                    setFormStep(curr => curr + 1);
-                }
-            })}
-        >
+        <Form onSubmit={handleSubmit(onSubmit)}>
             <Text size='xs'>
                 На Ваш номер телефона отправлен 6-значный код подтверждения
             </Text>
             <CodeInput
                 label='sms'
                 register={register}
-                error={getErrorMessage(error)}
+                error={getErrorMessage(checkCodeError)}
             />
             <Button
                 variant='secondary'

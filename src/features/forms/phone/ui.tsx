@@ -6,10 +6,7 @@ import { RouteName } from 'src/shared/model';
 import { getErrorMessage } from 'src/shared/lib';
 
 import { type Dispatch, type SetStateAction, useState } from 'react';
-import {
-    useCheckRegistrationMutation,
-    useGenerateCodeMutation
-} from 'src/shared/api';
+import { useGenerateCodeMutation } from 'src/shared/api';
 
 import type { FieldValues } from 'react-hook-form';
 
@@ -34,44 +31,37 @@ export const PhoneForm = ({
         reValidateMode: 'onChange',
         defaultValues: { phone: '' }
     });
-    const [checkRegistration, { error }] = useCheckRegistrationMutation();
-    const [generateCode] = useGenerateCodeMutation();
-
+    const [generateCode, { error: generateCodeError }] =
+        useGenerateCodeMutation();
     const handleLinkClick = (linkId: number) => {
         if (!clickedLinks.includes(linkId)) {
             setClickedLinks([...clickedLinks, linkId]);
         }
     };
     const allLinksClicked = clickedLinks.length === 2;
-
-    return (
-        <Form
-            onSubmit={handleSubmit(async data => {
-                const phone = data.phone.replace(/\D/gm, '');
-                if (variant === 'registration') {
-                    await checkRegistration(phone);
-                    await generateCode(phone);
-                }
-                if (variant === 'login') {
-                    await checkRegistration(phone);
-                    await generateCode(phone);
-                }
-                if (!error) {
+    const onSubmit = (data: FieldValues) => {
+        const phone = data.phone.replace(/\D/gm, '');
+        if (variant === 'login') {
+            generateCode(phone)
+                .unwrap()
+                .then(() => {
                     localStorage.setItem('phone', phone);
-                }
-                if (!error && setFormStep && !isLast) {
-                    setFormStep(curr => {
-                        return curr + 1;
-                    });
-                }
-            })}
-        >
+                    if (setFormStep && !isLast) {
+                        setFormStep(curr => {
+                            return curr + 1;
+                        });
+                    }
+                });
+        }
+    };
+    return (
+        <Form onSubmit={handleSubmit(onSubmit)}>
             <PhoneInput
                 clear={() => setValue('phone', '')}
                 label={'phone'}
                 register={register}
                 isError={!!errors?.phone}
-                error={getErrorMessage(error)}
+                error={getErrorMessage(generateCodeError)}
             />
             {variant === 'registration' && (
                 <>
