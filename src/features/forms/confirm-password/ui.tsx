@@ -1,13 +1,10 @@
-import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
 
 import { PasswordInput } from 'src/features/inputs';
 import { Button, Form } from 'src/shared/ui';
-import {
-    useCheckRegistrationMutation,
-    useCreateAccountMutation
-} from 'src/shared/api';
+import { useNavigate } from 'react-router-dom';
+
+import { yupResolver } from '@hookform/resolvers/yup';
 
 import { confirmPasswordSchema } from './confirmPasswordSchema';
 
@@ -32,27 +29,22 @@ export const ConfirmPasswordForm = ({ isLast, setFormStep, type }: Props) => {
         resolver: yupResolver<FieldValues>(confirmPasswordSchema)
     });
     const navigate = useNavigate();
-    const [createAccount] = useCreateAccountMutation();
-    const [, { data: customerData }] = useCheckRegistrationMutation();
-
     const onSubmit = (data: FieldValues) => {
-        if (customerData?.customerId) {
-            createAccount({
-                customerId: customerData?.customerId,
-                password: data.password1
-            });
-            if (setFormStep && !isLast) {
-                setFormStep(curr => curr + 1);
-            }
-            navigate('/success', {
-                state: {
-                    message: 'Кабинет пользователя успешно зарегистрирован.',
-                    button: true
-                }
-            });
+        if (setFormStep && !isLast) {
+            setFormStep(curr => curr + 1);
         }
-    };
+        console.log(data);
 
+        navigate('/success', {
+            state: {
+                message:
+                    type === 'recovery'
+                        ? 'Пароль успешно восстановлен'
+                        : 'Кабинет пользователя успешно зарегистрирован.',
+                button: true
+            }
+        });
+    };
     return (
         <Form onSubmit={handleSubmit(onSubmit)}>
             <PasswordInput

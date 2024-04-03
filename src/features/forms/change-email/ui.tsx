@@ -1,12 +1,11 @@
-import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 import { EmailInput } from 'src/features/inputs';
 import { Button, Form } from 'src/shared/ui';
-import { useNewEmailMutation, useAddEmailMutation } from 'src/shared/api';
-import { getErrorMessage } from 'src/shared/lib';
+
+import { useState } from 'react';
 
 import type { FieldValues } from 'react-hook-form';
 
@@ -44,34 +43,13 @@ export const EmailForm = ({ email }: Props) => {
     });
     const [isClicked, setIsClicked] = useState<boolean>(false);
 
-    const [newEmail, { error: newError }] = useNewEmailMutation();
-    const [addEmail, { error: addError }] = useAddEmailMutation();
-
     return (
-        <Form
-            onSubmit={handleSubmit(data => {
-                const accessToken = localStorage.getItem('accessToken');
-                if (accessToken) {
-                    if (email) {
-                        newEmail({
-                            Authorization: accessToken,
-                            email: data.email
-                        });
-                    } else {
-                        addEmail({
-                            Authorization: accessToken,
-                            email: data.email
-                        });
-                    }
-                }
-            })}
-        >
+        <Form onSubmit={handleSubmit(data => {})}>
             <EmailInput
                 label={'email'}
                 register={register}
                 error={
-                    (getErrorMessage(email ? newError : addError) &&
-                        typeof errors.email?.message === 'string' &&
+                    (typeof errors.email?.message === 'string' &&
                         errors.email?.message) ||
                     ''
                 }

@@ -1,16 +1,13 @@
-import { yupResolver } from '@hookform/resolvers/yup';
-
 import { PasswordInput } from 'src/features/inputs';
 import { Button, Form } from 'src/shared/ui';
-import { useChangePasswordMutation } from 'src/shared/api';
-import { getErrorMessage } from 'src/shared/lib';
+import './styles.scss';
 
 import { type FieldValues, useForm } from 'react-hook-form';
+
 import { type Dispatch, type SetStateAction } from 'react';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 import { changePasswordSchema } from './changePasswordShema';
-
-import './styles.scss';
 
 interface Props {
     isLast?: boolean;
@@ -28,23 +25,12 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
         defaultValues: { password1: '' },
         resolver: yupResolver<FieldValues>(changePasswordSchema)
     });
-
-    const [changePassword, { error }] = useChangePasswordMutation();
-
     const onSubmit = (data: FieldValues) => {
-        const accessToken = localStorage.getItem('accessToken');
-        if (accessToken) {
-            changePassword({
-                oldPassword: data.current_password,
-                newPassword: data.password1,
-                Authorization: accessToken
-            });
-            if (setFormStep && !isLast) {
-                setFormStep(curr => curr + 1);
-            }
+        if (setFormStep && !isLast) {
+            setFormStep(curr => curr + 1);
         }
+        console.log(data);
     };
-
     return (
         <Form onSubmit={handleSubmit(onSubmit)}>
             <div className='row'>
@@ -55,7 +41,6 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
                     variant='confirm'
                     placeholder='Текущий пароль'
                     error={
-                        getErrorMessage(error) ||
                         (typeof errors.current_password?.message === 'string' &&
                             errors.current_password?.message) ||
                         ''
