@@ -2,7 +2,7 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { customerApi } from 'src/shared/api';
 
 import userSlice from './slices/userSlice';
-import { errorHandling } from './middleware/errorHandling';
+import { actionHandling } from './middleware/actionHandling';
 
 const rootReducers = combineReducers({
     user: userSlice,
@@ -12,7 +12,7 @@ const rootReducers = combineReducers({
 export const store = configureStore({
     reducer: rootReducers,
     middleware: getDefaultMiddleware =>
-        getDefaultMiddleware().concat(customerApi.middleware, errorHandling)
+        getDefaultMiddleware().concat(customerApi.middleware, actionHandling)
 });
 
 export type RootState = ReturnType<typeof store.getState>;
