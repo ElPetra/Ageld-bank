@@ -1,4 +1,4 @@
-.product-card {
+.card-card {
   border-radius: var(--border-radius);
   background: var(--bg-quadruple);
   padding: 16px;
@@ -24,7 +24,7 @@
       align-items: flex-end;
     }
 
-    .product-card__preview {
+    .card-card__preview {
       width: 50px;
       height: 30px;
       border-radius: 4px;
@@ -53,12 +53,12 @@
         background: #000000;
       }
 
-      .product-card__number {
+      .card-card__number {
         font-size: 10px;
         line-height: 12px;
       }
 
-      .product-card__payment-system {
+      .card-card__payment-system {
         font-size: 6px;
         line-height: 12px;
       }

@@ -1,5 +1,5 @@
 import { Fragment, useState } from 'react';
-import { NavLink, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 import { Text } from 'src/shared/ui';
 import { RouteName } from 'src/shared/model';
@@ -22,7 +22,7 @@ interface Props {
 }
 
 export const Menu = ({
-    href = RouteName.MAIN_PAGE_BASE,
+    href = RouteName.MAIN_PAGE,
     variant = 'primary',
     elements,
     children
@@ -37,12 +37,12 @@ export const Menu = ({
                     {elements?.map(el => (
                         <Fragment key={el.id}>
                             {variant === 'primary' ? (
-                                <NavLink
+                                <Link
                                     to={href + '/' + String(el.id)}
-                                    className='menu__item'
+                                    className={`menu__item ${(Number(id) || 1) === el.id && 'active'} `}
                                 >
                                     <Text weight='medium'>{el.name}</Text>
-                                </NavLink>
+                                </Link>
                             ) : (
                                 <button
                                     className={`menu__item ${index === el.id && 'active'} `}
@@ -60,8 +60,8 @@ export const Menu = ({
                 {variant === 'primary' ? (
                     <>
                         {elements &&
-                            Number(id) <= elements.length &&
-                            elements[Number(id) - 1].component}
+                            (Number(id) || 1) <= elements.length &&
+                            elements[(Number(id) || 1) - 1].component}
                     </>
                 ) : (
                     <>{elements && elements[index - 1].component}</>

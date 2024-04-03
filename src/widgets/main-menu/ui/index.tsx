@@ -1,45 +1,77 @@
 import { Link } from 'react-router-dom';
 
-import { Button } from 'src/shared/ui';
-import { ProductCard } from 'src/entities/products';
 import { SearchForm } from 'src/features/forms';
+import { AccountCard } from 'src/entities/accounts';
+import { CardCard } from 'src/entities/cards';
+import { Button } from 'src/shared/ui';
 
-import { CARDS, PAYMENTS, RouteName, TRANSFERS } from 'src/shared/model';
+import {
+    ACCOUNTS,
+    CARDS,
+    PAYMENTS,
+    RouteName,
+    TRANSFERS
+} from 'src/shared/model';
 
 import { MainMenuBlock } from './block';
 import { MainMenuCard } from './card';
 
-import type { Product } from 'src/shared/model';
+import type { Card, Account } from 'src/shared/model';
 
 import './styles.scss';
 
-const products: Product[] = [
+const cards: Card[] = [
     {
         balance: 30000,
-        cardNumber: '1234********3456',
+        number: '1234********3456',
         expirationAt: '2026-02-19',
-        nameProduct: 'Базовая',
+        name: 'Базовая',
         level: 'classic',
         paymentSystem: 'МИР',
-        currencyName: 'rub'
+        currency: 'rub'
     },
     {
         balance: 20000,
-        cardNumber: '1234********0011',
+        number: '1234********0011',
         expirationAt: '2027-11-19',
-        nameProduct: 'Базовая',
+        name: 'Базовая',
         level: 'classic-junior',
         paymentSystem: 'VISA',
-        currencyName: 'eur'
+        currency: 'eur'
     },
     {
         balance: 15000,
-        cardNumber: '1234********3322',
+        number: '1234********3322',
         expirationAt: '2027-05-19',
-        nameProduct: 'Кредитная',
+        name: 'Кредитная',
         level: 'gold',
         paymentSystem: 'VISA',
-        currencyName: 'usd'
+        currency: 'usd'
+    }
+];
+
+export const accounts: Account[] = [
+    {
+        status: 'active',
+        number: '3212131213211111',
+        id: 'qwerty_1',
+        balance: '550',
+        currency: 'rub',
+        type: 'credit',
+        master: true,
+        created: new Date(),
+        contractNumber: '12312312132211212312'
+    },
+    {
+        status: 'active',
+        number: '321213121322211111',
+        id: 'qwerty_4',
+        balance: '10000',
+        currency: 'usd',
+        type: 'deposit',
+        master: false,
+        created: new Date(),
+        contractNumber: '12312312132211212312'
     }
 ];
 
@@ -48,21 +80,21 @@ export const MainMenu = () => {
         <div className='main-menu'>
             <div className='main-menu__first-col'>
                 <MainMenuBlock
-                    title='Мои продукты'
-                    href={RouteName.MAIN_PAGE_BASE + CARDS}
+                    title='Мои карты'
+                    href={RouteName.MAIN_PAGE + CARDS}
                 >
-                    {products.map(el => (
-                        <ProductCard key={el.cardNumber} product={el} />
+                    {cards.map(el => (
+                        <CardCard key={el.number} card={el} />
                     ))}
                 </MainMenuBlock>
-                <Link to={RouteName.MAIN_PAGE_BASE + CARDS}>
+                <Link to={RouteName.MAIN_PAGE + CARDS}>
                     <Button
                         variant='secondary'
                         size='medium'
                         width='max'
                         type='button'
                     >
-                        Новый продукт
+                        Новая карта
                     </Button>
                 </Link>
             </div>
@@ -70,7 +102,7 @@ export const MainMenu = () => {
                 <SearchForm />
                 <MainMenuBlock
                     title='Переводы'
-                    href={RouteName.MAIN_PAGE_BASE + TRANSFERS}
+                    href={RouteName.MAIN_PAGE + TRANSFERS}
                 >
                     <div className='main-menu__4'>
                         <MainMenuCard
@@ -88,7 +120,7 @@ export const MainMenu = () => {
                 </MainMenuBlock>
                 <MainMenuBlock
                     title='Платежи'
-                    href={RouteName.MAIN_PAGE_BASE + PAYMENTS}
+                    href={RouteName.MAIN_PAGE + PAYMENTS}
                 >
                     <div className='main-menu__4'>
                         <MainMenuCard
@@ -101,13 +133,14 @@ export const MainMenu = () => {
                         />
                     </div>
                 </MainMenuBlock>
-                <MainMenuBlock title='Что-то'>
+                <MainMenuBlock
+                    title='Мои счета'
+                    href={RouteName.MAIN_PAGE + ACCOUNTS}
+                >
                     <div className='main-menu__2'>
-                        <MainMenuCard icon='basket' text='Мобильная связь' />
-                        <MainMenuCard
-                            icon='basket'
-                            text='Пополнить счет Ozon'
-                        />
+                        {accounts.map(el => (
+                            <AccountCard key={el.id} account={el} />
+                        ))}
                     </div>
                 </MainMenuBlock>
             </div>

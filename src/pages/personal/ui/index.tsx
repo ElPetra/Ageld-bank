@@ -11,7 +11,7 @@ import { options } from '../model';
 export const PersonalPage = () => {
     return (
         <Menu
-            href={RouteName.PERSONAL_PAGE_BASE}
+            href={RouteName.PERSONAL_PAGE}
             elements={[
                 {
                     id: 1,

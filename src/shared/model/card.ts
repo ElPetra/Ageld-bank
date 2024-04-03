@@ -1,9 +1,9 @@
-export interface Product {
+export interface Card {
     balance: number;
-    cardNumber: string;
+    number: string;
     expirationAt: string;
-    nameProduct: string;
+    name: string;
     level: 'classic' | 'classic-junior' | 'gold' | 'platinum' | 'premium';
     paymentSystem: 'МИР' | 'VISA';
-    currencyName: 'rub' | 'usd' | 'eur';
+    currency: 'rub' | 'usd' | 'eur';
 }

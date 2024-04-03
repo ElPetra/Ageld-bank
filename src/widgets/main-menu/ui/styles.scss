@@ -56,8 +56,14 @@
     &__2 {
         display: flex;
         gap: 24px;
+        flex-wrap: wrap;
 
         > div {
+            @media screen and (max-width: 1300px) {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+
             flex: 1 1 33%;
             max-width: calc((100% - 24px)/2);
         }
