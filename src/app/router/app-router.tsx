@@ -12,10 +12,9 @@ import { AccountInfo } from 'src/widgets/account-info';
 import { PersonalPage } from 'src/pages/personal';
 
 import { NotificationHistoryPage } from 'src/pages/notification/ui';
-import { useEffect } from 'react';
-import { useRefreshTokenMutation } from 'src/shared/api/index.js';
 
 import { RecoveryPasswordPage } from 'src/pages/recovery';
+import { CustomToaster } from 'src/widgets/toaster';
 
 import type { RouteDescription } from 'src/shared/model';
 
@@ -66,21 +65,17 @@ const publicRoutes: RouteDescription[] = [
 ];
 
 export const AppRouter = () => {
-    // const [refreshToken, { isError, isLoading }] = useRefreshTokenMutation();
-
-    // useEffect(() => {
-    //     const data = localStorage.getItem('refreshToken');
-    //     if (data) {
-    //         refreshToken({ refreshToken: data });
-    //     }
-    // }, [refreshToken]);
-
-    // return isLoading ? (
-    //     <div>Загрузка...</div>
-    // ) :
     return (
         <Routes>
-            <Route path='/' element={<Layout />}>
+            <Route
+                path='/'
+                element={
+                    <>
+                        <Layout />
+                        <CustomToaster />
+                    </>
+                }
+            >
                 {publicRoutes.map(({ path, component: Component }) => (
                     <Route key={path} path={path} element={<Component />} />
                 ))}
