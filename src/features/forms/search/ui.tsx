@@ -30,7 +30,7 @@ export const SearchForm = () => {
                 value={value}
                 onChange={e => setValue(e.target.value)}
                 reference={inputRef}
-                label={'search'}
+                label='search'
                 register={register}
             >
                 <button>

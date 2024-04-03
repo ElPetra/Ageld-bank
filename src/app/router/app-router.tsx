@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 import { Layout } from 'src/pages/layout';
 import { MainPage } from 'src/pages/main';
@@ -9,10 +9,9 @@ import { SuccessPage } from 'src/pages/success';
 import { PersonalPage } from 'src/pages/personal';
 import { NotificationHistoryPage } from 'src/pages/notification/ui';
 import { RouteName } from 'src/shared/model';
-
 import { AccountInfo } from 'src/widgets/account-info';
 
-import type { ReactNode } from 'react';
+import { ProtectedRoute } from './protected-route';
 
 import type { RouteDescription } from 'src/shared/model';
 
@@ -64,15 +63,6 @@ const authRoutes: RouteDescription[] = [
         component: NotificationHistoryPage
     }
 ];
-
-interface Props {
-    children: ReactNode;
-}
-
-function ProtectedRoute({ children }: Props) {
-    const isAuth = true;
-    return isAuth ? <>{children}</> : <Navigate to={LOGIN_PAGE} replace />;
-}
 
 export const AppRouter = () => {
     return (

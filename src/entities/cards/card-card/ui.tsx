@@ -9,6 +9,7 @@ interface Props {
 }
 
 export const CardCard = ({ card }: Props) => {
+    const expirationAt = card.expirationAt.split('-');
     return (
         <div className='card-card'>
             <div className='card-card__first-row'>
@@ -30,9 +31,7 @@ export const CardCard = ({ card }: Props) => {
                     </div>
                 </div>
                 <Text size='xs'>
-                    {card.expirationAt.split('-')[1] +
-                        '/' +
-                        card.expirationAt.split('-')[0].substring(2, 4)}
+                    {expirationAt[1] + '/' + expirationAt[0].substring(2, 4)}
                 </Text>
             </div>
         </div>
