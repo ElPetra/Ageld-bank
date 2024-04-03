@@ -4,11 +4,11 @@ import { Menu } from 'src/features/menu';
 import { useAccountsFilter } from '../lib';
 import {
     accounts,
-    BLOCKED_ACCOUNTS,
-    CLOSED_ACCOUNTS,
     MY_ACCOUNTS,
+    OPENED_ACCOUNTS,
     OPEN_ACCOUNT_REQUEST,
-    OPENED_ACCOUNTS
+    CLOSED_ACCOUNTS,
+    BLOCKED_ACCOUNTS
 } from '../model';
 
 import { FiltersBar } from './filter';

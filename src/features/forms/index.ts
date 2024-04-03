@@ -4,3 +4,4 @@ export { PhoneForm } from './phone';
 export { EmailForm } from './change-email';
 export { SmsCodeForm } from './sms-code';
 export { ChangePasswordForm } from './change-password';
+export { SearchForm } from './search';

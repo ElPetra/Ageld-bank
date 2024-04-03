@@ -5,7 +5,7 @@ import { links, privateLinks, publicLinks } from './config';
 import './styles.scss';
 
 export const Navigation = () => {
-    const isAuth = false;
+    const isAuth = true;
     // для будущего хука
 
     return (

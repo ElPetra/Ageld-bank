@@ -1,5 +1,7 @@
 import { Link, Text } from 'src/shared/ui';
 
+import { RouteName } from 'src/shared/model';
+
 import type { ReactNode } from 'react';
 import type { VariantType } from 'src/features/multi-step-form/ui';
 
@@ -25,7 +27,14 @@ export const FormCard = ({ title, variant = 'none', children }: Props) => {
                         {variant === 'registration' &&
                             'У вас уже есть аккаунт?'}
                         &nbsp;
-                        <Link to='/' variant='action'>
+                        <Link
+                            to={
+                                variant === 'login'
+                                    ? RouteName.REGISTRATION_PAGE
+                                    : RouteName.MAIN_PAGE
+                            }
+                            variant='action'
+                        >
                             {variant === 'login' && 'Зарегистрируйтесь'}
                             {variant === 'registration' && 'Авторизуйтесь'}
                         </Link>
