@@ -1,4 +1,4 @@
-import { currency } from 'src/shared/model';
+import { Currency } from 'src/shared/model';
 
 export type Status = 'active' | 'closed' | 'requested' | 'blocked';
 
@@ -8,7 +8,7 @@ export interface Account {
     type: 'credit' | 'deposit' | 'current';
     balance: string;
     status: Status;
-    currency: currency;
+    currency: Currency;
     master: boolean;
     created: Date;
     closed?: Date;
