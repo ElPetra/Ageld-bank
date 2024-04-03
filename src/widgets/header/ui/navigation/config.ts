@@ -10,8 +10,7 @@ export const links = [
 ];
 
 export const privateLinks = [
-    { text: 'Личные данные', href: RouteName.PERSONAL_PAGE },
-    { text: 'Выйти', href: RouteName.MAIN_PAGE }
+    { text: 'Личные данные', href: RouteName.PERSONAL_PAGE }
 ];
 
 export const publicLinks = [
