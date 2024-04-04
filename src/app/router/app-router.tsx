@@ -10,6 +10,7 @@ import { PersonalPage } from 'src/pages/personal';
 import { NotificationHistoryPage } from 'src/pages/notification/ui';
 import { RouteName } from 'src/shared/model';
 import { AccountInfo } from 'src/widgets/account-info';
+import { CustomToaster } from 'src/widgets/toaster';
 
 import { ProtectedRoute } from './protected-route';
 
@@ -67,7 +68,15 @@ const authRoutes: RouteDescription[] = [
 export const AppRouter = () => {
     return (
         <Routes>
-            <Route path='/' element={<Layout />}>
+            <Route
+                path='/'
+                element={
+                    <>
+                        <Layout />
+                        <CustomToaster />
+                    </>
+                }
+            >
                 {publicRoutes.map(({ path, component: Component }) => (
                     <Route key={path} path={path} element={<Component />} />
                 ))}

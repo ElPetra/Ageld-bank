@@ -1,9 +1,13 @@
+import { useNavigate } from 'react-router-dom';
+
 import { PasswordInput } from 'src/features/inputs';
 import { Button, Form } from 'src/shared/ui';
+import { useGenerateTokenMutation } from 'src/shared/api';
+import { setUser } from 'src/app/store/slices/userSlice';
+import { useAppDispatch } from 'src/app/store/dispatch';
+import { getErrorMessage } from 'src/shared/lib';
 
 import { type FieldValues, useForm } from 'react-hook-form';
-
-import { useNavigate } from 'react-router-dom';
 
 import type { Dispatch, SetStateAction } from 'react';
 
@@ -16,36 +20,57 @@ export const EnterPasswordForm = ({ isLast, setFormStep }: Props) => {
     const {
         register,
         handleSubmit,
-        formState: { errors, isDirty, isValid }
+        formState: { isDirty, isValid }
     } = useForm<FieldValues>({
         mode: 'onTouched',
         reValidateMode: 'onChange',
-        defaultValues: { password1: '' }
+        defaultValues: { password: '' }
     });
     const navigate = useNavigate();
-    const onSubmit = (data: FieldValues) => {
-        if (setFormStep && !isLast) {
-            setFormStep(curr => curr + 1);
-        }
-        console.log(data);
+    const dispatch = useAppDispatch();
+    const [generateToken, { error }] = useGenerateTokenMutation();
 
-        navigate('/success', {
-            state: {
-                message: 'Вход выполнен.',
-                button: false
+    const onSubmit = (data: FieldValues) => {
+        const phone = localStorage.getItem('phone');
+        if (phone) {
+            generateToken({
+                phoneNumber: phone,
+                password: data.password
+            })
+                .unwrap()
+                .then(data => {
+                    const accessToken = data.accessToken;
+                    const refreshToken = data.refreshToken;
+                    dispatch(
+                        setUser({
+                            phone: phone,
+                            accessToken: accessToken,
+                            refreshToken: refreshToken
+                        })
+                    );
+                    localStorage.setItem('accessToken', accessToken);
+                    localStorage.setItem('refreshToken', refreshToken);
+                    if (accessToken && refreshToken) {
+                        navigate('/success', {
+                            state: {
+                                message: 'Вход выполнен.',
+                                button: false
+                            }
+                        });
+                    }
+                });
+            if (setFormStep && !isLast) {
+                setFormStep(curr => curr + 1);
             }
-        });
+        }
     };
 
     return (
         <Form onSubmit={handleSubmit(onSubmit)}>
             <PasswordInput
                 register={register}
-                label='password1'
-                error={
-                    errors?.password1 &&
-                    'Пароль должен содержать от 6 до 20 символов'
-                }
+                label='password'
+                error={getErrorMessage(error)}
             />
             <Button
                 variant='secondary'
