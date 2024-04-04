@@ -6,8 +6,6 @@ import { ChangePasswordForm, EmailForm, SmsCodeForm } from 'src/features/forms';
 import { MultiStepForm } from 'src/features/multi-step-form';
 import { CheckboxGroup } from 'src/widgets/notifications';
 
-import { Cards } from 'src/widgets/cards/index.js';
-
 import { options } from '../model';
 
 export const PersonalPage = () => {

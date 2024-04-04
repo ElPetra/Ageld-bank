@@ -26,6 +26,7 @@ export const FinanceCard = ({ card }: Props) => {
                     <Text size='s' color='copy'>
                         {card.description}
                     </Text>
+                    <div>{card.payment}</div>
                     <div className='finance-card__buttons'>
                         <Button variant='secondary'>Подробнее</Button>
                         <Button>Оформить</Button>

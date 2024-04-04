@@ -1,156 +1,113 @@
-import { type SvgIconNames } from 'src/shared/ui';
-
-export type Status = 'active' | 'closed' | 'requested' | 'blocked';
-
 export interface Card {
-    status: Status;
     name: string;
     description: string;
     id: string;
-    balance: string;
-    currency: Extract<'rub' | 'usd' | 'eur', SvgIconNames>;
+    payment: string;
     type: 'Кредитная' | 'Дебетовая';
-    main: boolean;
     created: Date;
 }
 
 export const cards: Card[] = [
     {
-        status: 'active',
         name: 'A-GELD Classic',
         description: 'Кредитная карта. Надежная карта на каждый день. ',
         id: '1',
-        balance: '550',
-        currency: 'rub',
+        payment: 'МИР',
         type: 'Кредитная',
-        main: true,
         created: new Date()
     },
     {
-        status: 'active',
         name: 'A-GELD Gold',
         description:
             'Кредитная карта. Совершайте транзакции в любой стране мира',
         id: '2',
-        balance: '900',
-        currency: 'eur',
+        payment: 'МИР',
         type: 'Кредитная',
-        main: false,
         created: new Date()
     },
     {
-        status: 'active',
         name: 'A-GELD Platinum',
         description:
             'Дебетовая карта. Больше возможностей для транзакций по всему миру',
         id: '3',
-        balance: '10000',
-        currency: 'usd',
+        payment: 'МИР',
         type: 'Дебетовая',
-        main: false,
         created: new Date()
     },
     {
-        status: 'active',
         name: 'A-GELD Premium',
         description: 'Дебетовая карта. Карта для активных путешественников',
         id: '4',
-        balance: '10000',
-        currency: 'usd',
+        payment: 'VISA',
         type: 'Дебетовая',
-        main: false,
         created: new Date()
     },
     {
-        status: 'active',
         name: 'A-GELD Classic',
         description: 'Кредитная карта. Надежная карта на каждый день. ',
         id: '5',
-        balance: '550',
-        currency: 'rub',
+        payment: 'VISA',
         type: 'Кредитная',
-        main: true,
         created: new Date()
     },
     {
-        status: 'active',
         name: 'A-GELD Gold',
         description:
             'Кредитная карта. Совершайте транзакции в любой стране мира',
         id: '6',
-        balance: '900',
-        currency: 'eur',
+        payment: 'VISA',
         type: 'Кредитная',
-        main: false,
         created: new Date()
     },
     {
-        status: 'active',
         name: 'A-GELD Platinum',
         description:
             'Дебетовая карта. Больше возможностей для транзакций по всему миру',
         id: '7',
-        balance: '10000',
-        currency: 'usd',
+        payment: 'МИР',
         type: 'Дебетовая',
-        main: false,
         created: new Date()
     },
     {
-        status: 'active',
         name: 'A-GELD Premium',
         description: 'Дебетовая карта. Карта для активных путешественников',
         id: '8',
-        balance: '10000',
-        currency: 'usd',
+        payment: 'МИР',
         type: 'Дебетовая',
-        main: false,
         created: new Date()
     },
     {
-        status: 'active',
         name: 'A-GELD Premium',
         description: 'Дебетовая карта. Карта для активных путешественников',
         id: '9',
-        balance: '10000',
-        currency: 'usd',
+        payment: 'МИР',
         type: 'Дебетовая',
-        main: false,
         created: new Date()
     },
     {
-        status: 'active',
         name: 'A-GELD Classic',
         description: 'Кредитная карта. Надежная карта на каждый день. ',
         id: '10',
-        balance: '550',
-        currency: 'rub',
+        payment: 'VISA',
         type: 'Кредитная',
-        main: true,
         created: new Date()
     },
     {
-        status: 'active',
         name: 'A-GELD Gold',
         description:
             'Кредитная карта. Совершайте транзакции в любой стране мира',
         id: '11',
-        balance: '900',
-        currency: 'eur',
+        payment: 'VISA',
         type: 'Кредитная',
-        main: false,
         created: new Date()
     },
     {
-        status: 'active',
         name: 'A-GELD Platinum',
         description:
             'Дебетовая карта. Больше возможностей для транзакций по всему миру',
         id: '12',
-        balance: '10000',
-        currency: 'usd',
+        payment: 'VISA',
         type: 'Дебетовая',
-        main: false,
         created: new Date()
     }
 ];

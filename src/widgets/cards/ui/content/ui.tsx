@@ -1,48 +1,45 @@
 import { AccountNotFound } from 'src/widgets/accounts/ui/content/not-found';
 
 import { cards } from 'src/widgets/cards/model';
-import { FiltersCardBar } from 'src/widgets/cards/ui/filter/index.js';
-import { useCardsFilter } from 'src/widgets/cards/lib/index.js';
+import { CardType, useCardsFilter } from 'src/widgets/cards/lib/index.js';
 import { FinanceCard } from 'src/widgets/cards/ui/content/card';
-import { useEffect, useState } from 'react';
 import { Pagination } from 'src/shared/ui/pagination/index.js';
+import { usePaginationFilter } from 'src/shared/hooks/usePaginationFilter.js';
+
+import { sortByCreated } from 'src/shared/lib/sortByCreated.js';
+import { Filters } from 'src/widgets/cards/ui/content/filters';
 
 export const CardContent = () => {
-    const [[currency, setCurrency], getSelectedCards] = useCardsFilter(cards);
-    const content = getSelectedCards(currency);
-    const itemsPerPage = 10;
-    const [currentPage, setCurrentPage] = useState(1);
-    const totalPages = Math.ceil(content.length / itemsPerPage);
+    const { filters, setType, setPayment, getSelectedCards } =
+        useCardsFilter(cards);
+    const { currentPage, setCurrentPage, totalPages, currentItems } =
+        usePaginationFilter(cards, filters);
+    const sortedCards = sortByCreated(currentItems);
 
-    const indexOfLastItem = currentPage * itemsPerPage;
-    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = content.slice(indexOfFirstItem, indexOfLastItem);
-    useEffect(() => {
-        setCurrentPage(1);
-    }, [currency]);
     return (
         <>
-            <FiltersCardBar current={currency} setCurrent={setCurrency} />
-            <div className='finance-card__content'>
-                {content.length ? (
-                    <>
-                        <div className='finance-card__list'>
-                            {currentItems.map(el => (
-                                <FinanceCard key={el.id} card={el} />
-                            ))}
-                        </div>
-                        <Pagination
-                            currentPage={currentPage}
-                            totalPages={totalPages}
-                            onPageChange={(page: number) =>
-                                setCurrentPage(page)
-                            }
-                        />
-                    </>
-                ) : (
-                    <AccountNotFound />
-                )}
-            </div>
+            <Filters
+                type={filters.type}
+                payment={filters.payment}
+                setType={setType}
+                setPayment={setPayment}
+            />
+            {currentItems.length ? (
+                <>
+                    <div>
+                        {sortedCards.map(el => (
+                            <FinanceCard key={el.id} card={el} />
+                        ))}
+                    </div>
+                    <Pagination
+                        currentPage={currentPage}
+                        totalPages={totalPages}
+                        onPageChange={(page: number) => setCurrentPage(page)}
+                    />
+                </>
+            ) : (
+                <AccountNotFound />
+            )}
         </>
     );
 };
