@@ -1,19 +1,18 @@
 import { Route, Routes } from 'react-router-dom';
-import { AuthorizationPage } from 'src/pages/authorization';
+
 import { Layout } from 'src/pages/layout';
 import { MainPage } from 'src/pages/main';
+import { AuthorizationPage } from 'src/pages/authorization';
 import { RegistrationPage } from 'src/pages/registration';
-
-import { RouteName } from 'src/shared/model';
-
-import { SuccessPage } from 'src/pages/success';
-import { AccountInfo } from 'src/widgets/account-info';
-
-import { PersonalPage } from 'src/pages/personal';
-
-import { NotificationHistoryPage } from 'src/pages/notification/ui';
-
 import { RecoveryPasswordPage } from 'src/pages/recovery';
+import { SuccessPage } from 'src/pages/success';
+import { PersonalPage } from 'src/pages/personal';
+import { NotificationHistoryPage } from 'src/pages/notification/ui';
+import { RouteName } from 'src/shared/model';
+import { AccountInfo } from 'src/widgets/account-info';
+import { CustomToaster } from 'src/widgets/toaster';
+
+import { ProtectedRoute } from './protected-route';
 
 import { CardInfo } from 'src/widgets/card-info/index.js';
 
@@ -24,26 +23,14 @@ const {
     REGISTRATION_PAGE,
     LOGIN_PAGE,
     SUCCESS_PAGE,
-    ACCOUNT,
     CARD,
-    PERSONAL_AREA_PAGE,
+    ACCOUNT_PAGE,
+    PERSONAL_PAGE,
     NOTIFICATION_HISTORY_PAGE,
     RECOVERY_PASSWORD_PAGE
 } = RouteName;
 
 const publicRoutes: RouteDescription[] = [
-    {
-        path: MAIN_PAGE,
-        component: MainPage
-    },
-    {
-        path: ACCOUNT,
-        component: AccountInfo
-    },
-    {
-        path: CARD,
-        component: CardInfo
-    },
     {
         path: REGISTRATION_PAGE,
         component: RegistrationPage
@@ -53,29 +40,63 @@ const publicRoutes: RouteDescription[] = [
         component: AuthorizationPage
     },
     {
-        path: PERSONAL_AREA_PAGE,
-        component: PersonalPage
+        path: RECOVERY_PASSWORD_PAGE,
+        component: RecoveryPasswordPage
     },
     {
         path: SUCCESS_PAGE,
         component: SuccessPage
+    }
+];
+
+const authRoutes: RouteDescription[] = [
+    {
+        path: MAIN_PAGE + '/:id?',
+        component: MainPage
+    },
+    {
+        path: CARD,
+        component: CardInfo
+    },
+    {
+        path: ACCOUNT_PAGE + '/:id?',
+        component: AccountInfo
+    },
+    {
+        path: PERSONAL_PAGE + '/:id?',
+        component: PersonalPage
     },
     {
         path: NOTIFICATION_HISTORY_PAGE,
         component: NotificationHistoryPage
-    },
-    {
-        path: RECOVERY_PASSWORD_PAGE,
-        component: RecoveryPasswordPage
     }
 ];
 
 export const AppRouter = () => {
     return (
         <Routes>
-            <Route path='/' element={<Layout />}>
+            <Route
+                path='/'
+                element={
+                    <>
+                        <Layout />
+                        <CustomToaster />
+                    </>
+                }
+            >
                 {publicRoutes.map(({ path, component: Component }) => (
                     <Route key={path} path={path} element={<Component />} />
+                ))}
+                {authRoutes.map(({ path, component: Component }) => (
+                    <Route
+                        key={path}
+                        path={path}
+                        element={
+                            <ProtectedRoute>
+                                <Component />
+                            </ProtectedRoute>
+                        }
+                    />
                 ))}
             </Route>
         </Routes>

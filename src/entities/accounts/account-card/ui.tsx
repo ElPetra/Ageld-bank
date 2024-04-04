@@ -1,45 +1,24 @@
 import { Link, useLocation } from 'react-router-dom';
 
 import { Icon, Text } from 'src/shared/ui';
-import { checkAccountAvailable } from 'src/widgets/accounts/lib';
-import { RouteName } from 'src/shared/model';
-
 import {
-    type Account,
     ACCOUNT_NUMBER_REPLACEMENT,
-    ACTIVE_ACCOUNT,
-    BLOCKED_ACCOUNT,
-    CLOSED_ACCOUNT,
-    CREDIT_ACCOUNT,
     CURRENT_ACCOUNT,
-    DEPOSIT_ACCOUNT,
-    REQUESTED_ACCOUNT
-} from '../../../model';
+    accountStatuses,
+    accountTypes,
+    currencySymbol,
+    RouteName
+} from 'src/shared/model';
+
+import { checkAccountAvailable } from './lib';
+
+import type { Account } from 'src/shared/model';
 
 import './styles.scss';
-
-export const accountTypes = {
-    credit: CREDIT_ACCOUNT,
-    deposit: DEPOSIT_ACCOUNT,
-    current: CURRENT_ACCOUNT
-};
-
-export const accountStatuses = {
-    active: ACTIVE_ACCOUNT,
-    closed: CLOSED_ACCOUNT,
-    blocked: BLOCKED_ACCOUNT,
-    requested: REQUESTED_ACCOUNT
-};
 
 interface Props {
     account: Account;
 }
-
-export const currencyMatcher = {
-    rub: '₽',
-    usd: '$',
-    eur: '€'
-};
 
 export const AccountCard = ({ account }: Props) => {
     const { pathname } = useLocation();
@@ -58,7 +37,7 @@ export const AccountCard = ({ account }: Props) => {
                         <Icon widthAndHeight={40} icon={account.currency} />
                         <div className='account__card__info'>
                             <Text weight='medium'>
-                                {account.account_number.replace(
+                                {account.number.replace(
                                     /.{10}/gm,
                                     ACCOUNT_NUMBER_REPLACEMENT
                                 )}
@@ -70,7 +49,7 @@ export const AccountCard = ({ account }: Props) => {
                     </div>
                     <div>
                         <div className='account__card__statuses'>
-                            {account.main && (
+                            {account.master && (
                                 <div className='account__card__status account__card__status-type__main'>
                                     <Text weight='medium' size='xxs'>
                                         {CURRENT_ACCOUNT}
@@ -89,7 +68,7 @@ export const AccountCard = ({ account }: Props) => {
                             <Text weight='medium'>{account.balance}</Text>
                             <div className='account__card__balance-currency'>
                                 <Text weight='extra-bold' size='xs'>
-                                    {currencyMatcher[account.currency]}
+                                    {currencySymbol[account.currency]}
                                 </Text>
                             </div>
                         </div>

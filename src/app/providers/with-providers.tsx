@@ -1,3 +1,6 @@
-import { RouterProvider } from './router-provider';
+import { compose } from '@reduxjs/toolkit';
 
-export const withProviders = RouterProvider;
+import { RouterProvider } from './router-provider';
+import { StoreProvider } from './store-provider';
+
+export const withProviders = compose(RouterProvider, StoreProvider);

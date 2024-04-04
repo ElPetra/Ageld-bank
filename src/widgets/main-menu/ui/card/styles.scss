@@ -1,0 +1,9 @@
+.main-menu__card {
+    border-radius: var(--border-radius);
+    background: var(--bg-quadruple);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    height: 100%;
+}

@@ -39,8 +39,11 @@ export type SvgIconNames =
     | 'smartphone'
     | 'translations'
     | 'wallet'
-    | 'phone'
     | 'requisites'
     | 'question-lady'
+    | 'debet'
+    | 'success-popup'
+    | 'error-popup'
     | 'more'
-    | 'debet';
+    | 'card'
+    | 'world';

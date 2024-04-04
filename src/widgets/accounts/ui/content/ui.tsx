@@ -1,7 +1,8 @@
-import { AccountCard } from './card';
+import { AccountCard } from 'src/entities/accounts';
+
 import { AccountNotFound } from './not-found';
 
-import type { Account } from '../../model';
+import type { Account } from 'src/shared/model';
 
 import './styles.scss';
 

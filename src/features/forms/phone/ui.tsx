@@ -3,8 +3,10 @@ import { useForm } from 'react-hook-form';
 import { PhoneInput } from 'src/features/inputs';
 import { Button, Form, Link, Text } from 'src/shared/ui';
 import { RouteName } from 'src/shared/model';
+import { getErrorMessage } from 'src/shared/lib';
 
 import { type Dispatch, type SetStateAction, useState } from 'react';
+import { useGenerateCodeMutation } from 'src/shared/api';
 
 import type { FieldValues } from 'react-hook-form';
 
@@ -29,28 +31,37 @@ export const PhoneForm = ({
         reValidateMode: 'onChange',
         defaultValues: { phone: '' }
     });
+    const [generateCode, { error: generateCodeError }] =
+        useGenerateCodeMutation();
     const handleLinkClick = (linkId: number) => {
         if (!clickedLinks.includes(linkId)) {
             setClickedLinks([...clickedLinks, linkId]);
         }
     };
     const allLinksClicked = clickedLinks.length === 2;
+    const onSubmit = (data: FieldValues) => {
+        const phone = data.phone.replace(/\D/gm, '');
+        if (variant === 'login') {
+            generateCode(phone)
+                .unwrap()
+                .then(() => {
+                    localStorage.setItem('phone', phone);
+                    if (setFormStep && !isLast) {
+                        setFormStep(curr => {
+                            return curr + 1;
+                        });
+                    }
+                });
+        }
+    };
     return (
-        <Form
-            onSubmit={handleSubmit(data => {
-                if (setFormStep && !isLast) {
-                    setFormStep(curr => {
-                        return curr + 1;
-                    });
-                }
-                console.log(data.phone.replace(/\D/gm, ''));
-            })}
-        >
+        <Form onSubmit={handleSubmit(onSubmit)}>
             <PhoneInput
                 clear={() => setValue('phone', '')}
                 label={'phone'}
                 register={register}
                 isError={!!errors?.phone}
+                error={getErrorMessage(generateCodeError)}
             />
             {variant === 'registration' && (
                 <>

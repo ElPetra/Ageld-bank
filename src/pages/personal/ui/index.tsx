@@ -1,10 +1,10 @@
 import { Link } from 'src/shared/ui';
+import { RouteName } from 'src/shared/model';
 import { Address, Contacts, UserCard } from 'src/entities/user';
 import { Menu } from 'src/features/menu';
 import { ChangePasswordForm, EmailForm, SmsCodeForm } from 'src/features/forms';
 import { MultiStepForm } from 'src/features/multi-step-form';
 import { CheckboxGroup } from 'src/widgets/notifications';
-import { Accounts } from 'src/widgets/accounts';
 
 import { Cards } from 'src/widgets/cards/index.js';
 
@@ -13,6 +13,7 @@ import { options } from '../model';
 export const PersonalPage = () => {
     return (
         <Menu
+            href={RouteName.PERSONAL_PAGE}
             elements={[
                 {
                     id: 1,
@@ -68,16 +69,6 @@ export const PersonalPage = () => {
                             </Link>
                         </>
                     )
-                },
-                {
-                    id: 4,
-                    name: 'Счета',
-                    component: <Accounts />
-                },
-                {
-                    id: 5,
-                    name: 'Карты',
-                    component: <Cards />
                 }
             ]}
         />
