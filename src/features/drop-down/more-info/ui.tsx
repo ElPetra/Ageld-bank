@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
+
 import { Icon, Text } from 'src/shared/ui';
+import { useDropDown } from 'src/shared/lib';
 
 import './styles.scss';
-import { useDropDown } from './lib/useDropDown';
 
 interface Props {
     options: Array<{ text: string, to: string }>;
@@ -10,6 +11,7 @@ interface Props {
 
 export const MoreInfo = ({ options }: Props) => {
     const [open, setOpen] = useDropDown('more__info__container');
+
     return (
         <div className='more__info__container'>
             <button

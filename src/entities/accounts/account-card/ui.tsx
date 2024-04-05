@@ -3,14 +3,13 @@ import { Link, useLocation } from 'react-router-dom';
 import { Icon, Text } from 'src/shared/ui';
 import {
     ACCOUNT_NUMBER_REPLACEMENT,
-    CURRENT_ACCOUNT,
-    accountStatuses,
     accountTypes,
     currencySymbol,
     RouteName
 } from 'src/shared/model';
 
 import { checkAccountAvailable } from './lib';
+import { AccountStatuses } from './account-statuses';
 
 import type { Account } from 'src/shared/model';
 
@@ -48,22 +47,11 @@ export const AccountCard = ({ account }: Props) => {
                         </div>
                     </div>
                     <div>
-                        <div className='account__card__statuses'>
-                            {account.master && (
-                                <div className='account__card__status account__card__status-type__main'>
-                                    <Text weight='medium' size='xxs'>
-                                        {CURRENT_ACCOUNT}
-                                    </Text>
-                                </div>
-                            )}
-                            <div
-                                className={`account__card__status account__card__status-type__${account.status}`}
-                            >
-                                <Text weight='medium' size='xxs'>
-                                    {accountStatuses[account.status]}
-                                </Text>
-                            </div>
-                        </div>
+                        <AccountStatuses
+                            master={account.master}
+                            status={account.status}
+                            direction='column'
+                        />
                         <div className='account__card__balance'>
                             <Text weight='medium'>{account.balance}</Text>
                             <div className='account__card__balance-currency'>

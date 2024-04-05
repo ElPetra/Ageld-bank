@@ -1,4 +1,4 @@
-import { Currency } from 'src/shared/model';
+import type { Currency } from 'src/shared/model';
 
 export interface Card {
     balance: number;

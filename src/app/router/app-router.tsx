@@ -7,10 +7,10 @@ import { RegistrationPage } from 'src/pages/registration';
 import { RecoveryPasswordPage } from 'src/pages/recovery';
 import { SuccessPage } from 'src/pages/success';
 import { PersonalPage } from 'src/pages/personal';
-import { NotificationHistoryPage } from 'src/pages/notification/ui';
-import { RouteName } from 'src/shared/model';
-import { AccountInfo } from 'src/widgets/account-info';
+import { NotificationHistoryPage } from 'src/pages/notification';
+import { AccountPage } from 'src/pages/accounts';
 import { CustomToaster } from 'src/widgets/toaster';
+import { RouteName } from 'src/shared/model';
 
 import { ProtectedRoute } from './protected-route';
 
@@ -53,7 +53,7 @@ const authRoutes: RouteDescription[] = [
     },
     {
         path: ACCOUNT_PAGE + '/:id?',
-        component: AccountInfo
+        component: AccountPage
     },
     {
         path: PERSONAL_PAGE + '/:id?',

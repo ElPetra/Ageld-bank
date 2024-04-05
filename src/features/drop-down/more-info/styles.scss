@@ -1,0 +1,28 @@
+.more__info{
+    &__container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding: 6px;
+    }
+
+    &__button {
+        width: 24px;
+        height: 24px;
+    }
+
+    &__dropdown {
+        position: absolute;
+        top: 44px;
+        right: 0;
+        color: var(--text-quadruple);
+        background-color: var(--bg-primary);
+        padding: 16px;
+        border-radius: var(--border-radius);
+        min-width: 260px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        box-shadow: 0 15px 20px 0 #0000000D;
+    }
+}
