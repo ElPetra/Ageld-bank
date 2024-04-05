@@ -6,7 +6,10 @@ import { RouteName } from 'src/shared/model';
 import { getErrorMessage } from 'src/shared/lib';
 
 import { type Dispatch, type SetStateAction, useState } from 'react';
-import { useGenerateCodeMutation } from 'src/shared/api';
+import {
+    useCheckRegistrationMutation,
+    useGenerateCodeMutation
+} from 'src/shared/api';
 
 import type { FieldValues } from 'react-hook-form';
 
@@ -31,6 +34,10 @@ export const PhoneForm = ({
         reValidateMode: 'onChange',
         defaultValues: { phone: '' }
     });
+    const [
+        checkRegistration,
+        { data: checkRegistrationData, error: checkRegistrationError }
+    ] = useCheckRegistrationMutation();
     const [generateCode, { error: generateCodeError }] =
         useGenerateCodeMutation();
     const handleLinkClick = (linkId: number) => {
@@ -41,6 +48,35 @@ export const PhoneForm = ({
     const allLinksClicked = clickedLinks.length === 2;
     const onSubmit = (data: FieldValues) => {
         const phone = data.phone.replace(/\D/gm, '');
+        if (variant === 'registration') {
+            localStorage.setItem('phone', phone);
+            checkRegistration(phone)
+                .unwrap()
+                .then(() => {
+                    // логика на бэке не настроена, поэтому пока пропускаем этот запрос
+                    if (checkRegistrationData) {
+                        //     generateCode(phone)
+                        //         .unwrap()
+                        //         .then(data => {
+                        localStorage.setItem(
+                            'customerId',
+                            checkRegistrationData.customerId
+                        );
+                        //             console.log(data);
+                        //             if (setFormStep && !isLast) {
+                        //                 setFormStep(curr => {
+                        //                     return curr + 1;
+                        //                 });
+                        //             }
+                        //         });
+                    }
+                });
+            if (setFormStep && !isLast) {
+                setFormStep(curr => {
+                    return curr + 1;
+                });
+            }
+        }
         if (variant === 'login') {
             generateCode(phone)
                 .unwrap()
@@ -61,7 +97,12 @@ export const PhoneForm = ({
                 label={'phone'}
                 register={register}
                 isError={!!errors?.phone}
-                error={getErrorMessage(generateCodeError)}
+                error={
+                    variant === 'login'
+                        ? getErrorMessage(generateCodeError)
+                        : getErrorMessage(checkRegistrationError) +
+                          getErrorMessage(generateCodeError)
+                }
             />
             {variant === 'registration' && (
                 <>

@@ -1,15 +1,19 @@
+import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 import { PasswordInput } from 'src/features/inputs';
 import { Button, Form } from 'src/shared/ui';
-import { useNavigate } from 'react-router-dom';
-
-import { yupResolver } from '@hookform/resolvers/yup';
+import {
+    useCheckRegistrationMutation,
+    useCreateAccountMutation
+} from 'src/shared/api';
 
 import { confirmPasswordSchema } from './confirmPasswordSchema';
 
 import type { FieldValues } from 'react-hook-form';
 import type { Dispatch, SetStateAction } from 'react';
+import { getErrorMessage } from 'src/shared/lib';
 
 interface Props {
     isLast?: boolean;
@@ -29,22 +33,32 @@ export const ConfirmPasswordForm = ({ isLast, setFormStep, type }: Props) => {
         resolver: yupResolver<FieldValues>(confirmPasswordSchema)
     });
     const navigate = useNavigate();
-    const onSubmit = (data: FieldValues) => {
-        if (setFormStep && !isLast) {
-            setFormStep(curr => curr + 1);
-        }
-        console.log(data);
+    const [createAccount, { error: createAccountError }] =
+        useCreateAccountMutation();
 
-        navigate('/success', {
-            state: {
-                message:
-                    type === 'recovery'
-                        ? 'Пароль успешно восстановлен'
-                        : 'Кабинет пользователя успешно зарегистрирован.',
-                button: true
+    const onSubmit = (data: FieldValues) => {
+        const customerId = localStorage.getItem('customerId');
+        if (customerId) {
+            createAccount({
+                customerId: customerId,
+                password: data.password1
+            })
+                .unwrap()
+                .then(() => {
+                    navigate('/success', {
+                        state: {
+                            message:
+                                'Кабинет пользователя успешно зарегистрирован.',
+                            button: true
+                        }
+                    });
+                });
+            if (setFormStep && !isLast) {
+                setFormStep(curr => curr + 1);
             }
-        });
+        }
     };
+
     return (
         <Form onSubmit={handleSubmit(onSubmit)}>
             <PasswordInput
@@ -52,6 +66,7 @@ export const ConfirmPasswordForm = ({ isLast, setFormStep, type }: Props) => {
                 label='password1'
                 variant='create'
                 isError={!!errors.password1?.message}
+                error={getErrorMessage(createAccountError)}
             />
             <PasswordInput
                 register={register}

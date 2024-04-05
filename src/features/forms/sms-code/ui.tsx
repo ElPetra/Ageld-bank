@@ -34,13 +34,21 @@ export const SmsCodeForm = ({
         const sms = data.sms.join('');
         const phone = localStorage.getItem('phone');
         if (phone) {
-            checkCode({ phoneNumber: phone, code: sms })
-                .unwrap()
-                .then(() => {
-                    if (setFormStep && !isLast) {
-                        setFormStep(curr => curr + 1);
-                    }
-                });
+            if (variant === 'login') {
+                checkCode({ phoneNumber: phone, code: sms })
+                    .unwrap()
+                    .then(() => {
+                        if (setFormStep && !isLast) {
+                            setFormStep(curr => curr + 1);
+                        }
+                    });
+            }
+            // для регистрации запрос не настроен на бэке, поэтому пропускаю этот этап
+            if (variant === 'registration') {
+                if (setFormStep && !isLast) {
+                    setFormStep(curr => curr + 1);
+                }
+            }
         }
     };
     return (
