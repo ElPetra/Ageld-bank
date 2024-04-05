@@ -1,27 +1,22 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
-import { type Card } from '../model';
+import { cards } from 'src/widgets/cards/model';
 
-export type CardType = 'Кредитная' | 'Дебетовая' | 'Все';
-type PaymentType = 'Все' | 'VISA' | 'МИР';
+import type { Card } from 'src/widgets/cards/model';
+
+export type CardType = string;
+export type PaymentType = string;
 
 interface Filters {
     type: CardType;
     payment: PaymentType;
 }
-export const useCardsFilter = (cards: Card[]) => {
+export const useCardsFilter = () => {
     const [filters, setFilters] = useState<Filters>({
         type: 'Все',
         payment: 'Все'
     });
-
-    const setType = (type: CardType) =>
-        setFilters(prevFilters => ({ ...prevFilters, type }));
-
-    const setPayment = (payment: PaymentType) =>
-        setFilters(prevFilters => ({ ...prevFilters, payment }));
-
-    const getSelectedCards = (): Card[] => {
+    const getFilteredCards = useCallback((): Card[] => {
         return cards.filter(card => {
             const typeMatch =
                 filters.type === 'Все' || card.type === filters.type;
@@ -29,7 +24,12 @@ export const useCardsFilter = (cards: Card[]) => {
                 filters.payment === 'Все' || card.payment === filters.payment;
             return typeMatch && paymentMatch;
         });
-    };
+    }, [filters]);
+    const setType = (type: CardType) =>
+        setFilters(prevFilters => ({ ...prevFilters, type }));
 
-    return { filters, setType, setPayment, getSelectedCards };
+    const setPayment = (payment: PaymentType) =>
+        setFilters(prevFilters => ({ ...prevFilters, payment }));
+
+    return { filters, setType, setPayment, getFilteredCards };
 };

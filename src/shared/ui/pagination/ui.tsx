@@ -1,25 +1,20 @@
 import React from 'react';
 import { Button } from 'src/shared/ui';
 
-import type { FC } from 'react';
 import './styles.scss';
 
-// Определяем пропсы для компонента Pagination
 interface Props {
     currentPage: number;
     totalPages: number;
     onPageChange: (page: number) => void;
+    pageNumbers: number[];
 }
-export const Pagination: FC<Props> = ({
+export const Pagination = ({
     currentPage,
     totalPages,
-    onPageChange
-}) => {
-    const pageNumbers = [];
-    for (let i = 1; i <= totalPages; i++) {
-        pageNumbers.push(i);
-    }
-
+    onPageChange,
+    pageNumbers
+}: Props) => {
     return (
         <nav>
             <ul className='pagination'>

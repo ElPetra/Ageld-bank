@@ -1,18 +1,17 @@
 import { Text } from 'src/shared/ui';
+import { useEffect, useState } from 'react';
 
 import {
     ALL_CARD,
     DEBET_CARD,
     MIR_CARD,
     VISA_CARD,
-    СREDIT_CARD
+    CREDIT_CARD
 } from '../../model';
 
 import './styles.scss';
-import type { Dispatch, SetStateAction } from 'react';
 
-import type { CardType } from 'src/widgets/cards/lib';
-import { useEffect, useState } from 'react';
+import type { CardType, PaymentType } from 'src/widgets/cards/lib';
 
 interface CardFilter {
     text: string;
@@ -20,16 +19,16 @@ interface CardFilter {
 interface CardFilterPayment {
     text: string;
 }
-
+export type FilterType = CardType | PaymentType;
 interface FiltersCardBarProps {
     current: string;
-    setCurrent: Dispatch<SetStateAction<CardType>>;
+    setCurrent: (value: CardType | PaymentType) => void;
 }
 
 const filters: CardFilter[] = [
     { text: ALL_CARD },
     { text: DEBET_CARD },
-    { text: СREDIT_CARD }
+    { text: CREDIT_CARD }
 ];
 
 const filtersPay: CardFilterPayment[] = [
@@ -42,17 +41,19 @@ export const FiltersCardBar = ({
     current,
     setCurrent
 }: FiltersCardBarProps) => {
-    useEffect(() => {
-        console.log(current);
-    }, [current]);
     const [activeFilter, setActiveFilter] = useState<string>(filters[0].text);
     const currentFilters = current === 'type' ? filters : filtersPay;
+    useEffect(() => {
+        console.log(setCurrent);
+    }, []);
     return (
         <div className='account__filters-bar'>
             {currentFilters.map((el, i) => (
                 <button
                     onClick={() => {
-                        setCurrent(el.text as CardType);
+                        if (typeof current === 'string') {
+                            setCurrent(el.text as CardType);
+                        }
                         setActiveFilter(el.text);
                     }}
                     key={i}
