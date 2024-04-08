@@ -1,4 +1,5 @@
 import { Text } from 'src/shared/ui';
+import classNames from 'classnames';
 import { useState } from 'react';
 
 import {
@@ -8,8 +9,6 @@ import {
     VISA_CARD,
     CREDIT_CARD
 } from '../../model';
-
-import './styles.scss';
 
 import type { CardType, PaymentType } from 'src/widgets/cards/lib';
 
@@ -49,11 +48,13 @@ export const FiltersCardBar = ({
             {currentFilters.map((el, i) => (
                 <button
                     onClick={() => {
-                        setCurrent(el.text as CardType);
+                        setCurrent(el.text);
                         setActiveFilter(el.text);
                     }}
                     key={i}
-                    className={`account__filters-bar__button ${activeFilter === el.text ? 'active' : ''}`}
+                    className={classNames('account__filters-bar__button', {
+                        active: activeFilter === el.text
+                    })}
                 >
                     <Text weight='medium'>{el.text}</Text>
                 </button>

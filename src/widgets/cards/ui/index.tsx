@@ -13,7 +13,7 @@ export const Cards = () => {
             </Text>
 
             <Menu
-                variant={'secondary'}
+                variant='secondary'
                 elements={[
                     {
                         id: 1,
