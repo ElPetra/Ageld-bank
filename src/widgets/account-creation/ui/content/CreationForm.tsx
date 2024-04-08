@@ -19,7 +19,7 @@ export const AccountCreationForm = ({
     parametr,
     Element,
     setFormStep
-}: Props): JSX.Element => {
+}: Props) => {
     const { register, handleSubmit, onSubmit, dirtyFields } =
         useAccountCreationForm({ parametr, setFormStep });
 

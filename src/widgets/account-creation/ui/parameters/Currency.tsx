@@ -1,6 +1,4 @@
 import { type Currency } from 'src/shared/model';
-
-import { useId } from 'react';
 import { Radio } from 'src/shared/ui/radio';
 import { Icon, Text } from 'src/shared/ui';
 import { EUR, RUB, USD } from 'src/widgets/accounts/model';
@@ -20,9 +18,8 @@ const currencyText = {
 interface Props {
     register: UseFormRegister<FieldValues>;
 }
-export const CurrencyVariant = ({ register }: Props) => {
-    const id = useId();
 
+export const CurrencyVariant = ({ register }: Props) => {
     return (
         <>
             {currencies.map(el => (
@@ -30,10 +27,10 @@ export const CurrencyVariant = ({ register }: Props) => {
                     <Radio
                         register={register}
                         value={el}
-                        id={id}
+                        id={el}
                         field={ACCOUNT_CURRENCY}
                     />
-                    <label htmlFor={id}>
+                    <label htmlFor={el}>
                         <div className='create__account__card__currency input'>
                             <Icon icon={el} />
                             <Text size='m' tag='h2' weight='medium'>

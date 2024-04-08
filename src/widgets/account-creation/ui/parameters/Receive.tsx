@@ -1,6 +1,5 @@
 import { Radio } from 'src/shared/ui/radio';
 import { Icon, type SvgIconNames, Text } from 'src/shared/ui';
-import { useId } from 'react';
 import { type CardReceiveType } from 'src/shared/model';
 
 import {
@@ -28,8 +27,6 @@ interface Props {
 }
 
 export const ReceivingVariant = ({ register }: Props) => {
-    const id = useId();
-
     return (
         <>
             {ReceiveTypes.map(el => (
@@ -37,10 +34,10 @@ export const ReceivingVariant = ({ register }: Props) => {
                     <Radio
                         register={register}
                         value={el}
-                        id={id}
+                        id={el}
                         field={ACCOUNT_CARD_RECIEVING}
                     />
-                    <label htmlFor={id}>
+                    <label htmlFor={el}>
                         <div className='create__account__card input'>
                             <Icon
                                 width={353}

@@ -2,10 +2,12 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import type { CustomerInfo } from 'src/shared/model';
 
+const baseUrl = 'http://172.17.1.76:8082/api/v1/customer';
+
 export const customerApi = createApi({
     reducerPath: 'customerApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://172.17.1.76:8082/api/v1/customer',
+        baseUrl,
         prepareHeaders: headers => {
             headers.set('content-type', 'application/json');
             return headers;

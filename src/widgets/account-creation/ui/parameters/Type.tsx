@@ -9,7 +9,6 @@ import {
     CREATE_CREDIT_ACCOUNT_TITLE,
     CREATE_DEPOSIT_ACCOUNT_TITLE
 } from 'src/shared/model';
-import { useId } from 'react';
 import { Radio } from 'src/shared/ui/radio';
 
 import { ACCOUNT_TYPE } from '../../model/constants';
@@ -46,8 +45,6 @@ interface Props {
     register: UseFormRegister<FieldValues>;
 }
 export const TypeVariant = ({ register }: Props) => {
-    const id = useId();
-
     return (
         <>
             {acountTypes.map(el => (
@@ -55,10 +52,10 @@ export const TypeVariant = ({ register }: Props) => {
                     <Radio
                         register={register}
                         value={el}
-                        id={id}
+                        id={el}
                         field={ACCOUNT_TYPE}
                     />
-                    <label htmlFor={id}>
+                    <label htmlFor={el}>
                         <div className='create__account__card input'>
                             <div className='create__account__card__header'>
                                 <Text
