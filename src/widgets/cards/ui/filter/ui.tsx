@@ -19,7 +19,7 @@ interface CardFilter {
 interface CardFilterPayment {
     text: string;
 }
-export type FilterType = CardType | PaymentType;
+
 interface FiltersCardBarProps {
     current: string;
     setCurrent: (value: CardType | PaymentType) => void;

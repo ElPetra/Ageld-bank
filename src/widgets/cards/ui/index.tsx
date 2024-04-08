@@ -1,7 +1,7 @@
 import { Menu } from 'src/features/menu';
 import { Text } from 'src/shared/ui';
 
-import { CardContent } from 'src/widgets/cards/ui/content/index.js';
+import { CardContent } from 'src/widgets/cards/ui/content';
 
 import { CARDS } from '../model';
 

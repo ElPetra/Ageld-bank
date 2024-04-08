@@ -46,4 +46,6 @@ export type SvgIconNames =
     | 'error-popup'
     | 'more'
     | 'card'
-    | 'world';
+    | 'world'
+    | 'mir'
+    | 'visa';

@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import { Button, Text } from 'src/shared/ui';
 import { RouteName } from 'src/shared/model';
-
+import { getIconName } from 'src/widgets/cards/ui/content/card/utils.js';
 import { Icon } from 'src/shared/ui';
 
 import type { Card } from 'src/widgets/cards/model';
@@ -16,23 +16,38 @@ export const FinanceCard = ({ card }: Props) => {
     const { pathname } = useLocation();
 
     return (
-        <Link to={RouteName.CARDS + '/' + card.id} state={{ from: pathname }}>
-            <div className='finance-card__container'>
+        <div className='finance-card__container'>
+            <Link
+                to={RouteName.CARDS + '/' + card.id}
+                state={{ from: pathname }}
+            >
                 <Icon height={200} width={340} icon='debet' />
-                <div className='finance-card__info'>
-                    <Text size='l' weight='bold' color='primary-day'>
-                        {card.name}
-                    </Text>
-                    <Text size='s' color='copy'>
-                        {card.description}
-                    </Text>
-                    <div>{card.payment}</div>
-                    <div className='finance-card__buttons'>
-                        <Button variant='secondary'>Подробнее</Button>
-                        <Button>Оформить</Button>
-                    </div>
+            </Link>
+            <div className='finance-card__info'>
+                <div className='finance-card__title'>
+                    <Link
+                        to={RouteName.CARDS + '/' + card.id}
+                        state={{ from: pathname }}
+                    >
+                        <Text size='l' weight='bold' color='primary-day'>
+                            {card.name}
+                        </Text>
+                    </Link>
+                    <Icon
+                        icon={getIconName(card.payment)}
+                        className='finance-card__payment'
+                        width={70}
+                        height={30}
+                    />
+                </div>
+                <Text size='s' color='copy'>
+                    {card.description}
+                </Text>
+                <div className='finance-card__buttons'>
+                    <Button variant='secondary'>Подробнее</Button>
+                    <Button>Оформить</Button>
                 </div>
             </div>
-        </Link>
+        </div>
     );
 };

@@ -12,7 +12,7 @@ import { RouteName } from 'src/shared/model';
 import { AccountInfo } from 'src/widgets/account-info';
 import { CustomToaster } from 'src/widgets/toaster';
 
-import { CardInfo } from 'src/widgets/card-info/index.js';
+import { CardInfo } from 'src/widgets/card-info';
 
 import { ProtectedRoute } from './protected-route';
 
