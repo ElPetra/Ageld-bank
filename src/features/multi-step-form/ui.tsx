@@ -17,6 +17,7 @@ export type VariantType =
     | 'registration'
     | 'change-password'
     | 'recovery'
+    | 'create-account'
     | 'none';
 
 interface Props {

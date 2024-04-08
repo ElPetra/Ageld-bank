@@ -1,4 +1,5 @@
-import type { Currency } from 'src/shared/model';
+import { type Currency } from 'src/shared/model';
+export type CardReceiveType = 'inOffice' | 'delivery';
 
 export interface Card {
     balance: number;

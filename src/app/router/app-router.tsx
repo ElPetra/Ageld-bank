@@ -10,7 +10,9 @@ import { PersonalPage } from 'src/pages/personal';
 import { NotificationHistoryPage } from 'src/pages/notification/ui';
 import { RouteName } from 'src/shared/model';
 import { AccountInfo } from 'src/widgets/account-info';
+import { AccountCreation } from 'src/widgets/account-creation/ui';
 import { CustomToaster } from 'src/widgets/toaster';
+import { CreationResult } from 'src/widgets/account-creation/ui/content/CreationResult';
 
 import { CardInfo } from 'src/widgets/card-info';
 
@@ -55,12 +57,20 @@ const authRoutes: RouteDescription[] = [
         component: MainPage
     },
     {
-        path: CARD,
-        component: CardInfo
+        path: ACCOUNT_PAGE + '/create',
+        component: AccountCreation
+    },
+    {
+        path: ACCOUNT_PAGE + '/create/:creationResult?',
+        component: CreationResult
     },
     {
         path: ACCOUNT_PAGE + '/:id?',
-        component: AccountInfo
+        component: AccountInfo 
+    },
+    { 
+        path: CARD,
+        component: CardInfo
     },
     {
         path: PERSONAL_PAGE + '/:id?',

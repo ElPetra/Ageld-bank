@@ -1,4 +1,4 @@
-import { type Status } from 'src/widgets/accounts/model';
+import { type Status } from 'src/shared/model';
 
 import {
     ACCOUNT_STATEMENT,

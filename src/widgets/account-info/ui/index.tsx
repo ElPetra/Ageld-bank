@@ -14,7 +14,6 @@ import './styles.scss';
 
 export const AccountInfo = () => {
     const { state } = useLocation();
-
     return (
         <>
             <Link className='back_link' to={state.from}>
