@@ -95,7 +95,8 @@ export const customerApi = createApi({
             query: phoneNumber => ({
                 url: '/registry/check_status',
                 method: 'POST',
-                body: { phoneNumber }
+                body: { phoneNumber },
+                responseHandler: response => response.json()
             })
         }),
         checkRegistration: builder.mutation<{ customerId: string }, string>({

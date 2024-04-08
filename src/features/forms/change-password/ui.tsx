@@ -1,5 +1,7 @@
 import { PasswordInput } from 'src/features/inputs';
 import { Button, Form } from 'src/shared/ui';
+import { getErrorMessage } from 'src/shared/lib';
+import { useChangePasswordMutation } from 'src/shared/api';
 import './styles.scss';
 
 import { type FieldValues, useForm } from 'react-hook-form';
@@ -22,14 +24,27 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
     } = useForm<FieldValues>({
         mode: 'onSubmit',
         reValidateMode: 'onSubmit',
-        defaultValues: { password1: '' },
+        defaultValues: { current_password: '', password1: '', password2: '' },
         resolver: yupResolver<FieldValues>(changePasswordSchema)
     });
+
+    const [changePassword, { error: changePasswordError }] =
+        useChangePasswordMutation();
     const onSubmit = (data: FieldValues) => {
-        if (setFormStep && !isLast) {
-            setFormStep(curr => curr + 1);
+        const accessToken = localStorage.getItem('accessToken');
+        if (accessToken) {
+            changePassword({
+                Authorization: accessToken,
+                oldPassword: data.current_password,
+                newPassword: data.password1
+            })
+                .unwrap()
+                .then(() => {
+                    if (setFormStep && !isLast) {
+                        setFormStep(curr => curr + 1);
+                    }
+                });
         }
-        console.log(data);
     };
     return (
         <Form onSubmit={handleSubmit(onSubmit)}>
@@ -40,11 +55,7 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
                     label='current_password'
                     variant='confirm'
                     placeholder='Текущий пароль'
-                    error={
-                        (typeof errors.current_password?.message === 'string' &&
-                            errors.current_password?.message) ||
-                        ''
-                    }
+                    error={getErrorMessage(changePasswordError)}
                 />
                 <PasswordInput
                     size='medium'
