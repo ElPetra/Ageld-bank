@@ -1,8 +1,7 @@
 import type { ComponentType } from 'react';
 
 export const RouteName = {
-    ACCOUNT_PAGE: '/accounts', // временное решение для удобства работы над фичей
-    ACCOUNTS: '/accounts', // временное решение для удобства работы над фичей
+    ACCOUNTS: '/accounts',
     MAIN_PAGE: '',
     REGISTRATION_PAGE: '/signup',
     LOGIN_PAGE: '/signin',

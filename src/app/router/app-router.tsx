@@ -10,7 +10,9 @@ import { PersonalPage } from 'src/pages/personal';
 import { NotificationHistoryPage } from 'src/pages/notification/ui';
 import { RouteName } from 'src/shared/model';
 import { AccountInfo } from 'src/widgets/account-info';
+import { AccountCreation } from 'src/widgets/account-creation/ui';
 import { CustomToaster } from 'src/widgets/toaster';
+import { CreationResult } from 'src/widgets/account-creation/ui/content/CreationResult';
 
 import { ProtectedRoute } from './protected-route';
 
@@ -21,7 +23,7 @@ const {
     REGISTRATION_PAGE,
     LOGIN_PAGE,
     SUCCESS_PAGE,
-    ACCOUNT_PAGE,
+    ACCOUNTS,
     PERSONAL_PAGE,
     NOTIFICATION_HISTORY_PAGE,
     RECOVERY_PASSWORD_PAGE
@@ -52,7 +54,15 @@ const authRoutes: RouteDescription[] = [
         component: MainPage
     },
     {
-        path: ACCOUNT_PAGE + '/:id?',
+        path: ACCOUNTS + '/create',
+        component: AccountCreation
+    },
+    {
+        path: ACCOUNTS + '/create/:creationResult?',
+        component: CreationResult
+    },
+    {
+        path: ACCOUNTS + '/:id?',
         component: AccountInfo
     },
     {

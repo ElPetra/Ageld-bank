@@ -1,2 +1,2 @@
-export * from './phone-input';
+export * from './formatDateRuLocale';
 export * from './get-error-message';
