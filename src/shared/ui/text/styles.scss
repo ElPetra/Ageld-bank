@@ -65,6 +65,14 @@
     color: var(--text-error);
   }
 
+  &.text-copy{
+    color: var(--text-copy);
+  }
+
+  &.text-primary-day{
+    color: var(--text-primary-day);
+  }
+
   &.text-inherit{
     color: inherit;
   }

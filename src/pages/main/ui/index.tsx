@@ -2,6 +2,7 @@ import { Menu } from 'src/features/menu';
 import { Greeting } from 'src/widgets/greeting';
 import { MainMenu } from 'src/widgets/main-menu';
 import { Accounts } from 'src/widgets/accounts';
+import { Cards } from 'src/widgets/cards';
 
 export const MainPage = () => {
     return (
@@ -15,7 +16,7 @@ export const MainPage = () => {
                 {
                     id: 2,
                     name: 'Карты',
-                    component: <Greeting />
+                    component: <Cards />
                 },
                 {
                     id: 3,

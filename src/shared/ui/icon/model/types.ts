@@ -47,8 +47,11 @@ export type SvgIconNames =
     | 'failure-lady'
     | 'documents-folder-lady'
     | 'businessman'
+    | 'debet'
     | 'success-popup'
     | 'error-popup'
     | 'more'
     | 'card'
-    | 'world';
+    | 'world'
+    | 'mir'
+    | 'visa';

@@ -14,6 +14,8 @@ import { AccountCreation } from 'src/widgets/account-creation/ui';
 import { CustomToaster } from 'src/widgets/toaster';
 import { CreationResult } from 'src/widgets/account-creation/ui/content/CreationResult';
 
+import { CardInfo } from 'src/widgets/card-info';
+
 import { ProtectedRoute } from './protected-route';
 
 import type { RouteDescription } from 'src/shared/model';
@@ -23,7 +25,8 @@ const {
     REGISTRATION_PAGE,
     LOGIN_PAGE,
     SUCCESS_PAGE,
-    ACCOUNTS,
+    CARD,
+    ACCOUNT_PAGE,
     PERSONAL_PAGE,
     NOTIFICATION_HISTORY_PAGE,
     RECOVERY_PASSWORD_PAGE
@@ -54,16 +57,20 @@ const authRoutes: RouteDescription[] = [
         component: MainPage
     },
     {
-        path: ACCOUNTS + '/create',
+        path: ACCOUNT_PAGE + '/create',
         component: AccountCreation
     },
     {
-        path: ACCOUNTS + '/create/:creationResult?',
+        path: ACCOUNT_PAGE + '/create/:creationResult?',
         component: CreationResult
     },
     {
-        path: ACCOUNTS + '/:id?',
-        component: AccountInfo
+        path: ACCOUNT_PAGE + '/:id?',
+        component: AccountInfo 
+    },
+    { 
+        path: CARD,
+        component: CardInfo
     },
     {
         path: PERSONAL_PAGE + '/:id?',
