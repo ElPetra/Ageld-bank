@@ -9,10 +9,9 @@ import { SuccessPage } from 'src/pages/success';
 import { PersonalPage } from 'src/pages/personal';
 import { NotificationHistoryPage } from 'src/pages/notification';
 import { AccountPage } from 'src/pages/accounts';
+import { CardPage } from 'src/pages/cards';
 import { CustomToaster } from 'src/widgets/toaster';
 import { RouteName } from 'src/shared/model';
-
-import { CardInfo } from 'src/widgets/card-info';
 
 import { ProtectedRoute } from './protected-route';
 
@@ -23,7 +22,7 @@ const {
     REGISTRATION_PAGE,
     LOGIN_PAGE,
     SUCCESS_PAGE,
-    CARD,
+    CARD_PAGE,
     ACCOUNT_PAGE,
     PERSONAL_PAGE,
     NOTIFICATION_HISTORY_PAGE,
@@ -55,8 +54,8 @@ const authRoutes: RouteDescription[] = [
         component: MainPage
     },
     {
-        path: CARD,
-        component: CardInfo
+        path: CARD_PAGE + '/:id',
+        component: CardPage
     },
     {
         path: ACCOUNT_PAGE + '/:id',

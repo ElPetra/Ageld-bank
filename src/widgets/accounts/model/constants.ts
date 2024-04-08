@@ -5,7 +5,7 @@ export const OPEN_ACCOUNT_REQUEST = 'Заявки на открытие счет
 export const CLOSED_ACCOUNTS = 'Закрытые счета';
 export const BLOCKED_ACCOUNTS = 'Заблокированные счета';
 
-// AccountNotFound
+// AccountContent
 export const CREATE_ACCOUNT = 'Создать счет';
 export const ACCOUNTS_NOT_FOUND =
     'На данный момент \n у Вас нет соответствующих счетов';

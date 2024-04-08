@@ -1,10 +1,8 @@
 import type { ComponentType } from 'react';
 
 export const RouteName = {
-    ACCOUNT_PAGE: '/accounts', // временное решение для удобства работы над фичей
-    ACCOUNTS: '/accounts', // временное решение для удобства работы над фичей
-    CARD: '/cards/:id?',
-    CARDS: '/cards',
+    ACCOUNT_PAGE: '/accounts',
+    CARD_PAGE: '/cards',
     MAIN_PAGE: '',
     REGISTRATION_PAGE: '/signup',
     LOGIN_PAGE: '/signin',

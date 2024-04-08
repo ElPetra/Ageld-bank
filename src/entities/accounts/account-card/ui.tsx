@@ -25,7 +25,7 @@ export const AccountCard = ({ account }: Props) => {
 
     return isAvailable ? (
         <div key={account.id} className='account__card'>
-            <Link to={RouteName.ACCOUNTS + '/' + account.id}>
+            <Link to={RouteName.ACCOUNT_PAGE + '/' + account.id}>
                 <div className='account__card__container'>
                     <div>
                         <Icon widthAndHeight={40} icon={account.currency} />

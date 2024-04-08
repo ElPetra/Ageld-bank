@@ -1,6 +1,4 @@
-import { AccountNotFound } from 'src/widgets/accounts/ui/content/not-found';
-
-import { cards } from 'src/widgets/cards/model';
+import { cards, CARDS_NOT_FOUND, CREATE_CARD } from 'src/widgets/cards/model';
 import { useCardsFilter } from 'src/widgets/cards/lib';
 import { FinanceCard } from 'src/widgets/cards/ui/content/card';
 import { Pagination } from 'src/shared/ui/pagination';
@@ -8,6 +6,7 @@ import { usePaginationFilter } from 'src/shared/hooks/usePaginationFilter.js';
 
 import { sortByCreated } from 'src/shared/lib/sortByCreated.js';
 import { Filters } from 'src/widgets/cards/ui/content/filters';
+import { ProductNotFound } from 'src/entities/products';
 
 export const CardContent = () => {
     const { setType, setPayment, getFilteredCards } = useCardsFilter();
@@ -38,7 +37,10 @@ export const CardContent = () => {
                     />
                 </>
             ) : (
-                <AccountNotFound />
+                <ProductNotFound
+                    text={CARDS_NOT_FOUND}
+                    buttonText={CREATE_CARD}
+                />
             )}
         </>
     );
