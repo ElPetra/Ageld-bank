@@ -4,16 +4,13 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 import { PasswordInput } from 'src/features/inputs';
 import { Button, Form } from 'src/shared/ui';
-import {
-    useCheckRegistrationMutation,
-    useCreateAccountMutation
-} from 'src/shared/api';
+import { useCreateAccountMutation } from 'src/shared/api';
+import { getErrorMessage } from 'src/shared/lib';
 
 import { confirmPasswordSchema } from './confirmPasswordSchema';
 
 import type { FieldValues } from 'react-hook-form';
 import type { Dispatch, SetStateAction } from 'react';
-import { getErrorMessage } from 'src/shared/lib';
 
 interface Props {
     isLast?: boolean;

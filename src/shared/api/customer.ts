@@ -83,10 +83,9 @@ export const customerApi = createApi({
             { customerId: string, password: string }
         >({
             query: ({ customerId, password }) => ({
-                url: '/registry/create_account',
+                url: '/registry/create_user_profile',
                 method: 'POST',
-                body: { customerId, password },
-                responseHandler: response => response.json()
+                body: { customerId, password }
             })
         }),
         checkStatus: builder.mutation<

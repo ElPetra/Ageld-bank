@@ -34,10 +34,8 @@ export const PhoneForm = ({
         reValidateMode: 'onChange',
         defaultValues: { phone: '' }
     });
-    const [
-        checkRegistration,
-        { data: checkRegistrationData, error: checkRegistrationError }
-    ] = useCheckRegistrationMutation();
+    const [checkRegistration, { error: checkRegistrationError }] =
+        useCheckRegistrationMutation();
     const [generateCode, { error: generateCodeError }] =
         useGenerateCodeMutation();
     const handleLinkClick = (linkId: number) => {
@@ -49,33 +47,24 @@ export const PhoneForm = ({
     const onSubmit = (data: FieldValues) => {
         const phone = data.phone.replace(/\D/gm, '');
         if (variant === 'registration') {
-            localStorage.setItem('phone', phone);
             checkRegistration(phone)
                 .unwrap()
-                .then(() => {
-                    // логика на бэке не настроена, поэтому пока пропускаем этот запрос
-                    if (checkRegistrationData) {
-                        //     generateCode(phone)
-                        //         .unwrap()
-                        //         .then(data => {
-                        localStorage.setItem(
-                            'customerId',
-                            checkRegistrationData.customerId
-                        );
-                        //             console.log(data);
-                        //             if (setFormStep && !isLast) {
-                        //                 setFormStep(curr => {
-                        //                     return curr + 1;
-                        //                 });
-                        //             }
-                        //         });
-                    }
+                .then(checkRegistrationData => {
+                    generateCode(phone)
+                        .unwrap()
+                        .then(() => {
+                            localStorage.setItem('phone', phone);
+                            localStorage.setItem(
+                                'customerId',
+                                checkRegistrationData.customerId
+                            );
+                            if (setFormStep && !isLast) {
+                                setFormStep(curr => {
+                                    return curr + 1;
+                                });
+                            }
+                        });
                 });
-            if (setFormStep && !isLast) {
-                setFormStep(curr => {
-                    return curr + 1;
-                });
-            }
         }
         if (variant === 'login') {
             generateCode(phone)
@@ -98,10 +87,8 @@ export const PhoneForm = ({
                 register={register}
                 isError={!!errors?.phone}
                 error={
-                    variant === 'login'
-                        ? getErrorMessage(generateCodeError)
-                        : getErrorMessage(checkRegistrationError) +
-                          getErrorMessage(generateCodeError)
+                    getErrorMessage(checkRegistrationError) ||
+                    getErrorMessage(generateCodeError)
                 }
             />
             {variant === 'registration' && (
