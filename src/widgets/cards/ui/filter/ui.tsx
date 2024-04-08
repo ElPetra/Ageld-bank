@@ -1,5 +1,5 @@
 import { Text } from 'src/shared/ui';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import {
     ALL_CARD,
@@ -43,17 +43,13 @@ export const FiltersCardBar = ({
 }: FiltersCardBarProps) => {
     const [activeFilter, setActiveFilter] = useState<string>(filters[0].text);
     const currentFilters = current === 'type' ? filters : filtersPay;
-    useEffect(() => {
-        console.log(setCurrent);
-    }, []);
+
     return (
         <div className='account__filters-bar'>
             {currentFilters.map((el, i) => (
                 <button
                     onClick={() => {
-                        if (typeof current === 'string') {
-                            setCurrent(el.text as CardType);
-                        }
+                        setCurrent(el.text as CardType);
                         setActiveFilter(el.text);
                     }}
                     key={i}
