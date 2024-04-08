@@ -12,6 +12,8 @@ import { RouteName } from 'src/shared/model';
 import { AccountInfo } from 'src/widgets/account-info';
 import { CustomToaster } from 'src/widgets/toaster';
 
+import { CardInfo } from 'src/widgets/card-info';
+
 import { ProtectedRoute } from './protected-route';
 
 import type { RouteDescription } from 'src/shared/model';
@@ -21,6 +23,7 @@ const {
     REGISTRATION_PAGE,
     LOGIN_PAGE,
     SUCCESS_PAGE,
+    CARD,
     ACCOUNT_PAGE,
     PERSONAL_PAGE,
     NOTIFICATION_HISTORY_PAGE,
@@ -50,6 +53,10 @@ const authRoutes: RouteDescription[] = [
     {
         path: MAIN_PAGE + '/:id?',
         component: MainPage
+    },
+    {
+        path: CARD,
+        component: CardInfo
     },
     {
         path: ACCOUNT_PAGE + '/:id?',
