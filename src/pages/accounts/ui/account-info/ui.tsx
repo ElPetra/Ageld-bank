@@ -1,6 +1,6 @@
 import { formatDateRuLocale } from 'src/shared/lib';
 import { Button, Icon, Text } from 'src/shared/ui';
-import type { Account } from 'src/shared/model';
+
 import { accountTypes, currencySymbol } from 'src/shared/model';
 import { AccountStatuses } from 'src/entities/accounts';
 
@@ -15,6 +15,8 @@ import {
 } from '../../model';
 
 import { AccountsMoreInfo } from './more-info';
+
+import type { Account } from 'src/shared/model';
 
 import './styles.scss';
 

@@ -1,11 +1,12 @@
+import { MainRouteName } from 'src/shared/model';
 import { Menu } from 'src/features/menu';
-import { Greeting } from 'src/widgets/greeting';
 import { MainMenu } from 'src/widgets/main-menu';
 import { Accounts } from 'src/widgets/accounts';
 
 export const MainPage = () => {
     return (
         <Menu
+            routes={MainRouteName}
             elements={[
                 {
                     id: 1,
@@ -15,7 +16,7 @@ export const MainPage = () => {
                 {
                     id: 2,
                     name: 'Карты',
-                    component: <Greeting />
+                    component: <div>Карты</div>
                 },
                 {
                     id: 3,
@@ -25,22 +26,22 @@ export const MainPage = () => {
                 {
                     id: 4,
                     name: 'Переводы',
-                    component: <Greeting />
+                    component: <div>Переводы</div>
                 },
                 {
                     id: 5,
                     name: 'Платежи',
-                    component: <Greeting />
+                    component: <div>Платежи</div>
                 },
                 {
                     id: 6,
                     name: 'Кредиты',
-                    component: <Greeting />
+                    component: <div>Кредиты</div>
                 },
                 {
                     id: 7,
                     name: 'Депозиты',
-                    component: <Greeting />
+                    component: <div>Депозиты</div>
                 }
             ]}
         />

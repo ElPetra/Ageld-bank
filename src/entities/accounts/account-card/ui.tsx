@@ -1,6 +1,7 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { Icon, Text } from 'src/shared/ui';
+
 import {
     ACCOUNT_NUMBER_REPLACEMENT,
     accountTypes,
@@ -20,17 +21,11 @@ interface Props {
 }
 
 export const AccountCard = ({ account }: Props) => {
-    const { pathname } = useLocation();
     const isAvailable = checkAccountAvailable(account);
-    if (!isAvailable) {
-        return null;
-    }
-    return (
+
+    return isAvailable ? (
         <div key={account.id} className='account__card'>
-            <Link
-                to={RouteName.ACCOUNTS + '/' + account.id}
-                state={{ from: pathname }}
-            >
+            <Link to={RouteName.ACCOUNTS + '/' + account.id}>
                 <div className='account__card__container'>
                     <div>
                         <Icon widthAndHeight={40} icon={account.currency} />
@@ -64,5 +59,5 @@ export const AccountCard = ({ account }: Props) => {
                 </div>
             </Link>
         </div>
-    );
+    ) : null;
 };

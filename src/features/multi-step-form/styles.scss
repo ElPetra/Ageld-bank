@@ -1,6 +1,9 @@
 .multi-step-form {
   margin: 100px auto;
   max-width: 580px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
   &.change-password {
     max-width: 100%;
     margin: 0 auto;

@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 
 import { Menu } from 'src/features/menu';
-import { BackLink } from 'src/features/go-back';
+import { BackButton } from 'src/features/multi-step-form';
 
 import { accounts } from 'src/widgets/accounts/model';
 
@@ -15,7 +15,7 @@ export const AccountPage = () => {
     const account = accounts.find(el => el.id === id)!;
     return (
         <>
-            <BackLink />
+            <BackButton />
             <Menu
                 variant={'secondary'}
                 elements={[

@@ -4,7 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import { Text } from 'src/shared/ui';
 import { RouteName } from 'src/shared/model';
 
-import type { ReactNode, ReactElement } from 'react';
+import type { ReactElement, ReactNode } from 'react';
 
 import './styles.scss';
 
@@ -17,6 +17,7 @@ interface Element {
 interface Props {
     href?: string;
     variant?: 'primary' | 'secondary';
+    routes?: string[];
     elements?: Element[];
     children?: ReactNode;
 }
@@ -24,11 +25,16 @@ interface Props {
 export const Menu = ({
     href = RouteName.MAIN_PAGE,
     variant = 'primary',
+    routes,
     elements,
     children
 }: Props) => {
     const [index, setIndex] = useState<number>(1);
     const { id } = useParams<string>();
+    const routesIndex =
+        routes?.findIndex(el => el === id) !== -1
+            ? routes?.findIndex(el => el === id) || 0
+            : 0;
 
     return (
         <div className='menu'>
@@ -36,10 +42,10 @@ export const Menu = ({
                 <div className={`menu__items ${variant}`}>
                     {elements?.map(el => (
                         <Fragment key={el.id}>
-                            {variant === 'primary' ? (
+                            {variant === 'primary' && routes ? (
                                 <Link
-                                    to={href + '/' + String(el.id)}
-                                    className={`menu__item ${(Number(id) || 1) === el.id && 'active'} `}
+                                    to={href + '/' + routes[el.id - 1]}
+                                    className={`menu__item ${routesIndex == el.id - 1 && 'active'}`}
                                 >
                                     <Text weight='medium'>{el.name}</Text>
                                 </Link>
@@ -57,11 +63,11 @@ export const Menu = ({
                 {children}
             </div>
             <div className={`menu__content ${variant}`}>
-                {variant === 'primary' ? (
+                {variant === 'primary' && routes ? (
                     <>
                         {elements &&
-                            (Number(id) || 1) <= elements.length &&
-                            elements[(Number(id) || 1) - 1].component}
+                            routesIndex < elements.length &&
+                            elements[routesIndex].component}
                     </>
                 ) : (
                     <>{elements && elements[index - 1].component}</>

@@ -81,13 +81,13 @@ export const MainMenu = () => {
             <div className='main-menu__first-col'>
                 <MainMenuBlock
                     title='Мои карты'
-                    href={RouteName.MAIN_PAGE + CARDS}
+                    href={RouteName.MAIN_PAGE + '/' + CARDS}
                 >
                     {cards.map(el => (
                         <CardCard key={el.number} card={el} />
                     ))}
                 </MainMenuBlock>
-                <Link to={RouteName.MAIN_PAGE + CARDS}>
+                <Link to={RouteName.MAIN_PAGE + '/' + CARDS}>
                     <Button
                         variant='secondary'
                         size='medium'
@@ -102,7 +102,7 @@ export const MainMenu = () => {
                 <SearchForm />
                 <MainMenuBlock
                     title='Переводы'
-                    href={RouteName.MAIN_PAGE + TRANSFERS}
+                    href={RouteName.MAIN_PAGE + '/' + TRANSFERS}
                 >
                     <div className='main-menu__4'>
                         <MainMenuCard
@@ -120,7 +120,7 @@ export const MainMenu = () => {
                 </MainMenuBlock>
                 <MainMenuBlock
                     title='Платежи'
-                    href={RouteName.MAIN_PAGE + PAYMENTS}
+                    href={RouteName.MAIN_PAGE + '/' + PAYMENTS}
                 >
                     <div className='main-menu__4'>
                         <MainMenuCard
@@ -135,7 +135,7 @@ export const MainMenu = () => {
                 </MainMenuBlock>
                 <MainMenuBlock
                     title='Мои счета'
-                    href={RouteName.MAIN_PAGE + ACCOUNTS}
+                    href={RouteName.MAIN_PAGE + '/' + ACCOUNTS}
                 >
                     <div className='main-menu__2'>
                         {accounts.map(el => (
