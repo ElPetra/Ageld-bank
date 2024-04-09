@@ -4,7 +4,7 @@ import { FinanceCard } from 'src/widgets/cards/ui/content/card';
 import { Pagination } from 'src/shared/ui/pagination';
 import { usePaginationFilter } from 'src/shared/hooks/usePaginationFilter.js';
 
-import { sortByCreated } from 'src/shared/lib/sortByCreated.js';
+import { sortByCreated } from 'src/shared/lib';
 import { Filters } from 'src/widgets/cards/ui/content/filters';
 import { ProductNotFound } from 'src/entities/products';
 

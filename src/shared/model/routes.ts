@@ -8,7 +8,7 @@ export const RouteName = {
     LOGIN_PAGE: '/signin',
     PERSONAL_PAGE: '/personal',
     SUCCESS_PAGE: '/success',
-    NOTIFICATION_HISTORY_PAGE: '/notifications',
+    NOTIFICATION_HISTORY_PAGE: '/notifications_history',
     RECOVERY_PASSWORD_PAGE: '/recovery'
 };
 
