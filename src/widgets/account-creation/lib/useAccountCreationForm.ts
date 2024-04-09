@@ -1,5 +1,4 @@
 import { type FieldValues, useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
 
 import {
     ACCOUNT_CARD_RECIEVING,
@@ -7,9 +6,12 @@ import {
     ACCOUNT_TYPE
 } from '../model';
 
+import type { Dispatch, SetStateAction } from 'react';
+
 interface Params {
     parametr: Parametr;
-    setFormStep?: React.Dispatch<React.SetStateAction<number>>;
+    setFormStep?: Dispatch<SetStateAction<number>>;
+    setResult?: Dispatch<SetStateAction<'success' | 'failed'>>;
 }
 export type Parametr =
     | 'accountType'
@@ -17,8 +19,11 @@ export type Parametr =
     | 'accountcard'
     | 'agreement';
 
-export const useAccountCreationForm = ({ parametr, setFormStep }: Params) => {
-    const navigate = useNavigate();
+export const useAccountCreationForm = ({
+    parametr,
+    setFormStep,
+    setResult
+}: Params) => {
     const {
         register,
         handleSubmit,
@@ -37,10 +42,8 @@ export const useAccountCreationForm = ({ parametr, setFormStep }: Params) => {
         }
         const isAccountCreated = Math.random() > 0.4; //на время отсутствия ручки на создание счета
         if (parametr === 'agreement') {
-            if (isAccountCreated) {
-                navigate('success');
-            } else {
-                navigate('failed');
+            if (isAccountCreated && setResult) {
+                setResult('success');
             }
             localStorage.removeItem(ACCOUNT_CARD_RECIEVING);
             localStorage.removeItem(ACCOUNT_CURRENCY);

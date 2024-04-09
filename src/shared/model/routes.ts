@@ -7,7 +7,6 @@ export const RouteName = {
     REGISTRATION_PAGE: '/signup',
     LOGIN_PAGE: '/signin',
     PERSONAL_PAGE: '/personal',
-    SUCCESS_PAGE: '/success',
     NOTIFICATION_HISTORY_PAGE: '/notifications_history',
     RECOVERY_PASSWORD_PAGE: '/recovery'
 };
@@ -16,6 +15,9 @@ export interface RouteDescription {
     path: string;
     component: ComponentType;
 }
+
+export const CREATE = 'create';
+
 export const MAIN = '';
 export const CARDS = 'cards';
 export const ACCOUNTS = 'accounts';

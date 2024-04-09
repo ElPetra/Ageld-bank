@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom';
 
 import { yupResolver } from '@hookform/resolvers/yup';
 
+import { RouteName } from 'src/shared/model/index.js';
+
 import { confirmPasswordSchema } from './confirmPasswordSchema';
 
 import type { FieldValues } from 'react-hook-form';
@@ -33,17 +35,9 @@ export const ConfirmPasswordForm = ({ isLast, setFormStep, type }: Props) => {
         if (setFormStep && !isLast) {
             setFormStep(curr => curr + 1);
         }
-        console.log(data);
-
-        navigate('/success', {
-            state: {
-                message:
-                    type === 'recovery'
-                        ? 'Пароль успешно восстановлен'
-                        : 'Кабинет пользователя успешно зарегистрирован.',
-                button: true
-            }
-        });
+        if (type === 'recovery') {
+            navigate(RouteName.MAIN_PAGE);
+        }
     };
     return (
         <Form onSubmit={handleSubmit(onSubmit)}>

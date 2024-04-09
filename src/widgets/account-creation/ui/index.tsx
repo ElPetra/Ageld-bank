@@ -1,17 +1,49 @@
 import { MultiStepForm } from 'src/features/multi-step-form';
 
+import { RouteName } from 'src/shared/model/index.js';
+
+import { MessageCard } from 'src/entities/message/index.js';
+
+import {
+    ACCOUNT_CREATION_FAILED,
+    ACCOUNT_CREATION_SUCCESS,
+    GO_TO_ACCOUNT_LIST
+} from 'src/widgets/account-creation/model/index.js';
+
+import { useState } from 'react';
+
 import { AccountCreationForm } from './content/CreationForm';
 
-import './styles.scss';
 import { CurrencyVariant } from './parameters/Currency';
 import { ReceivingVariant } from './parameters/Receive';
 import { TypeVariant } from './parameters/Type';
 import { Agreement } from './parameters/Agreement';
 
+import type { SvgIconNames } from 'src/shared/ui/index.js';
+
+import './styles.scss';
+
+interface Match {
+    text: string;
+    icon: SvgIconNames;
+}
+
+const resultMatcher: Record<string, Match> = {
+    failed: {
+        text: ACCOUNT_CREATION_FAILED,
+        icon: 'failure-lady'
+    },
+    success: {
+        text: ACCOUNT_CREATION_SUCCESS,
+        icon: 'documents-folder-lady'
+    }
+};
+
 export const AccountCreation = () => {
+    const [result, setResult] = useState<'failed' | 'success'>('failed');
     return (
         <MultiStepForm
-            variant={'create-account'}
+            variant='create-account'
             forms={[
                 {
                     id: 1,
@@ -51,8 +83,23 @@ export const AccountCreation = () => {
                         <AccountCreationForm
                             parametr='agreement'
                             Element={Agreement}
+                            setResult={setResult}
                         />
                     )
+                },
+                {
+                    id: 5,
+                    title: '',
+                    component: (
+                        <MessageCard
+                            text={resultMatcher[result].text}
+                            width={275}
+                            icon={resultMatcher[result].icon}
+                            buttonText={GO_TO_ACCOUNT_LIST}
+                            buttonLink={RouteName.ACCOUNT_PAGE}
+                        />
+                    ),
+                    isResult: true
                 }
             ]}
         />

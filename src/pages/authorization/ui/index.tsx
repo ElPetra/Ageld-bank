@@ -4,7 +4,7 @@ import { MultiStepForm } from 'src/features/multi-step-form';
 export const AuthorizationPage = () => {
     return (
         <MultiStepForm
-            variant={'login'}
+            variant='login'
             forms={[
                 {
                     id: 1,

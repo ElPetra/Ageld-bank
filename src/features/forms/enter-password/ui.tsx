@@ -9,6 +9,8 @@ import { getErrorMessage } from 'src/shared/lib';
 
 import { type FieldValues, useForm } from 'react-hook-form';
 
+import { RouteName } from 'src/shared/model/index.js';
+
 import type { Dispatch, SetStateAction } from 'react';
 
 interface Props {
@@ -51,12 +53,7 @@ export const EnterPasswordForm = ({ isLast, setFormStep }: Props) => {
                     localStorage.setItem('accessToken', accessToken);
                     localStorage.setItem('refreshToken', refreshToken);
                     if (accessToken && refreshToken) {
-                        navigate('/success', {
-                            state: {
-                                message: 'Вход выполнен.',
-                                button: false
-                            }
-                        });
+                        navigate(RouteName.MAIN_PAGE);
                     }
                 });
             if (setFormStep && !isLast) {
