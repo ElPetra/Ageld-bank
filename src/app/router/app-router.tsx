@@ -66,9 +66,9 @@ const authRoutes: RouteDescription[] = [
     },
     {
         path: ACCOUNT_PAGE + '/:id?',
-        component: AccountInfo 
+        component: AccountInfo
     },
-    { 
+    {
         path: CARD,
         component: CardInfo
     },
