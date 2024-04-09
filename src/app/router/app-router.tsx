@@ -13,6 +13,9 @@ import { CardPage } from 'src/pages/cards';
 import { CustomToaster } from 'src/widgets/toaster';
 import { RouteName } from 'src/shared/model';
 
+import { CreationResult } from 'src/widgets/account-creation/ui/content/CreationResult';
+import { AccountCreation } from 'src/widgets/account-creation/ui';
+
 import { ProtectedRoute } from './protected-route';
 
 import type { RouteDescription } from 'src/shared/model';
@@ -54,8 +57,12 @@ const authRoutes: RouteDescription[] = [
         component: MainPage
     },
     {
-        path: CARD_PAGE + '/:id',
-        component: CardPage
+        path: ACCOUNT_PAGE + '/create',
+        component: AccountCreation
+    },
+    {
+        path: ACCOUNT_PAGE + '/create/:creationResult?',
+        component: CreationResult
     },
     {
         path: ACCOUNT_PAGE + '/:id',
