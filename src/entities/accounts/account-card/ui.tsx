@@ -1,16 +1,16 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { Icon, Text } from 'src/shared/ui';
+
 import {
     ACCOUNT_NUMBER_REPLACEMENT,
-    CURRENT_ACCOUNT,
-    accountStatuses,
     accountTypes,
     currencySymbol,
     RouteName
 } from 'src/shared/model';
 
 import { checkAccountAvailable } from './lib';
+import { AccountStatuses } from './account-statuses';
 
 import type { Account } from 'src/shared/model';
 
@@ -21,17 +21,11 @@ interface Props {
 }
 
 export const AccountCard = ({ account }: Props) => {
-    const { pathname } = useLocation();
     const isAvailable = checkAccountAvailable(account);
-    if (!isAvailable) {
-        return null;
-    }
-    return (
+
+    return isAvailable ? (
         <div key={account.id} className='account__card'>
-            <Link
-                to={RouteName.ACCOUNTS + '/' + account.id}
-                state={{ from: pathname }}
-            >
+            <Link to={RouteName.ACCOUNT_PAGE + '/' + account.id}>
                 <div className='account__card__container'>
                     <div>
                         <Icon widthAndHeight={40} icon={account.currency} />
@@ -48,22 +42,11 @@ export const AccountCard = ({ account }: Props) => {
                         </div>
                     </div>
                     <div>
-                        <div className='account__card__statuses'>
-                            {account.master && (
-                                <div className='account__card__status account__card__status-type__main'>
-                                    <Text weight='medium' size='xxs'>
-                                        {CURRENT_ACCOUNT}
-                                    </Text>
-                                </div>
-                            )}
-                            <div
-                                className={`account__card__status account__card__status-type__${account.status}`}
-                            >
-                                <Text weight='medium' size='xxs'>
-                                    {accountStatuses[account.status]}
-                                </Text>
-                            </div>
-                        </div>
+                        <AccountStatuses
+                            master={account.master}
+                            status={account.status}
+                            direction='column'
+                        />
                         <div className='account__card__balance'>
                             <Text weight='medium'>{account.balance}</Text>
                             <div className='account__card__balance-currency'>
@@ -76,5 +59,5 @@ export const AccountCard = ({ account }: Props) => {
                 </div>
             </Link>
         </div>
-    );
+    ) : null;
 };

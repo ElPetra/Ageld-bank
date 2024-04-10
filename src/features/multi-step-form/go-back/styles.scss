@@ -2,7 +2,10 @@
   color: var(--text-action);
   display: flex;
   gap: 4px;
-  margin-bottom: 32px;
+
+  &__top {
+    margin-top: 32px;
+  }
 }
 
 

@@ -7,14 +7,14 @@ import { RegistrationPage } from 'src/pages/registration';
 import { RecoveryPasswordPage } from 'src/pages/recovery';
 import { SuccessPage } from 'src/pages/success';
 import { PersonalPage } from 'src/pages/personal';
-import { NotificationHistoryPage } from 'src/pages/notification/ui';
-import { RouteName } from 'src/shared/model';
-import { AccountInfo } from 'src/widgets/account-info';
-import { AccountCreation } from 'src/widgets/account-creation/ui';
+import { NotificationHistoryPage } from 'src/pages/notification';
+import { AccountPage } from 'src/pages/accounts';
+import { CardPage } from 'src/pages/cards';
 import { CustomToaster } from 'src/widgets/toaster';
-import { CreationResult } from 'src/widgets/account-creation/ui/content/CreationResult';
+import { RouteName } from 'src/shared/model';
 
-import { CardInfo } from 'src/widgets/card-info';
+import { CreationResult } from 'src/widgets/account-creation/ui/content/CreationResult';
+import { AccountCreation } from 'src/widgets/account-creation/ui';
 
 import { ProtectedRoute } from './protected-route';
 
@@ -25,7 +25,7 @@ const {
     REGISTRATION_PAGE,
     LOGIN_PAGE,
     SUCCESS_PAGE,
-    CARD,
+    CARD_PAGE,
     ACCOUNT_PAGE,
     PERSONAL_PAGE,
     NOTIFICATION_HISTORY_PAGE,
@@ -65,12 +65,12 @@ const authRoutes: RouteDescription[] = [
         component: CreationResult
     },
     {
-        path: ACCOUNT_PAGE + '/:id?',
-        component: AccountInfo 
+        path: ACCOUNT_PAGE + '/:id',
+        component: AccountPage
     },
-    { 
-        path: CARD,
-        component: CardInfo
+    {
+        path: CARD_PAGE + '/:id',
+        component: CardPage
     },
     {
         path: PERSONAL_PAGE + '/:id?',

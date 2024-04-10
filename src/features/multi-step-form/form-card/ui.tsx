@@ -3,7 +3,7 @@ import { Link, Text } from 'src/shared/ui';
 import { RouteName } from 'src/shared/model';
 
 import type { ReactNode } from 'react';
-import type { VariantType } from 'src/features/multi-step-form/ui';
+import type { VariantType } from '../model';
 
 import './styles.scss';
 

@@ -1,3 +1,4 @@
+import { MainRouteName } from 'src/shared/model';
 import { Menu } from 'src/features/menu';
 import { Greeting } from 'src/widgets/greeting';
 import { MainMenu } from 'src/widgets/main-menu';
@@ -7,6 +8,7 @@ import { Cards } from 'src/widgets/cards';
 export const MainPage = () => {
     return (
         <Menu
+            routes={MainRouteName}
             elements={[
                 {
                     id: 1,
