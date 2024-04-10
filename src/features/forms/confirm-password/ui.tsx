@@ -6,10 +6,12 @@ import { PasswordInput } from 'src/features/inputs';
 import { Button, Form } from 'src/shared/ui';
 import { useCreateAccountMutation } from 'src/shared/api';
 import { getErrorMessage } from 'src/shared/lib';
+import { getUserId } from 'src/shared/api/services/localStorageApi';
 
 import { confirmPasswordSchema } from './confirmPasswordSchema';
 
 import type { FieldValues } from 'react-hook-form';
+
 import type { Dispatch, SetStateAction } from 'react';
 
 interface Props {
@@ -34,7 +36,7 @@ export const ConfirmPasswordForm = ({ isLast, setFormStep, type }: Props) => {
         useCreateAccountMutation();
 
     const onSubmit = (data: FieldValues) => {
-        const customerId = localStorage.getItem('customerId');
+        const customerId = getUserId();
         if (customerId) {
             createAccount({
                 customerId: customerId,

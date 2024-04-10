@@ -1,39 +1,56 @@
-import { type AuthResponse } from '../../../../entities/auth/types/auth';
 import {
-    AUTH_ERROR,
-    EXPIRES_KEY,
-    REFRESH_KEY,
-    TOKEN_KEY,
-    USERID_KEY
-} from '../../../constants/constants';
+    EXPIRES_DATE,
+    USER_ACCESS_TOKEN,
+    USER_ID,
+    USER_PHONE,
+    USER_REFRESH_TOKEN
+} from './constants';
+
+interface AuthResponse {
+    accessToken: string;
+    refreshToken: string;
+}
 
 export const setTokens = (res: AuthResponse) => {
-    if (res.data) {
-        const { localId, idToken, refreshToken, expiresIn } = res.data;
-        const expiresDate = new Date().getTime() + +expiresIn * 1000 + '';
-        localStorage.setItem(USERID_KEY, localId);
-        localStorage.setItem(TOKEN_KEY, idToken);
-        localStorage.setItem(REFRESH_KEY, refreshToken);
-        localStorage.setItem(EXPIRES_KEY, expiresDate);
-    } else {
-        throw new Error(AUTH_ERROR);
+    if (res) {
+        const { accessToken, refreshToken } = res;
+        const expiresTime = 2 * 60 * 1000;
+        const expiresDate = new Date().getTime() + expiresTime + '';
+        localStorage.setItem(USER_ACCESS_TOKEN, accessToken);
+        localStorage.setItem(USER_REFRESH_TOKEN, refreshToken);
+        localStorage.setItem(EXPIRES_DATE, expiresDate);
     }
 };
+export const getTokenExpiresDate = () => {
+    return localStorage.getItem(EXPIRES_DATE);
+};
+export const setUserPhone = (phone: string) => {
+    return localStorage.setItem(USER_PHONE, phone);
+};
 
-export const getAccessToken = () => {
-    return localStorage.getItem('accessToken');
+export const getUserPhone = () => {
+    return localStorage.getItem(USER_PHONE);
+};
+
+export const setUserId = (customerId: string) => {
+    return localStorage.setItem(USER_ID, customerId);
 };
 
 export const getUserId = () => {
-    return localStorage.getItem('uuid');
+    return localStorage.getItem(USER_ID);
+};
+
+export const getAccessToken = () => {
+    return localStorage.getItem(USER_ACCESS_TOKEN);
 };
 
 export const getRefreshToken = () => {
-    return localStorage.getItem('refreshToken');
+    return localStorage.getItem(USER_REFRESH_TOKEN);
 };
 
 export const removeAuthData = () => {
-    localStorage.removeItem('uuid');
-    localStorage.removeItem('accessToken');
-    localStorage.removeItem('refreshToken');
+    localStorage.removeItem(USER_PHONE);
+    localStorage.removeItem(USER_ID);
+    localStorage.removeItem(USER_ACCESS_TOKEN);
+    localStorage.removeItem(USER_REFRESH_TOKEN);
 };

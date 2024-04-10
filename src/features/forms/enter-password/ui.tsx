@@ -2,12 +2,17 @@ import { useNavigate } from 'react-router-dom';
 
 import { PasswordInput } from 'src/features/inputs';
 import { Button, Form } from 'src/shared/ui';
-import { useGenerateTokenMutation } from 'src/shared/api';
 import { setUser } from 'src/app/store/slices/userSlice';
 import { useAppDispatch } from 'src/app/store/dispatch';
 import { getErrorMessage } from 'src/shared/lib';
 
 import { type FieldValues, useForm } from 'react-hook-form';
+import { useGenerateTokenMutation } from 'src/shared/api/auth';
+
+import {
+    getUserPhone,
+    setTokens
+} from 'src/shared/api/services/localStorageApi';
 
 import type { Dispatch, SetStateAction } from 'react';
 
@@ -31,7 +36,7 @@ export const EnterPasswordForm = ({ isLast, setFormStep }: Props) => {
     const [generateToken, { error }] = useGenerateTokenMutation();
 
     const onSubmit = (data: FieldValues) => {
-        const phone = localStorage.getItem('phone');
+        const phone = getUserPhone();
         if (phone) {
             generateToken({
                 phoneNumber: phone,
@@ -39,18 +44,15 @@ export const EnterPasswordForm = ({ isLast, setFormStep }: Props) => {
             })
                 .unwrap()
                 .then(data => {
-                    const accessToken = data.accessToken;
-                    const refreshToken = data.refreshToken;
                     dispatch(
                         setUser({
                             phone: phone,
-                            accessToken: accessToken,
-                            refreshToken: refreshToken
+                            accessToken: data.accessToken,
+                            refreshToken: data.refreshToken
                         })
                     );
-                    localStorage.setItem('accessToken', accessToken);
-                    localStorage.setItem('refreshToken', refreshToken);
-                    if (accessToken && refreshToken) {
+                    setTokens(data);
+                    if (data) {
                         navigate('/success', {
                             state: {
                                 message: 'Вход выполнен.',

@@ -1,36 +1,23 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
+import { getActualAccessToken } from '../lib/getActualAccessToken';
+
 import type { CustomerInfo } from 'src/shared/model';
 
 export const customerApi = createApi({
     reducerPath: 'customerApi',
     baseQuery: fetchBaseQuery({
         baseUrl: 'http://172.17.1.76:8082/api/v1/customer',
-        prepareHeaders: headers => {
+        prepareHeaders: async headers => {
+            const token = await getActualAccessToken();
             headers.set('content-type', 'application/json');
+            headers.set('Authorization', 'Bearer ' + token);
             return headers;
         },
         responseHandler: response => response.text()
     }),
     tagTypes: ['Customer'],
     endpoints: builder => ({
-        generateCode: builder.mutation<string, { phoneNumber: string }>({
-            query: phoneNumber => ({
-                url: '/auth/verification/generate_code',
-                method: 'POST',
-                body: { phoneNumber }
-            })
-        }),
-        checkCode: builder.mutation<
-            string,
-            { phoneNumber: string, code: string }
-        >({
-            query: ({ code, phoneNumber }) => ({
-                url: '/auth/verification/check_code',
-                method: 'POST',
-                body: { phoneNumber, code }
-            })
-        }),
         changePassword: builder.mutation<
             string,
             { oldPassword: string, newPassword: string, Authorization: string }
@@ -57,17 +44,7 @@ export const customerApi = createApi({
                 responseHandler: response => response.json()
             })
         }),
-        generateToken: builder.mutation<
-            { accessToken: string, refreshToken: string },
-            { phoneNumber: string, password: string }
-        >({
-            query: ({ phoneNumber, password }) => ({
-                url: '/auth/generate_token',
-                method: 'POST',
-                body: { phoneNumber, password },
-                responseHandler: response => response.json()
-            })
-        }),
+
         recoveryPassword: builder.mutation<
             void,
             { password: string, customerId: string }
@@ -146,11 +123,8 @@ export const customerApi = createApi({
 });
 
 export const {
-    useGenerateCodeMutation,
-    useCheckCodeMutation,
     useChangePasswordMutation,
     useRefreshTokenMutation,
-    useGenerateTokenMutation,
     useRecoveryPasswordMutation,
     useCreateAccountMutation,
     useCheckStatusMutation,

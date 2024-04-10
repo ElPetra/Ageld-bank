@@ -1,1 +1,1 @@
-export const socialLinks
+export * from './localStorageApi';

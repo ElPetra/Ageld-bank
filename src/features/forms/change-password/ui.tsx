@@ -9,6 +9,8 @@ import { type FieldValues, useForm } from 'react-hook-form';
 import { type Dispatch, type SetStateAction } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 
+import { getAccessToken } from 'src/shared/api/services/localStorageApi';
+
 import { changePasswordSchema } from './changePasswordShema';
 
 interface Props {
@@ -31,7 +33,7 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
     const [changePassword, { error: changePasswordError }] =
         useChangePasswordMutation();
     const onSubmit = (data: FieldValues) => {
-        const accessToken = localStorage.getItem('accessToken');
+        const accessToken = getAccessToken();
         if (accessToken) {
             changePassword({
                 Authorization: accessToken,

@@ -6,10 +6,8 @@ import { RouteName } from 'src/shared/model';
 import { getErrorMessage } from 'src/shared/lib';
 
 import { type Dispatch, type SetStateAction, useState } from 'react';
-import {
-    useCheckRegistrationMutation,
-    useGenerateCodeMutation
-} from 'src/shared/api';
+import { useCheckRegistrationMutation } from 'src/shared/api';
+import { useGenerateCodeMutation } from 'src/shared/api/auth';
 
 import type { FieldValues } from 'react-hook-form';
 

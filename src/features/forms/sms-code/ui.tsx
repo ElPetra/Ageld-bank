@@ -2,8 +2,8 @@ import { useForm } from 'react-hook-form';
 
 import { CodeInput } from 'src/features/inputs';
 import { Button, Form, Text } from 'src/shared/ui';
-import { useCheckCodeMutation } from 'src/shared/api';
 import { getErrorMessage } from 'src/shared/lib';
+import { useCheckCodeMutation } from 'src/shared/api/auth';
 
 import type { FieldValues } from 'react-hook-form';
 import type { Dispatch, SetStateAction } from 'react';
