@@ -22,7 +22,11 @@ export const actionHandling: Middleware = () => next => action => {
     if (isRejectedWithValue(action) && isPayload(action.payload)) {
         toast.error(action.payload.data);
     }
-    if (isFulfilled(action) && typeof action.payload === 'string') {
+    if (
+        isFulfilled(action) &&
+        action.payload &&
+        typeof action.payload === 'string'
+    ) {
         toast.success(action.payload);
     }
     return next(action);
