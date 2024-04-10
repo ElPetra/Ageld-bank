@@ -1,7 +1,9 @@
-import { advantages } from 'src/widgets/card-info/model';
 import { Text } from 'src/shared/ui';
 
-import type { Card } from 'src/widgets/cards/model/index.js';
+import { advantages } from '../../model';
+
+import type { Card } from 'src/widgets/cards/model';
+
 import './style.scss';
 
 interface Props {
