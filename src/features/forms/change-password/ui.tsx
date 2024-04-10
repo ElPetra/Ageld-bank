@@ -33,7 +33,7 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
     };
     return (
         <Form onSubmit={handleSubmit(onSubmit)}>
-            <div className='row'>
+            <div className='change-password__row'>
                 <PasswordInput
                     size='medium'
                     register={register}

@@ -19,7 +19,7 @@ export const FinanceCard = ({ card }: Props) => {
     return (
         <div className='finance-card__container'>
             <Link
-                to={RouteName.CARDS + '/' + card.id}
+                to={RouteName.CARD_PAGE + '/' + card.id}
                 state={{ from: pathname }}
             >
                 <Image height={200} width={340} image={card.image} />
@@ -27,7 +27,7 @@ export const FinanceCard = ({ card }: Props) => {
             <div className='finance-card__info'>
                 <div className='finance-card__title'>
                     <Link
-                        to={RouteName.CARDS + '/' + card.id}
+                        to={RouteName.CARD_PAGE + '/' + card.id}
                         state={{ from: pathname }}
                     >
                         <Text size='l' weight='bold' color='primary-day'>

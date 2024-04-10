@@ -6,7 +6,10 @@ import { RouteName } from 'src/shared/model';
 import { getErrorMessage } from 'src/shared/lib';
 
 import { type Dispatch, type SetStateAction, useState } from 'react';
-import { useGenerateCodeMutation } from 'src/shared/api';
+import {
+    useCheckRegistrationMutation,
+    useGenerateCodeMutation
+} from 'src/shared/api';
 
 import type { FieldValues } from 'react-hook-form';
 
@@ -31,6 +34,8 @@ export const PhoneForm = ({
         reValidateMode: 'onChange',
         defaultValues: { phone: '' }
     });
+    const [checkRegistration, { error: checkRegistrationError }] =
+        useCheckRegistrationMutation();
     const [generateCode, { error: generateCodeError }] =
         useGenerateCodeMutation();
     const handleLinkClick = (linkId: number) => {
@@ -41,6 +46,26 @@ export const PhoneForm = ({
     const allLinksClicked = clickedLinks.length === 2;
     const onSubmit = (data: FieldValues) => {
         const phone = data.phone.replace(/\D/gm, '');
+        if (variant === 'registration') {
+            checkRegistration(phone)
+                .unwrap()
+                .then(checkRegistrationData => {
+                    generateCode(phone)
+                        .unwrap()
+                        .then(() => {
+                            localStorage.setItem('phone', phone);
+                            localStorage.setItem(
+                                'customerId',
+                                checkRegistrationData.customerId
+                            );
+                            if (setFormStep && !isLast) {
+                                setFormStep(curr => {
+                                    return curr + 1;
+                                });
+                            }
+                        });
+                });
+        }
         if (variant === 'login') {
             generateCode(phone)
                 .unwrap()
@@ -61,7 +86,10 @@ export const PhoneForm = ({
                 label={'phone'}
                 register={register}
                 isError={!!errors?.phone}
-                error={getErrorMessage(generateCodeError)}
+                error={
+                    getErrorMessage(checkRegistrationError) ||
+                    getErrorMessage(generateCodeError)
+                }
             />
             {variant === 'registration' && (
                 <>

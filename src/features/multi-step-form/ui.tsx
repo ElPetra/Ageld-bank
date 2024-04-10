@@ -8,17 +8,9 @@ import { FormCard } from './form-card';
 
 import type { Form } from 'src/shared/model';
 
-import type { Condition } from './model';
+import type { Condition, VariantType } from './model';
 
 import './styles.scss';
-
-export type VariantType =
-    | 'login'
-    | 'registration'
-    | 'change-password'
-    | 'recovery'
-    | 'create-account'
-    | 'none';
 
 interface Props {
     variant?: VariantType;

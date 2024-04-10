@@ -85,7 +85,7 @@ export const customerApi = createApi({
             { customerId: string, password: string }
         >({
             query: ({ customerId, password }) => ({
-                url: '/registry/create_account',
+                url: '/registry/create_user_profile',
                 method: 'POST',
                 body: { customerId, password }
             })
@@ -104,7 +104,8 @@ export const customerApi = createApi({
             query: phoneNumber => ({
                 url: '/registry/check_registration',
                 method: 'POST',
-                body: { phoneNumber }
+                body: { phoneNumber },
+                responseHandler: response => response.json()
             })
         }),
         addEmail: builder.mutation<

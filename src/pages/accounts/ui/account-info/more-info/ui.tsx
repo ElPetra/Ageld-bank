@@ -1,4 +1,4 @@
-import { type Status } from 'src/shared/model';
+import { MoreInfo } from 'src/features/drop-down';
 
 import {
     ACCOUNT_STATEMENT,
@@ -8,8 +8,9 @@ import {
     MAKE_ACCOUNT_MAIN,
     REQUISITES,
     UNLOCK_ACCOUNT
-} from 'src/widgets/account-info/model/constants';
-import { MoreInfo } from 'src/shared/ui/dropDown/moreInfo';
+} from '../../../model';
+
+import type { Status } from 'src/shared/model';
 
 interface Props {
     accountStatus: Status;
@@ -24,6 +25,7 @@ const anchors: Record<string, string> = {
     [APPLICATION_STATUS]: 'application_status',
     [BLOCK_ACCOUNT]: 'block'
 };
+
 const accountStatuses: Record<Status, string[]> = {
     active: [
         REQUISITES,
@@ -36,6 +38,7 @@ const accountStatuses: Record<Status, string[]> = {
     blocked: [REQUISITES, ACCOUNT_STATEMENT, UNLOCK_ACCOUNT],
     requested: [APPLICATION_STATUS]
 };
+
 export const AccountsMoreInfo = ({ accountStatus }: Props) => {
     const options = accountStatuses[accountStatus].map(el => ({
         text: el,

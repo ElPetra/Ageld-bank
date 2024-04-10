@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 
+import type { Dispatch, SetStateAction } from 'react';
+
 export const useDropDown = (
     classname: string
-): [boolean, React.Dispatch<React.SetStateAction<boolean>>] => {
+): [boolean, Dispatch<SetStateAction<boolean>>] => {
     const [open, setOpen] = useState(false);
     useEffect(() => {
         const toggleOpen = (e: Event) => {

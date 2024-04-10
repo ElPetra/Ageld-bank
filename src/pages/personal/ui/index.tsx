@@ -1,5 +1,5 @@
 import { Link } from 'src/shared/ui';
-import { RouteName } from 'src/shared/model';
+import { PersonalRouteName, RouteName } from 'src/shared/model';
 import { Address, Contacts, UserCard } from 'src/entities/user';
 import { Menu } from 'src/features/menu';
 import { ChangePasswordForm, EmailForm, SmsCodeForm } from 'src/features/forms';
@@ -12,6 +12,7 @@ export const PersonalPage = () => {
     return (
         <Menu
             href={RouteName.PERSONAL_PAGE}
+            routes={PersonalRouteName}
             elements={[
                 {
                     id: 1,

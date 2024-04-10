@@ -1,6 +1,7 @@
 import { AccountCard } from 'src/entities/accounts';
+import { ProductNotFound } from 'src/entities/products';
 
-import { AccountNotFound } from './not-found';
+import { ACCOUNTS_NOT_FOUND, CREATE_ACCOUNT } from '../../model';
 
 import type { Account } from 'src/shared/model';
 
@@ -20,7 +21,10 @@ export const AccountContent = ({ content }: Props) => {
                     ))}
                 </div>
             ) : (
-                <AccountNotFound />
+                <ProductNotFound
+                    text={ACCOUNTS_NOT_FOUND}
+                    buttonText={CREATE_ACCOUNT}
+                />
             )}
         </div>
     );
