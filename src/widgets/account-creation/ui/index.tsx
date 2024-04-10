@@ -12,12 +12,14 @@ import {
 
 import { useState } from 'react';
 
-import { AccountCreationForm } from './content/CreationForm';
+import { AccountCreationForm } from './creation-form';
 
-import { CurrencyVariant } from './parameters/Currency';
-import { ReceivingVariant } from './parameters/Receive';
-import { TypeVariant } from './parameters/Type';
-import { Agreement } from './parameters/Agreement';
+import {
+    Agreement,
+    CurrencyVariant,
+    ReceivingVariant,
+    TypeVariant
+} from './parameters';
 
 import type { SvgIconNames } from 'src/shared/ui/index.js';
 

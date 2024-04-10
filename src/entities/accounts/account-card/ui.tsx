@@ -36,7 +36,7 @@ export const AccountCard = ({ account }: Props) => {
                                     ACCOUNT_NUMBER_REPLACEMENT
                                 )}
                             </Text>
-                            <Text weight='medium'>
+                            <Text weight='medium' color='quadruple'>
                                 {accountTypes[account.type]}
                             </Text>
                         </div>

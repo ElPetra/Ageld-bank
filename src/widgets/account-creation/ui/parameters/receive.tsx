@@ -17,7 +17,7 @@ interface ReceiveVariant {
     icon: SvgIconNames;
 }
 
-const receieveVariants: Record<CardReceiveType, ReceiveVariant> = {
+const receiveVariants: Record<CardReceiveType, ReceiveVariant> = {
     inOffice: { text: GET_CARD_IN_OFFICE, icon: 'plant-lady' },
     delivery: { text: CARD_DELIVERY_REQUIRED, icon: 'paper-airplane-lady' }
 };
@@ -42,10 +42,10 @@ export const ReceivingVariant = ({ register }: Props) => {
                             <Icon
                                 width={353}
                                 height={274}
-                                icon={receieveVariants[el].icon}
+                                icon={receiveVariants[el].icon}
                             />
                             <Text size='m' tag='h2' weight='medium'>
-                                {receieveVariants[el].text}
+                                {receiveVariants[el].text}
                             </Text>
                         </div>
                     </label>

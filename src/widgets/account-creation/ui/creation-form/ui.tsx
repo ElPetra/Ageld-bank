@@ -1,11 +1,11 @@
-import { Button, Form, Text } from 'src/shared/ui';
-import { CREATE_ACCOUNT } from 'src/widgets/accounts/model';
+import { Button, Form, Text } from 'src/shared/ui/index.js';
+import { CREATE_ACCOUNT } from 'src/widgets/accounts/model/index.js';
 
 import {
     type Parametr,
     useAccountCreationForm
-} from '../../lib/useAccountCreationForm';
-import { ACCOUNT_CARD_AGREEMENT } from '../../model';
+} from '../../lib/useAccountCreationForm.js';
+import { ACCOUNT_CARD_AGREEMENT } from '../../model/index.js';
 
 import type { Dispatch, SetStateAction } from 'react';
 

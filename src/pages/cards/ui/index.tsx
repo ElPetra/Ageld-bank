@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 
 import { getIconName } from 'src/shared/lib';
 import { Button, Icon, Image, Text } from 'src/shared/ui';
-import { ProductNotFound } from 'src/entities/products';
+import { MessageCard } from 'src/entities/message';
 import { BackButton } from 'src/features/multi-step-form';
 
 import { Advantages } from './advantage';
@@ -16,12 +16,12 @@ export const CardPage = () => {
     return (
         <>
             <BackButton />
-            {card !== undefined ? (
+            {card ? (
                 <div className='finance-card__container'>
                     <Image height={200} image={card.image} width={420} />
                     <div className='finance-card__info'>
                         <div className='finance-card__title'>
-                            <Text size='l' weight='bold' color='primary-day'>
+                            <Text size='l' weight='bold' color='quadruple'>
                                 {card.name}
                             </Text>
                             <Icon
@@ -40,10 +40,7 @@ export const CardPage = () => {
                     </div>
                 </div>
             ) : (
-                <ProductNotFound
-                    text={CARDS_NOT_FOUND}
-                    buttonText={CREATE_CARD}
-                />
+                <MessageCard text={CARDS_NOT_FOUND} buttonText={CREATE_CARD} />
             )}
         </>
     );

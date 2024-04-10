@@ -39,7 +39,7 @@ const typeMatcher: Record<AccountType, MatchResult> = {
     }
 };
 
-const acountTypes: AccountType[] = ['master', 'deposit', 'credit'];
+const accountTypes: AccountType[] = ['master', 'deposit', 'credit'];
 
 interface Props {
     register: UseFormRegister<FieldValues>;
@@ -47,7 +47,7 @@ interface Props {
 export const TypeVariant = ({ register }: Props) => {
     return (
         <>
-            {acountTypes.map(el => (
+            {accountTypes.map(el => (
                 <div key={el} className='field'>
                     <Radio
                         register={register}
