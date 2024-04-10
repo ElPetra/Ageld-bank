@@ -30,12 +30,16 @@ export const CardContent = () => {
                             <FinanceCard key={el.id} card={el} />
                         ))}
                     </div>
-                    <Pagination
-                        currentPage={currentPage}
-                        totalPages={totalPages}
-                        onPageChange={(page: number) => setCurrentPage(page)}
-                        pageNumbers={pageNumbers}
-                    />
+                    {cards.length > 10 && (
+                        <Pagination
+                            currentPage={currentPage}
+                            totalPages={totalPages}
+                            onPageChange={(page: number) =>
+                                setCurrentPage(page)
+                            }
+                            pageNumbers={pageNumbers}
+                        />
+                    )}
                 </>
             ) : (
                 <MessageCard

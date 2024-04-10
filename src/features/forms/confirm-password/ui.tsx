@@ -1,10 +1,11 @@
+import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 import { PasswordInput } from 'src/features/inputs';
 import { Button, Form } from 'src/shared/ui';
-import { useNavigate } from 'react-router-dom';
-
-import { yupResolver } from '@hookform/resolvers/yup';
+import { useCreateAccountMutation } from 'src/shared/api';
+import { getErrorMessage } from 'src/shared/lib';
 
 import { RouteName } from 'src/shared/model/index.js';
 
@@ -31,14 +32,28 @@ export const ConfirmPasswordForm = ({ isLast, setFormStep, type }: Props) => {
         resolver: yupResolver<FieldValues>(confirmPasswordSchema)
     });
     const navigate = useNavigate();
+    const [createAccount, { error: createAccountError }] =
+        useCreateAccountMutation();
+
     const onSubmit = (data: FieldValues) => {
-        if (setFormStep && !isLast) {
-            setFormStep(curr => curr + 1);
-        }
-        if (type === 'recovery') {
-            navigate(RouteName.MAIN_PAGE);
+        const customerId = localStorage.getItem('customerId');
+        if (customerId) {
+            createAccount({
+                customerId: customerId,
+                password: data.password1
+            })
+                .unwrap()
+                .then(() => {
+                    if (type === 'recovery') {
+                        navigate(RouteName.MAIN_PAGE);
+                    }
+                });
+            if (setFormStep && !isLast) {
+                setFormStep(curr => curr + 1);
+            }
         }
     };
+
     return (
         <Form onSubmit={handleSubmit(onSubmit)}>
             <PasswordInput
@@ -46,6 +61,7 @@ export const ConfirmPasswordForm = ({ isLast, setFormStep, type }: Props) => {
                 label='password1'
                 variant='create'
                 isError={!!errors.password1?.message}
+                error={getErrorMessage(createAccountError)}
             />
             <PasswordInput
                 register={register}
