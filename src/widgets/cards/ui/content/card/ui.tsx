@@ -1,8 +1,8 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Button, Text } from 'src/shared/ui';
+
+import { Button, Text, Icon, Image } from 'src/shared/ui';
 import { RouteName } from 'src/shared/model';
-import { getIconName } from 'src/widgets/cards/ui/content/card/utils.js';
-import { Icon } from 'src/shared/ui';
+import { getIconName } from 'src/shared/lib';
 
 import type { Card } from 'src/widgets/cards/model';
 
@@ -21,7 +21,7 @@ export const FinanceCard = ({ card }: Props) => {
                 to={RouteName.CARD_PAGE + '/' + card.id}
                 state={{ from: pathname }}
             >
-                <Icon height={200} width={340} icon='debet' />
+                <Image height={200} width={340} image={card.image} />
             </Link>
             <div className='finance-card__info'>
                 <div className='finance-card__title'>
@@ -44,7 +44,12 @@ export const FinanceCard = ({ card }: Props) => {
                     {card.description}
                 </Text>
                 <div className='finance-card__buttons'>
-                    <Button variant='secondary'>Подробнее</Button>
+                    <Link
+                        to={RouteName.CARD_PAGE + '/' + card.id}
+                        state={{ from: pathname }}
+                    >
+                        <Button variant='secondary'>Подробнее</Button>
+                    </Link>
                     <Button>Оформить</Button>
                 </div>
             </div>
