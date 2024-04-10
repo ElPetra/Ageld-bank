@@ -24,7 +24,9 @@ export const MoreInfo = ({ options }: Props) => {
                 <div className='more__info__dropdown'>
                     {options.map((el, index) => (
                         <Link key={index} to={el.to}>
-                            <Text weight='medium'>{el.text}</Text>
+                            <Text weight='medium' color='quadruple'>
+                                {el.text}
+                            </Text>
                         </Link>
                     ))}
                 </div>
