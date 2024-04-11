@@ -20,6 +20,7 @@ interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
     label: string;
     placeholder?: string;
     register: UseFormRegister<FieldValues>;
+    isDirty?: boolean;
 }
 
 export const PasswordInput = ({
@@ -29,6 +30,7 @@ export const PasswordInput = ({
     error,
     width = 'max',
     size = 'large',
+    isDirty,
     ...props
 }: Props) => {
     const [open, setOpen] = useState<boolean>(false);
@@ -83,20 +85,22 @@ export const PasswordInput = ({
                     </Text>
                 </div>
             )}
-            {isFocused && variant === 'create' && value && (
-                <PasswordRequirements
-                    key={value}
-                    password={value}
-                    requirements={{
-                        length: '6,20',
-                        existsAllRegisters: true,
-                        existsDigit: true,
-                        existsSymbol:
-                            /* prettier-ignore */ '!\\\\"#$%&\'()*+,\\-.\\/:;<=>?@[\\]^_`{|}~',
-                        onlyLatin: true
-                    }}
-                />
-            )}
+            {isFocused &&
+                variant === 'create' &&
+                (isDirty !== undefined ? isDirty : true) && (
+                    <PasswordRequirements
+                        key={value}
+                        password={value}
+                        requirements={{
+                            length: '6,20',
+                            existsAllRegisters: true,
+                            existsDigit: true,
+                            existsSymbol:
+                                /* prettier-ignore */ '!\\\\"#$%&\'()*+,\\-.\\/:;<=>?@[\\]^_`{|}~',
+                            onlyLatin: true
+                        }}
+                    />
+                )}
         </div>
     );
 };

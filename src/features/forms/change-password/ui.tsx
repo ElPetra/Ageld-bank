@@ -25,6 +25,7 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
         register,
         handleSubmit,
         setValue,
+        watch,
         formState: { errors, isDirty }
     } = useForm<FieldValues>({
         mode: 'onSubmit',
@@ -71,6 +72,7 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
                     label='password1'
                     variant='create'
                     placeholder='Новый пароль'
+                    isDirty={watch('password1') !== ''}
                     error={getFieldErrorMessage(errors.password1?.message)}
                 />
                 <PasswordInput
