@@ -1,6 +1,7 @@
 import { Navigate } from 'react-router-dom';
 
 import { RouteName } from 'src/shared/model';
+import { useAuth } from 'src/shared/hooks/useAuth';
 
 import type { ReactNode } from 'react';
 
@@ -9,7 +10,7 @@ interface Props {
 }
 
 export function ProtectedRoute({ children }: Props) {
-    const isAuth = true;
+    const { isAuth } = useAuth();
     return isAuth ? (
         <>{children}</>
     ) : (

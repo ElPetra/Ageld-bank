@@ -2,7 +2,7 @@ import { Link } from 'src/shared/ui';
 import { RouteName } from 'src/shared/model';
 import { Address, Contacts, UserCard } from 'src/entities/user';
 import { Menu } from 'src/features/menu';
-import { ChangePasswordForm, EmailForm, SmsCodeForm } from 'src/features/forms';
+import { ChangePasswordForm, EmailForm } from 'src/features/forms';
 import { MultiStepForm } from 'src/features/multi-step-form';
 import { CheckboxGroup } from 'src/widgets/notifications';
 
@@ -44,14 +44,17 @@ export const PersonalPage = () => {
                                     id: 1,
                                     title: 'Изменить пароль',
                                     component: <ChangePasswordForm />
-                                },
-                                {
-                                    id: 2,
-                                    title: 'Введите код из смс',
-                                    component: (
-                                        <SmsCodeForm variant='password-create' />
-                                    )
                                 }
+                                // {
+                                //     id: 2,
+                                //     title: 'Введите код из смс',
+                                //     component: (
+                                //         <SmsCodeForm
+                                //             variant='password-create'
+                                //             passwords={passwords}
+                                //         />
+                                //     )
+                                // }
                             ]}
                         />
                     )

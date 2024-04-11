@@ -11,6 +11,8 @@ import { NotificationHistoryPage } from 'src/pages/notification/ui';
 import { RouteName } from 'src/shared/model';
 import { AccountInfo } from 'src/widgets/account-info';
 import { CustomToaster } from 'src/widgets/toaster';
+import { useAuth } from 'src/shared/hooks/useAuth';
+import { useEffect } from 'react';
 
 import { ProtectedRoute } from './protected-route';
 
@@ -66,6 +68,13 @@ const authRoutes: RouteDescription[] = [
 ];
 
 export const AppRouter = () => {
+    const { authChecked, isLoading } = useAuth();
+    useEffect(() => {
+        authChecked();
+    }, [authChecked]);
+    if (isLoading) {
+        return <>Loading...</>;
+    }
     return (
         <Routes>
             <Route

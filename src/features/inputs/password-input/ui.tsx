@@ -83,7 +83,7 @@ export const PasswordInput = ({
                     </Text>
                 </div>
             )}
-            {isFocused && variant === 'create' && (
+            {isFocused && variant === 'create' && value && (
                 <PasswordRequirements
                     key={value}
                     password={value}

@@ -22,6 +22,7 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
     const {
         register,
         handleSubmit,
+        setValue,
         formState: { errors, isDirty }
     } = useForm<FieldValues>({
         mode: 'onSubmit',
@@ -45,6 +46,9 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
                     if (setFormStep && !isLast) {
                         setFormStep(curr => curr + 1);
                     }
+                    setValue('current_password', '');
+                    setValue('password1', '');
+                    setValue('password2', '');
                 });
         }
     };
