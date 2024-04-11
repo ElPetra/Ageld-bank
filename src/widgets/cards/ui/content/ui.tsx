@@ -6,7 +6,8 @@ import { usePaginationFilter } from 'src/shared/hooks/usePaginationFilter.js';
 
 import { sortByCreated } from 'src/shared/lib';
 import { Filters } from 'src/widgets/cards/ui/content/filters';
-import { ProductNotFound } from 'src/entities/products';
+import { MessageCard } from 'src/entities/message/index.js';
+import { CREATE, RouteName } from 'src/shared/model/index.js';
 
 export const CardContent = () => {
     const { setType, setPayment, getFilteredCards } = useCardsFilter();
@@ -41,9 +42,10 @@ export const CardContent = () => {
                     )}
                 </>
             ) : (
-                <ProductNotFound
+                <MessageCard
                     text={CARDS_NOT_FOUND}
                     buttonText={CREATE_CARD}
+                    buttonLink={RouteName.CARD_PAGE + '/' + CREATE}
                 />
             )}
         </>

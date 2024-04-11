@@ -47,8 +47,8 @@ export const AccountInfo = ({ account }: Props) => {
                             </div>
                             <div className='account-info__name__second-row'>
                                 <div>
-                                    <Text>{ACCOUNT_NUMBER}</Text>
-                                    <Text>{account.number}</Text>
+                                    <Text color='quadruple'>{ACCOUNT_NUMBER}</Text>
+                                    <Text color='quadruple'>{account.number}</Text>
                                 </div>
                                 <button onClick={handleCopyAccount}>
                                     <Icon icon='copy' />
@@ -63,18 +63,18 @@ export const AccountInfo = ({ account }: Props) => {
                 <div className='account-info__info'>
                     <div>
                         <Text size='xs'>{CONTRACT_NUMBER}</Text>
-                        <Text>{account.contractNumber}</Text>
+                        <Text color='quadruple'>{account.contractNumber}</Text>
                     </div>
                     <div>
                         <Text size='xs'>{ACCOUNT_OPENED_DATE}</Text>
-                        <Text>
+                        <Text color='quadruple'>
                             {formatDateRuLocale(account.created)}
                         </Text>
                     </div>
                     {account.status === 'closed' && account.closed && (
                         <div>
                             <Text size='xs'>{ACCOUNT_CLOSED_DATE}</Text>
-                            <Text>
+                            <Text color='quadruple'>
                                 {formatDateRuLocale(account.closed)}
                             </Text>
                         </div>
@@ -82,7 +82,7 @@ export const AccountInfo = ({ account }: Props) => {
                     {account.status === 'blocked' && (
                         <div>
                             <Text size='xs'>{ACCOUNT_BLOCK_REASON}</Text>
-                            <Text>
+                            <Text color='quadruple'>
                                 {account.blockReason}
                             </Text>
                         </div>

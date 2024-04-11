@@ -18,7 +18,9 @@ export const CardCard = ({ card }: Props) => {
                     <Text size='m' weight='medium'>
                         {card.balance}
                     </Text>
-                    <Text size='xs'>{card.name}</Text>
+                    <Text size='xs' color='quadruple'>
+                        {card.name}
+                    </Text>
                 </div>
             </div>
             <div className='card-card__second-row'>

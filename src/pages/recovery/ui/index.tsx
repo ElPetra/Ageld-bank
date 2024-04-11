@@ -8,7 +8,7 @@ import { MultiStepForm } from 'src/features/multi-step-form/index.js';
 export const RecoveryPasswordPage = () => {
     return (
         <MultiStepForm
-            variant={'recovery'}
+            variant='recovery'
             forms={[
                 {
                     id: 1,

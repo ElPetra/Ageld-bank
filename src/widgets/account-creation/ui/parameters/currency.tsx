@@ -32,7 +32,7 @@ export const CurrencyVariant = ({ register }: Props) => {
                     />
                     <label htmlFor={el}>
                         <div className='create__account__card__currency input'>
-                            <Icon icon={el} />
+                            <Icon icon={el} width={40} />
                             <Text size='m' tag='h2' weight='medium'>
                                 {currencyText[el]}
                             </Text>

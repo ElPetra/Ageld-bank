@@ -9,10 +9,6 @@
   &__first-row {
     display: flex;
     gap: 16px;
-
-    .product-card__info > div:last-child {
-      color: var(--text-quadruple);
-    }
   }
 
   &__second-row {

@@ -4,11 +4,13 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
+
   &.change-password {
+    margin: 0;
     max-width: 100%;
-    margin: 0 auto;
   }
-  &.create-account{
+
+  &.create-account {
     margin: 56px 0;
     max-width: 100%;
   }

@@ -8,7 +8,7 @@ interface Props {
     tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'div';
     size?: 'xs' | 'xxs' | 's' | 'm' | 'l' | 'xl';
     weight?: 'regular' | 'medium' | 'bold' | 'extra-bold';
-    color?: 'inherit' | 'success' | 'error' | 'copy' | 'primary-day';
+    color?: 'inherit' | 'success' | 'error' | 'quadruple';
     align?: 'center' | 'left' | 'right';
     children: ReactNode;
 }

@@ -5,9 +5,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { PasswordInput } from 'src/features/inputs';
 import { Button, Form } from 'src/shared/ui';
 import { useCreateAccountMutation } from 'src/shared/api';
-import { getErrorMessage } from 'src/shared/lib';
+import { getErrorMessage, getFieldErrorMessage } from 'src/shared/lib';
+import { RouteName } from 'src/shared/model';
 
-import { confirmPasswordSchema } from './confirmPasswordSchema';
+import { confirmPasswordSchema } from './model';
 
 import type { FieldValues } from 'react-hook-form';
 import type { Dispatch, SetStateAction } from 'react';
@@ -42,13 +43,9 @@ export const ConfirmPasswordForm = ({ isLast, setFormStep, type }: Props) => {
             })
                 .unwrap()
                 .then(() => {
-                    navigate('/success', {
-                        state: {
-                            message:
-                                'Кабинет пользователя успешно зарегистрирован.',
-                            button: true
-                        }
-                    });
+                    if (type === 'recovery') {
+                        navigate(RouteName.MAIN_PAGE);
+                    }
                 });
             if (setFormStep && !isLast) {
                 setFormStep(curr => curr + 1);
@@ -74,11 +71,7 @@ export const ConfirmPasswordForm = ({ isLast, setFormStep, type }: Props) => {
                         : 'Подтвердите пароль'
                 }
                 variant='confirm'
-                error={
-                    (typeof errors.password2?.message === 'string' &&
-                        errors.password2?.message) ||
-                    ''
-                }
+                error={getFieldErrorMessage(errors.password2?.message)}
             />
             <Button
                 variant='secondary'

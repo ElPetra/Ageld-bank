@@ -1,27 +1,31 @@
-import { Button, Form, Text } from 'src/shared/ui';
-import { CREATE_ACCOUNT } from 'src/widgets/accounts/model';
+import { Button, Form, Text } from 'src/shared/ui/index.js';
+import { CREATE_ACCOUNT } from 'src/widgets/accounts/model/index.js';
 
 import {
-    useAccountCreationForm,
-    type Parametr
-} from '../../lib/useAccountCreationForm';
-import { ACCOUNT_CARD_AGREEMENT } from '../../model';
+    type Parametr,
+    useAccountCreationForm
+} from '../../lib/useAccountCreationForm.js';
+import { ACCOUNT_CARD_AGREEMENT } from '../../model/index.js';
+
+import type { Dispatch, SetStateAction } from 'react';
 
 import type { FieldValues, UseFormRegister } from 'react-hook-form';
 
 interface Props {
-    setFormStep?: React.Dispatch<React.SetStateAction<number>>;
+    setFormStep?: Dispatch<SetStateAction<number>>;
     parametr: Parametr;
     Element: (props: { register: UseFormRegister<FieldValues> }) => JSX.Element;
+    setResult?: Dispatch<SetStateAction<'success' | 'failed'>>;
 }
 
 export const AccountCreationForm = ({
     parametr,
     Element,
-    setFormStep
+    setFormStep,
+    setResult
 }: Props) => {
     const { register, handleSubmit, onSubmit, dirtyFields } =
-        useAccountCreationForm({ parametr, setFormStep });
+        useAccountCreationForm({ parametr, setFormStep, setResult });
 
     return (
         <Form onSubmit={handleSubmit(onSubmit)}>
