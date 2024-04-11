@@ -6,6 +6,7 @@ import * as yup from 'yup';
 import { EmailInput } from 'src/features/inputs';
 import { Button, Form } from 'src/shared/ui';
 import { getFieldErrorMessage } from 'src/shared/lib';
+import { useNewEmailMutation } from 'src/shared/api';
 
 import type { FieldValues } from 'react-hook-form';
 
@@ -42,9 +43,22 @@ export const EmailForm = ({ email }: Props) => {
         resolver: yupResolver<FieldValues>(schema)
     });
     const [isClicked, setIsClicked] = useState<boolean>(false);
-
+    const [newEmail] = useNewEmailMutation();
+    const onSubmit = data => {
+        const token =
+            localStorage.getItem('accessToken') ||
+            localStorage.getItem('refreshToken');
+        try {
+            newEmail({
+                Authorization: token,
+                email: data.email
+            }).unwrap();
+        } catch (error) {
+            console.error('Ошибка при изменении email', error);
+        }
+    };
     return (
-        <Form onSubmit={handleSubmit(data => {})}>
+        <Form onSubmit={handleSubmit(onSubmit)}>
             <EmailInput
                 label={'email'}
                 register={register}

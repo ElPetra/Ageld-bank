@@ -1,6 +1,7 @@
+import type { FieldError, FieldErrorsImpl, Merge } from 'react-hook-form';
+
 import type { SerializedError } from '@reduxjs/toolkit';
 import type { FetchBaseQueryError } from '@reduxjs/toolkit/query';
-import { FieldError, FieldErrorsImpl, Merge } from 'react-hook-form';
 
 export const getErrorMessage = (
     error: FetchBaseQueryError | SerializedError | undefined

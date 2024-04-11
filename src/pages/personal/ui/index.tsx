@@ -6,9 +6,18 @@ import { ChangePasswordForm, EmailForm, SmsCodeForm } from 'src/features/forms';
 import { MultiStepForm } from 'src/features/multi-step-form';
 import { CheckboxGroup } from 'src/widgets/notifications';
 
+import { useGetInfoQuery } from 'src/shared/api/index.js';
+
 import { options } from '../model';
 
 export const PersonalPage = () => {
+    const token = localStorage.getItem('accessToken');
+    const refreshToken = localStorage.getItem('refreshToken');
+    const { data, isLoading } = useGetInfoQuery({
+        Authorization: token ? token : refreshToken
+    });
+    const infoData = data && JSON.parse(data);
+
     return (
         <Menu
             href={RouteName.PERSONAL_PAGE}
@@ -18,20 +27,25 @@ export const PersonalPage = () => {
                     id: 1,
                     name: 'Личные данные',
                     component: (
-                        <UserCard
-                            fullName={'Константинов Константин Константинович'}
-                        >
-                            <Contacts phone={'+7 (953) 627-05-08'}>
-                                <EmailForm email={'juliadeiker@yandex.ru'} />
-                            </Contacts>
-                            <Address
-                                street='Б-р Энтузиастов'
-                                house='2'
-                                apartment='24'
-                                city='Москва'
-                                index='134567'
-                            />
-                        </UserCard>
+                        <>
+                            {isLoading && <p>Loading...</p>}
+                            {data && (
+                                <UserCard
+                                    fullName={`${infoData.lastName} ${infoData.firstName} ${infoData.middleName}`}
+                                >
+                                    <Contacts phone={infoData.phoneNumber}>
+                                        <EmailForm email={infoData.email} />
+                                    </Contacts>
+                                    <Address
+                                        street='Б-р Энтузиастов'
+                                        house='2'
+                                        apartment='24'
+                                        city='Москва'
+                                        index='134567'
+                                    />
+                                </UserCard>
+                            )}
+                        </>
                     )
                 },
                 {
