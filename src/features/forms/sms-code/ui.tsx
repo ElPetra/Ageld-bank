@@ -3,8 +3,7 @@ import { useForm } from 'react-hook-form';
 import { CodeInput } from 'src/features/inputs';
 import { Button, Form, Text } from 'src/shared/ui';
 import { getErrorMessage } from 'src/shared/lib';
-import { useCheckCodeMutation } from 'src/shared/api/auth';
-import { getUserPhone } from 'src/shared/api/services/localStorageApi';
+import { useCheckCodeMutation, getUserPhone } from 'src/shared/api';
 
 import type { FieldValues } from 'react-hook-form';
 import type { Dispatch, SetStateAction } from 'react';

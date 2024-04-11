@@ -1,8 +1,7 @@
 import { useRef, useState } from 'react';
+import { useForm } from 'react-hook-form';
 
 import { Form, Icon, Input } from 'src/shared/ui';
-
-import { useForm } from 'react-hook-form';
 
 import type { FieldValues } from 'react-hook-form';
 

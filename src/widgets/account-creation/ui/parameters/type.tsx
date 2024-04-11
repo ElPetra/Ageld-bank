@@ -1,5 +1,4 @@
-import { type SvgIconNames, Text, Icon } from 'src/shared/ui';
-
+import { Text, Icon, Radio } from 'src/shared/ui';
 import {
     type AccountType,
     CREDIT_ACCOUNT,
@@ -9,11 +8,11 @@ import {
     CREATE_CREDIT_ACCOUNT_TITLE,
     CREATE_DEPOSIT_ACCOUNT_TITLE
 } from 'src/shared/model';
-import { Radio } from 'src/shared/ui/radio';
 
-import { ACCOUNT_TYPE } from '../../model/constants';
+import { ACCOUNT_TYPE } from '../../model';
 
 import type { FieldValues, UseFormRegister } from 'react-hook-form';
+import type { SvgIconNames } from 'src/shared/ui';
 
 interface MatchResult {
     type: string;

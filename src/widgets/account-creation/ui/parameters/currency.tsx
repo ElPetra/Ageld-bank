@@ -1,11 +1,10 @@
-import { type Currency } from 'src/shared/model';
-import { Radio } from 'src/shared/ui/radio';
-import { Icon, Text } from 'src/shared/ui';
+import { Icon, Text, Radio } from 'src/shared/ui';
 import { EUR, RUB, USD } from 'src/widgets/accounts/model';
 
 import { ACCOUNT_CURRENCY } from '../../model';
 
 import type { FieldValues, UseFormRegister } from 'react-hook-form';
+import type { Currency } from 'src/shared/model';
 
 const currencies: Currency[] = ['rub', 'usd', 'eur'];
 

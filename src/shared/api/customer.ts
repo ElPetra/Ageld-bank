@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import { getActualAccessToken } from '../lib/getActualAccessToken';
+import { getActualAccessToken } from 'src/shared/lib';
 
 import type { CustomerInfo } from 'src/shared/model';
 
@@ -44,7 +44,6 @@ export const customerApi = createApi({
                 responseHandler: response => response.json()
             })
         }),
-
         recoveryPassword: builder.mutation<
             void,
             { password: string, customerId: string }

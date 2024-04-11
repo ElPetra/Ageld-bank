@@ -1,8 +1,10 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
+
 import { customerApi } from 'src/shared/api';
 import { authApi } from 'src/shared/api/auth';
 
-import userSlice from './slices/userSlice';
+import userSlice from 'src/entities/user/user-slice';
+
 import { actionHandling } from './middleware/actionHandling';
 
 const rootReducers = combineReducers({

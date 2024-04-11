@@ -1,7 +1,7 @@
 import { Navigate } from 'react-router-dom';
 
 import { RouteName } from 'src/shared/model';
-import { useAuth } from 'src/shared/hooks/useAuth';
+import { useAuth } from 'src/entities/user';
 
 import type { ReactNode } from 'react';
 

@@ -6,3 +6,5 @@ export * from './text';
 export * from './link';
 export * from './container';
 export * from './checkbox';
+export * from './radio';
+export * from './pagination';

@@ -1,19 +1,16 @@
-import { useAppDispatch, useAppSelector } from 'src/app/store/dispatch';
-import { setUser } from 'src/app/store/slices/userSlice';
-
 import { useCallback } from 'react';
+import { useAppDispatch, useAppSelector } from 'src/app/store';
 
-import {
-    getRefreshToken,
-    getAccessToken,
-    getUserPhone
-} from '../api/services/localStorageApi';
+import { getRefreshToken, getAccessToken, getUserPhone } from 'src/shared/api';
+
+import { setUser } from '../user-slice';
 
 export const useAuth = () => {
     const { phone, accessToken, refreshToken, isLoading } = useAppSelector(
         state => state.user
     );
     const dispatch = useAppDispatch();
+
     const authChecked = useCallback(async (): Promise<void> => {
         const phone = getUserPhone();
         const accessToken = getAccessToken();

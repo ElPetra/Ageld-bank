@@ -5,9 +5,9 @@ import { Button, Icon, Image, Text } from 'src/shared/ui';
 import { MessageCard } from 'src/entities/message';
 import { BackButton } from 'src/features/multi-step-form';
 
-import { Advantages } from './advantage';
-
 import { cards, CARDS_NOT_FOUND, CREATE_CARD } from 'src/widgets/cards/model';
+
+import { Advantages } from './advantage';
 
 export const CardPage = () => {
     const { id } = useParams<{ id: string }>();

@@ -3,7 +3,7 @@ import {
     getRefreshToken,
     getTokenExpiresDate,
     setTokens
-} from '../api/services/localStorageApi';
+} from '../api';
 
 export const getActualAccessToken = async (): Promise<string> => {
     //Todo: обработать ошибки нормально

@@ -4,9 +4,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 import { PasswordInput } from 'src/features/inputs';
 import { Button, Form } from 'src/shared/ui';
-import { useCreateAccountMutation } from 'src/shared/api';
+import { useCreateAccountMutation, getUserId } from 'src/shared/api';
 import { getErrorMessage, getFieldErrorMessage } from 'src/shared/lib';
-import { getUserId } from 'src/shared/api/services/localStorageApi';
 import { RouteName } from 'src/shared/model';
 
 import { confirmPasswordSchema } from './model';

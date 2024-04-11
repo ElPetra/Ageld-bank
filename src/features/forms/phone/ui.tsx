@@ -1,14 +1,16 @@
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { PhoneInput } from 'src/features/inputs';
 import { Button, Form, Link, Text } from 'src/shared/ui';
 import { RouteName } from 'src/shared/model';
 import { getErrorMessage } from 'src/shared/lib';
+import {
+    useCheckRegistrationMutation,
+    useGenerateCodeMutation
+} from 'src/shared/api';
 
-import { type Dispatch, type SetStateAction, useState } from 'react';
-import { useCheckRegistrationMutation } from 'src/shared/api';
-import { useGenerateCodeMutation } from 'src/shared/api/auth';
-
+import type { Dispatch, SetStateAction } from 'react';
 import type { FieldValues } from 'react-hook-form';
 
 interface Props {

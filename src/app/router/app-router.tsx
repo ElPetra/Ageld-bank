@@ -11,10 +11,10 @@ import { NotificationHistoryPage } from 'src/pages/notification';
 import { AccountPage } from 'src/pages/accounts';
 import { CardPage } from 'src/pages/cards';
 import { CustomToaster } from 'src/widgets/toaster';
+import { useAuth } from 'src/entities/user';
 import { CREATE, RouteName } from 'src/shared/model';
 
-import { AccountCreation } from 'src/widgets/account-creation/ui';
-import { useAuth } from 'src/shared/hooks/useAuth';
+import { AccountCreation } from 'src/widgets/account-creation';
 
 import { ProtectedRoute } from './protected-route';
 

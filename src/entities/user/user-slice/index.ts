@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { removeAuthData } from 'src/shared/api/services/localStorageApi';
+
+import { removeAuthData } from 'src/shared/api';
 
 type User = {
     phone: string | null,
@@ -20,7 +21,7 @@ const userSlice = createSlice({
     initialState,
     reducers: {
         setUser(state, action) {
-            state.phone = action.payload.token;
+            state.phone = action.payload.phone;
             state.accessToken = action.payload.accessToken;
             state.refreshToken = action.payload.refreshToken;
             state.isLoading = false;
@@ -34,5 +35,6 @@ const userSlice = createSlice({
         }
     }
 });
+
 export const { setUser, removeUser } = userSlice.actions;
 export default userSlice.reducer;
