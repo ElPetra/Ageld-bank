@@ -8,9 +8,7 @@
   --text-secondary-buttons: #FEFEFE;
   --text-buttons-disable: #414650;
   --text-action: #1640de;
-  --text-copy: #4D5F71;
   --text-primary-input: #3c5293;
-  --text-primary-day:#001A34;
   --text-error: #F53C14;
   --text-success: #4CAF50;
   //фоны
@@ -41,6 +39,7 @@ body {
   color: var(--text-primary);
   background: var(--bg-primary);
 }
+
 #root{
   padding: 0;
   margin: 0;
@@ -51,4 +50,8 @@ body {
   > * {
     min-width: 0;
   }
+}
+
+.hidden{
+  display: none !important;
 }

@@ -1,3 +1,4 @@
+import { MessageCard } from 'src/entities/message';
 import { MultiStepForm } from 'src/features/multi-step-form';
 import {
     PhoneForm,
@@ -5,10 +6,12 @@ import {
     ConfirmPasswordForm
 } from 'src/features/forms';
 
+const SUCCESS = 'Кабинет пользователя успешно \n зарегистрирован';
+
 export const RegistrationPage = () => {
     return (
         <MultiStepForm
-            variant={'registration'}
+            variant='registration'
             forms={[
                 {
                     id: 1,
@@ -24,6 +27,19 @@ export const RegistrationPage = () => {
                     id: 3,
                     title: 'Придумайте пароль',
                     component: <ConfirmPasswordForm />
+                },
+                {
+                    id: 4,
+                    title: '',
+                    component: (
+                        <MessageCard
+                            icon='paper-airplane-lady'
+                            width={400}
+                            text={SUCCESS}
+                            buttonText='Войти в кабинет'
+                        />
+                    ),
+                    isResult: true
                 }
             ]}
         />

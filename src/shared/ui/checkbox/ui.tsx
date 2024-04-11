@@ -5,15 +5,19 @@ import './styles.scss';
 interface Props {
     label: string;
     defaultIsChecked?: boolean;
+    onCheckbox?: () => void;
 }
 
-export const Checkbox = ({ label, defaultIsChecked }: Props) => {
+export const Checkbox = ({ label, defaultIsChecked, onCheckbox }: Props) => {
     const [isChecked, setIsChecked] = useState<boolean>(
         defaultIsChecked || false
     );
 
     const toggleCheckboxChange = () => {
         setIsChecked(!isChecked);
+        if (onCheckbox) {
+            onCheckbox();
+        }
     };
 
     return (

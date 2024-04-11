@@ -1,6 +1,9 @@
 import { AccountCard } from 'src/entities/accounts';
+import { MessageCard } from 'src/entities/message';
 
-import { AccountNotFound } from './not-found';
+import { CREATE, RouteName } from 'src/shared/model';
+
+import { ACCOUNTS_NOT_FOUND, CREATE_ACCOUNT } from '../../model';
 
 import type { Account } from 'src/shared/model';
 
@@ -20,7 +23,11 @@ export const AccountContent = ({ content }: Props) => {
                     ))}
                 </div>
             ) : (
-                <AccountNotFound />
+                <MessageCard
+                    text={ACCOUNTS_NOT_FOUND}
+                    buttonText={CREATE_ACCOUNT}
+                    buttonLink={RouteName.ACCOUNT_PAGE + '/' + CREATE}
+                />
             )}
         </div>
     );

@@ -11,7 +11,7 @@ export interface Props extends ImgHTMLAttributes<HTMLImageElement> {
 
 export const Image = memo(({ image, width, height, widthAndHeight }: Props) => (
     <img
-        src={image + '.png'}
+        src={'/src/shared/ui/icon/assets/images/' + image + '.png'}
         width={widthAndHeight || width || 500}
         height={widthAndHeight || height || 500}
         alt=''

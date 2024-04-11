@@ -1,0 +1,41 @@
+.account {
+    &__statuses {
+        display: flex;
+        gap: 8px;
+        color: var(--text-secondary);
+
+        &.row {
+            @media screen and (max-width: 500px)  {
+                flex-wrap: wrap;
+            }
+        }
+
+        &.column {
+            height: 56px;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+    }
+
+    &__status {
+        padding: 4px 12px;
+        border-radius: 12px;
+        width: max-content;
+        display: flex;
+        align-items: center;
+        &-type {
+            &__main {
+                background-color: var(--bg-action);
+            }
+            &__active{
+                background-color: var(--bg-success);
+            }
+            &__closed{
+                background-color: var(--bg-warning);
+            }
+            &__blocked{
+                background-color: var(--bg-error);
+            }
+        }
+    }
+}

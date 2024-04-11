@@ -1,17 +1,19 @@
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useForm } from 'react-hook-form';
+
 import { PasswordInput } from 'src/features/inputs';
 import { Button, Form } from 'src/shared/ui';
-import { getErrorMessage } from 'src/shared/lib';
+import { getFieldErrorMessage, getErrorMessage } from 'src/shared/lib';
 import { useChangePasswordMutation } from 'src/shared/api';
-import './styles.scss';
-
-import { type FieldValues, useForm } from 'react-hook-form';
-
-import { type Dispatch, type SetStateAction } from 'react';
-import { yupResolver } from '@hookform/resolvers/yup';
 
 import { getAccessToken } from 'src/shared/api/services/localStorageApi';
 
-import { changePasswordSchema } from './changePasswordShema';
+import { changePasswordSchema } from './model';
+
+import type { Dispatch, SetStateAction } from 'react';
+import type { FieldValues } from 'react-hook-form';
+
+import './styles.scss';
 
 interface Props {
     isLast?: boolean;
@@ -69,11 +71,7 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
                     label='password1'
                     variant='create'
                     placeholder='Новый пароль'
-                    error={
-                        (typeof errors.password1?.message === 'string' &&
-                            errors.password1?.message) ||
-                        ''
-                    }
+                    error={getFieldErrorMessage(errors.password1?.message)}
                 />
                 <PasswordInput
                     size='medium'
@@ -81,11 +79,7 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
                     label='password2'
                     placeholder='Подтвердите новый пароль'
                     variant='confirm'
-                    error={
-                        (typeof errors.password2?.message === 'string' &&
-                            errors.password2?.message) ||
-                        ''
-                    }
+                    error={getFieldErrorMessage(errors.password2?.message)}
                 />
             </div>
             <Button

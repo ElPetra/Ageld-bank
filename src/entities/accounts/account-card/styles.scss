@@ -19,41 +19,6 @@
         display: flex;
         flex-direction: column;
         gap: 4px;
-
-        :last-child {
-            color: var(--text-quadruple);
-        }
-    }
-
-    &__statuses {
-        height: 56px;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        gap: 8px;
-        color: var(--text-secondary);
-    }
-
-    &__status {
-        padding: 4px 12px;
-        border-radius: 12px;
-        width: max-content;
-        display: flex;
-        align-items: center;
-        &-type {
-            &__main {
-                background-color: var(--bg-action);
-            }
-            &__active{
-                background-color: var(--bg-success);
-            }
-            &__closed{
-                background-color: var(--bg-warning);
-            }
-            &__blocked{
-                background-color: var(--bg-error);
-            }
-        }
     }
 
     &__balance {

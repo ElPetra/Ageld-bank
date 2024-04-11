@@ -1,4 +1,4 @@
-export type PngImageNames = '';
+export type PngImageNames = 'classic' | 'gold' | 'platinum' | 'premium';
 
 export type SvgIconNames =
     | 'eye-open'
@@ -41,8 +41,16 @@ export type SvgIconNames =
     | 'wallet'
     | 'requisites'
     | 'question-lady'
+    | 'beach-lady'
+    | 'paper-airplane-lady'
+    | 'plant-lady'
+    | 'failure-lady'
+    | 'documents-folder-lady'
+    | 'businessman'
     | 'success-popup'
     | 'error-popup'
     | 'more'
     | 'card'
-    | 'world';
+    | 'world'
+    | 'mir'
+    | 'visa';

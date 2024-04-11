@@ -1,7 +1,8 @@
 import { toast, Toaster, ToastBar } from 'react-hot-toast';
 
+import { Icon } from 'src/shared/ui';
+
 import './styles.scss';
-import { Icon } from '../../shared/ui';
 
 export const CustomToaster = () => {
     return (

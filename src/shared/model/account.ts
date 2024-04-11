@@ -1,6 +1,7 @@
-import { Currency } from 'src/shared/model';
+import { type Currency } from 'src/shared/model';
 
 export type Status = 'active' | 'closed' | 'requested' | 'blocked';
+export type AccountType = 'master' | 'credit' | 'deposit';
 
 export interface Account {
     id: string;
@@ -26,6 +27,10 @@ export const ACTIVE_ACCOUNT = 'Активный';
 export const CLOSED_ACCOUNT = 'Закрытый';
 export const BLOCKED_ACCOUNT = 'Заблокированный';
 export const REQUESTED_ACCOUNT = 'Заявка на открытие счета';
+
+export const CREATE_CURRENT_ACCOUNT_TITLE = 'Откройте счет не выходя из дома';
+export const CREATE_CREDIT_ACCOUNT_TITLE = 'Больше денег без лишних вложений';
+export const CREATE_DEPOSIT_ACCOUNT_TITLE = 'Сделайте шаг навстречу мечте';
 
 export const accountTypes = {
     credit: CREDIT_ACCOUNT,

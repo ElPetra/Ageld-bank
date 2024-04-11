@@ -1,18 +1,20 @@
 import { useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 
 import { PasswordInput } from 'src/features/inputs';
 import { Button, Form } from 'src/shared/ui';
 import { setUser } from 'src/app/store/slices/userSlice';
 import { useAppDispatch } from 'src/app/store/dispatch';
 import { getErrorMessage } from 'src/shared/lib';
-
-import { type FieldValues, useForm } from 'react-hook-form';
 import { useGenerateTokenMutation } from 'src/shared/api/auth';
+import { RouteName } from 'src/shared/model';
 
 import {
     getUserPhone,
     setTokens
 } from 'src/shared/api/services/localStorageApi';
+
+import  type { FieldValues } from 'react-hook-form';
 
 import type { Dispatch, SetStateAction } from 'react';
 
@@ -53,12 +55,7 @@ export const EnterPasswordForm = ({ isLast, setFormStep }: Props) => {
                     );
                     setTokens(data);
                     if (data) {
-                        navigate('/success', {
-                            state: {
-                                message: 'Вход выполнен.',
-                                button: false
-                            }
-                        });
+                        navigate(RouteName.MAIN_PAGE);
                     }
                 });
             if (setFormStep && !isLast) {

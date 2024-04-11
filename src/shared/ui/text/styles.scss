@@ -57,15 +57,19 @@
     text-align: right;
   }
 
-  &.text-success{
+  &.text-success {
     color: var(--text-success);
   }
 
-  &.text-error{
+  &.text-error {
     color: var(--text-error);
   }
 
-  &.text-inherit{
+  &.text-quadruple {
+    color: var(--text-quadruple);
+  }
+
+  &.text-inherit {
     color: inherit;
   }
 }
