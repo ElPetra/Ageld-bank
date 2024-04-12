@@ -12,6 +12,24 @@ export const authApi = createApi({
     }),
     tagTypes: ['Auth'],
     endpoints: builder => ({
+        checkRegistration: builder.mutation<{ customerId: string }, string>({
+            query: phoneNumber => ({
+                url: '/registry/check_registration',
+                method: 'POST',
+                body: { phoneNumber },
+                responseHandler: response => response.json()
+            })
+        }),
+        createAccount: builder.mutation<
+            void,
+            { customerId: string, password: string }
+        >({
+            query: ({ customerId, password }) => ({
+                url: '/registry/create_user_profile',
+                method: 'POST',
+                body: { customerId, password }
+            })
+        }),
         checkCode: builder.mutation<
             string,
             { phoneNumber: string, code: string }
@@ -46,5 +64,7 @@ export const authApi = createApi({
 export const {
     useGenerateTokenMutation,
     useGenerateCodeMutation,
-    useCheckCodeMutation
+    useCheckCodeMutation,
+    useCheckRegistrationMutation,
+    useCreateAccountMutation
 } = authApi;

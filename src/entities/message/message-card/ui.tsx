@@ -28,9 +28,11 @@ export const MessageCard = ({
             <Icon width={width || 172} icon={icon || 'question-lady'} />
             {buttonText && (
                 <div className='message-card__button'>
-                    <Button width='max' type='button' variant='secondary'>
-                        <Link to={buttonLink}>{buttonText}</Link>
-                    </Button>
+                    <Link to={buttonLink}>
+                        <Button width='max' type='button' variant='secondary'>
+                            {buttonText}
+                        </Button>
+                    </Link>
                 </div>
             )}
         </div>

@@ -54,30 +54,12 @@ export const customerApi = createApi({
                 body: { password, customerId }
             })
         }),
-        createAccount: builder.mutation<
-            void,
-            { customerId: string, password: string }
-        >({
-            query: ({ customerId, password }) => ({
-                url: '/registry/create_user_profile',
-                method: 'POST',
-                body: { customerId, password }
-            })
-        }),
         checkStatus: builder.mutation<
             { statusType: string, message: string },
             string
         >({
             query: phoneNumber => ({
                 url: '/registry/check_status',
-                method: 'POST',
-                body: { phoneNumber },
-                responseHandler: response => response.json()
-            })
-        }),
-        checkRegistration: builder.mutation<{ customerId: string }, string>({
-            query: phoneNumber => ({
-                url: '/registry/check_registration',
                 method: 'POST',
                 body: { phoneNumber },
                 responseHandler: response => response.json()
@@ -125,9 +107,7 @@ export const {
     useChangePasswordMutation,
     useRefreshTokenMutation,
     useRecoveryPasswordMutation,
-    useCreateAccountMutation,
     useCheckStatusMutation,
-    useCheckRegistrationMutation,
     useAddEmailMutation,
     useNewEmailMutation,
     useGetInfoQuery

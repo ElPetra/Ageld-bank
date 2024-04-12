@@ -11,7 +11,6 @@ import {
     getUserPhone,
     setTokens
 } from 'src/shared/api';
-import { RouteName } from 'src/shared/model';
 
 import type { FieldValues } from 'react-hook-form';
 
@@ -54,7 +53,7 @@ export const EnterPasswordForm = ({ isLast, setFormStep }: Props) => {
                     );
                     setTokens(data);
                     if (data) {
-                        navigate(RouteName.MAIN_PAGE);
+                        navigate('/');
                     }
                 });
             if (setFormStep && !isLast) {
