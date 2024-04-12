@@ -1,6 +1,4 @@
-import { Radio } from 'src/shared/ui/radio';
-import { Icon, type SvgIconNames, Text } from 'src/shared/ui';
-import { type CardReceiveType } from 'src/shared/model';
+import { Icon, Text, Radio } from 'src/shared/ui';
 
 import {
     ACCOUNT_CARD_RECIEVING,
@@ -9,6 +7,8 @@ import {
 } from '../../model';
 
 import type { FieldValues, UseFormRegister } from 'react-hook-form';
+import type { SvgIconNames } from 'src/shared/ui';
+import type { CardReceiveType } from 'src/shared/model';
 
 const ReceiveTypes: CardReceiveType[] = ['inOffice', 'delivery'];
 

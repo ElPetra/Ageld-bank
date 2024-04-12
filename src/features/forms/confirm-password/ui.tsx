@@ -4,7 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 import { PasswordInput } from 'src/features/inputs';
 import { Button, Form } from 'src/shared/ui';
-import { useCreateAccountMutation } from 'src/shared/api';
+import { useCreateAccountMutation, getUserId } from 'src/shared/api';
 import { getErrorMessage, getFieldErrorMessage } from 'src/shared/lib';
 import { RouteName } from 'src/shared/model';
 
@@ -35,7 +35,7 @@ export const ConfirmPasswordForm = ({ isLast, setFormStep, type }: Props) => {
         useCreateAccountMutation();
 
     const onSubmit = (data: FieldValues) => {
-        const customerId = localStorage.getItem('customerId');
+        const customerId = getUserId();
         if (customerId) {
             createAccount({
                 customerId: customerId,

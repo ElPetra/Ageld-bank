@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import { Layout } from 'src/pages/layout';
@@ -10,9 +11,10 @@ import { NotificationHistoryPage } from 'src/pages/notification';
 import { AccountPage } from 'src/pages/accounts';
 import { CardPage } from 'src/pages/cards';
 import { CustomToaster } from 'src/widgets/toaster';
+import { useAuth } from 'src/entities/user';
 import { CREATE, RouteName } from 'src/shared/model';
 
-import { AccountCreation } from 'src/widgets/account-creation/ui';
+import { AccountCreation } from 'src/widgets/account-creation';
 
 import { ProtectedRoute } from './protected-route';
 
@@ -72,6 +74,13 @@ const authRoutes: RouteDescription[] = [
 ];
 
 export const AppRouter = () => {
+    const { authChecked, isLoading } = useAuth();
+    useEffect(() => {
+        authChecked();
+    }, [authChecked]);
+    if (isLoading) {
+        return <>Loading...</>;
+    }
     return (
         <Routes>
             <Route
