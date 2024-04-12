@@ -1,5 +1,5 @@
 import { Link } from 'src/shared/ui';
-import { useAuth } from 'src/shared/hooks/useAuth';
+import { useAuth } from 'src/entities/user';
 import { Logout } from 'src/features/logout';
 import { RouteName } from 'src/shared/model';
 

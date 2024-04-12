@@ -18,6 +18,6 @@ export const changePasswordSchema = yup.object().shape({
         .required('Обязательное поле'),
     password2: yup
         .string()
-        .oneOf([yup.ref('password1')], 'Новый пароль не совпадают')
+        .oneOf([yup.ref('password1')], 'Пароли не совпадают')
         .required('Обязательное поле')
 });

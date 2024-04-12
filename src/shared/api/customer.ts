@@ -1,38 +1,23 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import type { CustomerInfo } from 'src/shared/model';
+import { getActualAccessToken } from 'src/shared/lib';
 
-const baseUrl = 'http://172.17.1.76:8082/api/v1/customer';
+import type { CustomerInfo } from 'src/shared/model';
 
 export const customerApi = createApi({
     reducerPath: 'customerApi',
     baseQuery: fetchBaseQuery({
-        baseUrl,
-        prepareHeaders: headers => {
+        baseUrl: 'http://172.17.1.76:8082/api/v1/customer',
+        prepareHeaders: async headers => {
+            const token = await getActualAccessToken();
             headers.set('content-type', 'application/json');
+            headers.set('Authorization', 'Bearer ' + token);
             return headers;
         },
         responseHandler: response => response.text()
     }),
     tagTypes: ['Customer'],
     endpoints: builder => ({
-        generateCode: builder.mutation<string, { phoneNumber: string }>({
-            query: phoneNumber => ({
-                url: '/auth/verification/generate_code',
-                method: 'POST',
-                body: { phoneNumber }
-            })
-        }),
-        checkCode: builder.mutation<
-            string,
-            { phoneNumber: string, code: string }
-        >({
-            query: ({ code, phoneNumber }) => ({
-                url: '/auth/verification/check_code',
-                method: 'POST',
-                body: { phoneNumber, code }
-            })
-        }),
         changePassword: builder.mutation<
             string,
             { oldPassword: string, newPassword: string, Authorization: string }
@@ -59,17 +44,6 @@ export const customerApi = createApi({
                 responseHandler: response => response.json()
             })
         }),
-        generateToken: builder.mutation<
-            { accessToken: string, refreshToken: string },
-            { phoneNumber: string, password: string }
-        >({
-            query: ({ phoneNumber, password }) => ({
-                url: '/auth/generate_token',
-                method: 'POST',
-                body: { phoneNumber, password },
-                responseHandler: response => response.json()
-            })
-        }),
         recoveryPassword: builder.mutation<
             void,
             { password: string, customerId: string }
@@ -80,29 +54,12 @@ export const customerApi = createApi({
                 body: { password, customerId }
             })
         }),
-        createAccount: builder.mutation<
-            void,
-            { customerId: string, password: string }
-        >({
-            query: ({ customerId, password }) => ({
-                url: '/registry/create_user_profile',
-                method: 'POST',
-                body: { customerId, password }
-            })
-        }),
         checkStatus: builder.mutation<
             { statusType: string, message: string },
             string
         >({
             query: phoneNumber => ({
                 url: '/registry/check_status',
-                method: 'POST',
-                body: { phoneNumber }
-            })
-        }),
-        checkRegistration: builder.mutation<{ customerId: string }, string>({
-            query: phoneNumber => ({
-                url: '/registry/check_registration',
                 method: 'POST',
                 body: { phoneNumber },
                 responseHandler: response => response.json()
@@ -147,15 +104,10 @@ export const customerApi = createApi({
 });
 
 export const {
-    useGenerateCodeMutation,
-    useCheckCodeMutation,
     useChangePasswordMutation,
     useRefreshTokenMutation,
-    useGenerateTokenMutation,
     useRecoveryPasswordMutation,
-    useCreateAccountMutation,
     useCheckStatusMutation,
-    useCheckRegistrationMutation,
     useAddEmailMutation,
     useNewEmailMutation,
     useGetInfoQuery

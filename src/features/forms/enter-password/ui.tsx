@@ -1,15 +1,18 @@
 import { useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { useAppDispatch } from 'src/app/store';
 
 import { PasswordInput } from 'src/features/inputs';
+import { setUser } from 'src/entities/user';
 import { Button, Form } from 'src/shared/ui';
-import { useGenerateTokenMutation } from 'src/shared/api';
-import { setUser } from 'src/app/store/slices/userSlice';
-import { useAppDispatch } from 'src/app/store/dispatch';
 import { getErrorMessage } from 'src/shared/lib';
+import {
+    useGenerateTokenMutation,
+    getUserPhone,
+    setTokens
+} from 'src/shared/api';
 
-import { type FieldValues, useForm } from 'react-hook-form';
-
-import { RouteName } from 'src/shared/model/index.js';
+import type { FieldValues } from 'react-hook-form';
 
 import type { Dispatch, SetStateAction } from 'react';
 
@@ -33,7 +36,7 @@ export const EnterPasswordForm = ({ isLast, setFormStep }: Props) => {
     const [generateToken, { error }] = useGenerateTokenMutation();
 
     const onSubmit = (data: FieldValues) => {
-        const phone = localStorage.getItem('phone');
+        const phone = getUserPhone();
         if (phone) {
             generateToken({
                 phoneNumber: phone,
@@ -41,19 +44,16 @@ export const EnterPasswordForm = ({ isLast, setFormStep }: Props) => {
             })
                 .unwrap()
                 .then(data => {
-                    const accessToken = data.accessToken;
-                    const refreshToken = data.refreshToken;
                     dispatch(
                         setUser({
                             phone: phone,
-                            accessToken: accessToken,
-                            refreshToken: refreshToken
+                            accessToken: data.accessToken,
+                            refreshToken: data.refreshToken
                         })
                     );
-                    localStorage.setItem('accessToken', accessToken);
-                    localStorage.setItem('refreshToken', refreshToken);
-                    if (accessToken && refreshToken) {
-                        navigate(RouteName.MAIN_PAGE);
+                    setTokens(data);
+                    if (data) {
+                        navigate('/');
                     }
                 });
             if (setFormStep && !isLast) {

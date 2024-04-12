@@ -1,5 +1,7 @@
 import { useState } from 'react';
+
 import { Button, Checkbox, Text } from 'src/shared/ui';
+
 import { CREATE_ACCOUNT } from 'src/widgets/accounts/model';
 
 export const Agreement = () => {
