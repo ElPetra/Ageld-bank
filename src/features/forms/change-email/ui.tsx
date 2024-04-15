@@ -44,18 +44,17 @@ export const EmailForm = ({ email }: Props) => {
     });
     const [isClicked, setIsClicked] = useState<boolean>(false);
     const [newEmail] = useNewEmailMutation();
-    const onSubmit = data => {
+    const onSubmit = (data: Props) => {
         const token =
             localStorage.getItem('accessToken') ||
             localStorage.getItem('refreshToken');
-        try {
+        if (token && email) {
             newEmail({
                 Authorization: token,
                 email: data.email
             }).unwrap();
-        } catch (error) {
-            console.error('Ошибка при изменении email', error);
         }
+        setIsClicked(false);
     };
     return (
         <Form onSubmit={handleSubmit(onSubmit)}>
