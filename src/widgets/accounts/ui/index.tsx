@@ -1,4 +1,5 @@
 import { Text } from 'src/shared/ui';
+import { ACCOUNTS, AccountsRouteName, RouteName } from 'src/shared/model';
 import { Menu } from 'src/features/menu';
 
 import { useAccountsFilter } from '../lib';
@@ -24,6 +25,8 @@ export const Accounts = () => {
                 {MY_ACCOUNTS}
             </Text>
             <Menu
+                href={RouteName.MAIN_PAGE + '/' + ACCOUNTS}
+                routes={AccountsRouteName}
                 variant={'secondary'}
                 elements={[
                     {

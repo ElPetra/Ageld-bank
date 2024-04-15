@@ -30,11 +30,19 @@ export const Menu = ({
     children
 }: Props) => {
     const [index, setIndex] = useState<number>(1);
-    const { id } = useParams<string>();
-    const routesIndex =
-        routes?.findIndex(el => el === id) !== -1
-            ? routes?.findIndex(el => el === id) || 0
-            : 0;
+    const { id, id2 } = useParams<string>();
+    let routesIndex = 0;
+    if (variant === 'secondary') {
+        routesIndex =
+            routes?.findIndex(el => el === id2) !== -1
+                ? routes?.findIndex(el => el === id2) || 0
+                : 0;
+    } else {
+        routesIndex =
+            routes?.findIndex(el => el === id) !== -1
+                ? routes?.findIndex(el => el === id) || 0
+                : 0;
+    }
 
     return (
         <div className='menu'>
@@ -42,7 +50,7 @@ export const Menu = ({
                 <div className={`menu__items ${variant}`}>
                     {elements?.map(el => (
                         <Fragment key={el.id}>
-                            {variant === 'primary' && routes ? (
+                            {routes ? (
                                 <Link
                                     to={href + '/' + routes[el.id - 1]}
                                     className={`menu__item ${routesIndex == el.id - 1 && 'active'}`}
@@ -63,7 +71,7 @@ export const Menu = ({
                 {children}
             </div>
             <div className={`menu__content ${variant}`}>
-                {variant === 'primary' && routes ? (
+                {routes ? (
                     <>
                         {elements &&
                             routesIndex < elements.length &&

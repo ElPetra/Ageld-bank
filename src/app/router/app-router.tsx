@@ -48,7 +48,7 @@ const publicRoutes: RouteDescription[] = [
 
 const authRoutes: RouteDescription[] = [
     {
-        path: MAIN_PAGE + '/:id?',
+        path: MAIN_PAGE + '/:id?/:id2?',
         component: MainPage
     },
     {
