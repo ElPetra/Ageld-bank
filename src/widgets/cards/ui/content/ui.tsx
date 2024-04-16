@@ -1,16 +1,39 @@
-import { cards, CARDS_NOT_FOUND, CREATE_CARD } from 'src/widgets/cards/model';
-import { useCardsFilter } from 'src/widgets/cards/lib';
-import { FinanceCard } from 'src/widgets/cards/ui/content/card';
-import { Pagination } from 'src/shared/ui/pagination';
+import { Pagination } from 'src/shared/ui';
+import { CREATE, RouteName } from 'src/shared/model';
+import { sortByCreated } from 'src/shared/lib';
+import { MessageCard } from 'src/entities/message';
+import { FilterBar } from 'src/entities/filter';
+
 import { usePaginationFilter } from 'src/shared/hooks/usePaginationFilter.js';
 
-import { sortByCreated } from 'src/shared/lib';
-import { Filters } from 'src/widgets/cards/ui/content/filters';
-import { MessageCard } from 'src/entities/message/index.js';
-import { CREATE, RouteName } from 'src/shared/model/index.js';
+import {
+    ALL_CARD,
+    cards,
+    CARDS_NOT_FOUND,
+    CREATE_CARD,
+    CREDIT_CARD,
+    DEBET_CARD,
+    MIR_CARD,
+    VISA_CARD
+} from '../../model';
+import { useCardsFilter } from '../../lib';
+
+import { FinanceCard } from './card';
+
+import './styles.scss';
+
+const typeFilters = [ALL_CARD, DEBET_CARD, CREDIT_CARD];
+
+const paymentFilters = [ALL_CARD, MIR_CARD, VISA_CARD];
 
 export const CardContent = () => {
-    const { setType, setPayment, getFilteredCards } = useCardsFilter();
+    const {
+        currencyType,
+        currencyPayment,
+        setCurrencyType,
+        setCurrencyPayment,
+        getFilteredCards
+    } = useCardsFilter();
     const {
         currentPage,
         setCurrentPage,
@@ -22,7 +45,18 @@ export const CardContent = () => {
 
     return (
         <>
-            <Filters setType={setType} setPayment={setPayment} />
+            <div className='filters'>
+                <FilterBar
+                    filters={typeFilters}
+                    current={currencyType}
+                    setCurrent={setCurrencyType}
+                />
+                <FilterBar
+                    filters={paymentFilters}
+                    current={currencyPayment}
+                    setCurrent={setCurrencyPayment}
+                />
+            </div>
             {currentItems.length ? (
                 <>
                     <div>
