@@ -10,7 +10,9 @@ export const Navigation = () => {
     return (
         <nav className='navigation'>
             <ul className='navigation-default'>
-                <Link to={RouteName.MAIN_PAGE}>Банкоматы и отделения</Link>
+                <Link to={RouteName.ATMS_AND_BRANCHES}>
+                    Банкоматы и отделения
+                </Link>
                 <Link to={RouteName.MAIN_PAGE}>Курсы валют</Link>
                 <Link to={RouteName.MAIN_PAGE}>Контакты</Link>
                 <Link to={RouteName.MAIN_PAGE}>Список услуг</Link>
