@@ -6,7 +6,10 @@ import * as yup from 'yup';
 import { EmailInput } from 'src/features/inputs';
 import { Button, Form } from 'src/shared/ui';
 import { getFieldErrorMessage } from 'src/shared/lib';
+
 import { useNewEmailMutation } from 'src/shared/api';
+
+import { useFetchToken } from 'src/shared/hooks/useFetchToken.js';
 
 import type { FieldValues } from 'react-hook-form';
 
@@ -44,11 +47,10 @@ export const EmailForm = ({ email }: Props) => {
     });
     const [isClicked, setIsClicked] = useState<boolean>(false);
     const [newEmail] = useNewEmailMutation();
+    const token = useFetchToken();
+
     const onSubmit = (data: Props) => {
-        const token =
-            localStorage.getItem('accessToken') ||
-            localStorage.getItem('refreshToken');
-        if (token && email) {
+        if (token && data.email) {
             newEmail({
                 Authorization: token,
                 email: data.email
@@ -63,6 +65,7 @@ export const EmailForm = ({ email }: Props) => {
                 register={register}
                 error={getFieldErrorMessage(errors.email?.message)}
                 value={email || ''}
+                disabled={!isClicked}
             />
             {isClicked ? (
                 <div className='email_buttons'>

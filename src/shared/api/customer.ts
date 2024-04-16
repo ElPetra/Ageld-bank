@@ -16,7 +16,7 @@ export const customerApi = createApi({
         },
         responseHandler: response => response.text()
     }),
-    tagTypes: ['Customer'],
+    tagTypes: ['Customer', 'Info'],
     endpoints: builder => ({
         changePassword: builder.mutation<
             string,
@@ -89,7 +89,8 @@ export const customerApi = createApi({
                     Authorization: `Bearer ${Authorization}`
                 },
                 body: { email }
-            })
+            }),
+            invalidatesTags: ['Info']
         }),
         getInfo: builder.query<CustomerInfo, { Authorization: string }>({
             query: ({ Authorization }) => ({
@@ -98,7 +99,8 @@ export const customerApi = createApi({
                 headers: {
                     Authorization: `Bearer ${Authorization}`
                 }
-            })
+            }),
+            providesTags: ['Info']
         })
     })
 });
