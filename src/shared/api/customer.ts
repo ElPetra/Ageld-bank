@@ -98,7 +98,8 @@ export const customerApi = createApi({
                 method: 'GET',
                 headers: {
                     Authorization: `Bearer ${Authorization}`
-                }
+                },
+                responseHandler: response => response.json()
             }),
             providesTags: ['Info']
         })
