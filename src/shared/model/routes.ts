@@ -1,8 +1,8 @@
 import type { ComponentType } from 'react';
 
 export const RouteName = {
-    ACCOUNT_PAGE: '/accounts',
-    CARD_PAGE: '/cards',
+    ACCOUNT_PAGE: '/accounts-product',
+    CARD_PAGE: '/cards-product',
     MAIN_PAGE: '',
     REGISTRATION_PAGE: '/signup',
     LOGIN_PAGE: '/signin',
@@ -41,3 +41,15 @@ export const SAFETY = 'safety';
 export const NOTIFICATIONS = 'notifications';
 
 export const PersonalRouteName = [PERSONAL_DATA, SAFETY, NOTIFICATIONS];
+
+export const OPENED = 'opened';
+export const OPEN_REQUEST = 'open-request';
+export const CLOSED = 'closed';
+export const BLOCKED = 'blocked';
+
+export const AccountsRouteName = [OPENED, OPEN_REQUEST, CLOSED, BLOCKED];
+
+export const MY_CARDS = 'my-cards';
+export const CARDS_PRODUCTS = 'cards-products';
+
+export const CardsRouteName = [MY_CARDS, CARDS_PRODUCTS];
