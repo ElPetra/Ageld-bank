@@ -1,4 +1,11 @@
-import { Map, YMaps, SearchControl } from '@pbe/react-yandex-maps';
+import {
+    Map,
+    YMaps,
+    SearchControl,
+    RulerControl,
+    ZoomControl,
+    Placemark
+} from '@pbe/react-yandex-maps';
 
 import './styles.scss';
 
@@ -7,16 +14,33 @@ export const ATMsBranchesPage = () => {
         <YMaps>
             <Map
                 defaultState={{
-                    center: [55.751574, 37.573856],
-                    zoom: 9,
+                    center: [59.95354024191497, 30.309087827396112],
+                    zoom: 15,
                     controls: []
                 }}
+                // options={{ autoFitToViewport: 'always' }}
                 width='100%'
-                height='720px'
+                height='100%'
             >
+                <Placemark geometry={[59.95354024191497, 30.309087827396112]} />
                 <SearchControl
                     className='search-control'
-                    options={{ float: 'right', size: 'large' }}
+                    options={{
+                        float: 'right',
+                        size: 'auto'
+                    }}
+                />
+                <RulerControl
+                    options={{
+                        position: { right: 10, bottom: 30 }
+                    }}
+                />
+                <ZoomControl
+                    options={{
+                        size: 'large',
+                        position: { right: 10, bottom: 30 },
+                        zoomDuration: 10
+                    }}
                 />
             </Map>
         </YMaps>
