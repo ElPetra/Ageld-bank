@@ -1,3 +1,5 @@
+import { Container } from 'src/shared/ui';
+
 export const NotificationHistoryPage = () => {
-    return <div>История уведомлений</div>;
+    return <Container>История уведомлений</Container>;
 };

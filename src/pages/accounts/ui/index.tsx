@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 
+import { Container } from 'src/shared/ui';
 import { Menu } from 'src/features/menu';
 import { BackButton } from 'src/features/multi-step-form';
 
@@ -14,7 +15,7 @@ export const AccountPage = () => {
     const { id } = useParams();
     const account = accounts.find(el => el.id === id)!;
     return (
-        <>
+        <Container>
             <BackButton />
             <Menu
                 variant={'secondary'}
@@ -31,6 +32,6 @@ export const AccountPage = () => {
                     }
                 ]}
             />
-        </>
+        </Container>
     );
 };
