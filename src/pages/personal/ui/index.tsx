@@ -6,7 +6,6 @@ import { MultiStepForm } from 'src/features/multi-step-form';
 import { CheckboxGroup } from 'src/widgets/notifications';
 
 import { PersonalData } from './personal-data';
-
 import { options } from '../model';
 
 export const PersonalPage = () => {
