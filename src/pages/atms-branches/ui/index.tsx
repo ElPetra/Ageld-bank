@@ -1,11 +1,13 @@
 import {
     Map,
-    YMaps,
-    SearchControl,
+    Placemark,
     RulerControl,
-    ZoomControl,
-    Placemark
+    SearchControl,
+    YMaps,
+    ZoomControl
 } from '@pbe/react-yandex-maps';
+
+import { Container, Icon, Text } from 'src/shared/ui';
 
 import './styles.scss';
 
@@ -18,13 +20,20 @@ export const ATMsBranchesPage = () => {
                     zoom: 15,
                     controls: []
                 }}
-                // options={{ autoFitToViewport: 'always' }}
-                width='100%'
-                height='100%'
+                className='map'
             >
+                <div className='map__forward-container'>
+                    <Container variant='none'>
+                        <div className='map__forward-continer__content'>
+                            <button className='map__filter'>
+                                <Icon icon='filter-lines' />
+                                <Text weight='bold'>Фильтр</Text>
+                            </button>
+                        </div>
+                    </Container>
+                </div>
                 <Placemark geometry={[59.95354024191497, 30.309087827396112]} />
                 <SearchControl
-                    className='search-control'
                     options={{
                         float: 'right',
                         size: 'auto'

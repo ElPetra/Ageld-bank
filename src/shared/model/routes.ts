@@ -10,7 +10,7 @@ export const RouteName = {
     NOTIFICATION_HISTORY_PAGE: '/notifications_history',
     RECOVERY_PASSWORD_PAGE: '/recovery',
     ATMS_AND_BRANCHES: '/locate-us'
-};
+} as const;
 
 export interface RouteDescription {
     path: string;

@@ -53,4 +53,5 @@ export type SvgIconNames =
     | 'card'
     | 'world'
     | 'mir'
-    | 'visa';
+    | 'visa'
+    | 'filter-lines';

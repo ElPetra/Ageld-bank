@@ -1,3 +1,40 @@
-input.ymaps-2-1-79-searchbox-input__input {
-  height: 56px;
+.map {
+  width: 100%;
+  height: calc(100% + 230px);
+  position: relative;
+
+  &__forward-container {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 24px;
+    right: 0;
+    bottom: 0;
+
+    > div {
+      height: calc(100% - 230px);
+    }
+
+    > div > div {
+      overflow-y: scroll;
+      height: 100%;
+    }
+
+    &__content {
+      display: flex;
+      justify-content: space-between;
+      gap: 56px;
+    }
+  }
+
+  &__filter {
+    border-radius: 16px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 24px;
+    background: var(--bg-primary);
+  }
 }
+
