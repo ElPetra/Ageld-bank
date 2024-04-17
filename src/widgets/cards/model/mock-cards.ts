@@ -1,21 +1,11 @@
 export interface Card {
-    name: string;
-    description: string;
-    id: string;
-    payment: string;
-    type: 'Кредитная' | 'Дебетовая';
-    created: Date;
-    isVirtual: boolean;
-    level: 'Classic' | 'Gold' | 'Platinum' | 'Premium';
-    limit: number;
-    condition: number;
-    fee: string;
-    image: 'classic' | 'gold' | 'platinum' | 'premium';
+    nameProduct: string;
+    imageUrl: string;
 }
 
 export const cards: Card[] = [
     {
-        name: 'A-GELD Classic',
+        nameProduct: 'A-GELD Classic',
         description: 'Кредитная карта. Надежная карта на каждый день. ',
         id: '1',
         payment: 'МИР',
@@ -29,7 +19,7 @@ export const cards: Card[] = [
         image: 'classic'
     },
     {
-        name: 'A-GELD Gold',
+        nameProduct: 'A-GELD Gold',
         description:
             'Кредитная карта. Совершайте транзакции в любой стране мира',
         id: '2',
@@ -44,7 +34,7 @@ export const cards: Card[] = [
         image: 'gold'
     },
     {
-        name: 'A-GELD Platinum',
+        nameProduct: 'A-GELD Platinum',
         description:
             'Дебетовая карта. Больше возможностей для транзакций по всему миру',
         id: '3',
@@ -59,7 +49,7 @@ export const cards: Card[] = [
         image: 'platinum'
     },
     {
-        name: 'A-GELD Premium',
+        nameProduct: 'A-GELD Premium',
         description: 'Дебетовая карта. Карта для активных путешественников',
         id: '4',
         payment: 'VISA',
@@ -73,7 +63,7 @@ export const cards: Card[] = [
         image: 'premium'
     },
     {
-        name: 'A-GELD Classic',
+        nameProduct: 'A-GELD Classic',
         description: 'Кредитная карта. Надежная карта на каждый день. ',
         id: '5',
         payment: 'VISA',
@@ -87,7 +77,7 @@ export const cards: Card[] = [
         image: 'classic'
     },
     {
-        name: 'A-GELD Gold',
+        nameProduct: 'A-GELD Gold',
         description:
             'Кредитная карта. Совершайте транзакции в любой стране мира',
         id: '6',
@@ -102,7 +92,7 @@ export const cards: Card[] = [
         image: 'gold'
     },
     {
-        name: 'A-GELD Platinum',
+        nameProduct: 'A-GELD Platinum',
         description:
             'Дебетовая карта. Больше возможностей для транзакций по всему миру',
         id: '7',
@@ -117,7 +107,7 @@ export const cards: Card[] = [
         image: 'platinum'
     },
     {
-        name: 'A-GELD Premium',
+        nameProduct: 'A-GELD Premium',
         description: 'Дебетовая карта. Карта для активных путешественников',
         id: '8',
         payment: 'МИР',
@@ -131,7 +121,7 @@ export const cards: Card[] = [
         image: 'premium'
     },
     {
-        name: 'A-GELD Premium',
+        nameProduct: 'A-GELD Premium',
         description: 'Дебетовая карта. Карта для активных путешественников',
         id: '9',
         payment: 'МИР',
@@ -145,7 +135,7 @@ export const cards: Card[] = [
         image: 'premium'
     },
     {
-        name: 'A-GELD Classic',
+        nameProduct: 'A-GELD Classic',
         description: 'Кредитная карта. Надежная карта на каждый день. ',
         id: '10',
         payment: 'VISA',
@@ -159,7 +149,7 @@ export const cards: Card[] = [
         image: 'classic'
     },
     {
-        name: 'A-GELD Gold',
+        nameProduct: 'A-GELD Gold',
         description:
             'Кредитная карта. Совершайте транзакции в любой стране мира',
         id: '11',
@@ -174,7 +164,7 @@ export const cards: Card[] = [
         image: 'gold'
     },
     {
-        name: 'A-GELD Platinum',
+        nameProduct: 'A-GELD Platinum',
         description:
             'Дебетовая карта. Больше возможностей для транзакций по всему миру',
         id: '12',

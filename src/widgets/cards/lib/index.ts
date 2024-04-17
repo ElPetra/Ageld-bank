@@ -1,7 +1,5 @@
 import { useCallback, useState } from 'react';
 
-import { cards } from 'src/widgets/cards/model';
-
 import type { Card } from 'src/widgets/cards/model';
 
 export type CardType = string;
@@ -11,7 +9,7 @@ interface Filters {
     type: CardType;
     payment: PaymentType;
 }
-export const useCardsFilter = () => {
+export const useCardsFilter = cards => {
     const [filters, setFilters] = useState<Filters>({
         type: 'Все',
         payment: 'Все'
