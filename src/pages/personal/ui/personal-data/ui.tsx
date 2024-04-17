@@ -1,4 +1,4 @@
-import { Preloader } from 'src/shared/ui/preloader';
+import { Preloader } from 'src/shared/ui';
 import { Address, Contacts, UserCard } from 'src/entities/user';
 import { EmailForm } from 'src/features/forms';
 import { getAccessToken, useGetInfoQuery } from 'src/shared/api';

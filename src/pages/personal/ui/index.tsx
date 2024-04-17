@@ -5,7 +5,7 @@ import { ChangePasswordForm } from 'src/features/forms';
 import { MultiStepForm } from 'src/features/multi-step-form';
 import { CheckboxGroup } from 'src/widgets/notifications';
 
-import { PersonalData } from 'src/features/personal-data';
+import { PersonalData } from 'src/pages/personal/ui/personal-data';
 
 import { options } from '../model';
 
