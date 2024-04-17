@@ -9,13 +9,19 @@ interface Options {
 
 interface Props {
     options: Options[];
+    variant?: 'primary' | 'secondary';
 }
 
-export const CheckboxGroup = ({ options }: Props) => (
+export const CheckboxGroup = ({ options, variant = 'primary' }: Props) => (
     <div className='checkbox-group'>
         {options.map(({ title, checkboxes }: Options) => (
             <div key={title}>
-                <Text weight='bold' size='m' tag='span'>
+                <Text
+                    weight='bold'
+                    size={variant === 'secondary' ? 's' : 'm'}
+                    tag='span'
+                    color={variant === 'secondary' ? 'quadruple' : 'inherit'}
+                >
                     {title}
                 </Text>
                 <ul className='checkbox-group__list'>

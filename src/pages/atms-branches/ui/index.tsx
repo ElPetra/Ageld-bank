@@ -2,14 +2,14 @@ import {
     Map,
     Placemark,
     RulerControl,
-    SearchControl,
     YMaps,
     ZoomControl
 } from '@pbe/react-yandex-maps';
 
-import { Container, Icon, Text } from 'src/shared/ui';
+import { Container } from 'src/shared/ui';
 
 import './styles.scss';
+import { MapFilter } from 'src/features/filters';
 
 export const ATMsBranchesPage = () => {
     return (
@@ -24,21 +24,10 @@ export const ATMsBranchesPage = () => {
             >
                 <div className='map__forward-container'>
                     <Container variant='none'>
-                        <div className='map__forward-continer__content'>
-                            <button className='map__filter'>
-                                <Icon icon='filter-lines' />
-                                <Text weight='bold'>Фильтр</Text>
-                            </button>
-                        </div>
+                        <MapFilter />
                     </Container>
                 </div>
                 <Placemark geometry={[59.95354024191497, 30.309087827396112]} />
-                <SearchControl
-                    options={{
-                        float: 'right',
-                        size: 'auto'
-                    }}
-                />
                 <RulerControl
                     options={{
                         position: { right: 10, bottom: 30 }
