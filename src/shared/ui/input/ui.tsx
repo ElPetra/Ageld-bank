@@ -70,6 +70,7 @@ export const Input = memo(
                             type={type || 'text'}
                             placeholder={placeholder || ''}
                             className={inputClass}
+                            disabled={disabled}
                             {...props}
                         />
                     ) : (

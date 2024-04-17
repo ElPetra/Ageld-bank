@@ -8,3 +8,4 @@ export * from './container';
 export * from './checkbox';
 export * from './radio';
 export * from './pagination';
+export * from './preloader';

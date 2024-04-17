@@ -10,9 +10,10 @@ interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
     error?: string;
     label: string;
     register: UseFormRegister<FieldValues>;
+    disabled: boolean;
 }
 
-export const EmailInput = ({ error, ...props }: Props) => {
+export const EmailInput = ({ error, disabled, ...props }: Props) => {
     const [value, setValue] = useState<string>('');
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
@@ -28,6 +29,7 @@ export const EmailInput = ({ error, ...props }: Props) => {
             value={value}
             onChange={handleChange}
             error={error}
+            disabled={disabled}
             {...props}
         ></Input>
     );
