@@ -8,7 +8,8 @@ export const RouteName = {
     LOGIN_PAGE: '/signin',
     PERSONAL_PAGE: '/personal',
     NOTIFICATION_HISTORY_PAGE: '/notifications_history',
-    RECOVERY_PASSWORD_PAGE: '/recovery'
+    RECOVERY_PASSWORD_PAGE: '/recovery',
+    CONTACTS_PAGE: '/contacts'
 };
 
 export interface RouteDescription {
