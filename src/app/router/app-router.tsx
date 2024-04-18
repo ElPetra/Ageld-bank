@@ -8,27 +8,27 @@ import { RegistrationPage } from 'src/pages/registration';
 import { RecoveryPasswordPage } from 'src/pages/recovery';
 import { PersonalPage } from 'src/pages/personal';
 import { NotificationHistoryPage } from 'src/pages/notification';
-import { AccountPage } from 'src/pages/accounts';
-import { CardPage } from 'src/pages/cards';
 import { CustomToaster } from 'src/widgets/toaster';
-import { useAuth } from 'src/entities/user';
-import { CREATE, RouteName } from 'src/shared/model';
+import { ContactsPage } from 'src/pages/contacts';
 
+import { CREATE, RouteName, type RouteDescription } from 'src/shared/model';
+import { useAuth } from 'src/entities/user';
+import { AccountPage } from 'src/pages/accounts';
 import { AccountCreation } from 'src/widgets/account-creation';
+import { CardPage } from 'src/pages/cards';
 
 import { ProtectedRoute } from './protected-route';
 
-import type { RouteDescription } from 'src/shared/model';
-
 const {
+    CARD_PAGE,
     MAIN_PAGE,
     REGISTRATION_PAGE,
     LOGIN_PAGE,
-    CARD_PAGE,
     ACCOUNT_PAGE,
     PERSONAL_PAGE,
     NOTIFICATION_HISTORY_PAGE,
-    RECOVERY_PASSWORD_PAGE
+    RECOVERY_PASSWORD_PAGE,
+    CONTACTS_PAGE
 } = RouteName;
 
 const publicRoutes: RouteDescription[] = [
@@ -43,6 +43,10 @@ const publicRoutes: RouteDescription[] = [
     {
         path: RECOVERY_PASSWORD_PAGE,
         component: RecoveryPasswordPage
+    },
+    {
+        path: CONTACTS_PAGE,
+        component: ContactsPage
     }
 ];
 
