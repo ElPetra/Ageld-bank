@@ -57,8 +57,7 @@ const data: BankObject[] = [
         houseNumber: '4B',
         objectTypeName: 'branch',
         schedule:
-            'Понедельник - Пятница: 9:00-14:00 ' +
-            'Cуббота: 10:00-14:00. Воскресенье - выходной'
+            'Понедельник - Пятница: 9:00-14:00 Cуббота: 10:00-14:00. Воскресенье - выходной'
     },
     {
         objectNumber: 3,
@@ -109,7 +108,7 @@ const isOpen = (schedule: string): boolean => {
     schedule = schedule.toLowerCase();
     if (
         schedule.includes('без выходных') &&
-        schedule.toLowerCase().includes('круглосуточно')
+        schedule.includes('круглосуточно')
     ) {
         return true;
     } else {
@@ -135,7 +134,7 @@ export const ATMsBranchesPage = () => {
                     zoom: 15,
                     controls: []
                 }}
-                className='map-1-2-3'
+                className='map'
             >
                 <div className='map__forward-container'>
                     <div className='map__forward-container__left'>
