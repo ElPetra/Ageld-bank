@@ -1,31 +1,83 @@
-.map {
+.map-1-2-3 {
   width: 100%;
-  height: calc(100% + 230px);
+  height: 750px;
   position: relative;
+}
 
+.map {
   &__forward-container {
-    position: absolute;
-    z-index: 1;
-    left: 0;
-    top: 24px;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    justify-content: space-between;
+    > div:first-child {
+      z-index: 2;
+    }
     > div {
-      height: calc(100% - 230px);
+      position: absolute;
+      z-index: 1;
+      top: 24px;
+      max-height: calc(750px - 24px);
     }
 
-    > div > div {
-      // overflow-x: auto;
-      height: 100%;
+    &__left {
+      left: 130px;
+    }
+    &__right {
+      right: 130px;
     }
 
-    &__content {
+    @media screen and (max-width: 600px) {
+      &__left {
+        left: 15px;
+      }
+      &__right {
+        right: 15px;
+      }
+    }
+
+    @media screen and (min-width: 600px) and (max-width: 900px) {
+      &__left {
+        left: 30px;
+      }
+      &__right {
+        right: 30px;
+      }
+    }
+
+    @media screen and (min-width: 900px) and (max-width: 1000px) {
+      &__left {
+        left: 70px;
+      }
+      &__right {
+        right: 70px;
+      }
+    }
+
+    @media screen and (min-width: 1000px) and (max-width: 1200px) {
+      &__left {
+        left: 100px;
+      }
+      &__right {
+        right: 100px;
+      }
+    }
+
+    &__col {
       display: flex;
-      justify-content: space-between;
-      gap: 56px;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 378px;
+      max-height: calc(750px - 24px);
+      overflow-y: hidden;
     }
+  }
+
+  &__search {
+    max-width: 380px;
+  }
+}
+
+.bank-object {
+  &__name {
+    display: flex;
+    gap: 12px;
   }
 }
 

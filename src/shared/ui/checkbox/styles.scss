@@ -16,7 +16,7 @@
     border-radius: 4px;
     margin-right: 10px;
     position: relative;
-    border: solid var(--text-quadruple);
+    border: solid 1px var(--text-quadruple);
   }
   &__input:checked + &__control::before {
     content: '';

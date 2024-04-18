@@ -1,0 +1,29 @@
+.card {
+  background-color: var(--bg-primary);
+  padding: 16px 24px;
+  height: 100%;
+  border-radius: var(--card-border-radius);
+  display: flex;
+  &.row {
+    align-items: center;
+  }
+
+  &.column {
+    flex-direction: column;
+  }
+
+  &.small-gap {
+    gap: 8px;
+  }
+
+  &.medium-gap {
+    gap: 16px;
+  }
+
+  &.large-gap {
+    gap: 24px;
+  }
+}
+
+
+

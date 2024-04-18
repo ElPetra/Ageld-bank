@@ -15,7 +15,7 @@ interface Props {
 export const CheckboxGroup = ({ options, variant = 'primary' }: Props) => (
     <div className='checkbox-group'>
         {options.map(({ title, checkboxes }: Options) => (
-            <div key={title}>
+            <div key={title} className='checkbox-group__item'>
                 <Text
                     weight='bold'
                     size={variant === 'secondary' ? 's' : 'm'}
@@ -26,7 +26,7 @@ export const CheckboxGroup = ({ options, variant = 'primary' }: Props) => (
                 </Text>
                 <ul className='checkbox-group__list'>
                     {checkboxes.map(({ label, defaultIsChecked = false }) => (
-                        <li className='checkbox-group__item' key={label}>
+                        <li className='checkbox-group__list-item' key={label}>
                             <Checkbox
                                 label={label}
                                 defaultIsChecked={defaultIsChecked}
