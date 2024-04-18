@@ -28,7 +28,10 @@ export const ATMsBranchesPage = () => {
                         <MapFilter />
                     </Container>
                     <Container variant='none'>
-                        <SearchForm />
+                        <SearchForm
+                            label='Поиск по адресу или названию'
+                            size='extra-small'
+                        />
                     </Container>
                 </div>
                 <div className='some'>
@@ -43,7 +46,7 @@ export const ATMsBranchesPage = () => {
                     <ZoomControl
                         options={{
                             size: 'large',
-                            position: { right: 10, top: 30 },
+                            position: { right: 10, bottom: 30 },
                             zoomDuration: 10
                         }}
                     />

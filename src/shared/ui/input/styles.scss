@@ -55,7 +55,12 @@
     &.medium {
       height: 72px;
     }
-
+    &.extra-small{
+      height: 56px;
+      width: 330px;
+      font-weight: 500;
+      font-size: 16px;
+    }
     &.small {
       height: 72px;
       max-width: 72px;
@@ -118,6 +123,10 @@
       position: absolute;
       top: 24px;
       right: 24px;
+    }
+    &.extra-small .input-icon {
+      top: 16px;
+      right: 16px;
     }
   }
 

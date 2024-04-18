@@ -5,7 +5,12 @@ import { Form, Icon, Input } from 'src/shared/ui';
 
 import type { FieldValues } from 'react-hook-form';
 
-export const SearchForm = () => {
+interface Props {
+    label?: string;
+    size?: 'extra-small' | 'small' | 'medium' | 'large';
+}
+
+export const SearchForm = ({ label = 'Поиск', size = 'large' }: Props) => {
     const [value, setValue] = useState<string>('');
     const inputRef = useRef<HTMLInputElement>(null);
 
@@ -23,8 +28,8 @@ export const SearchForm = () => {
         >
             <Input
                 type='text'
-                placeholder='Поиск'
-                size='large'
+                placeholder={label}
+                size={size}
                 width='max'
                 value={value}
                 onChange={e => setValue(e.target.value)}
