@@ -10,6 +10,7 @@ import { PersonalPage } from 'src/pages/personal';
 import { NotificationHistoryPage } from 'src/pages/notification';
 import { AccountPage } from 'src/pages/accounts';
 import { CardPage } from 'src/pages/cards';
+import { ATMsBranchesPage } from 'src/pages/atms-branches';
 import { CustomToaster } from 'src/widgets/toaster';
 import { useAuth } from 'src/entities/user';
 import { CREATE, RouteName } from 'src/shared/model';
@@ -28,7 +29,8 @@ const {
     ACCOUNT_PAGE,
     PERSONAL_PAGE,
     NOTIFICATION_HISTORY_PAGE,
-    RECOVERY_PASSWORD_PAGE
+    RECOVERY_PASSWORD_PAGE,
+    ATMS_AND_BRANCHES
 } = RouteName;
 
 const publicRoutes: RouteDescription[] = [
@@ -43,6 +45,10 @@ const publicRoutes: RouteDescription[] = [
     {
         path: RECOVERY_PASSWORD_PAGE,
         component: RecoveryPasswordPage
+    },
+    {
+        path: ATMS_AND_BRANCHES,
+        component: ATMsBranchesPage
     }
 ];
 

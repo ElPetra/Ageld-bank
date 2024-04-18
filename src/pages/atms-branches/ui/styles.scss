@@ -1,0 +1,31 @@
+.map {
+  width: 100%;
+  height: calc(100% + 230px);
+  position: relative;
+
+  &__forward-container {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 24px;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    > div {
+      height: calc(100% - 230px);
+    }
+
+    > div > div {
+      // overflow-x: auto;
+      height: 100%;
+    }
+
+    &__content {
+      display: flex;
+      justify-content: space-between;
+      gap: 56px;
+    }
+  }
+}
+

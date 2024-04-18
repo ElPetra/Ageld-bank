@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 
 import { getIconName } from 'src/shared/lib';
-import { Button, Icon, Image, Text } from 'src/shared/ui';
+import { Button, Icon, Image, Text, Container } from 'src/shared/ui';
 import { MessageCard } from 'src/entities/message';
 import { BackButton } from 'src/features/multi-step-form';
 
@@ -14,7 +14,7 @@ export const CardPage = () => {
     const card = cards.find(card => card.id === id);
 
     return (
-        <>
+        <Container>
             <BackButton />
             {card ? (
                 <div className='finance-card__container'>
@@ -42,6 +42,6 @@ export const CardPage = () => {
             ) : (
                 <MessageCard text={CARDS_NOT_FOUND} buttonText={CREATE_CARD} />
             )}
-        </>
+        </Container>
     );
 };
