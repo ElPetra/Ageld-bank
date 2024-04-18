@@ -10,6 +10,7 @@ import { Container } from 'src/shared/ui';
 
 import './styles.scss';
 import { MapFilter } from 'src/features/filters';
+import { SearchForm } from 'src/features/forms';
 
 export const ATMsBranchesPage = () => {
     return (
@@ -26,20 +27,27 @@ export const ATMsBranchesPage = () => {
                     <Container variant='none'>
                         <MapFilter />
                     </Container>
+                    <Container variant='none'>
+                        <SearchForm />
+                    </Container>
                 </div>
-                <Placemark geometry={[59.95354024191497, 30.309087827396112]} />
-                <RulerControl
-                    options={{
-                        position: { right: 10, bottom: 30 }
-                    }}
-                />
-                <ZoomControl
-                    options={{
-                        size: 'large',
-                        position: { right: 10, bottom: 30 },
-                        zoomDuration: 10
-                    }}
-                />
+                <div className='some'>
+                    <Placemark
+                        geometry={[59.95354024191497, 30.309087827396112]}
+                    />
+                    <RulerControl
+                        options={{
+                            position: { right: 10, bottom: 30 }
+                        }}
+                    />
+                    <ZoomControl
+                        options={{
+                            size: 'large',
+                            position: { right: 10, top: 30 },
+                            zoomDuration: 10
+                        }}
+                    />
+                </div>
             </Map>
         </YMaps>
     );
