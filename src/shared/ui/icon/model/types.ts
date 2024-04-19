@@ -29,6 +29,7 @@ export type SvgIconNames =
     | 'menu-phone'
     | 'user'
     | 'arrow-2'
+    | 'arrow-3'
     | 'usd'
     | 'jpy'
     | 'rub'
