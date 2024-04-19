@@ -20,7 +20,7 @@ export const options = [
     },
     {
         title: 'Статус работы',
-        checkboxes: [{ label: 'Работает' }, { label: 'Закрыт' }]
+        checkboxes: [{ label: 'Работает' }]
     }
     // {
     //     title: 'Услуги отделения',
