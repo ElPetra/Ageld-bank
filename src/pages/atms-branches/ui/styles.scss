@@ -1,6 +1,7 @@
 .map {
   width: 100%;
-  height: 750px;
+  min-height: 750px;
+  height: 100%;
   position: relative;
 
   &__forward-container {
@@ -63,7 +64,7 @@
       gap: 16px;
       max-width: 378px;
       max-height: calc(750px - 24px);
-      overflow-y: hidden;
+      overflow-y: scroll;
     }
   }
 

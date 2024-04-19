@@ -13,7 +13,7 @@ import { SearchForm } from 'src/features/forms';
 import './styles.scss';
 
 const objectTypeName = {
-    ATM: 'Банкомата',
+    ATM: 'Банкомат',
     kiosk: 'Инфокиоск',
     head: 'Главный офис',
     branch: 'Отделение банка',
@@ -24,6 +24,8 @@ type objectType = keyof typeof objectTypeName;
 
 interface BankObject {
     objectNumber: number;
+    latitude: number;
+    longitude: number;
     region?: string;
     location: string;
     street?: string;
@@ -37,6 +39,8 @@ interface BankObject {
 const data: BankObject[] = [
     {
         objectNumber: 1,
+        latitude: 59.95354024191497,
+        longitude: 30.309087827396112,
         region: 'Пыталовский',
         location: 'Пыталово',
         street: 'Пыталово',
@@ -50,6 +54,8 @@ const data: BankObject[] = [
     },
     {
         objectNumber: 2,
+        latitude: 59.953343,
+        longitude: 30.308006,
         region: 'Пыталовский',
         location: 'Пыталово',
         street: 'Пыталово',
@@ -61,6 +67,8 @@ const data: BankObject[] = [
     },
     {
         objectNumber: 3,
+        latitude: 59.953343,
+        longitude: 30.309006,
         location: 'Пыталово',
         street: 'Пыталово',
         houseNumber: '4B',
@@ -134,6 +142,7 @@ export const ATMsBranchesPage = () => {
                     zoom: 15,
                     controls: []
                 }}
+                modules={['geoObject.addon.balloon', 'geoObject.addon.hint']}
                 className='map'
             >
                 <div className='map__forward-container'>
@@ -143,7 +152,7 @@ export const ATMsBranchesPage = () => {
                     <div className='map__forward-container__right'>
                         <div className='map__forward-container__col'>
                             <Card>
-                                <Text weight='bold' size='m'>
+                                <Text weight='bold' size='m' display='flex'>
                                     Объекты в&nbsp;
                                     <Text weight='bold' size='m' color='action'>
                                         Москве
@@ -179,9 +188,32 @@ export const ATMsBranchesPage = () => {
                     </div>
                 </div>
                 <div className='some'>
-                    <Placemark
-                        geometry={[59.95354024191497, 30.309087827396112]}
-                    />
+                    {data.map(el => (
+                        <Placemark
+                            key={el.objectNumber}
+                            geometry={[el.latitude, el.longitude]}
+                            onClick={() => {}}
+                            options={{
+                                iconLayout: 'default#image',
+                                iconImageHref:
+                                    'src/shared/ui/icon/assets/icons/map-dot.svg'
+                            }}
+                            properties={{
+                                hintContent: `<div>
+                                            ${objectTypeName[el.objectTypeName]} № ${el.objectNumber}
+                                        </div>`,
+                                balloonContentHeader: `<div style="text-decoration: underline;">${objectTypeName[el.objectTypeName]} № ${el.objectNumber}</div>`,
+                                balloonContent: `<div style="max-width: 250px;"><div>${getAddress(el)}</div>Время работы:<div>${el.schedule}</div></div>`,
+                                balloonContentFooter: `<div>
+                                        ${
+                                            isOpen(el.schedule)
+                                                ? 'Открыто'
+                                                : 'Закрыто'
+                                        }
+                                    </div>`
+                            }}
+                        />
+                    ))}
                     <RulerControl
                         options={{
                             position: { right: 10, bottom: 30 }

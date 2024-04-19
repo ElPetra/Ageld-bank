@@ -1,7 +1,7 @@
 import { RouteName } from 'src/shared/model';
 
 export const links = [
-    { text: 'Банкоматы и отеделения', href: RouteName.MAIN_PAGE },
+    { text: 'Банкоматы и отеделения', href: RouteName.ATMS_AND_BRANCHES },
     { text: 'Курсы валют', href: RouteName.MAIN_PAGE },
     { text: 'Контакты', href: RouteName.MAIN_PAGE },
     { text: 'Список услуг', href: RouteName.MAIN_PAGE },
