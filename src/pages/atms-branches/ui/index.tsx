@@ -1,4 +1,5 @@
 import {
+    GeolocationControl,
     Map,
     Placemark,
     RulerControl,
@@ -11,6 +12,7 @@ import { MapFilter } from 'src/features/filters';
 import { SearchForm } from 'src/features/forms';
 
 import './styles.scss';
+import { useState } from 'react';
 
 const objectTypeName = {
     ATM: 'Банкомат',
@@ -134,6 +136,7 @@ const isOpen = (schedule: string): boolean => {
 };
 
 export const ATMsBranchesPage = () => {
+    const [selectedLocation, setSelectedLocation] = useState<number[]>();
     return (
         <YMaps>
             <Map
@@ -142,8 +145,13 @@ export const ATMsBranchesPage = () => {
                     zoom: 15,
                     controls: []
                 }}
-                modules={['geoObject.addon.balloon', 'geoObject.addon.hint']}
+                modules={[
+                    'geoObject.addon.balloon',
+                    'geoObject.addon.hint',
+                    'geoObject.addon.editor'
+                ]}
                 className='map'
+                instanceRef={inst => console.log(inst)}
             >
                 <div className='map__forward-container'>
                     <div className='map__forward-container__left'>
@@ -166,7 +174,15 @@ export const ATMsBranchesPage = () => {
                                 </div>
                             </Card>
                             {data.map(el => (
-                                <Card key={el.objectNumber}>
+                                <Card
+                                    key={el.objectNumber}
+                                    status={
+                                        `${el.latitude},${el.longitude}` ==
+                                        selectedLocation?.toString()
+                                            ? 'active'
+                                            : ''
+                                    }
+                                >
                                     <div className='bank-object__name'>
                                         <Icon icon='building' />
                                         <Text weight='bold' size='m'>
@@ -192,7 +208,6 @@ export const ATMsBranchesPage = () => {
                         <Placemark
                             key={el.objectNumber}
                             geometry={[el.latitude, el.longitude]}
-                            onClick={() => {}}
                             options={{
                                 iconLayout: 'default#image',
                                 iconImageHref:
@@ -212,8 +227,24 @@ export const ATMsBranchesPage = () => {
                                         }
                                     </div>`
                             }}
+                            instanceRef={inst => {
+                                inst?.events.add('balloonclose', () => {
+                                    setSelectedLocation([]);
+                                });
+                                inst?.events.add('balloonopen', () => {
+                                    setSelectedLocation([
+                                        el.latitude,
+                                        el.longitude
+                                    ]);
+                                });
+                            }}
                         />
                     ))}
+                    <GeolocationControl
+                        options={{
+                            float: 'left'
+                        }}
+                    />
                     <RulerControl
                         options={{
                             position: { right: 10, bottom: 30 }
