@@ -5,13 +5,17 @@ import { Button, Icon, Image, Text, Container } from 'src/shared/ui';
 import { MessageCard } from 'src/entities/message';
 import { BackButton } from 'src/features/multi-step-form';
 
-import { cards, CARDS_NOT_FOUND, CREATE_CARD } from 'src/widgets/cards/model';
+import {
+    cardsDebet,
+    CARDS_NOT_FOUND,
+    CREATE_CARD
+} from 'src/widgets/cards/model';
 
 import { Advantages } from './advantage';
 
 export const CardPage = () => {
     const { id } = useParams<{ id: string }>();
-    const card = cards.find(card => card.id === id);
+    const card = cardsDebet.find(card => card.id === id);
 
     return (
         <Container>

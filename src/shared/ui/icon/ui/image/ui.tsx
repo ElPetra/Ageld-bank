@@ -3,7 +3,6 @@ import { memo } from 'react';
 import type { ImgHTMLAttributes } from 'react';
 
 import type { PngImageNames } from '../../model/types';
-import classNames from 'classnames';
 
 export interface Props extends ImgHTMLAttributes<HTMLImageElement> {
     image?: PngImageNames;

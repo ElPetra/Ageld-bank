@@ -41,6 +41,7 @@ export const FinanceCard = ({ card }: Props) => {
                         {/*    width={70}*/}
                         {/*    height={30}*/}
                         {/*/>*/}
+                        {card.payment_system}
                     </div>
                     {/*<Text size='s' color='copy'>*/}
                     {/*    {card.description}*/}

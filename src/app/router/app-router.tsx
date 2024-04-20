@@ -45,10 +45,6 @@ const publicRoutes: RouteDescription[] = [
     {
         path: RECOVERY_PASSWORD_PAGE,
         component: RecoveryPasswordPage
-    },
-    {
-        path: ATMS_AND_BRANCHES,
-        component: ATMsBranchesPage
     }
 ];
 

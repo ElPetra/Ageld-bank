@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import { getActualAccessToken } from 'src/shared/lib';
 
-import type { CustomerInfo } from 'src/shared/model';
+import type { Card } from 'src/widgets/cards/model';
 
 export const cardApi = createApi({
     reducerPath: 'cardApi',
@@ -17,7 +17,7 @@ export const cardApi = createApi({
         responseHandler: response => response.text()
     }),
     endpoints: builder => ({
-        getCardProducts: builder.query<CustomerInfo, { type: string }>({
+        getCardProducts: builder.query<Card[], { type: string }>({
             query: ({ type }) => ({
                 url: `/card-product/list_card_products?card_product_type=${type}`,
                 method: 'GET',
