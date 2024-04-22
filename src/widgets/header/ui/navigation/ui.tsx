@@ -14,7 +14,7 @@ export const Navigation = () => {
                     Банкоматы и отделения
                 </Link>
                 <Link to={RouteName.MAIN_PAGE}>Курсы валют</Link>
-                <Link to={RouteName.MAIN_PAGE}>Контакты</Link>
+                <Link to={RouteName.CONTACTS_PAGE}>Контакты</Link>
                 <Link to={RouteName.MAIN_PAGE}>Список услуг</Link>
                 <Link to={RouteName.MAIN_PAGE}>Документы</Link>
                 <Link to={RouteName.MAIN_PAGE}>Вопросы и ответы</Link>

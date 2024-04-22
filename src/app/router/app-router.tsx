@@ -12,6 +12,8 @@ import { AccountPage } from 'src/pages/accounts';
 import { CardPage } from 'src/pages/cards';
 import { ATMsBranchesPage } from 'src/pages/atms-branches';
 import { CustomToaster } from 'src/widgets/toaster';
+import { ContactsPage } from 'src/pages/contacts';
+
 import { useAuth } from 'src/entities/user';
 import { CREATE, RouteName } from 'src/shared/model';
 
@@ -30,6 +32,7 @@ const {
     PERSONAL_PAGE,
     NOTIFICATION_HISTORY_PAGE,
     RECOVERY_PASSWORD_PAGE,
+    CONTACTS_PAGE,
     ATMS_AND_BRANCHES
 } = RouteName;
 
@@ -45,6 +48,10 @@ const publicRoutes: RouteDescription[] = [
     {
         path: RECOVERY_PASSWORD_PAGE,
         component: RecoveryPasswordPage
+    },
+    {
+        path: CONTACTS_PAGE,
+        component: ContactsPage
     },
     {
         path: ATMS_AND_BRANCHES,
