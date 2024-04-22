@@ -10,14 +10,13 @@ import { PersonalPage } from 'src/pages/personal';
 import { NotificationHistoryPage } from 'src/pages/notification';
 import { AccountPage } from 'src/pages/accounts';
 import { CardPage } from 'src/pages/cards';
-import { ATMsBranchesPage } from 'src/pages/atms-branches';
-import { CustomToaster } from 'src/widgets/toaster';
 import { ContactsPage } from 'src/pages/contacts';
-
-import { useAuth } from 'src/entities/user';
-import { CREATE, RouteName } from 'src/shared/model';
+import { ATMsBranchesPage } from 'src/pages/atms-branches';
 
 import { AccountCreation } from 'src/widgets/account-creation';
+import { useAuth } from 'src/entities/user';
+import { CREATE, RouteName } from 'src/shared/model';
+import { Preloader } from 'src/shared/ui';
 
 import { ProtectedRoute } from './protected-route';
 
@@ -37,6 +36,10 @@ const {
 } = RouteName;
 
 const publicRoutes: RouteDescription[] = [
+    {
+        path: MAIN_PAGE + '/:id?/:id2?',
+        component: MainPage
+    },
     {
         path: REGISTRATION_PAGE,
         component: RegistrationPage
@@ -61,10 +64,6 @@ const publicRoutes: RouteDescription[] = [
 
 const authRoutes: RouteDescription[] = [
     {
-        path: MAIN_PAGE + '/:id?/:id2?',
-        component: MainPage
-    },
-    {
         path: ACCOUNT_PAGE + '/' + CREATE,
         component: AccountCreation
     },
@@ -88,23 +87,16 @@ const authRoutes: RouteDescription[] = [
 
 export const AppRouter = () => {
     const { authChecked, isLoading } = useAuth();
+
     useEffect(() => {
         authChecked();
     }, [authChecked]);
-    if (isLoading) {
-        return <>Loading...</>;
-    }
-    return (
+
+    return isLoading ? (
+        <Preloader />
+    ) : (
         <Routes>
-            <Route
-                path='/'
-                element={
-                    <>
-                        <Layout />
-                        <CustomToaster />
-                    </>
-                }
-            >
+            <Route path='/' element={<Layout />}>
                 {publicRoutes.map(({ path, component: Component }) => (
                     <Route key={path} path={path} element={<Component />} />
                 ))}
