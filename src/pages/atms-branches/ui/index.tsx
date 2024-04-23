@@ -8,13 +8,16 @@ import {
     ZoomControl
 } from '@pbe/react-yandex-maps';
 
-import { Card, Text } from 'src/shared/ui';
+import { Card, Text, MapDotSVG } from 'src/shared/ui';
 import { MapFilter } from 'src/features/filters';
 import { SearchForm } from 'src/features/forms';
 
+import { data } from '../model';
+
 import { BankObjectCard } from './bank-object-card';
 import { BankObjectInfoMenu } from './bank-object-info-menu';
-import { BankObject, data } from '../model';
+
+import type { BankObject } from '../model';
 
 import './styles.scss';
 
@@ -63,6 +66,7 @@ export const ATMsBranchesPage = () => {
                                 </Card>
                                 {data.map(el => (
                                     <BankObjectCard
+                                        key={el.objectNumber}
                                         bankObject={el}
                                         setVisible={setVisible}
                                         current={current}
@@ -83,8 +87,7 @@ export const ATMsBranchesPage = () => {
                                 }}
                                 options={{
                                     iconLayout: 'default#image',
-                                    iconImageHref:
-                                        'src/shared/ui/icon/assets/icons/map-dot.svg'
+                                    iconImageHref: MapDotSVG
                                 }}
                             />
                         ))}

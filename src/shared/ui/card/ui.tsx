@@ -4,16 +4,18 @@ import './styles.scss';
 
 interface Props {
     children: ReactNode;
-    gap?: 'small-gap' | 'medium-gap' | 'large-gap';
+    gap?: 'small' | 'medium' | 'large';
     direction?: 'column' | 'row';
     status?: 'active' | '';
 }
 
 export const Card = ({
     children,
-    gap = 'medium-gap',
+    gap = 'medium',
     direction = 'column',
     status
 }: Props) => (
-    <div className={`card ${gap} ${direction} ${status}`}>{children}</div>
+    <div className={`card ${gap + '-gap'} ${direction} ${status}`}>
+        {children}
+    </div>
 );

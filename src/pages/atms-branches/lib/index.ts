@@ -1,4 +1,4 @@
-import { BankObject } from '../model';
+import type { BankObject } from '../model';
 
 export const getAddress = (obj: BankObject): string => {
     const getString = (value: string | undefined): string => {

@@ -16,14 +16,14 @@ export const MapFilter = () => {
                 className='map__filter__button'
                 onClick={() => setOpen(true)}
             >
-                <Card gap='small-gap' direction='row'>
+                <Card gap='small' direction='row'>
                     <Icon icon='filter-lines' />
                     <Text weight='bold'>Фильтр</Text>
                 </Card>
             </button>
             {open && (
                 <div className='map__filter__modal'>
-                    <Card gap='large-gap'>
+                    <Card gap='large'>
                         <div className='map__filter__modal__button'>
                             <Icon icon='filter-lines' />
                             <Text weight='bold'>Фильтр</Text>
