@@ -15,7 +15,5 @@ export const Card = ({
     direction = 'column',
     status
 }: Props) => (
-    <div className={`card ${gap + '-gap'} ${direction} ${status}`}>
-        {children}
-    </div>
+    <div className={`card ${gap}-gap ${direction} ${status}`}>{children}</div>
 );
