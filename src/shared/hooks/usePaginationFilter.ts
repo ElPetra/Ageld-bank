@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import type { Card } from 'src/widgets/cards/model/types.js';
+import type { Card } from 'src/widgets/cards/model/types';
 
 export const usePaginationFilter = (
     cards: Card[],
