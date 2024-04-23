@@ -1,11 +1,4 @@
-//import { useGetCardProductsQuery } from 'src/shared/api';
-import {
-    cardsCredit,
-    cardsDebet,
-    CREDIT_CARD,
-    DEBET_CARD
-} from 'src/widgets/cards/model/index.js';
-//import { useState } from 'react';
+import { useGetCardProductsQuery } from 'src/shared/api';
 
 export const getIconName = (payment: string) => {
     switch (payment) {
@@ -18,35 +11,23 @@ export const getIconName = (payment: string) => {
     }
 };
 
-export const useFetchCards = (currencyType: string) => {
-    //const [cards, setCards] = useState();
-    // const { data: debetCards, isLoading: debetLoading } =
-    //     useGetCardProductsQuery({
-    //         type: currencyType === DEBET_CARD ? 'DEBIT' : ''
-    //     });
-    //
-    // const { data: creditCards, isLoading: creditLoading } =
-    //     useGetCardProductsQuery({
-    //         type: currencyType === CREDIT_CARD ? 'CREDIT' : ''
-    //     });
+export const useFetchCards = () => {
+    const { data: debetCards, isLoading: debetLoading } =
+        useGetCardProductsQuery({
+            type: 'DEBIT'
+        });
 
-    //const cards = currencyType === DEBET_CARD ? cardsDebet : cardsCredit;
-    //const cards = [...(cardsDebet || []), ...(cardsCredit || [])];
+    const { data: creditCards, isLoading: creditLoading } =
+        useGetCardProductsQuery({
+            type: 'CREDIT'
+        });
+
     let cards = [];
-    switch (currencyType) {
-        case DEBET_CARD:
-            cards = cardsDebet || [];
-            break;
-        case CREDIT_CARD:
-            cards = cardsCredit || [];
-            break;
-        default:
-            cards = [...(cardsDebet || []), ...(cardsCredit || [])];
-    }
+    cards = [...(debetCards || []), ...(creditCards || [])];
+    const isLoading = debetLoading && creditLoading;
 
     return {
+        isLoading,
         cards
-        // debetLoading,
-        // creditLoading
     };
 };

@@ -1,4 +1,7 @@
-import { Button, Text, Image } from 'src/shared/ui';
+import { Button, Text, Image, Icon, Link } from 'src/shared/ui';
+import { useLocation } from 'react-router';
+import { getIconName } from 'src/shared/lib';
+import { RouteName } from 'src/shared/model';
 
 import type { Card } from 'src/widgets/cards/model';
 import './styles.scss';
@@ -8,51 +11,49 @@ interface Props {
 }
 
 export const FinanceCard = ({ card }: Props) => {
-    // const { pathname } = useLocation();
+    const { pathname } = useLocation();
 
     return (
         card && (
             <div className='finance-card__container'>
-                {/*<Link*/}
-                {/*    to={RouteName.CARD_PAGE + '/' + card.id}*/}
-                {/*    state={{ from: pathname }}*/}
-                {/*>*/}
-                <Image
-                    className='finance-card__image'
-                    height={200}
-                    width={340}
-                    src={card.imageUrl}
-                />
-
-                {/*</Link>*/}
+                <Link
+                    to={RouteName.CARD_PAGE + '/' + card.cardProductId}
+                    state={{ from: pathname }}
+                >
+                    <Image
+                        className='finance-card__image'
+                        height={200}
+                        width={340}
+                        src={card.imageUrl}
+                    />
+                </Link>
                 <div className='finance-card__info'>
                     <div className='finance-card__title'>
-                        {/*<Link*/}
-                        {/*    to={RouteName.CARD_PAGE + '/' + card.id}*/}
-                        {/*    state={{ from: pathname }}*/}
-                        {/*>*/}
-                        <Text size='l' weight='bold' color='quadruple'>
-                            {card.nameProduct}
-                        </Text>
-                        {/*</Link>*/}
-                        {/*<Icon*/}
-                        {/*    icon={getIconName(card.payment)}*/}
-                        {/*    className='finance-card__payment'*/}
-                        {/*    width={70}*/}
-                        {/*    height={30}*/}
-                        {/*/>*/}
-                        {card.payment_system}
+                        <Link
+                            to={RouteName.CARD_PAGE + '/' + card.cardProductId}
+                            state={{ from: pathname }}
+                        >
+                            <Text size='l' weight='bold' color='quadruple'>
+                                {card.nameProduct}
+                            </Text>
+                        </Link>
+                        <Icon
+                            icon={getIconName(card.paymentSystem)}
+                            className='finance-card__payment'
+                            width={70}
+                            height={30}
+                        />
                     </div>
-                    {/*<Text size='s' color='copy'>*/}
-                    {/*    {card.description}*/}
-                    {/*</Text>*/}
+                    <Text size='s' color='quadruple'>
+                        {card.level}
+                    </Text>
                     <div className='finance-card__buttons'>
-                        {/*<Link*/}
-                        {/*    to={RouteName.CARD_PAGE + '/' + card.id}*/}
-                        {/*    state={{ from: pathname }}*/}
-                        {/*>*/}
-                        <Button variant='secondary'>Подробнее</Button>
-                        {/*</Link>*/}
+                        <Link
+                            to={RouteName.CARD_PAGE + '/' + card.cardProductId}
+                            state={{ from: pathname }}
+                        >
+                            <Button variant='secondary'>Подробнее</Button>
+                        </Link>
                         <Button>Оформить</Button>
                     </div>
                 </div>

@@ -1,34 +1,34 @@
-import { usePaginationFilter } from 'src/shared/hooks/usePaginationFilter.js';
-
-import { Pagination } from 'src/shared/ui';
+import { usePaginationFilter } from 'src/shared/hooks/usePaginationFilter';
+import { Pagination, Preloader } from 'src/shared/ui';
 import { CREATE, RouteName } from 'src/shared/model';
 import { useFetchCards } from 'src/shared/lib';
 import { MessageCard } from 'src/entities/message';
 import { FilterBar } from 'src/entities/filter';
-import { useState } from 'react';
 
 import {
     ALL_CARD,
     CARDS_NOT_FOUND,
     CREATE_CARD,
-    CREDIT_CARD,
-    DEBET_CARD,
     MIR_CARD,
+    typeFilters,
     VISA_CARD
 } from '../../model';
 import { useCardsFilter } from '../../lib';
 
 import { FinanceCard } from './card';
 import './styles.scss';
-const typeFilters = [ALL_CARD, DEBET_CARD, CREDIT_CARD];
 const paymentFilters = [ALL_CARD, MIR_CARD, VISA_CARD];
 
 export const CardContent = () => {
-    const [currencyPayment, setCurrencyPayment] = useState<string>(ALL_CARD);
-    const { currencyType, setCurrencyType } = useCardsFilter(currencyPayment);
-    const { cards } = useFetchCards(currencyType);
+    const { cards, isLoading } = useFetchCards();
 
-    const { getFilteredCards } = useCardsFilter(currencyPayment, cards);
+    const {
+        getFilteredCards,
+        currencyPayment,
+        setCurrencyType,
+        setCurrencyPayment,
+        currencyType
+    } = useCardsFilter(cards);
     const {
         currentPage,
         setCurrentPage,
@@ -41,7 +41,7 @@ export const CardContent = () => {
         <>
             <div className='filters'>
                 <FilterBar
-                    filters={typeFilters}
+                    filters={Object.keys(typeFilters)}
                     current={currencyType}
                     setCurrent={setCurrencyType}
                 />
@@ -51,14 +51,11 @@ export const CardContent = () => {
                     setCurrent={setCurrencyPayment}
                 />
             </div>
-            {/*{debetLoading && <Preloader />}*/}
+            {isLoading && <Preloader />}
             {currentItems ? (
                 <>
-                    {currentItems.map((el, index) => (
-                        <FinanceCard
-                            key={`${el.card_product_id}-${index}`}
-                            card={el}
-                        />
+                    {currentItems.map(el => (
+                        <FinanceCard key={`${el.cardProductId}`} card={el} />
                     ))}
                     {cards.length > 10 && (
                         <Pagination
