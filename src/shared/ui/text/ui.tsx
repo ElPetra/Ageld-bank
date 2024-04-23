@@ -8,8 +8,9 @@ interface Props {
     tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'div';
     size?: 'xs' | 'xxs' | 's' | 'm' | 'l' | 'xl';
     weight?: 'regular' | 'medium' | 'bold' | 'extra-bold';
-    color?: 'inherit' | 'success' | 'error' | 'quadruple';
+    color?: 'inherit' | 'success' | 'error' | 'quadruple' | 'action';
     align?: 'center' | 'left' | 'right';
+    display?: 'flex';
     children: ReactNode;
 }
 
@@ -20,12 +21,13 @@ export const Text = memo(
         weight = 'regular',
         align = 'left',
         color = 'inherit',
-        children
+        children,
+        display
     }: Props) => {
         const Element = tag || 'div';
         return (
             <Element
-                className={`text text-${color} ${size} ${weight} ${align}`}
+                className={`text text-${color} ${size} ${weight} ${align} ${display}`}
             >
                 {children}
             </Element>

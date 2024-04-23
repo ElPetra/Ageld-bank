@@ -7,7 +7,7 @@ import './styles.scss';
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
     type?: 'submit' | 'reset' | 'button';
     disabled?: boolean;
-    size?: 'medium' | 'large';
+    size?: 'small' | 'medium' | 'large';
     variant?: 'primary' | 'secondary' | 'link';
     width?: 'auto' | 'max';
     status?: 'active' | undefined;

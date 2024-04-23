@@ -11,6 +11,7 @@ interface Props {
 
 export function ProtectedRoute({ children }: Props) {
     const { isAuth } = useAuth();
+
     return isAuth ? (
         <>{children}</>
     ) : (

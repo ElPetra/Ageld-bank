@@ -1,0 +1,32 @@
+.map__filter {
+  position: relative;
+    &__modal{
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      &__button {
+        height: 32px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        
+        &__close {
+          position: absolute;
+          right: 20px;
+          top: 12px;
+          font-size: 24px;
+          padding: 5px;
+        }
+      }
+    }
+
+    &__button {
+      height: 64px;
+    }
+
+    &__buttons {
+      display: flex;
+      gap: 24px;
+    }
+  }

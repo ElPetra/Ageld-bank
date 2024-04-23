@@ -9,8 +9,9 @@ export const RouteName = {
     PERSONAL_PAGE: '/personal',
     NOTIFICATION_HISTORY_PAGE: '/notifications_history',
     RECOVERY_PASSWORD_PAGE: '/recovery',
-    CONTACTS_PAGE: '/contacts'
-};
+    CONTACTS_PAGE: '/contacts',
+    ATMS_AND_BRANCHES: '/locate-us'
+} as const;
 
 export interface RouteDescription {
     path: string;

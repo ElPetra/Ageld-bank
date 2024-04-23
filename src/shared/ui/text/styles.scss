@@ -69,7 +69,15 @@
     color: var(--text-quadruple);
   }
 
+  &.text-action {
+    color: var(--text-action);
+  }
+
   &.text-inherit {
     color: inherit;
+  }
+  
+  &.flex{
+    display: flex;
   }
 }

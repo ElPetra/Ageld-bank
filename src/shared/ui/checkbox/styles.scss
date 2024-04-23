@@ -16,18 +16,20 @@
     border-radius: 4px;
     margin-right: 10px;
     position: relative;
-    background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 81.77%);
+    border: solid 1px var(--text-quadruple);
   }
-
   &__input:checked + &__control::before {
     content: '';
     position: absolute;
-    left: 7px;
-    top: 3px;
+    left: 6px;
+    top: 2px;
     width: 6px;
     height: 10px;
-    border: solid #fff;
+    border: solid var(--text-secondary);
     border-width: 0 2px 2px 0;
     transform: rotate(45deg);
+  }
+  &__input:checked + &__control {
+    background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 81.77%);
   }
 }
