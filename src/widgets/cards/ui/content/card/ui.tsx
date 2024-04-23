@@ -1,11 +1,9 @@
-import { Link, useLocation } from 'react-router-dom';
-
-import { Button, Text, Icon, Image } from 'src/shared/ui';
-import { RouteName } from 'src/shared/model';
+import { Button, Text, Image, Icon, Link } from 'src/shared/ui';
+import { useLocation } from 'react-router';
 import { getIconName } from 'src/shared/lib';
+import { RouteName } from 'src/shared/model';
 
 import type { Card } from 'src/widgets/cards/model';
-
 import './styles.scss';
 
 interface Props {
@@ -18,34 +16,39 @@ export const FinanceCard = ({ card }: Props) => {
     return (
         <div className='finance-card__container'>
             <Link
-                to={RouteName.CARD_PAGE + '/' + card.id}
+                to={RouteName.CARD_PAGE + '/' + card.cardProductId}
                 state={{ from: pathname }}
             >
-                <Image height={200} width={340} image={card.image} />
+                <Image
+                    className='finance-card__image'
+                    height={200}
+                    width={340}
+                    src={card.imageUrl}
+                />
             </Link>
             <div className='finance-card__info'>
                 <div className='finance-card__title'>
                     <Link
-                        to={RouteName.CARD_PAGE + '/' + card.id}
+                        to={RouteName.CARD_PAGE + '/' + card.cardProductId}
                         state={{ from: pathname }}
                     >
-                        <Text size='l' weight='bold' color='primary-day'>
-                            {card.name}
+                        <Text size='l' weight='bold' color='quadruple'>
+                            {card.nameProduct}
                         </Text>
                     </Link>
                     <Icon
-                        icon={getIconName(card.payment)}
+                        icon={getIconName(card.paymentSystem)}
                         className='finance-card__payment'
                         width={70}
                         height={30}
                     />
                 </div>
-                <Text size='s' color='copy'>
-                    {card.description}
+                <Text size='s' color='quadruple'>
+                    {card.level}
                 </Text>
                 <div className='finance-card__buttons'>
                     <Link
-                        to={RouteName.CARD_PAGE + '/' + card.id}
+                        to={RouteName.CARD_PAGE + '/' + card.cardProductId}
                         state={{ from: pathname }}
                     >
                         <Button variant='secondary'>Подробнее</Button>

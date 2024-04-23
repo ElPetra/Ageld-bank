@@ -1,17 +1,18 @@
 import { useParams } from 'react-router-dom';
 
-import { getIconName } from 'src/shared/lib';
+import { getIconName, useFetchCards } from 'src/shared/lib';
 import { Button, Icon, Image, Text, Container } from 'src/shared/ui';
 import { MessageCard } from 'src/entities/message';
 import { BackButton } from 'src/features/multi-step-form';
 
-import { cards, CARDS_NOT_FOUND, CREATE_CARD } from 'src/widgets/cards/model';
+import { CARDS_NOT_FOUND, CREATE_CARD } from 'src/widgets/cards/model';
 
-import { Advantages } from './advantage';
+// import { Advantages } from './advantage';
 
 export const CardPage = () => {
+    const { cards } = useFetchCards();
     const { id } = useParams<{ id: string }>();
-    const card = cards.find(card => card.id === id);
+    const card = cards.find(card => card.cardProductId === id);
 
     return (
         <Container>
@@ -32,7 +33,7 @@ export const CardPage = () => {
                             />
                         </div>
                         <div className='finance-card__advantages'>
-                            <Advantages card={card} />
+                            {/*<Advantages card={card} />*/}
                         </div>
                         <div className='finance-card__buttons'>
                             <Button>Оформить</Button>
