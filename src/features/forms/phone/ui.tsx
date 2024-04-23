@@ -6,6 +6,7 @@ import { Button, Form, Link, Text } from 'src/shared/ui';
 import { RouteName } from 'src/shared/model';
 import { getErrorMessage } from 'src/shared/lib';
 import {
+    useCheckMissRegistrationMutation,
     useCheckRegistrationMutation,
     useGenerateCodeMutation
 } from 'src/shared/api';
@@ -36,6 +37,8 @@ export const PhoneForm = ({
     });
     const [checkRegistration, { error: checkRegistrationError }] =
         useCheckRegistrationMutation();
+    const [checkMissRegistration, { error: checkMissRegistrationError }] =
+        useCheckMissRegistrationMutation();
     const [generateCode, { error: generateCodeError }] =
         useGenerateCodeMutation();
     const handleLinkClick = (linkId: number) => {
@@ -47,16 +50,16 @@ export const PhoneForm = ({
     const onSubmit = (data: FieldValues) => {
         const phone = data.phone.replace(/\D/gm, '');
         if (variant === 'registration') {
-            checkRegistration(phone)
+            checkMissRegistration(phone)
                 .unwrap()
-                .then(checkRegistrationData => {
+                .then(checkMissRegistrationData => {
                     generateCode(phone)
                         .unwrap()
                         .then(() => {
                             localStorage.setItem('phone', phone);
                             localStorage.setItem(
                                 'customerId',
-                                checkRegistrationData.customerId
+                                checkMissRegistrationData.customerId
                             );
                             if (setFormStep && !isLast) {
                                 setFormStep(curr => {
@@ -67,16 +70,20 @@ export const PhoneForm = ({
                 });
         }
         if (variant === 'login') {
-            generateCode(phone)
+            checkRegistration(phone)
                 .unwrap()
-                .then(() => {
-                    localStorage.setItem('phone', phone);
-                    if (setFormStep && !isLast) {
-                        setFormStep(curr => {
-                            return curr + 1;
-                        });
-                    }
-                });
+                .then(() =>
+                    generateCode(phone)
+                        .unwrap()
+                        .then(() => {
+                            localStorage.setItem('phone', phone);
+                            if (setFormStep && !isLast) {
+                                setFormStep(curr => {
+                                    return curr + 1;
+                                });
+                            }
+                        })
+                );
         }
     };
     return (
@@ -88,6 +95,7 @@ export const PhoneForm = ({
                 isError={!!errors?.phone}
                 error={
                     getErrorMessage(checkRegistrationError) ||
+                    getErrorMessage(checkMissRegistrationError) ||
                     getErrorMessage(generateCodeError)
                 }
             />
