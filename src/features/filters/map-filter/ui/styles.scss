@@ -4,16 +4,14 @@
       position: absolute;
       top: 0;
       left: 0;
-      background-color: var(--bg-primary);
-      padding: 16px 24px 20px;
-      border-radius: 16px;
-      &__button{
+
+      &__button {
         height: 32px;
         display: flex;
         align-items: center;
         gap: 8px;
-        margin-bottom: 28px;
-        &__close{
+        
+        &__close {
           position: absolute;
           right: 20px;
           top: 12px;
@@ -22,16 +20,12 @@
         }
       }
     }
-    &__button{
-      border-radius: 16px;
+
+    &__button {
       height: 64px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 16px 24px;
-      background: var(--bg-primary);
     }
-    &__buttons{
+
+    &__buttons {
       display: flex;
       gap: 24px;
     }

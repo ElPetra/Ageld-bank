@@ -1,9 +1,9 @@
 import { Link, Container } from 'src/shared/ui';
 import { PersonalRouteName, RouteName } from 'src/shared/model';
+import { CheckboxGroup } from 'src/entities/filter';
 import { Menu } from 'src/features/menu';
 import { ChangePasswordForm } from 'src/features/forms';
 import { MultiStepForm } from 'src/features/multi-step-form';
-import { CheckboxGroup } from 'src/widgets/notifications';
 
 import { options } from '../model';
 

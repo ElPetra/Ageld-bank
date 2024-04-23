@@ -14,6 +14,11 @@ export type SvgIconNames =
     | 'warning'
     | 'twitter'
     | 'vkontakte'
+    | 'vkontakte-bot'
+    | 'telegram-bot'
+    | 'bank-chat'
+    | 'whats-app'
+    | 'viber'
     | 'youtube'
     | 'logo-title'
     | 'success'
@@ -29,6 +34,7 @@ export type SvgIconNames =
     | 'menu-phone'
     | 'user'
     | 'arrow-2'
+    | 'arrow-3'
     | 'usd'
     | 'jpy'
     | 'rub'
@@ -54,4 +60,5 @@ export type SvgIconNames =
     | 'world'
     | 'mir'
     | 'visa'
-    | 'filter-lines';
+    | 'filter-lines'
+    | 'building';

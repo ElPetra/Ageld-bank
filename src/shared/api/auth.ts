@@ -20,6 +20,16 @@ export const authApi = createApi({
                 responseHandler: response => response.json()
             })
         }),
+        checkMissRegistration: builder.mutation<{ customerId: string }, string>(
+            {
+                query: phoneNumber => ({
+                    url: '/registry/check_miss_registration',
+                    method: 'POST',
+                    body: { phoneNumber },
+                    responseHandler: response => response.json()
+                })
+            }
+        ),
         createAccount: builder.mutation<
             void,
             { customerId: string, password: string }
@@ -66,5 +76,6 @@ export const {
     useGenerateCodeMutation,
     useCheckCodeMutation,
     useCheckRegistrationMutation,
-    useCreateAccountMutation
+    useCreateAccountMutation,
+    useCheckMissRegistrationMutation
 } = authApi;
