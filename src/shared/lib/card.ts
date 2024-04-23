@@ -12,18 +12,15 @@ export const getIconName = (payment: string) => {
 };
 
 export const useFetchCards = () => {
-    const { data: debetCards, isLoading: debetLoading } =
-        useGetCardProductsQuery({
-            type: 'DEBIT'
-        });
+    const { data: debetCards = [], isLoading: debetLoading } =
+        useGetCardProductsQuery({ type: 'DEBIT' });
 
-    const { data: creditCards, isLoading: creditLoading } =
+    const { data: creditCards = [], isLoading: creditLoading } =
         useGetCardProductsQuery({
             type: 'CREDIT'
         });
 
-    let cards = [];
-    cards = [...(debetCards || []), ...(creditCards || [])];
+    const cards = debetCards.concat(creditCards);
     const isLoading = debetLoading && creditLoading;
 
     return {
