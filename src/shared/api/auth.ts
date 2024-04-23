@@ -14,7 +14,7 @@ export const authApi = createApi({
     endpoints: builder => ({
         checkRegistration: builder.mutation<{ customerId: string }, string>({
             query: phoneNumber => ({
-                url: '/registry/check_registration',
+                url: '/auth/check_registration',
                 method: 'POST',
                 body: { phoneNumber },
                 responseHandler: response => response.json()
