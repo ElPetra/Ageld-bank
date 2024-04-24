@@ -18,6 +18,8 @@
   }
   &__image {
     border-radius: 12px;
+    align-self: baseline;
+    object-fit: contain;
   }
   &__title {
     display: flex;

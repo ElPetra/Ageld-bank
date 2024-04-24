@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import { getActualAccessToken } from 'src/shared/lib';
 
-import type { Card } from 'src/widgets/cards/model';
+import type { Card, CardInfo } from 'src/widgets/cards/model';
 
 export const cardApi = createApi({
     reducerPath: 'cardApi',
@@ -23,8 +23,15 @@ export const cardApi = createApi({
                 method: 'GET',
                 responseHandler: response => response.json()
             })
+        }),
+        getCardProductInfo: builder.query<CardInfo, { id: string }>({
+            query: ({ id }) => ({
+                url: `/card-product/full_info_card/?card_product_id=${id}`,
+                method: 'GET',
+                responseHandler: response => response.json()
+            })
         })
     })
 });
 
-export const { useGetCardProductsQuery } = cardApi;
+export const { useGetCardProductsQuery, useGetCardProductInfoQuery } = cardApi;

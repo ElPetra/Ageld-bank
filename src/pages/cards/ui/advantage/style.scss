@@ -1,3 +1,9 @@
+.advantages {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+  gap: 25px;
+}
 .advantage {
   width: calc((100% - 0px) / 4);
 }
