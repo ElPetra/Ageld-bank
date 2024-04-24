@@ -14,7 +14,7 @@ export const WorkHoursBlock = ({ hours }: Props) => {
         <div className='bank-contacts_working-hours-block_hours'>
             {hours.map((el, index) => (
                 <div key={index} className='hours'>
-                    <Text>{workingHoursLabels[index]}</Text>
+                    <Text weight='medium'>{workingHoursLabels[index]}</Text>
                     <Text weight='medium'>{el}</Text>
                 </div>
             ))}

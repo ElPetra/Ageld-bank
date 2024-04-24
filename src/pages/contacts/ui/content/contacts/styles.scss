@@ -1,28 +1,28 @@
-.bank-contacts_contacts{
+.bank-contacts_contacts {
         padding: 40px 32px 40px 32px;
         gap: 32px;
         border-radius: 16px;
         display: flex;
         flex-direction: column;
         background-color: var(--bg-quadruple);
-        &-block{
+        &-block {
             display: flex;
             gap: 24px;
             flex-direction: column;
-            &_phones{
+            &_phones {
+              display: flex;
+              flex-wrap: wrap;
+              gap: 40px;
+
+              & .phone {
                 display: flex;
-                flex-wrap: wrap;
-                gap: 40px;
-                & .phone{
-                        display: flex; 
-                        justify-content: space-between;
-                        flex-direction: column;
-                        gap: 4px;
-                        color: var(--text-very-dark-blue);
-                    & :last-child{
-                        opacity: 0.5;
-                    }
+                justify-content: space-between;
+                flex-direction: column;
+                gap: 4px;
+                & :last-child{
+                  opacity: 0.75;
                 }
+              }
             }
         }
     }

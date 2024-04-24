@@ -1,29 +1,31 @@
-.bank-contacts_working-hours{
-        padding: 40px 32px 40px 32px;
-        gap: 40px;
-        border-radius: 16px;
+.bank-contacts_working-hours {
+  padding: 40px 32px 40px 32px;
+  gap: 40px;
+  border-radius: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: var(--bg-quadruple);
+
+  &-block {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+
+    &_hours {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      gap: 10px;
+
+      & .hours {
         display: flex;
-        flex-wrap: wrap;
-        background-color: var(--bg-quadruple);
-        &-block{
-            display: flex;
-            gap: 20px;
-            flex-direction: column;
-            &_hours{
-                display: flex;
-                flex-wrap: wrap;
-                flex-direction: column;
-                gap: 10px;
-                & .hours{
-                        display: flex; 
-                        justify-content: space-between;
-                        flex-direction: column;
-                        gap: 4px;
-                        color: var(--text-very-dark-blue);
-                    & :last-child{
-                        opacity: 0.5;
-                    }
-                }
-            }
+        justify-content: space-between;
+        flex-direction: column;
+        gap: 4px;
+        & :last-child{
+          opacity: 0.75;
         }
+      }
     }
+  }
+}
