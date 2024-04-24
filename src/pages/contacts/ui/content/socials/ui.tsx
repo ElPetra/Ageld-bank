@@ -1,10 +1,8 @@
 import { Icon, Text } from 'src/shared/ui';
+
+import { type Socials as Soc, socials, SOCIALS_BOTS } from '../../../model';
+
 import './styles.scss';
-import {
-    type Socials as Soc,
-    socials,
-    SOCIALS_BOTS
-} from 'src/pages/contacts/model';
 
 export const Socials = () => {
     return (

@@ -1,5 +1,6 @@
-import { ALL_DAY, workingHoursLabels } from 'src/pages/contacts/model';
 import { Text } from 'src/shared/ui';
+
+import { ALL_DAY, workingHoursLabels } from '../../../../model';
 
 interface Props {
     hours: string[] | 'круглосуточно';
