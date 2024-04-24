@@ -3,13 +3,23 @@ import { useAuth } from 'src/entities/user';
 import { Logout } from 'src/features/logout';
 import { RouteName } from 'src/shared/model';
 
+import type { Dispatch, SetStateAction } from 'react';
+
 import './styles.scss';
 
-export const Navigation = () => {
+interface Props {
+    direction?: 'column' | 'row';
+    setVisible?: Dispatch<SetStateAction<boolean>>;
+}
+
+export const Navigation = ({ direction = 'row', setVisible }: Props) => {
     const { isAuth } = useAuth();
     return (
-        <nav className='navigation'>
-            <ul className='navigation-default'>
+        <nav className={`navigation ${direction}`}>
+            <ul
+                className='navigation__default'
+                onClick={() => setVisible && setVisible(false)}
+            >
                 <Link to={RouteName.ATMS_AND_BRANCHES}>
                     Банкоматы и отделения
                 </Link>
@@ -19,7 +29,7 @@ export const Navigation = () => {
                 <Link to={RouteName.MAIN_PAGE}>Документы</Link>
                 <Link to={RouteName.MAIN_PAGE}>Вопросы и ответы</Link>
             </ul>
-            <ul className='navigation-additional'>
+            <ul className='navigation__additional'>
                 {isAuth ? (
                     <>
                         <Link to={RouteName.PERSONAL_PAGE}>Личные данные</Link>

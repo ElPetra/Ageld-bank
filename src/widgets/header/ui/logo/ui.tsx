@@ -6,7 +6,7 @@ import './styles.scss';
 export const Logo = () => (
     <div className='logo'>
         <Link to={RouteName.MAIN_PAGE}>
-            <Icon icon={'logo'} width={40} height={46} />
+            <Icon icon='logo' width={40} />
         </Link>
     </div>
 );
