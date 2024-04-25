@@ -1,29 +1,34 @@
 import { useCallback, useState } from 'react';
 
-import { ALL_CARD, cards } from '../model';
+import { ALL_CARD, typeFilters } from '../model';
 
 import type { Card } from '../model';
 
-export const useCardsFilter = () => {
-    const [currencyType, setCurrencyType] = useState<string>(ALL_CARD);
+export const useCardsFilter = (cards?: Card[]) => {
     const [currencyPayment, setCurrencyPayment] = useState<string>(ALL_CARD);
+    const [currencyType, setCurrencyType] = useState<string>(ALL_CARD);
 
     const getFilteredCards = useCallback((): Card[] => {
+        if (!cards) {
+            return [];
+        }
+
         return cards.filter(card => {
             const typeMatch =
-                currencyType === ALL_CARD || card.type === currencyType;
+                currencyType === ALL_CARD ||
+                card.typeCard === typeFilters[currencyType];
             const paymentMatch =
                 currencyPayment === ALL_CARD ||
-                card.payment === currencyPayment;
+                card.paymentSystem === currencyPayment;
             return typeMatch && paymentMatch;
         });
-    }, [currencyType, currencyPayment]);
+    }, [cards, currencyPayment, currencyType]);
 
     return {
         currencyType,
         currencyPayment,
-        setCurrencyType,
         setCurrencyPayment,
+        setCurrencyType,
         getFilteredCards
     };
 };

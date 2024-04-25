@@ -1,8 +1,4 @@
-import type { Card } from 'src/widgets/cards/model';
-
-export const sortByCreated = (cards: Card[]): Card[] => {
-    return [...cards].sort((a, b) => b.created.getTime() - a.created.getTime());
-};
+import { useGetCardProductsQuery } from 'src/shared/api';
 
 export const getIconName = (payment: string) => {
     switch (payment) {
@@ -13,4 +9,22 @@ export const getIconName = (payment: string) => {
         default:
             return 'visa';
     }
+};
+
+export const useFetchCards = () => {
+    const { data: debetCards = [], isLoading: debetLoading } =
+        useGetCardProductsQuery({ type: 'DEBIT' });
+
+    const { data: creditCards = [], isLoading: creditLoading } =
+        useGetCardProductsQuery({
+            type: 'CREDIT'
+        });
+
+    const cards = debetCards.concat(creditCards);
+    const isLoading = debetLoading && creditLoading;
+
+    return {
+        isLoading,
+        cards
+    };
 };

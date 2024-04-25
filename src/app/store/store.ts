@@ -1,5 +1,6 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
+import { cardApi, customerApi } from 'src/shared/api';
 import { customerApi, infoApi } from 'src/shared/api';
 import { authApi } from 'src/shared/api/auth';
 
@@ -11,6 +12,7 @@ const rootReducers = combineReducers({
     user: userSlice,
     [customerApi.reducerPath]: customerApi.reducer,
     [authApi.reducerPath]: authApi.reducer,
+    [cardApi.reducerPath]: cardApi.reducer,
     [infoApi.reducerPath]: infoApi.reducer
 });
 
@@ -20,6 +22,7 @@ export const store = configureStore({
         getDefaultMiddleware().concat(
             customerApi.middleware,
             authApi.middleware,
+            cardApi.middleware,
             infoApi.middleware,
             actionHandling
         )
