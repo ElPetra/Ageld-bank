@@ -5,7 +5,7 @@ import type { CardInfo } from 'src/widgets/cards/model';
 import type React from 'react';
 type AdvantageKey = keyof CardInfo;
 
-type AdvantageConfig = {
+export type AdvantageConfig = {
     key: AdvantageKey,
     title: string,
     description: (value: CardInfo[AdvantageKey]) => React.ReactNode
@@ -41,69 +41,71 @@ export const limits: AdvantageConfig[] = [
         key: 'withdrawLimitDay',
         title: 'Лимит на снятие денег в день',
         description: (withdrawLimitDay: CardInfo[AdvantageKey]) =>
-            withdrawLimitDay
+            withdrawLimitDay + ' ₽'
     },
     {
         key: 'withdrawLimitMonth',
         title: 'Лимит на снятие денег в месяц',
         description: (withdrawLimitMonth: CardInfo[AdvantageKey]) =>
-            withdrawLimitMonth
+            withdrawLimitMonth + ' ₽'
     },
     {
         key: 'transactionLimitDay',
         title: 'Лимит на сумму переводов в день',
         description: (transactionLimitDay: CardInfo[AdvantageKey]) =>
-            transactionLimitDay
+            transactionLimitDay + ' ₽'
     },
     {
         key: 'transactionLimitMonth',
         title: 'Лимит на сумму переводов в месяц',
         description: (transactionLimitMonth: CardInfo[AdvantageKey]) =>
-            transactionLimitMonth
+            transactionLimitMonth + ' ₽'
     },
     {
         key: 'payLimitDay',
         title: 'Лимит на безналичные платежи в день',
-        description: (payLimitDay: CardInfo[AdvantageKey]) => payLimitDay
+        description: (payLimitDay: CardInfo[AdvantageKey]) => payLimitDay + ' ₽'
     },
     {
         key: 'payLimitMonth',
         title: 'Лимит на безналичные платежи в месяц',
-        description: (payLimitMonth: CardInfo[AdvantageKey]) => payLimitMonth
+        description: (payLimitMonth: CardInfo[AdvantageKey]) =>
+            payLimitMonth + ' ₽'
     },
     {
         key: 'overWithdrawDay',
         title: 'Лимит на снятие денег в день без комиссии',
         description: (overWithdrawDay: CardInfo[AdvantageKey]) =>
-            overWithdrawDay
+            overWithdrawDay + ' ₽'
     },
     {
         key: 'overWithdrawMonth',
         title: 'Лимит на снятие денег в месяц без комиссии',
         description: (overWithdrawMonth: CardInfo[AdvantageKey]) =>
-            overWithdrawMonth
+            overWithdrawMonth + ' ₽'
     },
     {
         key: 'overTransactionDay',
         title: 'Лимит на сумму переводов в день без комиссии',
         description: (overTransactionDay: CardInfo[AdvantageKey]) =>
-            overTransactionDay
+            overTransactionDay + ' ₽'
     },
     {
         key: 'overTransactionMonth',
         title: 'Лимит на сумму переводов в месяц без комиссии',
         description: (overTransactionMonth: CardInfo[AdvantageKey]) =>
-            overTransactionMonth
+            overTransactionMonth + ' ₽'
     },
     {
         key: 'overPayDay',
         title: 'Лимит на безналичные платежи в день без комиссии',
-        description: (overPayDay: CardInfo[AdvantageKey]) => overPayDay
+        description: (overPayDay: CardInfo[AdvantageKey]) => overPayDay + ' ₽'
     },
     {
         key: 'overPayMonth',
         title: 'Лимит на безналичные платежи в месяц без комиссии',
-        description: (overPayMonth: CardInfo[AdvantageKey]) => overPayMonth
+        description: (overPayMonth: CardInfo[AdvantageKey]) =>
+            overPayMonth + ' ₽'
     }
 ];
 export const conditions: AdvantageConfig[] = [
@@ -111,29 +113,30 @@ export const conditions: AdvantageConfig[] = [
         key: 'conditionWithdraw',
         title: 'Комиссия за снятие наличных в банкомате другого банка',
         description: (conditionWithdraw: CardInfo[AdvantageKey]) =>
-            conditionWithdraw
+            conditionWithdraw + ' ₽'
     },
     {
         key: 'conditionPartnerWithdraw',
         title: 'Комиссия за снятие наличных в банкомате банка-партнёра',
         description: (conditionPartnerWithdraw: CardInfo[AdvantageKey]) =>
-            conditionPartnerWithdraw
+            conditionPartnerWithdraw + ' ₽'
     },
     {
         key: 'conditionWorldWithdraw',
         title: 'Комиссия за снятие наличных в другой валюте в банкоматах банков за рубежом',
         description: (conditionWorldWithdraw: CardInfo[AdvantageKey]) =>
-            conditionWorldWithdraw
+            conditionWorldWithdraw + ' ₽'
     },
     {
         key: 'conditionTransaction',
         title: 'Комиссия за переводы при исчерпании лимита',
         description: (conditionTransaction: CardInfo[AdvantageKey]) =>
-            conditionTransaction
+            conditionTransaction + ' ₽'
     },
     {
         key: 'conditionPay',
         title: 'Комиссия за оплату при исчерпании лимита',
-        description: (conditionPay: CardInfo[AdvantageKey]) => conditionPay
+        description: (conditionPay: CardInfo[AdvantageKey]) =>
+            conditionPay + ' ₽'
     }
 ];

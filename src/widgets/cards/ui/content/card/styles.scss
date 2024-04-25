@@ -1,4 +1,7 @@
 .finance-card {
+  &__page {
+    padding-bottom: 50px;
+  }
   &__container {
     background-color: var(--bg-primary-input);
     margin-bottom: 25px;

@@ -12,7 +12,7 @@ export interface CardInfo {
     paymentSystem: string;
     typeCard: string;
     level: string;
-    isVirtual: string;
+    isVirtual: boolean;
     feeUse: number;
     withdrawLimitDay: number;
     withdrawLimitMonth: number;
