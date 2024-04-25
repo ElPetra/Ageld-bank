@@ -25,13 +25,15 @@ export const MapFilter = () => {
                 <div className='map__filter__modal'>
                     <Card gap='large'>
                         <div className='map__filter__modal__button'>
-                            <Icon icon='filter-lines' />
-                            <Text weight='bold'>Фильтр</Text>
+                            <div>
+                                <Icon icon='filter-lines' />
+                                <Text weight='bold'>Фильтр</Text>
+                            </div>
                             <button
                                 className='map__filter__modal__button__close'
                                 onClick={() => setOpen(false)}
                             >
-                                &#x2715;
+                                <Icon icon='close' />
                             </button>
                         </div>
                         <CheckboxGroup options={options} variant='secondary' />

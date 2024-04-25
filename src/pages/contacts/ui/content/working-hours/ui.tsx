@@ -1,3 +1,5 @@
+import { Text } from 'src/shared/ui';
+
 import {
     ALL_DAY,
     CARD_BLOCKING,
@@ -6,11 +8,11 @@ import {
     CONSULT_JURIDIC,
     CONSULT_JURIDIC_HOURS,
     WORKING_HOURS
-} from 'src/pages/contacts/model';
-import { Text } from 'src/shared/ui';
+} from '../../../model';
+
+import { WorkHoursBlock } from './working-hours-block';
 
 import './styles.scss';
-import { WorkHoursBlock } from './working-hours-block/ui';
 
 export const WorkingHours = () => {
     return (

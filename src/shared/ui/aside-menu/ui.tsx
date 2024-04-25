@@ -17,9 +17,7 @@ export const AsideMenu = ({ visible, children }: Props) => {
         <>
             {visible && <div className='overlay' />}
             <aside className={asideClass}>
-                {visible && (
-                    <div className='aside-menu__content'>{children}</div>
-                )}
+                <div className='aside-menu__content'>{children}</div>
             </aside>
         </>
     );

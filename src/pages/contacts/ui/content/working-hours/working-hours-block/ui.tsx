@@ -1,5 +1,6 @@
-import { ALL_DAY, workingHoursLabels } from 'src/pages/contacts/model';
 import { Text } from 'src/shared/ui';
+
+import { ALL_DAY, workingHoursLabels } from '../../../../model';
 
 interface Props {
     hours: string[] | 'круглосуточно';
@@ -13,7 +14,7 @@ export const WorkHoursBlock = ({ hours }: Props) => {
         <div className='bank-contacts_working-hours-block_hours'>
             {hours.map((el, index) => (
                 <div key={index} className='hours'>
-                    <Text>{workingHoursLabels[index]}</Text>
+                    <Text weight='medium'>{workingHoursLabels[index]}</Text>
                     <Text weight='medium'>{el}</Text>
                 </div>
             ))}

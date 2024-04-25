@@ -1,4 +1,5 @@
 import { Text } from 'src/shared/ui';
+
 import {
     CONTACTS,
     CORPORATE_PHONES,
@@ -7,9 +8,9 @@ import {
     corporate,
     individuals,
     support
-} from 'src/pages/contacts/model';
+} from '../../../model';
 
-import { ContactsBlock } from './contacts-block/ui';
+import { ContactsBlock } from './contacts-block';
 
 import './styles.scss';
 

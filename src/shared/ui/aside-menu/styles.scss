@@ -15,12 +15,14 @@
   bottom: 0;
   right: 0;
   z-index: 11;
+
   width: 0;
   max-width: 100%;
   background: var(--bg-primary);
+  overflow-x: hidden;
   visibility: hidden;
   transform: translateX(100%);
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, visibility 0.3s ease-in-out, width 0.3s ease-in-out;
 
   &.visible {
     @media screen and (max-width: 600px)  {
@@ -33,7 +35,7 @@
     visibility: visible;
 
     &:not(.hiding) {
-      transform: none;
+      transform: translateX(0);
     }
   }
 

@@ -1,3 +1,3 @@
-export { Socials } from './socials/ui';
-export { Contacts } from './contacts/ui';
-export { WorkingHours } from './working-hours/ui';
+export { Socials } from './socials';
+export { Contacts } from './contacts';
+export { WorkingHours } from './working-hours';

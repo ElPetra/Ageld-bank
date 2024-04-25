@@ -59,6 +59,10 @@ const publicRoutes: RouteDescription[] = [
     {
         path: ATMS_AND_BRANCHES,
         component: ATMsBranchesPage
+    },
+    {
+        path: CARD_PAGE + '/:id',
+        component: CardPage
     }
 ];
 
@@ -70,10 +74,6 @@ const authRoutes: RouteDescription[] = [
     {
         path: ACCOUNT_PAGE + '/:id',
         component: AccountPage
-    },
-    {
-        path: CARD_PAGE + '/:id',
-        component: CardPage
     },
     {
         path: PERSONAL_PAGE + '/:id?',

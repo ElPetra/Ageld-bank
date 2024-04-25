@@ -2,20 +2,26 @@
   display: block;
 
   &__bar {
+    padding-top: 16px;
     display: flex;
     column-gap: 62px;
     row-gap: 24px;
-    flex-wrap: wrap;
     justify-content: space-between;
     white-space: nowrap;
+
+    @media screen and (max-width: 1200px) {
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
   }
 
   &__items {
-    padding-top: 16px;
-    min-height: 56px;
+    min-height: 40px;
     display: flex;
     row-gap: 8px;
-    flex-wrap: wrap;
 
     &.primary {
       column-gap: 32px;

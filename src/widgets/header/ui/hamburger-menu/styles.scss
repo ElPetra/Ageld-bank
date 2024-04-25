@@ -1,0 +1,13 @@
+.hamburger-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  &__header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__content {
+    overflow-y: auto;
+  }
+}

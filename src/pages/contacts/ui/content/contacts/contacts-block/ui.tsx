@@ -1,5 +1,8 @@
-import { constactsMatcher, type ContactBlock } from 'src/pages/contacts/model';
 import { Text } from 'src/shared/ui';
+
+import { constactsMatcher } from '../../../../model';
+
+import type { ContactBlock } from '../../../../model';
 
 interface Props {
     contacts: ContactBlock;

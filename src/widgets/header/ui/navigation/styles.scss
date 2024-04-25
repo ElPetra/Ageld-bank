@@ -1,14 +1,36 @@
+
+
+
+
 .navigation {
+    @media screen and (max-width: 1450px) {
+        justify-content: flex-end;
+        &.row .navigation__default {
+            display: none;
+        }
+    }
+
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
     justify-content: space-between;
     width: 100%;
     gap: 32px;
 
-    ul{
+    &.row {
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    &.column, &.column ul {
+        flex-direction: column;
+        .navigation__additional {
+            display: none;
+        }
+    }
+
+    ul {
         display: flex;
         flex-wrap: wrap;
-        gap: 32px;
+        column-gap: 32px;
+        row-gap: 24px;
     }
 }

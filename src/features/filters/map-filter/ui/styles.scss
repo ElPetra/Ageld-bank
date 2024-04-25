@@ -9,14 +9,17 @@
         height: 32px;
         display: flex;
         align-items: center;
-        gap: 8px;
+        justify-content: space-between;
+        gap: 24px;
+
+        > div:first-child {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
         
         &__close {
-          position: absolute;
-          right: 20px;
-          top: 12px;
-          font-size: 24px;
-          padding: 5px;
+          min-width: 24px;
         }
       }
     }
