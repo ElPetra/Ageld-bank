@@ -1,6 +1,6 @@
 import { MultiStepForm } from 'src/features/multi-step-form';
 
-import { RouteName } from 'src/shared/model/index.js';
+import { ACCOUNTS, RouteName } from 'src/shared/model/index.js';
 
 import { MessageCard } from 'src/entities/message/index.js';
 
@@ -11,6 +11,11 @@ import {
 } from 'src/widgets/account-creation/model/index.js';
 
 import { useState } from 'react';
+import {
+    Container,
+    Preloader,
+    type SvgIconNames
+} from 'src/shared/ui/index.js';
 
 import { AccountCreationForm } from './creation-form';
 
@@ -20,8 +25,6 @@ import {
     ReceivingVariant,
     TypeVariant
 } from './parameters';
-
-import type { SvgIconNames } from 'src/shared/ui/index.js';
 
 import './styles.scss';
 
@@ -42,68 +45,77 @@ const resultMatcher: Record<string, Match> = {
 };
 
 export const AccountCreation = () => {
-    const [result, setResult] = useState<'failed' | 'success'>('failed');
+    const [result, setResult] = useState<'failed' | 'success' | 'loading'>(
+        'loading'
+    );
     return (
-        <MultiStepForm
-            variant='create-account'
-            forms={[
-                {
-                    id: 1,
-                    title: 'Выберите тип счета',
-                    component: (
-                        <AccountCreationForm
-                            parametr='accountType'
-                            Element={TypeVariant}
-                        />
-                    )
-                },
-                {
-                    id: 2,
-                    title: 'Выберите валюту',
-                    component: (
-                        <AccountCreationForm
-                            parametr='accountCurrency'
-                            Element={CurrencyVariant}
-                        />
-                    )
-                },
+        <Container>
+            <MultiStepForm
+                variant='create-account'
+                forms={[
+                    {
+                        id: 1,
+                        title: 'Выберите тип счета',
+                        component: (
+                            <AccountCreationForm
+                                parameter='accountType'
+                                Element={TypeVariant}
+                            />
+                        )
+                    },
+                    {
+                        id: 2,
+                        title: 'Выберите валюту',
+                        component: (
+                            <AccountCreationForm
+                                parameter='accountCurrency'
+                                Element={CurrencyVariant}
+                            />
+                        )
+                    },
 
-                {
-                    id: 3,
-                    title: 'Выберите тип карты',
-                    component: (
-                        <AccountCreationForm
-                            parametr='accountcard'
-                            Element={ReceivingVariant}
-                        />
-                    )
-                },
-                {
-                    id: 4,
-                    title: 'Ознакомьтесь с условиями счета',
-                    component: (
-                        <AccountCreationForm
-                            parametr='agreement'
-                            Element={Agreement}
-                            setResult={setResult}
-                        />
-                    )
-                },
-                {
-                    id: 5,
-                    title: '',
-                    component: (
-                        <MessageCard
-                            text={resultMatcher[result].text}
-                            width={275}
-                            icon={resultMatcher[result].icon}
-                            buttonText={GO_TO_ACCOUNT_LIST}
-                            buttonLink={RouteName.ACCOUNT_PAGE}
-                        />
-                    ),
-                    isResult: true
-                }
-            ]}
-        />
+                    {
+                        id: 3,
+                        title: 'Выберите тип карты',
+                        component: (
+                            <AccountCreationForm
+                                parameter='accountcard'
+                                Element={ReceivingVariant}
+                            />
+                        )
+                    },
+                    {
+                        id: 4,
+                        title: 'Ознакомьтесь с условиями счета',
+                        component: (
+                            <AccountCreationForm
+                                parameter='agreement'
+                                Element={Agreement}
+                                setResult={setResult}
+                            />
+                        )
+                    },
+                    {
+                        id: 5,
+                        title: '',
+                        component:
+                            result === 'loading' ? (
+                                <Preloader />
+                            ) : (
+                                <MessageCard
+                                    text={resultMatcher[result].text}
+                                    width={275}
+                                    icon={resultMatcher[result].icon}
+                                    buttonText={GO_TO_ACCOUNT_LIST}
+                                    buttonLink={
+                                        RouteName.MAIN_PAGE + '/' + ACCOUNTS
+                                    }
+                                />
+                            ),
+                        isResult: true
+                    }
+                ]}
+            />
+        </Container>
     );
 };

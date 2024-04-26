@@ -2,12 +2,16 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import { getActualAccessToken } from 'src/shared/lib';
 
+import { CUSTOMER_URL } from './urls';
+
 import type { CustomerInfo } from 'src/shared/model';
+
+const baseUrl = import.meta.env.VITE_BASEURL_GATEWAY + CUSTOMER_URL;
 
 export const customerApi = createApi({
     reducerPath: 'customerApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://172.17.1.76:8082/api/v1/customer',
+        baseUrl,
         prepareHeaders: async headers => {
             const token = await getActualAccessToken();
             headers.set('content-type', 'application/json');

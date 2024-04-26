@@ -1,11 +1,15 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
+import { INFO_URL } from './urls';
+
 import type { BankLocation } from '../model/bank-location';
+
+const baseUrl = import.meta.env.VITE_BASEURL_GATEWAY + INFO_URL;
 
 export const infoApi = createApi({
     reducerPath: 'infoApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://172.17.1.76:8085/api/v1/info',
+        baseUrl,
         prepareHeaders: async headers => {
             headers.set('content-type', 'application/json');
             return headers;

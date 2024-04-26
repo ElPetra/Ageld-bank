@@ -1,9 +1,13 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
+import { CUSTOMER_URL } from './urls';
+
+const baseUrl = import.meta.env.VITE_BASEURL_GATEWAY + CUSTOMER_URL;
+
 export const authApi = createApi({
     reducerPath: 'authApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://172.17.1.76:8082/api/v1/customer',
+        baseUrl,
         prepareHeaders: async headers => {
             headers.set('content-type', 'application/json');
             return headers;
@@ -30,7 +34,7 @@ export const authApi = createApi({
                 })
             }
         ),
-        createAccount: builder.mutation<
+        createProfile: builder.mutation<
             void,
             { customerId: string, password: string }
         >({
@@ -76,6 +80,6 @@ export const {
     useGenerateCodeMutation,
     useCheckCodeMutation,
     useCheckRegistrationMutation,
-    useCreateAccountMutation,
+    useCreateProfileMutation,
     useCheckMissRegistrationMutation
 } = authApi;

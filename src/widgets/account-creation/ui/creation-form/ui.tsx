@@ -2,7 +2,7 @@ import { Button, Form, Text } from 'src/shared/ui/index.js';
 import { CREATE_ACCOUNT } from 'src/widgets/accounts/model/index.js';
 
 import {
-    type Parametr,
+    type Parameter,
     useAccountCreationForm
 } from '../../lib/useAccountCreationForm.js';
 import { ACCOUNT_CARD_AGREEMENT } from '../../model/index.js';
@@ -13,19 +13,19 @@ import type { FieldValues, UseFormRegister } from 'react-hook-form';
 
 interface Props {
     setFormStep?: Dispatch<SetStateAction<number>>;
-    parametr: Parametr;
+    parameter: Parameter;
     Element: (props: { register: UseFormRegister<FieldValues> }) => JSX.Element;
-    setResult?: Dispatch<SetStateAction<'success' | 'failed'>>;
+    setResult?: Dispatch<SetStateAction<'success' | 'failed' | 'loading'>>;
 }
 
 export const AccountCreationForm = ({
-    parametr,
+    parameter,
     Element,
     setFormStep,
     setResult
 }: Props) => {
     const { register, handleSubmit, onSubmit, dirtyFields } =
-        useAccountCreationForm({ parametr, setFormStep, setResult });
+        useAccountCreationForm({ parameter, setFormStep, setResult });
 
     return (
         <Form onSubmit={handleSubmit(onSubmit)}>
@@ -33,9 +33,9 @@ export const AccountCreationForm = ({
                 <div className='create__account__container__variants'>
                     <Element register={register} />
                 </div>
-                {parametr !== ACCOUNT_CARD_AGREEMENT && (
+                {parameter !== ACCOUNT_CARD_AGREEMENT && (
                     <Button
-                        disabled={!dirtyFields[parametr]}
+                        disabled={!dirtyFields[parameter]}
                         type='submit'
                         variant='secondary'
                     >
