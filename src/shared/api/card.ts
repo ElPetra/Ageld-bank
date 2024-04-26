@@ -2,12 +2,16 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import { getActualAccessToken } from 'src/shared/lib';
 
+import { CARD_URL } from './urls';
+
 import type { Card, CardInfo } from 'src/widgets/cards/model';
+
+const baseUrl = import.meta.env.VITE_BASEURL_GATEWAY + CARD_URL;
 
 export const cardApi = createApi({
     reducerPath: 'cardApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://172.17.1.76:8082/api/v1/card',
+        baseUrl,
         prepareHeaders: async headers => {
             const token = await getActualAccessToken();
             headers.set('content-type', 'application/json');

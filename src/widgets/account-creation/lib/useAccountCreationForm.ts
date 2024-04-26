@@ -1,26 +1,30 @@
 import { type FieldValues, useForm } from 'react-hook-form';
-
 import {
-    ACCOUNT_CARD_RECIEVING,
-    ACCOUNT_CURRENCY,
-    ACCOUNT_TYPE
-} from '../model';
+    getAccountCreationData,
+    resetAccountData,
+    useCreateAccountMutation
+} from 'src/shared/api';
 
 import type { Dispatch, SetStateAction } from 'react';
 
 interface Params {
-    parametr: Parametr;
+    parameter: Parameter;
     setFormStep?: Dispatch<SetStateAction<number>>;
-    setResult?: Dispatch<SetStateAction<'success' | 'failed'>>;
+    setResult?: Dispatch<SetStateAction<'success' | 'failed' | 'loading'>>;
 }
-export type Parametr =
+export type Parameter =
     | 'accountType'
     | 'accountCurrency'
     | 'accountcard'
     | 'agreement';
 
+export interface AccountCreationData {
+    type: string;
+    currencyName: string;
+}
+
 export const useAccountCreationForm = ({
-    parametr,
+    parameter,
     setFormStep,
     setResult
 }: Params) => {
@@ -29,25 +33,29 @@ export const useAccountCreationForm = ({
         handleSubmit,
         formState: { dirtyFields }
     } = useForm<FieldValues>({
-        defaultValues: { [parametr]: '' },
+        defaultValues: { [parameter]: '' },
         mode: 'onTouched',
         reValidateMode: 'onChange'
     });
-    const onSubmit = (data: FieldValues) => {
-        if (parametr !== 'agreement') {
-            localStorage.setItem(parametr, data[parametr]);
+    const [createAccount] = useCreateAccountMutation();
+    const onSubmit = async (data: FieldValues) => {
+        if (parameter !== 'agreement') {
+            localStorage.setItem(parameter, data[parameter]);
         }
         if (setFormStep) {
             setFormStep(prev => prev + 1);
         }
-        const isAccountCreated = Math.random() > 0.4; //на время отсутствия ручки на создание счета
-        if (parametr === 'agreement') {
-            if (isAccountCreated && setResult) {
-                setResult('success');
+        if (parameter === 'agreement') {
+            const creationData: AccountCreationData = getAccountCreationData();
+            const res = await createAccount(creationData);
+            if (setResult) {
+                if ('data' in res && res.data === 'Успешно создано') {
+                    setResult('success');
+                } else {
+                    setResult('failed');
+                }
             }
-            localStorage.removeItem(ACCOUNT_CARD_RECIEVING);
-            localStorage.removeItem(ACCOUNT_CURRENCY);
-            localStorage.removeItem(ACCOUNT_TYPE);
+            resetAccountData();
         }
     };
     return { register, handleSubmit, onSubmit, dirtyFields };
