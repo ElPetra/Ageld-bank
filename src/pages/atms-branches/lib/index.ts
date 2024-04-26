@@ -8,7 +8,7 @@ export const getAddress = (obj: BankObject): string => {
     const street = getString(obj.street);
     const microdistrict = getString(obj.microdistrict);
     const buildingNumberHouse = getString(obj.buildingNumberHouse)
-        ? 'д. ' + getString(obj.buildingNumberHouse)
+        ? getString(obj.buildingNumberHouse)
         : '';
 
     return (
@@ -18,7 +18,6 @@ export const getAddress = (obj: BankObject): string => {
         street +
         microdistrict +
         buildingNumberHouse +
-        'кв. ' +
         obj.houseNumber
     );
 };
