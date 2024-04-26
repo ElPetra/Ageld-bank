@@ -3,7 +3,7 @@ import { Text } from 'src/shared/ui';
 import './styles.scss';
 
 interface Props {
-    filters: string[];
+    filters: readonly string[];
     current: string;
     setCurrent: (el: string) => void;
 }

@@ -1,13 +1,10 @@
 import { Preloader } from 'src/shared/ui';
 import { Address, Contacts, UserCard } from 'src/entities/user';
 import { EmailForm } from 'src/features/forms';
-import { getAccessToken, useGetInfoQuery } from 'src/shared/api';
+import { useGetInfoQuery } from 'src/shared/api';
 
 export const PersonalData = () => {
-    const token = getAccessToken();
-    const { data, isLoading } = useGetInfoQuery({
-        Authorization: token ?? ''
-    });
+    const { data, isLoading } = useGetInfoQuery();
     return (
         <>
             {isLoading && <Preloader />}

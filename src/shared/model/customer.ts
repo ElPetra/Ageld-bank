@@ -1,3 +1,6 @@
+export const customerBaseUrl =
+    import.meta.env.VITE_BASEURL_GATEWAY + '/api/v1/customer';
+
 export interface CustomerInfo {
     firstName: string;
     lastName: string;

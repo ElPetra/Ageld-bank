@@ -1,11 +1,11 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import type { BankLocation } from '../model/bank-location';
+import { BankInfo, infoBaseUrl } from 'src/shared/model';
 
 export const infoApi = createApi({
     reducerPath: 'infoApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://172.17.1.76:8085/api/v1/info',
+        baseUrl: infoBaseUrl,
         prepareHeaders: async headers => {
             headers.set('content-type', 'application/json');
             return headers;
@@ -14,7 +14,7 @@ export const infoApi = createApi({
     }),
     tagTypes: ['Info'],
     endpoints: builder => ({
-        getBankLocation: builder.query<void, BankLocation>({
+        getBankLocation: builder.query<void, BankInfo>({
             query: () => ({
                 url: '/bank-info',
                 method: 'GET',

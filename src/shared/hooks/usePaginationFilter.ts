@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 
-import type { Card } from 'src/widgets/cards/model/types';
+import type { CardProduct } from 'src/widgets/cards/model/types';
 
 export const usePaginationFilter = (
-    cards: Card[],
-    getFilteredCards: () => Card[],
+    cards: CardProduct[],
+    getFilteredCards: () => CardProduct[],
     itemsPerPage: number = 10
 ) => {
     const [currentPage, setCurrentPage] = useState<number>(1);

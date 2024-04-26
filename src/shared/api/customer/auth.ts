@@ -1,9 +1,11 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
+import { customerBaseUrl } from 'src/shared/model';
+
 export const authApi = createApi({
     reducerPath: 'authApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://172.17.1.76:8082/api/v1/customer',
+        baseUrl: customerBaseUrl + '/auth',
         prepareHeaders: async headers => {
             headers.set('content-type', 'application/json');
             return headers;
@@ -12,32 +14,11 @@ export const authApi = createApi({
     }),
     tagTypes: ['Auth'],
     endpoints: builder => ({
-        checkRegistration: builder.mutation<{ customerId: string }, string>({
+        generateCode: builder.mutation<string, { phoneNumber: string }>({
             query: phoneNumber => ({
-                url: '/auth/check_registration',
+                url: '/verification/generate_code',
                 method: 'POST',
-                body: { phoneNumber },
-                responseHandler: response => response.json()
-            })
-        }),
-        checkMissRegistration: builder.mutation<{ customerId: string }, string>(
-            {
-                query: phoneNumber => ({
-                    url: '/registry/check_miss_registration',
-                    method: 'POST',
-                    body: { phoneNumber },
-                    responseHandler: response => response.json()
-                })
-            }
-        ),
-        createAccount: builder.mutation<
-            void,
-            { customerId: string, password: string }
-        >({
-            query: ({ customerId, password }) => ({
-                url: '/registry/create_user_profile',
-                method: 'POST',
-                body: { customerId, password }
+                body: { phoneNumber }
             })
         }),
         checkCode: builder.mutation<
@@ -45,9 +26,17 @@ export const authApi = createApi({
             { phoneNumber: string, code: string }
         >({
             query: ({ code, phoneNumber }) => ({
-                url: '/auth/verification/check_code',
+                url: '/verification/check_code',
                 method: 'POST',
                 body: { phoneNumber, code }
+            })
+        }),
+        checkRegistration: builder.mutation<{ customerId: string }, string>({
+            query: phoneNumber => ({
+                url: '/check_registration',
+                method: 'POST',
+                body: { phoneNumber },
+                responseHandler: response => response.json()
             })
         }),
         generateToken: builder.mutation<
@@ -55,17 +44,23 @@ export const authApi = createApi({
             { phoneNumber: string, password: string }
         >({
             query: ({ phoneNumber, password }) => ({
-                url: '/auth/generate_token',
+                url: '/generate_token',
                 method: 'POST',
                 body: { phoneNumber, password },
                 responseHandler: response => response.json()
             })
         }),
-        generateCode: builder.mutation<string, { phoneNumber: string }>({
-            query: phoneNumber => ({
-                url: '/auth/verification/generate_code',
+        refreshToken: builder.mutation<
+            { accessToken: string, refreshToken: string },
+            { refreshToken: string }
+        >({
+            query: ({ refreshToken }) => ({
+                url: '/auth/refresh_token',
                 method: 'POST',
-                body: { phoneNumber }
+                headers: {
+                    Refresh: `Bearer ${refreshToken}`
+                },
+                responseHandler: response => response.json()
             })
         })
     })
@@ -76,6 +71,5 @@ export const {
     useGenerateCodeMutation,
     useCheckCodeMutation,
     useCheckRegistrationMutation,
-    useCreateAccountMutation,
-    useCheckMissRegistrationMutation
+    useRefreshTokenMutation
 } = authApi;

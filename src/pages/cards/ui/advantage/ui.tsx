@@ -1,11 +1,13 @@
 import { Text } from 'src/shared/ui';
 
 import type { AdvantageConfig } from '../../model';
-import type { CardInfo } from 'src/widgets/cards/model';
+
+import type { CardProductInfo } from 'src/shared/model';
+
 import './style.scss';
 
 interface Props {
-    card: CardInfo;
+    card: CardProductInfo;
     items: AdvantageConfig[];
 }
 

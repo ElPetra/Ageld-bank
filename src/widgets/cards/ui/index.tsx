@@ -1,8 +1,8 @@
 import { CARDS, CardsRouteName, RouteName } from 'src/shared/model';
-import { Menu } from 'src/features/menu';
 import { Text } from 'src/shared/ui';
+import { Menu } from 'src/features/menu';
 
-import { CardContent } from 'src/widgets/cards/ui/content';
+import { CardProduct } from './content';
 
 import { CARDS_TITLE } from '../model';
 
@@ -25,7 +25,7 @@ export const Cards = () => {
                     {
                         id: 2,
                         name: 'Карточные продукты',
-                        component: <CardContent />
+                        component: <CardProduct />
                     }
                 ]}
             />
