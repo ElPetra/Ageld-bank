@@ -1,19 +1,18 @@
 import { Text } from 'src/shared/ui';
 
-import { advantages } from '../../model';
-
-import type { Card } from 'src/widgets/cards/model';
-
+import type { AdvantageConfig } from '../../model';
+import type { CardInfo } from 'src/widgets/cards/model';
 import './style.scss';
 
 interface Props {
-    card: Card;
+    card: CardInfo;
+    items: AdvantageConfig[];
 }
 
-export const Advantages = ({ card }: Props) => {
+export const Advantages = ({ card, items }: Props) => {
     return (
-        <>
-            {advantages.map(({ key, title, description }) => (
+        <div className='advantages'>
+            {items.map(({ key, title, description }) => (
                 <div key={key} className='advantage'>
                     <Text weight='bold' size='m' color='quadruple'>
                         {description(card[key])}
@@ -23,6 +22,6 @@ export const Advantages = ({ card }: Props) => {
                     </Text>
                 </div>
             ))}
-        </>
+        </div>
     );
 };
