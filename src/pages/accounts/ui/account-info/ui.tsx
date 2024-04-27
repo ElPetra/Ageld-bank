@@ -26,7 +26,7 @@ interface Props {
 
 export const AccountInfo = ({ account }: Props) => {
     const handleCopyAccount = () => {
-        navigator.clipboard.writeText(account!.number);
+        navigator.clipboard.writeText(account.number);
     };
 
     return (
@@ -47,8 +47,12 @@ export const AccountInfo = ({ account }: Props) => {
                             </div>
                             <div className='account-info__name__second-row'>
                                 <div>
-                                    <Text color='quadruple'>{ACCOUNT_NUMBER}</Text>
-                                    <Text color='quadruple'>{account.number}</Text>
+                                    <Text color='quadruple'>
+                                        {ACCOUNT_NUMBER}
+                                    </Text>
+                                    <Text color='quadruple'>
+                                        {account.number}
+                                    </Text>
                                 </div>
                                 <button onClick={handleCopyAccount}>
                                     <Icon icon='copy' />
@@ -82,9 +86,7 @@ export const AccountInfo = ({ account }: Props) => {
                     {account.status === 'blocked' && (
                         <div>
                             <Text size='xs'>{ACCOUNT_BLOCK_REASON}</Text>
-                            <Text color='quadruple'>
-                                {account.blockReason}
-                            </Text>
+                            <Text color='quadruple'>{account.blockReason}</Text>
                         </div>
                     )}
                 </div>
@@ -92,7 +94,8 @@ export const AccountInfo = ({ account }: Props) => {
             <div className='account-info__column'>
                 <div className='account-info__balance'>
                     <Text size='m' weight='medium'>
-                        {ACCOUNT_BALANCE}{account.balance + ' '}
+                        {ACCOUNT_BALANCE}
+                        {account.balance + ' '}
                         {currencySymbol[account.currency]}
                     </Text>
                     <AccountsMoreInfo accountStatus={account.status} />

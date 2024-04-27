@@ -1,26 +1,4 @@
-export const objectTypeName = {
-    ATM: 'Банкомат',
-    kiosk: 'Инфокиоск',
-    head: 'Главный офис',
-    branch: 'Отделение банка',
-    exchange: 'Обменный пункт'
-};
-
-type objectType = keyof typeof objectTypeName;
-
-export interface BankObject {
-    objectNumber: number;
-    latitude: number;
-    longitude: number;
-    region?: string;
-    location: string;
-    street?: string;
-    microdistrict?: string;
-    buildingNumberHouse?: string;
-    houseNumber: string;
-    objectTypeName: objectType;
-    schedule: string;
-}
+import type { BankObject } from 'src/shared/model';
 
 export const data: BankObject[] = [
     {
@@ -40,8 +18,8 @@ export const data: BankObject[] = [
     },
     {
         objectNumber: 2,
-        latitude: 59.953343,
-        longitude: 30.308006,
+        latitude: 59.863343,
+        longitude: 30.289006,
         region: 'Пыталовский',
         location: 'Пыталово',
         street: 'Пыталово',
@@ -53,8 +31,8 @@ export const data: BankObject[] = [
     },
     {
         objectNumber: 3,
-        latitude: 59.953343,
-        longitude: 30.309006,
+        latitude: 59.913343,
+        longitude: 30.427006,
         location: 'Пыталово',
         street: 'Пыталово',
         houseNumber: '4B',

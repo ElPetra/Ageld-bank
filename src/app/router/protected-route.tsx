@@ -1,6 +1,6 @@
 import { Navigate } from 'react-router-dom';
 
-import { RouteName } from 'src/shared/model';
+import { AuthStatus, RouteName } from 'src/shared/model';
 import { useAuth } from 'src/entities/user';
 
 import type { ReactNode } from 'react';
@@ -10,9 +10,9 @@ interface Props {
 }
 
 export function ProtectedRoute({ children }: Props) {
-    const { isAuth } = useAuth();
+    const { authStatus } = useAuth();
 
-    return isAuth ? (
+    return authStatus === AuthStatus.SignedIn ? (
         <>{children}</>
     ) : (
         <Navigate to={RouteName.LOGIN_PAGE} replace />

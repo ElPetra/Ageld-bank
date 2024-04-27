@@ -1,4 +1,9 @@
-import { type Currency } from 'src/shared/model';
+import type { Currency } from 'src/shared/model';
+
+export interface AccountCreationData {
+    type: string;
+    currencyName: string;
+}
 
 export type Status = 'active' | 'closed' | 'requested' | 'blocked';
 export type AccountType = 'master' | 'credit' | 'deposit';

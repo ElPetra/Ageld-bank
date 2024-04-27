@@ -7,7 +7,7 @@ import { EmailInput } from 'src/features/inputs';
 import { Button, Form } from 'src/shared/ui';
 import { getErrorMessage, getFieldErrorMessage } from 'src/shared/lib';
 
-import { getAccessToken, useNewEmailMutation } from 'src/shared/api';
+import { useNewEmailMutation } from 'src/shared/api';
 
 import type { FieldValues } from 'react-hook-form';
 
@@ -48,10 +48,8 @@ export const EmailForm = ({ email }: Props) => {
     const [newEmail, { error: newEmailError }] = useNewEmailMutation();
 
     const onSubmit = (data: Props) => {
-        const token = getAccessToken();
-        if (token && data.email) {
+        if (data.email) {
             newEmail({
-                Authorization: token,
                 email: data.email
             })
                 .unwrap()

@@ -48,6 +48,10 @@ input, textarea, button, select, input:-webkit-autofill {
   background-color: transparent;
 }
 
+input:-moz-placeholder, input::-moz-placeholder {
+  opacity: 1;
+}
+
 input {
   &::-ms-clear {
     display: none;

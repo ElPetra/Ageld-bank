@@ -3,11 +3,12 @@ import { useLocation } from 'react-router';
 import { getIconName } from 'src/shared/lib';
 import { RouteName } from 'src/shared/model';
 
-import type { Card } from 'src/widgets/cards/model';
+import type { CardProduct } from 'src/shared/model';
+
 import './styles.scss';
 
 interface Props {
-    card: Card;
+    card: CardProduct;
 }
 
 export const FinanceCard = ({ card }: Props) => {

@@ -1,6 +1,6 @@
-import { toast, Toaster, ToastBar } from 'react-hot-toast';
+import { toast, ToastBar, Toaster } from 'react-hot-toast';
 
-import { Icon } from 'src/shared/ui';
+import { Icon, Text } from 'src/shared/ui';
 
 import './styles.scss';
 
@@ -14,40 +14,38 @@ export const CustomToaster = () => {
             }}
             toastOptions={{
                 duration: 2000,
-                style: {
-                    paddingRight: '20px',
-                    maxWidth: '300px',
-                    borderRadius: '12px'
-                },
+                className: 'toaster',
                 success: {
-                    icon: <Icon icon='success-popup' widthAndHeight={48} />,
-                    style: {
-                        boxShadow: 'var(--bg-success) 0px 1px 6px 0px'
-                    }
+                    icon: <Icon icon='success-popup' widthAndHeight={48} />
                 },
                 error: {
-                    icon: <Icon icon='error-popup' widthAndHeight={48} />,
-                    style: {
-                        boxShadow: 'var(--bg-error) 0px 1px 6px 0px'
-                    }
+                    icon: <Icon icon='error-popup' widthAndHeight={48} />
                 }
             }}
         >
             {t => (
                 <ToastBar toast={t}>
-                    {({ icon, message }) => (
-                        <>
-                            {icon}
-                            {message}
-                            {t.type !== 'loading' && (
-                                <button
-                                    className='close'
-                                    onClick={() => toast.dismiss(t.id)}
-                                >
-                                    &#x2715;
-                                </button>
-                            )}
-                        </>
+                    {({ icon }) => (
+                        <div className='toaster-bar'>
+                            <div className='toaster-bar__icon'>
+                                {icon}
+                                <div className='toaster-bar__icon__text'>
+                                    <Text size='xxs'>
+                                        {t.type === 'success'
+                                            ? 'Успех'
+                                            : 'Ошибка'}
+                                    </Text>
+                                    <Text size='xxs' weight='light'>
+                                        {t.type === 'success'
+                                            ? 'Операция прошла успешно'
+                                            : 'Повторите запрос позже'}
+                                    </Text>
+                                </div>
+                            </div>
+                            <button onClick={() => toast.dismiss(t.id)}>
+                                <Icon icon='close' />
+                            </button>
+                        </div>
                     )}
                 </ToastBar>
             )}

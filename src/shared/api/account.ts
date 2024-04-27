@@ -2,16 +2,14 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import { getActualAccessToken } from 'src/shared/lib';
 
-import { type AccountCreationData } from 'src/widgets/account-creation/lib/useAccountCreationForm';
+import type { AccountCreationData } from 'src/shared/model';
 
-import { ACCOUNT_URL } from './urls';
-
-const baseUrl = import.meta.env.VITE_BASEURL_GATEWAY + ACCOUNT_URL;
+const accountBaseUrl = import.meta.env.VITE_BASEURL_GATEWAY + '/api/v1/account';
 
 export const accountApi = createApi({
     reducerPath: 'accountApi',
     baseQuery: fetchBaseQuery({
-        baseUrl,
+        baseUrl: accountBaseUrl,
         prepareHeaders: async headers => {
             const token = await getActualAccessToken();
             headers.set('content-type', 'application/json');

@@ -1,9 +1,10 @@
 import { AsideMenu, Icon, Text } from 'src/shared/ui';
 
-import { objectTypeName } from '../../model';
+import { objectTypeName } from 'src/shared/model';
+
 import { getAddress, getSchedule, getStatus } from '../../lib';
 
-import type { BankObject } from '../../model';
+import type { BankObject } from 'src/shared/model';
 
 import type { Dispatch, SetStateAction } from 'react';
 

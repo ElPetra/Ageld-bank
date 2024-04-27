@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { Container } from 'src/shared/ui';
 import { Menu } from 'src/features/menu';
 import { BackButton } from 'src/features/multi-step-form';
+import { MessageCard } from 'src/entities/message';
 
 import { accounts } from 'src/widgets/accounts/model';
 
@@ -13,25 +14,29 @@ import { AccountOperations } from './account-operations';
 
 export const AccountPage = () => {
     const { id } = useParams();
-    const account = accounts.find(el => el.id === id)!;
+    const account = accounts.find(el => el.id === id);
     return (
         <Container>
             <BackButton />
-            <Menu
-                variant={'secondary'}
-                elements={[
-                    {
-                        id: 1,
-                        name: ACCOUNT_INFO,
-                        component: <AccountInfo account={account}/>
-                    },
-                    {
-                        id: 2,
-                        name: ACCOUNT_OPERATIONS,
-                        component: <AccountOperations />
-                    }
-                ]}
-            />
+            {account ? (
+                <Menu
+                    variant={'secondary'}
+                    elements={[
+                        {
+                            id: 1,
+                            name: ACCOUNT_INFO,
+                            component: <AccountInfo account={account} />
+                        },
+                        {
+                            id: 2,
+                            name: ACCOUNT_OPERATIONS,
+                            component: <AccountOperations />
+                        }
+                    ]}
+                />
+            ) : (
+                <MessageCard text='Счет не найден' />
+            )}
         </Container>
     );
 };

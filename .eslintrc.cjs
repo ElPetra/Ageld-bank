@@ -16,7 +16,7 @@ module.exports = {
     ],
     ignorePatterns: ['dist', '.eslintrc.cjs', '**.css'],
     parser: '@typescript-eslint/parser',
-    plugins: ['react-refresh', 'prettier', 'eslint-plugin-import'],
+    plugins: ['react-refresh', 'prettier', 'eslint-plugin-import', '@typescript-eslint'],
     rules: {
         'no-console': ['error', { allow: ['warn', 'error'] }],
         quotes: ['error', 'single'],

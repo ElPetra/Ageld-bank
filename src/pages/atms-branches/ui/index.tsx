@@ -17,7 +17,7 @@ import { data } from '../model';
 import { BankObjectCard } from './bank-object-card';
 import { BankObjectInfoMenu } from './bank-object-info-menu';
 
-import type { BankObject } from '../model';
+import type { BankObject } from 'src/shared/model';
 
 import './styles.scss';
 

@@ -1,4 +1,4 @@
-import type { BankObject } from '../model';
+import type { BankObject } from 'src/shared/model';
 
 export const getAddress = (obj: BankObject): string => {
     const getString = (value: string | undefined): string => {
@@ -7,7 +7,7 @@ export const getAddress = (obj: BankObject): string => {
     const region = getString(obj.region);
     const street = getString(obj.street);
     const microdistrict = getString(obj.microdistrict);
-    const buildingNumberHouse = getString(obj.buildingNumberHouse)
+    const buildingNumberHouse = obj.buildingNumberHouse
         ? getString(obj.buildingNumberHouse)
         : '';
 

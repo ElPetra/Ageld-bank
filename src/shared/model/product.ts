@@ -4,4 +4,4 @@ export const currencySymbol = {
     eur: '€'
 };
 
-export type Currency = 'rub' | 'usd' | 'eur';
+export type Currency = keyof typeof currencySymbol;

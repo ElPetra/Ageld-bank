@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { CodeInput } from 'src/features/inputs';
 import { Button, Form, Text } from 'src/shared/ui';
 import { getErrorMessage } from 'src/shared/lib';
-import { useCheckCodeMutation, getUserPhone } from 'src/shared/api';
+import { localStorageApi, useCheckCodeMutation } from 'src/shared/api';
 
 import type { FieldValues } from 'react-hook-form';
 import type { Dispatch, SetStateAction } from 'react';
@@ -32,7 +32,7 @@ export const SmsCodeForm = ({
     const [checkCode, { error: checkCodeError }] = useCheckCodeMutation();
     const onSubmit = (data: FieldValues) => {
         const sms = data.sms.join('');
-        const phone = getUserPhone();
+        const phone = localStorageApi.getUserPhone();
         if (phone) {
             checkCode({ phoneNumber: phone, code: sms })
                 .unwrap()

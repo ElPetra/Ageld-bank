@@ -1,10 +1,10 @@
 import { CARDS, CardsRouteName, RouteName } from 'src/shared/model';
-import { Menu } from 'src/features/menu';
 import { Text } from 'src/shared/ui';
-
-import { CardContent } from 'src/widgets/cards/ui/content';
+import { Menu } from 'src/features/menu';
 
 import { CARDS_TITLE } from '../model';
+
+import { CardProduct } from './content';
 
 export const Cards = () => {
     return (
@@ -25,7 +25,7 @@ export const Cards = () => {
                     {
                         id: 2,
                         name: 'Карточные продукты',
-                        component: <CardContent />
+                        component: <CardProduct />
                     }
                 ]}
             />

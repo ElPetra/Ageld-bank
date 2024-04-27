@@ -1,18 +1,27 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
-import { accountApi, cardApi, customerApi, infoApi } from 'src/shared/api';
-import { authApi } from 'src/shared/api/auth';
+import {
+    authApi,
+    settingsApi,
+    profileApi,
+    registryApi,
+    infoApi,
+    accountApi,
+    cardProductApi
+} from 'src/shared/api';
 
 import userSlice from 'src/entities/user/user-slice';
 
-import { actionHandling } from './middleware/actionHandling';
+import { actionHandling } from './middleware/action-handling.js';
 
 const rootReducers = combineReducers({
     user: userSlice,
-    [customerApi.reducerPath]: customerApi.reducer,
     [authApi.reducerPath]: authApi.reducer,
-    [cardApi.reducerPath]: cardApi.reducer,
+    [settingsApi.reducerPath]: settingsApi.reducer,
+    [profileApi.reducerPath]: profileApi.reducer,
+    [registryApi.reducerPath]: registryApi.reducer,
     [infoApi.reducerPath]: infoApi.reducer,
+    [cardProductApi.reducerPath]: cardProductApi.reducer,
     [accountApi.reducerPath]: accountApi.reducer
 });
 
@@ -20,10 +29,12 @@ export const store = configureStore({
     reducer: rootReducers,
     middleware: getDefaultMiddleware =>
         getDefaultMiddleware().concat(
-            customerApi.middleware,
             authApi.middleware,
-            cardApi.middleware,
+            settingsApi.middleware,
+            profileApi.middleware,
+            registryApi.middleware,
             infoApi.middleware,
+            cardProductApi.middleware,
             accountApi.middleware,
             actionHandling
         )

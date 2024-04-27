@@ -1,34 +1,47 @@
 import { useCallback } from 'react';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
 
-import { getRefreshToken, getAccessToken, getUserPhone } from 'src/shared/api';
+import { localStorageApi, useRefreshTokenMutation } from 'src/shared/api';
 
-import { setUser } from '../user-slice';
+import { userSignedIn, userSignedOut } from '../user-slice';
 
 export const useAuth = () => {
-    const { phone, accessToken, refreshToken, isLoading } = useAppSelector(
-        state => state.user
-    );
+    const { authStatus } = useAppSelector(state => state.user);
     const dispatch = useAppDispatch();
+    const [getNewToken] = useRefreshTokenMutation();
+
+    const refresh = useCallback(async (): Promise<void> => {
+        const refreshToken = localStorageApi.getRefreshToken();
+        if (refreshToken) {
+            const tokenData = await getNewToken({ refreshToken: refreshToken });
+            if ('data' in tokenData) {
+                const { accessToken, refreshToken } = tokenData.data;
+                localStorageApi.setTokens(accessToken, refreshToken);
+                dispatch(userSignedIn());
+                return;
+            }
+        }
+        localStorageApi.removeUserData();
+        dispatch(userSignedOut());
+    }, [dispatch, getNewToken]);
+
+    const signedOut = useCallback((): void => {
+        localStorageApi.removeUserData();
+        dispatch(userSignedOut());
+    }, [dispatch]);
 
     const authChecked = useCallback(async (): Promise<void> => {
-        const phone = getUserPhone();
-        const accessToken = getAccessToken();
-        const refreshToken = getRefreshToken();
-        dispatch(
-            setUser({
-                phone: phone,
-                accessToken: accessToken,
-                refreshToken: refreshToken
-            })
-        );
-    }, [dispatch]);
+        const accessToken = localStorageApi.getAccessToken();
+        if (accessToken) {
+            dispatch(userSignedIn());
+        } else {
+            await refresh();
+        }
+    }, [dispatch, refresh]);
+
     return {
-        isAuth: !!accessToken,
-        phone,
-        accessToken,
-        refreshToken,
+        authStatus,
         authChecked,
-        isLoading
+        signedOut
     };
 };

@@ -3,14 +3,10 @@ import { useForm } from 'react-hook-form';
 import { useAppDispatch } from 'src/app/store';
 
 import { PasswordInput } from 'src/features/inputs';
-import { setUser } from 'src/entities/user';
+import { userSignedIn } from 'src/entities/user';
 import { Button, Form } from 'src/shared/ui';
 import { getErrorMessage } from 'src/shared/lib';
-import {
-    useGenerateTokenMutation,
-    getUserPhone,
-    setTokens
-} from 'src/shared/api';
+import { useGenerateTokenMutation, localStorageApi } from 'src/shared/api';
 
 import type { FieldValues } from 'react-hook-form';
 
@@ -36,7 +32,7 @@ export const EnterPasswordForm = ({ isLast, setFormStep }: Props) => {
     const [generateToken, { error }] = useGenerateTokenMutation();
 
     const onSubmit = (data: FieldValues) => {
-        const phone = getUserPhone();
+        const phone = localStorageApi.getUserPhone();
         if (phone) {
             generateToken({
                 phoneNumber: phone,
@@ -44,14 +40,11 @@ export const EnterPasswordForm = ({ isLast, setFormStep }: Props) => {
             })
                 .unwrap()
                 .then(data => {
-                    dispatch(
-                        setUser({
-                            phone: phone,
-                            accessToken: data.accessToken,
-                            refreshToken: data.refreshToken
-                        })
+                    dispatch(userSignedIn());
+                    localStorageApi.setTokens(
+                        data.accessToken,
+                        data.refreshToken
                     );
-                    setTokens(data);
                     if (data) {
                         navigate('/');
                     }
