@@ -14,15 +14,7 @@ export const CustomToaster = () => {
             }}
             toastOptions={{
                 duration: 2000,
-                style: {
-                    padding: '12px',
-                    borderRadius: '12px',
-                    minWidth: '300px',
-                    background: '#FEFEFE',
-                    color: '#2B3E78',
-                    boxShadow: '0px 15px 20px 0px #0000000D',
-                    display: 'block'
-                },
+                className: 'toaster',
                 success: {
                     icon: <Icon icon='success-popup' widthAndHeight={48} />
                 },
@@ -34,10 +26,10 @@ export const CustomToaster = () => {
             {t => (
                 <ToastBar toast={t}>
                     {({ icon }) => (
-                        <div className='toaster'>
-                            <div className='toaster__icon'>
+                        <div className='toaster-bar'>
+                            <div className='toaster-bar__icon'>
                                 {icon}
-                                <div className='toaster__icon__text'>
+                                <div className='toaster-bar__icon__text'>
                                     <Text size='xxs'>
                                         {t.type === 'success'
                                             ? 'Успех'

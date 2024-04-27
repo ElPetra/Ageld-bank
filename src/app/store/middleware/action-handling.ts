@@ -16,8 +16,8 @@ const isPayload = (arg: unknown): arg is Payload => {
 };
 
 const isActionType = (action: PayloadAction, startsWith: string[]): boolean => {
-    for (const str in startsWith) {
-        if (action.type.startsWith(str)) {
+    for (const index in startsWith) {
+        if (action.type.startsWith(startsWith[index])) {
             return true;
         }
     }
@@ -28,7 +28,7 @@ export const actionHandling: Middleware = () => next => action => {
     if (
         isActionType(action as PayloadAction, [
             'profileApi/',
-            'settingsApi/executeMutation/'
+            'settingsApi/executeMutation'
         ])
     ) {
         if (isRejectedWithValue(action) && isPayload(action.payload)) {
