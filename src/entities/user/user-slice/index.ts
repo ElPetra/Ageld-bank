@@ -1,37 +1,27 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-type User = {
-    phone: string,
-    accessToken: string,
-    refreshToken: string,
-    isLoading: boolean
-};
+import { AuthStatus } from 'src/shared/model';
 
-const initialState: User = {
-    phone: '',
-    accessToken: '',
-    refreshToken: '',
-    isLoading: true
+export interface UserState {
+    authStatus: AuthStatus;
+}
+
+const initialState: UserState = {
+    authStatus: AuthStatus.Loading
 };
 
 const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-        setUser(state, action) {
-            state.phone = action.payload.phone;
-            state.accessToken = action.payload.accessToken;
-            state.refreshToken = action.payload.refreshToken;
-            state.isLoading = false;
+        userSignedIn(state) {
+            state.authStatus = AuthStatus.SignedIn;
         },
-        removeUser(state) {
-            state.phone = '';
-            state.accessToken = '';
-            state.refreshToken = '';
-            state.isLoading = false;
+        userSignedOut(state) {
+            state.authStatus = AuthStatus.SignedOut;
         }
     }
 });
 
-export const { setUser, removeUser } = userSlice.actions;
+export const { userSignedIn, userSignedOut } = userSlice.actions;
 export default userSlice.reducer;

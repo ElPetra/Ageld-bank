@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useAppDispatch } from 'src/app/store';
 
 import { PasswordInput } from 'src/features/inputs';
-import { setUser } from 'src/entities/user';
+import { userSignedIn } from 'src/entities/user';
 import { Button, Form } from 'src/shared/ui';
 import { getErrorMessage } from 'src/shared/lib';
 import { useGenerateTokenMutation, localStorageApi } from 'src/shared/api';
@@ -40,13 +40,7 @@ export const EnterPasswordForm = ({ isLast, setFormStep }: Props) => {
             })
                 .unwrap()
                 .then(data => {
-                    dispatch(
-                        setUser({
-                            phone: phone,
-                            accessToken: data.accessToken,
-                            refreshToken: data.refreshToken
-                        })
-                    );
+                    dispatch(userSignedIn());
                     localStorageApi.setTokens(
                         data.accessToken,
                         data.refreshToken

@@ -9,7 +9,7 @@ interface Props {
     text: string;
     width?: number;
     icon?: SvgIconNames;
-    buttonText: string;
+    buttonText?: string;
     buttonLink?: string;
 }
 

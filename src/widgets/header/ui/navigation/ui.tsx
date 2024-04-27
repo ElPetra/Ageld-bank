@@ -1,7 +1,7 @@
 import { Link } from 'src/shared/ui';
 import { useAuth } from 'src/entities/user';
 import { Logout } from 'src/features/logout';
-import { RouteName } from 'src/shared/model';
+import { AuthStatus, RouteName } from 'src/shared/model';
 
 import type { Dispatch, SetStateAction } from 'react';
 
@@ -13,7 +13,7 @@ interface Props {
 }
 
 export const Navigation = ({ direction = 'row', setVisible }: Props) => {
-    const { isAuth } = useAuth();
+    const { authStatus } = useAuth();
     return (
         <nav className={`navigation ${direction}`}>
             <ul
@@ -30,7 +30,7 @@ export const Navigation = ({ direction = 'row', setVisible }: Props) => {
                 <Link to={RouteName.MAIN_PAGE}>Вопросы и ответы</Link>
             </ul>
             <ul className='navigation__additional'>
-                {isAuth ? (
+                {authStatus === AuthStatus.SignedIn ? (
                     <>
                         <Link to={RouteName.PERSONAL_PAGE}>Личные данные</Link>
                         <Logout />

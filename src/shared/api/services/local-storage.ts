@@ -1,6 +1,16 @@
-import { ACCOUNT_CARD_RECIEVING, ACCOUNT_CURRENCY, ACCOUNT_TYPE } from 'src/widgets/account-creation/model';
+import {
+    ACCOUNT_CARD_RECIEVING,
+    ACCOUNT_CURRENCY,
+    ACCOUNT_TYPE
+} from 'src/widgets/account-creation/model';
 
-import { EXPIRES_DATE, USER_ACCESS_TOKEN, USER_ID, USER_PHONE, USER_REFRESH_TOKEN } from './constants';
+import {
+    EXPIRES_DATE,
+    USER_ACCESS_TOKEN,
+    USER_ID,
+    USER_PHONE,
+    USER_REFRESH_TOKEN
+} from 'src/shared/model';
 
 import type { AccountCreationData } from 'src/shared/model';
 
@@ -15,7 +25,7 @@ export const localStorageApi = {
 
     setCustomerData(phone: string, customerId: string): void {
         localStorageApi.setUserId(customerId);
-        localStorageApi.setUserPhone(phone)
+        localStorageApi.setUserPhone(phone);
     },
 
     setUserPhone(phone: string): void {
@@ -56,23 +66,20 @@ export const localStorageApi = {
         localStorage.removeItem(EXPIRES_DATE);
     },
 
-//  account creation
+    //  account creation
     getAccountCreationData(): AccountCreationData {
-        if (
-            !(ACCOUNT_CURRENCY in localStorage) ||
-            !(ACCOUNT_TYPE in localStorage)
-        ) {
+        const currencyName = localStorage.getItem(ACCOUNT_CURRENCY);
+        const type = localStorage.getItem(ACCOUNT_TYPE);
+        if (type && currencyName) {
+            return { currencyName, type };
+        } else {
             throw 'Неверно указаны данные. Повторите попытку позже';
         }
-        return {
-            currencyName: localStorage.getItem(ACCOUNT_CURRENCY)!,
-            type: localStorage.getItem(ACCOUNT_TYPE)!
-        };
     },
 
     resetAccountData(): void {
         localStorage.removeItem(ACCOUNT_CARD_RECIEVING);
         localStorage.removeItem(ACCOUNT_CURRENCY);
         localStorage.removeItem(ACCOUNT_TYPE);
-    },
-}
+    }
+};

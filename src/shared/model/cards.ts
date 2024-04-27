@@ -9,7 +9,7 @@ export const typeCardName = {
 };
 
 export type TypeCard = keyof typeof typeCardName;
-export type TypeCardValues = (typeof typeCardName)[TypeCard];
+//export type TypeCardValues = (typeof typeCardName)[TypeCard];
 
 export const paymentSystemName = {
     ALL: 'Все',

@@ -1,12 +1,12 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const customerBaseUrl =
-    import.meta.env.VITE_BASEURL_GATEWAY + '/api/v1/customer';
+const authBaseUrl =
+    import.meta.env.VITE_BASEURL_GATEWAY + '/api/v1/customer/auth';
 
 export const authApi = createApi({
     reducerPath: 'authApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: customerBaseUrl + '/auth',
+        baseUrl: authBaseUrl,
         prepareHeaders: async headers => {
             headers.set('content-type', 'application/json');
             return headers;
@@ -56,7 +56,7 @@ export const authApi = createApi({
             { refreshToken: string }
         >({
             query: ({ refreshToken }) => ({
-                url: '/auth/refresh_token',
+                url: '/refresh_token',
                 method: 'POST',
                 headers: {
                     Refresh: `Bearer ${refreshToken}`

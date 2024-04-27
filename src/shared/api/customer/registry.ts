@@ -1,12 +1,12 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const customerBaseUrl =
-    import.meta.env.VITE_BASEURL_GATEWAY + '/api/v1/customer';
+const registryBaseUrl =
+    import.meta.env.VITE_BASEURL_GATEWAY + '/api/v1/customer/registry';
 
 export const registryApi = createApi({
     reducerPath: 'registryApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: customerBaseUrl + '/registry',
+        baseUrl: registryBaseUrl,
         prepareHeaders: async headers => {
             headers.set('content-type', 'application/json');
             return headers;

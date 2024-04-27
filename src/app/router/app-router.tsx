@@ -15,7 +15,8 @@ import { ATMsBranchesPage } from 'src/pages/atms-branches';
 
 import { AccountCreation } from 'src/widgets/account-creation';
 import { useAuth } from 'src/entities/user';
-import { CREATE, RouteName } from 'src/shared/model';
+
+import { AuthStatus, CREATE, RouteName } from 'src/shared/model';
 import { Preloader } from 'src/shared/ui';
 
 import { ProtectedRoute } from './protected-route';
@@ -86,13 +87,13 @@ const authRoutes: RouteDescription[] = [
 ];
 
 export const AppRouter = () => {
-    const { authChecked, isLoading } = useAuth();
+    const { authChecked, authStatus } = useAuth();
 
     useEffect(() => {
         authChecked();
     }, [authChecked]);
 
-    return isLoading ? (
+    return authStatus === AuthStatus.Loading ? (
         <Preloader />
     ) : (
         <Routes>

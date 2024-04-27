@@ -4,13 +4,13 @@ import { getActualAccessToken } from 'src/shared/lib';
 
 import type { CustomerInfo } from 'src/shared/model';
 
-const customerBaseUrl =
-    import.meta.env.VITE_BASEURL_GATEWAY + '/api/v1/customer';
+const settingsBaseUrl =
+    import.meta.env.VITE_BASEURL_GATEWAY + '/api/v1/customer/settings';
 
 export const settingsApi = createApi({
     reducerPath: 'settingsApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: customerBaseUrl + '/settings',
+        baseUrl: settingsBaseUrl,
         prepareHeaders: async headers => {
             const token = await getActualAccessToken();
             headers.set('content-type', 'application/json');
