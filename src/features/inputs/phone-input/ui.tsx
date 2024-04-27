@@ -23,7 +23,7 @@ export const PhoneInput = ({ clear, isError, error, ...props }: Props) => {
         if (inputValue.length == 1) {
             if (!/\+/.test(e.target.value)) {
                 inputValue =
-                    inputValue === '8'
+                    inputValue === '8' || inputValue === '7'
                         ? inputValue.replace(/(\d)/, '+7 (')
                         : inputValue.replace(/(\d)/, '+7 ($1');
             }

@@ -1,9 +1,7 @@
 import { type FieldValues, useForm } from 'react-hook-form';
-import {
-    getAccountCreationData,
-    resetAccountData,
-    useCreateAccountMutation
-} from 'src/shared/api';
+
+import { localStorageApi, useCreateAccountMutation } from 'src/shared/api';
+import { AccountCreationData } from 'src/shared/model';
 
 import type { Dispatch, SetStateAction } from 'react';
 
@@ -17,11 +15,6 @@ export type Parameter =
     | 'accountCurrency'
     | 'accountcard'
     | 'agreement';
-
-export interface AccountCreationData {
-    type: string;
-    currencyName: string;
-}
 
 export const useAccountCreationForm = ({
     parameter,
@@ -46,7 +39,8 @@ export const useAccountCreationForm = ({
             setFormStep(prev => prev + 1);
         }
         if (parameter === 'agreement') {
-            const creationData: AccountCreationData = getAccountCreationData();
+            const creationData: AccountCreationData =
+                localStorageApi.getAccountCreationData();
             const res = await createAccount(creationData);
             if (setResult) {
                 if ('data' in res && res.data === 'Успешно создано') {
@@ -55,7 +49,7 @@ export const useAccountCreationForm = ({
                     setResult('failed');
                 }
             }
-            resetAccountData();
+            localStorageApi.resetAccountData();
         }
     };
     return { register, handleSubmit, onSubmit, dirtyFields };

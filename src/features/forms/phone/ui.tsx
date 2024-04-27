@@ -6,8 +6,7 @@ import { Button, Form, Link, Text } from 'src/shared/ui';
 import { RouteName } from 'src/shared/model';
 import { getErrorMessage } from 'src/shared/lib';
 import {
-    setCustomerData,
-    setUserPhone,
+    localStorageApi,
     useCheckMissRegistrationMutation,
     useCheckRegistrationMutation,
     useGenerateCodeMutation
@@ -58,7 +57,7 @@ export const PhoneForm = ({
                     generateCode(phone)
                         .unwrap()
                         .then(() => {
-                            setCustomerData(
+                            localStorageApi.setCustomerData(
                                 phone,
                                 checkMissRegistrationData.customerId
                             );
@@ -77,7 +76,7 @@ export const PhoneForm = ({
                     generateCode(phone)
                         .unwrap()
                         .then(() => {
-                            setUserPhone(phone);
+                            localStorageApi.setUserPhone(phone);
                             if (setFormStep && !isLast) {
                                 setFormStep(curr => {
                                     return curr + 1;

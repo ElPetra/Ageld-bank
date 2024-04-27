@@ -31,7 +31,7 @@ export const authApi = createApi({
                 body: { phoneNumber, code }
             })
         }),
-        checkRegistration: builder.mutation<{ customerId: string }, string>({
+        checkRegistration: builder.mutation<void, string>({
             query: phoneNumber => ({
                 url: '/check_registration',
                 method: 'POST',

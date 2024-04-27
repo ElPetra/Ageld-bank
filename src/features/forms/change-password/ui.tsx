@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { PasswordInput } from 'src/features/inputs';
 import { Button, Form } from 'src/shared/ui';
 import { getFieldErrorMessage, getErrorMessage } from 'src/shared/lib';
-import { useChangePasswordMutation, getAccessToken } from 'src/shared/api';
+import { localStorageApi, useChangePasswordMutation } from 'src/shared/api';
 
 import { changePasswordSchema } from './model';
 
@@ -35,10 +35,9 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
     const [changePassword, { error: changePasswordError }] =
         useChangePasswordMutation();
     const onSubmit = (data: FieldValues) => {
-        const accessToken = getAccessToken();
+        const accessToken = localStorageApi.getAccessToken();
         if (accessToken) {
             changePassword({
-                Authorization: accessToken,
                 oldPassword: data.current_password,
                 newPassword: data.password1
             })

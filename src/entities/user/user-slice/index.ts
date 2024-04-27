@@ -1,18 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { removeAuthData } from 'src/shared/api';
-
 type User = {
-    phone: string | null,
-    accessToken: string | null,
-    refreshToken: string | null,
+    phone: string,
+    accessToken: string,
+    refreshToken: string,
     isLoading: boolean
 };
 
 const initialState: User = {
-    phone: null,
-    accessToken: null,
-    refreshToken: null,
+    phone: '',
+    accessToken: '',
+    refreshToken: '',
     isLoading: true
 };
 
@@ -27,11 +25,10 @@ const userSlice = createSlice({
             state.isLoading = false;
         },
         removeUser(state) {
-            state.phone = null;
-            state.accessToken = null;
-            state.refreshToken = null;
+            state.phone = '';
+            state.accessToken = '';
+            state.refreshToken = '';
             state.isLoading = false;
-            removeAuthData();
         }
     }
 });

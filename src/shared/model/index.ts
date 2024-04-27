@@ -3,5 +3,5 @@ export * from './routes';
 export * from './customer';
 export * from './card';
 export * from './account';
-export * from './product.js';
+export * from './product';
 export * from './info';

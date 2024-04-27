@@ -6,13 +6,13 @@ import {
     profileApi,
     registryApi,
     infoApi,
-    authApi,
+    accountApi,
     cardProductApi
 } from 'src/shared/api';
 
 import userSlice from 'src/entities/user/user-slice';
 
-import { actionHandling } from './middleware/actionHandling';
+import { actionHandling } from './middleware/action-handling.js';
 
 const rootReducers = combineReducers({
     user: userSlice,

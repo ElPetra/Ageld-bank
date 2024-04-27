@@ -1,106 +1,83 @@
 import {
-    ACCOUNT_CARD_RECIEVING,
-    ACCOUNT_CURRENCY,
-    ACCOUNT_TYPE
-} from 'src/widgets/account-creation/model';
-import { type AccountCreationData } from 'src/widgets/account-creation/lib/useAccountCreationForm';
-import { type CustomerData } from 'src/shared/model';
-
-import {
     EXPIRES_DATE,
     USER_ACCESS_TOKEN,
     USER_ID,
     USER_PHONE,
     USER_REFRESH_TOKEN
 } from './constants';
+import { AccountCreationData } from 'src/shared/model';
+import { ACCOUNT_CARD_RECIEVING, ACCOUNT_CURRENCY, ACCOUNT_TYPE } from 'src/widgets/account-creation/model';
 
 
-interface AuthResponse {
-    accessToken: string;
-    refreshToken: string;
-}
-
-//auth
-
-export const setTokens = (res: AuthResponse) => {
-    if (res) {
-        const { accessToken, refreshToken } = res;
+export const localStorageApi = {
+    setTokens(accessToken: string, refreshToken: string): void {
         const expiresTime = 2 * 60 * 1000;
         const expiresDate = new Date().getTime() + expiresTime + '';
         localStorage.setItem(USER_ACCESS_TOKEN, accessToken);
         localStorage.setItem(USER_REFRESH_TOKEN, refreshToken);
         localStorage.setItem(EXPIRES_DATE, expiresDate);
-    }
-};
-export const getTokenExpiresDate = () => {
-    return localStorage.getItem(EXPIRES_DATE);
-};
+    },
 
-export const getAccessToken = () => {
-    return localStorage.getItem(USER_ACCESS_TOKEN);
-};
+    setCustomerData(phone: string, customerId: string): void {
+        localStorageApi.setUserId(customerId);
+        localStorageApi.setUserPhone(phone)
+    },
 
-export const getRefreshToken = () => {
-    return localStorage.getItem(USER_REFRESH_TOKEN);
-};
+    setUserPhone(phone: string): void {
+        return localStorage.setItem(USER_PHONE, phone);
+    },
 
-export const removeAuthData = () => {
-    localStorage.removeItem(USER_PHONE);
-    localStorage.removeItem(USER_ID);
-    localStorage.removeItem(USER_ACCESS_TOKEN);
-    localStorage.removeItem(USER_REFRESH_TOKEN);
-};
+    setUserId(customerId: string): void {
+        return localStorage.setItem(USER_ID, customerId);
+    },
 
-export const setUserPhone = (phone: string) => {
-    return localStorage.setItem(USER_PHONE, phone);
-};
+    getUserPhone(): string | null {
+        return localStorage.getItem(USER_PHONE);
+    },
 
-export const getUserPhone = () => {
-    return localStorage.getItem(USER_PHONE);
-};
+    getUserId(): string | null {
+        return localStorage.getItem(USER_ID);
+    },
 
-export const setUserId = (customerId: string) => {
-    return localStorage.setItem(USER_ID, customerId);
-};
+    getAccessToken(): string | null {
+        const expiresIn = localStorage.getItem(EXPIRES_DATE);
+        if (expiresIn && +expiresIn > Date.now()) {
+            return localStorage.getItem(USER_ACCESS_TOKEN);
+        } else {
+            localStorage.removeItem(USER_ACCESS_TOKEN);
+        }
+        return null;
+    },
 
-export const getUserId = () => {
-    return localStorage.getItem(USER_ID);
-};
-export const setCustomerData=(phone: string,customerId: string)=>{
-    setUserId(customerId);
-    setUserPhone(phone)
+    getRefreshToken(): string | null {
+        return localStorage.getItem(USER_REFRESH_TOKEN);
+    },
+
+    removeUserData(): void {
+        localStorage.removeItem(USER_PHONE);
+        localStorage.removeItem(USER_ID);
+        localStorage.removeItem(USER_ACCESS_TOKEN);
+        localStorage.removeItem(USER_REFRESH_TOKEN);
+        localStorage.removeItem(EXPIRES_DATE);
+    },
+
+//  account creation
+    getAccountCreationData(): AccountCreationData {
+        if (
+            !(ACCOUNT_CURRENCY in localStorage) ||
+            !(ACCOUNT_TYPE in localStorage)
+        ) {
+            throw 'Неверно указаны данные. Повторите попытку позже';
+        }
+        return {
+            currencyName: localStorage.getItem(ACCOUNT_CURRENCY)!,
+            type: localStorage.getItem(ACCOUNT_TYPE)!
+        };
+    },
+
+    resetAccountData(): void {
+        localStorage.removeItem(ACCOUNT_CARD_RECIEVING);
+        localStorage.removeItem(ACCOUNT_CURRENCY);
+        localStorage.removeItem(ACCOUNT_TYPE);
+    },
 }
-export const getCustomerData=():CustomerData=>{
-    if (
-        !(USER_ID in localStorage) ||
-        !(USER_PHONE in localStorage)
-    ) {
-        throw 'Доступно только для зарегистрированных пользователей';
-    }
-    return {
-        [USER_ID]: getUserId()!,
-        [USER_PHONE]: getUserPhone()!
-    };
-}
-
-//account creation
-
-export const getAccountCreationData = (): AccountCreationData => {
-    if (
-        !(ACCOUNT_CURRENCY in localStorage) ||
-        !(ACCOUNT_TYPE in localStorage)
-    ) {
-        throw 'Неверно указаны данные. Повторите попытку позже';
-    }
-
-    return {
-        currencyName: localStorage.getItem(ACCOUNT_CURRENCY)!,
-        type: localStorage.getItem(ACCOUNT_TYPE)!
-    };
-};
-
-export const resetAccountData = () => {
-    localStorage.removeItem(ACCOUNT_CARD_RECIEVING);
-    localStorage.removeItem(ACCOUNT_CURRENCY);
-    localStorage.removeItem(ACCOUNT_TYPE);
-};

@@ -1,6 +1,22 @@
-.close{
-    position: absolute;
-    right: 4px;
-    top: 0px;
-    padding: 5px;
+.toaster {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+
+    &__icon {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+
+        &__text {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+    }
+
+    button {
+        display: flex;
+        align-items: flex-start;
+    }
 }

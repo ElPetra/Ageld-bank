@@ -24,7 +24,7 @@ export const registryApi = createApi({
                 })
             }
         ),
-        createAccount: builder.mutation<
+        createProfile: builder.mutation<
             void,
             { customerId: string, password: string }
         >({
@@ -59,7 +59,8 @@ export const registryApi = createApi({
 });
 
 export const {
-    useCreateAccountMutation,
+    useCreateProfileMutation,
     useCheckMissRegistrationMutation,
-    useCheckStatusMutation
+    useCheckStatusMutation,
+    useRecoveryPasswordMutation
 } = registryApi;

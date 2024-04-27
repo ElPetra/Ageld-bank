@@ -12,14 +12,16 @@ export const typeCardName = {
 } as const;
 
 export type TypeCard = keyof typeof typeCardName;
+export type TypeCardName = (typeof typeCardName)[TypeCard];
 
 export const paymentSystemName = {
     ALL: 'Все',
-    MIR_CARD: 'МИР',
-    VISA_CARD: 'VISA'
+    MIR: 'МИР',
+    VISA: 'VISA'
 } as const;
 
 export type PaymentSystem = keyof typeof paymentSystemName;
+export type PaymentSystemName = (typeof paymentSystemName)[PaymentSystem];
 
 export type CardLevel = 'CLASSIC' | 'GOLD' | 'PLATINUM' | 'PREMIUM';
 
@@ -29,7 +31,7 @@ export interface Card {
     expirationAt: string;
     name: string;
     level: CardLevel;
-    paymentSystem: PaymentSystem;
+    paymentSystem: PaymentSystemName;
     currency: Currency;
 }
 
@@ -37,14 +39,14 @@ export interface CardProduct {
     nameProduct: string;
     imageUrl: string;
     cardProductId: string;
-    paymentSystem: PaymentSystem;
+    paymentSystem: PaymentSystemName;
     typeCard: TypeCard;
     level: CardLevel;
 }
 export interface CardProductInfo {
     nameProduct: string;
     image: string;
-    paymentSystem: PaymentSystem;
+    paymentSystem: PaymentSystemName;
     typeCard: TypeCard;
     level: CardLevel;
     isVirtual: boolean;
