@@ -1,6 +1,8 @@
-import { EXPIRES_DATE, USER_ACCESS_TOKEN, USER_ID, USER_PHONE, USER_REFRESH_TOKEN } from './constants';
-import { AccountCreationData } from 'src/shared/model';
 import { ACCOUNT_CARD_RECIEVING, ACCOUNT_CURRENCY, ACCOUNT_TYPE } from 'src/widgets/account-creation/model';
+
+import { EXPIRES_DATE, USER_ACCESS_TOKEN, USER_ID, USER_PHONE, USER_REFRESH_TOKEN } from './constants';
+
+import type { AccountCreationData } from 'src/shared/model';
 
 export const localStorageApi = {
     setTokens(accessToken: string, refreshToken: string): void {

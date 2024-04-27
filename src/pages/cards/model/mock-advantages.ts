@@ -1,4 +1,6 @@
-import { CardProductInfo, typeCardName, TypeCard } from 'src/shared/model';
+import { typeCardName } from 'src/shared/model';
+
+import type { CardProductInfo, TypeCard } from 'src/shared/model';
 
 type AdvantageKey = keyof CardProductInfo;
 

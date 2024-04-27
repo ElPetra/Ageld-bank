@@ -1,6 +1,8 @@
 import { useCallback, useState } from 'react';
 
-import { CardProduct, paymentSystemName, typeCardName } from 'src/shared/model';
+import { paymentSystemName, typeCardName } from 'src/shared/model';
+
+import type { CardProduct } from 'src/shared/model';
 
 export const useCardsFilter = (cards?: CardProduct[]) => {
     const [currencyPayment, setCurrencyPayment] = useState<string>(

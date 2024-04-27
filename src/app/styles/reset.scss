@@ -46,6 +46,9 @@ input, textarea, button, select, input:-webkit-autofill {
   font-size: inherit;
   color: inherit;
   background-color: transparent;
+}
+
+input:-moz-placeholder, input::-moz-placeholder {
   opacity: 1;
 }
 

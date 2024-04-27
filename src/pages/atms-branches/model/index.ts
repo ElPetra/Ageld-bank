@@ -1,4 +1,4 @@
-import { BankObject } from 'src/shared/model';
+import type { BankObject } from 'src/shared/model';
 
 export const data: BankObject[] = [
     {

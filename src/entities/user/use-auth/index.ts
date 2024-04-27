@@ -18,7 +18,7 @@ export const useAuth = () => {
         } else {
             return localStorageApi.getRefreshToken();
         }
-    }, []);
+    }, [refreshToken]);
 
     const refresh = useCallback(async (): Promise<void> => {
         const refreshToken = getRefreshToken();
@@ -42,7 +42,7 @@ export const useAuth = () => {
             dispatch(removeUser());
             localStorageApi.removeUserData();
         }
-    }, [dispatch]);
+    }, [dispatch, getRefreshToken, getNewToken, phone]);
 
     const authChecked = useCallback(async (): Promise<void> => {
         const phone = localStorageApi.getUserPhone();

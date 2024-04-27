@@ -1,11 +1,7 @@
 import toast from 'react-hot-toast';
-import {
-    isRejectedWithValue,
-    isFulfilled,
-    PayloadAction
-} from '@reduxjs/toolkit';
+import { isRejectedWithValue, isFulfilled } from '@reduxjs/toolkit';
 
-import type { Middleware } from '@reduxjs/toolkit';
+import type { Middleware, PayloadAction } from '@reduxjs/toolkit';
 
 interface Payload {
     data: string;
@@ -20,7 +16,7 @@ const isPayload = (arg: unknown): arg is Payload => {
 };
 
 const isActionType = (action: PayloadAction, startsWith: string[]): boolean => {
-    for (let str in startsWith) {
+    for (const str in startsWith) {
         if (action.type.startsWith(str)) {
             return true;
         }

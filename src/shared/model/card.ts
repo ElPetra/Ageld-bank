@@ -6,7 +6,7 @@ export const typeCardName = {
     ALL: 'Все',
     CREDIT: 'Кредитная',
     DEBIT: 'Дебетовая'
-} as const;
+};
 
 export type TypeCard = keyof typeof typeCardName;
 export type TypeCardValues = (typeof typeCardName)[TypeCard];
@@ -15,7 +15,7 @@ export const paymentSystemName = {
     ALL: 'Все',
     MIR: 'МИР',
     VISA: 'VISA'
-} as const;
+};
 
 export type PaymentSystem = keyof typeof paymentSystemName;
 export type PaymentSystemValues = (typeof paymentSystemName)[PaymentSystem];

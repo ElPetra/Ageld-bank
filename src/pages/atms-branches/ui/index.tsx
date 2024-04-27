@@ -8,7 +8,6 @@ import {
     ZoomControl
 } from '@pbe/react-yandex-maps';
 
-import { BankObject } from 'src/shared/model';
 import { Card, Text, MapDotSVG } from 'src/shared/ui';
 import { MapFilter } from 'src/features/filters';
 import { SearchForm } from 'src/features/forms';
@@ -17,6 +16,8 @@ import { data } from '../model';
 
 import { BankObjectCard } from './bank-object-card';
 import { BankObjectInfoMenu } from './bank-object-info-menu';
+
+import type { BankObject } from 'src/shared/model';
 
 import './styles.scss';
 

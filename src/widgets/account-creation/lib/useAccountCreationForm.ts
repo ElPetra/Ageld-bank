@@ -1,7 +1,8 @@
 import { type FieldValues, useForm } from 'react-hook-form';
 
 import { localStorageApi, useCreateAccountMutation } from 'src/shared/api';
-import { AccountCreationData } from 'src/shared/model';
+
+import type { AccountCreationData } from 'src/shared/model';
 
 import type { Dispatch, SetStateAction } from 'react';
 

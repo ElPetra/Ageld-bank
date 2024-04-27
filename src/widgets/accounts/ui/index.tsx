@@ -19,7 +19,7 @@ import {
 
 import { AccountContent } from './content';
 
-const currencyFilters = [ALL_CURRENCY, RUB, USD, EUR] as const;
+const currencyFilters = [ALL_CURRENCY, RUB, USD, EUR];
 
 export const Accounts = () => {
     const [[currency, setCurrency], getSelectedAccounts] =

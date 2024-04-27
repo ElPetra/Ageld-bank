@@ -12,6 +12,7 @@ import { FilterBar } from 'src/entities/filter';
 
 import { CARDS_NOT_FOUND, CREATE_CARD } from '../../model';
 import { useCardsFilter } from '../../lib';
+
 import { FinanceCard } from './card';
 
 import './styles.scss';

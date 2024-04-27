@@ -6,7 +6,7 @@ export const objectTypeName = {
     head: 'Главный офис',
     branch: 'Отделение банка',
     exchange: 'Обменный пункт'
-} as const;
+};
 
 type ObjectType = keyof typeof objectTypeName;
 

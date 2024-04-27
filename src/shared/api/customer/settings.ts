@@ -1,7 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import { getActualAccessToken } from 'src/shared/lib';
-import { CustomerInfo } from 'src/shared/model';
+
+import type { CustomerInfo } from 'src/shared/model';
 
 const customerBaseUrl =
     import.meta.env.VITE_BASEURL_GATEWAY + '/api/v1/customer';

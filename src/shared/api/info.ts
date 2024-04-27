@@ -1,6 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import { BankInfo, infoBaseUrl } from 'src/shared/model';
+import { infoBaseUrl } from 'src/shared/model';
+
+import type { BankInfo } from 'src/shared/model';
 
 export const infoApi = createApi({
     reducerPath: 'infoApi',

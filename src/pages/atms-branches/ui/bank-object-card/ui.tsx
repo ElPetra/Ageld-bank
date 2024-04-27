@@ -1,7 +1,10 @@
 import { Card, Icon, Text } from 'src/shared/ui';
-import { BankObject, objectTypeName } from 'src/shared/model';
+
+import { objectTypeName } from 'src/shared/model';
 
 import { getAddress, getSchedule, getStatus } from '../../lib';
+
+import type { BankObject } from 'src/shared/model';
 
 import type { Dispatch, SetStateAction } from 'react';
 

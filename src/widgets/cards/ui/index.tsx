@@ -2,9 +2,9 @@ import { CARDS, CardsRouteName, RouteName } from 'src/shared/model';
 import { Text } from 'src/shared/ui';
 import { Menu } from 'src/features/menu';
 
-import { CardProduct } from './content';
-
 import { CARDS_TITLE } from '../model';
+
+import { CardProduct } from './content';
 
 export const Cards = () => {
     return (
