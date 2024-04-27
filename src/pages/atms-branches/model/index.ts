@@ -18,8 +18,8 @@ export const data: BankObject[] = [
     },
     {
         objectNumber: 2,
-        latitude: 58.953343,
-        longitude: 31.308006,
+        latitude: 59.863343,
+        longitude: 30.289006,
         region: 'Пыталовский',
         location: 'Пыталово',
         street: 'Пыталово',
@@ -31,8 +31,8 @@ export const data: BankObject[] = [
     },
     {
         objectNumber: 3,
-        latitude: 60.953343,
-        longitude: 29.309006,
+        latitude: 59.913343,
+        longitude: 30.427006,
         location: 'Пыталово',
         street: 'Пыталово',
         houseNumber: '4B',
