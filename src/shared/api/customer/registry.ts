@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import { customerBaseUrl } from 'src/shared/model';
+import { customerBaseUrl } from 'src/shared/model/customer';
 
 export const registryApi = createApi({
     reducerPath: 'registryApi',
