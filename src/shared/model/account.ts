@@ -1,8 +1,5 @@
 import type { Currency } from 'src/shared/model';
 
-export const accountBaseUrl =
-    import.meta.env.VITE_BASEURL_GATEWAY + '/api/v1/account';
-
 export interface AccountCreationData {
     type: string;
     currencyName: string;

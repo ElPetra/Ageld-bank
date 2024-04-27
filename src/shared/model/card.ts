@@ -2,9 +2,6 @@ import type { Currency } from 'src/shared/model';
 
 export type CardReceiveType = 'inOffice' | 'delivery';
 
-export const cardBaseUrl =
-    import.meta.env.VITE_BASEURL_GATEWAY + '/api/v1/card';
-
 export const typeCardName = {
     ALL: 'Все',
     CREDIT: 'Кредитная',

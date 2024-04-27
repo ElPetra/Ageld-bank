@@ -1,5 +1,7 @@
-import { customerBaseUrl } from '../model';
 import { localStorageApi } from '../api';
+
+const customerBaseUrl =
+    import.meta.env.VITE_BASEURL_GATEWAY + '/api/v1/customer';
 
 export const getActualAccessToken = async (): Promise<string> => {
     const token = localStorageApi.getAccessToken();

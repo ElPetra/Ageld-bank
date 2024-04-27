@@ -1,7 +1,9 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import { getActualAccessToken } from 'src/shared/lib';
-import { customerBaseUrl } from 'src/shared/model';
+
+const customerBaseUrl =
+    import.meta.env.VITE_BASEURL_GATEWAY + '/api/v1/customer';
 
 export const profileApi = createApi({
     reducerPath: 'profileApi',

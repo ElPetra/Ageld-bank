@@ -1,9 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import { getActualAccessToken } from 'src/shared/lib';
-import { accountBaseUrl } from 'src/shared/model';
 
 import type { AccountCreationData } from 'src/shared/model';
+
+const accountBaseUrl = import.meta.env.VITE_BASEURL_GATEWAY + '/api/v1/account';
 
 export const accountApi = createApi({
     reducerPath: 'accountApi',

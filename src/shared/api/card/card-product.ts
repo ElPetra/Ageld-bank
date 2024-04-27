@@ -1,8 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import { cardBaseUrl } from 'src/shared/model';
-
 import type { CardProduct, CardProductInfo } from 'src/shared/model';
+
+const cardBaseUrl = import.meta.env.VITE_BASEURL_GATEWAY + '/api/v1/card';
 
 export const cardProductApi = createApi({
     reducerPath: 'cardProductApi',
