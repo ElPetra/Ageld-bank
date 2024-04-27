@@ -8,7 +8,7 @@ import { RegistrationPage } from 'src/pages/registration';
 import { RecoveryPasswordPage } from 'src/pages/recovery';
 import { PersonalPage } from 'src/pages/personal';
 import { NotificationHistoryPage } from 'src/pages/notification';
-import { AccountPage } from 'src/pages/accounts';
+import { AccountPage } from 'src/pages/account';
 import { AccountCreation } from 'src/pages/account-creation';
 import { CardProductPage } from 'src/pages/card-product';
 import { ContactsPage } from 'src/pages/contacts';

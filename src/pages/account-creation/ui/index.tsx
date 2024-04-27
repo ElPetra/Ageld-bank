@@ -1,26 +1,22 @@
 import { useState } from 'react';
 
-import { MultiStepForm } from 'src/features/multi-step-form/index.js';
-import { ACCOUNTS, RouteName } from 'src/shared/model/index.js';
-import { MessageCard } from 'src/entities/message/index.js';
-import {
-    Container,
-    Preloader,
-    type SvgIconNames
-} from 'src/shared/ui/index.js';
+import { ACCOUNTS, RouteName } from 'src/shared/model';
+import { Container, Preloader, type SvgIconNames } from 'src/shared/ui';
+import { MessageCard } from 'src/entities/message';
+import { MultiStepForm } from 'src/features/multi-step-form';
 
 import {
     ACCOUNT_CREATION_FAILED,
     ACCOUNT_CREATION_SUCCESS,
     GO_TO_ACCOUNT_LIST
-} from '../model/index.js';
-import { AccountCreationForm } from './creation-form/index.js';
+} from '../model';
+import { AccountCreationForm } from './creation-form';
 import {
     Agreement,
     CurrencyVariant,
     ReceivingVariant,
     TypeVariant
-} from './parameters/index.js';
+} from './parameters';
 
 import './styles.scss';
 
@@ -69,7 +65,6 @@ export const AccountCreation = () => {
                             />
                         )
                     },
-
                     {
                         id: 3,
                         title: 'Выберите тип карты',
