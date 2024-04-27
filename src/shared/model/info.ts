@@ -1,5 +1,3 @@
-export const infoBaseUrl = import.meta.env.VITE_BASEURL_INFO + '/api/v1/info';
-
 export const objectTypeName = {
     ATM: 'Банкомат',
     kiosk: 'Инфокиоск',

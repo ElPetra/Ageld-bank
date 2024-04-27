@@ -1,5 +1,10 @@
 import { Text } from 'src/shared/ui';
-import { ACCOUNTS, AccountsRouteName, RouteName } from 'src/shared/model';
+import {
+    ACCOUNTS,
+    AccountsRouteName,
+    currencyFilters,
+    RouteName
+} from 'src/shared/model';
 import { FilterBar } from 'src/entities/filter';
 import { Menu } from 'src/features/menu';
 
@@ -10,16 +15,10 @@ import {
     OPENED_ACCOUNTS,
     OPEN_ACCOUNT_REQUEST,
     CLOSED_ACCOUNTS,
-    BLOCKED_ACCOUNTS,
-    ALL_CURRENCY,
-    RUB,
-    USD,
-    EUR
+    BLOCKED_ACCOUNTS
 } from '../model';
 
 import { AccountContent } from './content';
-
-const currencyFilters = [ALL_CURRENCY, RUB, USD, EUR];
 
 export const Accounts = () => {
     const [[currency, setCurrency], getSelectedAccounts] =

@@ -22,6 +22,11 @@ export interface Account {
     contractNumber: string;
 }
 
+export const ACCOUNT_TYPE = 'accountType';
+export const ACCOUNT_CURRENCY = 'accountCurrency';
+export const ACCOUNT_CARD_RECIEVING = 'accountcard';
+export const ACCOUNT_CARD_AGREEMENT = 'agreement';
+
 export const ACCOUNT_NUMBER_REPLACEMENT = '**********';
 
 export const CREDIT_ACCOUNT = 'Кредитный счет';
@@ -32,6 +37,8 @@ export const ACTIVE_ACCOUNT = 'Активный';
 export const CLOSED_ACCOUNT = 'Закрытый';
 export const BLOCKED_ACCOUNT = 'Заблокированный';
 export const REQUESTED_ACCOUNT = 'Заявка на открытие счета';
+
+export const CREATE_ACCOUNT = 'Открыть счет';
 
 export const CREATE_CURRENT_ACCOUNT_TITLE = 'Откройте счет не выходя из дома';
 export const CREATE_CREDIT_ACCOUNT_TITLE = 'Больше денег без лишних вложений';

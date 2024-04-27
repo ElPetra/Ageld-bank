@@ -1,9 +1,9 @@
 import { AccountCard } from 'src/entities/accounts';
 import { MessageCard } from 'src/entities/message';
 
-import { CREATE, RouteName } from 'src/shared/model';
+import { CREATE, CREATE_ACCOUNT, RouteName } from 'src/shared/model';
 
-import { ACCOUNTS_NOT_FOUND, CREATE_ACCOUNT } from '../../model';
+import { ACCOUNTS_NOT_FOUND } from '../../model';
 
 import type { Account } from 'src/shared/model';
 

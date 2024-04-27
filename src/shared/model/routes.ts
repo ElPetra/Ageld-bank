@@ -1,16 +1,17 @@
 import type { ComponentType } from 'react';
 
 export const RouteName = {
-    ACCOUNT_PAGE: '/accounts-product',
-    CARD_PAGE: '/cards-product',
     MAIN_PAGE: '',
     REGISTRATION_PAGE: '/signup',
     LOGIN_PAGE: '/signin',
-    PERSONAL_PAGE: '/personal',
-    NOTIFICATION_HISTORY_PAGE: '/notifications_history',
     RECOVERY_PASSWORD_PAGE: '/recovery',
-    CONTACTS_PAGE: '/contacts',
-    ATMS_AND_BRANCHES: '/locate-us'
+    PERSONAL_PAGE: '/personal',
+    CARD_PAGE: '/card',
+    ACCOUNT_PAGE: '/account',
+    CARD_PRODUCT_PAGE: '/card-product',
+    NOTIFICATION_HISTORY_PAGE: '/notifications_history',
+    ATMS_AND_BRANCHES: '/locate-us',
+    CONTACTS_PAGE: '/contacts'
 } as const;
 
 export interface RouteDescription {

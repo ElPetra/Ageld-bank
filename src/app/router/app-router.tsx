@@ -9,13 +9,12 @@ import { RecoveryPasswordPage } from 'src/pages/recovery';
 import { PersonalPage } from 'src/pages/personal';
 import { NotificationHistoryPage } from 'src/pages/notification';
 import { AccountPage } from 'src/pages/accounts';
-import { CardPage } from 'src/pages/cards';
+import { AccountCreation } from 'src/pages/account-creation';
+import { CardProductPage } from 'src/pages/card-product';
 import { ContactsPage } from 'src/pages/contacts';
 import { ATMsBranchesPage } from 'src/pages/atms-branches';
 
-import { AccountCreation } from 'src/widgets/account-creation';
 import { useAuth } from 'src/entities/user';
-
 import { AuthStatus, CREATE, RouteName } from 'src/shared/model';
 import { Preloader } from 'src/shared/ui';
 
@@ -27,7 +26,7 @@ const {
     MAIN_PAGE,
     REGISTRATION_PAGE,
     LOGIN_PAGE,
-    CARD_PAGE,
+    CARD_PRODUCT_PAGE,
     ACCOUNT_PAGE,
     PERSONAL_PAGE,
     NOTIFICATION_HISTORY_PAGE,
@@ -62,8 +61,8 @@ const publicRoutes: RouteDescription[] = [
         component: ATMsBranchesPage
     },
     {
-        path: CARD_PAGE + '/:id',
-        component: CardPage
+        path: CARD_PRODUCT_PAGE + '/:id',
+        component: CardProductPage
     }
 ];
 

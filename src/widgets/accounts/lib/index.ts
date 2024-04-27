@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 
-import { ALL_CURRENCY } from '../model';
+import { ALL_CURRENCY } from 'src/shared/model';
 
 import type { Account, Status } from 'src/shared/model';
 

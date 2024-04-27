@@ -3,8 +3,8 @@ import { Text } from 'src/shared/ui';
 import { Menu } from 'src/features/menu';
 
 import { CARDS_TITLE } from '../model';
-
-import { CardProduct } from './content';
+import { CardProducts } from './card-products';
+import { MyCards } from './my-cards';
 
 export const Cards = () => {
     return (
@@ -20,12 +20,12 @@ export const Cards = () => {
                     {
                         id: 1,
                         name: 'Мои карты',
-                        component: <div>Мои карты</div>
+                        component: <MyCards />
                     },
                     {
                         id: 2,
                         name: 'Карточные продукты',
-                        component: <CardProduct />
+                        component: <CardProducts />
                     }
                 ]}
             />

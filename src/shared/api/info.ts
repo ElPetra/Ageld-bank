@@ -1,8 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import { infoBaseUrl } from 'src/shared/model';
-
 import type { BankInfo } from 'src/shared/model';
+
+export const infoBaseUrl = import.meta.env.VITE_BASEURL_INFO + '/api/v1/info';
 
 export const infoApi = createApi({
     reducerPath: 'infoApi',

@@ -3,11 +3,17 @@ import { cloneElement, useState } from 'react';
 import { BackButton } from './go-back';
 import { FormCard } from './form-card';
 
-import type { Form } from 'src/shared/model';
-
+import type { ReactElement } from 'react';
 import type { VariantType } from './model';
 
 import './styles.scss';
+
+export interface Form {
+    id: number;
+    title: string;
+    component: ReactElement;
+    isResult?: boolean;
+}
 
 interface Props {
     variant: VariantType;
