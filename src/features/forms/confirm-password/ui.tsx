@@ -4,7 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 import { PasswordInput } from 'src/features/inputs';
 import { Button, Form } from 'src/shared/ui';
-import { useCreateAccountMutation, getUserId } from 'src/shared/api';
+import { useCreateProfileMutation, getUserId } from 'src/shared/api';
 import { getErrorMessage, getFieldErrorMessage } from 'src/shared/lib';
 import { RouteName } from 'src/shared/model';
 
@@ -31,13 +31,13 @@ export const ConfirmPasswordForm = ({ isLast, setFormStep, type }: Props) => {
         resolver: yupResolver<FieldValues>(confirmPasswordSchema)
     });
     const navigate = useNavigate();
-    const [createAccount, { error: createAccountError }] =
-        useCreateAccountMutation();
+    const [createProfile, { error: createProfileError }] =
+        useCreateProfileMutation();
 
     const onSubmit = (data: FieldValues) => {
         const customerId = getUserId();
         if (customerId) {
-            createAccount({
+            createProfile({
                 customerId: customerId,
                 password: data.password1
             })
@@ -60,7 +60,7 @@ export const ConfirmPasswordForm = ({ isLast, setFormStep, type }: Props) => {
                 label='password1'
                 variant='create'
                 isError={!!errors.password1?.message}
-                error={getErrorMessage(createAccountError)}
+                error={getErrorMessage(createProfileError)}
             />
             <PasswordInput
                 register={register}
