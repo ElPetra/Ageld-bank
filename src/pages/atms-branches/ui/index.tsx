@@ -49,6 +49,7 @@ export const ATMsBranchesPage = () => {
                                 <Card
                                     direction='column'
                                     borderRadius='extra-large'
+                                    padding='small-medium'
                                 >
                                     <Text weight='bold' size='m' display='flex'>
                                         Объекты в&nbsp;

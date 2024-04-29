@@ -3,7 +3,6 @@ import { useMemo, useState } from 'react';
 import { ALL_CURRENCY } from 'src/shared/model';
 
 import type { Account, Status } from 'src/shared/model';
-
 import type { Dispatch, SetStateAction } from 'react';
 
 export const useAccountsFilter = (

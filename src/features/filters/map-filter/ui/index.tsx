@@ -18,8 +18,9 @@ export const MapFilter = () => {
             >
                 <Card
                     gap='extra-small'
-                    direction='row'
+                    align='center'
                     borderRadius='extra-large'
+                    padding='small-medium'
                 >
                     <Icon icon='filter-lines' />
                     <Text weight='bold'>Фильтр</Text>
@@ -31,6 +32,7 @@ export const MapFilter = () => {
                         gap='medium'
                         direction='column'
                         borderRadius='extra-large'
+                        padding='small-medium'
                     >
                         <div className='map__filter__modal__button'>
                             <div>

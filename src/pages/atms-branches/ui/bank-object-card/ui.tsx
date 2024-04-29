@@ -34,6 +34,7 @@ export function BankObjectCard({
             }
             direction='column'
             borderRadius='extra-large'
+            padding='small-medium'
         >
             <div className='bank-object__name'>
                 <Icon icon='building' />

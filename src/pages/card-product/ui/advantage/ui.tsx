@@ -1,7 +1,6 @@
 import { Text } from 'src/shared/ui';
 
 import type { AdvantageConfig } from '../../model';
-
 import type { CardProductInfo } from 'src/shared/model';
 
 import './style.scss';

@@ -1,16 +1,8 @@
-.message-card {
-  background: var(--bg-quadruple);
-  border-radius: var(--extra-large-border-radius);
+.message {
   max-width: 580px;
   width: 100%;
-  padding: 40px;
   margin: 56px auto;
   white-space: pre-wrap;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 24px;
-  align-items: center;
 
   &__button {
     max-width: 340px;

@@ -1,7 +1,14 @@
 .card {
   display: flex;
   height: 100%;
-  padding: 16px 24px;
+
+  &.center {
+    align-items: center;
+  }
+
+  &.column {
+    flex-direction: column;
+  }
 
   &.extra-large-border-radius {
     border-radius: var(--extra-large-border-radius);
@@ -17,14 +24,6 @@
 
   &.small-border-radius {
     border-radius: var(--small-border-radius);
-  }
-
-  &.row {
-    align-items: center;
-  }
-
-  &.column {
-    flex-direction: column;
   }
 
   &.primary {
@@ -53,6 +52,26 @@
 
   &.extra-large-gap {
     gap: 60px;
+  }
+
+  &.small-padding {
+    padding: 16px;
+  }
+
+  &.small-medium-padding {
+    padding: 16px 24px;
+  }
+
+  &.medium-padding {
+    padding: 24px;
+  }
+
+  &.large-padding {
+    padding: 32px;
+  }
+
+  &.extra-large-padding {
+    padding: 40px;
   }
 
   &.active{
