@@ -32,6 +32,8 @@ export function BankObjectCard({
                     ? 'active'
                     : ''
             }
+            direction='column'
+            borderRadius='extra-large'
         >
             <div className='bank-object__name'>
                 <Icon icon='building' />

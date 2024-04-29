@@ -1,7 +1,7 @@
 .bank-contacts_contacts {
         padding: 40px 32px 40px 32px;
         gap: 32px;
-        border-radius: 16px;
+        border-radius: var(--extra-large-border-radius);
         display: flex;
         flex-direction: column;
         background-color: var(--bg-quadruple);

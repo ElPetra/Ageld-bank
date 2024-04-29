@@ -19,7 +19,7 @@
         display: flex;
         justify-content: space-between;
         gap: 32px;
-        border-radius: 16px;
+        border-radius: var(--extra-large-border-radius);
         padding: 32px;
         background: var(--bg-quadruple);
     }

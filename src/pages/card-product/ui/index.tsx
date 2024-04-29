@@ -18,51 +18,68 @@ export const CardProductPage = () => {
 
     return (
         <Container>
-            <BackButton />
-            {isLoading && <Preloader />}
-            {data ? (
-                <div className='finance-card__page'>
-                    <div className='finance-card__container'>
-                        <Image
-                            height={200}
-                            src={data.image}
-                            width={420}
-                            className='finance-card__image'
-                        />
-                        <div className='finance-card__info'>
-                            <div className='finance-card__title'>
-                                <Text size='l' weight='bold' color='quadruple'>
-                                    {data.nameProduct}
-                                </Text>
-                                <Icon
-                                    icon={getIconName(data.paymentSystem)}
-                                    className='finance-card__payment'
-                                    width={70}
-                                    height={30}
-                                />
-                            </div>
-                            <Advantages card={data} items={advantages} />
-
-                            <div className='finance-card__buttons'>
-                                <Button>Оформить</Button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className='advantages__title'>
-                        <Text size='l' weight='bold' color='quadruple'>
-                            Условия
-                        </Text>
-                    </div>
-                    <Advantages card={data} items={conditions} />
-                    <div className='advantages__title'>
-                        <Text size='l' weight='bold' color='quadruple'>
-                            Лимиты
-                        </Text>
-                    </div>
-                    <Advantages card={data} items={limits} />
-                </div>
+            {isLoading ? (
+                <Preloader />
             ) : (
-                <MessageCard text={CARDS_NOT_FOUND} buttonText={CREATE_CARD} />
+                <>
+                    <BackButton />
+                    {data ? (
+                        <div className='finance-card__page'>
+                            <div className='finance-card__container'>
+                                <Image
+                                    height={200}
+                                    src={data.image}
+                                    width={420}
+                                    className='finance-card__image'
+                                />
+                                <div className='finance-card__info'>
+                                    <div className='finance-card__title'>
+                                        <Text
+                                            size='l'
+                                            weight='bold'
+                                            color='quadruple'
+                                        >
+                                            {data.nameProduct}
+                                        </Text>
+                                        <Icon
+                                            icon={getIconName(
+                                                data.paymentSystem
+                                            )}
+                                            className='finance-card__payment'
+                                            width={70}
+                                            height={30}
+                                        />
+                                    </div>
+                                    <Advantages
+                                        card={data}
+                                        items={advantages}
+                                    />
+
+                                    <div className='finance-card__buttons'>
+                                        <Button>Оформить</Button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='advantages__title'>
+                                <Text size='l' weight='bold' color='quadruple'>
+                                    Условия
+                                </Text>
+                            </div>
+                            <Advantages card={data} items={conditions} />
+                            <div className='advantages__title'>
+                                <Text size='l' weight='bold' color='quadruple'>
+                                    Лимиты
+                                </Text>
+                            </div>
+                            <Advantages card={data} items={limits} />
+                        </div>
+                    ) : (
+                        <MessageCard
+                            text={CARDS_NOT_FOUND}
+                            buttonText={CREATE_CARD}
+                        />
+                    )}
+                </>
             )}
         </Container>
     );

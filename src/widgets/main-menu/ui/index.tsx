@@ -4,7 +4,6 @@ import { SearchForm } from 'src/features/forms';
 import { AccountCard } from 'src/entities/accounts';
 import { CardCard } from 'src/entities/cards';
 import { Button } from 'src/shared/ui';
-
 import {
     ACCOUNTS,
     CARDS,
@@ -26,7 +25,7 @@ const cards: Card[] = [
         number: '1234********3456',
         expirationAt: '2026-02-19',
         name: 'Базовая',
-        level: 'classic',
+        level: 'CLASSIC',
         paymentSystem: 'МИР',
         currency: 'rub'
     },
@@ -35,7 +34,7 @@ const cards: Card[] = [
         number: '1234********0011',
         expirationAt: '2027-11-19',
         name: 'Базовая',
-        level: 'classic-junior',
+        level: 'PLATINUM',
         paymentSystem: 'VISA',
         currency: 'eur'
     },
@@ -44,7 +43,7 @@ const cards: Card[] = [
         number: '1234********3322',
         expirationAt: '2027-05-19',
         name: 'Кредитная',
-        level: 'gold',
+        level: 'GOLD',
         paymentSystem: 'VISA',
         currency: 'usd'
     }

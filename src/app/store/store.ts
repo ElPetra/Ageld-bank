@@ -1,5 +1,6 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
+import { userReducer } from 'src/entities/user/user-slice';
 import {
     authApi,
     settingsApi,
@@ -10,12 +11,10 @@ import {
     cardProductApi
 } from 'src/shared/api';
 
-import userSlice from 'src/entities/user/user-slice';
-
-import { actionHandling } from './middleware/action-handling.js';
+import { actionHandling } from './middleware';
 
 const rootReducers = combineReducers({
-    user: userSlice,
+    user: userReducer,
     [authApi.reducerPath]: authApi.reducer,
     [settingsApi.reducerPath]: settingsApi.reducer,
     [profileApi.reducerPath]: profileApi.reducer,

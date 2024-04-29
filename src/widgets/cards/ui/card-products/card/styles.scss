@@ -9,7 +9,7 @@
     padding: 30px 20px;
     display: flex;
     justify-content: space-between;
-    border-radius: var(--border-radius);
+    border-radius: var(--medium-border-radius);
     position: relative;
   }
   &__info {
@@ -20,7 +20,7 @@
     width: 66%;
   }
   &__image {
-    border-radius: 12px;
+    border-radius: var(--large-border-radius);;
     align-self: baseline;
     object-fit: contain;
   }

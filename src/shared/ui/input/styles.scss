@@ -21,7 +21,7 @@
   .input {
     position: relative;
     padding: 16px 24px;
-    border-radius: var(--border-radius);
+    border-radius: var(--medium-border-radius);
     transition: box-shadow ease .5s;
 
     &.primary {
@@ -55,12 +55,7 @@
     &.medium {
       height: 72px;
     }
-    &.extra-small{
-      height: 56px;
-      width: 330px;
-      font-weight: 500;
-      font-size: 16px;
-    }
+
     &.small {
       height: 72px;
       max-width: 72px;
@@ -76,6 +71,13 @@
           line-height: 36px;
         }
       }
+    }
+
+    &.extra-small{
+      height: 56px;
+      width: 330px;
+      font-weight: 500;
+      font-size: 16px;
     }
 
     .label {

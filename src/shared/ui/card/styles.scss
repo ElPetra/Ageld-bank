@@ -1,9 +1,24 @@
 .card {
-  background-color: var(--bg-primary);
-  padding: 16px 24px;
-  height: 100%;
-  border-radius: var(--card-border-radius);
   display: flex;
+  height: 100%;
+  padding: 16px 24px;
+
+  &.extra-large-border-radius {
+    border-radius: var(--extra-large-border-radius);
+  }
+
+  &.large-border-radius {
+    border-radius: var(--large-border-radius);
+  }
+
+  &.medium-border-radius {
+    border-radius: var(--medium-border-radius);
+  }
+
+  &.small-border-radius {
+    border-radius: var(--small-border-radius);
+  }
+
   &.row {
     align-items: center;
   }
@@ -12,16 +27,32 @@
     flex-direction: column;
   }
 
-  &.small-gap {
+  &.primary {
+    background-color: var(--bg-primary);
+  }
+
+  &.quadruple {
+    background-color: var(--bg-quadruple);
+  }
+
+  &.extra-small-gap {
     gap: 8px;
   }
 
-  &.medium-gap {
+  &.small-gap {
     gap: 16px;
   }
 
-  &.large-gap {
+  &.medium-gap {
     gap: 24px;
+  }
+
+  &.large-gap {
+    gap: 32px;
+  }
+
+  &.extra-large-gap {
+    gap: 60px;
   }
 
   &.active{

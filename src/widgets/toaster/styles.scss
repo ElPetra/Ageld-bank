@@ -1,6 +1,6 @@
 .toaster {
     padding: 12px!important;
-    border-radius: 12px!important;
+    border-radius: var(--large-border-radius)!important;
     min-width: 300px!important;
     background: var(--bg-primary)!important;
     color: var(--text-primary)!important;

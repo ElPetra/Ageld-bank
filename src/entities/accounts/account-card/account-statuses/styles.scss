@@ -19,7 +19,7 @@
 
     &__status {
         padding: 4px 12px;
-        border-radius: 12px;
+        border-radius: var(--large-border-radius);
         width: max-content;
         display: flex;
         align-items: center;

@@ -1,7 +1,7 @@
 .bank-contacts_working-hours {
   padding: 40px 32px 40px 32px;
   gap: 40px;
-  border-radius: 16px;
+  border-radius: var(--extra-large-border-radius);
   display: flex;
   flex-wrap: wrap;
   background-color: var(--bg-quadruple);

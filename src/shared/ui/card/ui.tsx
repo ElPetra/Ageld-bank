@@ -1,19 +1,28 @@
 import type { ReactNode } from 'react';
 
 import './styles.scss';
+import cn from 'classnames';
 
 interface Props {
     children: ReactNode;
-    gap?: 'small' | 'medium' | 'large';
+    color?: 'primary' | 'quadruple';
+    gap?: 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large';
+    borderRadius?: 'small' | 'medium' | 'large' | 'extra-large';
     direction?: 'column' | 'row';
     status?: 'active' | '';
 }
 
 export const Card = ({
     children,
-    gap = 'medium',
-    direction = 'column',
+    color = 'primary',
+    gap = 'small',
+    borderRadius = 'medium',
+    direction = 'row',
     status
-}: Props) => (
-    <div className={`card ${gap}-gap ${direction} ${status}`}>{children}</div>
-);
+}: Props) => {
+    const cardClass = cn('card', color, direction, status, {
+        [`${borderRadius}-border-radius`]: true,
+        [`${gap}-gap`]: true
+    });
+    return <div className={cardClass}>{children}</div>;
+};

@@ -24,7 +24,9 @@ export const CardCard = ({ card }: Props) => {
                 </div>
             </div>
             <div className='card-card__second-row'>
-                <div className={`card-card__preview ${card.level}`}>
+                <div
+                    className={`card-card__preview ${card.level.toLowerCase()}`}
+                >
                     <div className='card-card__number'>
                         {card.number.substring(12, 16)}
                     </div>

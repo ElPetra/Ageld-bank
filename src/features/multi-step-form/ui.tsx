@@ -3,17 +3,9 @@ import { cloneElement, useState } from 'react';
 import { BackButton } from './go-back';
 import { FormCard } from './form-card';
 
-import type { ReactElement } from 'react';
-import type { VariantType } from './model';
+import type { Form, VariantType } from './model';
 
 import './styles.scss';
-
-export interface Form {
-    id: number;
-    title: string;
-    component: ReactElement;
-    isResult?: boolean;
-}
 
 interface Props {
     variant: VariantType;

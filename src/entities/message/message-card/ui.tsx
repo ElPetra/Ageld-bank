@@ -1,9 +1,9 @@
 import { RouteName } from 'src/shared/model';
 import { Button, Icon, Link, Text } from 'src/shared/ui';
 
-import './styles.scss';
-
 import type { SvgIconNames } from 'src/shared/ui';
+
+import './styles.scss';
 
 interface Props {
     text: string;

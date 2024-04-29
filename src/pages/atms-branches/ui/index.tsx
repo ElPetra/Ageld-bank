@@ -46,7 +46,10 @@ export const ATMsBranchesPage = () => {
                         </div>
                         <div className='map__forward-container__right'>
                             <div className='map__forward-container__col'>
-                                <Card>
+                                <Card
+                                    direction='column'
+                                    borderRadius='extra-large'
+                                >
                                     <Text weight='bold' size='m' display='flex'>
                                         Объекты в&nbsp;
                                         <Text
