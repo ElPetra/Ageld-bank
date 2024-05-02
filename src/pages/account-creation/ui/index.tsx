@@ -10,6 +10,7 @@ import {
     ACCOUNT_CREATION_SUCCESS,
     GO_TO_ACCOUNT_LIST
 } from '../model';
+
 import { AccountCreationForm } from './creation-form';
 import {
     Agreement,

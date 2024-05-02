@@ -2,12 +2,13 @@ import { useParams } from 'react-router-dom';
 
 import { useGetCardProductInfoQuery } from 'src/shared/api';
 import { getIconName } from 'src/shared/lib';
+import { CARDS_NOT_FOUND, CREATE_CARD } from 'src/shared/model';
 import { Button, Container, Icon, Image, Preloader, Text } from 'src/shared/ui';
 import { MessageCard } from 'src/entities/message';
 import { BackButton } from 'src/features/multi-step-form';
-import { CARDS_NOT_FOUND, CREATE_CARD } from 'src/widgets/cards/model';
 
 import { advantages, conditions, limits } from '../model';
+
 import { Advantages } from './advantage';
 
 export const CardProductPage = () => {

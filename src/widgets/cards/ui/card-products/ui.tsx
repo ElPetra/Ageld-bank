@@ -1,6 +1,8 @@
 import { Pagination, Preloader } from 'src/shared/ui';
 import {
+    CARDS_NOT_FOUND,
     CREATE,
+    CREATE_CARD,
     paymentSystemName,
     RouteName,
     typeCardName
@@ -9,8 +11,8 @@ import { useFetchCards } from 'src/shared/lib';
 import { MessageCard } from 'src/entities/message';
 import { FilterBar } from 'src/entities/filter';
 
-import { CARDS_NOT_FOUND, CREATE_CARD } from '../../model';
 import { useCardsFilter, usePaginationFilter } from '../../lib';
+
 import { FinanceCard } from './card';
 
 import './styles.scss';

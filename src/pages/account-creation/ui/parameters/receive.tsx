@@ -1,7 +1,10 @@
 import { Icon, Text, Radio } from 'src/shared/ui';
-import { ACCOUNT_CARD_RECIEVING, CardReceiveType } from 'src/shared/model';
+
+import { ACCOUNT_CARD_RECIEVING } from 'src/shared/model';
 
 import { CARD_DELIVERY_REQUIRED, GET_CARD_IN_OFFICE } from '../../model';
+
+import type { CardReceiveType } from 'src/shared/model';
 
 import type { FieldValues, UseFormRegister } from 'react-hook-form';
 import type { SvgIconNames } from 'src/shared/ui';

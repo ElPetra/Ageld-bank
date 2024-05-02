@@ -1,7 +1,8 @@
+import cn from 'classnames';
+
 import type { ReactNode } from 'react';
 
 import './styles.scss';
-import cn from 'classnames';
 
 interface Props {
     children: ReactNode;

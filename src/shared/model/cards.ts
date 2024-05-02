@@ -66,3 +66,7 @@ export interface CardProductInfo {
     conditionTransaction: number;
     conditionPay: number;
 }
+
+export const CREATE_CARD = 'Создать карту';
+export const CARDS_NOT_FOUND =
+    'На данный момент \n у Вас нет соответствующих карт';
