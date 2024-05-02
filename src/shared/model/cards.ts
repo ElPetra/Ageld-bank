@@ -23,13 +23,19 @@ export type PaymentSystemValues = (typeof paymentSystemName)[PaymentSystem];
 export type CardLevel = 'CLASSIC' | 'GOLD' | 'PLATINUM' | 'PREMIUM';
 
 export interface Card {
+    cardId: number;
+    cardName: string;
+    customerId: number;
+    accountNumber: string;
+    userLimit: number;
+    cardProductId: string;
+    cardNumber: string;
     balance: number;
-    number: string;
+    cvvEncrypted: string;
+    pinCodeHash: string;
+    statusName: string;
     expirationAt: string;
-    name: string;
-    level: CardLevel;
-    paymentSystem: PaymentSystemValues;
-    currency: Currency;
+    createdAt: string;
 }
 
 export interface CardProduct {
@@ -70,3 +76,5 @@ export interface CardProductInfo {
 export const CREATE_CARD = 'Создать карту';
 export const CARDS_NOT_FOUND =
     'На данный момент \n у Вас нет соответствующих карт';
+
+export const CARD_NUMBER_REPLACEMENT = ' **** **** ';
