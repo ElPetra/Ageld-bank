@@ -49,7 +49,7 @@ export const CodeForm = ({ isLast, setFormStep, phone }: Props) => {
             />
             <Button
                 variant='secondary'
-                size={'large'}
+                size='large'
                 type='submit'
                 disabled={!isDirty || !isValid}
             >

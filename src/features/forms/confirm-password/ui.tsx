@@ -42,20 +42,19 @@ export const ConfirmPasswordForm = ({
     const { createdProfile, error } = useAuth();
 
     const onSubmit = async (data: FieldValues) => {
-        let error: string | void = '';
         if (variant === 'registration') {
-            error = await createdProfile(phone, data.password1);
+            const error = await createdProfile(phone, data.password1);
+            if (!error && setFormStep && !isLast) {
+                setFormStep(curr => {
+                    return curr + 1;
+                });
+            }
         }
         if (variant === 'recovery') {
-            // error = await recoveredPassword(phone, data.password1);
+            //const error = await recoveredPassword(phone, data.password1);
             if (!error) {
                 navigate(RouteName.MAIN_PAGE);
             }
-        }
-        if (!error && setFormStep && !isLast) {
-            setFormStep(curr => {
-                return curr + 1;
-            });
         }
     };
 

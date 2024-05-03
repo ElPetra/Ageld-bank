@@ -44,14 +44,18 @@ export const PhoneForm = ({
     const onSubmit = async (data: FieldValues) => {
         const phone: string = data.phone.replace(/\D/gm, '');
         setPhone(phone);
-        let error: string | void = '';
+        let isError = false;
         if (variant === 'registration') {
-            error = await checkedMissRegistration(phone);
+            if (await checkedMissRegistration(phone)) {
+                isError = true;
+            }
         }
         if (variant === 'login' || variant === 'recovery') {
-            error = await checkedRegistration(phone);
+            if (await checkedRegistration(phone)) {
+                isError = true;
+            }
         }
-        if (!error && setFormStep && !isLast) {
+        if (!isError && setFormStep && !isLast) {
             setFormStep(curr => {
                 return curr + 1;
             });
