@@ -1,11 +1,11 @@
 import { useState } from 'react';
-
 import { useForm } from 'react-hook-form';
 
-import { PhoneInput } from 'src/features/inputs';
 import { useAuth } from 'src/entities/user';
 import { Button, Form, Link, Text } from 'src/shared/ui';
 import { RouteName } from 'src/shared/model';
+
+import { PhoneInput } from './phone-input';
 
 import type { FieldValues } from 'react-hook-form';
 import type { Dispatch, SetStateAction } from 'react';

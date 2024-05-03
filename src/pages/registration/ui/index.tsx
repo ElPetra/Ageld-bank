@@ -3,11 +3,7 @@ import { useState } from 'react';
 import { Container } from 'src/shared/ui';
 import { MessageCard } from 'src/entities/message';
 import { MultiStepForm } from 'src/features/multi-step-form';
-import {
-    PhoneForm,
-    SmsCodeForm,
-    ConfirmPasswordForm
-} from 'src/features/forms';
+import { PhoneForm, CodeForm, ConfirmPasswordForm } from 'src/features/forms';
 
 const SUCCESS = 'Кабинет пользователя успешно \n зарегистрирован';
 
@@ -31,7 +27,7 @@ export const RegistrationPage = () => {
                     {
                         id: 2,
                         title: 'Введите код из смс',
-                        component: <SmsCodeForm phone={phone} />
+                        component: <CodeForm phone={phone} />
                     },
                     {
                         id: 3,

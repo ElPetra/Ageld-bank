@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from 'src/app/store';
 
 import {
     localStorageApi,
+    useAddEmailMutation,
     useChangePasswordMutation,
     useCheckCodeMutation,
     useCheckMissRegistrationMutation,
@@ -38,6 +39,7 @@ export const useAuth = () => {
 
     const [changePassword] = useChangePasswordMutation();
     const [newEmail] = useNewEmailMutation();
+    const [addEmail] = useAddEmailMutation();
 
     const [createAccount] = useCreateAccountMutation();
 
@@ -181,6 +183,17 @@ export const useAuth = () => {
         [getError, getAccessToken, newEmail]
     );
 
+    const addedEmail = useCallback(
+        async (email: string): Promise<void | string> => {
+            const accessToken = await getAccessToken();
+            if (accessToken) {
+                const data = await addEmail({ email, accessToken });
+                return getError(data);
+            }
+        },
+        [getError, getAccessToken, addEmail]
+    );
+
     const createdAccount = useCallback(
         async (type: string, currencyName: string): Promise<void | string> => {
             const accessToken = await getAccessToken();
@@ -210,6 +223,7 @@ export const useAuth = () => {
         signedOut,
         changedPassword,
         changedEmail,
+        addedEmail,
         createdAccount,
         error,
         isLoading

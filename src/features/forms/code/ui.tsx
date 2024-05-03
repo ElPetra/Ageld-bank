@@ -1,8 +1,9 @@
 import { useForm } from 'react-hook-form';
 
-import { CodeInput } from 'src/features/inputs';
 import { useAuth } from 'src/entities/user';
 import { Button, Form, Text } from 'src/shared/ui';
+
+import { CodeInput } from './code-input';
 
 import type { FieldValues } from 'react-hook-form';
 import type { Dispatch, SetStateAction } from 'react';
@@ -13,7 +14,7 @@ interface Props {
     phone: string;
 }
 
-export const SmsCodeForm = ({ isLast, setFormStep, phone }: Props) => {
+export const CodeForm = ({ isLast, setFormStep, phone }: Props) => {
     const {
         register,
         handleSubmit,
@@ -21,13 +22,13 @@ export const SmsCodeForm = ({ isLast, setFormStep, phone }: Props) => {
     } = useForm<FieldValues>({
         mode: 'onTouched',
         reValidateMode: 'onChange',
-        defaultValues: { sms: '' }
+        defaultValues: { code: '' }
     });
 
     const { checkedCode, error } = useAuth();
 
     const onSubmit = async (data: FieldValues) => {
-        const code = data.sms.join('');
+        const code = data.code.join('');
         const error = await checkedCode(phone, code);
         if (!error && setFormStep && !isLast) {
             setFormStep(curr => {
@@ -41,7 +42,7 @@ export const SmsCodeForm = ({ isLast, setFormStep, phone }: Props) => {
                 На Ваш номер телефона отправлен 6-значный код подтверждения
             </Text>
             <CodeInput
-                label='sms'
+                label='code'
                 register={register}
                 error={error}
                 phone={phone}

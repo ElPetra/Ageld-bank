@@ -3,10 +3,11 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
-import { EmailInput } from 'src/features/inputs';
 import { useAuth } from 'src/entities/user';
 import { Button, Form } from 'src/shared/ui';
 import { getFieldErrorMessage } from 'src/shared/lib';
+
+import { EmailInput } from './email-input';
 
 import type { FieldValues } from 'react-hook-form';
 
@@ -44,10 +45,14 @@ export const EmailForm = ({ email }: Props) => {
     });
     const [isClicked, setIsClicked] = useState<boolean>(false);
 
-    const { changedEmail, error } = useAuth();
+    const { changedEmail, addedEmail, error } = useAuth();
 
     const onSubmit = async (data: FieldValues) => {
-        await changedEmail(data.email);
+        if (email) {
+            await changedEmail(data.email);
+        } else {
+            await addedEmail(data.email);
+        }
     };
 
     return (
