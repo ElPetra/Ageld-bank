@@ -1,24 +1,19 @@
 import { useForm } from 'react-hook-form';
 
 import { CodeInput } from 'src/features/inputs';
+import { useAuth } from 'src/entities/user';
 import { Button, Form, Text } from 'src/shared/ui';
-import { getErrorMessage } from 'src/shared/lib';
-import { localStorageApi, useCheckCodeMutation } from 'src/shared/api';
 
 import type { FieldValues } from 'react-hook-form';
 import type { Dispatch, SetStateAction } from 'react';
 
 interface Props {
-    variant?: 'login' | 'registration' | 'password-create';
     isLast?: boolean;
     setFormStep?: Dispatch<SetStateAction<number>>;
+    phone: string;
 }
 
-export const SmsCodeForm = ({
-    variant = 'login',
-    isLast,
-    setFormStep
-}: Props) => {
+export const SmsCodeForm = ({ isLast, setFormStep, phone }: Props) => {
     const {
         register,
         handleSubmit,
@@ -29,18 +24,15 @@ export const SmsCodeForm = ({
         defaultValues: { sms: '' }
     });
 
-    const [checkCode, { error: checkCodeError }] = useCheckCodeMutation();
-    const onSubmit = (data: FieldValues) => {
-        const sms = data.sms.join('');
-        const phone = localStorageApi.getUserPhone();
-        if (phone) {
-            checkCode({ phoneNumber: phone, code: sms })
-                .unwrap()
-                .then(() => {
-                    if (setFormStep && !isLast) {
-                        setFormStep(curr => curr + 1);
-                    }
-                });
+    const { checkedCode, error } = useAuth();
+
+    const onSubmit = async (data: FieldValues) => {
+        const code = data.sms.join('');
+        const error = await checkedCode(phone, code);
+        if (!error && setFormStep && !isLast) {
+            setFormStep(curr => {
+                return curr + 1;
+            });
         }
     };
     return (
@@ -51,15 +43,16 @@ export const SmsCodeForm = ({
             <CodeInput
                 label='sms'
                 register={register}
-                error={getErrorMessage(checkCodeError)}
+                error={error}
+                phone={phone}
             />
             <Button
                 variant='secondary'
-                size={variant === 'password-create' ? 'medium' : 'large'}
+                size={'large'}
                 type='submit'
                 disabled={!isDirty || !isValid}
             >
-                {variant === 'password-create' ? 'Сменить пароль' : 'Далее'}
+                Далее
             </Button>
         </Form>
     );

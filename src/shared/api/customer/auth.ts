@@ -15,39 +15,36 @@ export const authApi = createApi({
     }),
     tagTypes: ['Auth'],
     endpoints: builder => ({
-        generateCode: builder.mutation<string, { phoneNumber: string }>({
-            query: phoneNumber => ({
+        generateCode: builder.mutation<string, string>({
+            query: phone => ({
                 url: '/verification/generate_code',
                 method: 'POST',
-                body: { phoneNumber }
+                body: { phoneNumber: phone }
             })
         }),
-        checkCode: builder.mutation<
-            string,
-            { phoneNumber: string, code: string }
-        >({
-            query: ({ code, phoneNumber }) => ({
+        checkCode: builder.mutation<string, { phone: string, code: string }>({
+            query: ({ phone, code }) => ({
                 url: '/verification/check_code',
                 method: 'POST',
-                body: { phoneNumber, code }
+                body: { phoneNumber: phone, code }
             })
         }),
         checkRegistration: builder.mutation<void, string>({
-            query: phoneNumber => ({
+            query: phone => ({
                 url: '/check_registration',
                 method: 'POST',
-                body: { phoneNumber },
+                body: { phoneNumber: phone },
                 responseHandler: response => response.json()
             })
         }),
         generateToken: builder.mutation<
             { accessToken: string, refreshToken: string },
-            { phoneNumber: string, password: string }
+            { phone: string, password: string }
         >({
-            query: ({ phoneNumber, password }) => ({
+            query: ({ phone, password }) => ({
                 url: '/generate_token',
                 method: 'POST',
-                body: { phoneNumber, password },
+                body: { phoneNumber: phone, password },
                 responseHandler: response => response.json()
             })
         }),

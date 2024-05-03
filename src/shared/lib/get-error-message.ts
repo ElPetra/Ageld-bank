@@ -12,6 +12,7 @@ export const getFieldErrorMessage = (
     message:
         | string
         | FieldError
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         | Merge<FieldError, FieldErrorsImpl<any>>
         | undefined
 ): string => (typeof message === 'string' && message) || '';

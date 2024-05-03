@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { Container } from 'src/shared/ui';
 import { MessageCard } from 'src/entities/message';
 import { MultiStepForm } from 'src/features/multi-step-form';
@@ -10,6 +12,7 @@ import {
 const SUCCESS = 'Кабинет пользователя успешно \n зарегистрирован';
 
 export const RegistrationPage = () => {
+    const [phone, setPhone] = useState<string>('');
     return (
         <Container>
             <MultiStepForm
@@ -18,17 +21,27 @@ export const RegistrationPage = () => {
                     {
                         id: 1,
                         title: 'Регистрация',
-                        component: <PhoneForm variant='registration' />
+                        component: (
+                            <PhoneForm
+                                variant='registration'
+                                setPhone={setPhone}
+                            />
+                        )
                     },
                     {
                         id: 2,
                         title: 'Введите код из смс',
-                        component: <SmsCodeForm variant='registration' />
+                        component: <SmsCodeForm phone={phone} />
                     },
                     {
                         id: 3,
                         title: 'Придумайте пароль',
-                        component: <ConfirmPasswordForm />
+                        component: (
+                            <ConfirmPasswordForm
+                                variant='registration'
+                                phone={phone}
+                            />
+                        )
                     },
                     {
                         id: 4,

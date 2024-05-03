@@ -1,7 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import { getActualAccessToken } from 'src/shared/lib';
-
 import type { CustomerInfo } from 'src/shared/model';
 
 const settingsBaseUrl =
@@ -12,35 +10,48 @@ export const settingsApi = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: settingsBaseUrl,
         prepareHeaders: async headers => {
-            const token = await getActualAccessToken();
             headers.set('content-type', 'application/json');
-            headers.set('Authorization', 'Bearer ' + token);
             return headers;
         },
         responseHandler: response => response.text()
     }),
     tagTypes: ['Settings'],
     endpoints: builder => ({
-        addEmail: builder.mutation<void, { email: string }>({
-            query: ({ email }) => ({
+        addEmail: builder.mutation<
+            void,
+            { email: string, accessToken: string }
+        >({
+            query: ({ email, accessToken }) => ({
                 url: '/add_email',
                 method: 'POST',
+                headers: {
+                    Authorization: `Bearer ${accessToken}`
+                },
                 body: { email }
             }),
             invalidatesTags: ['Settings']
         }),
-        newEmail: builder.mutation<void, { email: string }>({
-            query: ({ email }) => ({
+        newEmail: builder.mutation<
+            void,
+            { email: string, accessToken: string }
+        >({
+            query: ({ email, accessToken }) => ({
                 url: '/new_email',
                 method: 'PATCH',
+                headers: {
+                    Authorization: `Bearer ${accessToken}`
+                },
                 body: { email }
             }),
             invalidatesTags: ['Settings']
         }),
-        getInfo: builder.query<CustomerInfo, void>({
-            query: () => ({
+        getInfo: builder.query<CustomerInfo, string>({
+            query: accessToken => ({
                 url: '/info',
                 method: 'GET',
+                headers: {
+                    Authorization: `Bearer ${accessToken}`
+                },
                 responseHandler: response => response.json()
             }),
             providesTags: ['Settings']

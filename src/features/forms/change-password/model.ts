@@ -1,8 +1,8 @@
 import * as yup from 'yup';
 
 export const changePasswordSchema = yup.object().shape({
-    current_password: yup.string().required('Обязательное поле'),
-    password1: yup
+    oldPassword: yup.string().required('Обязательное поле'),
+    newPassword: yup
         .string()
         .matches(
             new RegExp(
@@ -12,12 +12,12 @@ export const changePasswordSchema = yup.object().shape({
             'Новый пароль должен быть валидным'
         )
         .notOneOf(
-            [yup.ref('current_password')],
+            [yup.ref('oldPassword')],
             'Новый пароль должен отличаться от старого'
         )
         .required('Обязательное поле'),
-    password2: yup
+    newPassword2: yup
         .string()
-        .oneOf([yup.ref('password1')], 'Пароли не совпадают')
+        .oneOf([yup.ref('newPassword')], 'Пароли не совпадают')
         .required('Обязательное поле')
 });

@@ -4,10 +4,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 import { EmailInput } from 'src/features/inputs';
+import { useAuth } from 'src/entities/user';
 import { Button, Form } from 'src/shared/ui';
-import { getErrorMessage, getFieldErrorMessage } from 'src/shared/lib';
-
-import { useNewEmailMutation } from 'src/shared/api';
+import { getFieldErrorMessage } from 'src/shared/lib';
 
 import type { FieldValues } from 'react-hook-form';
 
@@ -29,7 +28,7 @@ const schema = yup
     .required();
 
 interface Props {
-    email?: string;
+    email: string;
 }
 export const EmailForm = ({ email }: Props) => {
     const {
@@ -44,31 +43,19 @@ export const EmailForm = ({ email }: Props) => {
         resolver: yupResolver<FieldValues>(schema)
     });
     const [isClicked, setIsClicked] = useState<boolean>(false);
-    const [isSend, setIsSend] = useState<boolean>(false);
-    const [newEmail, { error: newEmailError }] = useNewEmailMutation();
 
-    const onSubmit = (data: Props) => {
-        if (data.email) {
-            newEmail({
-                email: data.email
-            })
-                .unwrap()
-                .then(() => {
-                    setIsClicked(false);
-                });
-        }
+    const { changedEmail, error } = useAuth();
+
+    const onSubmit = async (data: FieldValues) => {
+        await changedEmail(data.email);
     };
+
     return (
         <Form onSubmit={handleSubmit(onSubmit)}>
             <EmailInput
                 label={'email'}
                 register={register}
-                error={
-                    isSend
-                        ? getFieldErrorMessage(errors.email?.message) ||
-                          getErrorMessage(newEmailError)
-                        : ''
-                }
+                error={getFieldErrorMessage(errors.email?.message) || error}
                 value={email || ''}
                 disabled={!isClicked}
             />
@@ -82,7 +69,6 @@ export const EmailForm = ({ email }: Props) => {
                         onClick={() => {
                             setValue('email', email || '');
                             setIsClicked(false);
-                            setIsSend(false);
                         }}
                     >
                         Отменить
@@ -93,9 +79,6 @@ export const EmailForm = ({ email }: Props) => {
                         width='max'
                         type='submit'
                         disabled={!isDirty || !isValid}
-                        onClick={() => {
-                            setIsSend(true);
-                        }}
                     >
                         Сохранить
                     </Button>

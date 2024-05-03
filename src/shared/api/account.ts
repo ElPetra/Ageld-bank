@@ -1,9 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import { getActualAccessToken } from 'src/shared/lib';
-
-import type { AccountCreationData } from 'src/shared/model';
-
 const accountBaseUrl = import.meta.env.VITE_BASEURL_GATEWAY + '/api/v1/account';
 
 export const accountApi = createApi({
@@ -11,19 +7,23 @@ export const accountApi = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: accountBaseUrl,
         prepareHeaders: async headers => {
-            const token = await getActualAccessToken();
             headers.set('content-type', 'application/json');
-            headers.set('Authorization', 'Bearer ' + token);
             return headers;
         },
         responseHandler: response => response.text()
     }),
     endpoints: builder => ({
-        createAccount: builder.mutation<string, AccountCreationData>({
-            query: reqBody => ({
+        createAccount: builder.mutation<
+            string,
+            { type: string, currencyName: string, accessToken: string }
+        >({
+            query: ({ type, currencyName, accessToken }) => ({
                 url: '/new_account',
                 method: 'POST',
-                body: reqBody
+                headers: {
+                    Authorization: `Bearer ${accessToken}`
+                },
+                body: { type, currencyName }
             })
         })
     })

@@ -2,9 +2,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 
 import { PasswordInput } from 'src/features/inputs';
+import { useAuth } from 'src/entities/user';
 import { Button, Form } from 'src/shared/ui';
-import { getFieldErrorMessage, getErrorMessage } from 'src/shared/lib';
-import { localStorageApi, useChangePasswordMutation } from 'src/shared/api';
+import { getFieldErrorMessage } from 'src/shared/lib';
 
 import { changePasswordSchema } from './model';
 
@@ -22,63 +22,55 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
     const {
         register,
         handleSubmit,
-        setValue,
         watch,
+        reset,
         formState: { errors, isDirty }
     } = useForm<FieldValues>({
         mode: 'onSubmit',
         reValidateMode: 'onSubmit',
-        defaultValues: { current_password: '', password1: '', password2: '' },
+        defaultValues: { oldPassword: '', newPassword: '', newPassword2: '' },
         resolver: yupResolver<FieldValues>(changePasswordSchema)
     });
 
-    const [changePassword, { error: changePasswordError }] =
-        useChangePasswordMutation();
-    const onSubmit = (data: FieldValues) => {
-        const accessToken = localStorageApi.getAccessToken();
-        if (accessToken) {
-            changePassword({
-                oldPassword: data.current_password,
-                newPassword: data.password1
-            })
-                .unwrap()
-                .then(() => {
-                    if (setFormStep && !isLast) {
-                        setFormStep(curr => curr + 1);
-                    }
-                    setValue('current_password', '');
-                    setValue('password1', '');
-                    setValue('password2', '');
-                });
+    const { changedPassword, error } = useAuth();
+
+    const onSubmit = async (data: FieldValues) => {
+        const error = await changedPassword(data.oldPassword, data.newPassword);
+        if (!error) {
+            reset();
+            if (setFormStep && !isLast) {
+                setFormStep(curr => curr + 1);
+            }
         }
     };
+
     return (
         <Form onSubmit={handleSubmit(onSubmit)}>
             <div className='change-password'>
                 <PasswordInput
                     size='medium'
                     register={register}
-                    label='current_password'
+                    label='oldPassword'
                     variant='confirm'
                     placeholder='Текущий пароль'
-                    error={getErrorMessage(changePasswordError)}
+                    error={error}
                 />
                 <PasswordInput
                     size='medium'
                     register={register}
-                    label='password1'
+                    label='newPassword'
                     variant='create'
                     placeholder='Новый пароль'
-                    isDirty={watch('password1') !== ''}
-                    error={getFieldErrorMessage(errors.password1?.message)}
+                    isDirty={watch('newPassword') !== ''}
+                    error={getFieldErrorMessage(errors.newPassword?.message)}
                 />
                 <PasswordInput
                     size='medium'
                     register={register}
-                    label='password2'
+                    label='newPassword2'
                     placeholder='Подтвердите новый пароль'
                     variant='confirm'
-                    error={getFieldErrorMessage(errors.password2?.message)}
+                    error={getFieldErrorMessage(errors.newPassword2?.message)}
                 />
             </div>
             <Button

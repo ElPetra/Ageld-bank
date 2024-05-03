@@ -1,29 +1,26 @@
 import { useState } from 'react';
+
 import { useForm } from 'react-hook-form';
 
 import { PhoneInput } from 'src/features/inputs';
+import { useAuth } from 'src/entities/user';
 import { Button, Form, Link, Text } from 'src/shared/ui';
 import { RouteName } from 'src/shared/model';
-import { getErrorMessage } from 'src/shared/lib';
-import {
-    localStorageApi,
-    useCheckMissRegistrationMutation,
-    useCheckRegistrationMutation,
-    useGenerateCodeMutation
-} from 'src/shared/api';
 
-import type { Dispatch, SetStateAction } from 'react';
 import type { FieldValues } from 'react-hook-form';
+import type { Dispatch, SetStateAction } from 'react';
 
 interface Props {
     variant?: 'login' | 'registration' | 'recovery';
     isLast?: boolean;
     setFormStep?: Dispatch<SetStateAction<number>>;
+    setPhone: Dispatch<SetStateAction<string>>;
 }
 export const PhoneForm = ({
     variant = 'login',
     isLast,
-    setFormStep
+    setFormStep,
+    setPhone
 }: Props) => {
     const [clickedLinks, setClickedLinks] = useState<number[]>([]);
     const {
@@ -36,54 +33,28 @@ export const PhoneForm = ({
         reValidateMode: 'onChange',
         defaultValues: { phone: '' }
     });
-    const [checkRegistration, { error: checkRegistrationError }] =
-        useCheckRegistrationMutation();
-    const [checkMissRegistration, { error: checkMissRegistrationError }] =
-        useCheckMissRegistrationMutation();
-    const [generateCode, { error: generateCodeError }] =
-        useGenerateCodeMutation();
+    const { checkedMissRegistration, checkedRegistration, error } = useAuth();
+
     const handleLinkClick = (linkId: number) => {
         if (!clickedLinks.includes(linkId)) {
             setClickedLinks([...clickedLinks, linkId]);
         }
     };
     const allLinksClicked = clickedLinks.length === 2;
-    const onSubmit = (data: FieldValues) => {
-        const phone = data.phone.replace(/\D/gm, '');
+    const onSubmit = async (data: FieldValues) => {
+        const phone: string = data.phone.replace(/\D/gm, '');
+        setPhone(phone);
+        let error: string | void = '';
         if (variant === 'registration') {
-            checkMissRegistration(phone)
-                .unwrap()
-                .then(checkMissRegistrationData => {
-                    generateCode(phone)
-                        .unwrap()
-                        .then(() => {
-                            localStorageApi.setCustomerData(
-                                phone,
-                                checkMissRegistrationData.customerId
-                            );
-                            if (setFormStep && !isLast) {
-                                setFormStep(curr => {
-                                    return curr + 1;
-                                });
-                            }
-                        });
-                });
+            error = await checkedMissRegistration(phone);
         }
-        if (variant === 'login') {
-            checkRegistration(phone)
-                .unwrap()
-                .then(() =>
-                    generateCode(phone)
-                        .unwrap()
-                        .then(() => {
-                            localStorageApi.setUserPhone(phone);
-                            if (setFormStep && !isLast) {
-                                setFormStep(curr => {
-                                    return curr + 1;
-                                });
-                            }
-                        })
-                );
+        if (variant === 'login' || variant === 'recovery') {
+            error = await checkedRegistration(phone);
+        }
+        if (!error && setFormStep && !isLast) {
+            setFormStep(curr => {
+                return curr + 1;
+            });
         }
     };
     return (
@@ -93,11 +64,7 @@ export const PhoneForm = ({
                 label={'phone'}
                 register={register}
                 isError={!!errors?.phone}
-                error={
-                    getErrorMessage(checkRegistrationError) ||
-                    getErrorMessage(checkMissRegistrationError) ||
-                    getErrorMessage(generateCodeError)
-                }
+                error={error}
             />
             {variant === 'registration' && (
                 <>

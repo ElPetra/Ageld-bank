@@ -1,13 +1,15 @@
 import { Preloader } from 'src/shared/ui';
-import { Address, Contacts, UserCard } from 'src/entities/user';
+import { Address, Contacts, useAuth, UserCard } from 'src/entities/user';
 import { EmailForm } from 'src/features/forms';
 import { useGetInfoQuery } from 'src/shared/api';
 
 export const PersonalData = () => {
-    const { data, isLoading } = useGetInfoQuery();
-    return (
+    const { accessToken } = useAuth();
+    const { data, isLoading } = useGetInfoQuery(accessToken);
+    return isLoading ? (
+        <Preloader />
+    ) : (
         <>
-            {isLoading && <Preloader />}
             {data && (
                 <UserCard
                     fullName={`${data.lastName} ${data.firstName} ${data.middleName}`}

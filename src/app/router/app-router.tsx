@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import { Layout } from 'src/pages/layout';
@@ -93,9 +93,13 @@ const authRoutes: RouteDescription[] = [
 
 export const AppRouter = () => {
     const { authChecked, authStatus } = useAuth();
+    const isSend = useRef<boolean>(false);
 
     useEffect(() => {
-        authChecked();
+        if (!isSend.current) {
+            authChecked();
+            isSend.current = true;
+        }
     }, [authChecked]);
 
     return authStatus === AuthStatus.Loading ? (
