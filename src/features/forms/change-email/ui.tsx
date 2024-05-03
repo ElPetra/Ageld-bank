@@ -35,7 +35,7 @@ export const EmailForm = ({ email }: Props) => {
     const {
         register,
         handleSubmit,
-        setValue,
+        reset,
         formState: { errors, isDirty, isValid }
     } = useForm<FieldValues>({
         mode: 'onTouched',
@@ -45,7 +45,7 @@ export const EmailForm = ({ email }: Props) => {
     });
     const [isClicked, setIsClicked] = useState<boolean>(false);
 
-    const { changedEmail, addedEmail, error } = useAuth();
+    const { changedEmail, addedEmail, error, setError } = useAuth();
 
     const onSubmit = async (data: FieldValues) => {
         if (email) {
@@ -72,7 +72,8 @@ export const EmailForm = ({ email }: Props) => {
                         width='max'
                         type='submit'
                         onClick={() => {
-                            setValue('email', email || '');
+                            reset();
+                            setError('');
                             setIsClicked(false);
                         }}
                     >

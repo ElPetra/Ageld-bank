@@ -225,6 +225,7 @@ export const useAuth = () => {
         changedEmail,
         addedEmail,
         createdAccount,
+        setError,
         error,
         isLoading
     };
