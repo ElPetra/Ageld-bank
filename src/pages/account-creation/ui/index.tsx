@@ -1,8 +1,9 @@
 import { useState } from 'react';
 
 import { ACCOUNTS, RouteName } from 'src/shared/model';
-import { Container, Preloader, type SvgIconNames } from 'src/shared/ui';
+import { Container, Preloader } from 'src/shared/ui';
 import { MessageCard } from 'src/entities/message';
+import { useAuth } from 'src/entities/user';
 import { MultiStepForm } from 'src/features/multi-step-form';
 
 import {
@@ -11,36 +12,16 @@ import {
     GO_TO_ACCOUNT_LIST
 } from '../model';
 
-import { AccountCreationForm } from './creation-form';
-import {
-    Agreement,
-    CurrencyVariant,
-    ReceivingVariant,
-    TypeVariant
-} from './parameters';
-
-import './styles.scss';
-
-interface Match {
-    text: string;
-    icon: SvgIconNames;
-}
-
-const resultMatcher: Record<string, Match> = {
-    failed: {
-        text: ACCOUNT_CREATION_FAILED,
-        icon: 'failure-lady'
-    },
-    success: {
-        text: ACCOUNT_CREATION_SUCCESS,
-        icon: 'documents-folder-lady'
-    }
-};
+import { TypeVariant } from './type';
+import { CurrencyVariant } from './currency';
+import { ReceivingVariant } from './receive';
+import { Agreement } from './agreement';
 
 export const AccountCreation = () => {
-    const [result, setResult] = useState<'failed' | 'success' | 'loading'>(
-        'loading'
-    );
+    const [type, setType] = useState<string>('');
+    const [currencyName, setCurrencyName] = useState<string>('');
+
+    const { createdAccount, error, isLoading } = useAuth();
     return (
         <Container>
             <MultiStepForm
@@ -49,61 +30,57 @@ export const AccountCreation = () => {
                     {
                         id: 1,
                         title: 'Выберите тип счета',
-                        component: (
-                            <AccountCreationForm
-                                parameter='accountType'
-                                Element={TypeVariant}
-                            />
-                        )
+                        component: <TypeVariant setType={setType} />
                     },
                     {
                         id: 2,
                         title: 'Выберите валюту',
                         component: (
-                            <AccountCreationForm
-                                parameter='accountCurrency'
-                                Element={CurrencyVariant}
+                            <CurrencyVariant
+                                setCurrencyName={setCurrencyName}
                             />
                         )
                     },
                     {
                         id: 3,
                         title: 'Выберите тип карты',
-                        component: (
-                            <AccountCreationForm
-                                parameter='accountcard'
-                                Element={ReceivingVariant}
-                            />
-                        )
+                        component: <ReceivingVariant />
                     },
                     {
                         id: 4,
                         title: 'Ознакомьтесь с условиями счета',
                         component: (
-                            <AccountCreationForm
-                                parameter='agreement'
-                                Element={Agreement}
-                                setResult={setResult}
+                            <Agreement
+                                createdAccount={createdAccount}
+                                type={type}
+                                currencyName={currencyName}
                             />
                         )
                     },
                     {
                         id: 5,
                         title: '',
-                        component:
-                            result === 'loading' ? (
-                                <Preloader />
-                            ) : (
-                                <MessageCard
-                                    text={resultMatcher[result].text}
-                                    width={275}
-                                    icon={resultMatcher[result].icon}
-                                    buttonText={GO_TO_ACCOUNT_LIST}
-                                    buttonLink={
-                                        RouteName.MAIN_PAGE + '/' + ACCOUNTS
-                                    }
-                                />
-                            ),
+                        component: isLoading ? (
+                            <Preloader />
+                        ) : (
+                            <MessageCard
+                                text={
+                                    error
+                                        ? ACCOUNT_CREATION_FAILED
+                                        : ACCOUNT_CREATION_SUCCESS
+                                }
+                                width={275}
+                                icon={
+                                    error
+                                        ? 'failure-lady'
+                                        : 'documents-folder-lady'
+                                }
+                                buttonText={GO_TO_ACCOUNT_LIST}
+                                buttonLink={
+                                    RouteName.MAIN_PAGE + '/' + ACCOUNTS
+                                }
+                            />
+                        ),
                         isResult: true
                     }
                 ]}

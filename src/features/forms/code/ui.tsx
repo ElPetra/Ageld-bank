@@ -1,14 +1,11 @@
-import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
-import { PasswordInput } from 'src/features/inputs';
 import { useAuth } from 'src/entities/user';
-import { Button, Form } from 'src/shared/ui';
+import { Button, Form, Text } from 'src/shared/ui';
 
-import { RouteName } from 'src/shared/model';
+import { CodeInput } from './code-input';
 
 import type { FieldValues } from 'react-hook-form';
-
 import type { Dispatch, SetStateAction } from 'react';
 
 interface Props {
@@ -17,7 +14,7 @@ interface Props {
     phone: string;
 }
 
-export const EnterPasswordForm = ({ isLast, setFormStep, phone }: Props) => {
+export const CodeForm = ({ isLast, setFormStep, phone }: Props) => {
     const {
         register,
         handleSubmit,
@@ -25,34 +22,38 @@ export const EnterPasswordForm = ({ isLast, setFormStep, phone }: Props) => {
     } = useForm<FieldValues>({
         mode: 'onTouched',
         reValidateMode: 'onChange',
-        defaultValues: { password: '' }
+        defaultValues: { code: '' }
     });
-    const navigate = useNavigate();
 
-    const { signedIn, error } = useAuth();
+    const { checkedCode, error } = useAuth();
 
     const onSubmit = async (data: FieldValues) => {
-        const error = await signedIn(phone, data.password);
-        if (!error) {
-            navigate(RouteName.MAIN_PAGE + '/');
-        }
+        const code = data.code.join('');
+        const error = await checkedCode(phone, code);
         if (!error && setFormStep && !isLast) {
             setFormStep(curr => {
                 return curr + 1;
             });
         }
     };
-
     return (
         <Form onSubmit={handleSubmit(onSubmit)}>
-            <PasswordInput register={register} label='password' error={error} />
+            <Text size='xs'>
+                На Ваш номер телефона отправлен 6-значный код подтверждения
+            </Text>
+            <CodeInput
+                label='code'
+                register={register}
+                error={error}
+                phone={phone}
+            />
             <Button
                 variant='secondary'
                 size='large'
                 type='submit'
                 disabled={!isDirty || !isValid}
             >
-                Продолжить
+                Далее
             </Button>
         </Form>
     );
