@@ -66,8 +66,7 @@ export const ReceivingVariant = ({ isLast, setFormStep }: Props) => {
                                 value={el}
                                 id={el}
                                 field='receiving'
-                            />
-                            <label htmlFor={el}>
+                            >
                                 <div className='create__account__card input'>
                                     <Icon
                                         width={353}
@@ -78,7 +77,7 @@ export const ReceivingVariant = ({ isLast, setFormStep }: Props) => {
                                         {receiveVariants[el].text}
                                     </Text>
                                 </div>
-                            </label>
+                            </Radio>
                         </div>
                     ))}
                 </div>

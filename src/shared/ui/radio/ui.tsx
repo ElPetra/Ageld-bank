@@ -1,25 +1,27 @@
+import type { InputHTMLAttributes, ReactNode } from 'react';
 import type { FieldValues, UseFormRegister } from 'react-hook-form';
-import type { AccountType, CardReceiveType, Currency } from 'src/shared/model';
 
 import './styles.scss';
 
-interface Props {
+interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
     register: UseFormRegister<FieldValues>;
-    value: AccountType | Currency | CardReceiveType;
-    id: string;
     field: string;
+    children?: ReactNode;
 }
 
-export const Radio = ({ register, value, id, field }: Props) => {
+export const Radio = ({ register, id, field, children, ...props }: Props) => {
     return (
-        <input
-            {...register(field, {
-                required: true
-            })}
-            type='radio'
-            value={value}
-            id={id}
-            className='hidden'
-        />
+        <>
+            <input
+                {...register(field, {
+                    required: true
+                })}
+                type='radio'
+                className='hidden'
+                id={id}
+                {...props}
+            />
+            <label htmlFor={id}>{children}</label>
+        </>
     );
 };

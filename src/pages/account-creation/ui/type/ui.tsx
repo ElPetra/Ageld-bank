@@ -89,8 +89,7 @@ export const TypeVariant = ({ isLast, setFormStep, setType }: Props) => {
                                 value={el}
                                 id={el}
                                 field='type'
-                            />
-                            <label htmlFor={el}>
+                            >
                                 <div className='create__account__card input'>
                                     <div className='create__account__card__header'>
                                         <Text
@@ -111,7 +110,7 @@ export const TypeVariant = ({ isLast, setFormStep, setType }: Props) => {
                                         icon={typeMatcher[el].icon}
                                     />
                                 </div>
-                            </label>
+                            </Radio>
                         </div>
                     ))}
                 </div>

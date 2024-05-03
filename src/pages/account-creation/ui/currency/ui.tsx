@@ -56,15 +56,14 @@ export const CurrencyVariant = ({
                                 value={el.value}
                                 id={el.value}
                                 field='currencyName'
-                            />
-                            <label htmlFor={el.value}>
+                            >
                                 <div className='create__account__card__currency input'>
                                     <Icon icon={el.value} width={40} />
                                     <Text size='m' tag='h2' weight='medium'>
                                         {el.text}
                                     </Text>
                                 </div>
-                            </label>
+                            </Radio>
                         </div>
                     ))}
                 </div>
