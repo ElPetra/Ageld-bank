@@ -54,6 +54,7 @@ export const CardProductPage = () => {
                                     <Advantages
                                         card={data}
                                         items={advantages}
+                                        type='card-product'
                                     />
 
                                     <div className='finance-card__buttons'>

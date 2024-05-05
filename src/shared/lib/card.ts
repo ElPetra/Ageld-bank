@@ -1,13 +1,23 @@
 import { useGetCardProductsQuery } from 'src/shared/api';
-
-export const getIconName = (payment: string) => {
-    switch (payment) {
+export const getIconName = (paymentSystem: string) => {
+    switch (paymentSystem) {
         case 'VISA':
             return 'visa';
         case 'МИР':
             return 'mir';
         default:
             return 'visa';
+    }
+};
+
+export const getStatusName = (status: string) => {
+    switch (status) {
+        case 'ACTIVE':
+            return 'Активная';
+        case 'BLOCKED':
+            return 'Заблокированная';
+        default:
+            return 'Неизвестный статус';
     }
 };
 

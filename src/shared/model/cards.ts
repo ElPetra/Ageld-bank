@@ -1,4 +1,4 @@
-import type { Currency } from 'src/shared/model';
+import type { SvgIconNames } from 'src/shared/ui/index.js';
 
 export type CardReceiveType = 'inOffice' | 'delivery';
 
@@ -9,7 +9,6 @@ export const typeCardName = {
 };
 
 export type TypeCard = keyof typeof typeCardName;
-//export type TypeCardValues = (typeof typeCardName)[TypeCard];
 
 export const paymentSystemName = {
     ALL: 'Все',
@@ -21,6 +20,11 @@ export type PaymentSystem = keyof typeof paymentSystemName;
 export type PaymentSystemValues = (typeof paymentSystemName)[PaymentSystem];
 
 export type CardLevel = 'CLASSIC' | 'GOLD' | 'PLATINUM' | 'PREMIUM';
+export interface Detail {
+    id: number;
+    name: string;
+    icon: SvgIconNames;
+}
 
 export interface Card {
     cardId: number;
@@ -36,6 +40,10 @@ export interface Card {
     statusName: string;
     expirationAt: string;
     createdAt: string;
+    paymentSystem: PaymentSystemValues;
+    isVirtual: boolean;
+    level: CardLevel;
+    typeCard: TypeCard;
 }
 
 export interface CardProduct {

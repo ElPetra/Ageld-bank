@@ -1,13 +1,22 @@
 .advantages {
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 25px;
-  gap: 25px;
+  gap: 10px;
+  margin-bottom: 8px;
   &__title {
     margin-bottom: 20px;
     margin-top: 30px;
   }
+  &__container {
+    margin-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
 }
 .advantage {
-  width: calc((100% - 0px) / 4);
+  width: calc((100% - 20px) / 3);
+  &__container {
+    display: flex;
+  }
 }

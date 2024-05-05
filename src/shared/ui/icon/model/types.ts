@@ -11,6 +11,7 @@ export type SvgIconNames =
     | 'clear'
     | 'telegram'
     | 'copy'
+    | 'copy-grey'
     | 'close'
     | 'odnoklassniki'
     | 'warning'
@@ -64,4 +65,11 @@ export type SvgIconNames =
     | 'mir'
     | 'visa'
     | 'filter-lines'
-    | 'building';
+    | 'building'
+    | 'bill-details'
+    | 'briefcase'
+    | 'settings'
+    | 'add-to-card'
+    | 'password'
+    | 'forbid-operations'
+    | 'lock';
