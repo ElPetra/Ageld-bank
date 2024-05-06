@@ -3,7 +3,7 @@ import { BackButton } from 'src/features/multi-step-form';
 import { actionsItems, data, infoItems } from 'src/pages/card/model';
 import { useParams } from 'react-router-dom';
 import { DetailsItem } from 'src/pages/card/ui/details-item';
-import { CardInfo } from 'src/pages/card/ui/info';
+import { CardInfo } from 'src/entities/cards/card-info';
 
 export const CardPage = () => {
     const { id } = useParams<{ id: string }>();
@@ -21,7 +21,7 @@ export const CardPage = () => {
                             width={420}
                             className='finance-card__image'
                         />
-                        <CardInfo card={card} />
+                        <CardInfo card={card} type='card' />
                     </div>
                     <div className='advantages__title'>
                         <Text size='m' weight='medium' color='blue'>

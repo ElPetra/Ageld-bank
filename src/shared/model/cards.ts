@@ -1,4 +1,4 @@
-import type { SvgIconNames } from 'src/shared/ui/index.js';
+import type { SvgIconNames } from 'src/shared/ui';
 
 export type CardReceiveType = 'inOffice' | 'delivery';
 

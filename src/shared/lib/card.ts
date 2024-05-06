@@ -10,7 +10,7 @@ export const getIconName = (paymentSystem: string) => {
     }
 };
 
-export const getStatusName = (status: string) => {
+export const getStatusName = (status: string | null) => {
     switch (status) {
         case 'ACTIVE':
             return 'Активная';
