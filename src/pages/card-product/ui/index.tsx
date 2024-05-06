@@ -76,7 +76,7 @@ export const CardProductPage = () => {
                         </div>
                     ) : (
                         <MessageCard
-                            text={CARDS_NOT_FOUND}
+                            title={CARDS_NOT_FOUND}
                             buttonText={CREATE_CARD}
                         />
                     )}

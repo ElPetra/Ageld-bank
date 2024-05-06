@@ -11,17 +11,16 @@ interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
 
 export const Radio = ({ register, id, field, children, ...props }: Props) => {
     return (
-        <>
+        <div className='radio'>
             <input
                 {...register(field, {
                     required: true
                 })}
                 type='radio'
-                className='hidden'
                 id={id}
                 {...props}
             />
             <label htmlFor={id}>{children}</label>
-        </>
+        </div>
     );
 };

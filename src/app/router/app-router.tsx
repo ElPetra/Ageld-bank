@@ -10,7 +10,7 @@ import { PersonalPage } from 'src/pages/personal';
 import { NotificationHistoryPage } from 'src/pages/notification';
 import { CardPage } from 'src/pages/card';
 import { AccountPage } from 'src/pages/account';
-import { AccountCreation } from 'src/pages/account-creation';
+import { AccountCreationPage } from 'src/pages/account-creation';
 import { CardProductPage } from 'src/pages/card-product';
 import { ContactsPage } from 'src/pages/contacts';
 import { ATMsBranchesPage } from 'src/pages/atms-branches';
@@ -71,7 +71,7 @@ const publicRoutes: RouteDescription[] = [
 const authRoutes: RouteDescription[] = [
     {
         path: ACCOUNT_PAGE + '/' + CREATE,
-        component: AccountCreation
+        component: AccountCreationPage
     },
     {
         path: ACCOUNT_PAGE + '/:id',

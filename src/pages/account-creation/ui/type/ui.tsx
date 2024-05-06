@@ -1,7 +1,7 @@
-import { useForm } from 'react-hook-form';
+import { Fragment } from 'react';
 
-import { Card } from 'src/shared/ui';
-import { Button, Form, Icon, Radio, Text } from 'src/shared/ui';
+import { Columns } from 'src/shared/ui';
+import { MessageCard } from 'src/entities/message';
 import {
     CREATE_ACCOUNT,
     CREATE_CREDIT_ACCOUNT_TITLE,
@@ -13,11 +13,8 @@ import {
 } from 'src/shared/model';
 
 import type { Dispatch, SetStateAction } from 'react';
-import type { FieldValues } from 'react-hook-form';
 import type { SvgIconNames } from 'src/shared/ui';
 import type { AccountType } from 'src/shared/model';
-
-import './styles.scss';
 
 interface MatchResult {
     type: string;
@@ -52,72 +49,30 @@ interface Props {
 }
 
 export const TypeVariant = ({ isLast, setFormStep, setType }: Props) => {
-    const {
-        register,
-        handleSubmit,
-        formState: { isDirty }
-    } = useForm<FieldValues>({
-        defaultValues: { type: '' },
-        mode: 'onTouched',
-        reValidateMode: 'onChange'
-    });
-
-    const onSubmit = (data: FieldValues) => {
-        setType(data.type);
-        if (setFormStep && !isLast) {
-            setFormStep(curr => {
-                return curr + 1;
-            });
-        }
-    };
-
     return (
-        <Form onSubmit={handleSubmit(onSubmit)}>
-            <Card
-                color='quadruple'
-                gap='medium'
-                padding='large'
-                borderRadius='extra-large'
-                direction='column'
-                align='center'
-            >
-                <div className='create__account__variants'>
-                    {accountTypes.map(el => (
-                        <div key={el} className='field'>
-                            <Radio
-                                register={register}
-                                value={el}
-                                id={el}
-                                field='type'
-                            >
-                                <div className='create__account__card input'>
-                                    <div className='create__account__card__header'>
-                                        <Text
-                                            size='m'
-                                            tag='h2'
-                                            align='center'
-                                            weight='medium'
-                                        >
-                                            {typeMatcher[el].type}
-                                        </Text>
-                                        <Text align='center'>
-                                            {typeMatcher[el].title}
-                                        </Text>
-                                    </div>
-                                    <Icon
-                                        width={380}
-                                        height={240}
-                                        icon={typeMatcher[el].icon}
-                                    />
-                                </div>
-                            </Radio>
-                        </div>
-                    ))}
-                </div>
-                <Button disabled={!isDirty} type='submit' variant='secondary'>
-                    <Text>{CREATE_ACCOUNT}</Text>
-                </Button>
-            </Card>
-        </Form>
+        <Columns number='3' align='center'>
+            {accountTypes.map(el => (
+                <Fragment key={el}>
+                    <MessageCard
+                        title={typeMatcher[el].type}
+                        text={typeMatcher[el].title}
+                        gap='extra-small'
+                        padding='medium'
+                        width={380}
+                        icon={typeMatcher[el].icon}
+                        buttonText={CREATE_ACCOUNT}
+                        onClick={() => {
+                            setType(el);
+                            if (setFormStep && !isLast) {
+                                setFormStep(curr => {
+                                    return curr + 1;
+                                });
+                            }
+                        }}
+                        isMargin={false}
+                    />
+                </Fragment>
+            ))}
+        </Columns>
     );
 };

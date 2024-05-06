@@ -1,36 +1,8 @@
 .create__account{
-    &__variants{
+    &__currency{
         display: flex;
-        justify-content: space-between;
-        gap: 20px;
-        flex-wrap: wrap;
-    }
-
-    &__card {
-        border-radius: var(--medium-border-radius);
-        background: var(--bg-primary);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
         align-items: center;
-        width:380px;
-        height: 392px;
-        gap: 8px;
-        &__header{
-            height: 62px;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-        &__currency{
-            border-radius: var(--medium-border-radius);
-            background: var(--bg-primary);
-            display: flex;
-            align-items: center;
-            width:361px;
-            height: 72px;
-            gap: 16px;
-        }
+        gap: 16px;
     }
 }
 

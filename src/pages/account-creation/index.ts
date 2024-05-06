@@ -1,1 +1,1 @@
-export { AccountCreation } from './ui/index.js';
+export { AccountCreationPage } from './ui/index.js';

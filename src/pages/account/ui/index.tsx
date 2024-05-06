@@ -35,7 +35,7 @@ export const AccountPage = () => {
                     ]}
                 />
             ) : (
-                <MessageCard text='Счет не найден' />
+                <MessageCard title='Счет не найден' />
             )}
         </Container>
     );
