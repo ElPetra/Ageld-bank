@@ -12,15 +12,6 @@ interface Props {
     type?: 'card' | 'card-product';
 }
 export const CardInfo = ({ card, type }: Props) => {
-    const getCardProperty = <K extends keyof Card>(
-        propName: K
-    ): Card[K] | null => {
-        if (propName in card) {
-            return (card as Card)[propName];
-        }
-        return null;
-    };
-
     return (
         <div className='finance-card__info'>
             <div className='finance-card__title'>
@@ -30,15 +21,16 @@ export const CardInfo = ({ card, type }: Props) => {
                     color={type === 'card' ? 'blue' : 'quadruple'}
                 >
                     {type === 'card'
-                        ? getCardProperty('cardName')
+                        ? 'cardName' in card && card.cardName
                         : 'nameProduct' in card && card.nameProduct}
                 </Text>
                 {type === 'card' ? (
                     <div
-                        className={`finance-card__status finance-card__status-type__${getCardProperty('statusName')}`}
+                        className={`finance-card__status finance-card__status-type__${'statusName' in card && card.statusName}`}
                     >
                         <Text size='s' weight='medium' color='white'>
-                            {getStatusName(getCardProperty('statusName'))}
+                            {'statusName' in card &&
+                                getStatusName(card.statusName)}
                         </Text>
                     </div>
                 ) : (
@@ -52,7 +44,7 @@ export const CardInfo = ({ card, type }: Props) => {
             </div>
             {type === 'card' && (
                 <Text size='l' weight='bold' color='blue'>
-                    {getCardProperty('balance') + ' ₽'}
+                    {'balance' in card && card.balance + ' ₽'}
                 </Text>
             )}
             <Advantages
