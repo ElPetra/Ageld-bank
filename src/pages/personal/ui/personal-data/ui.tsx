@@ -1,11 +1,16 @@
 import { Preloader } from 'src/shared/ui';
+import { useGetInfoQuery } from 'src/shared/api';
 import { Address, Contacts, useAuth, UserCard } from 'src/entities/user';
 import { EmailForm } from 'src/features/forms';
-import { useGetInfoQuery } from 'src/shared/api';
 
 export const PersonalData = () => {
-    const { accessToken } = useAuth();
-    const { data, isLoading } = useGetInfoQuery(accessToken);
+    const { signedOut } = useAuth();
+    const { data, isLoading, error } = useGetInfoQuery();
+
+    if (error) {
+        return signedOut();
+    }
+
     return isLoading ? (
         <Preloader />
     ) : (

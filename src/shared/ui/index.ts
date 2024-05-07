@@ -10,4 +10,5 @@ export * from './radio';
 export * from './pagination';
 export * from './preloader';
 export * from './card';
+export * from './columns';
 export * from './aside-menu';

@@ -5,8 +5,6 @@ import { CREATE_ACCOUNT } from 'src/shared/model';
 
 import type { Dispatch, FormEvent, SetStateAction } from 'react';
 
-import './styles.scss';
-
 interface Props {
     isLast?: boolean;
     setFormStep?: Dispatch<SetStateAction<number>>;
@@ -45,7 +43,7 @@ export const Agreement = ({
                 borderRadius='extra-large'
                 direction='column'
             >
-                <Text tag='h1' weight='medium' size='m'>
+                <Text weight='medium' size='m'>
                     Очень важное соглашение, которое нужно принять
                 </Text>
                 <Text>

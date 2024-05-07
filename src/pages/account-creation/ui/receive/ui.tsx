@@ -1,28 +1,23 @@
 import { useForm } from 'react-hook-form';
 
-import { Icon, Text, Radio, Form, Button, Card } from 'src/shared/ui';
+import { Button, Card, Columns, Form, Radio, Text } from 'src/shared/ui';
 import { CREATE_ACCOUNT } from 'src/shared/model';
 
 import { CARD_DELIVERY_REQUIRED, GET_CARD_IN_OFFICE } from '../../model';
 
 import type { Dispatch, SetStateAction } from 'react';
 import type { FieldValues } from 'react-hook-form';
-import type { SvgIconNames } from 'src/shared/ui';
-import type { CardReceiveType } from 'src/shared/model';
 
-import './styles.scss';
-
-const ReceiveTypes: CardReceiveType[] = ['inOffice', 'delivery'];
-
-interface ReceiveVariant {
-    text: string;
-    icon: SvgIconNames;
-}
-
-const receiveVariants: Record<CardReceiveType, ReceiveVariant> = {
-    inOffice: { text: GET_CARD_IN_OFFICE, icon: 'plant-lady' },
-    delivery: { text: CARD_DELIVERY_REQUIRED, icon: 'paper-airplane-lady' }
-};
+const ReceiveTypes = [
+    {
+        id: 'inOffice',
+        text: GET_CARD_IN_OFFICE
+    },
+    {
+        id: 'delivery',
+        text: CARD_DELIVERY_REQUIRED
+    }
+];
 
 interface Props {
     isLast?: boolean;
@@ -56,33 +51,28 @@ export const ReceivingVariant = ({ isLast, setFormStep }: Props) => {
                 padding='large'
                 borderRadius='extra-large'
                 direction='column'
-                align='center'
+                align='left'
             >
-                <div className='create__account__variants'>
+                <Columns number='2'>
                     {ReceiveTypes.map(el => (
-                        <div key={el} className='field'>
+                        <div key={el.id}>
                             <Radio
                                 register={register}
-                                value={el}
-                                id={el}
+                                value={el.id}
+                                id={el.id}
                                 field='receiving'
                             >
-                                <div className='create__account__card input'>
-                                    <Icon
-                                        width={353}
-                                        height={274}
-                                        icon={receiveVariants[el].icon}
-                                    />
-                                    <Text size='m' tag='h2' weight='medium'>
-                                        {receiveVariants[el].text}
+                                <div>
+                                    <Text size='m' weight='medium'>
+                                        {el.text}
                                     </Text>
                                 </div>
                             </Radio>
                         </div>
                     ))}
-                </div>
+                </Columns>
                 <Button disabled={!isDirty} type='submit' variant='secondary'>
-                    <Text>{CREATE_ACCOUNT}</Text>
+                    <div>{CREATE_ACCOUNT}</div>
                 </Button>
             </Card>
         </Form>

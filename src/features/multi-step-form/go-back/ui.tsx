@@ -17,7 +17,7 @@ export const BackButton = ({ onClick }: Props) => {
             onClick={() => (onClick ? onClick() : navigate(-1))}
         >
             <Icon icon='arrow' />
-            <Text weight={'medium'}>Назад</Text>
+            <Text weight='medium'>Назад</Text>
         </button>
     );
 };

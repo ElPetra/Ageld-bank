@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 
-import { Icon, Text, Radio, Form, Button, Card } from 'src/shared/ui';
+import { Icon, Text, Radio, Form, Button, Card, Columns } from 'src/shared/ui';
 import { CREATE_ACCOUNT, currency } from 'src/shared/model';
 
 import type { FieldValues } from 'react-hook-form';
@@ -46,29 +46,29 @@ export const CurrencyVariant = ({
                 padding='large'
                 borderRadius='extra-large'
                 direction='column'
-                align='center'
+                align='left'
             >
-                <div className='create__account__variants'>
+                <Columns number='3'>
                     {currency.map(el => (
-                        <div key={el.value} className='field'>
+                        <div key={el.value}>
                             <Radio
                                 register={register}
                                 value={el.value}
                                 id={el.value}
                                 field='currencyName'
                             >
-                                <div className='create__account__card__currency input'>
+                                <div className='create__account__currency'>
                                     <Icon icon={el.value} width={40} />
-                                    <Text size='m' tag='h2' weight='medium'>
+                                    <Text size='m' weight='medium'>
                                         {el.text}
                                     </Text>
                                 </div>
                             </Radio>
                         </div>
                     ))}
-                </div>
+                </Columns>
                 <Button disabled={!isDirty} type='submit' variant='secondary'>
-                    <Text>{CREATE_ACCOUNT}</Text>
+                    <div>{CREATE_ACCOUNT}</div>
                 </Button>
             </Card>
         </Form>

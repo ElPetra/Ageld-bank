@@ -6,6 +6,10 @@
     align-items: center;
   }
 
+  &.left {
+    align-items: flex-end;
+  }
+
   &.column {
     flex-direction: column;
   }

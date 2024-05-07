@@ -46,7 +46,7 @@ export const RegistrationPage = () => {
                             <MessageCard
                                 icon='paper-airplane-lady'
                                 width={400}
-                                text={SUCCESS}
+                                title={SUCCESS}
                                 buttonText='Войти в кабинет'
                             />
                         ),

@@ -17,7 +17,7 @@ import { CurrencyVariant } from './currency';
 import { ReceivingVariant } from './receive';
 import { Agreement } from './agreement';
 
-export const AccountCreation = () => {
+export const AccountCreationPage = () => {
     const [type, setType] = useState<string>('');
     const [currencyName, setCurrencyName] = useState<string>('');
 
@@ -64,7 +64,7 @@ export const AccountCreation = () => {
                             <Preloader />
                         ) : (
                             <MessageCard
-                                text={
+                                title={
                                     error
                                         ? ACCOUNT_CREATION_FAILED
                                         : ACCOUNT_CREATION_SUCCESS

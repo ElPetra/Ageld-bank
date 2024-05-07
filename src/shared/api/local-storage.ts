@@ -29,5 +29,31 @@ export const localStorageApi = {
         localStorage.removeItem(USER_ACCESS_TOKEN);
         localStorage.removeItem(USER_REFRESH_TOKEN);
         localStorage.removeItem(EXPIRES_DATE);
+    },
+
+    async refresh(): Promise<string | void> {
+        const refreshToken = localStorageApi.getRefreshToken();
+        if (refreshToken) {
+            try {
+                const response = await fetch(
+                    import.meta.env.VITE_BASEURL_GATEWAY +
+                        '/api/v1/customer/auth/refresh_token',
+                    {
+                        method: 'POST',
+                        headers: { Refresh: `Bearer ${refreshToken}` }
+                    }
+                );
+                const data: { accessToken: string, refreshToken: string } =
+                    await response.json();
+                localStorageApi.setTokens(data.accessToken, data.refreshToken);
+                return data.accessToken;
+            } catch {}
+        }
+        localStorageApi.removeUserData();
+    },
+
+    async getActualAccessToken(): Promise<string> {
+        const accessToken = localStorageApi.getAccessToken();
+        return accessToken || (await localStorageApi.refresh()) || '';
     }
 };

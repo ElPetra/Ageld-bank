@@ -12,8 +12,7 @@ import {
     useCreateProfileMutation,
     useGenerateCodeMutation,
     useGenerateTokenMutation,
-    useNewEmailMutation,
-    useRefreshTokenMutation
+    useNewEmailMutation
 } from 'src/shared/api';
 import { getErrorMessage } from 'src/shared/lib';
 
@@ -23,12 +22,10 @@ import type { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 import type { SerializedError } from '@reduxjs/toolkit';
 
 export const useAuth = () => {
-    const { authStatus, accessToken } = useAppSelector(state => state.user);
+    const { authStatus } = useAppSelector(state => state.user);
     const [error, setError] = useState<string>('');
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const dispatch = useAppDispatch();
-
-    const [generateNewToken] = useRefreshTokenMutation();
 
     const [checkRegistration] = useCheckRegistrationMutation();
     const [checkMissRegistration] = useCheckMissRegistrationMutation();
@@ -59,30 +56,18 @@ export const useAuth = () => {
         []
     );
 
-    const refresh = useCallback(async (): Promise<string | void> => {
-        const refreshToken = localStorageApi.getRefreshToken();
-        if (refreshToken) {
-            const tokenData = await generateNewToken({ refreshToken });
-            if ('data' in tokenData) {
-                const { accessToken, refreshToken } = tokenData.data;
-                localStorageApi.setTokens(accessToken, refreshToken);
-                dispatch(userSignedIn(accessToken));
-                return accessToken;
-            }
-        }
-        localStorageApi.removeUserData();
-        dispatch(userSignedOut());
-    }, [dispatch, generateNewToken]);
-
     const getAccessToken = useCallback(async (): Promise<string | void> => {
-        const accessToken = localStorageApi.getAccessToken();
-        return accessToken || (await refresh());
-    }, [refresh]);
+        const accessToken = await localStorageApi.getActualAccessToken();
+        if (accessToken) {
+            return accessToken;
+        }
+        dispatch(userSignedOut());
+    }, [dispatch]);
 
     const authChecked = useCallback(async (): Promise<void> => {
         const accessToken = await getAccessToken();
         if (accessToken) {
-            dispatch(userSignedIn(accessToken));
+            dispatch(userSignedIn());
         }
     }, [dispatch, getAccessToken]);
 
@@ -142,7 +127,7 @@ export const useAuth = () => {
             if ('data' in tokenData) {
                 const { accessToken, refreshToken } = tokenData.data;
                 localStorageApi.setTokens(accessToken, refreshToken);
-                dispatch(userSignedIn(accessToken));
+                dispatch(userSignedIn());
             }
             return getError(tokenData);
         },
@@ -163,8 +148,7 @@ export const useAuth = () => {
             if (accessToken) {
                 const data = await changePassword({
                     oldPassword,
-                    newPassword,
-                    accessToken
+                    newPassword
                 });
                 return getError(data);
             }
@@ -176,7 +160,7 @@ export const useAuth = () => {
         async (email: string): Promise<void | string> => {
             const accessToken = await getAccessToken();
             if (accessToken) {
-                const data = await newEmail({ email, accessToken });
+                const data = await newEmail(email);
                 return getError(data);
             }
         },
@@ -187,7 +171,7 @@ export const useAuth = () => {
         async (email: string): Promise<void | string> => {
             const accessToken = await getAccessToken();
             if (accessToken) {
-                const data = await addEmail({ email, accessToken });
+                const data = await addEmail(email);
                 return getError(data);
             }
         },
@@ -200,8 +184,7 @@ export const useAuth = () => {
             if (accessToken) {
                 const data = await createAccount({
                     type,
-                    currencyName,
-                    accessToken
+                    currencyName
                 });
                 setIsLoading(false);
                 return getError(data);
@@ -212,7 +195,7 @@ export const useAuth = () => {
 
     return {
         authStatus,
-        accessToken,
+        getAccessToken,
         authChecked,
         checkedMissRegistration,
         checkedRegistration,

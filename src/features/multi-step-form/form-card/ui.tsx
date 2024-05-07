@@ -16,13 +16,13 @@ interface Props {
 export const FormCard = ({ title, variant = 'none', children }: Props) => {
     return (
         <div className='form-card'>
-            <Text size={'l'} weight={'bold'}>
+            <Text size='l' weight='bold'>
                 {title}
             </Text>
             <div className='form-card__content'>{children}</div>
             {variant !== 'none' && (
                 <div className='form-card__link'>
-                    <Text align={'center'}>
+                    <Text align='center'>
                         {variant === 'login' && 'У вас нет аккаунта?'}
                         {variant === 'registration' &&
                             'У вас уже есть аккаунт?'}
