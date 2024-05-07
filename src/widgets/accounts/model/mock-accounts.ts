@@ -1,4 +1,4 @@
-import type { Account } from 'src/shared/model/index.js';
+import type { Account } from 'src/shared/model';
 
 export const accounts: Account[] = [
     {
