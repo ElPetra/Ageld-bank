@@ -4,7 +4,7 @@ const EXPIRES_DATE = 'expiresTime';
 
 export const localStorageApi = {
     setTokens(accessToken: string, refreshToken: string): void {
-        const expiresTime = 2 * 1000;
+        const expiresTime = 2 * 60 * 1000;
         const expiresDate = new Date().getTime() + expiresTime + '';
         localStorage.setItem(USER_ACCESS_TOKEN, accessToken);
         localStorage.setItem(USER_REFRESH_TOKEN, refreshToken);
