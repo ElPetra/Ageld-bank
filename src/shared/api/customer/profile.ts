@@ -1,5 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
+import { localStorageApi } from 'src/shared/api';
+
 const profileBaseUrl =
     import.meta.env.VITE_BASEURL_GATEWAY + '/api/v1/customer/profile';
 
@@ -8,7 +10,9 @@ export const profileApi = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: profileBaseUrl,
         prepareHeaders: async headers => {
+            const token = await localStorageApi.getActualAccessToken();
             headers.set('content-type', 'application/json');
+            headers.set('Authorization', 'Bearer ' + token);
             return headers;
         },
         responseHandler: response => response.text()
@@ -17,14 +21,11 @@ export const profileApi = createApi({
     endpoints: builder => ({
         changePassword: builder.mutation<
             string,
-            { oldPassword: string, newPassword: string, accessToken: string }
+            { oldPassword: string, newPassword: string }
         >({
-            query: ({ oldPassword, newPassword, accessToken }) => ({
+            query: ({ oldPassword, newPassword }) => ({
                 url: '/change_password',
                 method: 'PATCH',
-                headers: {
-                    Authorization: `Bearer ${accessToken}`
-                },
                 body: { oldPassword, newPassword }
             })
         })

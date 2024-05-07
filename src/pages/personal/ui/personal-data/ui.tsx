@@ -4,8 +4,12 @@ import { EmailForm } from 'src/features/forms';
 import { useGetInfoQuery } from 'src/shared/api';
 
 export const PersonalData = () => {
-    const { accessToken } = useAuth();
-    const { data, isLoading } = useGetInfoQuery(accessToken);
+    const { signedOut } = useAuth();
+    const { data, isLoading, error } = useGetInfoQuery();
+    if (error) {
+        signedOut();
+    }
+
     return isLoading ? (
         <Preloader />
     ) : (
