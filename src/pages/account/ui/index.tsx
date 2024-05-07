@@ -20,7 +20,7 @@ export const AccountPage = () => {
             <BackButton />
             {account ? (
                 <Menu
-                    variant={'secondary'}
+                    variant='secondary'
                     elements={[
                         {
                             id: 1,
