@@ -1,8 +1,5 @@
-import { Navigate } from 'react-router-dom';
-
 import { Preloader } from 'src/shared/ui';
 import { useGetInfoQuery } from 'src/shared/api';
-import { RouteName } from 'src/shared/model';
 import { Address, Contacts, useAuth, UserCard } from 'src/entities/user';
 import { EmailForm } from 'src/features/forms';
 
@@ -11,8 +8,7 @@ export const PersonalData = () => {
     const { data, isLoading, error } = useGetInfoQuery();
 
     if (error) {
-        signedOut();
-        return <Navigate to={RouteName.LOGIN_PAGE} replace />;
+        return signedOut();
     }
 
     return isLoading ? (
