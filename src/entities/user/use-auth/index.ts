@@ -12,8 +12,7 @@ import {
     useCreateProfileMutation,
     useGenerateCodeMutation,
     useGenerateTokenMutation,
-    useNewEmailMutation,
-    useRefreshTokenMutation
+    useNewEmailMutation
 } from 'src/shared/api';
 import { getErrorMessage } from 'src/shared/lib';
 
@@ -27,8 +26,6 @@ export const useAuth = () => {
     const [error, setError] = useState<string>('');
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const dispatch = useAppDispatch();
-
-    const [generateNewToken] = useRefreshTokenMutation();
 
     const [checkRegistration] = useCheckRegistrationMutation();
     const [checkMissRegistration] = useCheckMissRegistrationMutation();
@@ -59,24 +56,13 @@ export const useAuth = () => {
         []
     );
 
-    const refresh = useCallback(async (): Promise<string | void> => {
-        const refreshToken = localStorageApi.getRefreshToken();
-        if (refreshToken) {
-            const tokenData = await generateNewToken({ refreshToken });
-            if ('data' in tokenData) {
-                const { accessToken, refreshToken } = tokenData.data;
-                localStorageApi.setTokens(accessToken, refreshToken);
-                return accessToken;
-            }
-        }
-        localStorageApi.removeUserData();
-        dispatch(userSignedOut());
-    }, [dispatch, generateNewToken]);
-
     const getAccessToken = useCallback(async (): Promise<string | void> => {
-        const accessToken = localStorageApi.getAccessToken();
-        return accessToken || (await refresh());
-    }, [refresh]);
+        const accessToken = await localStorageApi.getActualAccessToken();
+        if (accessToken) {
+            return accessToken;
+        }
+        dispatch(userSignedOut());
+    }, [dispatch]);
 
     const authChecked = useCallback(async (): Promise<void> => {
         const accessToken = await getAccessToken();

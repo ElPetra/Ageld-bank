@@ -34,18 +34,20 @@ export const localStorageApi = {
     async refresh(): Promise<string | void> {
         const refreshToken = localStorageApi.getRefreshToken();
         if (refreshToken) {
-            const response = await fetch(
-                import.meta.env.VITE_BASEURL_GATEWAY +
-                    '/api/v1/customer/auth/refresh_token',
-                {
-                    method: 'POST',
-                    headers: { Refresh: `Bearer ${refreshToken}` }
-                }
-            );
-            const data: { accessToken: string, refreshToken: string } =
-                await response.json();
-            localStorageApi.setTokens(data.accessToken, data.refreshToken);
-            return data.accessToken;
+            try {
+                const response = await fetch(
+                    import.meta.env.VITE_BASEURL_GATEWAY +
+                        '/api/v1/customer/auth/refresh_token',
+                    {
+                        method: 'POST',
+                        headers: { Refresh: `Bearer ${refreshToken}` }
+                    }
+                );
+                const data: { accessToken: string, refreshToken: string } =
+                    await response.json();
+                localStorageApi.setTokens(data.accessToken, data.refreshToken);
+                return data.accessToken;
+            } catch {}
         }
         localStorageApi.removeUserData();
     },
