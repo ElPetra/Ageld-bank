@@ -1,6 +1,6 @@
 import { Button, Text, Image, Icon, Link } from 'src/shared/ui';
 import { getIconName } from 'src/shared/lib';
-import { RouteName } from 'src/shared/model';
+import { MORE_DETAILS, REQUEST_CARD, RouteName } from 'src/shared/model';
 
 import type { CardProduct } from 'src/shared/model';
 
@@ -10,7 +10,7 @@ interface Props {
     card: CardProduct;
 }
 
-export const FinanceCard = ({ card }: Props) => {
+export const CardProductVariant = ({ card }: Props) => {
     return (
         <div className='finance-card__container'>
             <Link to={RouteName.CARD_PRODUCT_PAGE + '/' + card.cardProductId}>
@@ -52,9 +52,9 @@ export const FinanceCard = ({ card }: Props) => {
                             card.cardProductId
                         }
                     >
-                        <Button variant='secondary'>Подробнее</Button>
+                        <Button variant='secondary'>{MORE_DETAILS}</Button>
                     </Link>
-                    <Button>Оформить</Button>
+                    <Button>{REQUEST_CARD}</Button>
                 </div>
             </div>
         </div>

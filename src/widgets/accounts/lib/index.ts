@@ -20,7 +20,7 @@ export const useAccountsFilter = (
                     currency === ALL_CURRENCY ||
                     el.currency === currency.toLowerCase()
             ),
-        [accounts, currency] //ругается на депсы из-за того, что мокаем даные. Когда счета будет отдавать бек, ругаться перестанет
+        [accounts, currency]
     );
 
     const getSelectedAccounts = (status: string): Account[] =>

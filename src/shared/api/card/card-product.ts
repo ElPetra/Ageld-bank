@@ -2,12 +2,13 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import type { CardProduct, CardProductInfo } from 'src/shared/model';
 
-const cardBaseUrl = import.meta.env.VITE_BASEURL_GATEWAY + '/api/v1/card';
+const cardBaseUrl =
+    import.meta.env.VITE_BASEURL_GATEWAY + '/api/v1/card/card-product';
 
 export const cardProductApi = createApi({
     reducerPath: 'cardProductApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: cardBaseUrl + '/card-product',
+        baseUrl: cardBaseUrl,
         prepareHeaders: async headers => {
             headers.set('content-type', 'application/json');
             return headers;

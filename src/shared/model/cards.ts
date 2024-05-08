@@ -1,4 +1,4 @@
-import type { Currency } from 'src/shared/model';
+import type { Currency, Status } from 'src/shared/model';
 
 export type CardReceiveType = 'inOffice' | 'delivery';
 
@@ -7,8 +7,25 @@ export const typeCardName = {
     CREDIT: 'Кредитная',
     DEBIT: 'Дебетовая'
 };
+export const typeCustomerCardName = {
+    ALL: 'Все',
+    CREDIT: 'Кредитная',
+    DEBIT: 'Дебетовая',
+    DEPOSIT: 'Депозитная'
+};
+export const CARD_NUMBER_REPLACEMENT = '**** **** **** ';
+export const CARD_BALANCE = 'Баланс';
+export const CARD_CURRENCY = 'Валюта счета';
+export const INFO_ABOUT_CARD = 'Информация по карте';
+export const REQUEST_CARD = 'Оформить';
+export const MORE_DETAILS = 'Подробнее';
+export const EXPIRY_DATE = 'Срок действия';
+export const CUSTOMER_CARDS = 'Мои карты';
+export const CARD_PRODUCTS = 'Карточные продукты';
 
 export type TypeCard = keyof typeof typeCardName;
+export type TypeCustomerCard = keyof typeof typeCustomerCardName;
+
 //export type TypeCardValues = (typeof typeCardName)[TypeCard];
 
 export const paymentSystemName = {
@@ -40,6 +57,17 @@ export interface CardProduct {
     typeCard: TypeCard;
     level: CardLevel;
 }
+export interface CustomersCard {
+    accountNumber: string;
+    statusName: Status;
+    expirationAt: string;
+    typeCard: TypeCard;
+    nameProduct: string;
+    level: CardLevel;
+    paymentSystem: PaymentSystemValues;
+    image: string;
+}
+
 export interface CardProductInfo {
     nameProduct: string;
     image: string;
