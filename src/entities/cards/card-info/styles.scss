@@ -62,6 +62,7 @@
     }
     &__title {
       justify-content: normal;
+      gap: 5px;
     }
     &__advantages {
       justify-content: space-between;
@@ -73,7 +74,7 @@
       text-align: center;
     }
     &__buttons {
-      align-items: center;
+      justify-content: center;
     }
   }
 }

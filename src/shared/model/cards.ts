@@ -46,7 +46,7 @@ export interface Detail {
 }
 
 export interface Card {
-    cardId: number;
+    cardId: string;
     cardName: string;
     customerId: number;
     accountNumber: string;

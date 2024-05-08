@@ -64,7 +64,7 @@ export const advantagesItems: AdvantageCardConfig[] = [
         description: (cardNumber: Card[AdvantageKey]) => {
             return String(cardNumber).replace(
                 /^(.{4})(.*)(.{4})$/,
-                `$1${CARD_NUMBER_REPLACEMENT}$3`
+                `$1 ${CARD_NUMBER_REPLACEMENT}$3`
             );
         }
     },
@@ -100,7 +100,7 @@ export const advantagesItems: AdvantageCardConfig[] = [
 ];
 export const data: Card[] = [
     {
-        cardId: 1,
+        cardId: '0000111122223333',
         cardName: 'Базовая',
         customerId: 1,
         accountNumber: 'ACC12345',
@@ -119,7 +119,7 @@ export const data: Card[] = [
         typeCard: 'DEBIT'
     },
     {
-        cardId: 2,
+        cardId: '0000111122223333',
         cardName: 'Дополнительная',
         customerId: 2,
         accountNumber: 'ACC54321',
