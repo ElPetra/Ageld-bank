@@ -55,7 +55,7 @@ export const AccountInfo = ({ account }: Props) => {
                                     </Text>
                                 </div>
                                 <button onClick={handleCopyAccount}>
-                                    <Icon icon='copy' />
+                                    <Icon icon='copy-icon' />
                                 </button>
                             </div>
                         </div>

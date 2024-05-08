@@ -7,8 +7,8 @@ interface Social {
 
 export const socialLinks: Social[] = [
     { icon: 'vkontakte', href: '/' },
-    { icon: 'odnoklassniki', href: '/' },
+    { icon: 'odnoklassniki-icon', href: '/' },
     { icon: 'twitter', href: '/' },
     { icon: 'youtube', href: '/' },
-    { icon: 'telegram', href: '/' }
+    { icon: 'telegram-icon', href: '/' }
 ];

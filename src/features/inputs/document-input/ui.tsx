@@ -57,7 +57,7 @@ export const DocumentInput = ({ clear, isError, error, ...props }: Props) => {
                     setValue('');
                 }}
             >
-                <Icon icon='clear' />
+                <Icon icon='clear-icon' />
             </button>
         </Input>
     );
