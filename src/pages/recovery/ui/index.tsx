@@ -1,12 +1,12 @@
+import { useState } from 'react';
+
 import { Container } from 'src/shared/ui';
-import {
-    ConfirmPasswordForm,
-    PhoneForm,
-    SmsCodeForm
-} from 'src/features/forms';
+import { ConfirmPasswordForm, PhoneForm, CodeForm } from 'src/features/forms';
 import { MultiStepForm } from 'src/features/multi-step-form';
 
 export const RecoveryPasswordPage = () => {
+    const [phone, setPhone] = useState<string>('');
+
     return (
         <Container>
             <MultiStepForm
@@ -15,17 +15,24 @@ export const RecoveryPasswordPage = () => {
                     {
                         id: 1,
                         title: 'Восстановление пароля',
-                        component: <PhoneForm variant='recovery' />
+                        component: (
+                            <PhoneForm variant='recovery' setPhone={setPhone} />
+                        )
                     },
                     {
                         id: 2,
                         title: 'Введите код из смс',
-                        component: <SmsCodeForm variant='registration' />
+                        component: <CodeForm phone={phone} />
                     },
                     {
                         id: 3,
                         title: 'Придумайте новый пароль',
-                        component: <ConfirmPasswordForm type='recovery' />
+                        component: (
+                            <ConfirmPasswordForm
+                                variant='recovery'
+                                phone={phone}
+                            />
+                        )
                     }
                 ]}
             />

@@ -1,15 +1,14 @@
+import { useState } from 'react';
+
 import { Container } from 'src/shared/ui';
 import { MessageCard } from 'src/entities/message';
 import { MultiStepForm } from 'src/features/multi-step-form';
-import {
-    PhoneForm,
-    SmsCodeForm,
-    ConfirmPasswordForm
-} from 'src/features/forms';
+import { PhoneForm, CodeForm, ConfirmPasswordForm } from 'src/features/forms';
 
 const SUCCESS = 'Кабинет пользователя успешно \n зарегистрирован';
 
 export const RegistrationPage = () => {
+    const [phone, setPhone] = useState<string>('');
     return (
         <Container>
             <MultiStepForm
@@ -18,17 +17,27 @@ export const RegistrationPage = () => {
                     {
                         id: 1,
                         title: 'Регистрация',
-                        component: <PhoneForm variant='registration' />
+                        component: (
+                            <PhoneForm
+                                variant='registration'
+                                setPhone={setPhone}
+                            />
+                        )
                     },
                     {
                         id: 2,
                         title: 'Введите код из смс',
-                        component: <SmsCodeForm variant='registration' />
+                        component: <CodeForm phone={phone} />
                     },
                     {
                         id: 3,
                         title: 'Придумайте пароль',
-                        component: <ConfirmPasswordForm />
+                        component: (
+                            <ConfirmPasswordForm
+                                variant='registration'
+                                phone={phone}
+                            />
+                        )
                     },
                     {
                         id: 4,
@@ -37,7 +46,7 @@ export const RegistrationPage = () => {
                             <MessageCard
                                 icon='paper-airplane-lady'
                                 width={400}
-                                text={SUCCESS}
+                                title={SUCCESS}
                                 buttonText='Войти в кабинет'
                             />
                         ),

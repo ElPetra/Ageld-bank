@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { SearchForm } from 'src/features/forms';
 import { AccountCard } from 'src/entities/accounts';
 import { CardCard } from 'src/entities/cards';
-import { Button } from 'src/shared/ui';
+import { Button, Columns } from 'src/shared/ui';
 import {
     ACCOUNTS,
     CARDS,
@@ -103,7 +103,7 @@ export const MainMenu = () => {
                     title='Переводы'
                     href={RouteName.MAIN_PAGE + '/' + TRANSFERS}
                 >
-                    <div className='main-menu__4'>
+                    <Columns number='4'>
                         <MainMenuCard
                             icon='translations'
                             text='Между счетами'
@@ -115,13 +115,13 @@ export const MainMenu = () => {
                         <MainMenuCard icon='card' text='По номеру карты' />
 
                         <MainMenuCard icon='requisites' text='По реквизитам' />
-                    </div>
+                    </Columns>
                 </MainMenuBlock>
                 <MainMenuBlock
                     title='Платежи'
                     href={RouteName.MAIN_PAGE + '/' + PAYMENTS}
                 >
-                    <div className='main-menu__4'>
+                    <Columns number='4'>
                         <MainMenuCard
                             icon='smartphone'
                             text='Мобильная связь'
@@ -130,17 +130,17 @@ export const MainMenu = () => {
                             icon='wallet'
                             text='Коммунальные платежи'
                         />
-                    </div>
+                    </Columns>
                 </MainMenuBlock>
                 <MainMenuBlock
                     title='Мои счета'
                     href={RouteName.MAIN_PAGE + '/' + ACCOUNTS}
                 >
-                    <div className='main-menu__2'>
+                    <Columns number='2'>
                         {accounts.map(el => (
                             <AccountCard key={el.id} account={el} />
                         ))}
-                    </div>
+                    </Columns>
                 </MainMenuBlock>
             </div>
         </div>

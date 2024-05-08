@@ -1,9 +1,15 @@
 import { useEffect, useState } from 'react';
 
 import { Button, Text } from 'src/shared/ui';
+import { useAuth } from 'src/entities/user';
 
-export const Info = () => {
+interface Props {
+    phone: string;
+}
+
+export const Info = ({ phone }: Props) => {
     const [seconds, setSeconds] = useState<number>(30);
+    const { generatedCode } = useAuth();
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -24,7 +30,13 @@ export const Info = () => {
                     {seconds}
                 </Text>
             ) : (
-                <Button variant='link'>
+                <Button
+                    variant='link'
+                    onClick={() => {
+                        generatedCode(phone);
+                        setSeconds(30);
+                    }}
+                >
                     <Text size='xs'>Отправить смс еще раз</Text>
                 </Button>
             )}

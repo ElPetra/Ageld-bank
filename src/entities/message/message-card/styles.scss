@@ -1,8 +1,17 @@
-.message {
-  max-width: 580px;
+.message-card {
+  max-width: 500px;
   width: 100%;
-  margin: 56px auto;
   white-space: pre-wrap;
+
+  &__with-margin {
+    margin: 56px auto;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
 
   &__button {
     max-width: 340px;

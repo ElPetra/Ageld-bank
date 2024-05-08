@@ -1,12 +1,9 @@
-import { type InputHTMLAttributes } from 'react';
-
 import { Input, Text } from 'src/shared/ui';
 
 import { Info } from './info';
 
 import type { FieldValues, UseFormRegister } from 'react-hook-form';
-
-import type { ChangeEvent, KeyboardEvent } from 'react';
+import type { InputHTMLAttributes, ChangeEvent, KeyboardEvent } from 'react';
 
 import './styles.scss';
 
@@ -17,20 +14,18 @@ interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
     error?: string;
     label: string;
     register: UseFormRegister<FieldValues>;
+    phone: string;
 }
 
-export const CodeInput = ({ label, error, ...props }: Props) => {
+export const CodeInput = ({ label, error, phone, ...props }: Props) => {
     const inputOnKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
         const target = e.target as HTMLInputElement;
-
         if (e.key !== 'Backspace' || target.value !== '') {
             return;
         }
-
         const previousElementSibling = target.parentElement?.parentElement
             ?.previousElementSibling?.firstElementChild
             ?.firstElementChild as HTMLInputElement | null;
-
         if (previousElementSibling) {
             previousElementSibling.focus();
         }
@@ -38,15 +33,12 @@ export const CodeInput = ({ label, error, ...props }: Props) => {
 
     const inputOnChange = (e: ChangeEvent<HTMLInputElement>) => {
         const target = e.target;
-
         if (!target.value) {
             return;
         }
-
         const nextElementSibling = target.parentElement?.parentElement
             ?.nextElementSibling?.firstElementChild
             ?.firstElementChild as HTMLInputElement | null;
-
         if (nextElementSibling) {
             nextElementSibling.focus();
         }
@@ -77,7 +69,7 @@ export const CodeInput = ({ label, error, ...props }: Props) => {
                     <Text size='xs'>{error}</Text>
                 </div>
             )}
-            <Info />
+            <Info phone={phone} />
         </div>
     );
 };

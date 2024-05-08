@@ -74,7 +74,7 @@ export const CardProducts = () => {
                         </>
                     ) : (
                         <MessageCard
-                            text={CARDS_NOT_FOUND}
+                            title={CARDS_NOT_FOUND}
                             buttonText={CREATE_CARD}
                             buttonLink={
                                 RouteName.CARD_PRODUCT_PAGE + '/' + CREATE

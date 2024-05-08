@@ -32,7 +32,7 @@ export const Accounts = () => {
             <Menu
                 href={RouteName.MAIN_PAGE + '/' + ACCOUNTS}
                 routes={AccountsRouteName}
-                variant={'secondary'}
+                variant='secondary'
                 elements={[
                     {
                         id: 1,

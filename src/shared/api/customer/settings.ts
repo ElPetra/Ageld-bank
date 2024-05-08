@@ -1,8 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import { getActualAccessToken } from 'src/shared/lib';
-
 import type { CustomerInfo } from 'src/shared/model';
+import { localStorageApi } from 'src/shared/api';
 
 const settingsBaseUrl =
     import.meta.env.VITE_BASEURL_GATEWAY + '/api/v1/customer/settings';
@@ -12,7 +11,7 @@ export const settingsApi = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: settingsBaseUrl,
         prepareHeaders: async headers => {
-            const token = await getActualAccessToken();
+            const token = await localStorageApi.getActualAccessToken();
             headers.set('content-type', 'application/json');
             headers.set('Authorization', 'Bearer ' + token);
             return headers;
@@ -21,16 +20,16 @@ export const settingsApi = createApi({
     }),
     tagTypes: ['Settings'],
     endpoints: builder => ({
-        addEmail: builder.mutation<void, { email: string }>({
-            query: ({ email }) => ({
+        addEmail: builder.mutation<void, string>({
+            query: email => ({
                 url: '/add_email',
                 method: 'POST',
                 body: { email }
             }),
             invalidatesTags: ['Settings']
         }),
-        newEmail: builder.mutation<void, { email: string }>({
-            query: ({ email }) => ({
+        newEmail: builder.mutation<void, string>({
+            query: email => ({
                 url: '/new_email',
                 method: 'PATCH',
                 body: { email }

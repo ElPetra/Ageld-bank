@@ -3,9 +3,9 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import { PasswordInput } from 'src/features/inputs';
+import { useAuth } from 'src/entities/user';
 import { Button, Form } from 'src/shared/ui';
-import { localStorageApi, useCreateProfileMutation } from 'src/shared/api';
-import { getErrorMessage, getFieldErrorMessage } from 'src/shared/lib';
+import { getFieldErrorMessage } from 'src/shared/lib';
 import { RouteName } from 'src/shared/model';
 
 import { confirmPasswordSchema } from './model';
@@ -14,12 +14,18 @@ import type { FieldValues } from 'react-hook-form';
 import type { Dispatch, SetStateAction } from 'react';
 
 interface Props {
+    variant: 'registration' | 'recovery';
     isLast?: boolean;
     setFormStep?: Dispatch<SetStateAction<number>>;
-    type?: string;
+    phone: string;
 }
 
-export const ConfirmPasswordForm = ({ isLast, setFormStep, type }: Props) => {
+export const ConfirmPasswordForm = ({
+    variant,
+    isLast,
+    setFormStep,
+    phone
+}: Props) => {
     const {
         register,
         handleSubmit,
@@ -30,25 +36,24 @@ export const ConfirmPasswordForm = ({ isLast, setFormStep, type }: Props) => {
         defaultValues: { password1: '', password2: '' },
         resolver: yupResolver<FieldValues>(confirmPasswordSchema)
     });
-    const navigate = useNavigate();
-    const [createProfile, { error: createProfileError }] =
-        useCreateProfileMutation();
 
-    const onSubmit = (data: FieldValues) => {
-        const customerId = localStorageApi.getUserId();
-        if (customerId) {
-            createProfile({
-                customerId: customerId,
-                password: data.password1
-            })
-                .unwrap()
-                .then(() => {
-                    if (type === 'recovery') {
-                        navigate(RouteName.MAIN_PAGE);
-                    }
+    const navigate = useNavigate();
+
+    const { createdProfile, error } = useAuth();
+
+    const onSubmit = async (data: FieldValues) => {
+        if (variant === 'registration') {
+            const error = await createdProfile(phone, data.password1);
+            if (!error && setFormStep && !isLast) {
+                setFormStep(curr => {
+                    return curr + 1;
                 });
-            if (setFormStep && !isLast) {
-                setFormStep(curr => curr + 1);
+            }
+        }
+        if (variant === 'recovery') {
+            //const error = await recoveredPassword(phone, data.password1);
+            if (!error) {
+                navigate(RouteName.MAIN_PAGE);
             }
         }
     };
@@ -60,13 +65,13 @@ export const ConfirmPasswordForm = ({ isLast, setFormStep, type }: Props) => {
                 label='password1'
                 variant='create'
                 isError={!!errors.password1?.message}
-                error={getErrorMessage(createProfileError)}
+                error={error}
             />
             <PasswordInput
                 register={register}
                 label='password2'
                 placeholder={
-                    type === 'recovery'
+                    variant === 'recovery'
                         ? 'Подтвердите новый пароль'
                         : 'Подтвердите пароль'
                 }

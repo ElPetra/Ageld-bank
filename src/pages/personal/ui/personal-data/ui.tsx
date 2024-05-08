@@ -1,13 +1,20 @@
 import { Preloader } from 'src/shared/ui';
-import { Address, Contacts, UserCard } from 'src/entities/user';
-import { EmailForm } from 'src/features/forms';
 import { useGetInfoQuery } from 'src/shared/api';
+import { Address, Contacts, useAuth, UserCard } from 'src/entities/user';
+import { EmailForm } from 'src/features/forms';
 
 export const PersonalData = () => {
-    const { data, isLoading } = useGetInfoQuery();
-    return (
+    const { signedOut } = useAuth();
+    const { data, isLoading, error } = useGetInfoQuery();
+
+    if (error) {
+        return signedOut();
+    }
+
+    return isLoading ? (
+        <Preloader />
+    ) : (
         <>
-            {isLoading && <Preloader />}
             {data && (
                 <UserCard
                     fullName={`${data.lastName} ${data.firstName} ${data.middleName}`}

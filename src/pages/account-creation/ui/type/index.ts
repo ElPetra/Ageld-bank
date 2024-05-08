@@ -1,0 +1,1 @@
+export { TypeVariant } from './ui';

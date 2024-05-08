@@ -20,7 +20,7 @@ export const AccountPage = () => {
             <BackButton />
             {account ? (
                 <Menu
-                    variant={'secondary'}
+                    variant='secondary'
                     elements={[
                         {
                             id: 1,
@@ -35,7 +35,7 @@ export const AccountPage = () => {
                     ]}
                 />
             ) : (
-                <MessageCard text='Счет не найден' />
+                <MessageCard title='Счет не найден' />
             )}
         </Container>
     );
