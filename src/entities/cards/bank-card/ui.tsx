@@ -8,7 +8,7 @@ interface Props {
     card: Card;
 }
 
-export const CardCard = ({ card }: Props) => {
+export const BankCard = ({ card }: Props) => {
     const expirationAt = card.expirationAt.split('-');
     return (
         <div className='card-card'>

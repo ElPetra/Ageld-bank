@@ -2,8 +2,10 @@ import { Link } from 'react-router-dom';
 
 import { SearchForm } from 'src/features/forms';
 import { AccountCard } from 'src/entities/accounts';
-import { CardCard } from 'src/entities/cards';
+
 import { Button, Columns } from 'src/shared/ui';
+import { BankCard } from 'src/entities/cards';
+
 import {
     ACCOUNTS,
     CARDS,
@@ -83,7 +85,7 @@ export const MainMenu = () => {
                     href={RouteName.MAIN_PAGE + '/' + CARDS}
                 >
                     {cards.map(el => (
-                        <CardCard key={el.number} card={el} />
+                        <BankCard key={el.number} card={el} />
                     ))}
                 </MainMenuBlock>
                 <Link to={RouteName.MAIN_PAGE + '/' + CARDS}>
