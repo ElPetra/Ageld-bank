@@ -43,7 +43,7 @@ export const CustomToaster = () => {
                                 </div>
                             </div>
                             <button onClick={() => toast.dismiss(t.id)}>
-                                <Icon icon='close' />
+                                <Icon icon='close-icon' />
                             </button>
                         </div>
                     )}

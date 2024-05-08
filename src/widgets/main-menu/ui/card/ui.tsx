@@ -1,10 +1,10 @@
-import { Icon, Link, type SvgIconNames, Text } from 'src/shared/ui';
+import { Icon, Link, type SvgIconName, Text } from 'src/shared/ui';
 import { RouteName } from 'src/shared/model';
 
 import './styles.scss';
 
 interface Props {
-    icon: SvgIconNames;
+    icon: SvgIconName;
     href?: string;
     text: string;
 }

@@ -1,3 +1,4 @@
+import type { SvgIconName } from 'src/shared/ui';
 import type { Currency, Status } from 'src/shared/model';
 
 export type CardReceiveType = 'inOffice' | 'delivery';
@@ -38,8 +39,33 @@ export type PaymentSystem = keyof typeof paymentSystemName;
 export type PaymentSystemValues = (typeof paymentSystemName)[PaymentSystem];
 
 export type CardLevel = 'CLASSIC' | 'GOLD' | 'PLATINUM' | 'PREMIUM';
+export interface Detail {
+    id: number;
+    name: string;
+    icon: SvgIconName;
+}
 
 export interface Card {
+    cardId: string;
+    cardName: string;
+    customerId: number;
+    accountNumber: string;
+    userLimit: number;
+    cardProductId: string;
+    cardNumber: string;
+    balance: number;
+    cvvEncrypted: string;
+    pinCodeHash: string;
+    statusName: string;
+    expirationAt: string;
+    createdAt: string;
+    paymentSystem: PaymentSystemValues;
+    isVirtual: boolean;
+    level: CardLevel;
+    typeCard: TypeCard;
+}
+
+export interface MockCard {
     balance: number;
     number: string;
     expirationAt: string;
@@ -47,6 +73,7 @@ export interface Card {
     level: CardLevel;
     paymentSystem: PaymentSystemValues;
     currency: Currency;
+    icon: SvgIconName;
 }
 
 export interface CardProduct {

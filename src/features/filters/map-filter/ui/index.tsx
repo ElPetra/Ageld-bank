@@ -43,7 +43,7 @@ export const MapFilter = () => {
                                 className='map__filter__modal__button__close'
                                 onClick={() => setOpen(false)}
                             >
-                                <Icon icon='close' />
+                                <Icon icon='close-icon' />
                             </button>
                         </div>
                         <CheckboxGroup options={options} variant='secondary' />

@@ -4,8 +4,6 @@ import { MORE_DETAILS, REQUEST_CARD, RouteName } from 'src/shared/model';
 
 import type { CardProduct } from 'src/shared/model';
 
-import './styles.scss';
-
 interface Props {
     card: CardProduct;
 }

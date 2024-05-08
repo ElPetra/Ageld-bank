@@ -18,7 +18,7 @@ export const MoreInfo = ({ options }: Props) => {
                 className='more__info__button'
                 onClick={() => setOpen(prev => !prev)}
             >
-                <Icon widthAndHeight={24} icon='more' />
+                <Icon widthAndHeight={24} icon='more-icon' />
             </button>
             {open && (
                 <div className='more__info__dropdown'>

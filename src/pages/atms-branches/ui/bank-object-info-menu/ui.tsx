@@ -25,7 +25,7 @@ export function BankObjectInfoMenu({ visible, setVisible, current }: Props) {
                         className='bank-object-info__button'
                         onClick={() => setVisible(false)}
                     >
-                        <Icon icon='arrow' />
+                        <Icon icon='arrow-icon' />
                         <Text color='action'>Вернуться к списку</Text>
                     </button>
                 </div>
@@ -33,7 +33,10 @@ export function BankObjectInfoMenu({ visible, setVisible, current }: Props) {
                     <>
                         <div className='bank-object-info__name'>
                             <div>
-                                <Icon icon='building' widthAndHeight={32} />
+                                <Icon
+                                    icon='building-icon'
+                                    widthAndHeight={32}
+                                />
                                 <Text weight='bold' size='l'>
                                     {objectTypeName[current.objectTypeName] +
                                         ' №' +
