@@ -8,7 +8,8 @@ import {
     registryApi,
     infoApi,
     accountApi,
-    cardProductApi
+    cardProductApi,
+    cardsApi
 } from 'src/shared/api';
 
 import { actionHandling } from './middleware';
@@ -21,6 +22,7 @@ const rootReducers = combineReducers({
     [registryApi.reducerPath]: registryApi.reducer,
     [infoApi.reducerPath]: infoApi.reducer,
     [cardProductApi.reducerPath]: cardProductApi.reducer,
+    [cardsApi.reducerPath]: cardsApi.reducer,
     [accountApi.reducerPath]: accountApi.reducer
 });
 
@@ -34,6 +36,7 @@ export const store = configureStore({
             registryApi.middleware,
             infoApi.middleware,
             cardProductApi.middleware,
+            cardsApi.middleware,
             accountApi.middleware,
             actionHandling
         )
