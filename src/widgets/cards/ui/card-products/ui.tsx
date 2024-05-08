@@ -1,4 +1,4 @@
-import { Pagination, Preloader } from 'src/shared/ui';
+import { Preloader } from 'src/shared/ui';
 import {
     CARDS_NOT_FOUND,
     CREATE,
@@ -10,6 +10,7 @@ import {
 import { useFetchCards } from 'src/shared/lib';
 import { MessageCard } from 'src/entities/message';
 import { FilterBar } from 'src/entities/filter';
+import { Pagination } from 'src/features/filters';
 
 import { useCardsFilter, usePaginationFilter } from '../../lib';
 

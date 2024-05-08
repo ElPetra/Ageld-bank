@@ -7,7 +7,6 @@ export * from './link';
 export * from './container';
 export * from './checkbox';
 export * from './radio';
-export * from './pagination';
 export * from './preloader';
 export * from './card';
 export * from './columns';
