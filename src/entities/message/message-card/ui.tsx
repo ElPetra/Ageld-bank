@@ -1,7 +1,7 @@
 import { RouteName } from 'src/shared/model';
 import { Button, Card, Icon, Link, Text } from 'src/shared/ui';
 
-import type { SvgIconNames } from 'src/shared/ui';
+import type { SvgIconName } from 'src/shared/ui';
 
 import './styles.scss';
 
@@ -12,7 +12,7 @@ interface Props {
     gap?: 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large';
     padding?: 'small' | 'small-medium' | 'medium' | 'large' | 'extra-large';
     width?: number;
-    icon?: SvgIconNames;
+    icon?: SvgIconName;
     buttonText?: string;
     buttonLink?: string;
     onClick?: () => void;

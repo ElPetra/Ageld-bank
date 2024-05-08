@@ -31,7 +31,7 @@ export const socials: Array<Socials> = [
     { text: 'Telegram', icon: 'telegram-bot', href: '/' },
     { text: 'Вконтакте', icon: 'vkontakte-bot', href: '/' },
     { text: 'WhatsApp', icon: 'whats-app', href: '/' },
-    { text: 'Viber', icon: 'viber', href: '/' },
+    { text: 'Viber', icon: 'viber-icon', href: '/' },
     { text: 'Чат с банком', icon: 'bank-chat', href: '/' }
 ];
 export const workingHoursLabels = [WEEKDAYS, SATURDAY, SUNDAY];

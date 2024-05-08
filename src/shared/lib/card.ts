@@ -2,11 +2,11 @@ import { useGetCardProductsQuery } from 'src/shared/api';
 export const getIconName = (paymentSystem: string) => {
     switch (paymentSystem) {
         case 'VISA':
-            return 'visa';
+            return 'visa-icon';
         case 'МИР':
-            return 'mir';
+            return 'mir-icon';
         default:
-            return 'visa';
+            return 'visa-icon';
     }
 };
 

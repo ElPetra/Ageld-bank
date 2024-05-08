@@ -34,7 +34,7 @@ export const AccountInfo = ({ account }: Props) => {
             <div className='account-info__column'>
                 <div className='account-info__row'>
                     <div className='account-info__name'>
-                        <Icon widthAndHeight={40} icon={account.currency} />
+                        <Icon widthAndHeight={40} icon={account.icon} />
                         <div className='account-info__name__info'>
                             <div className='account-info__name__first-row'>
                                 <Text size='m' weight='medium'>

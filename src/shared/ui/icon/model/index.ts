@@ -1,1 +1,1 @@
-export type { SvgIconNames } from './types';
+export type { SvgIconName } from './types';

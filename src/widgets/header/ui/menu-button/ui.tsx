@@ -11,7 +11,7 @@ interface Props {
 export function MenuButton({ setVisible }: Props) {
     return (
         <button className='menu-button' onClick={() => setVisible(true)}>
-            <Icon icon='menu' />
+            <Icon icon='menu-icon' />
         </button>
     );
 }

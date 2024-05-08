@@ -13,13 +13,13 @@ import {
 } from 'src/shared/model';
 
 import type { Dispatch, SetStateAction } from 'react';
-import type { SvgIconNames } from 'src/shared/ui';
+import type { SvgIconName } from 'src/shared/ui';
 import type { AccountType } from 'src/shared/model';
 
 interface MatchResult {
     type: string;
     title: string;
-    icon: SvgIconNames;
+    icon: SvgIconName;
 }
 
 const typeMatcher: Record<AccountType, MatchResult> = {
@@ -36,7 +36,7 @@ const typeMatcher: Record<AccountType, MatchResult> = {
     deposit: {
         type: DEPOSIT_ACCOUNT,
         title: CREATE_DEPOSIT_ACCOUNT_TITLE,
-        icon: 'businessman'
+        icon: 'businessman-icon'
     }
 };
 

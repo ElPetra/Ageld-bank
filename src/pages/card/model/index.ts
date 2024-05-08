@@ -17,12 +17,12 @@ export const infoItems: Detail[] = [
     {
         id: 2,
         name: 'Тарифы и комиссии',
-        icon: 'briefcase'
+        icon: 'briefcase-icon'
     },
     {
         id: 3,
         name: 'Лимиты',
-        icon: 'settings'
+        icon: 'settings-icon'
     },
     {
         id: 4,
@@ -44,7 +44,7 @@ export const actionsItems: Detail[] = [
     {
         id: 2,
         name: 'Изменить пин-код',
-        icon: 'password'
+        icon: 'password-icon'
     },
     {
         id: 3,
@@ -54,7 +54,7 @@ export const actionsItems: Detail[] = [
     {
         id: 4,
         name: 'Заблокировать карту',
-        icon: 'lock'
+        icon: 'lock-icon'
     }
 ];
 export const advantagesItems: AdvantageCardConfig[] = [

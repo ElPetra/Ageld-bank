@@ -1,4 +1,5 @@
-import type { SvgIconNames } from 'src/shared/ui';
+import type { SvgIconName } from 'src/shared/ui';
+import type { Currency } from 'src/shared/model';
 
 export type CardReceiveType = 'inOffice' | 'delivery';
 
@@ -23,7 +24,7 @@ export type CardLevel = 'CLASSIC' | 'GOLD' | 'PLATINUM' | 'PREMIUM';
 export interface Detail {
     id: number;
     name: string;
-    icon: SvgIconNames;
+    icon: SvgIconName;
 }
 
 export interface Card {
@@ -44,6 +45,17 @@ export interface Card {
     isVirtual: boolean;
     level: CardLevel;
     typeCard: TypeCard;
+}
+
+export interface MockCard {
+    balance: number;
+    number: string;
+    expirationAt: string;
+    name: string;
+    level: CardLevel;
+    paymentSystem: PaymentSystemValues;
+    currency: Currency;
+    icon: SvgIconName;
 }
 
 export interface CardProduct {
