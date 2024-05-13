@@ -6,7 +6,7 @@ export interface UserState {
     authStatus: AuthStatus;
 }
 
-const initialState: UserState = {
+export const initialState: UserState = {
     authStatus: AuthStatus.Loading
 };
 
