@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import cn from 'classnames';
 
 import type { ButtonHTMLAttributes, ReactNode } from 'react';
 
@@ -24,16 +25,20 @@ export const Button = memo(
         status,
         children,
         ...props
-    }: Props) => (
-        <button
-            type={type || 'button'}
-            disabled={disabled}
-            className={`${variant !== 'link' && 'button'} ${size} ${
-                !disabled && variant
-            } ${width} ${status}`}
-            {...props}
-        >
-            {children}
-        </button>
-    )
+    }: Props) => {
+        const buttonClass = cn(size, width, status, {
+            button: variant !== 'link',
+            [variant]: !disabled
+        });
+        return (
+            <button
+                type={type || 'button'}
+                disabled={disabled}
+                className={buttonClass}
+                {...props}
+            >
+                {children}
+            </button>
+        );
+    }
 );

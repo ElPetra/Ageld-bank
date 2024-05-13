@@ -1,5 +1,6 @@
 import { useFetchCustomerCards } from 'src/shared/lib';
-import { CardContent } from 'src/widgets/cards/ui/content';
+
+import { CardContent } from '../content';
 
 export const CustomerCards = () => {
     const { cards, isLoading } = useFetchCustomerCards();
