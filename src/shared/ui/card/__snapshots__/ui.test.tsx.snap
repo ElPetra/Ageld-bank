@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card ui match snapshot 1`] = `
+<div
+  class="card primary medium-border-radius small-padding small-gap"
+>
+  Card
+</div>
+`;

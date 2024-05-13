@@ -35,7 +35,7 @@ describe('Input ui', () => {
         expect(input).toBeInTheDocument();
     });
 
-    test('error dont renders', () => {
+    test('error dont renders for small inputs', () => {
         render(<Input error='Error' size='small' />);
         const input = screen.queryByText('Error');
         expect(input).not.toBeInTheDocument();
@@ -58,13 +58,7 @@ describe('Input ui', () => {
 
     test('onChange have not been called', () => {
         const onChangeMock = jest.fn();
-        render(
-            <Input
-                onChange={onChangeMock}
-                placeholder='Input'
-                disabled={true}
-            />
-        );
+        render(<Input onChange={onChangeMock} placeholder='Input' disabled />);
         const input = screen.getByPlaceholderText('Input');
         expect(input).toBeInTheDocument();
         fireEvent.change(input);

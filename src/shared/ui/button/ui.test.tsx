@@ -34,7 +34,7 @@ describe('Button ui', () => {
     test('onClick have not been called', () => {
         const onClickMock = jest.fn();
         render(
-            <Button onClick={onClickMock} disabled={true}>
+            <Button onClick={onClickMock} disabled>
                 Button
             </Button>
         );
