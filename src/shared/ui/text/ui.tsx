@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import cn from 'classnames';
 
 import type { ReactNode } from 'react';
 
@@ -33,12 +34,14 @@ export const Text = memo(
         display
     }: Props) => {
         const Element = tag || 'div';
-        return (
-            <Element
-                className={`text text-${color} ${size} ${weight} ${align} ${display}`}
-            >
-                {children}
-            </Element>
+        const textClass = cn(
+            'text',
+            [`text-${color}`],
+            size,
+            weight,
+            align,
+            display
         );
+        return <Element className={textClass}>{children}</Element>;
     }
 );
