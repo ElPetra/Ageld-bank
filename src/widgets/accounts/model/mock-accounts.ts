@@ -10,7 +10,8 @@ export const accounts: Account[] = [
         type: 'credit',
         master: true,
         created: new Date(),
-        contractNumber: '12312312132211212312'
+        contractNumber: '12312312132211212312',
+        icon: 'rub-icon'
     },
     {
         status: 'closed',
@@ -22,7 +23,8 @@ export const accounts: Account[] = [
         master: false,
         created: new Date(),
         contractNumber: '12312312132211212312',
-        closed: new Date()
+        closed: new Date(),
+        icon: 'eur-icon'
     },
     {
         status: 'blocked',
@@ -34,7 +36,8 @@ export const accounts: Account[] = [
         master: false,
         created: new Date(),
         contractNumber: '12312312132211212312',
-        blockReason: 'Плохо себя вёл'
+        blockReason: 'Плохо себя вёл',
+        icon: 'usd-icon'
     },
     {
         status: 'active',
@@ -45,6 +48,7 @@ export const accounts: Account[] = [
         type: 'deposit',
         master: false,
         created: new Date(),
-        contractNumber: '12312312132211212312'
+        contractNumber: '12312312132211212312',
+        icon: 'usd-icon'
     }
 ];

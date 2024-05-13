@@ -68,7 +68,7 @@ export const PasswordInput = ({
             </Input>
             {capslockFlag && (
                 <InfoCard
-                    icon='warning'
+                    icon='warning-icon'
                     color='error'
                     message='Включен CapsLock'
                 />

@@ -1,4 +1,4 @@
-import { type SvgIconNames } from 'src/shared/ui';
+import { type SvgIconName } from 'src/shared/ui';
 
 export type Social =
     | 'Telegram'
@@ -9,7 +9,7 @@ export type Social =
 
 export interface Socials {
     text: Social;
-    icon: SvgIconNames;
+    icon: SvgIconName;
     href: string;
 }
 export interface ContactBlock {

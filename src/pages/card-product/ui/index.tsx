@@ -1,13 +1,12 @@
 import { useParams } from 'react-router-dom';
-
 import { useGetCardProductInfoQuery } from 'src/shared/api';
-import { getIconName } from 'src/shared/lib';
 import { CARDS_NOT_FOUND, CREATE_CARD } from 'src/shared/model';
-import { Button, Container, Icon, Image, Preloader, Text } from 'src/shared/ui';
+import { Container, Image, Preloader, Text } from 'src/shared/ui';
 import { MessageCard } from 'src/entities/message';
 import { BackButton } from 'src/features/multi-step-form';
+import { CardInfo } from 'src/entities/cards/card-info';
 
-import { advantages, conditions, limits } from '../model';
+import { conditions, limits } from '../model';
 
 import { Advantages } from './advantage';
 
@@ -33,33 +32,7 @@ export const CardProductPage = () => {
                                     width={420}
                                     className='finance-card__image'
                                 />
-                                <div className='finance-card__info'>
-                                    <div className='finance-card__title'>
-                                        <Text
-                                            size='l'
-                                            weight='bold'
-                                            color='quadruple'
-                                        >
-                                            {data.nameProduct}
-                                        </Text>
-                                        <Icon
-                                            icon={getIconName(
-                                                data.paymentSystem
-                                            )}
-                                            className='finance-card__payment'
-                                            width={70}
-                                            height={30}
-                                        />
-                                    </div>
-                                    <Advantages
-                                        card={data}
-                                        items={advantages}
-                                    />
-
-                                    <div className='finance-card__buttons'>
-                                        <Button>Оформить</Button>
-                                    </div>
-                                </div>
+                                <CardInfo card={data} type='card-product' />
                             </div>
                             <div className='advantages__title'>
                                 <Text size='l' weight='bold' color='quadruple'>

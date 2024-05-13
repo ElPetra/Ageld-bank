@@ -28,7 +28,7 @@ export const AccountCard = ({ account }: Props) => {
             <Link to={RouteName.ACCOUNT_PAGE + '/' + account.id}>
                 <div className='account__card__container'>
                     <div>
-                        <Icon widthAndHeight={40} icon={account.currency} />
+                        <Icon widthAndHeight={40} icon={account.icon} />
                         <div className='account__card__info'>
                             <Text weight='medium'>
                                 {account.number.replace(

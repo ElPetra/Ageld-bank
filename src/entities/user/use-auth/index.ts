@@ -37,9 +37,7 @@ export const useAuth = () => {
     const [changePassword] = useChangePasswordMutation();
     const [newEmail] = useNewEmailMutation();
     const [addEmail] = useAddEmailMutation();
-
     const [createAccount] = useCreateAccountMutation();
-
     const getError = useCallback(
         async (
             data:

@@ -38,7 +38,7 @@ export const SearchForm = ({ label = 'Поиск', size = 'large' }: Props) => {
                 register={register}
             >
                 <button>
-                    <Icon icon='search' />
+                    <Icon icon='search-icon' />
                 </button>
             </Input>
         </Form>
