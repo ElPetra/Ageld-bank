@@ -1,4 +1,4 @@
-import { Pagination, Preloader } from 'src/shared/ui';
+import { Preloader } from 'src/shared/ui';
 import {
     type CardProduct,
     CARDS_NOT_FOUND,
@@ -10,15 +10,15 @@ import {
     typeCustomerCardName,
     type CustomersCard
 } from 'src/shared/model';
-
 import { MessageCard } from 'src/entities/message';
 import { FilterBar } from 'src/entities/filter';
 import { CardProductVariant, CustomerCard } from 'src/entities/cards';
+import { Pagination } from 'src/features/filters';
 
 import { useCardsFilter, usePaginationFilter } from '../../lib';
+import { isCardProduct, isCustomerCard } from '../../model';
 
 import './styles.scss';
-import { isCardProduct, isCustomerCard } from '../../model';
 
 interface Props {
     cards: CardProduct[] | CustomersCard[];
