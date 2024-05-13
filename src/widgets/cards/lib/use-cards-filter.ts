@@ -2,15 +2,18 @@ import { useCallback, useState } from 'react';
 
 import { paymentSystemName, typeCardName } from 'src/shared/model';
 
-import type { CardProduct } from 'src/shared/model';
+import type { CardProduct, CustomersCard } from 'src/shared/model';
 
-export const useCardsFilter = (cards?: CardProduct[]) => {
+export const useCardsFilter = (cards?: CardProduct[] | CustomersCard[]) => {
     const [currencyPayment, setCurrencyPayment] = useState<string>(
         paymentSystemName.ALL
     );
     const [currencyType, setCurrencyType] = useState<string>(typeCardName.ALL);
 
-    const getFilteredCards = useCallback((): CardProduct[] => {
+    const getFilteredCards = useCallback((): (
+        | CardProduct
+        | CustomersCard
+    )[] => {
         if (!cards) {
             return [];
         }

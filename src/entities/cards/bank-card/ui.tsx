@@ -1,19 +1,18 @@
 import { Icon, Text } from 'src/shared/ui';
 
-import type { Card } from 'src/shared/model';
-
+import type { MockCard } from 'src/shared/model';
 import './styles.scss';
 
 interface Props {
-    card: Card;
+    card: MockCard;
 }
 
-export const CardCard = ({ card }: Props) => {
+export const BankCard = ({ card }: Props) => {
     const expirationAt = card.expirationAt.split('-');
     return (
         <div className='card-card'>
             <div className='card-card__first-row'>
-                <Icon widthAndHeight={40} icon={card.currency} />
+                <Icon widthAndHeight={40} icon={card.icon} />
                 <div className='card-card__info'>
                     <Text size='m' weight='medium'>
                         {card.balance}

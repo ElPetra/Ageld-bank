@@ -1,1 +1,0 @@
-export { MyCards } from './ui';

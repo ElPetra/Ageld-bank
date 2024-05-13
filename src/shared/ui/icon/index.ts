@@ -1,4 +1,4 @@
 export { Icon, Image } from './ui';
-export type { SvgIconNames } from './model';
+export type { SvgIconName } from './model';
 import MapDotSVG from './assets/icons/map-dot.svg';
 export { MapDotSVG };

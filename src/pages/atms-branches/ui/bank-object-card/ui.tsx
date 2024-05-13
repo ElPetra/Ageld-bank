@@ -37,7 +37,7 @@ export function BankObjectCard({
             padding='small-medium'
         >
             <div className='bank-object__name'>
-                <Icon icon='building' />
+                <Icon icon='building-icon' />
                 <Text weight='bold' size='m'>
                     {objectTypeName[bankObject.objectTypeName] +
                         ' №' +

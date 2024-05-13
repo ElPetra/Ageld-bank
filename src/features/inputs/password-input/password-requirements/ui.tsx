@@ -40,8 +40,8 @@ export const PasswordRequirements = memo(
                             key={i}
                             icon={
                                 matchesResult[el].isMatches
-                                    ? 'success'
-                                    : 'error'
+                                    ? 'success-icon'
+                                    : 'error-icon'
                             }
                             message={matchesResult[el].message}
                         />

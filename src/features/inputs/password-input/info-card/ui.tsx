@@ -1,10 +1,10 @@
 import { memo } from 'react';
-import { Icon, type SvgIconNames, Text } from 'src/shared/ui';
+import { Icon, type SvgIconName, Text } from 'src/shared/ui';
 
 import './styles.scss';
 
 interface Props {
-    icon: SvgIconNames;
+    icon: SvgIconName;
     color?: 'inherit' | 'success' | 'error';
     message: string;
 }
@@ -17,7 +17,9 @@ export const InfoCard = memo(({ icon, color, message }: Props) => {
                 size='xs'
                 color={
                     color ||
-                    (icon === 'success' || icon === 'error' ? icon : 'inherit')
+                    (icon === 'success-icon' || icon === 'error-icon'
+                        ? icon
+                        : 'inherit')
                 }
             >
                 {message}

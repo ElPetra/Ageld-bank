@@ -1,7 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import type { CustomerInfo } from 'src/shared/model';
 import { localStorageApi } from 'src/shared/api';
+
+import type { CustomerInfo } from 'src/shared/model';
 
 const settingsBaseUrl =
     import.meta.env.VITE_BASEURL_GATEWAY + '/api/v1/customer/settings';

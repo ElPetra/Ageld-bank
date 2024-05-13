@@ -2,8 +2,10 @@ import { Link } from 'react-router-dom';
 
 import { SearchForm } from 'src/features/forms';
 import { AccountCard } from 'src/entities/accounts';
-import { CardCard } from 'src/entities/cards';
+
 import { Button, Columns } from 'src/shared/ui';
+import { BankCard } from 'src/entities/cards';
+
 import {
     ACCOUNTS,
     CARDS,
@@ -15,11 +17,11 @@ import {
 import { MainMenuBlock } from './block';
 import { MainMenuCard } from './card';
 
-import type { Card, Account } from 'src/shared/model';
+import type { Account, MockCard } from 'src/shared/model';
 
 import './styles.scss';
 
-const cards: Card[] = [
+const cards: MockCard[] = [
     {
         balance: 30000,
         number: '1234********3456',
@@ -27,7 +29,8 @@ const cards: Card[] = [
         name: 'Базовая',
         level: 'CLASSIC',
         paymentSystem: 'МИР',
-        currency: 'rub'
+        currency: 'rub',
+        icon: 'rub-icon'
     },
     {
         balance: 20000,
@@ -36,7 +39,8 @@ const cards: Card[] = [
         name: 'Базовая',
         level: 'PLATINUM',
         paymentSystem: 'VISA',
-        currency: 'eur'
+        currency: 'eur',
+        icon: 'eur-icon'
     },
     {
         balance: 15000,
@@ -45,7 +49,8 @@ const cards: Card[] = [
         name: 'Кредитная',
         level: 'GOLD',
         paymentSystem: 'VISA',
-        currency: 'usd'
+        currency: 'usd',
+        icon: 'usd-icon'
     }
 ];
 
@@ -59,7 +64,8 @@ export const accounts: Account[] = [
         type: 'credit',
         master: true,
         created: new Date(),
-        contractNumber: '12312312132211212312'
+        contractNumber: '12312312132211212312',
+        icon: 'rub-icon'
     },
     {
         status: 'active',
@@ -70,7 +76,8 @@ export const accounts: Account[] = [
         type: 'deposit',
         master: false,
         created: new Date(),
-        contractNumber: '12312312132211212312'
+        contractNumber: '12312312132211212312',
+        icon: 'usd-icon'
     }
 ];
 
@@ -83,7 +90,7 @@ export const MainMenu = () => {
                     href={RouteName.MAIN_PAGE + '/' + CARDS}
                 >
                     {cards.map(el => (
-                        <CardCard key={el.number} card={el} />
+                        <BankCard key={el.number} card={el} />
                     ))}
                 </MainMenuBlock>
                 <Link to={RouteName.MAIN_PAGE + '/' + CARDS}>
@@ -105,16 +112,19 @@ export const MainMenu = () => {
                 >
                     <Columns number='4'>
                         <MainMenuCard
-                            icon='translations'
+                            icon='translations-icon'
                             text='Между счетами'
                         />
                         <MainMenuCard
-                            icon='smartphone'
+                            icon='smartphone-icon'
                             text='По номеру телефона'
                         />
-                        <MainMenuCard icon='card' text='По номеру карты' />
+                        <MainMenuCard icon='card-icon' text='По номеру карты' />
 
-                        <MainMenuCard icon='requisites' text='По реквизитам' />
+                        <MainMenuCard
+                            icon='requisites-icon'
+                            text='По реквизитам'
+                        />
                     </Columns>
                 </MainMenuBlock>
                 <MainMenuBlock
@@ -123,11 +133,11 @@ export const MainMenu = () => {
                 >
                     <Columns number='4'>
                         <MainMenuCard
-                            icon='smartphone'
+                            icon='smartphone-icon'
                             text='Мобильная связь'
                         />
                         <MainMenuCard
-                            icon='wallet'
+                            icon='wallet-icon'
                             text='Коммунальные платежи'
                         />
                     </Columns>

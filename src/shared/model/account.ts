@@ -1,5 +1,5 @@
 import type { Currency } from 'src/shared/model';
-
+import type { SvgIconName } from 'src/shared/ui';
 export type Status = 'active' | 'closed' | 'requested' | 'blocked';
 export type AccountType = 'master' | 'credit' | 'deposit';
 
@@ -15,6 +15,7 @@ export interface Account {
     closed?: Date;
     blockReason?: string;
     contractNumber: string;
+    icon: SvgIconName;
 }
 
 export const ACCOUNT_TYPE = 'accountType';
