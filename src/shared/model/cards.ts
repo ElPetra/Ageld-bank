@@ -25,9 +25,6 @@ export const CUSTOMER_CARDS = 'Мои карты';
 export const CARD_PRODUCTS = 'Карточные продукты';
 
 export type TypeCard = keyof typeof typeCardName;
-export type TypeCustomerCard = keyof typeof typeCustomerCardName;
-
-//export type TypeCardValues = (typeof typeCardName)[TypeCard];
 
 export const paymentSystemName = {
     ALL: 'Все',
@@ -65,6 +62,15 @@ export interface Card {
     typeCard: TypeCard;
 }
 
+export interface CardProduct {
+    nameProduct: string;
+    imageUrl: string;
+    cardProductId: string;
+    paymentSystem: PaymentSystemValues;
+    typeCard: TypeCard;
+    level: CardLevel;
+}
+
 export interface MockCard {
     balance: number;
     number: string;
@@ -76,14 +82,6 @@ export interface MockCard {
     icon: SvgIconName;
 }
 
-export interface CardProduct {
-    nameProduct: string;
-    imageUrl: string;
-    cardProductId: string;
-    paymentSystem: PaymentSystemValues;
-    typeCard: TypeCard;
-    level: CardLevel;
-}
 export interface CustomersCard {
     accountNumber: string;
     statusName: Status;
