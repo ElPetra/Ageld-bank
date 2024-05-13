@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Columns ui match snapshot 1`] = `
+<div
+  class="columns columns__3"
+>
+  Columns
+</div>
+`;

@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AsideMenu ui match snapshot 1`] = `
+<div
+  class="aside-menu__content"
+>
+  AsideMenu
+</div>
+`;

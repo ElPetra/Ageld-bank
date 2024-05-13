@@ -5,15 +5,15 @@ import {
     userSignedOut
 } from './index';
 
-describe('Tests for userSlice Init', () => {
-    test('userSliceInit', () => {
+describe('userSlice Init', () => {
+    test('Init', () => {
         const userSliceInit = userReducer(initialState, { type: 'unknown' });
         expect(userSliceInit).toBe(initialState);
     });
 });
 
-describe('Tests for userSlice SignIn', () => {
-    test('userSliceSignIn', () => {
+describe('userSlice SignIn', () => {
+    test('SignIn', () => {
         const afterSignInReducerOperation = userReducer(
             initialState,
             userSignedIn()
@@ -24,8 +24,8 @@ describe('Tests for userSlice SignIn', () => {
     });
 });
 
-describe('Tests for userSlice SignOut', () => {
-    test('userSliceSignIn', () => {
+describe('userSlice SignOut', () => {
+    test('SignOut', () => {
         const afterSignOutReducerOperations = userReducer(
             initialState,
             userSignedOut()
