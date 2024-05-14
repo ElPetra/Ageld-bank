@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import { localStorageApi } from 'src/shared/api';
+import type { Account, AccountType } from 'src/shared/model';
 
 const accountBaseUrl = import.meta.env.VITE_BASEURL_GATEWAY + '/api/v1/account';
 
@@ -26,8 +27,29 @@ export const accountApi = createApi({
                 method: 'POST',
                 body: { type, currencyName }
             })
+        }),
+        getAccounts: builder.query<Account[], void>({
+            query: () => ({
+                url: `/list_account_number`,
+                method: 'GET',
+                responseHandler: response => response.json()
+            })
+        }),
+        getAccountsByType: builder.query<Account[], { type: AccountType }>({
+            query: ({ type }) => ({
+                url: `/list_account_number`,
+                params: {
+                    type: type
+                },
+                method: 'GET',
+                responseHandler: response => response.json()
+            })
         })
     })
 });
 
-export const { useCreateAccountMutation } = accountApi;
+export const {
+    useCreateAccountMutation,
+    useGetAccountsQuery,
+    useGetAccountsByTypeQuery
+} = accountApi;

@@ -1,11 +1,14 @@
 import { Container } from 'src/shared/ui';
-import { MainRouteName } from 'src/shared/model';
+import { AuthStatus, MainRouteName } from 'src/shared/model';
 import { Menu } from 'src/features/menu';
 import { MainMenu } from 'src/widgets/main-menu';
 import { Accounts } from 'src/widgets/accounts';
 import { Cards } from 'src/widgets/cards';
+import { useAuth } from 'src/entities/user';
+import { MessageCard } from 'src/entities/message';
 
 export const MainPage = () => {
+    const { authStatus } = useAuth();
     return (
         <Container>
             <Menu
@@ -14,7 +17,17 @@ export const MainPage = () => {
                     {
                         id: 1,
                         name: 'Главная',
-                        component: <MainMenu />
+                        component:
+                            authStatus === AuthStatus.SignedIn ? (
+                                <MainMenu />
+                            ) : (
+                                <MessageCard
+                                    icon='paper-airplane-lady'
+                                    width={400}
+                                    title='Для просмотра данной информации вы должны быть авторизованы'
+                                    buttonText='Войти в кабинет'
+                                />
+                            )
                     },
                     {
                         id: 2,

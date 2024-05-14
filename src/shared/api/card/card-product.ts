@@ -16,16 +16,29 @@ export const cardProductApi = createApi({
         responseHandler: response => response.text()
     }),
     endpoints: builder => ({
-        getCardProducts: builder.query<CardProduct[], { type: string }>({
+        getCardProductsByType: builder.query<CardProduct[], { type: string }>({
             query: ({ type }) => ({
-                url: `/list_card_products?card_product_type=${type}`,
+                url: `/list_card_products`,
+                params: {
+                    card_product_type: type
+                },
+                method: 'GET',
+                responseHandler: response => response.json()
+            })
+        }),
+        getCardProducts: builder.query<CardProduct[], void>({
+            query: () => ({
+                url: `/list_card_products`,
                 method: 'GET',
                 responseHandler: response => response.json()
             })
         }),
         getCardProductInfo: builder.query<CardProductInfo, { id: string }>({
             query: ({ id }) => ({
-                url: `/full_info_card/?card_product_id=${id}`,
+                url: `/full_info_card/`,
+                params: {
+                    card_product_id: id
+                },
                 method: 'GET',
                 responseHandler: response => response.json()
             })
@@ -33,5 +46,8 @@ export const cardProductApi = createApi({
     })
 });
 
-export const { useGetCardProductsQuery, useGetCardProductInfoQuery } =
-    cardProductApi;
+export const {
+    useGetCardProductsByTypeQuery,
+    useGetCardProductsQuery,
+    useGetCardProductInfoQuery
+} = cardProductApi;

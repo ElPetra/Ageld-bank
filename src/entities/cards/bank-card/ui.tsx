@@ -1,24 +1,25 @@
 import { Icon, Text } from 'src/shared/ui';
+import { formatCardExpirationDate } from 'src/shared/lib';
 
-import type { MockCard } from 'src/shared/model';
+import type { CustomersCard } from 'src/shared/model';
+
 import './styles.scss';
 
 interface Props {
-    card: MockCard;
+    card: CustomersCard;
 }
 
 export const BankCard = ({ card }: Props) => {
-    const expirationAt = card.expirationAt.split('-');
     return (
         <div className='card-card'>
             <div className='card-card__first-row'>
-                <Icon widthAndHeight={40} icon={card.icon} />
+                <Icon widthAndHeight={40} icon='rub' />
                 <div className='card-card__info'>
                     <Text size='m' weight='medium'>
-                        {card.balance}
+                        {100000}
                     </Text>
                     <Text size='xs' color='quadruple'>
-                        {card.name}
+                        {card.nameProduct}
                     </Text>
                 </div>
             </div>
@@ -27,14 +28,14 @@ export const BankCard = ({ card }: Props) => {
                     className={`card-card__preview ${card.level.toLowerCase()}`}
                 >
                     <div className='card-card__number'>
-                        {card.number.substring(12, 16)}
+                        {card.accountNumber.substring(12, 16)}
                     </div>
                     <div className='card-card__payment-system'>
                         {card.paymentSystem}
                     </div>
                 </div>
                 <Text size='xs'>
-                    {expirationAt[1] + '/' + expirationAt[0].substring(2, 4)}
+                    {formatCardExpirationDate(card.expirationAt)}
                 </Text>
             </div>
         </div>

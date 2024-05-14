@@ -1,5 +1,5 @@
 import { Text } from 'src/shared/ui';
-import { CURRENT_ACCOUNT, accountStatuses } from 'src/shared/model';
+import { DEBIT_ACCOUNT, accountStatuses } from 'src/shared/model';
 
 import type { Status } from 'src/shared/model';
 
@@ -24,7 +24,7 @@ export const AccountStatuses = ({
                         weight='medium'
                         size={direction === 'column' ? 'xxs' : 's'}
                     >
-                        {CURRENT_ACCOUNT}
+                        {DEBIT_ACCOUNT}
                     </Text>
                 </div>
             )}

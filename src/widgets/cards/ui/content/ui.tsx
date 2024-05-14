@@ -98,9 +98,7 @@ export const CardContent = ({ cards, isLoading, type }: Props) => {
                         <MessageCard
                             title={CARDS_NOT_FOUND}
                             buttonText={CREATE_CARD}
-                            buttonLink={
-                                RouteName.CARD_PRODUCT_PAGE + '/' + CREATE
-                            }
+                            buttonLink={RouteName.CARD_PAGE + '/' + CREATE}
                         />
                     )}
                 </>

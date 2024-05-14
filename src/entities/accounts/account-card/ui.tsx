@@ -6,6 +6,7 @@ import {
     ACCOUNT_NUMBER_REPLACEMENT,
     accountTypes,
     currencySymbol,
+    MASTER_ACCOUNT,
     RouteName
 } from 'src/shared/model';
 
@@ -24,34 +25,37 @@ export const AccountCard = ({ account }: Props) => {
     const isAvailable = checkAccountAvailable(account);
 
     return isAvailable ? (
-        <div key={account.id} className='account__card'>
-            <Link to={RouteName.ACCOUNT_PAGE + '/' + account.id}>
+        <div key={account.accountNumber} className='account__card'>
+            <Link to={RouteName.ACCOUNT_PAGE + '/' + account.accountNumber}>
                 <div className='account__card__container'>
                     <div>
-                        <Icon widthAndHeight={40} icon={account.icon} />
+                        <Icon widthAndHeight={40} icon={account.currencyName} />
                         <div className='account__card__info'>
                             <Text weight='medium'>
-                                {account.number.replace(
-                                    /.{10}/gm,
+                                {account.accountNumber.replace(
+                                    /.{14}/gm,
                                     ACCOUNT_NUMBER_REPLACEMENT
                                 )}
                             </Text>
                             <Text weight='medium' color='quadruple'>
-                                {accountTypes[account.type]}
+                                {(account.masterAccount && MASTER_ACCOUNT) ||
+                                    accountTypes[account.type]}
                             </Text>
                         </div>
                     </div>
                     <div>
                         <AccountStatuses
-                            master={account.master}
-                            status={account.status}
+                            master={account.masterAccount}
+                            status={account.statusName}
                             direction='column'
                         />
                         <div className='account__card__balance'>
-                            <Text weight='medium'>{account.balance}</Text>
+                            <Text weight='medium'>
+                                {account.accountBalance}
+                            </Text>
                             <div className='account__card__balance-currency'>
                                 <Text weight='extra-bold' size='xs'>
-                                    {currencySymbol[account.currency]}
+                                    {currencySymbol[account.currencyName]}
                                 </Text>
                             </div>
                         </div>

@@ -9,16 +9,16 @@ import { ACCOUNTS_NOT_FOUND } from '../../model';
 import type { Account } from 'src/shared/model';
 
 interface Props {
-    content: Account[];
+    accounts: Account[];
 }
 
-export const AccountContent = ({ content }: Props) => {
+export const AccountContent = ({ accounts }: Props) => {
     return (
         <div className='account__content'>
-            {content.length ? (
+            {accounts.length ? (
                 <Columns number='3'>
-                    {content.map(el => (
-                        <AccountCard key={el.id} account={el} />
+                    {accounts.map(el => (
+                        <AccountCard key={el.accountNumber} account={el} />
                     ))}
                 </Columns>
             ) : (

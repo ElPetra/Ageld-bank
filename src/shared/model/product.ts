@@ -1,3 +1,5 @@
+import type { SvgIconName } from 'src/shared/ui';
+
 export const ALL_CURRENCY = 'Все';
 export const RUB = 'RUB';
 export const EUR = 'EUR';

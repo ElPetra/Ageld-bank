@@ -19,12 +19,22 @@ export const cardsApi = createApi({
         responseHandler: response => response.text()
     }),
     endpoints: builder => ({
-        getFilteredCustomerCards: builder.query<
+        getCustomerCardsByType: builder.query<
             CustomersCard[],
             { type: string }
         >({
             query: ({ type }) => ({
-                url: `/cards?type_card=${type}`,
+                url: `/cards`,
+                params: {
+                    type_card: type
+                },
+                method: 'GET',
+                responseHandler: response => response.json()
+            })
+        }),
+        getCustomerCards: builder.query<CustomersCard[], void>({
+            query: () => ({
+                url: `/cards`,
                 method: 'GET',
                 responseHandler: response => response.json()
             })
@@ -32,4 +42,5 @@ export const cardsApi = createApi({
     })
 });
 
-export const { useGetFilteredCustomerCardsQuery } = cardsApi;
+export const { useGetCustomerCardsByTypeQuery, useGetCustomerCardsQuery } =
+    cardsApi;
