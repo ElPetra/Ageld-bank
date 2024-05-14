@@ -2,9 +2,8 @@ import { Link } from 'react-router-dom';
 
 import { SearchForm } from 'src/features/forms';
 import { AccountCard } from 'src/entities/accounts';
-import { BankCard } from 'src/entities/cards';
+import { SmallCardCard } from 'src/entities/cards';
 import {
-    useGetAccountsByTypeQuery,
     useGetAccountsQuery,
     useGetCustomerCardsByTypeQuery
 } from 'src/shared/api';
@@ -40,7 +39,7 @@ export const MainMenu = () => {
                     href={RouteName.MAIN_PAGE + '/' + CARDS}
                 >
                     {cards?.map(el => (
-                        <BankCard key={el.accountNumber} card={el} />
+                        <SmallCardCard key={el.number} card={el} />
                     ))}
                 </MainMenuBlock>
                 <Link to={RouteName.MAIN_PAGE + '/' + CARDS}>
@@ -98,7 +97,7 @@ export const MainMenu = () => {
                 >
                     <Columns number='2'>
                         {accounts?.slice(0, 2).map(el => (
-                            <AccountCard key={el.accountNumber} account={el} />
+                            <AccountCard key={el.number} account={el} />
                         ))}
                     </Columns>
                 </MainMenuBlock>

@@ -21,7 +21,7 @@ export const useCardsFilter = (cards?: CardProduct[] | CustomersCard[]) => {
         return cards.filter(card => {
             const typeMatch =
                 currencyType === typeCardName.ALL ||
-                typeCardName[card.typeCard] === currencyType;
+                typeCardName[card.type] === currencyType;
             const paymentMatch =
                 currencyPayment === paymentSystemName.ALL ||
                 card.paymentSystem === currencyPayment;

@@ -22,7 +22,7 @@ export const CardInfo = ({ card, type }: Props) => {
                 >
                     {type === 'card'
                         ? 'cardName' in card && card.cardName
-                        : 'nameProduct' in card && card.nameProduct}
+                        : 'name' in card && card.name}
                 </Text>
                 {type === 'card' ? (
                     <div

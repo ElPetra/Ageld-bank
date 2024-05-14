@@ -10,8 +10,7 @@ export const authApi = createApi({
         prepareHeaders: async headers => {
             headers.set('content-type', 'application/json');
             return headers;
-        },
-        responseHandler: response => response.text()
+        }
     }),
     tagTypes: ['Auth'],
     endpoints: builder => ({
@@ -19,22 +18,23 @@ export const authApi = createApi({
             query: phone => ({
                 url: '/verification/generate_code',
                 method: 'POST',
-                body: { phoneNumber: phone }
+                body: { phoneNumber: phone },
+                responseHandler: response => response.text()
             })
         }),
         checkCode: builder.mutation<string, { phone: string, code: string }>({
             query: ({ phone, code }) => ({
                 url: '/verification/check_code',
                 method: 'POST',
-                body: { phoneNumber: phone, code }
+                body: { phoneNumber: phone, code },
+                responseHandler: response => response.text()
             })
         }),
         checkRegistration: builder.mutation<void, string>({
             query: phone => ({
                 url: '/check_registration',
                 method: 'POST',
-                body: { phoneNumber: phone },
-                responseHandler: response => response.json()
+                body: { phoneNumber: phone }
             })
         }),
         generateToken: builder.mutation<
@@ -44,8 +44,7 @@ export const authApi = createApi({
             query: ({ phone, password }) => ({
                 url: '/generate_token',
                 method: 'POST',
-                body: { phoneNumber: phone, password },
-                responseHandler: response => response.json()
+                body: { phoneNumber: phone, password }
             })
         }),
         refreshToken: builder.mutation<
@@ -57,8 +56,7 @@ export const authApi = createApi({
                 method: 'POST',
                 headers: {
                     Refresh: `Bearer ${refreshToken}`
-                },
-                responseHandler: response => response.json()
+                }
             })
         })
     })

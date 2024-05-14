@@ -1,7 +1,9 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import { localStorageApi } from 'src/shared/api';
-import type { Account, AccountType } from 'src/shared/model';
+import { transformAccounts } from 'src/shared/lib';
+
+import type { Account } from 'src/shared/model';
 
 const accountBaseUrl = import.meta.env.VITE_BASEURL_GATEWAY + '/api/v1/account';
 
@@ -14,9 +16,9 @@ export const accountApi = createApi({
             headers.set('content-type', 'application/json');
             headers.set('Authorization', 'Bearer ' + token);
             return headers;
-        },
-        responseHandler: response => response.text()
+        }
     }),
+    tagTypes: ['Account'],
     endpoints: builder => ({
         createAccount: builder.mutation<
             string,
@@ -26,30 +28,18 @@ export const accountApi = createApi({
                 url: '/new_account',
                 method: 'POST',
                 body: { type, currencyName }
-            })
+            }),
+            invalidatesTags: ['Account']
         }),
         getAccounts: builder.query<Account[], void>({
             query: () => ({
                 url: `/list_account_number`,
-                method: 'GET',
-                responseHandler: response => response.json()
-            })
-        }),
-        getAccountsByType: builder.query<Account[], { type: AccountType }>({
-            query: ({ type }) => ({
-                url: `/list_account_number`,
-                params: {
-                    type: type
-                },
-                method: 'GET',
-                responseHandler: response => response.json()
-            })
+                method: 'GET'
+            }),
+            providesTags: ['Account'],
+            transformResponse: transformAccounts
         })
     })
 });
 
-export const {
-    useCreateAccountMutation,
-    useGetAccountsQuery,
-    useGetAccountsByTypeQuery
-} = accountApi;
+export const { useCreateAccountMutation, useGetAccountsQuery } = accountApi;

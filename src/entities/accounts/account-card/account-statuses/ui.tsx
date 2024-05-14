@@ -1,13 +1,13 @@
 import { Text } from 'src/shared/ui';
 import { DEBIT_ACCOUNT, accountStatuses } from 'src/shared/model';
 
-import type { Status } from 'src/shared/model';
+import type { ProductStatus } from 'src/shared/model';
 
 import './styles.scss';
 
 interface Props {
     master: boolean;
-    status: Status;
+    status: ProductStatus;
     direction?: 'column' | 'row';
 }
 

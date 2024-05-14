@@ -7,6 +7,7 @@ import { CardInfo } from 'src/entities/cards/card-info';
 
 export const CardPage = () => {
     const { id } = useParams<{ id: string }>();
+
     const card = data.find(item => item.cardId === id);
 
     return (

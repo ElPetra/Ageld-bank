@@ -11,25 +11,19 @@ interface Props {
 export const CardProductVariant = ({ card }: Props) => {
     return (
         <div className='finance-card__container'>
-            <Link to={RouteName.CARD_PRODUCT_PAGE + '/' + card.cardProductId}>
+            <Link to={RouteName.CARD_PRODUCT_PAGE + '/' + card.id}>
                 <Image
                     className='finance-card__image'
                     height={200}
                     width={340}
-                    src={card.imageUrl}
+                    src={card.image}
                 />
             </Link>
             <div className='finance-card__info'>
                 <div className='finance-card__title'>
-                    <Link
-                        to={
-                            RouteName.CARD_PRODUCT_PAGE +
-                            '/' +
-                            card.cardProductId
-                        }
-                    >
+                    <Link to={RouteName.CARD_PRODUCT_PAGE + '/' + card.id}>
                         <Text size='l' weight='bold' color='quadruple'>
-                            {card.nameProduct}
+                            {card.name}
                         </Text>
                     </Link>
                     <Icon
@@ -43,13 +37,7 @@ export const CardProductVariant = ({ card }: Props) => {
                     {card.level}
                 </Text>
                 <div className='finance-card__buttons'>
-                    <Link
-                        to={
-                            RouteName.CARD_PRODUCT_PAGE +
-                            '/' +
-                            card.cardProductId
-                        }
-                    >
+                    <Link to={RouteName.CARD_PRODUCT_PAGE + '/' + card.id}>
                         <Button variant='secondary'>{MORE_DETAILS}</Button>
                     </Link>
                     <Button>{REQUEST_CARD}</Button>

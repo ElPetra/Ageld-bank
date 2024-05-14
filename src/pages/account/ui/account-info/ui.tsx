@@ -16,12 +16,12 @@ import {
 
 import { AccountsMoreInfo } from './more-info';
 
-import type { Account } from 'src/shared/model';
+import type { AccountDetails } from 'src/shared/model';
 
 import './styles.scss';
 
 interface Props {
-    account: Account;
+    account: AccountDetails;
 }
 
 export const AccountInfo = ({ account }: Props) => {

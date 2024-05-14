@@ -16,8 +16,7 @@ export const settingsApi = createApi({
             headers.set('content-type', 'application/json');
             headers.set('Authorization', 'Bearer ' + token);
             return headers;
-        },
-        responseHandler: response => response.text()
+        }
     }),
     tagTypes: ['Settings'],
     endpoints: builder => ({
@@ -40,8 +39,7 @@ export const settingsApi = createApi({
         getInfo: builder.query<CustomerInfo, void>({
             query: () => ({
                 url: '/info',
-                method: 'GET',
-                responseHandler: response => response.json()
+                method: 'GET'
             }),
             providesTags: ['Settings']
         })

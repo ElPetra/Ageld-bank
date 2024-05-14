@@ -10,10 +10,10 @@ import {
     UNLOCK_ACCOUNT
 } from '../../../model';
 
-import type { Status } from 'src/shared/model';
+import type { ProductStatus } from 'src/shared/model';
 
 interface Props {
-    accountStatus: Status;
+    accountStatus: ProductStatus;
 }
 
 const anchors: Record<string, string> = {
@@ -26,7 +26,7 @@ const anchors: Record<string, string> = {
     [BLOCK_ACCOUNT]: 'block'
 };
 
-const accountStatuses: Record<Status, string[]> = {
+const accountStatuses: Record<ProductStatus, string[]> = {
     active: [
         REQUISITES,
         ACCOUNT_STATEMENT,
@@ -35,8 +35,7 @@ const accountStatuses: Record<Status, string[]> = {
         BLOCK_ACCOUNT
     ],
     closed: [REQUISITES, ACCOUNT_STATEMENT],
-    blocked: [REQUISITES, ACCOUNT_STATEMENT, UNLOCK_ACCOUNT],
-    requested: [APPLICATION_STATUS]
+    blocked: [REQUISITES, ACCOUNT_STATEMENT, UNLOCK_ACCOUNT]
 };
 
 export const AccountsMoreInfo = ({ accountStatus }: Props) => {

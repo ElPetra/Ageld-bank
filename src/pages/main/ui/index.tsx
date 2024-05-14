@@ -1,14 +1,13 @@
 import { Container } from 'src/shared/ui';
-import { AuthStatus, MainRouteName } from 'src/shared/model';
+import { MainRouteName } from 'src/shared/model';
 import { Menu } from 'src/features/menu';
 import { MainMenu } from 'src/widgets/main-menu';
 import { Accounts } from 'src/widgets/accounts';
 import { Cards } from 'src/widgets/cards';
-import { useAuth } from 'src/entities/user';
-import { MessageCard } from 'src/entities/message';
+
+import { ProtectedMain } from './protected';
 
 export const MainPage = () => {
-    const { authStatus } = useAuth();
     return (
         <Container>
             <Menu
@@ -17,17 +16,11 @@ export const MainPage = () => {
                     {
                         id: 1,
                         name: 'Главная',
-                        component:
-                            authStatus === AuthStatus.SignedIn ? (
+                        component: (
+                            <ProtectedMain>
                                 <MainMenu />
-                            ) : (
-                                <MessageCard
-                                    icon='paper-airplane-lady'
-                                    width={400}
-                                    title='Для просмотра данной информации вы должны быть авторизованы'
-                                    buttonText='Войти в кабинет'
-                                />
-                            )
+                            </ProtectedMain>
+                        )
                     },
                     {
                         id: 2,
@@ -37,7 +30,11 @@ export const MainPage = () => {
                     {
                         id: 3,
                         name: 'Счета',
-                        component: <Accounts />
+                        component: (
+                            <ProtectedMain>
+                                <Accounts />
+                            </ProtectedMain>
+                        )
                     },
                     {
                         id: 4,

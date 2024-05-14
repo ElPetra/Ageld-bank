@@ -1,14 +1,11 @@
 import { Preloader } from 'src/shared/ui';
 import {
-    type CardProduct,
     CARDS_NOT_FOUND,
     CREATE,
     CREATE_CARD,
     paymentSystemName,
     RouteName,
-    typeCardName,
-    typeCustomerCardName,
-    type CustomersCard
+    typeCardName
 } from 'src/shared/model';
 import { MessageCard } from 'src/entities/message';
 import { FilterBar } from 'src/entities/filter';
@@ -18,20 +15,16 @@ import { Pagination } from 'src/features/filters';
 import { useCardsFilter, usePaginationFilter } from '../../lib';
 import { isCardProduct, isCustomerCard } from '../../model';
 
+import type { CardProduct, CustomersCard } from 'src/shared/model';
+
 import './styles.scss';
 
 interface Props {
     cards: CardProduct[] | CustomersCard[];
     isLoading: boolean;
-    type: 'customer' | 'products';
 }
 
-const typeMatcher = {
-    customer: typeCustomerCardName,
-    products: typeCardName
-};
-
-export const CardContent = ({ cards, isLoading, type }: Props) => {
+export const CardContent = ({ cards, isLoading }: Props) => {
     const {
         getFilteredCards,
         currencyPayment,
@@ -50,7 +43,7 @@ export const CardContent = ({ cards, isLoading, type }: Props) => {
         <>
             <div className='filters'>
                 <FilterBar
-                    filters={Object.values(typeMatcher[type])}
+                    filters={Object.values(typeCardName)}
                     current={currencyType}
                     setCurrent={setCurrencyType}
                 />
@@ -70,14 +63,14 @@ export const CardContent = ({ cards, isLoading, type }: Props) => {
                                 if (isCardProduct(el)) {
                                     return (
                                         <CardProductVariant
-                                            key={el.cardProductId}
+                                            key={el.id}
                                             card={el}
                                         />
                                     );
                                 } else if (isCustomerCard(el)) {
                                     return (
                                         <CustomerCard
-                                            key={el.accountNumber}
+                                            key={el.number}
                                             card={el}
                                         />
                                     );

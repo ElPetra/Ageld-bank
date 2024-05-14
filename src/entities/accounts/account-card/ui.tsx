@@ -25,37 +25,35 @@ export const AccountCard = ({ account }: Props) => {
     const isAvailable = checkAccountAvailable(account);
 
     return isAvailable ? (
-        <div key={account.accountNumber} className='account__card'>
-            <Link to={RouteName.ACCOUNT_PAGE + '/' + account.accountNumber}>
+        <div key={account.number} className='account__card'>
+            <Link to={RouteName.ACCOUNT_PAGE + '/' + account.number}>
                 <div className='account__card__container'>
                     <div>
-                        <Icon widthAndHeight={40} icon={account.currencyName} />
+                        <Icon widthAndHeight={40} icon={account.currency} />
                         <div className='account__card__info'>
                             <Text weight='medium'>
-                                {account.accountNumber.replace(
+                                {account.number.replace(
                                     /.{14}/gm,
                                     ACCOUNT_NUMBER_REPLACEMENT
                                 )}
                             </Text>
                             <Text weight='medium' color='quadruple'>
-                                {(account.masterAccount && MASTER_ACCOUNT) ||
+                                {(account.isMaster && MASTER_ACCOUNT) ||
                                     accountTypes[account.type]}
                             </Text>
                         </div>
                     </div>
                     <div>
                         <AccountStatuses
-                            master={account.masterAccount}
-                            status={account.statusName}
+                            master={account.isMaster}
+                            status={account.status}
                             direction='column'
                         />
                         <div className='account__card__balance'>
-                            <Text weight='medium'>
-                                {account.accountBalance}
-                            </Text>
+                            <Text weight='medium'>{account.balance}</Text>
                             <div className='account__card__balance-currency'>
                                 <Text weight='extra-bold' size='xs'>
-                                    {currencySymbol[account.currencyName]}
+                                    {currencySymbol[account.currency]}
                                 </Text>
                             </div>
                         </div>

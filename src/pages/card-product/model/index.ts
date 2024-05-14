@@ -1,6 +1,6 @@
 import { typeCardName } from 'src/shared/model';
 
-import type { CardProductInfo, TypeCard } from 'src/shared/model';
+import type { CardProductInfo, CardType } from 'src/shared/model';
 
 type AdvantageKey = keyof CardProductInfo;
 
@@ -12,10 +12,10 @@ export type AdvantageConfig = {
 
 export const advantages: AdvantageConfig[] = [
     {
-        key: 'typeCard',
+        key: 'type',
         title: 'Тип карты',
-        description: (typeCard: CardProductInfo[AdvantageKey]) =>
-            typeCardName[typeCard as TypeCard]
+        description: (type: CardProductInfo[AdvantageKey]) =>
+            typeCardName[type as CardType]
     },
     {
         key: 'isVirtual',

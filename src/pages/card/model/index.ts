@@ -1,6 +1,6 @@
 import { CARD_NUMBER_REPLACEMENT, typeCardName } from 'src/shared/model';
 
-import type { Card, Detail, TypeCard } from 'src/shared/model';
+import type { Card, Detail, CardTypeFilters } from 'src/shared/model';
 type AdvantageKey = keyof Card;
 
 export type AdvantageCardConfig = {
@@ -72,7 +72,7 @@ export const advantagesItems: AdvantageCardConfig[] = [
         key: 'typeCard',
         title: 'Тип карты',
         description: (typeCard: Card[AdvantageKey]) =>
-            typeCardName[typeCard as TypeCard]
+            typeCardName[typeCard as CardTypeFilters]
     },
     {
         key: 'isVirtual',

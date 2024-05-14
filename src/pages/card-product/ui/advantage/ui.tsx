@@ -1,12 +1,12 @@
 import { Icon, Text } from 'src/shared/ui';
 
 import type { AdvantageConfig } from '../../model';
-import type { Card, CardProductInfo } from 'src/shared/model';
+import type { Card, CardProductDetails } from 'src/shared/model';
 import './style.scss';
 import type { AdvantageCardConfig } from 'src/pages/card/model';
 
 interface Props {
-    card: Card | CardProductInfo;
+    card: Card | CardProductDetails;
     items: AdvantageConfig[] | AdvantageCardConfig[];
     type?: 'card' | 'card-product';
 }

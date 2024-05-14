@@ -10,7 +10,7 @@ import {
 import { formatCardExpirationDate } from 'src/shared/lib';
 import { AccountStatuses } from 'src/entities/accounts';
 
-import type { CustomersCard, Status } from 'src/shared/model';
+import type { CustomersCard, ProductStatus } from 'src/shared/model';
 
 import './styles.scss';
 
@@ -19,7 +19,7 @@ interface Props {
 }
 
 export const CustomerCard = ({ card }: Props) => {
-    const currentLink = RouteName.CARD_PAGE + '/' + card.accountNumber;
+    const currentLink = RouteName.CARD_PAGE + '/' + card.number;
     return (
         <div className='customer-card__container'>
             <Link to={currentLink}>
@@ -39,11 +39,13 @@ export const CustomerCard = ({ card }: Props) => {
                             </Text>
                             <AccountStatuses
                                 master={false}
-                                status={card.statusName.toLowerCase() as Status}
+                                status={
+                                    card.status.toLowerCase() as ProductStatus
+                                }
                             />
                         </div>
                         <Text size='l' weight='bold' color='quadruple'>
-                            {card.accountNumber.replace(
+                            {card.number.replace(
                                 /.{12}/gm,
                                 CARD_NUMBER_REPLACEMENT
                             )}

@@ -1,8 +1,13 @@
 import { Preloader, Text } from 'src/shared/ui';
 import {
     ACCOUNTS,
-    AccountsRouteName,
+    MY_ACCOUNTS,
+    OPENED_ACCOUNTS,
+    OPEN_ACCOUNT_REQUEST,
+    CLOSED_ACCOUNTS,
+    BLOCKED_ACCOUNTS,
     ALL_CURRENCY,
+    AccountsRouteName,
     currencyFilters,
     RouteName
 } from 'src/shared/model';
@@ -10,13 +15,6 @@ import { FilterBar } from 'src/entities/filter';
 import { Menu } from 'src/features/menu';
 
 import { filterAccounts } from '../lib';
-import {
-    MY_ACCOUNTS,
-    OPENED_ACCOUNTS,
-    OPEN_ACCOUNT_REQUEST,
-    CLOSED_ACCOUNTS,
-    BLOCKED_ACCOUNTS
-} from '../model';
 
 import { AccountContent } from './content';
 import { useGetAccountsQuery } from 'src/shared/api';
@@ -55,15 +53,7 @@ export const Accounts = () => {
                     {
                         id: 2,
                         name: OPEN_ACCOUNT_REQUEST,
-                        component: (
-                            <AccountContent
-                                accounts={filterAccounts(
-                                    accounts,
-                                    'requested',
-                                    currency
-                                )}
-                            />
-                        )
+                        component: <AccountContent accounts={[]} />
                     },
                     {
                         id: 3,

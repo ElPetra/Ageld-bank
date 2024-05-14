@@ -1,10 +1,13 @@
 import { AccountCard } from 'src/entities/accounts';
 import { MessageCard } from 'src/entities/message';
 
-import { CREATE, CREATE_ACCOUNT, RouteName } from 'src/shared/model';
+import {
+    CREATE,
+    CREATE_ACCOUNT,
+    ACCOUNTS_NOT_FOUND,
+    RouteName
+} from 'src/shared/model';
 import { Columns } from 'src/shared/ui';
-
-import { ACCOUNTS_NOT_FOUND } from '../../model';
 
 import type { Account } from 'src/shared/model';
 
@@ -18,7 +21,7 @@ export const AccountContent = ({ accounts }: Props) => {
             {accounts.length ? (
                 <Columns number='3'>
                     {accounts.map(el => (
-                        <AccountCard key={el.accountNumber} account={el} />
+                        <AccountCard key={el.number} account={el} />
                     ))}
                 </Columns>
             ) : (

@@ -1,6 +1,14 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import type { CardProduct, CardProductInfo } from 'src/shared/model';
+import type {
+    CardProduct,
+    CardProductDetails,
+    CardType
+} from 'src/shared/model';
+import {
+    transformCardProductDetails,
+    transformCardProducts
+} from 'src/shared/lib';
 
 const cardBaseUrl =
     import.meta.env.VITE_BASEURL_GATEWAY + '/api/v1/card/card-product';
@@ -12,36 +20,40 @@ export const cardProductApi = createApi({
         prepareHeaders: async headers => {
             headers.set('content-type', 'application/json');
             return headers;
-        },
-        responseHandler: response => response.text()
+        }
     }),
     endpoints: builder => ({
-        getCardProductsByType: builder.query<CardProduct[], { type: string }>({
-            query: ({ type }) => ({
-                url: `/list_card_products`,
-                params: {
-                    card_product_type: type
-                },
-                method: 'GET',
-                responseHandler: response => response.json()
-            })
-        }),
+        getCardProductsByType: builder.query<CardProduct[], { type: CardType }>(
+            {
+                query: ({ type }) => ({
+                    url: `/list_card_products`,
+                    params: {
+                        card_product_type: type
+                    },
+                    method: 'GET'
+                }),
+                transformResponse: transformCardProducts
+            }
+        ),
         getCardProducts: builder.query<CardProduct[], void>({
             query: () => ({
                 url: `/list_card_products`,
-                method: 'GET',
-                responseHandler: response => response.json()
-            })
+                method: 'GET'
+            }),
+            transformResponse: transformCardProducts
         }),
-        getCardProductInfo: builder.query<CardProductInfo, { id: string }>({
+        getCardProductDetails: builder.query<
+            CardProductDetails,
+            { id: string }
+        >({
             query: ({ id }) => ({
                 url: `/full_info_card/`,
                 params: {
                     card_product_id: id
                 },
-                method: 'GET',
-                responseHandler: response => response.json()
-            })
+                method: 'GET'
+            }),
+            transformResponse: transformCardProductDetails
         })
     })
 });
@@ -49,5 +61,5 @@ export const cardProductApi = createApi({
 export const {
     useGetCardProductsByTypeQuery,
     useGetCardProductsQuery,
-    useGetCardProductInfoQuery
+    useGetCardProductDetailsQuery
 } = cardProductApi;

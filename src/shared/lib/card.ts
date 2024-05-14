@@ -33,7 +33,7 @@ export const useGetCardProductsQuery = () => {
 
     const cards = debitCards.concat(creditCards);
     const isLoading = debitLoading || creditLoading;
-
+    console.log(cards);
     return {
         isLoading,
         cards

@@ -1,1 +1,0 @@
-export { BankCard } from './ui';

@@ -5,5 +5,5 @@ import { CardContent } from '../content';
 export const CustomerCards = () => {
     const { data: cards = [], isLoading } = useGetCustomerCardsQuery();
 
-    return <CardContent cards={cards} isLoading={isLoading} type='customer' />;
+    return <CardContent cards={cards} isLoading={isLoading} />;
 };
