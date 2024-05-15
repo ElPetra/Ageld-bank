@@ -3,10 +3,7 @@ import { Link } from 'react-router-dom';
 import { SearchForm } from 'src/features/forms';
 import { AccountCard } from 'src/entities/accounts';
 import { SmallCardCard } from 'src/entities/cards';
-import {
-    useGetAccountsQuery,
-    useGetCustomerCardsByTypeQuery
-} from 'src/shared/api';
+import { useGetAccountsQuery, useGetCustomerCardsQuery } from 'src/shared/api';
 import { Button, Columns, Preloader } from 'src/shared/ui';
 import {
     ACCOUNTS,
@@ -24,9 +21,7 @@ import { MainMenuCard } from './card';
 import './styles.scss';
 
 export const MainMenu = () => {
-    const { data: cards, isLoading } = useGetCustomerCardsByTypeQuery({
-        type: 'ACTIVE'
-    });
+    const { data: cards, isLoading } = useGetCustomerCardsQuery();
 
     const { data: accounts, isLoading: isLoadingAccounts } =
         useGetAccountsQuery();

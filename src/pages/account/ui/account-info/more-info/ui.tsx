@@ -13,7 +13,7 @@ import {
 import type { ProductStatus } from 'src/shared/model';
 
 interface Props {
-    accountStatus: ProductStatus;
+    status: ProductStatus;
 }
 
 const anchors: Record<string, string> = {
@@ -38,8 +38,8 @@ const accountStatuses: Record<ProductStatus, string[]> = {
     blocked: [REQUISITES, ACCOUNT_STATEMENT, UNLOCK_ACCOUNT]
 };
 
-export const AccountsMoreInfo = ({ accountStatus }: Props) => {
-    const options = accountStatuses[accountStatus].map(el => ({
+export const AccountsMoreInfo = ({ status }: Props) => {
+    const options = accountStatuses[status].map(el => ({
         text: el,
         to: anchors[el] || '/'
     }));

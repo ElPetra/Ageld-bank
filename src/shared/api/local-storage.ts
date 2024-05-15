@@ -47,8 +47,9 @@ export const localStorageApi = {
                     await response.json();
                 localStorageApi.setTokens(data.accessToken, data.refreshToken);
                 return data.accessToken;
-                // eslint-disable-next-line
-            } catch {}
+            } catch (e) {
+                throw Error('Не удалось обновить токен доступа');
+            }
         }
         localStorageApi.removeUserData();
     },

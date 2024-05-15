@@ -12,7 +12,7 @@ export function ProtectedMain({ children }: Props) {
     const { authStatus } = useAuth();
 
     return authStatus === AuthStatus.SignedIn ? (
-        <>{children}</>
+        children
     ) : (
         <MessageCard
             icon='paper-airplane-lady'

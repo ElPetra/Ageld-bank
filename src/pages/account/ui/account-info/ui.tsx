@@ -1,6 +1,5 @@
 import { formatDateRuLocale } from 'src/shared/lib';
 import { Button, Icon, Text } from 'src/shared/ui';
-
 import { accountTypes, currencySymbol } from 'src/shared/model';
 import { ProductStatuses } from 'src/entities/product';
 
@@ -13,7 +12,6 @@ import {
     CONTRACT_NUMBER,
     MAKE_TRANSFER
 } from '../../model';
-
 import { AccountsMoreInfo } from './more-info';
 
 import type { AccountDetails } from 'src/shared/model';
@@ -61,7 +59,7 @@ export const AccountInfo = ({ account }: Props) => {
                         </div>
                     </div>
                     <div className='account-info__name__more-info'>
-                        <AccountsMoreInfo accountStatus={account.status} />
+                        <AccountsMoreInfo status={account.status} />
                     </div>
                 </div>
                 <div className='account-info__info'>
@@ -98,7 +96,7 @@ export const AccountInfo = ({ account }: Props) => {
                         {account.balance + ' '}
                         {currencySymbol[account.currency]}
                     </Text>
-                    <AccountsMoreInfo accountStatus={account.status} />
+                    <AccountsMoreInfo status={account.status} />
                 </div>
                 <Button variant='secondary'>{MAKE_TRANSFER}</Button>
             </div>
