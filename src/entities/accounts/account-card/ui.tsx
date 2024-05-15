@@ -1,27 +1,26 @@
 import { Link } from 'react-router-dom';
 
 import { Icon, Text } from 'src/shared/ui';
-
 import {
     ACCOUNT_NUMBER_REPLACEMENT,
     accountTypes,
     currencySymbol,
-    MASTER_ACCOUNT,
     RouteName
 } from 'src/shared/model';
 
 import { checkAccountAvailable } from './lib';
-import { AccountStatuses } from './account-statuses';
 
+import type { ReactNode } from 'react';
 import type { Account } from 'src/shared/model';
 
 import './styles.scss';
 
 interface Props {
     account: Account;
+    children: ReactNode;
 }
 
-export const AccountCard = ({ account }: Props) => {
+export const AccountCard = ({ account, children }: Props) => {
     const isAvailable = checkAccountAvailable(account);
 
     return isAvailable ? (
@@ -38,17 +37,12 @@ export const AccountCard = ({ account }: Props) => {
                                 )}
                             </Text>
                             <Text weight='medium' color='quadruple'>
-                                {(account.isMaster && MASTER_ACCOUNT) ||
-                                    accountTypes[account.type]}
+                                {accountTypes[account.type]}
                             </Text>
                         </div>
                     </div>
                     <div>
-                        <AccountStatuses
-                            master={account.isMaster}
-                            status={account.status}
-                            direction='column'
-                        />
+                        {children}
                         <div className='account__card__balance'>
                             <Text weight='medium'>{account.balance}</Text>
                             <div className='account__card__balance-currency'>

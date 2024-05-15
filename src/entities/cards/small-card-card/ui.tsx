@@ -1,12 +1,12 @@
 import { Icon, Text } from 'src/shared/ui';
 import { formatCardExpirationDate } from 'src/shared/lib';
 
-import type { CustomersCard } from 'src/shared/model';
+import type { CustomerCard } from 'src/shared/model';
 
 import './styles.scss';
 
 interface Props {
-    card: CustomersCard;
+    card: CustomerCard;
 }
 
 export const SmallCardCard = ({ card }: Props) => {

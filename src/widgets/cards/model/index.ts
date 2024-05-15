@@ -1,8 +1,8 @@
 import { isObj } from 'src/shared/lib';
 
-import type { CardProduct, CustomersCard } from 'src/shared/model';
+import type { CardProduct, CustomerCard } from 'src/shared/model';
 
-export function isCustomerCard(val: unknown): val is CustomersCard {
+export function isCustomerCard(val: unknown): val is CustomerCard {
     if (!isObj(val)) {
         return false;
     }

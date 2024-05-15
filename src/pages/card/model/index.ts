@@ -1,12 +1,12 @@
-import { CARD_NUMBER_REPLACEMENT, typeCardName } from 'src/shared/model';
+import { CARD_NUMBER_REPLACEMENT, typeCard } from 'src/shared/model';
 
-import type { Card, Detail, CardTypeFilters } from 'src/shared/model';
-type AdvantageKey = keyof Card;
+import type { CardType, CardDetails, Detail } from 'src/shared/model';
+type AdvantageKey = keyof CardDetails;
 
 export type AdvantageCardConfig = {
     key: AdvantageKey,
     title: string,
-    description: (value: Card[AdvantageKey]) => string
+    description: (value: CardDetails[AdvantageKey]) => string
 };
 export const infoItems: Detail[] = [
     {
@@ -59,82 +59,68 @@ export const actionsItems: Detail[] = [
 ];
 export const advantagesItems: AdvantageCardConfig[] = [
     {
-        key: 'cardNumber',
+        key: 'number',
         title: 'Номер карты',
-        description: (cardNumber: Card[AdvantageKey]) => {
-            return String(cardNumber).replace(
+        description: (number: CardDetails[AdvantageKey]) => {
+            return String(number).replace(
                 /^(.{4})(.*)(.{4})$/,
                 `$1 ${CARD_NUMBER_REPLACEMENT}$3`
             );
         }
     },
     {
-        key: 'typeCard',
+        key: 'type',
         title: 'Тип карты',
-        description: (typeCard: Card[AdvantageKey]) =>
-            typeCardName[typeCard as CardTypeFilters]
+        description: (type: CardDetails[AdvantageKey]) =>
+            typeCard[type as CardType]
     },
     {
         key: 'isVirtual',
         title: 'Виртуальная',
-        description: (isVirtual: Card[AdvantageKey]) =>
+        description: (isVirtual: CardDetails[AdvantageKey]) =>
             isVirtual ? 'Да' : 'Нет'
     },
     {
         key: 'level',
         title: 'Уровень премиальности',
-        description: (level: Card[AdvantageKey]) => level as string
+        description: (level: CardDetails[AdvantageKey]) => level as string
     },
     {
         key: 'paymentSystem',
         title: 'Платежная система',
-        description: (paymentSystem: Card[AdvantageKey]) =>
+        description: (paymentSystem: CardDetails[AdvantageKey]) =>
             paymentSystem as string
     },
     {
         key: 'expirationAt',
         title: 'Срок действия карты',
-        description: (expirationAt: Card[AdvantageKey]) =>
+        description: (expirationAt: CardDetails[AdvantageKey]) =>
             new Date(expirationAt as string).toISOString().split('T')[0]
     }
 ];
-export const data: Card[] = [
+export const data: CardDetails[] = [
     {
-        cardId: '0000111122223333',
-        cardName: 'Базовая',
-        customerId: 1,
-        accountNumber: 'ACC12345',
-        userLimit: 1,
-        cardProductId: 'CP1',
-        cardNumber: '1234567890123456',
+        name: 'Базовая',
+        number: 'ACC12345',
         balance: 1000,
-        cvvEncrypted: '123',
-        pinCodeHash: 'hashed_pin1',
-        statusName: 'ACTIVE',
+        status: 'active',
         expirationAt: '2025-03-18 12:00:00+00',
-        createdAt: '2024-03-18 12:00:00+00',
         paymentSystem: 'МИР',
         isVirtual: true,
         level: 'CLASSIC',
-        typeCard: 'DEBIT'
+        type: 'DEBIT',
+        image: ''
     },
     {
-        cardId: '0000111122223333',
-        cardName: 'Дополнительная',
-        customerId: 2,
-        accountNumber: 'ACC54321',
-        userLimit: 2,
-        cardProductId: 'CP2',
-        cardNumber: '0987654321098765',
+        name: 'Дополнительная',
+        number: 'ACC54321',
         balance: 500,
-        cvvEncrypted: '123',
-        pinCodeHash: 'hashed_pin2',
-        statusName: 'BLOCKED',
+        status: 'active',
         expirationAt: '2025-03-18 12:00:00+00',
-        createdAt: '2024-03-18 12:00:00+00',
         paymentSystem: 'VISA',
         isVirtual: false,
         level: 'GOLD',
-        typeCard: 'CREDIT'
+        type: 'CREDIT',
+        image: ''
     }
 ];

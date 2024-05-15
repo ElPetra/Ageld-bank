@@ -1,3 +1,4 @@
 export { SmallCardCard } from './small-card-card';
-export { CustomerCard } from './card-block/customer-card';
-export { CardProductVariant } from './card-block/card-product';
+export { CustomerCardCard } from './card-block/customer-card';
+export { CardProductCard } from './card-block/card-product';
+export { CardInfo } from './card-info';

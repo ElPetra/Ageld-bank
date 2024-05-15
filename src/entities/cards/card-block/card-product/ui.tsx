@@ -8,7 +8,7 @@ interface Props {
     card: CardProduct;
 }
 
-export const CardProductVariant = ({ card }: Props) => {
+export const CardProductCard = ({ card }: Props) => {
     return (
         <div className='finance-card__container'>
             <Link to={RouteName.CARD_PRODUCT_PAGE + '/' + card.id}>

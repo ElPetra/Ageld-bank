@@ -2,7 +2,7 @@ import { formatDateRuLocale } from 'src/shared/lib';
 import { Button, Icon, Text } from 'src/shared/ui';
 
 import { accountTypes, currencySymbol } from 'src/shared/model';
-import { AccountStatuses } from 'src/entities/accounts';
+import { ProductStatuses } from 'src/entities/product';
 
 import {
     ACCOUNT_BALANCE,
@@ -40,8 +40,8 @@ export const AccountInfo = ({ account }: Props) => {
                                 <Text size='m' weight='medium'>
                                     {accountTypes[account.type]}
                                 </Text>
-                                <AccountStatuses
-                                    master={account.master}
+                                <ProductStatuses
+                                    isMaster={account.master}
                                     status={account.status}
                                 />
                             </div>

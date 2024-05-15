@@ -1,6 +1,6 @@
 import { AccountCard } from 'src/entities/accounts';
 import { MessageCard } from 'src/entities/message';
-
+import { ProductStatuses } from 'src/entities/product';
 import {
     CREATE,
     CREATE_ACCOUNT,
@@ -15,13 +15,19 @@ interface Props {
     accounts: Account[];
 }
 
-export const AccountContent = ({ accounts }: Props) => {
+export const AccountList = ({ accounts }: Props) => {
     return (
-        <div className='account__content'>
+        <div>
             {accounts.length ? (
                 <Columns number='3'>
                     {accounts.map(el => (
-                        <AccountCard key={el.number} account={el} />
+                        <AccountCard key={el.number} account={el}>
+                            <ProductStatuses
+                                isMaster={el.isMaster}
+                                status={el.status}
+                                direction='column'
+                            />
+                        </AccountCard>
                     ))}
                 </Columns>
             ) : (

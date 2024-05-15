@@ -1,4 +1,4 @@
-import type { SvgIconName } from 'src/shared/ui';
+export type Currency = 'eur' | 'usd' | 'rub';
 
 export const ALL_CURRENCY = 'Все';
 export const RUB = 'RUB';
@@ -13,24 +13,15 @@ export const currencySymbol = {
     usd: '$'
 };
 
-export type Currency = keyof typeof currencySymbol;
+export type ProductStatus = 'active' | 'closed' | 'blocked';
 
-interface CurrencyVariant {
-    value: Currency;
-    text: string;
-}
+export const ACTIVE_PRODUCT = 'Активный';
+export const CLOSED_PRODUCT = 'Закрытый';
+export const BLOCKED_PRODUCT = 'Заблокированный';
+export const MASTER_PRODUCT = 'Основной';
 
-export const currency: CurrencyVariant[] = [
-    {
-        value: 'rub',
-        text: RUB
-    },
-    {
-        value: 'eur',
-        text: EUR
-    },
-    {
-        value: 'usd',
-        text: USD
-    }
-];
+export const productStatuses: Record<ProductStatus, string> = {
+    active: ACTIVE_PRODUCT,
+    closed: CLOSED_PRODUCT,
+    blocked: BLOCKED_PRODUCT
+};

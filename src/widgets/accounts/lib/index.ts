@@ -12,8 +12,7 @@ export const filterAccounts = (
             el =>
                 (currency === ALL_CURRENCY ||
                     el.currency === currency.toLowerCase()) &&
-                el.status === status &&
-                el.type !== 'master'
+                el.status === status
         ) || []
     );
 };

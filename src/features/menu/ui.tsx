@@ -18,7 +18,7 @@ interface Props {
     href?: string;
     variant?: 'primary' | 'secondary';
     routes?: string[];
-    elements?: Element[];
+    elements: Element[];
     children?: ReactNode;
 }
 

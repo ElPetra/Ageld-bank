@@ -33,7 +33,7 @@ export const accountApi = createApi({
         }),
         getAccounts: builder.query<Account[], void>({
             query: () => ({
-                url: `/list_account_number`,
+                url: '/list_account_number',
                 method: 'GET'
             }),
             providesTags: ['Account'],

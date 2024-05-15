@@ -1,13 +1,13 @@
 import { useParams } from 'react-router-dom';
 
-import { ACCOUNTS, RouteName } from 'src/shared/model';
+import { ACCOUNTS, GO_TO_ACCOUNT_LIST, RouteName } from 'src/shared/model';
 import { Container } from 'src/shared/ui';
 import { Menu } from 'src/features/menu';
 import { BackButton } from 'src/features/multi-step-form';
 import { MessageCard } from 'src/entities/message';
-import { GO_TO_ACCOUNT_LIST } from 'src/pages/account-creation/model';
 
 import { ACCOUNT_INFO, ACCOUNT_OPERATIONS } from '../model';
+
 import { AccountInfo } from './account-info';
 import { AccountOperations } from './account-operations';
 
@@ -68,7 +68,7 @@ export const accounts: AccountDetails[] = [
 
 export const AccountPage = () => {
     const { id } = useParams();
-    const account = accounts.find(el => el.id === id);
+    const account = accounts.find(el => el.id === 'qwerty_1');
     return (
         <Container>
             <BackButton />

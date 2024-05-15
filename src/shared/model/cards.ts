@@ -1,13 +1,11 @@
 import type { SvgIconName } from 'src/shared/ui';
 import type { ProductStatus } from 'src/shared/model';
 
-export type CardTypeFilters = 'ALL' | 'CREDIT' | 'DEBIT' | 'DEPOSIT';
-export type PaymentSystemFilters = 'ALL' | 'MIR' | 'VISA';
-export type PaymentSystemFiltersValues = 'Все' | 'МИР' | 'VISA';
+type CardStatusResponse = 'ACTIVE' | 'CLOSED' | 'BLOCKED';
 
 export type CardType = 'CREDIT' | 'DEBIT' | 'DEPOSIT';
 export type CardLevel = 'CLASSIC' | 'GOLD' | 'PLATINUM' | 'PREMIUM';
-export type PaymentSystemValues = 'МИР' | 'VISA';
+export type PaymentSystem = 'МИР' | 'VISA';
 
 export const CARDS_TITLE = 'Карты';
 export const CREATE_CARD = 'Создать карту';
@@ -30,18 +28,19 @@ export const DEPOSIT_CARD = 'Депозитная';
 export const MIR_CARD = 'МИР';
 export const VISA_CARD = 'VISA';
 
-export const typeCardName: Record<CardTypeFilters, string> = {
-    ALL: ALL_CARD,
+export const typeCard: Record<CardType, string> = {
     CREDIT: CREDIT_CARD,
     DEBIT: DEBIT_CARD,
     DEPOSIT: DEPOSIT_CARD
 };
 
-export const paymentSystemName: Record<PaymentSystemFilters, string> = {
-    ALL: ALL_CARD,
-    MIR: MIR_CARD,
-    VISA: VISA_CARD
-};
+export const typeCardFilters = [
+    ALL_CARD,
+    CREDIT_CARD,
+    DEBIT_CARD,
+    DEPOSIT_CARD
+];
+export const paymentSystemFilters = [ALL_CARD, MIR_CARD, VISA_CARD];
 
 export interface Detail {
     id: number;
@@ -49,31 +48,60 @@ export interface Detail {
     icon: SvgIconName;
 }
 
-export interface Card {
-    cardId: string;
-    cardName: string;
-    customerId: number;
-    accountNumber: string;
-    userLimit: number;
-    cardProductId: string;
-    cardNumber: string;
-    balance: number;
-    cvvEncrypted: string;
-    pinCodeHash: string;
-    statusName: string;
+export interface CustomerCard {
+    number: string;
     expirationAt: string;
-    createdAt: string;
-    paymentSystem: PaymentSystemValues;
+    image: string;
+    level: CardLevel;
+    name: string;
+    paymentSystem: PaymentSystem;
+    status: ProductStatus;
+    type: CardType;
+}
+
+export interface CustomerCardResponse {
+    accountNumber: string;
+    expirationAt: string;
+    image: string;
+    level: CardLevel;
+    nameProduct: string;
+    paymentSystem: PaymentSystem;
+    statusName: CardStatusResponse;
+    typeCard: CardType;
+}
+
+export interface CardDetails {
+    number: string;
+    balance: number;
+    status: ProductStatus;
+    expirationAt: string;
+    name: string;
+    type: CardType;
     isVirtual: boolean;
     level: CardLevel;
-    typeCard: CardTypeFilters;
+    paymentSystem: PaymentSystem;
+    image: string;
+}
+
+export interface CardDetailsResponse {
+    customerId: number;
+    cardNumber: string;
+    balance: number;
+    statusName: CardStatusResponse;
+    expirationAt: string;
+    nameProduct: string;
+    typeCard: CardType;
+    isVirtual: boolean;
+    level: CardLevel;
+    paymentSystem: PaymentSystem;
+    image: string;
 }
 
 export interface CardProduct {
     id: string;
     name: string;
     image: string;
-    paymentSystem: PaymentSystemValues;
+    paymentSystem: PaymentSystem;
     type: CardType;
     level: CardLevel;
 }
@@ -82,37 +110,15 @@ export interface CardProductResponse {
     cardProductId: string;
     nameProduct: string;
     imageUrl: string;
-    paymentSystem: PaymentSystemValues;
+    paymentSystem: PaymentSystem;
     typeCard: CardType;
     level: CardLevel;
-}
-
-export interface CustomersCard {
-    number: string;
-    expirationAt: string;
-    image: string;
-    level: CardLevel;
-    name: string;
-    paymentSystem: PaymentSystemValues;
-    status: ProductStatus;
-    type: CardType;
-}
-
-export interface CustomersCardResponse {
-    accountNumber: string;
-    expirationAt: string;
-    image: string;
-    level: CardLevel;
-    nameProduct: string;
-    paymentSystem: PaymentSystemValues;
-    statusName: ProductStatus;
-    typeCard: CardType;
 }
 
 export interface CardProductDetails {
     name: string;
     image: string;
-    paymentSystem: PaymentSystemValues;
+    paymentSystem: PaymentSystem;
     type: CardType;
     level: CardLevel;
     isVirtual: boolean;
@@ -139,7 +145,7 @@ export interface CardProductDetails {
 export interface CardProductDetailsResponse {
     nameProduct: string;
     image: string;
-    paymentSystem: PaymentSystemValues;
+    paymentSystem: PaymentSystem;
     typeCard: CardType;
     level: CardLevel;
     isVirtual: boolean;

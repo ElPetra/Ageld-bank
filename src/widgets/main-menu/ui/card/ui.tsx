@@ -1,5 +1,7 @@
-import { Icon, Link, type SvgIconName, Text } from 'src/shared/ui';
+import { Icon, Link, Text } from 'src/shared/ui';
 import { RouteName } from 'src/shared/model';
+
+import type { SvgIconName } from 'src/shared/ui';
 
 import './styles.scss';
 

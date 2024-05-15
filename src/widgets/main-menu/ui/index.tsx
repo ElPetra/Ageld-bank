@@ -16,6 +16,8 @@ import {
     TRANSFERS
 } from 'src/shared/model';
 
+import { ProductStatuses } from 'src/entities/product';
+
 import { MainMenuBlock } from './block';
 import { MainMenuCard } from './card';
 
@@ -97,7 +99,13 @@ export const MainMenu = () => {
                 >
                     <Columns number='2'>
                         {accounts?.slice(0, 2).map(el => (
-                            <AccountCard key={el.number} account={el} />
+                            <AccountCard key={el.number} account={el}>
+                                <ProductStatuses
+                                    isMaster={el.isMaster}
+                                    status={el.status}
+                                    direction='column'
+                                />
+                            </AccountCard>
                         ))}
                     </Columns>
                 </MainMenuBlock>

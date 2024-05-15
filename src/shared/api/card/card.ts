@@ -1,9 +1,9 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import { localStorageApi } from 'src/shared/api';
-import { transformCards } from 'src/shared/lib';
+import { transformCardDetails, transformCards } from 'src/shared/lib';
 
-import type { CustomersCard } from 'src/shared/model';
+import type { CardDetails, CardType, CustomerCard } from 'src/shared/model';
 
 const cardBaseUrl = import.meta.env.VITE_BASEURL_GATEWAY + '/api/v1/card';
 
@@ -20,11 +20,11 @@ export const cardApi = createApi({
     }),
     endpoints: builder => ({
         getCustomerCardsByType: builder.query<
-            CustomersCard[],
-            { type: string }
+            CustomerCard[],
+            { type: CardType }
         >({
             query: ({ type }) => ({
-                url: `/cards`,
+                url: '/cards',
                 params: {
                     type_card: type
                 },
@@ -32,21 +32,22 @@ export const cardApi = createApi({
             }),
             transformResponse: transformCards
         }),
-        getCustomerCards: builder.query<CustomersCard[], void>({
+        getCustomerCards: builder.query<CustomerCard[], void>({
             query: () => ({
-                url: `/cards`,
+                url: '/cards',
                 method: 'GET'
             }),
             transformResponse: transformCards
         }),
-        getCustomerCardDetails: builder.query<CustomersCard, { id: string }>({
+        getCustomerCardDetails: builder.query<CardDetails, { id: string }>({
             query: ({ id }) => ({
-                url: `/cards/info`,
+                url: '/cards/info',
                 params: {
                     cards: id
                 },
                 method: 'GET'
-            })
+            }),
+            transformResponse: transformCardDetails
         })
     })
 });

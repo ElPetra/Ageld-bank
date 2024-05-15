@@ -1,12 +1,15 @@
 import type {
     Account,
     AccountResponse,
-    CustomersCard,
-    CustomersCardResponse,
+    CustomerCard,
+    CustomerCardResponse,
     CardProductResponse,
     CardProduct,
     CardProductDetails,
-    CardProductDetailsResponse
+    CardProductDetailsResponse,
+    ProductStatus,
+    CardDetailsResponse,
+    CardDetails
 } from 'src/shared/model';
 
 // export const transformAccount = (res: AccountResponse): Account => ({
@@ -30,7 +33,7 @@ export const transformAccounts = (res: AccountResponse[]): Account[] =>
         name: el.nameAccount || ''
     }));
 
-export const transformCards = (res: CustomersCardResponse[]): CustomersCard[] =>
+export const transformCards = (res: CustomerCardResponse[]): CustomerCard[] =>
     res.map(el => ({
         number: el.accountNumber,
         expirationAt: el.expirationAt,
@@ -38,37 +41,23 @@ export const transformCards = (res: CustomersCardResponse[]): CustomersCard[] =>
         level: el.level,
         name: el.nameProduct,
         paymentSystem: el.paymentSystem,
-        status: el.statusName,
+        status: el.statusName.toLowerCase() as ProductStatus,
         type: el.typeCard
     }));
 
 export const transformCardDetails = (
-    res: CardProductDetailsResponse
-): CardProductDetails => ({
+    res: CardDetailsResponse
+): CardDetails => ({
+    number: res.cardNumber,
+    balance: res.balance,
+    status: res.statusName.toLowerCase() as ProductStatus,
+    expirationAt: res.expirationAt,
     name: res.nameProduct,
-    image: res.image,
-    paymentSystem: res.paymentSystem,
     type: res.typeCard,
-    level: res.level,
     isVirtual: res.isVirtual,
-    feeUse: res.feeUse,
-    withdrawLimitDay: res.withdrawLimitDay,
-    withdrawLimitMonth: res.withdrawLimitMonth,
-    transactionLimitDay: res.transactionLimitDay,
-    transactionLimitMonth: res.transactionLimitMonth,
-    payLimitDay: res.payLimitDay,
-    payLimitMonth: res.payLimitMonth,
-    overWithdrawDay: res.overWithdrawDay,
-    overWithdrawMonth: res.overWithdrawMonth,
-    overTransactionDay: res.overTransactionDay,
-    overTransactionMonth: res.overTransactionMonth,
-    overPayDay: res.overPayDay,
-    overPayMonth: res.overPayMonth,
-    conditionWithdraw: res.conditionWithdraw,
-    conditionPartnerWithdraw: res.conditionPartnerWithdraw,
-    conditionWorldWithdraw: res.conditionWorldWithdraw,
-    conditionTransaction: res.conditionTransaction,
-    conditionPay: res.conditionPay
+    level: res.level,
+    paymentSystem: res.paymentSystem,
+    image: res.image
 });
 
 export const transformCardProducts = (

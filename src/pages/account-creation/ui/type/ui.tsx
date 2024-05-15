@@ -16,14 +16,14 @@ import type { Dispatch, SetStateAction } from 'react';
 import type { SvgIconName } from 'src/shared/ui';
 import type { AccountType } from 'src/shared/model';
 
-interface Types {
+interface TypeVariant {
     value: AccountType;
     type: string;
     title: string;
     icon: SvgIconName;
 }
 
-const types: Types[] = [
+const types: TypeVariant[] = [
     {
         value: 'credit',
         type: CREDIT_ACCOUNT,

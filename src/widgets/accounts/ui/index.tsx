@@ -1,3 +1,6 @@
+import { useState } from 'react';
+
+import { useGetAccountsQuery } from 'src/shared/api';
 import { Preloader, Text } from 'src/shared/ui';
 import {
     ACCOUNTS,
@@ -16,9 +19,7 @@ import { Menu } from 'src/features/menu';
 
 import { filterAccounts } from '../lib';
 
-import { AccountContent } from './content';
-import { useGetAccountsQuery } from 'src/shared/api';
-import { useState } from 'react';
+import { AccountList } from './list';
 
 export const Accounts = () => {
     const { data: accounts, isLoading } = useGetAccountsQuery();
@@ -41,7 +42,7 @@ export const Accounts = () => {
                         id: 1,
                         name: OPENED_ACCOUNTS,
                         component: (
-                            <AccountContent
+                            <AccountList
                                 accounts={filterAccounts(
                                     accounts,
                                     'active',
@@ -53,13 +54,13 @@ export const Accounts = () => {
                     {
                         id: 2,
                         name: OPEN_ACCOUNT_REQUEST,
-                        component: <AccountContent accounts={[]} />
+                        component: <AccountList accounts={[]} />
                     },
                     {
                         id: 3,
                         name: CLOSED_ACCOUNTS,
                         component: (
-                            <AccountContent
+                            <AccountList
                                 accounts={filterAccounts(
                                     accounts,
                                     'closed',
@@ -72,7 +73,7 @@ export const Accounts = () => {
                         id: 4,
                         name: BLOCKED_ACCOUNTS,
                         component: (
-                            <AccountContent
+                            <AccountList
                                 accounts={filterAccounts(
                                     accounts,
                                     'blocked',

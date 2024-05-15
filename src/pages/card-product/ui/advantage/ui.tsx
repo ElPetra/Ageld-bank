@@ -1,12 +1,13 @@
 import { Icon, Text } from 'src/shared/ui';
 
 import type { AdvantageConfig } from '../../model';
-import type { Card, CardProductDetails } from 'src/shared/model';
-import './style.scss';
+import type { CardDetails, CardProductDetails } from 'src/shared/model';
 import type { AdvantageCardConfig } from 'src/pages/card/model';
 
+import './style.scss';
+
 interface Props {
-    card: Card | CardProductDetails;
+    card: CardDetails | CardProductDetails;
     items: AdvantageConfig[] | AdvantageCardConfig[];
     type?: 'card' | 'card-product';
 }
@@ -27,11 +28,11 @@ export const Advantages = ({ card, items, type }: Props) => {
                         >
                             {description(card[key as keyof typeof card])}
                         </Text>
-                        {type === 'card' && key === 'cardNumber' && (
+                        {type === 'card' && key === 'number' && (
                             <button
                                 onClick={() =>
-                                    'cardNumber' in card &&
-                                    handleCopyCardNumber(card.cardNumber)
+                                    'number' in card &&
+                                    handleCopyCardNumber(card.number)
                                 }
                             >
                                 <Icon icon='copy-grey' />

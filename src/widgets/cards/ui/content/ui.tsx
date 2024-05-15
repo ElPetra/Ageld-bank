@@ -3,24 +3,26 @@ import {
     CARDS_NOT_FOUND,
     CREATE,
     CREATE_CARD,
-    paymentSystemName,
+    paymentSystemFilters,
     RouteName,
-    typeCardName
+    typeCardFilters
 } from 'src/shared/model';
 import { MessageCard } from 'src/entities/message';
 import { FilterBar } from 'src/entities/filter';
-import { CardProductVariant, CustomerCard } from 'src/entities/cards';
+import { CardProductCard, CustomerCardCard } from 'src/entities/cards';
 import { Pagination } from 'src/features/filters';
+
+import { ProductStatuses } from 'src/entities/product';
 
 import { useCardsFilter, usePaginationFilter } from '../../lib';
 import { isCardProduct, isCustomerCard } from '../../model';
 
-import type { CardProduct, CustomersCard } from 'src/shared/model';
+import type { CardProduct, CustomerCard } from 'src/shared/model';
 
 import './styles.scss';
 
 interface Props {
-    cards: CardProduct[] | CustomersCard[];
+    cards: CardProduct[] | CustomerCard[];
     isLoading: boolean;
 }
 
@@ -43,12 +45,12 @@ export const CardContent = ({ cards, isLoading }: Props) => {
         <>
             <div className='filters'>
                 <FilterBar
-                    filters={Object.values(typeCardName)}
+                    filters={typeCardFilters}
                     current={currencyType}
                     setCurrent={setCurrencyType}
                 />
                 <FilterBar
-                    filters={Object.values(paymentSystemName)}
+                    filters={paymentSystemFilters}
                     current={currencyPayment}
                     setCurrent={setCurrencyPayment}
                 />
@@ -62,17 +64,22 @@ export const CardContent = ({ cards, isLoading }: Props) => {
                             {currentItems.map(el => {
                                 if (isCardProduct(el)) {
                                     return (
-                                        <CardProductVariant
+                                        <CardProductCard
                                             key={el.id}
                                             card={el}
                                         />
                                     );
                                 } else if (isCustomerCard(el)) {
                                     return (
-                                        <CustomerCard
+                                        <CustomerCardCard
                                             key={el.number}
                                             card={el}
-                                        />
+                                        >
+                                            <ProductStatuses
+                                                isMaster={false}
+                                                status={el.status}
+                                            />
+                                        </CustomerCardCard>
                                     );
                                 }
                             })}

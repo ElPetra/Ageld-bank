@@ -1,7 +1,6 @@
-import type { Currency } from 'src/shared/model';
+import type { Currency, ProductStatus } from 'src/shared/model';
 import type { SvgIconName } from 'src/shared/ui';
 
-export type ProductStatus = 'active' | 'closed' | 'blocked';
 export type AccountType = 'credit' | 'debit' | 'deposit';
 
 export interface AccountDetails {
@@ -42,22 +41,11 @@ export interface Account {
 export const CREDIT_ACCOUNT = 'Кредитный счет';
 export const DEBIT_ACCOUNT = 'Дебетовый счет';
 export const DEPOSIT_ACCOUNT = 'Депозитный счет';
-export const MASTER_ACCOUNT = 'Основной счет';
-
-export const ACTIVE_ACCOUNT = 'Активный';
-export const CLOSED_ACCOUNT = 'Закрытый';
-export const BLOCKED_ACCOUNT = 'Заблокированный';
 
 export const accountTypes: Record<AccountType, string> = {
     credit: CREDIT_ACCOUNT,
     debit: DEBIT_ACCOUNT,
     deposit: DEPOSIT_ACCOUNT
-};
-
-export const accountStatuses: Record<ProductStatus, string> = {
-    active: ACTIVE_ACCOUNT,
-    closed: CLOSED_ACCOUNT,
-    blocked: BLOCKED_ACCOUNT
 };
 
 export const ACCOUNT_NUMBER_REPLACEMENT = '**************';
@@ -76,3 +64,8 @@ export const CREATE_ACCOUNT = 'Открыть счет';
 export const CREATE_CREDIT_ACCOUNT_TITLE = 'Больше денег без лишних вложений';
 export const CREATE_DEBIT_ACCOUNT_TITLE = 'Откройте счет не выходя из дома';
 export const CREATE_DEPOSIT_ACCOUNT_TITLE = 'Сделайте шаг навстречу мечте';
+export const GET_CARD_IN_OFFICE = 'Заберу в офисе банка';
+export const CARD_DELIVERY_REQUIRED = 'Потребуется доставка';
+export const ACCOUNT_CREATION_FAILED = 'Не удалось открыть счет';
+export const ACCOUNT_CREATION_SUCCESS = 'Мы открыли вам счет!';
+export const GO_TO_ACCOUNT_LIST = 'Перейти к списку счетов';

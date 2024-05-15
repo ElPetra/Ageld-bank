@@ -47,6 +47,7 @@ export const localStorageApi = {
                     await response.json();
                 localStorageApi.setTokens(data.accessToken, data.refreshToken);
                 return data.accessToken;
+                // eslint-disable-next-line
             } catch {}
         }
         localStorageApi.removeUserData();
