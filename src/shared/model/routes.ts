@@ -7,7 +7,7 @@ export const RouteName = {
     RECOVERY_PASSWORD_PAGE: '/recovery',
     PERSONAL_PAGE: '/personal',
     CARD_PAGE: '/card',
-    DEPOSIT_PAGE: '/deposit',
+    DEPOSIT_PAGE: '/deposit-products',
     ACCOUNT_PAGE: '/account',
     CARD_PRODUCT_PAGE: '/card-product',
     NOTIFICATION_HISTORY_PAGE: '/notifications_history',
