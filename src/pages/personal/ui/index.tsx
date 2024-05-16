@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import { Link, Container, Preloader } from 'src/shared/ui';
 import { useGetInfoQuery } from 'src/shared/api';
 import { PersonalRouteName, RouteName } from 'src/shared/model';
@@ -8,16 +10,17 @@ import { ChangePasswordForm } from 'src/features/forms';
 import { MultiStepForm } from 'src/features/multi-step-form';
 
 import { options } from '../model';
-
 import { PersonalData } from './personal-data';
 
 export const PersonalPage = () => {
     const { signedOut } = useAuth();
     const { data: personalInfo, isLoading, error } = useGetInfoQuery();
 
-    if (error) {
-        return signedOut();
-    }
+    useEffect(() => {
+        if (error) {
+            return signedOut();
+        }
+    }, [error, signedOut]);
 
     return isLoading ? (
         <Preloader />

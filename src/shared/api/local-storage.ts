@@ -49,7 +49,6 @@ export const localStorageApi = {
                 return data.accessToken;
             } catch (e) {
                 localStorageApi.removeUserData();
-                throw Error('Не удалось обновить токен доступа');
             }
         }
         localStorageApi.removeUserData();

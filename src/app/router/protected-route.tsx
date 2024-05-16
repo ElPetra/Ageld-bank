@@ -13,7 +13,7 @@ export function ProtectedRoute({ children }: Props) {
     const { authStatus } = useAuth();
 
     return authStatus === AuthStatus.SignedIn ? (
-        <>{children}</>
+        children
     ) : (
         <Navigate to={RouteName.LOGIN_PAGE} replace />
     );

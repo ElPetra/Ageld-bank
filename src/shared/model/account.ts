@@ -1,21 +1,33 @@
 import type { Currency, ProductStatus } from 'src/shared/model';
-import type { SvgIconName } from 'src/shared/ui';
 
 export type AccountType = 'credit' | 'debit' | 'deposit';
 
 export interface AccountDetails {
-    id: string;
     number: string;
+    name: string;
+    isMaster: boolean;
     type: AccountType;
-    balance: string;
-    status: ProductStatus;
     currency: Currency;
-    master: boolean;
-    created: Date;
-    closed?: Date;
-    blockReason?: string;
-    contractNumber: string;
-    icon: SvgIconName;
+    status: ProductStatus;
+    balance: number;
+    createdAt: string;
+    closedAt: string;
+    blockReason: string;
+    blockComment: string;
+}
+
+export interface AccountDetailsResponse {
+    accountNumber: string;
+    nameAccount: null | string;
+    masterAccount: boolean;
+    type: AccountType;
+    currencyName: Currency;
+    statusName: ProductStatus;
+    accountBalance: number;
+    createdAt: string;
+    closedAt: string;
+    blockReason: null | string;
+    blockComment: null | string;
 }
 
 export interface AccountResponse {
