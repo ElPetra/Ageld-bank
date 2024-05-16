@@ -27,9 +27,9 @@ import arrowSVG from 'src/shared/ui/icon/assets/icons/arrow-icon.svg';
 import menuSVG from 'src/shared/ui/icon/assets/icons/menu-icon.svg';
 import arrow2SVG from 'src/shared/ui/icon/assets/icons/arrow-2.svg';
 import arrow3SVG from 'src/shared/ui/icon/assets/icons/arrow-3.svg';
-import usdSVG from 'src/shared/ui/icon/assets/icons/usd-icon.svg';
-import rubSVG from 'src/shared/ui/icon/assets/icons/rub-icon.svg';
-import eurSVG from 'src/shared/ui/icon/assets/icons/eur-icon.svg';
+import usdSVG from 'src/shared/ui/icon/assets/icons/usd.svg';
+import rubSVG from 'src/shared/ui/icon/assets/icons/rub.svg';
+import eurSVG from 'src/shared/ui/icon/assets/icons/eur.svg';
 import smartphoneSVG from 'src/shared/ui/icon/assets/icons/smartphone-icon.svg';
 import translationsSVG from 'src/shared/ui/icon/assets/icons/translations-icon.svg';
 import walletSVG from 'src/shared/ui/icon/assets/icons/wallet-icon.svg';
@@ -89,9 +89,9 @@ export const SVG = {
     'menu-icon': menuSVG,
     'arrow-2': arrow2SVG,
     'arrow-3': arrow3SVG,
-    'usd-icon': usdSVG,
-    'rub-icon': rubSVG,
-    'eur-icon': eurSVG,
+    usd: usdSVG,
+    rub: rubSVG,
+    eur: eurSVG,
     'smartphone-icon': smartphoneSVG,
     'translations-icon': translationsSVG,
     'wallet-icon': walletSVG,

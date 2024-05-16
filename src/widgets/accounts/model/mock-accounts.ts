@@ -11,7 +11,7 @@ export const accounts: Account[] = [
         master: true,
         created: new Date(),
         contractNumber: '12312312132211212312',
-        icon: 'rub-icon'
+        icon: 'rub'
     },
     {
         status: 'closed',
@@ -24,7 +24,7 @@ export const accounts: Account[] = [
         created: new Date(),
         contractNumber: '12312312132211212312',
         closed: new Date(),
-        icon: 'eur-icon'
+        icon: 'eur'
     },
     {
         status: 'blocked',
@@ -37,7 +37,7 @@ export const accounts: Account[] = [
         created: new Date(),
         contractNumber: '12312312132211212312',
         blockReason: 'Плохо себя вёл',
-        icon: 'usd-icon'
+        icon: 'usd'
     },
     {
         status: 'active',
@@ -49,6 +49,6 @@ export const accounts: Account[] = [
         master: false,
         created: new Date(),
         contractNumber: '12312312132211212312',
-        icon: 'usd-icon'
+        icon: 'usd'
     }
 ];

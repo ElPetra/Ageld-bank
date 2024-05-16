@@ -30,7 +30,7 @@ const cards: MockCard[] = [
         level: 'CLASSIC',
         paymentSystem: 'МИР',
         currency: 'rub',
-        icon: 'rub-icon'
+        icon: 'rub'
     },
     {
         balance: 20000,
@@ -40,7 +40,7 @@ const cards: MockCard[] = [
         level: 'PLATINUM',
         paymentSystem: 'VISA',
         currency: 'eur',
-        icon: 'eur-icon'
+        icon: 'eur'
     },
     {
         balance: 15000,
@@ -50,7 +50,7 @@ const cards: MockCard[] = [
         level: 'GOLD',
         paymentSystem: 'VISA',
         currency: 'usd',
-        icon: 'usd-icon'
+        icon: 'usd'
     }
 ];
 
@@ -65,7 +65,7 @@ export const accounts: Account[] = [
         master: true,
         created: new Date(),
         contractNumber: '12312312132211212312',
-        icon: 'rub-icon'
+        icon: 'rub'
     },
     {
         status: 'active',
@@ -77,7 +77,7 @@ export const accounts: Account[] = [
         master: false,
         created: new Date(),
         contractNumber: '12312312132211212312',
-        icon: 'usd-icon'
+        icon: 'usd'
     }
 ];
 
