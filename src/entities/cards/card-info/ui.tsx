@@ -1,38 +1,36 @@
 import { Button, Icon, Text } from 'src/shared/ui';
-import { getIconName, getStatusName } from 'src/shared/lib';
+import { getIconName } from 'src/shared/lib';
+
+import { ProductStatuses } from 'src/entities/product';
 import { Advantages } from 'src/pages/card-product/ui/advantage';
 import { advantagesItems } from 'src/pages/card/model';
 import { advantages } from 'src/pages/card-product/model';
 
-import type { Card, CardProductInfo } from 'src/shared/model';
+import type { CardDetails, CardProductDetails } from 'src/shared/model';
+
 import './styles.scss';
 
 interface Props {
-    card: Card | CardProductInfo;
+    card: CardDetails | CardProductDetails;
     type?: 'card' | 'card-product';
 }
 export const CardInfo = ({ card, type }: Props) => {
     return (
         <div className='finance-card__info'>
             <div className='finance-card__title'>
-                <Text
-                    size='l'
-                    weight='bold'
-                    color={type === 'card' ? 'blue' : 'quadruple'}
-                >
-                    {type === 'card'
-                        ? 'cardName' in card && card.cardName
-                        : 'nameProduct' in card && card.nameProduct}
+                <Text size='l' weight='bold' color='quadruple'>
+                    {card.name}
                 </Text>
                 {type === 'card' ? (
-                    <div
-                        className={`finance-card__status finance-card__status-type__${'statusName' in card && card.statusName}`}
-                    >
-                        <Text size='s' weight='medium' color='white'>
-                            {'statusName' in card &&
-                                getStatusName(card.statusName)}
-                        </Text>
-                    </div>
+                    <>
+                        {'status' in card && (
+                            <ProductStatuses
+                                isMaster={false}
+                                status={card.status}
+                                direction='row'
+                            />
+                        )}
+                    </>
                 ) : (
                     <Icon
                         icon={getIconName(card.paymentSystem)}

@@ -47,7 +47,10 @@ export const localStorageApi = {
                     await response.json();
                 localStorageApi.setTokens(data.accessToken, data.refreshToken);
                 return data.accessToken;
-            } catch {}
+            } catch (e) {
+                localStorageApi.removeUserData();
+                throw Error('Не удалось обновить токен доступа');
+            }
         }
         localStorageApi.removeUserData();
     },

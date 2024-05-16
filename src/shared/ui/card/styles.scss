@@ -2,6 +2,10 @@
   display: flex;
   height: 100%;
 
+  &.space-between {
+    justify-content: space-between;
+  }
+
   &.center {
     align-items: center;
   }

@@ -40,7 +40,7 @@ export const mockDeposits: MockDeposit[] = [
         currency: 'rub',
         closedAt: '15.10.2025',
         name: 'Liberty бессрочный',
-        icon: 'rub-icon',
+        icon: 'rub',
         interestRate: '15.5%',
         balance: '1000',
         depositAccount: '12345'
@@ -50,7 +50,7 @@ export const mockDeposits: MockDeposit[] = [
         currency: 'eur',
         closedAt: '15.10.2025',
         name: 'Liberty бессрочный',
-        icon: 'eur-icon',
+        icon: 'eur',
         interestRate: '15.5%',
         balance: '1000',
         depositAccount: '12345'
@@ -60,7 +60,7 @@ export const mockDeposits: MockDeposit[] = [
         currency: 'usd',
         closedAt: '15.10.2025',
         name: 'Liberty бессрочный',
-        icon: 'usd-icon',
+        icon: 'usd',
         interestRate: '15.5%',
         balance: '1000',
         depositAccount: '12345'

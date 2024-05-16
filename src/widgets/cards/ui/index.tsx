@@ -3,15 +3,14 @@ import {
     CARDS,
     CARD_PRODUCTS,
     CUSTOMER_CARDS,
+    CARDS_TITLE,
     CardsRouteName,
-    RouteName
+    RouteName,
+    CardsGuestRouteName
 } from 'src/shared/model';
 import { Text } from 'src/shared/ui';
 import { Menu } from 'src/features/menu';
 import { useAuth } from 'src/entities/user';
-import { ProtectedRoute } from 'src/app/router/protected-route';
-
-import { CARDS_TITLE } from '../model';
 
 import { CustomerCards } from './customer-cards';
 import { CardProducts } from './card-products';
@@ -25,7 +24,11 @@ export const Cards = () => {
             </Text>
             <Menu
                 href={RouteName.MAIN_PAGE + '/' + CARDS}
-                routes={CardsRouteName}
+                routes={
+                    authStatus === AuthStatus.SignedIn
+                        ? CardsRouteName
+                        : CardsGuestRouteName
+                }
                 variant='secondary'
                 elements={
                     authStatus === AuthStatus.SignedIn
@@ -38,11 +41,7 @@ export const Cards = () => {
                               {
                                   id: 2,
                                   name: CARD_PRODUCTS,
-                                  component: (
-                                      <ProtectedRoute>
-                                          <CardProducts />
-                                      </ProtectedRoute>
-                                  )
+                                  component: <CardProducts />
                               }
                           ]
                         : [

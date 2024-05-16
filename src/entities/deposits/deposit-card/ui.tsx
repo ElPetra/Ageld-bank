@@ -23,7 +23,7 @@ export const DepositCard = ({ deposit }: Props) => {
     const DEPOSIT_CURRENT_BALANCE = depositBalanceConcat(deposit);
     return (
         <div className='deposit__card'>
-            <Link to={RouteName.ACCOUNT_PAGE + '/' + deposit.id}>
+            <Link to={RouteName.DEPOSIT_PAGE + '/' + deposit.id}>
                 <div className='deposit__card__container'>
                     <div className='deposit__card__title'>
                         <Icon widthAndHeight={70} icon={deposit.icon} />

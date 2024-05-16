@@ -1,76 +1,44 @@
-import {
-    useGetCardProductsQuery,
-    useGetFilteredCustomerCardsQuery
-} from 'src/shared/api';
+import { useGetCardProductsByTypeQuery } from 'src/shared/api';
 
-export const getIconName = (payment: string) => {
+import type { PaymentSystem, ProductStatus } from 'src/shared/model';
+import type { SvgIconName } from 'src/shared/ui';
+
+export const getIconName = (payment: PaymentSystem): SvgIconName => {
     switch (payment) {
         case 'VISA':
             return 'visa-icon';
         case 'МИР':
             return 'mir-icon';
-        default:
-            return 'visa-icon';
     }
 };
 
-export const getStatusName = (status: string | null) => {
+export const getStatusName = (status: ProductStatus): string => {
     switch (status) {
-        case 'ACTIVE':
+        case 'active':
             return 'Активная';
-        case 'BLOCKED':
+        case 'blocked':
             return 'Заблокированная';
-        default:
-            return 'Неизвестный статус';
+        case 'closed':
+            return 'Закрытая';
     }
 };
 
-export const useFetchCards = () => {
-    const { data: debetCards = [], isLoading: debetLoading } =
-        useGetCardProductsQuery({ type: 'DEBIT' });
+export const useGetCardProductsQuery = () => {
+    const { data: debitCards = [], isLoading: debitLoading } =
+        useGetCardProductsByTypeQuery({ type: 'DEBIT' });
+
+    const { data: depositCards = [], isLoading: depositLoading } =
+        useGetCardProductsByTypeQuery({ type: 'DEPOSIT' });
 
     const { data: creditCards = [], isLoading: creditLoading } =
-        useGetCardProductsQuery({
+        useGetCardProductsByTypeQuery({
             type: 'CREDIT'
         });
 
-    const cards = debetCards.concat(creditCards);
-    const isLoading = debetLoading || creditLoading;
-
+    const cards = debitCards.concat(creditCards, depositCards);
+    const isLoading = debitLoading || creditLoading || depositLoading;
     return {
         isLoading,
         cards
-    };
-};
-
-export const useFetchCustomerCards = () => {
-    const {
-        data: debetCards = [],
-        isLoading: debetLoading,
-        error: debetError
-    } = useGetFilteredCustomerCardsQuery({ type: 'DEBIT' });
-
-    const {
-        data: creditCards = [],
-        isLoading: creditLoading,
-        error: creditError
-    } = useGetFilteredCustomerCardsQuery({
-        type: 'CREDIT'
-    });
-    const {
-        data: depositCards = [],
-        isLoading: depositLoading,
-        error: depositError
-    } = useGetFilteredCustomerCardsQuery({
-        type: 'DEPOSIT'
-    });
-    const error = creditError || depositError || debetError;
-    const cards = debetCards.concat(creditCards, depositCards);
-    const isLoading = debetLoading || creditLoading || depositLoading;
-
-    return {
-        isLoading,
-        cards,
-        error
     };
 };

@@ -1,30 +1,18 @@
-import { useMemo, useState } from 'react';
-
 import { ALL_CURRENCY } from 'src/shared/model';
 
-import type { Account, Status } from 'src/shared/model';
-import type { Dispatch, SetStateAction } from 'react';
+import type { Account, ProductStatus } from 'src/shared/model';
 
-export const useAccountsFilter = (
-    accounts: Account[]
-): [
-    [string, Dispatch<SetStateAction<string>>],
-    (status: Status) => Account[]
-] => {
-    const [currency, setCurrency] = useState<string>(ALL_CURRENCY);
-
-    const filteredAccounts = useMemo<Account[]>(
-        () =>
-            accounts.filter(
-                el =>
-                    currency === ALL_CURRENCY ||
-                    el.currency === currency.toLowerCase()
-            ),
-        [accounts, currency]
+export const filterAccounts = (
+    accounts: Account[] | undefined,
+    status: ProductStatus,
+    currency: string
+): Account[] => {
+    return (
+        accounts?.filter(
+            el =>
+                (currency === ALL_CURRENCY ||
+                    el.currency === currency.toLowerCase()) &&
+                el.status === status
+        ) || []
     );
-
-    const getSelectedAccounts = (status: string): Account[] =>
-        filteredAccounts.filter(el => el.status === status);
-
-    return [[currency, setCurrency], getSelectedAccounts];
 };

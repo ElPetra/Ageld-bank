@@ -1,13 +1,17 @@
+import { useParams } from 'react-router-dom';
+
 import { Container, Image, Text } from 'src/shared/ui';
 import { BackButton } from 'src/features/multi-step-form';
-import { actionsItems, data, infoItems } from 'src/pages/card/model';
-import { useParams } from 'react-router-dom';
-import { DetailsItem } from 'src/pages/card/ui/details-item';
-import { CardInfo } from 'src/entities/cards/card-info';
+import { CardInfo } from 'src/entities/cards';
+
+import { actionsItems, data, infoItems } from '../model';
+
+import { DetailsItem } from './details-item';
 
 export const CardPage = () => {
     const { id } = useParams<{ id: string }>();
-    const card = data.find(item => item.cardId === id);
+
+    const card = data[0];
 
     return (
         <Container>

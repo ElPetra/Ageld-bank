@@ -1,1 +1,1 @@
-export { CardProductVariant } from './ui';
+export { CardProductCard } from './ui';
