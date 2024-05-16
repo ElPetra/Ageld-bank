@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Text } from 'src/shared/ui';
 
 import { constactsMatcher } from '../../../../model';
@@ -17,16 +18,20 @@ export const ContactsBlock = ({ contacts }: Props) => {
                 }
                 return (
                     <div key={index} className='phone'>
-                        <a
-                            className='text text-inherit s medium left'
-                            href={
+                        <Link
+                            to={
                                 (index !== 2 ? 'tel:' : 'mailto:') +
                                 contacts[el as keyof ContactBlock]
                             }
+                            target='_blank'
                         >
-                            {contacts[el as keyof ContactBlock]}
-                        </a>
-                        <Text weight='medium'>{constactsMatcher[index]}</Text>
+                            <Text weight='medium'>
+                                {contacts[el as keyof ContactBlock]}
+                            </Text>
+                        </Link>
+                        <Text weight='medium' color='light'>
+                            {constactsMatcher[index]}
+                        </Text>
                     </div>
                 );
             })}

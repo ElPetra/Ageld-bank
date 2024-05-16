@@ -28,7 +28,7 @@ export const CardPage = () => {
                         <CardInfo card={card} type='card' />
                     </div>
                     <div className='advantages__title'>
-                        <Text size='m' weight='medium' color='blue'>
+                        <Text size='m' weight='medium'>
                             Информация по карте
                         </Text>
                         <div className='advantages__container'>
@@ -38,7 +38,7 @@ export const CardPage = () => {
                         </div>
                     </div>
                     <div className='advantages__title'>
-                        <Text size='m' weight='medium' color='blue'>
+                        <Text size='m' weight='medium'>
                             Действия с картой
                         </Text>
                         <div className='advantages__container'>

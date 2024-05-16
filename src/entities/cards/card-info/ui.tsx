@@ -41,7 +41,7 @@ export const CardInfo = ({ card, type }: Props) => {
                 )}
             </div>
             {type === 'card' && (
-                <Text size='l' weight='bold' color='blue'>
+                <Text size='l' weight='bold'>
                     {'balance' in card && card.balance + ' ₽'}
                 </Text>
             )}

@@ -46,9 +46,6 @@
       display: flex;
       flex-direction: column;
       gap: 4px;
-      & :last-child{
-        color: var(--text-light-gray);
-      }
     }
   }
   &__buttons {

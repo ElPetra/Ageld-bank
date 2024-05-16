@@ -10,6 +10,31 @@ export type AdvantageConfig = {
     description: (value: CardProductDetails[AdvantageKey]) => string
 };
 
+const limitsMatcher = {
+    withdrawLimitDay: 'Лимит на снятие денег в день',
+    withdrawLimitMonth: 'Лимит на снятие денег в месяц',
+    transactionLimitDay: 'Лимит на сумму переводов в день',
+    transactionLimitMonth: 'Лимит на сумму переводов в месяц',
+    payLimitDay: 'Лимит на безналичные платежи в день',
+    payLimitMonth: 'Лимит на безналичные платежи в месяц',
+    overWithdrawDay: 'Лимит на снятие денег в день без комиссии',
+    overWithdrawMonth: 'Лимит на снятие денег в месяц без комиссии',
+    overTransactionDay: 'Лимит на сумму переводов в день без комиссии',
+    overTransactionMonth: 'Лимит на сумму переводов в месяц без комиссии',
+    overPayDay: 'Лимит на безналичные платежи в день без комиссии',
+    overPayMonth: 'Лимит на безналичные платежи в месяц без комиссии'
+};
+
+const conditionsMatcher = {
+    conditionWithdraw: 'Комиссия за снятие наличных в банкомате другого банка',
+    conditionPartnerWithdraw:
+        'Комиссия за снятие наличных в банкомате банка-партнёра',
+    conditionWorldWithdraw:
+        'Комиссия за снятие наличных в другой валюте в банкоматах банков за рубежом',
+    conditionTransaction: 'Комиссия за переводы при исчерпании лимита',
+    conditionPay: 'Комиссия за оплату при исчерпании лимита'
+};
+
 export const advantages: AdvantageConfig[] = [
     {
         key: 'type',

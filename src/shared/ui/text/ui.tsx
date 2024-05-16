@@ -9,15 +9,7 @@ interface Props {
     tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'div';
     size?: 'xs' | 'xxs' | 's' | 'm' | 'l' | 'xl';
     weight?: 'light' | 'regular' | 'medium' | 'bold' | 'extra-bold';
-    color?:
-        | 'inherit'
-        | 'success'
-        | 'error'
-        | 'quadruple'
-        | 'action'
-        | 'blue'
-        | 'grey'
-        | 'white';
+    color?: 'inherit' | 'success' | 'error' | 'quadruple' | 'action' | 'light';
     align?: 'center' | 'left' | 'right';
     display?: 'flex';
     children: ReactNode;
