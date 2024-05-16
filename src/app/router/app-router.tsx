@@ -9,6 +9,7 @@ import { RecoveryPasswordPage } from 'src/pages/recovery';
 import { PersonalPage } from 'src/pages/personal';
 import { NotificationHistoryPage } from 'src/pages/notification';
 import { CardPage } from 'src/pages/card';
+import { DepositPage } from 'src/pages/deposits/ui';
 import { AccountPage } from 'src/pages/account';
 import { AccountCreationPage } from 'src/pages/account-creation';
 import { CardProductPage } from 'src/pages/card-product';
@@ -29,6 +30,7 @@ const {
     LOGIN_PAGE,
     CARD_PRODUCT_PAGE,
     CARD_PAGE,
+    DEPOSIT_PAGE,
     ACCOUNT_PAGE,
     PERSONAL_PAGE,
     NOTIFICATION_HISTORY_PAGE,
@@ -80,6 +82,10 @@ const authRoutes: RouteDescription[] = [
     {
         path: CARD_PAGE + '/:id',
         component: CardPage
+    },
+    {
+        path: DEPOSIT_PAGE + '/:id',
+        component: DepositPage
     },
     {
         path: PERSONAL_PAGE + '/:id?',

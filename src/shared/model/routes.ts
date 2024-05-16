@@ -7,6 +7,7 @@ export const RouteName = {
     RECOVERY_PASSWORD_PAGE: '/recovery',
     PERSONAL_PAGE: '/personal',
     CARD_PAGE: '/card',
+    DEPOSIT_PAGE: '/deposit-products',
     ACCOUNT_PAGE: '/account',
     CARD_PRODUCT_PAGE: '/card-product',
     NOTIFICATION_HISTORY_PAGE: '/notifications_history',
@@ -57,3 +58,7 @@ export const CARDS_PRODUCTS = 'cards-products';
 
 export const CardsRouteName = [MY_CARDS, CARDS_PRODUCTS];
 export const CardsGuestRouteName = [CARDS_PRODUCTS];
+
+export const MY_DEPOSITS = 'my-deposits';
+export const DEPOSIT_PRODUCTS = 'deposit-products';
+export const DepositRouteName = [MY_DEPOSITS, DEPOSIT_PRODUCTS];

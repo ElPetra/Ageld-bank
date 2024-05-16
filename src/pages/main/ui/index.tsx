@@ -4,6 +4,7 @@ import { Menu } from 'src/features/menu';
 import { MainMenu } from 'src/widgets/main-menu';
 import { Accounts } from 'src/widgets/accounts';
 import { Cards } from 'src/widgets/cards';
+import { Deposits } from 'src/widgets/deposits';
 
 import { ProtectedMain } from './protected';
 
@@ -54,7 +55,7 @@ export const MainPage = () => {
                     {
                         id: 7,
                         name: 'Депозиты',
-                        component: <div>Депозиты</div>
+                        component: <Deposits />
                     }
                 ]}
             />
