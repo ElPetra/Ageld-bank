@@ -5,6 +5,8 @@ import { MainMenu } from 'src/widgets/main-menu';
 import { Accounts } from 'src/widgets/accounts';
 import { Cards } from 'src/widgets/cards';
 
+import { ProtectedMain } from './protected';
+
 export const MainPage = () => {
     return (
         <Container>
@@ -14,7 +16,11 @@ export const MainPage = () => {
                     {
                         id: 1,
                         name: 'Главная',
-                        component: <MainMenu />
+                        component: (
+                            <ProtectedMain>
+                                <MainMenu />
+                            </ProtectedMain>
+                        )
                     },
                     {
                         id: 2,
@@ -24,7 +30,11 @@ export const MainPage = () => {
                     {
                         id: 3,
                         name: 'Счета',
-                        component: <Accounts />
+                        component: (
+                            <ProtectedMain>
+                                <Accounts />
+                            </ProtectedMain>
+                        )
                     },
                     {
                         id: 4,

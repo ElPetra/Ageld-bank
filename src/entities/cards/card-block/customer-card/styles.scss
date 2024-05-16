@@ -43,13 +43,9 @@
     flex-wrap: wrap;
     gap: 20px;
     &-block{
-      color: var(--text-very-dark-blue);
       display: flex;
       flex-direction: column;
       gap: 4px;
-      & :last-child{
-        color: var(--text-light-gray);
-      }
     }
   }
   &__buttons {

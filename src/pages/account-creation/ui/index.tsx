@@ -1,16 +1,16 @@
 import { useState } from 'react';
 
-import { ACCOUNTS, RouteName } from 'src/shared/model';
+import {
+    ACCOUNTS,
+    ACCOUNT_CREATION_FAILED,
+    ACCOUNT_CREATION_SUCCESS,
+    GO_TO_ACCOUNT_LIST,
+    RouteName
+} from 'src/shared/model';
 import { Container, Preloader } from 'src/shared/ui';
 import { MessageCard } from 'src/entities/message';
 import { useAuth } from 'src/entities/user';
 import { MultiStepForm } from 'src/features/multi-step-form';
-
-import {
-    ACCOUNT_CREATION_FAILED,
-    ACCOUNT_CREATION_SUCCESS,
-    GO_TO_ACCOUNT_LIST
-} from '../model';
 
 import { TypeVariant } from './type';
 import { CurrencyVariant } from './currency';

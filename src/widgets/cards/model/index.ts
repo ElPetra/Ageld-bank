@@ -1,55 +1,46 @@
-import { isObj } from 'src/shared/model/typeGuards';
+import { isObj } from 'src/shared/lib';
 
-import type { CardProduct, CustomersCard } from 'src/shared/model';
+import type { CardProduct, CustomerCard } from 'src/shared/model';
 
-export const CARDS_TITLE = 'Карты';
-export function isCustomerCard(val: unknown): val is CustomersCard {
+export function isCustomerCard(val: unknown): val is CustomerCard {
     if (!isObj(val)) {
         return false;
     }
-    if (
-        'nameProduct' in val &&
-        typeof val.nameProduct === 'string' &&
+    return (
+        'number' in val &&
+        typeof val.number === 'string' &&
+        'expirationAt' in val &&
+        typeof val.expirationAt === 'string' &&
         'image' in val &&
         typeof val.image === 'string' &&
         'level' in val &&
         typeof val.level === 'string' &&
-        'typeCard' in val &&
-        typeof val.typeCard === 'string' &&
-        'accountNumber' in val &&
-        typeof val.accountNumber === 'string' &&
-        'expirationAt' in val &&
-        typeof val.expirationAt === 'string' &&
-        'statusName' in val &&
-        typeof val.statusName === 'string' &&
+        'name' in val &&
+        typeof val.name === 'string' &&
         'paymentSystem' in val &&
-        typeof val.paymentSystem === 'string'
-    ) {
-        return true;
-    } else {
-        return false;
-    }
+        typeof val.paymentSystem === 'string' &&
+        'status' in val &&
+        typeof val.status === 'string' &&
+        'type' in val &&
+        typeof val.type === 'string'
+    );
 }
 export function isCardProduct(val: unknown): val is CardProduct {
     if (!isObj(val)) {
         return false;
     }
-    if (
-        'nameProduct' in val &&
-        typeof val.nameProduct === 'string' &&
-        'imageUrl' in val &&
-        typeof val.imageUrl === 'string' &&
-        'level' in val &&
-        typeof val.level === 'string' &&
-        'typeCard' in val &&
-        typeof val.typeCard === 'string' &&
-        'cardProductId' in val &&
-        typeof val.cardProductId === 'string' &&
+    return (
+        'id' in val &&
+        typeof val.id === 'string' &&
+        'name' in val &&
+        typeof val.name === 'string' &&
+        'image' in val &&
+        typeof val.image === 'string' &&
         'paymentSystem' in val &&
-        typeof val.paymentSystem === 'string'
-    ) {
-        return true;
-    } else {
-        return false;
-    }
+        typeof val.paymentSystem === 'string' &&
+        'type' in val &&
+        typeof val.type === 'string' &&
+        'level' in val &&
+        typeof val.level === 'string'
+    );
 }

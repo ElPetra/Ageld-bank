@@ -1,8 +1,9 @@
-import { useFetchCustomerCards } from 'src/shared/lib';
+import { useGetCustomerCardsQuery } from 'src/shared/api';
 
 import { CardContent } from '../content';
 
 export const CustomerCards = () => {
-    const { cards, isLoading } = useFetchCustomerCards();
-    return <CardContent cards={cards} isLoading={isLoading} type='customer' />;
+    const { data: cards = [], isLoading } = useGetCustomerCardsQuery();
+
+    return <CardContent cards={cards} isLoading={isLoading} />;
 };

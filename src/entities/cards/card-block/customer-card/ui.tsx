@@ -8,18 +8,19 @@ import {
     RouteName
 } from 'src/shared/model';
 import { formatCardExpirationDate } from 'src/shared/lib';
-import { AccountStatuses } from 'src/entities/accounts';
 
-import type { CustomersCard, Status } from 'src/shared/model';
+import type { ReactNode } from 'react';
+import type { CustomerCard } from 'src/shared/model';
 
 import './styles.scss';
 
 interface Props {
-    card: CustomersCard;
+    card: CustomerCard;
+    children: ReactNode;
 }
 
-export const CustomerCard = ({ card }: Props) => {
-    const currentLink = RouteName.CARD_PAGE + '/' + card.accountNumber;
+export const CustomerCardCard = ({ card, children }: Props) => {
+    const currentLink = RouteName.CARD_PAGE + '/' + card.number;
     return (
         <div className='customer-card__container'>
             <Link to={currentLink}>
@@ -37,13 +38,10 @@ export const CustomerCard = ({ card }: Props) => {
                             <Text size='l' weight='bold' color='quadruple'>
                                 {`AGELD CARD ${card.level}`}
                             </Text>
-                            <AccountStatuses
-                                master={false}
-                                status={card.statusName.toLowerCase() as Status}
-                            />
+                            {children}
                         </div>
                         <Text size='l' weight='bold' color='quadruple'>
-                            {card.accountNumber.replace(
+                            {card.number.replace(
                                 /.{12}/gm,
                                 CARD_NUMBER_REPLACEMENT
                             )}

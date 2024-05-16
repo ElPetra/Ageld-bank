@@ -77,16 +77,8 @@
     color: var(--text-action);
   }
 
-  &.text-blue {
-    color: var(--text-very-dark-blue);
-  }
-
-  &.text-grey {
-    color: var(--text-grey);
-  }
-
-  &.text-white {
-    color: var(--text-secondary);
+  &.text-light {
+    color: var(--text-light);
   }
 
   &.text-inherit {

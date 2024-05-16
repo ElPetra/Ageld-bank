@@ -6,7 +6,7 @@ import { useDropDown } from 'src/shared/lib';
 import './styles.scss';
 
 interface Props {
-    options: Array<{ text: string, to: string }>;
+    options: { text: string, to: string }[];
 }
 
 export const MoreInfo = ({ options }: Props) => {

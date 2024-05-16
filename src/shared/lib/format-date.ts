@@ -8,5 +8,5 @@ export const formatDateRuLocale = (str: Date): string => {
 
 export const formatCardExpirationDate = (str: string): string => {
     const [year, month] = str.split('-');
-    return `${month}/${year}`;
+    return `${month}/${year.substring(2, 4)}`;
 };

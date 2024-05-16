@@ -1,9 +1,11 @@
 import { useForm } from 'react-hook-form';
 
 import { Button, Card, Columns, Form, Radio, Text } from 'src/shared/ui';
-import { CREATE_ACCOUNT } from 'src/shared/model';
-
-import { CARD_DELIVERY_REQUIRED, GET_CARD_IN_OFFICE } from '../../model';
+import {
+    CREATE_ACCOUNT,
+    CARD_DELIVERY_REQUIRED,
+    GET_CARD_IN_OFFICE
+} from 'src/shared/model';
 
 import type { Dispatch, SetStateAction } from 'react';
 import type { FieldValues } from 'react-hook-form';

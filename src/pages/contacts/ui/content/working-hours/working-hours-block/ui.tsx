@@ -15,7 +15,9 @@ export const WorkHoursBlock = ({ hours }: Props) => {
             {hours.map((el, index) => (
                 <div key={index} className='hours'>
                     <Text weight='medium'>{workingHoursLabels[index]}</Text>
-                    <Text weight='medium'>{el}</Text>
+                    <Text weight='medium' color='light'>
+                        {el}
+                    </Text>
                 </div>
             ))}
         </div>

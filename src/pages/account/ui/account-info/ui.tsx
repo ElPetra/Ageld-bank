@@ -1,8 +1,7 @@
 import { formatDateRuLocale } from 'src/shared/lib';
 import { Button, Icon, Text } from 'src/shared/ui';
-
 import { accountTypes, currencySymbol } from 'src/shared/model';
-import { AccountStatuses } from 'src/entities/accounts';
+import { ProductStatuses } from 'src/entities/product';
 
 import {
     ACCOUNT_BALANCE,
@@ -13,15 +12,14 @@ import {
     CONTRACT_NUMBER,
     MAKE_TRANSFER
 } from '../../model';
-
 import { AccountsMoreInfo } from './more-info';
 
-import type { Account } from 'src/shared/model';
+import type { AccountDetails } from 'src/shared/model';
 
 import './styles.scss';
 
 interface Props {
-    account: Account;
+    account: AccountDetails;
 }
 
 export const AccountInfo = ({ account }: Props) => {
@@ -40,8 +38,8 @@ export const AccountInfo = ({ account }: Props) => {
                                 <Text size='m' weight='medium'>
                                     {accountTypes[account.type]}
                                 </Text>
-                                <AccountStatuses
-                                    master={account.master}
+                                <ProductStatuses
+                                    isMaster={account.master}
                                     status={account.status}
                                 />
                             </div>
@@ -61,7 +59,7 @@ export const AccountInfo = ({ account }: Props) => {
                         </div>
                     </div>
                     <div className='account-info__name__more-info'>
-                        <AccountsMoreInfo accountStatus={account.status} />
+                        <AccountsMoreInfo status={account.status} />
                     </div>
                 </div>
                 <div className='account-info__info'>
@@ -98,7 +96,7 @@ export const AccountInfo = ({ account }: Props) => {
                         {account.balance + ' '}
                         {currencySymbol[account.currency]}
                     </Text>
-                    <AccountsMoreInfo accountStatus={account.status} />
+                    <AccountsMoreInfo status={account.status} />
                 </div>
                 <Button variant='secondary'>{MAKE_TRANSFER}</Button>
             </div>

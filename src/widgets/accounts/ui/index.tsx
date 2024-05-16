@@ -1,6 +1,15 @@
-import { Text } from 'src/shared/ui';
+import { useState } from 'react';
+
+import { useGetAccountsQuery } from 'src/shared/api';
+import { Preloader, Text } from 'src/shared/ui';
 import {
     ACCOUNTS,
+    MY_ACCOUNTS,
+    OPENED_ACCOUNTS,
+    OPEN_ACCOUNT_REQUEST,
+    CLOSED_ACCOUNTS,
+    BLOCKED_ACCOUNTS,
+    ALL_CURRENCY,
     AccountsRouteName,
     currencyFilters,
     RouteName
@@ -8,23 +17,18 @@ import {
 import { FilterBar } from 'src/entities/filter';
 import { Menu } from 'src/features/menu';
 
-import { useAccountsFilter } from '../lib';
-import {
-    accounts,
-    MY_ACCOUNTS,
-    OPENED_ACCOUNTS,
-    OPEN_ACCOUNT_REQUEST,
-    CLOSED_ACCOUNTS,
-    BLOCKED_ACCOUNTS
-} from '../model';
+import { filterAccounts } from '../lib';
 
-import { AccountContent } from './content';
+import { AccountList } from './list';
 
 export const Accounts = () => {
-    const [[currency, setCurrency], getSelectedAccounts] =
-        useAccountsFilter(accounts);
+    const { data: accounts, isLoading } = useGetAccountsQuery();
 
-    return (
+    const [currency, setCurrency] = useState<string>(ALL_CURRENCY);
+
+    return isLoading ? (
+        <Preloader />
+    ) : (
         <>
             <Text tag='h2' size='m' weight='medium'>
                 {MY_ACCOUNTS}
@@ -38,26 +42,30 @@ export const Accounts = () => {
                         id: 1,
                         name: OPENED_ACCOUNTS,
                         component: (
-                            <AccountContent
-                                content={getSelectedAccounts('active')}
+                            <AccountList
+                                accounts={filterAccounts(
+                                    accounts,
+                                    'active',
+                                    currency
+                                )}
                             />
                         )
                     },
                     {
                         id: 2,
                         name: OPEN_ACCOUNT_REQUEST,
-                        component: (
-                            <AccountContent
-                                content={getSelectedAccounts('requested')}
-                            />
-                        )
+                        component: <AccountList accounts={[]} />
                     },
                     {
                         id: 3,
                         name: CLOSED_ACCOUNTS,
                         component: (
-                            <AccountContent
-                                content={getSelectedAccounts('closed')}
+                            <AccountList
+                                accounts={filterAccounts(
+                                    accounts,
+                                    'closed',
+                                    currency
+                                )}
                             />
                         )
                     },
@@ -65,8 +73,12 @@ export const Accounts = () => {
                         id: 4,
                         name: BLOCKED_ACCOUNTS,
                         component: (
-                            <AccountContent
-                                content={getSelectedAccounts('blocked')}
+                            <AccountList
+                                accounts={filterAccounts(
+                                    accounts,
+                                    'blocked',
+                                    currency
+                                )}
                             />
                         )
                     }

@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 
-import type { CardProduct, CustomersCard } from 'src/shared/model';
+import type { CardProduct, CustomerCard } from 'src/shared/model';
 
 export const usePaginationFilter = (
-    cards: CardProduct[] | CustomersCard[],
-    getFilteredCards: () => (CardProduct | CustomersCard)[],
+    cards: CardProduct[] | CustomerCard[],
+    getFilteredCards: () => (CardProduct | CustomerCard)[],
     itemsPerPage: number = 10
 ) => {
     const [currentPage, setCurrentPage] = useState<number>(1);

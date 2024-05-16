@@ -1,12 +1,33 @@
 import { useForm } from 'react-hook-form';
 
 import { Icon, Text, Radio, Form, Button, Card, Columns } from 'src/shared/ui';
-import { CREATE_ACCOUNT, currency } from 'src/shared/model';
+import { CREATE_ACCOUNT, EUR, RUB, USD } from 'src/shared/model';
 
 import type { FieldValues } from 'react-hook-form';
 import type { Dispatch, SetStateAction } from 'react';
+import type { Currency } from 'src/shared/model';
 
 import './styles.scss';
+
+interface CurrencyVariant {
+    value: Currency;
+    text: string;
+}
+
+export const currencies: CurrencyVariant[] = [
+    {
+        value: 'rub',
+        text: RUB
+    },
+    {
+        value: 'eur',
+        text: EUR
+    },
+    {
+        value: 'usd',
+        text: USD
+    }
+];
 
 interface Props {
     isLast?: boolean;
@@ -49,7 +70,7 @@ export const CurrencyVariant = ({
                 align='left'
             >
                 <Columns number='3'>
-                    {currency.map(el => (
+                    {currencies.map(el => (
                         <div key={el.value}>
                             <Radio
                                 register={register}

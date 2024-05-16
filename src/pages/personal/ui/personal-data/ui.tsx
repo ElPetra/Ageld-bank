@@ -1,36 +1,27 @@
-import { Preloader } from 'src/shared/ui';
-import { useGetInfoQuery } from 'src/shared/api';
-import { Address, Contacts, useAuth, UserCard } from 'src/entities/user';
+import { Address, Contacts, UserCard } from 'src/entities/user';
 import { EmailForm } from 'src/features/forms';
 
-export const PersonalData = () => {
-    const { signedOut } = useAuth();
-    const { data, isLoading, error } = useGetInfoQuery();
+import type { CustomerInfo } from 'src/shared/model';
 
-    if (error) {
-        return signedOut();
-    }
+interface Props {
+    info: CustomerInfo;
+}
 
-    return isLoading ? (
-        <Preloader />
-    ) : (
-        <>
-            {data && (
-                <UserCard
-                    fullName={`${data.lastName} ${data.firstName} ${data.middleName}`}
-                >
-                    <Contacts phone={data.phoneNumber}>
-                        <EmailForm email={data.email} key={data.email} />
-                    </Contacts>
-                    <Address
-                        street='Б-р Энтузиастов'
-                        house='2'
-                        apartment='24'
-                        city='Москва'
-                        index='134567'
-                    />
-                </UserCard>
-            )}
-        </>
+export const PersonalData = ({ info }: Props) => {
+    return (
+        <UserCard
+            fullName={`${info.lastName} ${info.firstName} ${info.middleName}`}
+        >
+            <Contacts phone={info.phoneNumber}>
+                <EmailForm email={info.email} key={info.email} />
+            </Contacts>
+            <Address
+                street='Б-р Энтузиастов'
+                house='2'
+                apartment='24'
+                city='Москва'
+                index='134567'
+            />
+        </UserCard>
     );
 };

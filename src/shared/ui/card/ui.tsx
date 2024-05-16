@@ -12,6 +12,7 @@ interface Props {
     padding?: 'small' | 'small-medium' | 'medium' | 'large' | 'extra-large';
     direction?: 'column' | 'row';
     align?: 'center' | 'left' | 'right';
+    justify?: 'space-between'
     status?: 'active' | '';
 }
 
@@ -23,9 +24,10 @@ export const Card = ({
     padding = 'small',
     direction,
     align,
+    justify,
     status
 }: Props) => {
-    const cardClass = cn('card', color, direction, status, align, {
+    const cardClass = cn('card', color, direction, status, align, justify, {
         [`${borderRadius}-border-radius`]: true,
         [`${padding}-padding`]: true,
         [`${gap}-gap`]: true
