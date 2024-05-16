@@ -1,54 +1,21 @@
-import {
-    useGetCardProductsQuery,
-    useGetFilteredCustomerCardsQuery
-} from 'src/shared/api/index.js';
+import { useGetCardProductsByTypeQuery } from 'src/shared/api';
 
-export const useFetchCards = () => {
-    const { data: debetCards = [], isLoading: debetLoading } =
-        useGetCardProductsQuery({ type: 'DEBIT' });
+export const useGetCardProductsQuery = () => {
+    const { data: debitCards = [], isLoading: debitLoading } =
+        useGetCardProductsByTypeQuery({ type: 'DEBIT' });
+
+    const { data: depositCards = [], isLoading: depositLoading } =
+        useGetCardProductsByTypeQuery({ type: 'DEPOSIT' });
 
     const { data: creditCards = [], isLoading: creditLoading } =
-        useGetCardProductsQuery({
+        useGetCardProductsByTypeQuery({
             type: 'CREDIT'
         });
 
-    const cards = debetCards.concat(creditCards);
-    const isLoading = debetLoading || creditLoading;
-
+    const cards = debitCards.concat(creditCards, depositCards);
+    const isLoading = debitLoading || creditLoading || depositLoading;
     return {
         isLoading,
         cards
-    };
-};
-
-export const useFetchCustomerCards = () => {
-    const {
-        data: debetCards = [],
-        isLoading: debetLoading,
-        error: debetError
-    } = useGetFilteredCustomerCardsQuery({ type: 'DEBIT' });
-
-    const {
-        data: creditCards = [],
-        isLoading: creditLoading,
-        error: creditError
-    } = useGetFilteredCustomerCardsQuery({
-        type: 'CREDIT'
-    });
-    const {
-        data: depositCards = [],
-        isLoading: depositLoading,
-        error: depositError
-    } = useGetFilteredCustomerCardsQuery({
-        type: 'DEPOSIT'
-    });
-    const error = creditError || depositError || debetError;
-    const cards = debetCards.concat(creditCards, depositCards);
-    const isLoading = debetLoading || creditLoading || depositLoading;
-
-    return {
-        isLoading,
-        cards,
-        error
     };
 };

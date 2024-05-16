@@ -8,12 +8,12 @@ describe('formatDateRuLocale', () => {
     });
 });
 describe('formatCardExpirationDate', () => {
-    it('converts YYYY-MM to MM/YYYY format', () => {
-        expect(formatCardExpirationDate('2024-03')).toBe('03/2024');
-        expect(formatCardExpirationDate('2024-12')).toBe('12/2024');
+    it('converts YYYY-MM to MM/YY format', () => {
+        expect(formatCardExpirationDate('2024-03')).toBe('03/24');
+        expect(formatCardExpirationDate('2024-12')).toBe('12/24');
     });
 
     it('handles single-digit months correctly by padding them', () => {
-        expect(formatCardExpirationDate('2024-09')).toBe('09/2024');
+        expect(formatCardExpirationDate('2024-09')).toBe('09/24');
     });
 });
