@@ -1,14 +1,12 @@
 import { Link } from 'react-router-dom';
 
-import { Icon, Text } from 'src/shared/ui';
+import { Card, Icon, Text } from 'src/shared/ui';
 import {
     ACCOUNT_NUMBER_REPLACEMENT,
     accountTypes,
     currencySymbol,
     RouteName
 } from 'src/shared/model';
-
-import { checkAccountAvailable } from './lib';
 
 import type { ReactNode } from 'react';
 import type { Account } from 'src/shared/model';
@@ -21,13 +19,11 @@ interface Props {
 }
 
 export const AccountCard = ({ account, children }: Props) => {
-    const isAvailable = checkAccountAvailable(account);
-
-    return isAvailable ? (
-        <div key={account.number} className='account__card'>
+    return (
+        <div>
             <Link to={RouteName.ACCOUNT_PAGE + '/' + account.number}>
-                <div className='account__card__container'>
-                    <div>
+                <Card color='quadruple' gap='medium' justify='space-between'>
+                    <div className='account__card__column'>
                         <Icon widthAndHeight={40} icon={account.currency} />
                         <div className='account__card__info'>
                             <Text weight='medium'>
@@ -41,7 +37,7 @@ export const AccountCard = ({ account, children }: Props) => {
                             </Text>
                         </div>
                     </div>
-                    <div>
+                    <div className='account__card__column'>
                         {children}
                         <div className='account__card__balance'>
                             <Text weight='medium'>{account.balance}</Text>
@@ -52,8 +48,8 @@ export const AccountCard = ({ account, children }: Props) => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </Card>
             </Link>
         </div>
-    ) : null;
+    );
 };

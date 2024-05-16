@@ -1,4 +1,4 @@
-import { Icon, Text } from 'src/shared/ui';
+import { Card, Icon, Text } from 'src/shared/ui';
 import { formatCardExpirationDate } from 'src/shared/lib';
 
 import type { CustomerCard } from 'src/shared/model';
@@ -11,7 +11,7 @@ interface Props {
 
 export const SmallCardCard = ({ card }: Props) => {
     return (
-        <div className='small-card-card'>
+        <Card color='quadruple' direction='column'>
             <div className='small-card-card__first-row'>
                 <Icon widthAndHeight={40} icon='rub' />
                 <div className='small-card-card__info'>
@@ -38,6 +38,6 @@ export const SmallCardCard = ({ card }: Props) => {
                     {formatCardExpirationDate(card.expirationAt)}
                 </Text>
             </div>
-        </div>
+        </Card>
     );
 };
