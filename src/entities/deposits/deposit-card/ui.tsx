@@ -27,7 +27,7 @@ export const DepositCard = ({ deposit }: Props) => {
                 <div className='deposit__card__container'>
                     <div className='deposit__card__title'>
                         <Icon widthAndHeight={70} icon={deposit.icon} />
-                        <Text weight='bold' color='quadruple' size='l'>
+                        <Text weight='bold' size='l'>
                             {deposit.name}
                         </Text>
                     </div>
@@ -35,7 +35,7 @@ export const DepositCard = ({ deposit }: Props) => {
                         <Text weight='bold' size='l'>
                             {deposit.interestRate}
                         </Text>
-                        <Text weight='light' color='grey' size='xs'>
+                        <Text weight='light' color='quadruple' size='xs'>
                             {INTEREST_RATE}
                         </Text>
                     </div>
@@ -43,7 +43,7 @@ export const DepositCard = ({ deposit }: Props) => {
                         <Text weight='bold' size='l'>
                             {DEPOSIT_CURRENT_BALANCE}
                         </Text>
-                        <Text weight='light' color='grey' size='xs'>
+                        <Text weight='light' color='quadruple' size='xs'>
                             {DEPOSIT_BALANCE}
                         </Text>
                     </div>
@@ -51,7 +51,7 @@ export const DepositCard = ({ deposit }: Props) => {
                         <Text weight='bold' size='l'>
                             {deposit.closedAt}
                         </Text>
-                        <Text weight='light' color='grey' size='xs'>
+                        <Text weight='light' color='quadruple' size='xs'>
                             {DEPOSIT_END_OF_TERM}
                         </Text>
                     </div>

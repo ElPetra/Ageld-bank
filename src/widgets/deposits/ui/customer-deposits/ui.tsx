@@ -1,12 +1,13 @@
-import React from 'react';
-
+import {
+    CREATE,
+    DEPOSITS_NOT_FOUND,
+    REQUEST_DEPOSIT,
+    RouteName
+} from 'src/shared/model';
 import { MessageCard } from 'src/entities/message';
-import { CREATE, RouteName } from 'src/shared/model';
-import { REQUEST_DEPOSIT } from 'src/shared/model/deposits';
-import { DEPOSITS_NOT_FOUND } from 'src/shared/model/deposits';
-import { DepositCard } from 'src/entities/deposits/deposit-card';
+import { DepositCard } from 'src/entities/deposits';
 
-import type { MockDeposit } from 'src/shared/model/deposits';
+import type { MockDeposit } from 'src/shared/model';
 
 interface Props {
     content: MockDeposit[];

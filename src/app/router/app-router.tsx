@@ -9,7 +9,7 @@ import { RecoveryPasswordPage } from 'src/pages/recovery';
 import { PersonalPage } from 'src/pages/personal';
 import { NotificationHistoryPage } from 'src/pages/notification';
 import { CardPage } from 'src/pages/card';
-import { DepositPage } from 'src/pages/deposits/ui';
+import { DepositPage } from 'src/pages/deposits';
 import { AccountPage } from 'src/pages/account';
 import { AccountCreationPage } from 'src/pages/account-creation';
 import { CardProductPage } from 'src/pages/card-product';

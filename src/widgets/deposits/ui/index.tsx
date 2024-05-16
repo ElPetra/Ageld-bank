@@ -1,20 +1,21 @@
-import { Menu } from 'src/features/menu';
 import {
     RouteName,
     AuthStatus,
-    DepositRouteName,
-    DEPOSITS
-} from 'src/shared/model';
-import { CustomerDeposits } from 'src/widgets/deposits/ui/customer-deposits/ui';
-import {
+    DEPOSITS,
     CUSTOMER_DEPOSITS,
     DEPOSITS_TITLE,
-    DEPOSITS_OFFERED
-} from 'src/shared/model/deposits';
-import { DepositProducts } from 'src/widgets/deposits/ui/deposit_products/ui';
+    DEPOSITS_OFFERED,
+    mockDeposits,
+    DepositsRouteName,
+    DepositsGuestRouteName
+} from 'src/shared/model';
 import { Text } from 'src/shared/ui';
 import { useAuth } from 'src/entities/user';
-import { mockDeposits } from 'src/shared/model/deposits';
+import { Menu } from 'src/features/menu';
+
+import { CustomerDeposits } from './customer-deposits';
+import { DepositProducts } from './deposit-products';
+
 export const Deposits = () => {
     const { authStatus } = useAuth();
     return (
@@ -24,7 +25,11 @@ export const Deposits = () => {
             </Text>
             <Menu
                 href={RouteName.MAIN_PAGE + '/' + DEPOSITS}
-                routes={DepositRouteName}
+                routes={
+                    authStatus === AuthStatus.SignedIn
+                        ? DepositsRouteName
+                        : DepositsGuestRouteName
+                }
                 variant='secondary'
                 elements={
                     authStatus === AuthStatus.SignedIn

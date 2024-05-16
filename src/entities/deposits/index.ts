@@ -1,1 +1,1 @@
-export { DepositCard } from './deposit-card/ui';
+export { DepositCard } from './deposit-card';
