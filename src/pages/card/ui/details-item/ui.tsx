@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
+
 import { Icon, Text } from 'src/shared/ui';
 
 import type { Detail } from 'src/shared/model';
+
 import './style.scss';
 
 interface Props {

@@ -1,18 +1,8 @@
 .account__card {
-    padding: 16px;
-    border-radius: var(--medium-border-radius);
-    background: var(--bg-quadruple);
-
-    &__container {
+    &__column {
         display: flex;
-        justify-content: space-between;
-        gap: 20px;
-
-        > div {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
+        flex-direction: column;
+        gap: 16px;
     }
 
     &__info {

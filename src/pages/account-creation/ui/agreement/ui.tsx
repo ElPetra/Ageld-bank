@@ -46,7 +46,7 @@ export const Agreement = ({
                 <Text weight='medium' size='m'>
                     Очень важное соглашение, которое нужно принять
                 </Text>
-                <Text>
+                <div>
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                     Excepturi in adipisci nulla modi non corporis id
                     perspiciatis aliquid, debitis rerum inventore distinctio
@@ -75,7 +75,7 @@ export const Agreement = ({
                     ut magnam autem nobis reiciendis id, consectetur ullam
                     laudantium asperiores maxime doloribus, illo impedit
                     voluptatibus!
-                </Text>
+                </div>
                 <Checkbox
                     onCheckbox={() => setIsConfirmed(prev => !prev)}
                     label='Принимаю соглашение'

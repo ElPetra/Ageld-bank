@@ -1,0 +1,62 @@
+.small-card-card {
+  &__first-row {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__second-row {
+    display: flex;
+    justify-content: space-between;
+
+    > div {
+      display: flex;
+      align-items: flex-end;
+    }
+  }
+
+  &__preview {
+    width: 50px;
+    height: 30px;
+    border-radius: var(--small-border-radius);
+    padding: 4px;
+    color: var(--text-secondary);
+    display: flex;
+    justify-content: space-between;
+
+    &.classic {
+      background: #e6342a;
+    }
+
+    &.classic-junior {
+      background: #f76705;
+    }
+
+    &.gold {
+      background: #ebc500;
+    }
+
+    &.platinum {
+      background: #c5c1b4;
+    }
+
+    &.premium {
+      background: #000000;
+    }
+
+    &__number {
+      font-size: 10px;
+      line-height: 12px;
+    }
+
+    &__payment-system {
+      font-size: 6px;
+      line-height: 12px;
+    }
+  }
+}
+
+
+
+
+
+

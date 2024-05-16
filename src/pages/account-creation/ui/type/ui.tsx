@@ -5,10 +5,10 @@ import { MessageCard } from 'src/entities/message';
 import {
     CREATE_ACCOUNT,
     CREATE_CREDIT_ACCOUNT_TITLE,
-    CREATE_CURRENT_ACCOUNT_TITLE,
+    CREATE_DEBIT_ACCOUNT_TITLE,
     CREATE_DEPOSIT_ACCOUNT_TITLE,
     CREDIT_ACCOUNT,
-    CURRENT_ACCOUNT,
+    DEBIT_ACCOUNT,
     DEPOSIT_ACCOUNT
 } from 'src/shared/model';
 
@@ -16,31 +16,33 @@ import type { Dispatch, SetStateAction } from 'react';
 import type { SvgIconName } from 'src/shared/ui';
 import type { AccountType } from 'src/shared/model';
 
-interface MatchResult {
+interface TypeVariant {
+    value: AccountType;
     type: string;
     title: string;
     icon: SvgIconName;
 }
 
-const typeMatcher: Record<AccountType, MatchResult> = {
-    master: {
-        type: CURRENT_ACCOUNT,
-        title: CREATE_CURRENT_ACCOUNT_TITLE,
-        icon: 'paper-airplane-lady'
-    },
-    credit: {
+const types: TypeVariant[] = [
+    {
+        value: 'credit',
         type: CREDIT_ACCOUNT,
         title: CREATE_CREDIT_ACCOUNT_TITLE,
         icon: 'beach-lady'
     },
-    deposit: {
+    {
+        value: 'debit',
+        type: DEBIT_ACCOUNT,
+        title: CREATE_DEBIT_ACCOUNT_TITLE,
+        icon: 'paper-airplane-lady'
+    },
+    {
+        value: 'deposit',
         type: DEPOSIT_ACCOUNT,
         title: CREATE_DEPOSIT_ACCOUNT_TITLE,
         icon: 'businessman-icon'
     }
-};
-
-const accountTypes: AccountType[] = ['master', 'deposit', 'credit'];
+];
 
 interface Props {
     isLast?: boolean;
@@ -51,18 +53,18 @@ interface Props {
 export const TypeVariant = ({ isLast, setFormStep, setType }: Props) => {
     return (
         <Columns number='3' align='center'>
-            {accountTypes.map(el => (
-                <Fragment key={el}>
+            {types.map(el => (
+                <Fragment key={el.value}>
                     <MessageCard
-                        title={typeMatcher[el].type}
-                        text={typeMatcher[el].title}
+                        title={el.type}
+                        text={el.title}
                         gap='extra-small'
                         padding='medium'
                         width={380}
-                        icon={typeMatcher[el].icon}
+                        icon={el.icon}
                         buttonText={CREATE_ACCOUNT}
                         onClick={() => {
-                            setType(el);
+                            setType(el.value);
                             if (setFormStep && !isLast) {
                                 setFormStep(curr => {
                                     return curr + 1;

@@ -3,6 +3,7 @@ import {
     CARDS,
     CARD_PRODUCTS,
     CUSTOMER_CARDS,
+    CARDS_TITLE,
     CardsRouteName,
     RouteName,
     CardsGuestRouteName
@@ -10,8 +11,6 @@ import {
 import { Text } from 'src/shared/ui';
 import { Menu } from 'src/features/menu';
 import { useAuth } from 'src/entities/user';
-
-import { CARDS_TITLE } from '../model';
 
 import { CustomerCards } from './customer-cards';
 import { CardProducts } from './card-products';

@@ -2,10 +2,9 @@ import { Link } from 'react-router-dom';
 
 import { SearchForm } from 'src/features/forms';
 import { AccountCard } from 'src/entities/accounts';
-
-import { Button, Columns } from 'src/shared/ui';
-import { BankCard } from 'src/entities/cards';
-
+import { SmallCardCard } from 'src/entities/cards';
+import { useGetAccountsQuery, useGetCustomerCardsQuery } from 'src/shared/api';
+import { Button, Columns, Preloader } from 'src/shared/ui';
 import {
     ACCOUNTS,
     CARDS,
@@ -14,83 +13,30 @@ import {
     TRANSFERS
 } from 'src/shared/model';
 
+import { ProductStatuses } from 'src/entities/product';
+
 import { MainMenuBlock } from './block';
 import { MainMenuCard } from './card';
 
-import type { Account, MockCard } from 'src/shared/model';
-
 import './styles.scss';
 
-const cards: MockCard[] = [
-    {
-        balance: 30000,
-        number: '1234********3456',
-        expirationAt: '2026-02-19',
-        name: 'Базовая',
-        level: 'CLASSIC',
-        paymentSystem: 'МИР',
-        currency: 'rub',
-        icon: 'rub-icon'
-    },
-    {
-        balance: 20000,
-        number: '1234********0011',
-        expirationAt: '2027-11-19',
-        name: 'Базовая',
-        level: 'PLATINUM',
-        paymentSystem: 'VISA',
-        currency: 'eur',
-        icon: 'eur-icon'
-    },
-    {
-        balance: 15000,
-        number: '1234********3322',
-        expirationAt: '2027-05-19',
-        name: 'Кредитная',
-        level: 'GOLD',
-        paymentSystem: 'VISA',
-        currency: 'usd',
-        icon: 'usd-icon'
-    }
-];
-
-export const accounts: Account[] = [
-    {
-        status: 'active',
-        number: '3212131213211111',
-        id: 'qwerty_1',
-        balance: '550',
-        currency: 'rub',
-        type: 'credit',
-        master: true,
-        created: new Date(),
-        contractNumber: '12312312132211212312',
-        icon: 'rub-icon'
-    },
-    {
-        status: 'active',
-        number: '321213121322211111',
-        id: 'qwerty_4',
-        balance: '10000',
-        currency: 'usd',
-        type: 'deposit',
-        master: false,
-        created: new Date(),
-        contractNumber: '12312312132211212312',
-        icon: 'usd-icon'
-    }
-];
-
 export const MainMenu = () => {
-    return (
+    const { data: cards, isLoading } = useGetCustomerCardsQuery();
+
+    const { data: accounts, isLoading: isLoadingAccounts } =
+        useGetAccountsQuery();
+
+    return isLoading || isLoadingAccounts ? (
+        <Preloader />
+    ) : (
         <div className='main-menu'>
             <div className='main-menu__first-col'>
                 <MainMenuBlock
                     title='Мои карты'
                     href={RouteName.MAIN_PAGE + '/' + CARDS}
                 >
-                    {cards.map(el => (
-                        <BankCard key={el.number} card={el} />
+                    {cards?.map(el => (
+                        <SmallCardCard key={el.number} card={el} />
                     ))}
                 </MainMenuBlock>
                 <Link to={RouteName.MAIN_PAGE + '/' + CARDS}>
@@ -147,8 +93,14 @@ export const MainMenu = () => {
                     href={RouteName.MAIN_PAGE + '/' + ACCOUNTS}
                 >
                     <Columns number='2'>
-                        {accounts.map(el => (
-                            <AccountCard key={el.id} account={el} />
+                        {accounts?.slice(0, 2).map(el => (
+                            <AccountCard key={el.number} account={el}>
+                                <ProductStatuses
+                                    isMaster={el.isMaster}
+                                    status={el.status}
+                                    direction='column'
+                                />
+                            </AccountCard>
                         ))}
                     </Columns>
                 </MainMenuBlock>

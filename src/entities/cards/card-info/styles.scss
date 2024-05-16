@@ -19,22 +19,6 @@
     gap: 5px;
     width: 66%;
   }
-  &__status {
-    padding: 0 12px;
-    border-radius: var(--large-border-radius);
-    width: max-content;
-    display: flex;
-    align-items: center;
-    height: 32px;
-    &-type {
-      &__ACTIVE{
-        background-color: var(--bg-success);
-      }
-      &__BLOCKED{
-        background-color: var(--bg-warning);
-      }
-    }
-  }
   &__image {
     border-radius: var(--large-border-radius);
     object-fit: contain;

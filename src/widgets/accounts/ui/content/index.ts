@@ -1,1 +1,0 @@
-export { AccountContent } from './ui';

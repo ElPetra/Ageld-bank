@@ -10,8 +10,7 @@ export const registryApi = createApi({
         prepareHeaders: async headers => {
             headers.set('content-type', 'application/json');
             return headers;
-        },
-        responseHandler: response => response.text()
+        }
     }),
     tagTypes: ['Registry'],
     endpoints: builder => ({
@@ -20,8 +19,7 @@ export const registryApi = createApi({
                 query: phoneNumber => ({
                     url: '/check_miss_registration',
                     method: 'POST',
-                    body: { phoneNumber },
-                    responseHandler: response => response.json()
+                    body: { phoneNumber }
                 })
             }
         ),
@@ -42,8 +40,7 @@ export const registryApi = createApi({
             query: phoneNumber => ({
                 url: '/check_status',
                 method: 'POST',
-                body: { phoneNumber },
-                responseHandler: response => response.json()
+                body: { phoneNumber }
             })
         }),
         recoveryPassword: builder.mutation<

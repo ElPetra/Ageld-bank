@@ -13,15 +13,11 @@
               display: flex;
               flex-wrap: wrap;
               gap: 40px;
-
               & .phone {
                 display: flex;
                 justify-content: space-between;
                 flex-direction: column;
                 gap: 4px;
-                & :last-child{
-                  opacity: 0.75;
-                }
               }
             }
         }
