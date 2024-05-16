@@ -43,7 +43,7 @@ export const Deposits = () => {
                           ]
                         : [
                               {
-                                  id: 2,
+                                  id: 1,
                                   name: DEPOSITS_OFFERED,
                                   component: <DepositProducts />
                               }
