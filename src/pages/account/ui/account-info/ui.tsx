@@ -12,6 +12,7 @@ import {
     CONTRACT_NUMBER,
     MAKE_TRANSFER
 } from '../../model';
+
 import { AccountsMoreInfo } from './more-info';
 
 import type { AccountDetails } from 'src/shared/model';

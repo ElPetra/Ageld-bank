@@ -5,13 +5,16 @@ import {
     DepositRouteName,
     DEPOSITS
 } from 'src/shared/model';
-import { DEPOSITS_OFFERED, CUSTOMER_DEPOSITS } from 'src/shared/model/deposits';
 import { CustomerDeposits } from 'src/widgets/deposits/ui/customer-deposits/ui';
+import {
+    CUSTOMER_DEPOSITS,
+    DEPOSITS_TITLE,
+    DEPOSITS_OFFERED
+} from 'src/shared/model/deposits';
 import { DepositProducts } from 'src/widgets/deposits/ui/deposit_products/ui';
 import { Text } from 'src/shared/ui';
 import { useAuth } from 'src/entities/user';
 import { mockDeposits } from 'src/shared/model/deposits';
-import { DEPOSITS_TITLE } from 'src/shared/model/deposits';
 export const Deposits = () => {
     const { authStatus } = useAuth();
     return (

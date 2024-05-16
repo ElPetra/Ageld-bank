@@ -4,7 +4,7 @@ import { Menu } from 'src/features/menu';
 import { MainMenu } from 'src/widgets/main-menu';
 import { Accounts } from 'src/widgets/accounts';
 import { Cards } from 'src/widgets/cards';
-import { Deposits } from 'src/pages/deposits';
+import { Deposits } from 'src/widgets/deposits';
 
 import { ProtectedMain } from './protected';
 

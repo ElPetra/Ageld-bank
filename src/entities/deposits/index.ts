@@ -1,0 +1,1 @@
+import { DepositCard } from './deposit-card/ui';
