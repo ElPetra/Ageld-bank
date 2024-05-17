@@ -43,6 +43,7 @@ export const transformAccountDetails = (
 
 export const transformCards = (res: CustomerCardResponse[]): CustomerCard[] =>
     res.map(el => ({
+        id: el.cardId,
         number: el.accountNumber,
         expirationAt: el.expirationAt,
         image: el.image,

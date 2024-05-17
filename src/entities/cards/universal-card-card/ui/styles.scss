@@ -1,0 +1,52 @@
+.universal-card-card {
+  &__image {
+    flex: 0 0 auto;
+    width: 33%;
+
+    @media screen and (max-width: 900px) {
+      width: 100% !important;
+
+      img {
+        width: 100% !important;
+      }
+    }
+  }
+  &__second {
+    @media screen and (max-width: 900px) {
+      width: 100% !important;
+    }
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: calc(67% - 60px);
+
+    &__info {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      &__text {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        &__name {
+          display: flex;
+          gap: 8px;
+          justify-content: space-between;
+        }
+      }
+
+      &__details {
+        display: flex;
+        gap: 60px;
+        flex-wrap: wrap;
+      }
+    }
+
+    &__button {
+      display: flex;
+      gap: 20px;
+    }
+  }
+}
