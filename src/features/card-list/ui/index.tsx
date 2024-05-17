@@ -1,32 +1,26 @@
-import { Preloader } from 'src/shared/ui';
 import {
-    CARDS_NOT_FOUND,
-    CREATE,
-    CREATE_CARD,
-    paymentSystemFilters,
-    RouteName,
+    CARDS_NOT_FOUND, CREATE, CREATE_CARD,
+    paymentSystemFilters, RouteName,
     typeCardFilters
 } from 'src/shared/model';
-import { MessageCard } from 'src/entities/message';
-import { FilterBar } from 'src/entities/filter';
-import { CardProductCard, CustomerCardCard } from 'src/entities/cards';
-import { Pagination } from 'src/features/filters';
-
+import { Preloader } from 'src/shared/ui';
+import { FilterBar, Pagination } from 'src/entities/filter';
+import { UniversalCardCard } from 'src/entities/cards';
 import { ProductStatuses } from 'src/entities/product';
+import { MessageCard } from 'src/entities/message';
 
-import { useCardsFilter, usePaginationFilter } from '../../lib';
-import { isCardProduct, isCustomerCard } from '../../model';
+import { useCardsFilter, usePaginationFilter } from '../lib';
 
-import type { CardProduct, CustomerCard } from 'src/shared/model';
+import type { CardProduct, CustomerCard, } from 'src/shared/model';
 
 import './styles.scss';
 
 interface Props {
-    cards: CardProduct[] | CustomerCard[];
+    cards: CardProduct[] | CustomerCard[]
     isLoading: boolean;
 }
 
-export const CardContent = ({ cards, isLoading }: Props) => {
+export const CardList = ({ cards, isLoading }: Props) => {
     const {
         getFilteredCards,
         currencyPayment,
@@ -42,8 +36,8 @@ export const CardContent = ({ cards, isLoading }: Props) => {
         pageNumbers
     } = usePaginationFilter(cards, getFilteredCards);
     return (
-        <>
-            <div className='filters'>
+        <div className='card-list'>
+            <div className='card-list__filters'>
                 <FilterBar
                     filters={typeCardFilters}
                     current={currencyType}
@@ -58,31 +52,20 @@ export const CardContent = ({ cards, isLoading }: Props) => {
             {isLoading ? (
                 <Preloader />
             ) : (
-                <>
+                <div>
                     {currentItems.length ? (
-                        <>
-                            {currentItems.map(el => {
-                                if (isCardProduct(el)) {
-                                    return (
-                                        <CardProductCard
-                                            key={el.id}
-                                            card={el}
+                        <div className='card-list__list'>
+                            {currentItems.map(el =>
+                                <UniversalCardCard key={el.id}
+                                                   card={el}>
+                                    {'status' in el &&
+                                        <ProductStatuses
+                                            isMaster={false}
+                                            status={el.status}
                                         />
-                                    );
-                                } else if (isCustomerCard(el)) {
-                                    return (
-                                        <CustomerCardCard
-                                            key={el.number}
-                                            card={el}
-                                        >
-                                            <ProductStatuses
-                                                isMaster={false}
-                                                status={el.status}
-                                            />
-                                        </CustomerCardCard>
-                                    );
-                                }
-                            })}
+                                    }
+                                </UniversalCardCard>
+                            )}
                             {cards.length > 10 && (
                                 <Pagination
                                     currentPage={currentPage}
@@ -93,7 +76,7 @@ export const CardContent = ({ cards, isLoading }: Props) => {
                                     pageNumbers={pageNumbers}
                                 />
                             )}
-                        </>
+                        </div>
                     ) : (
                         <MessageCard
                             title={CARDS_NOT_FOUND}
@@ -101,8 +84,8 @@ export const CardContent = ({ cards, isLoading }: Props) => {
                             buttonLink={RouteName.CARD_PAGE + '/' + CREATE}
                         />
                     )}
-                </>
+                </div>
             )}
-        </>
+        </div>
     );
 };

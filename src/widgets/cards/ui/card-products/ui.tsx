@@ -1,8 +1,7 @@
 import { useGetCardProductsQuery } from 'src/shared/lib';
-
-import { CardContent } from '../content';
+import { CardList } from 'src/features/card-list';
 
 export const CardProducts = () => {
     const { cards, isLoading } = useGetCardProductsQuery();
-    return <CardContent cards={cards} isLoading={isLoading} />;
+    return <CardList cards={cards} isLoading={isLoading} />;
 };
