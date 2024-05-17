@@ -10,6 +10,7 @@ import { Menu } from 'src/features/menu';
 import { BackButton } from 'src/features/multi-step-form';
 
 import { ACCOUNT_INFO, ACCOUNT_OPERATIONS } from '../model';
+
 import { AccountInfo } from './account-info';
 import { AccountOperations } from './account-operations';
 

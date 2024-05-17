@@ -19,6 +19,7 @@ import { FilterBar } from 'src/entities/filter';
 import { Menu } from 'src/features/menu';
 
 import { filterAccounts } from '../lib';
+
 import { AccountList } from './list';
 
 export const Accounts = () => {
