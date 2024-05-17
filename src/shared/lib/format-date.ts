@@ -1,12 +1,9 @@
-export const formatDateRuLocale = (str: Date): string => {
-    return str.toLocaleString('ru-RU', {
-        year: 'numeric',
-        month: 'numeric',
-        day: 'numeric'
-    });
+export const formatDate = (str: string): string => {
+    const [year, month, day] = str.split('-');
+    return `${day}.${month}.${year}`;
 };
 
-export const formatCardExpirationDate = (str: string): string => {
+export const formatExpirationDate = (str: string): string => {
     const [year, month] = str.split('-');
     return `${month}/${year.substring(2, 4)}`;
 };

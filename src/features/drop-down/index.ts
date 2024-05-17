@@ -1,1 +1,1 @@
-export { MoreInfo } from './more-info';
+export { MoreInfoButton } from './open-info';

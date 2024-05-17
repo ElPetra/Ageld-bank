@@ -7,7 +7,7 @@ import {
     INFO_ABOUT_CARD,
     RouteName
 } from 'src/shared/model';
-import { formatCardExpirationDate } from 'src/shared/lib';
+import { formatExpirationDate } from 'src/shared/lib';
 
 import type { ReactNode } from 'react';
 import type { CustomerCard } from 'src/shared/model';
@@ -50,7 +50,7 @@ export const CustomerCardCard = ({ card, children }: Props) => {
                     <div className='customer-card__advantages'>
                         <div className='customer-card__advantages-block'>
                             <Text tag='h2' size='m' weight='bold'>
-                                {formatCardExpirationDate(card.expirationAt)}
+                                {formatExpirationDate(card.expirationAt)}
                             </Text>
                             <Text size='xs'>{EXPIRY_DATE}</Text>
                         </div>

@@ -9,7 +9,7 @@ interface Props {
     options: { text: string, to: string }[];
 }
 
-export const MoreInfo = ({ options }: Props) => {
+export const MoreInfoButton = ({ options }: Props) => {
     const [open, setOpen] = useDropDown('more__info__container');
 
     return (

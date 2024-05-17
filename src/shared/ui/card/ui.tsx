@@ -12,7 +12,7 @@ interface Props {
     padding?: 'small' | 'small-medium' | 'medium' | 'large' | 'extra-large';
     direction?: 'column' | 'row';
     align?: 'center' | 'left' | 'right';
-    justify?: 'space-between'
+    justify?: 'space-between';
     status?: 'active' | '';
 }
 

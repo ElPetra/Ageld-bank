@@ -9,18 +9,10 @@ import type {
     CardProductDetailsResponse,
     ProductStatus,
     CardDetailsResponse,
-    CardDetails
+    CardDetails,
+    AccountDetailsResponse,
+    AccountDetails
 } from 'src/shared/model';
-
-// export const transformAccount = (res: AccountResponse): Account => ({
-//     number: res.accountNumber,
-//     type: res.type,
-//     balance: res.accountBalance,
-//     status: res.statusName,
-//     currency: res.currencyName,
-//     isMaster: res.masterAccount,
-//     name: res.nameAccount || ''
-// });
 
 export const transformAccounts = (res: AccountResponse[]): Account[] =>
     res.map(el => ({
@@ -32,6 +24,22 @@ export const transformAccounts = (res: AccountResponse[]): Account[] =>
         isMaster: el.masterAccount,
         name: el.nameAccount || ''
     }));
+
+export const transformAccountDetails = (
+    res: AccountDetailsResponse
+): AccountDetails => ({
+    number: res.accountNumber,
+    name: res.nameAccount || '',
+    isMaster: res.masterAccount,
+    type: res.type,
+    currency: res.currencyName,
+    status: res.statusName,
+    balance: res.accountBalance,
+    createdAt: res.createdAt,
+    closedAt: res.closedAt,
+    blockReason: res.blockReason || '',
+    blockComment: res.blockComment || ''
+});
 
 export const transformCards = (res: CustomerCardResponse[]): CustomerCard[] =>
     res.map(el => ({

@@ -4,7 +4,6 @@ export const ACCOUNT_OPERATIONS = 'История операций';
 
 // AccountInfo
 export const ACCOUNT_NUMBER = '№ счета: ';
-export const CONTRACT_NUMBER = 'Номер договора';
 export const ACCOUNT_OPENED_DATE = 'Дата открытия счета';
 export const ACCOUNT_CLOSED_DATE = 'Дата закрытия счета';
 export const ACCOUNT_BLOCK_REASON = 'Причина блокировки';

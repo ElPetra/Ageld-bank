@@ -1,49 +1,37 @@
 .account-info {
-    &__card {
-        @media screen and (max-width: 500px)  {
-            padding: 20px;
+    @media screen and (max-width: 1000px)  {
+        &__first-column {
+            max-width: 100%;
+            flex: 1 1 100%;
         }
-        @media screen and (max-width: 1000px)  {
-            flex-wrap: wrap;
-            > div:first-child {
-                max-width: 100%;
-                flex: 1 1 100%;
-            }
-            > div:last-child {
-                flex: 1 1 100%;
-                max-width: calc(100% - 56px);
-                margin-left: 56px;
-            }
+        &__second-column {
+            flex: 1 1 100%;
+            max-width: calc(100% - 56px);
+            margin-left: 56px;
         }
-
-        display: flex;
-        justify-content: space-between;
-        gap: 32px;
-        border-radius: var(--extra-large-border-radius);
-        padding: 32px;
-        background: var(--bg-quadruple);
     }
 
-    &__column {
+    &__first-column, &__second-column {
         display: flex;
         flex-direction: column;
         gap: 24px;
         justify-content: space-between;
     }
 
-    &__row {
+    &__first-row {
         display: flex;
         align-items: flex-start;
         justify-content: space-between;
         gap: 16px;
-        .account-info__name__more-info {
+
+        > div:last-child {
             @media screen and (min-width: 1000px)  {
                 display: none;
             }
         }
     }
 
-    &__name {
+    &__main {
         display: flex;
         align-items: flex-start;
         gap: 16px;
@@ -55,42 +43,39 @@
             display: flex;
             gap: 8px;
             flex-direction: column;
-        }
 
-        &__first-row {
-            display: flex;
-            column-gap: 24px;
-            row-gap: 4px;
-
-            @media screen and (min-width: 1000px)  {
-                height: 32px;
-            }
-            @media screen and (max-width: 1000px)  {
-                flex-wrap: wrap;
-            }
-        }
-
-        &__second-row {
-            display: flex;
-            gap: 8px;
-            align-items: flex-start;
-
-            > button {
-                width: 24px;
-            }
-
-            > div:first-child {
-                @media screen and (min-width: 500px)  {
-                    display: flex;
-                    gap: 4px;
+            &__first-row {
+                display: flex;
+                column-gap: 24px;
+                row-gap: 4px;
+                @media screen and (min-width: 1000px)  {
+                    height: 32px;
+                }
+                @media screen and (max-width: 1000px)  {
                     flex-wrap: wrap;
+                }
+            }
+
+            &__second-row {
+                display: flex;
+                gap: 8px;
+                align-items: flex-start;
+                > button {
+                    width: 24px;
+                }
+                > div:first-child {
+                    @media screen and (min-width: 500px)  {
+                        display: flex;
+                        gap: 4px;
+                        flex-wrap: wrap;
+                    }
                 }
             }
         }
     }
 
 
-    &__info {
+    &__second-row {
         @media screen and (max-width: 1100px)  {
             flex-wrap: wrap;
             gap: 16px;
