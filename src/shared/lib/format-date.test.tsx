@@ -1,19 +1,17 @@
-import { formatCardExpirationDate, formatDateRuLocale } from './format-date';
+import { formatExpirationDate, formatDate } from './format-date';
 
-describe('formatDateRuLocale', () => {
-    it('formats the date correctly in Russian locale', () => {
-        const date = new Date('2024-03-01');
-        const formatted = formatDateRuLocale(date);
-        expect(formatted).toBe('01.03.2024');
+describe('formatDate', () => {
+    it('converts YYYY-MM-DD to DD.MM.YYYY format', () => {
+        expect(formatDate('2024-03-01')).toBe('01.03.2024');
     });
 });
-describe('formatCardExpirationDate', () => {
+describe('formatExpirationDate', () => {
     it('converts YYYY-MM to MM/YY format', () => {
-        expect(formatCardExpirationDate('2024-03')).toBe('03/24');
-        expect(formatCardExpirationDate('2024-12')).toBe('12/24');
+        expect(formatExpirationDate('2024-03')).toBe('03/24');
+        expect(formatExpirationDate('2024-12')).toBe('12/24');
     });
 
     it('handles single-digit months correctly by padding them', () => {
-        expect(formatCardExpirationDate('2024-09')).toBe('09/24');
+        expect(formatExpirationDate('2024-09')).toBe('09/24');
     });
 });
