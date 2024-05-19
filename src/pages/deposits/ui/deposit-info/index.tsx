@@ -51,9 +51,7 @@ export const DepositInfo = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='deposit-info__name__more-info'>
-                        <AccountsMoreInfo status={'active'} />
-                    </div>
+                 
                 </div>
                 <div className='deposit-info__info'>
                     <div>
@@ -84,7 +82,9 @@ export const DepositInfo = () => {
                         {' ' + deposit.startBalance + ' '}
                         {deposit.currency}
                     </Text>
-                    <AccountsMoreInfo status={deposit.status} />
+                    <div className='deposit-info__name__more-info'>
+                        <AccountsMoreInfo status={'active'} />
+                    </div>
                 </div>
             </div>
         </div>
