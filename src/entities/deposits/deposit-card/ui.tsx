@@ -49,7 +49,7 @@ export const DepositCard = ({ deposit }: Props) => {
                     </div>
                     <div className='deposit__card-info'>
                         <Text weight='bold' size='l'>
-                            {deposit.closedAt}
+                            {deposit.closed}
                         </Text>
                         <Text weight='light' color='quadruple' size='xs'>
                             {DEPOSIT_END_OF_TERM}

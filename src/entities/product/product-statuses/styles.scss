@@ -26,7 +26,7 @@
             &-main {
                 background-color: var(--bg-action);
             }
-            &-active{
+            &-active, &-capitalization{
                 background-color: var(--bg-success);
             }
             &-closed{

@@ -13,15 +13,16 @@ export const currencySymbol = {
     usd: '$'
 };
 
-export type ProductStatus = 'active' | 'closed' | 'blocked';
+export type ProductStatus = 'active' | 'closed' | 'blocked' | 'capitalization';
 
 export const ACTIVE_PRODUCT = 'Активный';
 export const CLOSED_PRODUCT = 'Закрытый';
 export const BLOCKED_PRODUCT = 'Заблокированный';
 export const MASTER_PRODUCT = 'Основной';
-
+export const CAPITALIZING_PRODUCT = 'Капитализация';
 export const productStatuses: Record<ProductStatus, string> = {
     active: ACTIVE_PRODUCT,
     closed: CLOSED_PRODUCT,
-    blocked: BLOCKED_PRODUCT
+    blocked: BLOCKED_PRODUCT,
+    capitalization: CAPITALIZING_PRODUCT
 };
