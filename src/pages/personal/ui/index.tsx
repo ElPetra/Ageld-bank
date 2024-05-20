@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import { Link, Container, Preloader } from 'src/shared/ui';
 import { useGetInfoQuery } from 'src/shared/api';
 import { PersonalRouteName, RouteName } from 'src/shared/model';
@@ -15,9 +17,11 @@ export const PersonalPage = () => {
     const { signedOut } = useAuth();
     const { data: personalInfo, isLoading, error } = useGetInfoQuery();
 
-    if (error) {
-        return signedOut();
-    }
+    useEffect(() => {
+        if (error) {
+            return signedOut();
+        }
+    }, [error, signedOut]);
 
     return isLoading ? (
         <Preloader />

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useGetAccountsQuery } from 'src/shared/api';
 import { Preloader, Text } from 'src/shared/ui';
@@ -14,6 +14,7 @@ import {
     currencyFilters,
     RouteName
 } from 'src/shared/model';
+import { useAuth } from 'src/entities/user';
 import { FilterBar } from 'src/entities/filter';
 import { Menu } from 'src/features/menu';
 
@@ -22,9 +23,16 @@ import { filterAccounts } from '../lib';
 import { AccountList } from './list';
 
 export const Accounts = () => {
-    const { data: accounts, isLoading } = useGetAccountsQuery();
+    const { signedOut } = useAuth();
+    const { data: accounts, isLoading, error } = useGetAccountsQuery();
 
     const [currency, setCurrency] = useState<string>(ALL_CURRENCY);
+
+    useEffect(() => {
+        if (error) {
+            return signedOut();
+        }
+    }, [error, signedOut]);
 
     return isLoading ? (
         <Preloader />

@@ -1,9 +1,9 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import { localStorageApi } from 'src/shared/api';
-import { transformAccounts } from 'src/shared/lib';
+import { transformAccountDetails, transformAccounts } from 'src/shared/lib';
 
-import type { Account } from 'src/shared/model';
+import type { Account, AccountDetails } from 'src/shared/model';
 
 const accountBaseUrl = import.meta.env.VITE_BASEURL_GATEWAY + '/api/v1/account';
 
@@ -27,7 +27,8 @@ export const accountApi = createApi({
             query: ({ type, currencyName }) => ({
                 url: '/new_account',
                 method: 'POST',
-                body: { type, currencyName }
+                body: { type, currencyName },
+                responseHandler: response => response.text()
             }),
             invalidatesTags: ['Account']
         }),
@@ -38,8 +39,22 @@ export const accountApi = createApi({
             }),
             providesTags: ['Account'],
             transformResponse: transformAccounts
+        }),
+        getAccountDetails: builder.query<AccountDetails, { number: string }>({
+            query: ({ number }) => ({
+                url: '/information/',
+                params: {
+                    account_number: number
+                },
+                method: 'GET'
+            }),
+            transformResponse: transformAccountDetails
         })
     })
 });
 
-export const { useCreateAccountMutation, useGetAccountsQuery } = accountApi;
+export const {
+    useCreateAccountMutation,
+    useGetAccountsQuery,
+    useGetAccountDetailsQuery
+} = accountApi;

@@ -1,4 +1,4 @@
-import { MoreInfo } from 'src/features/drop-down';
+import { MoreInfoButton } from 'src/features/drop-down';
 
 import {
     ACCOUNT_STATEMENT,
@@ -43,5 +43,5 @@ export const AccountsMoreInfo = ({ status }: Props) => {
         text: el,
         to: anchors[el] || '/'
     }));
-    return <MoreInfo options={options} />;
+    return <MoreInfoButton options={options} />;
 };

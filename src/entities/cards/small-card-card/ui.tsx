@@ -1,5 +1,5 @@
 import { Card, Icon, Text } from 'src/shared/ui';
-import { formatCardExpirationDate } from 'src/shared/lib';
+import { formatExpirationDate } from 'src/shared/lib';
 
 import type { CustomerCard } from 'src/shared/model';
 
@@ -34,9 +34,7 @@ export const SmallCardCard = ({ card }: Props) => {
                         {card.paymentSystem}
                     </div>
                 </div>
-                <Text size='xs'>
-                    {formatCardExpirationDate(card.expirationAt)}
-                </Text>
+                <Text size='xs'>{formatExpirationDate(card.expirationAt)}</Text>
             </div>
         </Card>
     );
