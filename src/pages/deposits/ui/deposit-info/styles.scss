@@ -31,7 +31,6 @@
         display: flex;
         flex-direction: column;
         gap: 24px;
-        justify-content: space-between;
     }
 
     &__row {
@@ -117,7 +116,7 @@
 
     &__balance {
         display: flex;
-        justify-content: space-between;
+        justify-content:flex-end;
         gap: 24px;
         padding-bottom: 16px;
 
