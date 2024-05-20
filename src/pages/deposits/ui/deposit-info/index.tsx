@@ -1,14 +1,19 @@
 import './styles.scss';
-import { Icon } from 'src/shared/ui';
-import { Text } from 'src/shared/ui';
+import { useState } from 'react';
+import { Icon, Text, Button } from 'src/shared/ui';
 import {
     DEPOSIT_BALANCE,
-    START_BALANCE,
+    INITIAL_BALANCE,
     DEPOSIT_PLAN,
     URGENT,
     DEPOSIT_TERM,
-    INTEREST_RATE
+    INTEREST_RATE,
+    UNTIMELY_WITHDRAWAL_INTEREST_RATE,
+    IRREVOCABILITY,
+    CONNECTED_SUBACCOUNT_NUM
 } from 'src/shared/model';
+import { depositBalanceConcat } from 'src/shared/model';
+
 import { ProductStatuses } from 'src/entities/product';
 import { AccountsMoreInfo } from 'src/pages/account/ui/account-info/more-info';
 
@@ -18,7 +23,12 @@ import { mockDeposits } from 'src/shared/model';
 
 export const DepositInfo = () => {
     const deposit = mockDeposits[0];
-
+    const [prolongation, setProlongation] = useState(false);
+    const depositBalance = depositBalanceConcat(deposit);
+    const depositInitialBalance = depositBalanceConcat(
+        deposit,
+        deposit.startBalance
+    );
     return (
         <div className='deposit-info__card'>
             <div className='deposit-info__column'>
@@ -35,7 +45,11 @@ export const DepositInfo = () => {
                                 />
                                 <ProductStatuses
                                     isMaster={false}
-                                    status={'capitalization'}
+                                    status={
+                                        prolongation
+                                            ? 'autoprolongation'
+                                            : 'autoprolongationoff'
+                                    }
                                 />
                             </div>
                             <div className='deposit-info__name__second-row'>
@@ -49,41 +63,104 @@ export const DepositInfo = () => {
                                     <Icon icon='copy-icon' />
                                 </button>
                             </div>
+                            <div className='deposit-info__name__second-row'>
+                                <div>
+                                    <Text color='quadruple'>
+                                        {CONNECTED_SUBACCOUNT_NUM}
+                                    </Text>
+                                    <Text color='quadruple'>
+                                        {deposit.subAccountNum}
+                                    </Text>
+                                </div>
+                                <button>
+                                    <Icon icon='copy-icon' />
+                                </button>
+                            </div>
                         </div>
                     </div>
-                 
                 </div>
                 <div className='deposit-info__info'>
                     <div>
                         <Text color='light' size='xs'>
                             {DEPOSIT_PLAN}
                         </Text>
-                        <Text color='quadruple'>{URGENT}</Text>
+                        <Text color='quadruple' weight='medium' size='m'>
+                            {URGENT}
+                        </Text>
                     </div>
                     <div>
                         <Text size='xs'>{DEPOSIT_TERM}</Text>
-                        <Text color='quadruple'>{deposit.term}</Text>
+                        <Text color='quadruple' weight='medium' size='m'>
+                            {deposit.term}
+                        </Text>
                     </div>
-
                     <div>
                         <Text size='xs'>{INTEREST_RATE}</Text>
-                        <Text color='quadruple'>{deposit.interestRate}</Text>
+                        <Text color='quadruple' weight='medium' size='m'>
+                            {deposit.interestRate}
+                        </Text>
+                    </div>
+                    <div>
+                        <Text color='light' size='xs'>
+                            {UNTIMELY_WITHDRAWAL_INTEREST_RATE}
+                        </Text>
+                        <Text color='quadruple' weight='medium' size='m'>
+                            {deposit.untimelyWithdrawalInterestRate}
+                        </Text>
+                    </div>
+                    <div>
+                        <Text color='light' size='xs'>
+                            {IRREVOCABILITY}
+                        </Text>
+                        <Text color='quadruple' weight='medium' size='m'>
+                            {deposit.irrevocability ? 'Да' : 'Нет'}
+                        </Text>
                     </div>
                 </div>
             </div>
             <div className='deposit-info__column'>
-                <div className='deposit-info__balance'>
-                    <Text size='m' weight='medium'>
-                        {DEPOSIT_BALANCE}
-                        {' ' + deposit.balance + ' '}
-                    </Text>
-                    <Text size='m' weight='medium'>
-                        {START_BALANCE}
-                        {' ' + deposit.startBalance + ' '}
-                        {deposit.currency}
-                    </Text>
-                    <div className='deposit-info__name__more-info'>
-                        <AccountsMoreInfo status={'active'} />
+                <div className='deposit-info__dropdown'>
+                    <AccountsMoreInfo status={'active'} />
+                </div>
+                <div className='deposit-info__balance-options'>
+                    <div className='deposit-info__balance'>
+                        <div className='deposit-info__cur-balance'>
+                            <Text size='xs' weight='light' color='quadruple'>
+                                {DEPOSIT_BALANCE}
+                            </Text>
+                            <Text size='l' weight='medium'>
+                                {depositBalance}
+                            </Text>
+                        </div>
+                        <div className='deposit-info__start-balance'>
+                            <Text size='xs' weight='light' color='quadruple'>
+                                {INITIAL_BALANCE}
+                            </Text>
+                            <Text size='l' weight='medium'>
+                                {depositInitialBalance}
+                            </Text>
+                        </div>
+                    </div>
+                    <div className='deposit-info__buttons'>
+                        <Button width='max' type='button' variant='primary'>
+                            Отозвать
+                        </Button>
+                        <Button width='max' type='button' variant='secondary'>
+                            Пополнить
+                        </Button>
+                        <Button
+                            width='max'
+                            type='button'
+                            variant='secondary'
+                            onClick={() => {
+                                setProlongation(!prolongation);
+                            }}
+                        >
+                            Переключить пролонгацию
+                        </Button>
+                        <Button width='max' type='button' variant='secondary'>
+                            Пролонгировать
+                        </Button>
                     </div>
                 </div>
             </div>

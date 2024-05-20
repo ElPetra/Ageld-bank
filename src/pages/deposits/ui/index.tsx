@@ -7,7 +7,6 @@ import { BackButton } from 'src/features/multi-step-form';
 import { DepositProducts } from 'src/widgets/deposits/ui/deposit-products';
 import { Container } from 'src/shared/ui';
 
-
 import { DepositInfo } from './deposit-info';
 
 export const DepositPage = () => {

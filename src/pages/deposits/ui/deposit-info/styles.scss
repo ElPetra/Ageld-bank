@@ -1,15 +1,18 @@
 .deposit-info {
     &__card {
-        @media screen and (max-width: 500px)  {
+        @media screen and (max-width: 500px) {
             padding: 20px;
         }
-        @media screen and (max-width: 1000px)  {
+
+        @media screen and (max-width: 1000px) {
             flex-wrap: wrap;
-            > div:first-child {
+
+            >div:first-child {
                 max-width: 100%;
                 flex: 1 1 100%;
             }
-            > div:last-child {
+
+            >div:last-child {
                 flex: 1 1 100%;
                 max-width: calc(100% - 56px);
                 margin-left: 56px;
@@ -35,12 +38,18 @@
         display: flex;
         align-items: flex-start;
         justify-content: space-between;
-        gap: 16px;
+        gap: 16 px;
+
         .account-info__name__more-info {
-            @media screen and (min-width: 1000px)  {
+            @media screen and (min-width: 1000px) {
                 display: none;
             }
         }
+    }
+
+    &__dropdown {
+        display: flex;
+        justify-content: flex-end;
     }
 
     &__name {
@@ -49,11 +58,12 @@
         gap: 16px;
 
         &__info {
-            @media screen and (max-width: 1000px)  {
+            @media screen and (max-width: 1000px) {
                 gap: 12px;
             }
+
             display: flex;
-            gap: 8px;
+            gap: 16px;
             flex-direction: column;
         }
 
@@ -62,10 +72,11 @@
             column-gap: 24px;
             row-gap: 4px;
 
-            @media screen and (min-width: 1000px)  {
+            @media screen and (min-width: 1000px) {
                 height: 32px;
             }
-            @media screen and (max-width: 1000px)  {
+
+            @media screen and (max-width: 1000px) {
                 flex-wrap: wrap;
             }
         }
@@ -75,12 +86,12 @@
             gap: 8px;
             align-items: flex-start;
 
-            > button {
+            >button {
                 width: 24px;
             }
 
-            > div:first-child {
-                @media screen and (min-width: 500px)  {
+            >div:first-child {
+                @media screen and (min-width: 500px) {
                     display: flex;
                     gap: 4px;
                     flex-wrap: wrap;
@@ -91,27 +102,40 @@
 
 
     &__info {
-        @media screen and (max-width: 1100px)  {
+        @media screen and (max-width: 1100px) {
             flex-wrap: wrap;
             gap: 16px;
-            > div {
+
+            >div {
                 flex: 1 1 100%;
             }
         }
 
-        margin-left: 56px;
         display: flex;
-        gap: 60px;
+        gap:15px;
     }
 
     &__balance {
         display: flex;
         justify-content: space-between;
-        gap: 16px;
-        > div:last-child {
-            @media screen and (max-width: 1000px)  {
+        gap: 24px;
+        padding-bottom: 16px;
+
+        >div:last-child {
+            @media screen and (max-width: 1000px) {
                 display: none;
             }
         }
+
+    }
+
+    &__balance-options {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__buttons {
+        display: flex;
+        gap: 24px;
     }
 }

@@ -35,6 +35,12 @@
             &-blocked{
                 background-color: var(--bg-error);
             }
+            &-autoprolongation {
+                background-color: var(--bg-success);
+            }
+            &-autoprolongationoff {
+               background-color: var(--bg-warning)
+            }
         }
     }
 }
