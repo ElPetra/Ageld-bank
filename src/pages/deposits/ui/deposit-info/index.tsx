@@ -10,7 +10,9 @@ import {
     INTEREST_RATE,
     UNTIMELY_WITHDRAWAL_INTEREST_RATE,
     IRREVOCABILITY,
-    CONNECTED_SUBACCOUNT_NUM
+    CONNECTED_SUBACCOUNT_NUM,
+    ENABLE_AUTOPROLONGATION,
+    DISABLE_AUTOPROLONGATION
 } from 'src/shared/model';
 import { depositBalanceConcat } from 'src/shared/model';
 
@@ -156,7 +158,9 @@ export const DepositInfo = () => {
                                 setProlongation(!prolongation);
                             }}
                         >
-                            Переключить пролонгацию
+                            {prolongation
+                                ? DISABLE_AUTOPROLONGATION
+                                : ENABLE_AUTOPROLONGATION}
                         </Button>
                         <Button width='max' type='button' variant='secondary'>
                             Пролонгировать
