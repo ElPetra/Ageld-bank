@@ -5,7 +5,10 @@ import {
     DEPOSIT_BALANCE,
     INITIAL_BALANCE,
     DEPOSIT_PLAN,
+    FUND,
+    WITHDRAW,
     URGENT,
+    PROLONGATE,
     DEPOSIT_TERM,
     INTEREST_RATE,
     UNTIMELY_WITHDRAWAL_INTEREST_RATE,
@@ -14,7 +17,6 @@ import {
     ENABLE_AUTOPROLONGATION,
     DISABLE_AUTOPROLONGATION
 } from 'src/shared/model';
-import { depositBalanceConcat } from 'src/shared/model';
 
 import { ProductStatuses } from 'src/entities/product';
 import { AccountsMoreInfo } from 'src/pages/account/ui/account-info/more-info';
@@ -26,11 +28,6 @@ import { mockDeposits } from 'src/shared/model';
 export const DepositInfo = () => {
     const deposit = mockDeposits[0];
     const [prolongation, setProlongation] = useState(false);
-    const depositBalance = depositBalanceConcat(deposit);
-    const depositInitialBalance = depositBalanceConcat(
-        deposit,
-        deposit.startBalance
-    );
     return (
         <div className='deposit-info__card'>
             <div className='deposit-info__column'>
@@ -131,7 +128,7 @@ export const DepositInfo = () => {
                                 {DEPOSIT_BALANCE}
                             </Text>
                             <Text size='l' weight='medium'>
-                                {depositBalance}
+                                {`${deposit.balance} ${deposit.currency.toUpperCase()}`}
                             </Text>
                         </div>
                         <div className='deposit-info__start-balance'>
@@ -139,16 +136,16 @@ export const DepositInfo = () => {
                                 {INITIAL_BALANCE}
                             </Text>
                             <Text size='l' weight='medium'>
-                                {depositInitialBalance}
+                                {`${deposit.startBalance} ${deposit.currency.toUpperCase()}`}
                             </Text>
                         </div>
                     </div>
                     <div className='deposit-info__buttons'>
                         <Button width='max' type='button' variant='primary'>
-                            Отозвать
+                            {WITHDRAW}
                         </Button>
                         <Button width='max' type='button' variant='secondary'>
-                            Пополнить
+                            {FUND}
                         </Button>
                         <Button
                             width='max'
@@ -163,7 +160,7 @@ export const DepositInfo = () => {
                                 : ENABLE_AUTOPROLONGATION}
                         </Button>
                         <Button width='max' type='button' variant='secondary'>
-                            Пролонгировать
+                            {PROLONGATE}
                         </Button>
                     </div>
                 </div>

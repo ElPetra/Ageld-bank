@@ -26,7 +26,7 @@ export const BLOCKED_PRODUCT = 'Заблокированный';
 export const MASTER_PRODUCT = 'Основной';
 export const CAPITALIZING_PRODUCT = 'Капитализация';
 export const AUTOPROLONGATION = 'Автопролонгация';
-export const NO_AUTOPROLONGATION = 'Автопролонгация отключена'
+export const NO_AUTOPROLONGATION = 'Автопролонгация отключена';
 export const productStatuses: Record<ProductStatus, string> = {
     active: ACTIVE_PRODUCT,
     closed: CLOSED_PRODUCT,

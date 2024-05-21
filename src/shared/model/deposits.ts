@@ -5,6 +5,9 @@ import type { ProductStatus } from 'src/shared/model';
 
 export const INFO_ABOUT_DEPOSIT = 'Информация по депозиту';
 export const REQUEST_DEPOSIT = 'Оформить';
+export const FUND = 'Пополнить';
+export const WITHDRAW = 'Отозвать';
+export const PROLONGATE = 'Пролонгировать';
 export const CUSTOMER_DEPOSITS = 'Мои депозиты';
 export const DEPOSIT_CURRENCY = 'Валюта счета';
 export const DEPOSITS_TITLE = 'Депозиты';
@@ -53,17 +56,6 @@ export interface balanceProps {
     deposit: MockDeposit;
     startBalance: number;
 }
-
-export const depositBalanceConcat = (
-    deposit: MockDeposit,
-    startBalance?: number
-) => {
-    if (startBalance) {
-        return startBalance + ' ' + deposit.currency.toUpperCase();
-    } else {
-        return deposit.balance + ' ' + deposit.currency.toUpperCase();
-    }
-};
 
 export const MAKE_DEPOSIT = 'Выполнить депозит';
 export const DEPOSITS_NOT_FOUND = 'На данный момент \n у Вас нет депозитов';

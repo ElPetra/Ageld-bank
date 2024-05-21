@@ -6,8 +6,7 @@ import {
     DEPOSIT_BALANCE,
     SHOW_MORE,
     DEPOSIT_END_OF_TERM,
-    RouteName,
-    depositBalanceConcat
+    RouteName
 } from 'src/shared/model';
 
 import type { MockDeposit } from 'src/shared/model';
@@ -19,7 +18,6 @@ interface Props {
 }
 
 export const DepositCard = ({ deposit }: Props) => {
-    const DEPOSIT_CURRENT_BALANCE = depositBalanceConcat(deposit);
     return (
         <div className='deposit__card'>
             <div className='deposit__card__container'>
@@ -39,7 +37,7 @@ export const DepositCard = ({ deposit }: Props) => {
                 </div>
                 <div className='deposit__card-info'>
                     <Text weight='bold' size='l'>
-                        {DEPOSIT_CURRENT_BALANCE}
+                        {`${deposit.balance} ${deposit.currency.toUpperCase()}`}
                     </Text>
                     <Text weight='light' color='quadruple' size='xs'>
                         {DEPOSIT_BALANCE}
