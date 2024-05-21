@@ -12,7 +12,9 @@ export const CREATE_CARD = 'Создать карту';
 export const CARDS_NOT_FOUND =
     'На данный момент \n у Вас нет соответствующих карт';
 export const CARD_NUMBER_REPLACEMENT = '**** **** **** ';
+export const CARD_NUMBER = 'Номер карты';
 export const CARD_BALANCE = 'Баланс';
+export const CARD_LEVEL = 'Уровень премиальность';
 export const CARD_CURRENCY = 'Валюта счета';
 export const INFO_ABOUT_CARD = 'Информация по карте';
 export const REQUEST_CARD = 'Оформить карту';
@@ -125,23 +127,8 @@ export interface CardProductDetails {
     level: CardLevel;
     isVirtual: boolean;
     feeUse: number;
-    withdrawLimitDay: number;
-    withdrawLimitMonth: number;
-    transactionLimitDay: number;
-    transactionLimitMonth: number;
-    payLimitDay: number;
-    payLimitMonth: number;
-    overWithdrawDay: number;
-    overWithdrawMonth: number;
-    overTransactionDay: number;
-    overTransactionMonth: number;
-    overPayDay: number;
-    overPayMonth: number;
-    conditionWithdraw: number;
-    conditionPartnerWithdraw: number;
-    conditionWorldWithdraw: number;
-    conditionTransaction: number;
-    conditionPay: number;
+    limits: { key: string, value: number }[];
+    conditions: { key: string, value: number }[];
 }
 
 export interface CardProductDetailsResponse {

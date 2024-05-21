@@ -6,11 +6,12 @@
   &__filters {
     display: flex;
     justify-content: space-between;
+    gap: 16px;
 
     > div:last-child {
       justify-content: flex-end;
     }
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 800px) {
       flex-direction: column;
       gap: 16px;
     }

@@ -14,7 +14,7 @@ export const CardPage = () => {
         isLoading,
         error
     } = useGetCustomerCardDetailsQuery({
-        id: 'cdaeb5ef-f132-4042-98c3-364020463e6a'
+        id: 'cdaeb5ef-f132-4042-98c3-364020463e6a' // данные пока не приходят с api
     });
     useEffect(() => {
         if (error) {
