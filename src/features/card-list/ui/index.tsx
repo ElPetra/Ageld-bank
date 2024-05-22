@@ -1,6 +1,9 @@
 import {
-    CARDS_NOT_FOUND, CREATE, CREATE_CARD,
-    paymentSystemFilters, RouteName,
+    CARDS_NOT_FOUND,
+    CREATE,
+    CREATE_CARD,
+    paymentSystemFilters,
+    RouteName,
     typeCardFilters
 } from 'src/shared/model';
 import { Preloader } from 'src/shared/ui';
@@ -11,12 +14,12 @@ import { MessageCard } from 'src/entities/message';
 
 import { useCardsFilter, usePaginationFilter } from '../lib';
 
-import type { CardProduct, CustomerCard, } from 'src/shared/model';
+import type { CardProduct, CustomerCard } from 'src/shared/model';
 
 import './styles.scss';
 
 interface Props {
-    cards: CardProduct[] | CustomerCard[]
+    cards: CardProduct[] | CustomerCard[];
     isLoading: boolean;
 }
 
@@ -55,17 +58,16 @@ export const CardList = ({ cards, isLoading }: Props) => {
                 <div>
                     {currentItems.length ? (
                         <div className='card-list__list'>
-                            {currentItems.map(el =>
-                                <UniversalCardCard key={el.id}
-                                                   card={el}>
-                                    {'status' in el &&
+                            {currentItems.map(el => (
+                                <UniversalCardCard key={el.id} card={el}>
+                                    {'status' in el && (
                                         <ProductStatuses
                                             isMaster={false}
                                             status={el.status}
                                         />
-                                    }
+                                    )}
                                 </UniversalCardCard>
-                            )}
+                            ))}
                             {cards.length > 10 && (
                                 <Pagination
                                     currentPage={currentPage}
