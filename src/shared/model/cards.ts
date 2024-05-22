@@ -1,3 +1,5 @@
+import i18next from 'i18next';
+
 import type { SvgIconName } from 'src/shared/ui';
 import type { ProductStatus } from 'src/shared/model';
 
@@ -7,26 +9,26 @@ export type CardType = 'CREDIT' | 'DEBIT' | 'DEPOSIT';
 export type CardLevel = 'CLASSIC' | 'GOLD' | 'PLATINUM' | 'PREMIUM';
 export type PaymentSystem = 'МИР' | 'VISA';
 
-export const CARDS_TITLE = 'Карты';
-export const CREATE_CARD = 'Создать карту';
+export const CARDS_TITLE = i18next.t('Карты');
+export const CREATE_CARD = i18next.t('Создать карту');
 export const CARDS_NOT_FOUND =
-    'На данный момент \n у Вас нет соответствующих карт';
+    i18next.t('На данный момент \n у Вас нет соответствующих карт');
 export const CARD_NUMBER_REPLACEMENT = '**** **** **** ';
-export const CARD_BALANCE = 'Баланс';
-export const CARD_CURRENCY = 'Валюта счета';
-export const INFO_ABOUT_CARD = 'Информация по карте';
-export const REQUEST_CARD = 'Оформить';
-export const MORE_DETAILS = 'Подробнее';
-export const EXPIRY_DATE = 'Срок действия';
-export const CUSTOMER_CARDS = 'Мои карты';
-export const CARD_PRODUCTS = 'Карточные продукты';
+export const CARD_BALANCE = i18next.t('Баланс');
+export const CARD_CURRENCY = i18next.t('Валюта счета');
+export const INFO_ABOUT_CARD = i18next.t('Информация по карте');
+export const REQUEST_CARD = i18next.t('Оформить');
+export const MORE_DETAILS = i18next.t('Подробнее');
+export const EXPIRY_DATE = i18next.t('Срок действия');
+export const CUSTOMER_CARDS = i18next.t('Мои карты');
+export const CARD_PRODUCTS = i18next.t('Карточные продукты');
 
-export const ALL_CARD = 'Bce';
-export const CREDIT_CARD = 'Кредитная';
-export const DEBIT_CARD = 'Дебетовая';
-export const DEPOSIT_CARD = 'Депозитная';
-export const MIR_CARD = 'МИР';
-export const VISA_CARD = 'VISA';
+export const ALL_CARD = i18next.t('Bce');
+export const CREDIT_CARD = i18next.t('Кредитная');
+export const DEBIT_CARD = i18next.t('Дебетовая');
+export const DEPOSIT_CARD = i18next.t('Депозитная');
+export const MIR_CARD = i18next.t('МИР');
+export const VISA_CARD = i18next.t('VISA');
 
 export const typeCard: Record<CardType, string> = {
     CREDIT: CREDIT_CARD,

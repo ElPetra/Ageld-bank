@@ -1,6 +1,8 @@
+import i18next from 'i18next';
+
 export type Currency = 'eur' | 'usd' | 'rub';
 
-export const ALL_CURRENCY = 'Все';
+export const ALL_CURRENCY = i18next.t('Все');
 export const RUB = 'RUB';
 export const EUR = 'EUR';
 export const USD = 'USD';
@@ -20,13 +22,13 @@ export type ProductStatus =
     | 'autoprolongation'
     | 'autoprolongationoff';
 
-export const ACTIVE_PRODUCT = 'Активный';
-export const CLOSED_PRODUCT = 'Закрытый';
-export const BLOCKED_PRODUCT = 'Заблокированный';
-export const MASTER_PRODUCT = 'Основной';
-export const CAPITALIZING_PRODUCT = 'Капитализация';
-export const AUTOPROLONGATION = 'Автопролонгация';
-export const NO_AUTOPROLONGATION = 'Автопролонгация отключена';
+export const ACTIVE_PRODUCT = i18next.t('Активный');
+export const CLOSED_PRODUCT = i18next.t('Закрытый');
+export const BLOCKED_PRODUCT = i18next.t('Заблокированный');
+export const MASTER_PRODUCT = i18next.t('Основной');
+export const CAPITALIZING_PRODUCT = i18next.t('Капитализация');
+export const AUTOPROLONGATION = i18next.t('Автопролонгация');
+export const NO_AUTOPROLONGATION = i18next.t('Автопролонгация отключена');
 export const productStatuses: Record<ProductStatus, string> = {
     active: ACTIVE_PRODUCT,
     closed: CLOSED_PRODUCT,

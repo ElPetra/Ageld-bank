@@ -6,6 +6,7 @@ import { AuthStatus, RouteName } from 'src/shared/model';
 import type { Dispatch, SetStateAction } from 'react';
 
 import './styles.scss';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
     direction?: 'column' | 'row';
@@ -14,6 +15,7 @@ interface Props {
 
 export const Navigation = ({ direction = 'row', setVisible }: Props) => {
     const { authStatus } = useAuth();
+    const { t, i18n } = useTranslation();
     return (
         <nav className={`navigation ${direction}`}>
             <ul
@@ -21,7 +23,7 @@ export const Navigation = ({ direction = 'row', setVisible }: Props) => {
                 onClick={() => setVisible && setVisible(false)}
             >
                 <Link to={RouteName.ATMS_AND_BRANCHES}>
-                    Банкоматы и отделения
+                    {t('Банкоматы и отделения')}
                 </Link>
                 <Link to={RouteName.MAIN_PAGE}>Курсы валют</Link>
                 <Link to={RouteName.CONTACTS_PAGE}>Контакты</Link>

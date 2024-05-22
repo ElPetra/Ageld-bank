@@ -6,6 +6,8 @@ import {
     INITIAL_BALANCE,
     DEPOSIT_PLAN,
     FUND,
+    YES,
+    NO,
     WITHDRAW,
     URGENT,
     PROLONGATE,
@@ -112,7 +114,7 @@ export const DepositInfo = () => {
                             {IRREVOCABILITY}
                         </Text>
                         <Text color='quadruple' weight='medium' size='m'>
-                            {deposit.irrevocability ? 'Да' : 'Нет'}
+                            {deposit.irrevocability ? YES : NO}
                         </Text>
                     </div>
                 </div>

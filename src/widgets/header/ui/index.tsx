@@ -8,6 +8,7 @@ import { HamburgerMenu } from './hamburger-menu';
 import { MenuButton } from './menu-button';
 
 import './styles.scss';
+import { Switcher } from 'src/shared/ui/switcher';
 
 export const Header = () => {
     const [visible, setVisible] = useState<boolean>(false);
@@ -19,6 +20,7 @@ export const Header = () => {
                     <Navigation />
                     <MenuButton setVisible={setVisible} />
                 </div>
+                <Switcher />
             </Container>
             <HamburgerMenu visible={visible} setVisible={setVisible} />
         </header>
