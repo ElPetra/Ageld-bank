@@ -8,5 +8,5 @@ interface Props {
 }
 
 export const LinkCard = ({ link, children }: Props) => {
-    return <>{link ? <Link to={link}>{children}</Link> : children}</>;
+    return link ? <Link to={link}>{children}</Link> : children;
 };
