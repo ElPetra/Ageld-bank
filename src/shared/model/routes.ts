@@ -61,5 +61,5 @@ export const CardsGuestRouteName = [CARDS_PRODUCTS];
 
 export const MY_DEPOSITS = 'my-deposits';
 export const DEPOSITS_PRODUCTS = 'deposits-products';
-export const DepositsRouteName = [MY_DEPOSITS, DEPOSITS_PRODUCTS];
 export const DepositsGuestRouteName = [DEPOSITS_PRODUCTS];
+export const DepositsRouteName = [MY_DEPOSITS, DEPOSITS_PRODUCTS];

@@ -26,7 +26,7 @@
             &-main {
                 background-color: var(--bg-action);
             }
-            &-active{
+            &-active, &-capitalization{
                 background-color: var(--bg-success);
             }
             &-closed{
@@ -34,6 +34,12 @@
             }
             &-blocked{
                 background-color: var(--bg-error);
+            }
+            &-autoprolongation {
+                background-color: var(--bg-success);
+            }
+            &-autoprolongationoff {
+               background-color: var(--bg-warning)
             }
         }
     }
