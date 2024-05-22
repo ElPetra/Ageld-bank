@@ -13,7 +13,7 @@ export const passwordRules: PasswordRules = {
         message: 'Есть строчные и заглавные буквы'
     },
     existsDigit: { matcher: '^(?=.*\\d).*$', message: 'Есть цифры' },
-    onlyLatin: {
+    onlyPermitted: {
         matcher:
             /* prettier-ignore */ '^[A-Za-z0-9!\\\\"#$%&\'()*+,\\-.\\/:;<=>?@[\\]^_`{|}~]{1,20}$',
         message:
