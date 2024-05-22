@@ -22,7 +22,6 @@ import './styles.scss';
 
 export const MainMenu = () => {
     const { data: cards, isLoading } = useGetCustomerCardsQuery();
-
     const { data: accounts, isLoading: isLoadingAccounts } =
         useGetAccountsQuery();
 
