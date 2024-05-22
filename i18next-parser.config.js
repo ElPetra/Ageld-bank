@@ -47,14 +47,14 @@ export default {
     lineEnding: 'auto',
     // Control the line ending. See options at https://github.com/ryanve/eol
 
-    locales: ['en', 'fr'],
+    locales: ['en', 'ru'],
     // An array of the locales in your applications
 
     namespaceSeparator: ':',
     // Namespace separator used in your translation keys
     // If you want to use plain english keys, separators such as `.` and `:` will conflict. You might want to set `keySeparator: false` and `namespaceSeparator: false`. That way, `t('Status: Loading...')` will not think that there are a namespace and three separator dots for instance.
 
-    output: 'src/pages/deposits/locale/en/en.json',
+    output: 'src/locales/$LOCALE/$LOCALE.json',
     // Supports $LOCALE and $NAMESPACE injection
     // Supports JSON (.json) and YAML (.yml) file formats
     // Where to write the locale files relative to process.cwd()
@@ -64,7 +64,7 @@ export default {
     // If you want to use plain english keys, separators such as `_` might conflict. You might want to set `pluralSeparator` to a different string that does not occur in your keys.
     // If you don't want to generate keys for plurals (for example, in case you are using ICU format), set `pluralSeparator: false`.
 
-    input: 'src/shared/model/deposits.ts',
+    input: ['src/shared/model/deposits.ts','src/shared/model/info.ts','src/shared/model/product.ts','src/shared/model/account.ts'],
     // An array of globs that describe where to look for source files
     // relative to the location of the configuration file
 
