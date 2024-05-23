@@ -32,9 +32,9 @@ export const DepositInfo = () => {
         <div className='deposit-info__card'>
             <div className='deposit-info__column'>
                 <div className='deposit-info__row'>
-                    <div className='deposit-info__name'>
-                        <div className='deposit-info__name__info'>
-                            <div className='deposit-info__name__first-row'>
+                    <div className='deposit-info__main__info'>
+                        <div className='deposit-info__main__info__first-row'>
+                            <div className='deposit-info__main'>
                                 <Text color='light' size='l' weight='regular'>
                                     {deposit.name}
                                 </Text>
@@ -51,30 +51,31 @@ export const DepositInfo = () => {
                                     }
                                 />
                             </div>
-                            <div className='deposit-info__name__second-row'>
-                                <div>
-                                    <Text color='quadruple'>
-                                        {ACCOUNT_NUMBER}
-                                    </Text>
-                                    <Text color='quadruple'>{deposit.id}</Text>
-                                </div>
-                                <button>
-                                    <Icon icon='copy-icon' />
-                                </button>
+                            <div>
+                                <AccountsMoreInfo status='active' />
                             </div>
-                            <div className='deposit-info__name__second-row'>
-                                <div>
-                                    <Text color='quadruple'>
-                                        {CONNECTED_SUBACCOUNT_NUM}
-                                    </Text>
-                                    <Text color='quadruple'>
-                                        {deposit.subAccountNum}
-                                    </Text>
-                                </div>
-                                <button>
-                                    <Icon icon='copy-icon' />
-                                </button>
+                        </div>
+                        <div className='deposit-info__main__info__second-row'>
+                            <div>
+                                <Text color='quadruple'>{ACCOUNT_NUMBER}</Text>
+                                <Text color='quadruple'>{deposit.id}</Text>
                             </div>
+                            <button>
+                                <Icon icon='copy-icon' />
+                            </button>
+                        </div>
+                        <div className='deposit-info__main__info__second-row'>
+                            <div>
+                                <Text color='quadruple'>
+                                    {CONNECTED_SUBACCOUNT_NUM}
+                                </Text>
+                                <Text color='quadruple'>
+                                    {deposit.subAccountNum}
+                                </Text>
+                            </div>
+                            <button>
+                                <Icon icon='copy-icon' />
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -118,9 +119,6 @@ export const DepositInfo = () => {
                 </div>
             </div>
             <div className='deposit-info__column'>
-                <div className='deposit-info__dropdown'>
-                    <AccountsMoreInfo status={'active'} />
-                </div>
                 <div className='deposit-info__balance-options'>
                     <div className='deposit-info__balance'>
                         <div className='deposit-info__cur-balance'>

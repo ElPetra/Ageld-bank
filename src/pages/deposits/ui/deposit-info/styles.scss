@@ -4,7 +4,7 @@
             padding: 20px;
         }
 
-        @media screen and (max-width: 1000px) {
+        @media screen and (max-width: 1800px) {
             flex-wrap: wrap;
 
             >div:first-child {
@@ -37,7 +37,7 @@
         display: flex;
         align-items: flex-start;
         justify-content: space-between;
-        gap: 16 px;
+        gap: 16px;
 
         .account-info__name__more-info {
             @media screen and (min-width: 1000px) {
@@ -51,33 +51,36 @@
         justify-content: flex-end;
     }
 
-    &__name {
+    &__main {
         display: flex;
-        align-items: flex-start;
-        gap: 16px;
+        column-gap: 24px;
+        row-gap: 4px;
 
-        &__info {
-            @media screen and (max-width: 1000px) {
-                gap: 12px;
-            }
-
-            display: flex;
-            gap: 16px;
-            flex-direction: column;
+        @media screen and (min-width: 1000px) {
+            height: 32px;
         }
+
+        @media screen and (max-width: 1000px) {
+            flex-wrap: wrap;
+        }
+
+    }
+
+    &__main__info {
+        @media screen and (max-width: 1000px) {
+            gap: 12px;
+        }
+
+        display: flex;
+        gap: 16px;
+        flex-direction: column;
+        width: 100%;
 
         &__first-row {
             display: flex;
-            column-gap: 24px;
-            row-gap: 4px;
-
-            @media screen and (min-width: 1000px) {
-                height: 32px;
-            }
-
-            @media screen and (max-width: 1000px) {
-                flex-wrap: wrap;
-            }
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 16px;
         }
 
         &__second-row {
@@ -99,11 +102,9 @@
         }
     }
 
-
     &__info {
         @media screen and (max-width: 1100px) {
             flex-wrap: wrap;
-            gap: 16px;
 
             >div {
                 flex: 1 1 100%;
@@ -111,7 +112,8 @@
         }
 
         display: flex;
-        gap:15px;
+        gap: 15px;
+        flex-wrap: wrap;
     }
 
     &__balance {
@@ -119,13 +121,6 @@
         justify-content:flex-end;
         gap: 24px;
         padding-bottom: 16px;
-
-        >div:last-child {
-            @media screen and (max-width: 1000px) {
-                display: none;
-            }
-        }
-
     }
 
     &__balance-options {
@@ -136,5 +131,8 @@
     &__buttons {
         display: flex;
         gap: 24px;
+        @media screen and (max-width: 1000px) {
+            flex-wrap: wrap;
+        }
     }
 }
