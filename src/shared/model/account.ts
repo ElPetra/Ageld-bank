@@ -70,14 +70,21 @@ export const OPEN_ACCOUNT_REQUEST = i18next.t('Заявки на открыти�
 export const CLOSED_ACCOUNTS = i18next.t('Закрытые счета');
 export const BLOCKED_ACCOUNTS = i18next.t('Заблокированные счета');
 
-export const ACCOUNTS_NOT_FOUND =
-    i18next.t('На данный момент \n у Вас нет соответствующих счетов');
+export const ACCOUNTS_NOT_FOUND = i18next.t(
+    'На данный момент \n у Вас нет соответствующих счетов'
+);
 
 export const CREATE_ACCOUNT = 'Открыть счет';
 
-export const CREATE_CREDIT_ACCOUNT_TITLE = i18next.t('Больше денег без лишних вложений');
-export const CREATE_DEBIT_ACCOUNT_TITLE = i18next.t('Откройте счет не выходя из дома');
-export const CREATE_DEPOSIT_ACCOUNT_TITLE = i18next.t('Сделайте шаг навстречу мечте');
+export const CREATE_CREDIT_ACCOUNT_TITLE = i18next.t(
+    'Больше денег без лишних вложений'
+);
+export const CREATE_DEBIT_ACCOUNT_TITLE = i18next.t(
+    'Откройте счет не выходя из дома'
+);
+export const CREATE_DEPOSIT_ACCOUNT_TITLE = i18next.t(
+    'Сделайте шаг навстречу мечте'
+);
 export const GET_CARD_IN_OFFICE = i18next.t('Заберу в офисе банка');
 export const CARD_DELIVERY_REQUIRED = i18next.t('Потребуется доставка');
 export const ACCOUNT_CREATION_FAILED = i18next.t('Не удалось открыть счет');

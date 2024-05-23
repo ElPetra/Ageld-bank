@@ -11,8 +11,9 @@ export type PaymentSystem = 'МИР' | 'VISA';
 
 export const CARDS_TITLE = i18next.t('Карты');
 export const CREATE_CARD = i18next.t('Создать карту');
-export const CARDS_NOT_FOUND =
-    i18next.t('На данный момент \n у Вас нет соответствующих карт');
+export const CARDS_NOT_FOUND = i18next.t(
+    'На данный момент \n у Вас нет соответствующих карт'
+);
 export const CARD_NUMBER_REPLACEMENT = '**** **** **** ';
 export const CARD_BALANCE = i18next.t('Баланс');
 export const CARD_CURRENCY = i18next.t('Валюта счета');
