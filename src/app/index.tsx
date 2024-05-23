@@ -1,14 +1,16 @@
 import { AppRouter } from './router';
-import { withProviders, LanguageProvider } from './providers';
+import { withProviders, LanguageProvider, I18nProvider } from './providers';
 
 import './styles/reset.scss';
 import './styles/index.scss';
 
 function App() {
     return (
-        <LanguageProvider>
-            <AppRouter />
-        </LanguageProvider>
+        <I18nProvider>
+            <LanguageProvider>
+                <AppRouter />
+            </LanguageProvider>
+        </I18nProvider>
     );
 }
 

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
 import { Container } from 'src/shared/ui';
-import { LanguageButton } from 'src/features/change-language';
 
 import { Logo } from './logo';
 import { Navigation } from './navigation';
@@ -20,7 +19,6 @@ export const Header = () => {
                     <Navigation />
                     <MenuButton setVisible={setVisible} />
                 </div>
-                <LanguageButton />
             </Container>
             <HamburgerMenu visible={visible} setVisible={setVisible} />
         </header>
