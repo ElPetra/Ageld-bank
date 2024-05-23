@@ -2,8 +2,7 @@ import { useEffect } from 'react';
 
 import { useGetCustomerCardsQuery } from 'src/shared/api';
 import { useAuth } from 'src/entities/user';
-
-import { CardContent } from '../content';
+import { CardList } from 'src/features/card-list';
 
 export const CustomerCards = () => {
     const { signedOut } = useAuth();
@@ -14,5 +13,5 @@ export const CustomerCards = () => {
         }
     }, [error, signedOut]);
 
-    return <CardContent cards={cards} isLoading={isLoading} />;
+    return <CardList cards={cards} isLoading={isLoading} />;
 };

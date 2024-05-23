@@ -19,8 +19,12 @@ export const Image = memo(
                     ? '/src/shared/ui/icon/assets/images/' + image + '.png'
                     : src
             }
-            width={widthAndHeight || width || 500}
-            height={widthAndHeight || height || 500}
+            {...(widthAndHeight || width
+                ? { width: widthAndHeight || width }
+                : {})}
+            {...(widthAndHeight || height
+                ? { height: widthAndHeight || height }
+                : {})}
             alt=''
             className={className}
         />

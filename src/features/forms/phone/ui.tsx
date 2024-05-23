@@ -75,6 +75,7 @@ export const PhoneForm = ({
                     <Text size='xs'>
                         Нажав кнопку «Далее», вы соглашаетесь с &nbsp;
                         <Link
+                            id='service_rules'
                             onClick={() => handleLinkClick(1)}
                             to={
                                 RouteName.MAIN_PAGE + 'src/assets/terms-RBS.pdf'
@@ -87,6 +88,7 @@ export const PhoneForm = ({
                         </Link>
                         &nbsp; и &nbsp;
                         <Link
+                            id='privacy_policy'
                             to={
                                 RouteName.MAIN_PAGE + 'src/assets/terms-RBS.pdf'
                             }
