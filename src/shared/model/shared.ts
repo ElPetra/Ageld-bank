@@ -1,0 +1,12 @@
+export const EXCHANGE_RATES = 'Курсы валют';
+export const CONTACTS = 'Контакты';
+export const SERVICE_LIST = 'Список услуг';
+export const DOCUMENTS = 'Документы';
+export const QANDA = 'Вопросы и ответы';
+export const BANKS_AND_BRANCHES = 'Банки и отделения';
+export const ACTIVE = 'Активная';
+export const BLOCKED_TITLE = 'Заблокированная';
+export const CLOSED_TITLE = 'Закрытая';
+export const VISA = 'VISA';
+export const MIR = 'МИР';
+export const MAIN_TITLE = 'Главная';

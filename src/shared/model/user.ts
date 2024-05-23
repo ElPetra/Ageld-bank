@@ -15,3 +15,8 @@ export enum AuthStatus {
     SignedIn = 'SignedIn',
     SignedOut = 'SignedOut'
 }
+export const MAPS = 'Карты';
+export const LOANS_TITLE = 'Кредиты';
+export const ACCOUNTS_TITLE = 'Счета';
+export const TRANSFERS_TITLE = 'Переводы';
+export const PAYMENTS_TITLE = 'Платежи';

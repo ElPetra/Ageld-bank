@@ -2,7 +2,6 @@ const CURRENCY_EXCHANGE = 'Обмен валюты';
 const ATM = 'Банкомат';
 const INSURANCE = 'Страхование';
 const BANK_TRANSFERS = 'Банковские переводы';
-const DEPOSITS = 'Депозиты';
 const LOANS = 'Кредиты';
 const WITHDRAWAL_FROM_CARD = 'Снятие с карты';
 const TOP_CARD_ACCOUNT = 'Пополнение карты/счета';

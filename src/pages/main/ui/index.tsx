@@ -3,6 +3,15 @@ import { MainRouteName } from 'src/shared/model';
 import { Menu } from 'src/features/menu';
 import { MainMenu } from 'src/widgets/main-menu';
 import { Accounts } from 'src/widgets/accounts';
+import {
+    MAIN,
+    CARDS_TITLE,
+    ACCOUNTS_TITLE,
+    DEPOSITS_TITLE,
+    TRANSFERS_TITLE,
+    PAYMENTS_TITLE,
+    LOANS_TITLE
+} from 'src/shared/model';
 import { Cards } from 'src/widgets/cards';
 import { Deposits } from 'src/widgets/deposits';
 
@@ -16,7 +25,7 @@ export const MainPage = () => {
                 elements={[
                     {
                         id: 1,
-                        name: 'Главная',
+                        name: MAIN,
                         component: (
                             <ProtectedMain>
                                 <MainMenu />
@@ -25,12 +34,12 @@ export const MainPage = () => {
                     },
                     {
                         id: 2,
-                        name: 'Карты',
+                        name: CARDS_TITLE,
                         component: <Cards />
                     },
                     {
                         id: 3,
-                        name: 'Счета',
+                        name: ACCOUNTS_TITLE,
                         component: (
                             <ProtectedMain>
                                 <Accounts />
@@ -39,22 +48,22 @@ export const MainPage = () => {
                     },
                     {
                         id: 4,
-                        name: 'Переводы',
-                        component: <div>Переводы</div>
+                        name: TRANSFERS_TITLE,
+                        component: <div>{TRANSFERS_TITLE}</div>
                     },
                     {
                         id: 5,
-                        name: 'Платежи',
-                        component: <div>Платежи</div>
+                        name: PAYMENTS_TITLE,
+                        component: <div>{PAYMENTS_TITLE}</div>
                     },
                     {
                         id: 6,
-                        name: 'Кредиты',
-                        component: <div>Кредиты</div>
+                        name: LOANS_TITLE,
+                        component: <div>{LOANS_TITLE}</div>
                     },
                     {
                         id: 7,
-                        name: 'Депозиты',
+                        name: DEPOSITS_TITLE,
                         component: <Deposits />
                     }
                 ]}

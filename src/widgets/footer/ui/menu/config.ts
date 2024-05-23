@@ -1,10 +1,17 @@
 import { RouteName } from 'src/shared/model';
-
+import {
+    EXCHANGE_RATES,
+    DOCUMENTS,
+    CONTACTS,
+    QANDA,
+    SERVICE_LIST,
+    BANKS_AND_BRANCHES
+} from 'src/shared/model/shared';
 export const links = [
-    { text: 'Банкоматы и отеделения', href: RouteName.ATMS_AND_BRANCHES },
-    { text: 'Курсы валют', href: RouteName.MAIN_PAGE },
-    { text: 'Контакты', href: RouteName.CONTACTS_PAGE },
-    { text: 'Список услуг', href: RouteName.MAIN_PAGE },
-    { text: 'Документы', href: RouteName.MAIN_PAGE },
-    { text: 'Вопросы и ответы', href: RouteName.MAIN_PAGE }
+    { text: BANKS_AND_BRANCHES, href: RouteName.ATMS_AND_BRANCHES },
+    { text: EXCHANGE_RATES, href: RouteName.MAIN_PAGE },
+    { text: CONTACTS, href: RouteName.CONTACTS_PAGE },
+    { text: SERVICE_LIST, href: RouteName.MAIN_PAGE },
+    { text: DOCUMENTS, href: RouteName.MAIN_PAGE },
+    { text: QANDA, href: RouteName.MAIN_PAGE }
 ];
