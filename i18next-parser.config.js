@@ -64,7 +64,13 @@ export default {
     // If you want to use plain english keys, separators such as `_` might conflict. You might want to set `pluralSeparator` to a different string that does not occur in your keys.
     // If you don't want to generate keys for plurals (for example, in case you are using ICU format), set `pluralSeparator: false`.
 
-    input: ['src/shared/model/deposits.ts','src/shared/model/info.ts','src/shared/model/product.ts','src/shared/model/account.ts'],
+    input: [
+        'src/shared/model/deposits.ts',
+        'src/shared/model/info.ts',
+        'src/shared/model/product.ts',
+        'src/shared/model/account.ts',
+        'src/shared/model/cards.ts'
+    ],
     // An array of globs that describe where to look for source files
     // relative to the location of the configuration file
 

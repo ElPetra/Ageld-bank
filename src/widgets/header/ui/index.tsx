@@ -1,12 +1,11 @@
 import { useState } from 'react';
-
 import { Container } from 'src/shared/ui';
+import { Switcher } from 'src/features/switcher';
 
 import { Logo } from './logo';
 import { Navigation } from './navigation';
 import { HamburgerMenu } from './hamburger-menu';
 import { MenuButton } from './menu-button';
-
 import './styles.scss';
 
 export const Header = () => {
@@ -21,6 +20,9 @@ export const Header = () => {
                 </div>
             </Container>
             <HamburgerMenu visible={visible} setVisible={setVisible} />
+            <div className='switcher'>
+                <Switcher />
+            </div>
         </header>
     );
 };

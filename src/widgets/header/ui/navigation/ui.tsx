@@ -4,7 +4,6 @@ import { AuthStatus, RouteName } from 'src/shared/model';
 import { Link } from 'src/shared/ui';
 import { useAuth } from 'src/entities/user';
 import { Logout } from 'src/features/logout';
-import { LanguageButton } from 'src/features/change-language';
 
 import type { Dispatch, SetStateAction } from 'react';
 
@@ -33,7 +32,6 @@ export const Navigation = ({ direction = 'row', setVisible }: Props) => {
                 <Link to={RouteName.MAIN_PAGE}>Документы</Link>
                 <Link to={RouteName.MAIN_PAGE}>Вопросы и ответы</Link>
             </ul>
-            <LanguageButton />
             <ul className='navigation__additional'>
                 {authStatus === AuthStatus.SignedIn ? (
                     <>

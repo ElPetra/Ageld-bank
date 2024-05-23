@@ -1,0 +1,29 @@
+.switcher {
+  position: relative;
+
+  &__icon {
+    cursor: pointer;
+  }
+
+  &__modal{
+    position: absolute;
+    top: 30px;
+    right: 0;
+    z-index: 1;
+    box-shadow: 0 15px 20px 0 #0000000D;
+    border-radius: var(--medium-border-radius);
+  }
+
+  &__button {
+    height: 64px;
+  }
+
+  .active {
+    border-bottom: 1px solid var(--text-primary);
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 24px;
+  }
+}

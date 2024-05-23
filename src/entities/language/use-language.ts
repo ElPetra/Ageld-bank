@@ -12,7 +12,7 @@ interface useThemeResult {
 
 export function useLanguage(): useThemeResult {
     const { language, setLanguage } = useContext(LanguageContext);
-    const { t, i18n } = useTranslation();
+    const { i18n } = useTranslation();
 
     const changeLanguage = (): void => {
         if (language === Language.Russian) {
