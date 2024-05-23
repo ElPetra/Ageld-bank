@@ -1,30 +1,21 @@
 .deposit-info {
-    &__card {
-        @media screen and (max-width: 500px) {
-            padding: 20px;
-        }
-
-        @media screen and (max-width: 1800px) {
-            flex-wrap: wrap;
-
-            >div:first-child {
-                max-width: 100%;
-                flex: 1 1 100%;
-            }
-
-            >div:last-child {
-                flex: 1 1 100%;
-                max-width: calc(100% - 56px);
-                margin-left: 56px;
-            }
-        }
-
+    &__first-row {
         display: flex;
+        align-items: flex-start;
         justify-content: space-between;
-        gap: 32px;
-        border-radius: var(--extra-large-border-radius);
-        padding: 32px;
-        background: var(--bg-quadruple);
+        gap: 16px;
+    }
+
+    @media screen and (max-width: 1000px)  {
+        &__first-column {
+            max-width: 100%;
+            flex: 1 1 100%;
+        }
+        &__second-column {
+            flex: 1 1 100%;
+            max-width: calc(100% - 56px);
+            margin-left: 56px;
+        }
     }
 
     &__column {
@@ -75,14 +66,6 @@
         gap: 16px;
         flex-direction: column;
         width: 100%;
-
-        &__first-row {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 16px;
-        }
-
         &__second-row {
             display: flex;
             gap: 8px;
