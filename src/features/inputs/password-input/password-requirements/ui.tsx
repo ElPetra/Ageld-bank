@@ -43,6 +43,7 @@ export const PasswordRequirements = memo(
                                     ? 'success-icon'
                                     : 'error-icon'
                             }
+                            testId={el}
                             message={matchesResult[el].message}
                         />
                     ))}

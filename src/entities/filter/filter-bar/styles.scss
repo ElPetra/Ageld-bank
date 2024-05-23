@@ -2,6 +2,13 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    @media screen and (max-width: 600px) {
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
 
     &__button {
         border-radius: var(--medium-border-radius);

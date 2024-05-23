@@ -9,6 +9,26 @@
     margin: 0 auto;
   }
 
+  &.extra-small-row-gap {
+    row-gap: 8px;
+  }
+
+  &.small-row-gap {
+    row-gap: 16px;
+  }
+
+  &.medium-row-gap {
+    row-gap: 24px;
+  }
+
+  &.large-row-gap {
+    row-gap: 32px;
+  }
+
+  &.extra-large-row-gap {
+    row-gap: 60px;
+  }
+
   &__4 {
     > div {
       @media screen and (max-width: 1100px)  {

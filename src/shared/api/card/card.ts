@@ -41,9 +41,9 @@ export const cardApi = createApi({
         }),
         getCustomerCardDetails: builder.query<CardDetails, { id: string }>({
             query: ({ id }) => ({
-                url: '/cards/info',
+                url: '/info',
                 params: {
-                    cards: id
+                    card_id: id
                 },
                 method: 'GET'
             }),
