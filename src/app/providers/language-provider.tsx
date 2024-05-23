@@ -18,9 +18,11 @@ export function LanguageProvider({ children }: Props) {
     useEffect(() => {
         const currentLanguage = getCurrentLanguage();
         if (currentLanguage === Language.Russian) {
-            i18n.changeLanguage('en').then();
-        } else {
+            setLanguage(Language.Russian);
             i18n.changeLanguage('ru').then();
+        } else {
+            setLanguage(Language.English);
+            i18n.changeLanguage('en').then();
         }
     }, []);
 
