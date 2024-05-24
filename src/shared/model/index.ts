@@ -7,3 +7,5 @@ export * from './account';
 export * from './deposits';
 export * from './shared';
 export * from './multistepform';
+export * from './language';
+export * from './language';

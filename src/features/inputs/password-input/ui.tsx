@@ -97,7 +97,7 @@ export const PasswordInput = ({
                             existsDigit: true,
                             existsSymbol:
                                 /* prettier-ignore */ '!\\\\"#$%&\'()*+,\\-.\\/:;<=>?@[\\]^_`{|}~',
-                            onlyLatin: true
+                            onlyPermitted: true
                         }}
                     />
                 )}

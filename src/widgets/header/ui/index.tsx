@@ -1,14 +1,12 @@
 import { useState } from 'react';
-
 import { Container } from 'src/shared/ui';
+import { Switcher } from 'src/features/switcher';
 
 import { Logo } from './logo';
 import { Navigation } from './navigation';
 import { HamburgerMenu } from './hamburger-menu';
 import { MenuButton } from './menu-button';
-
 import './styles.scss';
-import { Switcher } from 'src/shared/ui/switcher';
 
 export const Header = () => {
     const [visible, setVisible] = useState<boolean>(false);
@@ -20,9 +18,11 @@ export const Header = () => {
                     <Navigation />
                     <MenuButton setVisible={setVisible} />
                 </div>
-                <Switcher />
             </Container>
             <HamburgerMenu visible={visible} setVisible={setVisible} />
+            <div className='switcher'>
+                <Switcher />
+            </div>
         </header>
     );
 };

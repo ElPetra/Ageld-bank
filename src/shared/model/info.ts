@@ -1,10 +1,9 @@
-import i18next from 'i18next';
 export const objectTypeName = {
-    ATM: i18next.t('Банкомат'),
-    kiosk: i18next.t('Инфокиоск'),
-    head: i18next.t('Главный офис'),
-    branch: i18next.t('Отделение банка'),
-    exchange: i18next.t('Обменный пункт')
+    ATM: 'Банкомат',
+    kiosk: 'Инфокиоск',
+    head: 'Главный офис',
+    branch: 'Отделение банка',
+    exchange: 'Обменный пункт'
 };
 
 type ObjectType = keyof typeof objectTypeName;

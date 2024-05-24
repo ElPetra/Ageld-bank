@@ -56,6 +56,7 @@ import addToCardSVG from 'src/shared/ui/icon/assets/icons/add-to-card.svg';
 import passwordSVG from 'src/shared/ui/icon/assets/icons/password-icon.svg';
 import forbidOperationsSVG from 'src/shared/ui/icon/assets/icons/forbid-operations.svg';
 import lockSVG from 'src/shared/ui/icon/assets/icons/lock-icon.svg';
+import worldSVG from 'src/shared/ui/icon/assets/icons/world.svg';
 
 export type PngImageNames = 'classic' | 'gold' | 'platinum' | 'premium';
 
@@ -117,6 +118,7 @@ export const SVG = {
     'add-to-card': addToCardSVG,
     'password-icon': passwordSVG,
     'forbid-operations': forbidOperationsSVG,
-    'lock-icon': lockSVG
+    'lock-icon': lockSVG,
+    world: worldSVG
 };
 export type SvgIconName = keyof typeof SVG;

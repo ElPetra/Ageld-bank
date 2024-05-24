@@ -1,3 +1,5 @@
+import i18next from 'i18next';
+
 import { Card, Icon, Text } from 'src/shared/ui';
 import { formatExpirationDate } from 'src/shared/lib';
 
@@ -19,7 +21,7 @@ export const SmallCardCard = ({ card }: Props) => {
                         {100000}
                     </Text>
                     <Text size='xs' color='quadruple'>
-                        {card.name}
+                        {i18next.t(card.name)}
                     </Text>
                 </div>
             </div>

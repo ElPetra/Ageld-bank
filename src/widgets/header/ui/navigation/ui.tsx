@@ -1,12 +1,13 @@
+import { useTranslation } from 'react-i18next';
+
+import { AuthStatus, RouteName } from 'src/shared/model';
 import { Link } from 'src/shared/ui';
 import { useAuth } from 'src/entities/user';
 import { Logout } from 'src/features/logout';
-import { AuthStatus, RouteName } from 'src/shared/model';
 
 import type { Dispatch, SetStateAction } from 'react';
 
 import './styles.scss';
-import { useTranslation } from 'react-i18next';
 
 interface Props {
     direction?: 'column' | 'row';
@@ -15,7 +16,7 @@ interface Props {
 
 export const Navigation = ({ direction = 'row', setVisible }: Props) => {
     const { authStatus } = useAuth();
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     return (
         <nav className={`navigation ${direction}`}>
             <ul

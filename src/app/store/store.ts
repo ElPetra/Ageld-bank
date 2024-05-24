@@ -12,10 +12,7 @@ import {
     cardApi
 } from 'src/shared/api';
 
-import { languageReducer } from 'src/app/store/slice/languageSlice.js';
-
 import { actionHandling } from './middleware';
-
 
 const rootReducers = combineReducers({
     user: userReducer,
@@ -26,8 +23,7 @@ const rootReducers = combineReducers({
     [infoApi.reducerPath]: infoApi.reducer,
     [cardProductApi.reducerPath]: cardProductApi.reducer,
     [cardApi.reducerPath]: cardApi.reducer,
-    [accountApi.reducerPath]: accountApi.reducer,
-    language: languageReducer
+    [accountApi.reducerPath]: accountApi.reducer
 });
 
 export const store = configureStore({
