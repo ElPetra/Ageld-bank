@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import {
     CARDS_NOT_FOUND,
     CREATE,
@@ -24,6 +26,7 @@ interface Props {
 }
 
 export const CardList = ({ cards, isLoading }: Props) => {
+    const { t } = useTranslation();
     const {
         getFilteredCards,
         currencyPayment,
@@ -81,8 +84,8 @@ export const CardList = ({ cards, isLoading }: Props) => {
                         </div>
                     ) : (
                         <MessageCard
-                            title={CARDS_NOT_FOUND}
-                            buttonText={CREATE_CARD}
+                            title={t(CARDS_NOT_FOUND)}
+                            buttonText={t(CREATE_CARD)}
                             buttonLink={RouteName.CARD_PAGE + '/' + CREATE}
                         />
                     )}

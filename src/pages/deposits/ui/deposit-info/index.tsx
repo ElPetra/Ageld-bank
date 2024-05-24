@@ -10,7 +10,7 @@ import {
     NO,
     WITHDRAW,
     URGENT,
-    PROLONGATE,
+    PROLONGATION,
     DEPOSIT_TERM,
     INTEREST_RATE,
     UNTIMELY_WITHDRAWAL_INTEREST_RATE,
@@ -162,7 +162,7 @@ export const DepositInfo = () => {
                                 : ENABLE_AUTOPROLONGATION}
                         </Button>
                         <Button width='max' type='button' variant='secondary'>
-                            {PROLONGATE}
+                            {PROLONGATION}
                         </Button>
                     </div>
                 </div>
