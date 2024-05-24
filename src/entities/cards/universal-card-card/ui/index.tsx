@@ -1,4 +1,4 @@
-import i18next from 'i18next';
+import i18next from 'src/shared/model/i18n';
 
 import { Button, Card, Icon, Image, Link, Text } from 'src/shared/ui';
 import {
@@ -109,7 +109,7 @@ export const UniversalCardCard = ({ card, children }: Props) => {
                                           /.{12}/gm,
                                           CARD_NUMBER_REPLACEMENT
                                       )
-                                    : typeCard[i18next.t(card.type)] +
+                                    : i18next.t(typeCard[card.type]) +
                                       ' карта. Надежная карта на каждый день'}
                             </Text>
                         )}
@@ -135,7 +135,7 @@ export const UniversalCardCard = ({ card, children }: Props) => {
                                 />
                                 <Detail
                                     value={card.isVirtual ? 'Да' : 'Нет'}
-                                    description=i18next.t(VIRTUAL)
+                                    description={i18next.t(VIRTUAL)}
                                 />
                                 <Detail
                                     value={card.feeUse + ' ₽'}
@@ -192,14 +192,14 @@ export const UniversalCardCard = ({ card, children }: Props) => {
                 <div className='universal-card-card__second__button'>
                     {isCustomerCard(card) ? (
                         <Link to={link}>
-                            <Button variant='secondary'>{buttonText}</Button>
+                            <Button variant='secondary'>{i18next.t(buttonText)}</Button>
                         </Link>
                     ) : (
-                        <Button variant='secondary'>{buttonText}</Button>
+                        <Button variant='secondary'>{i18next.t(buttonText)}</Button>
                     )}
                     {isCardProduct(card) && (
                         <Link to={link}>
-                            <Button>{MORE_DETAILS}</Button>
+                            <Button>{i18next.t(MORE_DETAILS)}</Button>
                         </Link>
                     )}
                 </div>

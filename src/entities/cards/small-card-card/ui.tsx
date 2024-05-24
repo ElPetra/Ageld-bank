@@ -1,4 +1,4 @@
-import i18next from 'i18next';
+import i18next from 'src/shared/model/i18n';
 
 import { Card, Icon, Text } from 'src/shared/ui';
 import { formatExpirationDate } from 'src/shared/lib';

@@ -1,3 +1,5 @@
+import i18next from 'src/shared/model/i18n';
+
 import { Link } from 'react-router-dom';
 import { Icon, Text, Button } from 'src/shared/ui';
 
@@ -24,7 +26,7 @@ export const DepositCard = ({ deposit }: Props) => {
                 <div className='deposit__card__title'>
                     <Icon widthAndHeight={70} icon={deposit.icon} />
                     <Text weight='bold' size='l'>
-                        {deposit.name}
+                        {i18next.t(deposit.name)}
                     </Text>
                 </div>
                 <div className='deposit__card-info'>
@@ -32,7 +34,7 @@ export const DepositCard = ({ deposit }: Props) => {
                         {deposit.interestRate}
                     </Text>
                     <Text weight='light' color='quadruple' size='xs'>
-                        {INTEREST_RATE}
+                        {i18next.t(INTEREST_RATE)}
                     </Text>
                 </div>
                 <div className='deposit__card-info'>
@@ -40,20 +42,20 @@ export const DepositCard = ({ deposit }: Props) => {
                         {`${deposit.balance} ${deposit.currency.toUpperCase()}`}
                     </Text>
                     <Text weight='light' color='quadruple' size='xs'>
-                        {DEPOSIT_BALANCE}
+                        {i18next.t(DEPOSIT_BALANCE)}
                     </Text>
                 </div>
                 <div className='deposit__card-info'>
                     <Text weight='bold' size='l'>
-                        {deposit.closed}
+                        {i18next.t(deposit.closed)}
                     </Text>
                     <Text weight='light' color='quadruple' size='xs'>
-                        {DEPOSIT_END_OF_TERM}
+                        {i18next.t(DEPOSIT_END_OF_TERM)}
                     </Text>
                 </div>
                 <Link to={RouteName.DEPOSIT_PAGE + '/' + deposit.id}>
                     <Button variant='primary' size='medium' type='button'>
-                        {SHOW_MORE}
+                        {i18next.t(SHOW_MORE)}
                     </Button>
                 </Link>
             </div>

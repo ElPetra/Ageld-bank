@@ -1,3 +1,5 @@
+import i18next from 'src/shared/model/i18n';
+
 import { Link } from 'react-router-dom';
 
 import { Card, Icon, Text } from 'src/shared/ui';
@@ -33,7 +35,7 @@ export const AccountCard = ({ account, children }: Props) => {
                                 )}
                             </Text>
                             <Text weight='medium' color='light'>
-                                {accountTypes[account.type]}
+                                {i18next.t(accountTypes[account.type])}
                             </Text>
                         </div>
                     </div>

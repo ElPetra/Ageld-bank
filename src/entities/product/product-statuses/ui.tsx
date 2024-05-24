@@ -1,3 +1,5 @@
+import i18next from 'src/shared/model/i18n';
+
 import { Text } from 'src/shared/ui';
 import { MASTER_PRODUCT, productStatuses } from 'src/shared/model';
 
@@ -24,7 +26,7 @@ export const ProductStatuses = ({
                         weight='medium'
                         size={direction === 'column' ? 'xxs' : 's'}
                     >
-                        {MASTER_PRODUCT}
+                        {i18next.t(MASTER_PRODUCT)}
                     </Text>
                 </div>
             )}
@@ -35,7 +37,7 @@ export const ProductStatuses = ({
                     weight='medium'
                     size={direction === 'column' ? 'xxs' : 's'}
                 >
-                    {productStatuses[status]}
+                    {i18next.t(productStatuses[status])}
                 </Text>
             </div>
         </div>
