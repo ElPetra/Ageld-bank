@@ -1,4 +1,5 @@
-import type { PaymentSystem, ProductStatus } from 'src/shared/model';
+import type { PaymentSystem } from 'src/shared/model';
+
 import type { SvgIconName } from 'src/shared/ui';
 
 export const getIconName = (payment: PaymentSystem): SvgIconName => {
@@ -7,16 +8,5 @@ export const getIconName = (payment: PaymentSystem): SvgIconName => {
             return 'visa-icon';
         case 'МИР':
             return 'mir-icon';
-    }
-};
-
-export const getStatusName = (status: ProductStatus): string => {
-    switch (status) {
-        case 'active':
-            return 'Активная';
-        case 'blocked':
-            return 'Заблокированная';
-        case 'closed':
-            return 'Закрытая';
     }
 };

@@ -1,3 +1,4 @@
+import i18next from 'i18next';
 import { Text } from 'src/shared/ui';
 
 import './styles.scss';
@@ -14,7 +15,7 @@ export const Detail = ({ value, description }: Props) => {
                 {value}
             </Text>
             <Text size='xs' color='quadruple'>
-                {description}
+                {i18next.t(description)}
             </Text>
         </div>
     );

@@ -1,6 +1,12 @@
 import { Link, Text } from 'src/shared/ui';
 
-import { RouteName } from 'src/shared/model';
+import {
+    RouteName,
+    SIGN_UP,
+    DO_YOU_HAVE_AN_ACCOUNT,
+    DO_YOU_NOT_HAVE_AN_ACCOUNT,
+    SIGN_IN
+} from 'src/shared/model';
 
 import type { ReactNode } from 'react';
 import type { VariantType } from '../model';
@@ -23,9 +29,8 @@ export const FormCard = ({ title, variant = 'none', children }: Props) => {
             {variant !== 'none' && (
                 <div className='form-card__link'>
                     <Text align='center'>
-                        {variant === 'login' && 'У вас нет аккаунта?'}
-                        {variant === 'registration' &&
-                            'У вас уже есть аккаунт?'}
+                        {variant === 'login' && DO_YOU_NOT_HAVE_AN_ACCOUNT}
+                        {variant === 'registration' && DO_YOU_HAVE_AN_ACCOUNT}
                         &nbsp;
                         <Link
                             to={
@@ -35,8 +40,8 @@ export const FormCard = ({ title, variant = 'none', children }: Props) => {
                             }
                             variant='action'
                         >
-                            {variant === 'login' && 'Зарегистрируйтесь'}
-                            {variant === 'registration' && 'Авторизуйтесь'}
+                            {variant === 'login' && SIGN_UP}
+                            {variant === 'registration' && SIGN_IN}
                         </Link>
                     </Text>
                 </div>
