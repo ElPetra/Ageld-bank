@@ -5,7 +5,5 @@ export * from './product';
 export * from './info';
 export * from './account';
 export * from './deposits';
-export * from './shared';
-export * from './multistepform';
 export * from './language';
-export * from './language';
+export * from './main';

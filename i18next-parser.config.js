@@ -79,7 +79,9 @@ export default {
         'src/shared/model/info.ts',
         'src/shared/model/product.ts',
         'src/shared/model/account.ts',
-        'src/shared/model/cards.ts'
+        'src/shared/model/cards.ts',
+        'src/shared/model/main.ts',
+        'src/shared/model/user.ts'
     ],
     // An array of globs that describe where to look for source files
     // relative to the location of the configuration file

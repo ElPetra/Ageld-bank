@@ -1,4 +1,5 @@
-import type { SvgIconName } from 'src/shared/ui';
+import i18n from 'src/shared/model/i18n';
+
 import type { ProductStatus } from 'src/shared/model';
 
 type CardStatusResponse = 'ACTIVE' | 'CLOSED' | 'BLOCKED';
@@ -7,28 +8,29 @@ export type CardType = 'CREDIT' | 'DEBIT' | 'DEPOSIT';
 export type CardLevel = 'CLASSIC' | 'GOLD' | 'PLATINUM' | 'PREMIUM';
 export type PaymentSystem = 'МИР' | 'VISA';
 
-export const CARDS_TITLE = 'Карты';
-export const CREATE_CARD = 'Создать карту';
-export const VIRTUAL = 'Виртуальная';
-export const CARDS_NOT_FOUND =
-    'На данный момент \n у Вас нет соответствующих карт';
+export const CARDS_TITLE = i18n.t('Карты');
+export const CREATE_CARD = i18n.t('Создать карту');
+export const VIRTUAL = i18n.t('Виртуальная');
+export const CARDS_NOT_FOUND = i18n.t(
+    'На данный момент \n у Вас нет соответствующих карт'
+);
 export const CARD_NUMBER_REPLACEMENT = '**** **** **** ';
-export const CARD_NUMBER = 'Номер карты';
-export const CARD_BALANCE = 'Баланс';
-export const CARD_CURRENCY = 'Валюта счета';
-export const CARD_LEVEL = 'Уровень премиальность';
-export const INFO_ABOUT_CARD = 'Информация по карте';
-export const REQUEST_CARD = 'Оформить карту';
-export const MORE_DETAILS = 'Показать больше';
-export const EXPIRY_DATE = 'Срок действия';
-export const CUSTOMER_CARDS = 'Мои карты';
-export const CARD_PRODUCTS = 'Карточные продукты';
+export const CARD_NUMBER = i18n.t('Номер карты');
+export const CARD_BALANCE = i18n.t('Баланс');
+export const CARD_CURRENCY = i18n.t('Валюта счета');
+export const CARD_LEVEL = i18n.t('Уровень премиальность');
+export const INFO_ABOUT_CARD = i18n.t('Информация по карте');
+export const REQUEST_CARD = i18n.t('Оформить карту');
+export const MORE_DETAILS = i18n.t('Показать больше');
+export const EXPIRY_DATE = i18n.t('Срок действия');
+export const CUSTOMER_CARDS = i18n.t('Мои карты');
+export const CARD_PRODUCTS = i18n.t('Карточные продукты');
 
-export const ALL_CARD = 'Bce';
-export const CREDIT_CARD = 'Кредитная';
-export const DEBIT_CARD = 'Дебетовая';
-export const DEPOSIT_CARD = 'Депозитная';
-export const MIR_CARD = 'МИР';
+export const ALL_CARD = i18n.t('Bce');
+export const CREDIT_CARD = i18n.t('Кредитная');
+export const DEBIT_CARD = i18n.t('Дебетовая');
+export const DEPOSIT_CARD = i18n.t('Депозитная');
+export const MIR_CARD = i18n.t('МИР');
 export const VISA_CARD = 'VISA';
 
 export const typeCard: Record<CardType, string> = {
@@ -44,12 +46,6 @@ export const typeCardFilters = [
     DEPOSIT_CARD
 ];
 export const paymentSystemFilters = [ALL_CARD, MIR_CARD, VISA_CARD];
-
-export interface Detail {
-    id: number;
-    name: string;
-    icon: SvgIconName;
-}
 
 export interface CustomerCard {
     id: string;

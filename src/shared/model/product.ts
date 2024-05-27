@@ -1,6 +1,8 @@
+import i18n from 'src/shared/model/i18n';
+
 export type Currency = 'eur' | 'usd' | 'rub';
 
-export const ALL_CURRENCY = 'Все';
+export const ALL_CURRENCY = i18n.t('Все');
 export const RUB = 'RUB';
 export const EUR = 'EUR';
 export const USD = 'USD';
@@ -20,12 +22,12 @@ export type ProductStatus =
     | 'autoprolongation'
     | 'autoprolongationoff';
 
-export const ACTIVE_PRODUCT = 'Активный';
-export const CLOSED_PRODUCT = 'Закрытый';
-export const BLOCKED_PRODUCT = 'Заблокированный';
-export const MASTER_PRODUCT = 'Основной';
-export const AUTOPROLONGATION = 'Автопролонгация';
-export const NO_AUTOPROLONGATION = 'Автопролонгация отключена';
+export const ACTIVE_PRODUCT = i18n.t('Активный');
+export const CLOSED_PRODUCT = i18n.t('Закрытый');
+export const BLOCKED_PRODUCT = i18n.t('Заблокированный');
+export const MASTER_PRODUCT = i18n.t('Основной');
+export const AUTOPROLONGATION = i18n.t('Автопролонгация');
+export const NO_AUTOPROLONGATION = i18n.t('Автопролонгация отключена');
 
 export const productStatuses: Record<ProductStatus, string> = {
     active: ACTIVE_PRODUCT,

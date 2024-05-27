@@ -6,7 +6,8 @@ import {
     QANDA,
     SERVICE_LIST,
     BANKS_AND_BRANCHES
-} from 'src/shared/model/shared';
+} from 'src/shared/model';
+
 export const links = [
     { text: BANKS_AND_BRANCHES, href: RouteName.ATMS_AND_BRANCHES },
     { text: EXCHANGE_RATES, href: RouteName.MAIN_PAGE },

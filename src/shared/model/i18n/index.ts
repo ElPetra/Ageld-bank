@@ -18,3 +18,5 @@ i18n.use(HttpBackend)
     });
 
 export default i18n;
+
+export class i18next {}

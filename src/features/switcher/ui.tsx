@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+
 import { Card, Icon, Text } from 'src/shared/ui';
-import './styles.scss';
 import { useLanguage } from 'src/entities/language';
+
+import './styles.scss';
 
 export const Switcher = () => {
     const { language, changeLanguage } = useLanguage();
