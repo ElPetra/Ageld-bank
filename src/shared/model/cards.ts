@@ -60,6 +60,7 @@ export interface CustomerCard {
 }
 
 export interface CustomerCardResponse {
+    cardId: string;
     accountNumber: string;
     expirationAt: string;
     image: string;

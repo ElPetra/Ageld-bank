@@ -51,12 +51,12 @@ export const MainPage = () => {
                     {
                         id: 4,
                         name: t(TRANSFERS_TITLE),
-                        component: <div>{TRANSFERS_TITLE}</div>
+                        component: <div>{t(TRANSFERS_TITLE)}</div>
                     },
                     {
                         id: 5,
                         name: t(PAYMENTS_TITLE),
-                        component: <div>{PAYMENTS_TITLE}</div>
+                        component: <div>{t(PAYMENTS_TITLE)}</div>
                     },
                     {
                         id: 6,
