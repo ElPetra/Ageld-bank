@@ -1,5 +1,5 @@
 import { Link, Text } from 'src/shared/ui';
-
+import { useTranslation } from 'react-i18next';
 import {
     RouteName,
     SIGN_UP,
@@ -10,7 +10,6 @@ import {
 
 import type { ReactNode } from 'react';
 import type { VariantType } from '../model';
-
 import './styles.scss';
 
 interface Props {
@@ -20,6 +19,7 @@ interface Props {
 }
 
 export const FormCard = ({ title, variant = 'none', children }: Props) => {
+    const { t } = useTranslation();
     return (
         <div className='form-card'>
             <Text size='l' weight='bold'>
@@ -29,8 +29,9 @@ export const FormCard = ({ title, variant = 'none', children }: Props) => {
             {variant !== 'none' && (
                 <div className='form-card__link'>
                     <Text align='center'>
-                        {variant === 'login' && DO_YOU_NOT_HAVE_AN_ACCOUNT}
-                        {variant === 'registration' && DO_YOU_HAVE_AN_ACCOUNT}
+                        {variant === 'login' && t(DO_YOU_NOT_HAVE_AN_ACCOUNT)}
+                        {variant === 'registration' &&
+                            t(DO_YOU_HAVE_AN_ACCOUNT)}
                         &nbsp;
                         <Link
                             to={
@@ -40,8 +41,8 @@ export const FormCard = ({ title, variant = 'none', children }: Props) => {
                             }
                             variant='action'
                         >
-                            {variant === 'login' && SIGN_UP}
-                            {variant === 'registration' && SIGN_IN}
+                            {variant === 'login' && t(SIGN_UP)}
+                            {variant === 'registration' && t(SIGN_IN)}
                         </Link>
                     </Text>
                 </div>
