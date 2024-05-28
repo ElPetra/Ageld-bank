@@ -30,7 +30,7 @@ export const URGENT = i18n.t('Срочный');
 export const CONNECTED_SUBACCOUNT_NUM = i18n.t('№ счета с процентами');
 export const IRREVOCABILITY = i18n.t('Отзывной');
 export const UNTIMELY_WITHDRAWAL_INTEREST_RATE = i18n.t(
-    'Процентная ставка при досрочном отзыве депозита'
+    'Cтавка при досрочном отзыве'
 );
 export const DEPOSIT_TERM = i18n.t('Длительность существования');
 export const DEPOSIT_END_OF_TERM = i18n.t('Окончание срока вклада');

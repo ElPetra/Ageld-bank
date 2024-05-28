@@ -29,6 +29,14 @@ import { DepositsMoreInfo } from 'src/pages/deposit/ui/deposit-info/more-info';
 export const DepositInfo = () => {
     const deposit = mockDeposits[0];
     const [prolongation, setProlongation] = useState(false);
+    const handleCopyDepositId = () => {
+        navigator.clipboard.writeText(String(deposit.id));
+    };
+
+    const handleCopyDepositAccount = () => {
+        navigator.clipboard.writeText(String(deposit.subAccountNum));
+    };
+
     return (
         <Card
             color='quadruple'
@@ -38,111 +46,113 @@ export const DepositInfo = () => {
             borderRadius='extra-large'
         >
             <div className='deposit-info__first-row'>
-                <div className='deposit-info__main'>
-                    <Text color='light' size='l' weight='regular'>
-                        {deposit.name}
-                    </Text>
-                    <ProductStatuses isMaster={false} status={'active'} />
-                    <ProductStatuses
-                        isMaster={false}
-                        status={
-                            prolongation
-                                ? 'autoprolongation'
-                                : 'autoprolongationoff'
-                        }
-                    />
-                </div>
-                <div>
-                    <DepositsMoreInfo status='active' />
-                </div>
-            </div>
-            <div className='deposit-info__first-column'>
-                <div className='deposit-info__row'>
-                    <div className='deposit-info__main__info'>
-                        <div className='deposit-info__main__info__second-row'>
-                            <div>
-                                <Text color='quadruple'>{ACCOUNT_NUMBER}</Text>
-                                <Text color='quadruple'>{deposit.id}</Text>
-                            </div>
-                            <button>
-                                <Icon icon='copy-icon' />
-                            </button>
-                        </div>
-                        <div className='deposit-info__main__info__second-row'>
-                            <div>
-                                <Text color='quadruple'>
-                                    {CONNECTED_SUBACCOUNT_NUM}
-                                </Text>
-                                <Text color='quadruple'>
-                                    {deposit.subAccountNum}
-                                </Text>
-                            </div>
-                            <button>
-                                <Icon icon='copy-icon' />
-                            </button>
-                        </div>
+                <div className='deposit-info__first-row__main'>
+                    <div className='deposit-info__first-row__main__info'>
+                        <Text color='light' size='l' weight='regular'>
+                            {deposit.name}
+                        </Text>
+                        <ProductStatuses isMaster={false} status={'active'} />
+                        <ProductStatuses
+                            isMaster={false}
+                            status={
+                                prolongation
+                                    ? 'autoprolongation'
+                                    : 'autoprolongationoff'
+                            }
+                        />
+                    </div>
+                    <div>
+                        <DepositsMoreInfo status='active' />
                     </div>
                 </div>
-                <div className='deposit-info__info'>
+                <div className='deposit-info__first-row__numbers'>
+                    <div className='deposit-info__first-row__number'>
+                        <div>
+                            <Text color='quadruple'>{ACCOUNT_NUMBER}</Text>
+                            <Text color='quadruple'>{deposit.id}</Text>
+                        </div>
+                        <button onClick={handleCopyDepositId}>
+                            <Icon icon='copy-icon' />
+                        </button>
+                    </div>
+                    <div className='deposit-info__first-row__number'>
+                        <div>
+                            <Text color='quadruple'>
+                                {CONNECTED_SUBACCOUNT_NUM}
+                            </Text>
+                            <Text color='quadruple'>
+                                {deposit.subAccountNum}
+                            </Text>
+                        </div>
+                        <button onClick={handleCopyDepositAccount}>
+                            <Icon icon='copy-icon' />
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div className='deposit-info__second-row'>
+                <div className='deposit-info__second-row__info'>
                     <div>
-                        <Text color='light' size='xs'>
+                        <Text color='quadruple' size='xs'>
                             {DEPOSIT_PLAN}
                         </Text>
-                        <Text color='quadruple' weight='medium' size='m'>
+                        <Text weight='medium' size='m'>
                             {URGENT}
                         </Text>
                     </div>
                     <div>
-                        <Text size='xs'>{DEPOSIT_TERM}</Text>
-                        <Text color='quadruple' weight='medium' size='m'>
+                        <Text color='quadruple' size='xs'>
+                            {DEPOSIT_TERM}
+                        </Text>
+                        <Text weight='medium' size='m'>
                             {deposit.term}
                         </Text>
                     </div>
                     <div>
-                        <Text size='xs'>{INTEREST_RATE}</Text>
-                        <Text color='quadruple' weight='medium' size='m'>
+                        <Text color='quadruple' size='xs'>
+                            {INTEREST_RATE}
+                        </Text>
+                        <Text weight='medium' size='m'>
                             {deposit.interestRate}
                         </Text>
                     </div>
                     <div>
-                        <Text color='light' size='xs'>
+                        <Text color='quadruple' size='xs'>
                             {UNTIMELY_WITHDRAWAL_INTEREST_RATE}
                         </Text>
-                        <Text color='quadruple' weight='medium' size='m'>
+                        <Text weight='medium' size='m'>
                             {deposit.untimelyWithdrawalInterestRate}
                         </Text>
                     </div>
                     <div>
-                        <Text color='light' size='xs'>
+                        <Text color='quadruple' size='xs'>
                             {IRREVOCABILITY}
                         </Text>
-                        <Text color='quadruple' weight='medium' size='m'>
+                        <Text weight='medium' size='m'>
                             {deposit.irrevocability ? YES : NO}
                         </Text>
                     </div>
                 </div>
-            </div>
-            <div className='deposit-info__second-column'>
-                <div className='deposit-info__balance-options'>
-                    <div className='deposit-info__balance'>
-                        <div className='deposit-info__cur-balance'>
-                            <Text size='xs' weight='light' color='quadruple'>
+                <div className='deposit-info__second-row__second-column'>
+                    <div className='deposit-info__second-row__second-column__balances'>
+                        <div>
+                            <Text size='xs' color='quadruple'>
                                 {DEPOSIT_BALANCE}
                             </Text>
-                            <Text size='l' weight='medium'>
+                            <Text size='l' weight='bold'>
                                 {`${deposit.balance} ${deposit.currency.toUpperCase()}`}
                             </Text>
                         </div>
-                        <div className='deposit-info__start-balance'>
-                            <Text size='xs' weight='light' color='quadruple'>
+                        <div>
+                            <Text size='xs' color='quadruple'>
                                 {INITIAL_BALANCE}
                             </Text>
-                            <Text size='l' weight='medium'>
+                            <Text size='l' weight='bold'>
                                 {`${deposit.startBalance} ${deposit.currency.toUpperCase()}`}
                             </Text>
                         </div>
                     </div>
-                    <div className='deposit-info__buttons'>
+                    <div className='deposit-info__second-row__second-column__buttons'>
                         <Button type='button' variant='primary'>
                             {WITHDRAW}
                         </Button>
@@ -155,19 +165,3 @@ export const DepositInfo = () => {
         </Card>
     );
 };
-
-// <Button
-//     width='max'
-//     type='button'
-//     variant='secondary'
-//     onClick={() => {
-//         setProlongation(!prolongation);
-//     }}
-// >
-//     {prolongation
-//         ? DISABLE_AUTOPROLONGATION
-//         : ENABLE_AUTOPROLONGATION}
-// </Button>
-// <Button width='max' type='button' variant='secondary'>
-//     {PROLONGATE}
-// </Button>

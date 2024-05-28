@@ -16,14 +16,19 @@ interface Props {
 export const Terms = ({ isLast, setFormStep, extendedDeposit }: Props) => {
     const { t } = useTranslation();
     const { id } = useParams<string>();
-    const { register, handleSubmit, setValue, formState: { isValid } } = useForm<FieldValues>({
+    const {
+        register,
+        handleSubmit,
+        setValue,
+        formState: { isValid }
+    } = useForm<FieldValues>({
         defaultValues: { input: 3, slider: 3 },
         mode: 'onTouched',
         reValidateMode: 'onChange'
     });
 
     const onSubmit = async (data: FieldValues) => {
-        await extendedDeposit(id!, data.input);
+        await extendedDeposit(id || '', data.input);
         if (setFormStep && !isLast) {
             setFormStep(curr => {
                 return curr + 1;
@@ -32,11 +37,13 @@ export const Terms = ({ isLast, setFormStep, extendedDeposit }: Props) => {
     };
     return (
         <Form onSubmit={handleSubmit(onSubmit)}>
-            <Card color='quadruple'
-                  gap='medium'
-                  padding='large'
-                  borderRadius='extra-large'
-                  direction='column'>
+            <Card
+                color='quadruple'
+                gap='medium'
+                padding='large'
+                borderRadius='extra-large'
+                direction='column'
+            >
                 <SliderInput
                     register={register}
                     setValue={setValue}
@@ -47,11 +54,7 @@ export const Terms = ({ isLast, setFormStep, extendedDeposit }: Props) => {
                     sliderField='slider'
                     unit={t('мес.')}
                 />
-                <Button
-                    disabled={!isValid}
-                    type='submit'
-                    variant='secondary'
-                >
+                <Button disabled={!isValid} type='submit' variant='secondary'>
                     <Text>{t('Пролонгировать депозит')}</Text>
                 </Button>
             </Card>
