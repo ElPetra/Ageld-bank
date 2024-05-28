@@ -28,6 +28,7 @@ export const BLOCKED_PRODUCT = i18n.t('Заблокированный');
 export const MASTER_PRODUCT = i18n.t('Основной');
 export const AUTOPROLONGATION = i18n.t('Автопролонгация');
 export const NO_AUTOPROLONGATION = i18n.t('Автопролонгация отключена');
+export const REQUISITES = i18n.t('Реквизиты');
 
 export const productStatuses: Record<ProductStatus, string> = {
     active: ACTIVE_PRODUCT,

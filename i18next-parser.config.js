@@ -1,14 +1,3 @@
-// module.exports = {
-//     locales: ['en', 'ru'], // Укажите ваши локали
-//     output: 'src/shared/model/i18n/locales/$LOCALE/$NAMESPACE.json', // Укажите путь для файлов перевода
-//     input: ['src/**/*.{js,jsx,ts,tsx}'], // Укажите, какие файлы нужно сканировать
-//     keySeparator: false, // Если вы не используете разделители ключей в строках перевода
-//     namespaceSeparator: false, // Если вы не используете разделители неймспейсов в строках перевода
-//     useKeysAsDefaultValue: true, // Использовать ключи как значения по умолчанию
-//     verbose: true // Включить вывод логов
-// };
-//i18next-parser.config.js
-
 export default {
     contextSeparator: '_',
     // Key separator used in your translation keys
@@ -74,15 +63,7 @@ export default {
     // If you want to use plain english keys, separators such as `_` might conflict. You might want to set `pluralSeparator` to a different string that does not occur in your keys.
     // If you don't want to generate keys for plurals (for example, in case you are using ICU format), set `pluralSeparator: false`.
 
-    input: [
-        'src/shared/model/deposits.ts',
-        'src/shared/model/info.ts',
-        'src/shared/model/product.ts',
-        'src/shared/model/account.ts',
-        'src/shared/model/cards.ts',
-        'src/shared/model/main.ts',
-        'src/shared/model/user.ts'
-    ],
+    input: ['src/**/*.{tsx,ts}'],
     // An array of globs that describe where to look for source files
     // relative to the location of the configuration file
 

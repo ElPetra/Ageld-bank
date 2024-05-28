@@ -10,24 +10,21 @@ import {
     NO,
     WITHDRAW,
     URGENT,
-    PROLONGATION,
     DEPOSIT_TERM,
     INTEREST_RATE,
     UNTIMELY_WITHDRAWAL_INTEREST_RATE,
     IRREVOCABILITY,
-    CONNECTED_SUBACCOUNT_NUM,
-    ENABLE_AUTOPROLONGATION,
-    DISABLE_AUTOPROLONGATION
+    CONNECTED_SUBACCOUNT_NUM
 } from 'src/shared/model';
 
 import { ProductStatuses } from 'src/entities/product';
-import { AccountsMoreInfo } from 'src/pages/account/ui/account-info/more-info';
 
 import { ACCOUNT_NUMBER } from 'src/pages/account/model';
 
 import { mockDeposits } from 'src/shared/model';
 
 import './styles.scss';
+import { DepositsMoreInfo } from 'src/pages/deposit/ui/deposit-info/more-info';
 
 export const DepositInfo = () => {
     const deposit = mockDeposits[0];
@@ -56,7 +53,7 @@ export const DepositInfo = () => {
                     />
                 </div>
                 <div>
-                    <AccountsMoreInfo status='active' />
+                    <DepositsMoreInfo status='active' />
                 </div>
             </div>
             <div className='deposit-info__first-column'>

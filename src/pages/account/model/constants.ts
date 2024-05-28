@@ -11,7 +11,6 @@ export const ACCOUNT_BALANCE = 'Баланс: ';
 export const MAKE_TRANSFER = 'Перевод';
 
 // AccountsMoreInfo
-export const REQUISITES = 'Реквизиты';
 export const ACCOUNT_STATEMENT = 'Выписка по счету';
 export const MAKE_ACCOUNT_MAIN = 'Сделать основным';
 export const CLOSE_ACCOUNT = 'Закрыть счет';

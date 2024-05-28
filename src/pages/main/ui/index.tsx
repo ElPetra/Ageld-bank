@@ -1,4 +1,5 @@
-import { Container } from 'src/shared/ui';
+import { useTranslation } from 'react-i18next';
+
 import {
     MAIN_TITLE,
     CARDS_TITLE,
@@ -9,6 +10,7 @@ import {
     LOANS_TITLE,
     MainRouteName
 } from 'src/shared/model';
+import { Container } from 'src/shared/ui';
 import { Menu } from 'src/features/menu';
 import { MainMenu } from 'src/widgets/main-menu';
 import { Accounts } from 'src/widgets/accounts';
@@ -16,7 +18,6 @@ import { Cards } from 'src/widgets/cards';
 import { Deposits } from 'src/widgets/deposits';
 
 import { ProtectedMain } from './protected';
-import { useTranslation } from 'react-i18next';
 
 export const MainPage = () => {
     const { t } = useTranslation();
