@@ -1,3 +1,5 @@
+import i18n from 'src/shared/model/i18n';
+
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -77,7 +79,7 @@ export const EmailForm = ({ email }: Props) => {
                             setIsClicked(false);
                         }}
                     >
-                        Отменить
+                         {i18n.t('Отменить')}
                     </Button>
                     <Button
                         variant='secondary'
@@ -86,7 +88,7 @@ export const EmailForm = ({ email }: Props) => {
                         type='submit'
                         disabled={!isDirty || !isValid}
                     >
-                        Сохранить
+                        {i18n.t('Сохранить')}
                     </Button>
                 </div>
             ) : (
@@ -97,7 +99,7 @@ export const EmailForm = ({ email }: Props) => {
                     type='submit'
                     onClick={() => setIsClicked(true)}
                 >
-                    {email ? 'Изменить' : 'Добавить'}
+                    {email ? i18n.t('Изменить') : i18n.t('Добавить')}
                 </Button>
             )}
         </Form>

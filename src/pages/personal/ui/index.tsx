@@ -1,3 +1,5 @@
+import i18n from 'src/shared/model/i18n';
+
 import { useEffect } from 'react';
 
 import { Link, Container, Preloader } from 'src/shared/ui';
@@ -34,19 +36,19 @@ export const PersonalPage = () => {
                     elements={[
                         {
                             id: 1,
-                            name: 'Личные данные',
+                            name: i18n.t('Личные данные'),
                             component: <PersonalData info={personalInfo} />
                         },
                         {
                             id: 2,
-                            name: 'Безопасность',
+                            name: i18n.t('Безопасность'),
                             component: (
                                 <MultiStepForm
                                     variant='change-password'
                                     forms={[
                                         {
                                             id: 1,
-                                            title: 'Изменить пароль',
+                                            title: i18n.t('Изменить пароль'),
                                             component: <ChangePasswordForm />
                                         }
                                         // {
@@ -65,12 +67,61 @@ export const PersonalPage = () => {
                         },
                         {
                             id: 3,
-                            name: 'Уведомления',
+                            name: i18n.t('Уведомления'),
                             component: (
                                 <>
-                                    <CheckboxGroup options={options} />
+                                    <CheckboxGroup
+                                        options={[
+                                            {
+                                                title: i18n.t(
+                                                    'Способ получения уведомлений'
+                                                ),
+                                                checkboxes: [
+                                                    {
+                                                        label: i18n.t(
+                                                            'Email-оповещения'
+                                                        )
+                                                    },
+                                                    {
+                                                        label: i18n.t(
+                                                            'SMS-оповещения'
+                                                        ),
+                                                        defaultIsChecked: true
+                                                    },
+                                                    {
+                                                        label: i18n.t(
+                                                            'Push-оповещения'
+                                                        )
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                title: i18n.t(
+                                                    'Категория уведомлений'
+                                                ),
+                                                checkboxes: [
+                                                    {
+                                                        label: i18n.t(
+                                                            'Денежные операции (отправить/оплатить/получить)'
+                                                        ),
+                                                        defaultIsChecked: true
+                                                    },
+                                                    {
+                                                        label: i18n.t(
+                                                            'Важные обновления'
+                                                        )
+                                                    },
+                                                    {
+                                                        label: i18n.t(
+                                                            'Новости/акции'
+                                                        )
+                                                    }
+                                                ]
+                                            }
+                                        ]}
+                                    />
                                     <Link variant='underline' to='/'>
-                                        История уведомлений
+                                        {i18n.t('История уведомлений')}
                                     </Link>
                                 </>
                             )

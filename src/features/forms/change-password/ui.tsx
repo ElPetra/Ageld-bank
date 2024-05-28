@@ -1,3 +1,5 @@
+import i18n from 'src/shared/model/i18n';
+
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 
@@ -52,7 +54,7 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
                     register={register}
                     label='oldPassword'
                     variant='confirm'
-                    placeholder='Текущий пароль'
+                    placeholder={i18n.t('Текущий пароль')}
                     error={error}
                 />
                 <PasswordInput
@@ -60,7 +62,7 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
                     register={register}
                     label='newPassword'
                     variant='create'
-                    placeholder='Новый пароль'
+                    placeholder={i18n.t('Новый пароль')}
                     isDirty={watch('newPassword') !== ''}
                     error={getFieldErrorMessage(errors.newPassword?.message)}
                 />
@@ -68,7 +70,7 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
                     size='medium'
                     register={register}
                     label='newPassword2'
-                    placeholder='Подтвердите новый пароль'
+                    placeholder={i18n.t('Подтвердите новый пароль')}
                     variant='confirm'
                     error={getFieldErrorMessage(errors.newPassword2?.message)}
                 />
@@ -79,7 +81,7 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
                 type='submit'
                 disabled={!isDirty}
             >
-                Продолжить
+                {i18n.t('Продолжить')}
             </Button>
         </Form>
     );
