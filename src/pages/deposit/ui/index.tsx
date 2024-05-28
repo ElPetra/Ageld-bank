@@ -1,5 +1,6 @@
+import { useTranslation } from 'react-i18next';
+
 import { Container } from 'src/shared/ui';
-import { DEPOSITS_OFFERED, CUSTOMER_DEPOSITS } from 'src/shared/model';
 import { Menu } from 'src/features/menu';
 import { BackButton } from 'src/features/multi-step-form';
 import { DepositProducts } from 'src/widgets/deposits';
@@ -7,6 +8,7 @@ import { DepositProducts } from 'src/widgets/deposits';
 import { DepositInfo } from './deposit-info';
 
 export const DepositPage = () => {
+    const { t } = useTranslation();
     return (
         <Container>
             <BackButton />
@@ -16,12 +18,12 @@ export const DepositPage = () => {
                 elements={[
                     {
                         id: 1,
-                        name: CUSTOMER_DEPOSITS,
+                        name: t('Мои депозиты'),
                         component: <DepositInfo />
                     },
                     {
                         id: 2,
-                        name: DEPOSITS_OFFERED,
+                        name: t('Депозиты A-geld'),
                         component: <DepositProducts />
                     }
                 ]}

@@ -1,15 +1,8 @@
-import i18next from 'src/shared/model/i18n';
-
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { Icon, Text, Button } from 'src/shared/ui';
 
-import {
-    INTEREST_RATE,
-    DEPOSIT_BALANCE,
-    SHOW_MORE,
-    DEPOSIT_END_OF_TERM,
-    RouteName
-} from 'src/shared/model';
+import { Icon, Text, Button } from 'src/shared/ui';
+import { RouteName } from 'src/shared/model';
 
 import type { MockDeposit } from 'src/shared/model';
 
@@ -20,13 +13,14 @@ interface Props {
 }
 
 export const DepositCard = ({ deposit }: Props) => {
+    const { t } = useTranslation();
     return (
         <div className='deposit__card'>
             <div className='deposit__card__container'>
                 <div className='deposit__card__title'>
                     <Icon widthAndHeight={70} icon={deposit.icon} />
                     <Text weight='bold' size='l'>
-                        {i18next.t(deposit.name)}
+                        {deposit.name}
                     </Text>
                 </div>
                 <div className='deposit__card-info'>
@@ -34,7 +28,7 @@ export const DepositCard = ({ deposit }: Props) => {
                         {deposit.interestRate}
                     </Text>
                     <Text weight='light' color='quadruple' size='xs'>
-                        {i18next.t(INTEREST_RATE)}
+                        {t('Процентная ставка')}
                     </Text>
                 </div>
                 <div className='deposit__card-info'>
@@ -42,20 +36,20 @@ export const DepositCard = ({ deposit }: Props) => {
                         {`${deposit.balance} ${deposit.currency.toUpperCase()}`}
                     </Text>
                     <Text weight='light' color='quadruple' size='xs'>
-                        {i18next.t(DEPOSIT_BALANCE)}
+                        {t('Сумма на депозитном счете')}
                     </Text>
                 </div>
                 <div className='deposit__card-info'>
                     <Text weight='bold' size='l'>
-                        {i18next.t(deposit.closed)}
+                        {deposit.closed}
                     </Text>
                     <Text weight='light' color='quadruple' size='xs'>
-                        {i18next.t(DEPOSIT_END_OF_TERM)}
+                        {t('Окончание срока вклада')}
                     </Text>
                 </div>
                 <Link to={RouteName.DEPOSIT_PAGE + '/' + deposit.id}>
                     <Button variant='primary' size='medium' type='button'>
-                        {i18next.t(SHOW_MORE)}
+                        {t('Показать больше')}
                     </Button>
                 </Link>
             </div>

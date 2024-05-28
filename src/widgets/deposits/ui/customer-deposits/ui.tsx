@@ -1,9 +1,6 @@
-import {
-    CREATE,
-    DEPOSITS_NOT_FOUND,
-    REQUEST_DEPOSIT,
-    RouteName
-} from 'src/shared/model';
+import { useTranslation } from 'react-i18next';
+
+import { CREATE, RouteName } from 'src/shared/model';
 import { MessageCard } from 'src/entities/message';
 import { DepositCard } from 'src/entities/deposits';
 
@@ -14,6 +11,7 @@ interface Props {
 }
 
 export const CustomerDeposits = ({ content }: Props) => {
+    const { t } = useTranslation();
     return (
         <>
             {content.length ? (
@@ -24,8 +22,8 @@ export const CustomerDeposits = ({ content }: Props) => {
                 </div>
             ) : (
                 <MessageCard
-                    title={DEPOSITS_NOT_FOUND}
-                    buttonText={REQUEST_DEPOSIT}
+                    title={t('На данный момент \n у Вас нет депозитов')}
+                    buttonText={t('Оформить')}
                     buttonLink={RouteName.DEPOSIT_PAGE + '/' + CREATE}
                 />
             )}

@@ -1,34 +1,19 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { Icon, Text, Button, Card } from 'src/shared/ui';
-import {
-    DEPOSIT_BALANCE,
-    INITIAL_BALANCE,
-    DEPOSIT_PLAN,
-    FUND,
-    YES,
-    NO,
-    WITHDRAW,
-    URGENT,
-    DEPOSIT_TERM,
-    INTEREST_RATE,
-    UNTIMELY_WITHDRAWAL_INTEREST_RATE,
-    IRREVOCABILITY,
-    CONNECTED_SUBACCOUNT_NUM
-} from 'src/shared/model';
-
+import { mockDeposits } from 'src/shared/model';
 import { ProductStatuses } from 'src/entities/product';
 
-import { ACCOUNT_NUMBER } from 'src/pages/account/model';
-
-import { mockDeposits } from 'src/shared/model';
+import { DepositsMoreInfo } from './more-info';
 
 import './styles.scss';
-import { DepositsMoreInfo } from 'src/pages/deposit/ui/deposit-info/more-info';
 
 export const DepositInfo = () => {
     const deposit = mockDeposits[0];
     const [prolongation, setProlongation] = useState(false);
+    const { t } = useTranslation();
+
     const handleCopyDepositId = () => {
         navigator.clipboard.writeText(String(deposit.id));
     };
@@ -68,7 +53,7 @@ export const DepositInfo = () => {
                 <div className='deposit-info__first-row__numbers'>
                     <div className='deposit-info__first-row__number'>
                         <div>
-                            <Text color='quadruple'>{ACCOUNT_NUMBER}</Text>
+                            <Text color='quadruple'>{t('№ счета: ')}</Text>
                             <Text color='quadruple'>{deposit.id}</Text>
                         </div>
                         <button onClick={handleCopyDepositId}>
@@ -78,7 +63,7 @@ export const DepositInfo = () => {
                     <div className='deposit-info__first-row__number'>
                         <div>
                             <Text color='quadruple'>
-                                {CONNECTED_SUBACCOUNT_NUM}
+                                {t('№ счета с процентами')}
                             </Text>
                             <Text color='quadruple'>
                                 {deposit.subAccountNum}
@@ -94,15 +79,15 @@ export const DepositInfo = () => {
                 <div className='deposit-info__second-row__info'>
                     <div>
                         <Text color='quadruple' size='xs'>
-                            {DEPOSIT_PLAN}
+                            {t('Схема депозита')}
                         </Text>
                         <Text weight='medium' size='m'>
-                            {URGENT}
+                            {t('Срочный')}
                         </Text>
                     </div>
                     <div>
                         <Text color='quadruple' size='xs'>
-                            {DEPOSIT_TERM}
+                            {t('Длительность существования')}
                         </Text>
                         <Text weight='medium' size='m'>
                             {deposit.term}
@@ -110,7 +95,7 @@ export const DepositInfo = () => {
                     </div>
                     <div>
                         <Text color='quadruple' size='xs'>
-                            {INTEREST_RATE}
+                            {t('Процентная ставка')}
                         </Text>
                         <Text weight='medium' size='m'>
                             {deposit.interestRate}
@@ -118,7 +103,7 @@ export const DepositInfo = () => {
                     </div>
                     <div>
                         <Text color='quadruple' size='xs'>
-                            {UNTIMELY_WITHDRAWAL_INTEREST_RATE}
+                            {t('Cтавка при досрочном отзыве')}
                         </Text>
                         <Text weight='medium' size='m'>
                             {deposit.untimelyWithdrawalInterestRate}
@@ -126,10 +111,10 @@ export const DepositInfo = () => {
                     </div>
                     <div>
                         <Text color='quadruple' size='xs'>
-                            {IRREVOCABILITY}
+                            {t('Отзывной')}
                         </Text>
                         <Text weight='medium' size='m'>
-                            {deposit.irrevocability ? YES : NO}
+                            {deposit.irrevocability ? t('Да') : t('Нет')}
                         </Text>
                     </div>
                 </div>
@@ -137,7 +122,7 @@ export const DepositInfo = () => {
                     <div className='deposit-info__second-row__second-column__balances'>
                         <div>
                             <Text size='xs' color='quadruple'>
-                                {DEPOSIT_BALANCE}
+                                {t('Сумма на депозитном счете')}
                             </Text>
                             <Text size='l' weight='bold'>
                                 {`${deposit.balance} ${deposit.currency.toUpperCase()}`}
@@ -145,7 +130,7 @@ export const DepositInfo = () => {
                         </div>
                         <div>
                             <Text size='xs' color='quadruple'>
-                                {INITIAL_BALANCE}
+                                {t('Изначальная сумма депозита')}
                             </Text>
                             <Text size='l' weight='bold'>
                                 {`${deposit.startBalance} ${deposit.currency.toUpperCase()}`}
@@ -154,10 +139,10 @@ export const DepositInfo = () => {
                     </div>
                     <div className='deposit-info__second-row__second-column__buttons'>
                         <Button type='button' variant='primary'>
-                            {WITHDRAW}
+                            {t('Отозвать')}
                         </Button>
                         <Button type='button' variant='secondary'>
-                            {FUND}
+                            {t('Пополнить')}
                         </Button>
                     </div>
                 </div>

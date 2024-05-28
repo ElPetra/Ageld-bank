@@ -4,7 +4,6 @@ import {
     MAIN_TITLE,
     CARDS_TITLE,
     ACCOUNTS_TITLE,
-    DEPOSITS_TITLE,
     TRANSFERS_TITLE,
     PAYMENTS_TITLE,
     LOANS_TITLE,
@@ -66,7 +65,7 @@ export const MainPage = () => {
                     },
                     {
                         id: 7,
-                        name: t(DEPOSITS_TITLE),
+                        name: t('Депозиты'),
                         component: <Deposits />
                     }
                 ]}
