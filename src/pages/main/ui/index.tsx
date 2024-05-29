@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import { Container } from 'src/shared/ui';
 import {
     MAIN_TITLE,
@@ -16,7 +18,7 @@ import { Cards } from 'src/widgets/cards';
 import { Deposits } from 'src/widgets/deposits';
 
 import { ProtectedMain } from './protected';
-import { useTranslation } from 'react-i18next';
+
 
 export const MainPage = () => {
     const { t } = useTranslation();

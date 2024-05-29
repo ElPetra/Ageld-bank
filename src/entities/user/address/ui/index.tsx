@@ -1,4 +1,4 @@
-import i18n from 'src/shared/model/i18n';
+import { useTranslation } from 'react-i18next';
 
 import { Input, Text } from 'src/shared/ui';
 
@@ -16,48 +16,49 @@ interface Props {
 }
 
 export const Address = ({ street, house, apartment, city, index }: Props) => {
+    const { t } = useTranslation();
     return (
         <div className='user-address'>
             <Text size='m' weight='medium'>
-                {i18n.t('Адрес')}
+                {t('Адрес')}
             </Text>
             <div className='user-address__col'>
                 <Text size='xs'>
-                    {i18n.t(
+                    {t(
                         'Адрес куда банк будет направлять почтовую корреспонденцию'
                     )}
                 </Text>
                 <div className='user-address__inputs'>
                     <Input
-                        placeholder={i18n.t('Улица')}
+                        placeholder={t('Улица')}
                         value={street}
                         disabled={true}
                         size='large'
                         width='max'
                     />
                     <Input
-                        placeholder={i18n.t('Дом')}
+                        placeholder={t('Дом')}
                         value={house}
                         disabled={true}
                         size='large'
                         width='max'
                     />
                     <Input
-                        placeholder={i18n.t('Квартира')}
+                        placeholder={t('Квартира')}
                         value={apartment}
                         disabled={true}
                         size='large'
                         width='max'
                     />
                     <Input
-                        placeholder={i18n.t('Город')}
+                        placeholder={t('Город')}
                         value={city}
                         disabled={true}
                         size='large'
                         width='max'
                     />
                     <Input
-                        placeholder={i18n.t('Индекс')}
+                        placeholder={t('Индекс')}
                         value={index}
                         disabled={true}
                         size='large'
@@ -65,7 +66,7 @@ export const Address = ({ street, house, apartment, city, index }: Props) => {
                     />
                 </div>
                 <Text size='xs'>
-                    {i18n.t(
+                    {t(
                         'Для изменения адреса регистрации необходимо обратиться в ближайшее отделение банка'
                     )}
                 </Text>

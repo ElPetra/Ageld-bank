@@ -1,5 +1,3 @@
-import i18n from 'src/shared/model/i18n';
-
 import { useTranslation } from 'react-i18next';
 
 import { useEffect } from 'react';
@@ -17,7 +15,7 @@ import { PersonalData } from './personal-data';
 
 export const PersonalPage = () => {
     const { signedOut } = useAuth();
-    useTranslation();
+    const { t } = useTranslation();
     const { data: personalInfo, isLoading, error } = useGetInfoQuery();
 
     useEffect(() => {
@@ -37,19 +35,19 @@ export const PersonalPage = () => {
                     elements={[
                         {
                             id: 1,
-                            name: i18n.t('Личные данные'),
+                            name: t('Личные данные'),
                             component: <PersonalData info={personalInfo} />
                         },
                         {
                             id: 2,
-                            name: i18n.t('Безопасность'),
+                            name: t('Безопасность'),
                             component: (
                                 <MultiStepForm
                                     variant='change-password'
                                     forms={[
                                         {
                                             id: 1,
-                                            title: i18n.t('Изменить пароль'),
+                                            title: t('Изменить пароль'),
                                             component: <ChangePasswordForm />
                                         }
                                         // {
@@ -68,52 +66,52 @@ export const PersonalPage = () => {
                         },
                         {
                             id: 3,
-                            name: i18n.t('Уведомления'),
+                            name: t('Уведомления'),
                             component: (
                                 <>
                                     <CheckboxGroup
                                         options={[
                                             {
-                                                title: i18n.t(
+                                                title: t(
                                                     'Способ получения уведомлений'
                                                 ),
                                                 checkboxes: [
                                                     {
-                                                        label: i18n.t(
+                                                        label: t(
                                                             'Email-оповещения'
                                                         )
                                                     },
                                                     {
-                                                        label: i18n.t(
+                                                        label: t(
                                                             'SMS-оповещения'
                                                         ),
                                                         defaultIsChecked: true
                                                     },
                                                     {
-                                                        label: i18n.t(
+                                                        label: t(
                                                             'Push-оповещения'
                                                         )
                                                     }
                                                 ]
                                             },
                                             {
-                                                title: i18n.t(
+                                                title: t(
                                                     'Категория уведомлений'
                                                 ),
                                                 checkboxes: [
                                                     {
-                                                        label: i18n.t(
+                                                        label: t(
                                                             'Денежные операции (отправить/оплатить/получить)'
                                                         ),
                                                         defaultIsChecked: true
                                                     },
                                                     {
-                                                        label: i18n.t(
+                                                        label: t(
                                                             'Важные обновления'
                                                         )
                                                     },
                                                     {
-                                                        label: i18n.t(
+                                                        label: t(
                                                             'Новости/акции'
                                                         )
                                                     }
@@ -122,7 +120,7 @@ export const PersonalPage = () => {
                                         ]}
                                     />
                                     <Link variant='underline' to='/'>
-                                        {i18n.t('История уведомлений')}
+                                        {t('История уведомлений')}
                                     </Link>
                                 </>
                             )

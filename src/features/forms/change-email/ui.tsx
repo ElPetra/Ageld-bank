@@ -1,4 +1,4 @@
-import i18n from 'src/shared/model/i18n';
+import { useTranslation } from 'react-i18next';
 
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -34,6 +34,7 @@ interface Props {
     email: string;
 }
 export const EmailForm = ({ email }: Props) => {
+    const { t } = useTranslation();
     const {
         register,
         handleSubmit,
@@ -79,7 +80,7 @@ export const EmailForm = ({ email }: Props) => {
                             setIsClicked(false);
                         }}
                     >
-                         {i18n.t('Отменить')}
+                        {t('Отменить')}
                     </Button>
                     <Button
                         variant='secondary'
@@ -88,7 +89,7 @@ export const EmailForm = ({ email }: Props) => {
                         type='submit'
                         disabled={!isDirty || !isValid}
                     >
-                        {i18n.t('Сохранить')}
+                        {t('Сохранить')}
                     </Button>
                 </div>
             ) : (
@@ -99,7 +100,7 @@ export const EmailForm = ({ email }: Props) => {
                     type='submit'
                     onClick={() => setIsClicked(true)}
                 >
-                    {email ? i18n.t('Изменить') : i18n.t('Добавить')}
+                    {email ? t('Изменить') : t('Добавить')}
                 </Button>
             )}
         </Form>
