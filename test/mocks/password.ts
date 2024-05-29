@@ -1,10 +1,8 @@
 // error messages
-import i18n from 'src/shared/model/i18n';
 
 export const NOT_VALID_PASSWORD = 'Пароль не соответствует требованиям!';
-export const NOT_USER_PASSWORD = i18n.t(
-    'Аутентификация невозможна - данные о пользователе отсутствуют'
-);
+export const NOT_USER_PASSWORD =
+    'Аутентификация невозможна - данные о пользователе отсутствуют';
 export const PASSWORDS_NOT_EQUAL = 'Пароли не совпадают';
 
 // input values

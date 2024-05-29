@@ -27,7 +27,8 @@ export const Info = ({ phone }: Props) => {
         <div className='code-input__info'>
             {seconds > 0 ? (
                 <Text size='xs'>
-                    {t('Повторная отправка через 0:')}
+                    {t('Повторная отправка через')}
+                    {' 0:'}
                     {seconds < 10 ? '0' : ''}
                     {seconds}
                 </Text>

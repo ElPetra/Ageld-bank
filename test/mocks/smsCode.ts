@@ -1,7 +1,5 @@
 // error messages
 
-import i18n from 'src/shared/model/i18n';
-
-export const NOT_VALID_CODE = i18n.t('Неверный код верификации');
+export const NOT_VALID_CODE = 'Неверный код верификации';
 
 // input values

@@ -7,6 +7,7 @@ import { useAuth } from 'src/entities/user';
 import { Button, Form } from 'src/shared/ui';
 import { getFieldErrorMessage } from 'src/shared/lib';
 import { RouteName } from 'src/shared/model';
+import i18n from 'src/shared/model/i18n';
 
 import { confirmPasswordSchema } from './model';
 
@@ -72,8 +73,8 @@ export const ConfirmPasswordForm = ({
                 label='password2'
                 placeholder={
                     variant === 'recovery'
-                        ? 'Подтвердите новый пароль'
-                        : 'Подтвердите пароль'
+                        ? i18n.t('Подтвердите новый пароль')
+                        : i18n.t('Подтвердите пароль')
                 }
                 variant='confirm'
                 error={getFieldErrorMessage(errors.password2?.message)}
@@ -84,7 +85,7 @@ export const ConfirmPasswordForm = ({
                 type='submit'
                 disabled={!isDirty}
             >
-                Отправить
+                {i18n.t('Отправить')}
             </Button>
         </Form>
     );

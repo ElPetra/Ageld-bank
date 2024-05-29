@@ -15,8 +15,9 @@ import { Accounts } from 'src/widgets/accounts';
 import { Cards } from 'src/widgets/cards';
 import { Deposits } from 'src/widgets/deposits';
 
-import { ProtectedMain } from './protected';
 import { useTranslation } from 'react-i18next';
+
+import { ProtectedMain } from './protected';
 
 export const MainPage = () => {
     const { t } = useTranslation();

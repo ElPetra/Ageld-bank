@@ -6,7 +6,7 @@ import { useAuth } from 'src/entities/user';
 import { Button, Form } from 'src/shared/ui';
 
 import { RouteName } from 'src/shared/model';
-import i18n from 'src/shared/model/i18n/index.js';
+import i18n from 'src/shared/model/i18n';
 
 import type { FieldValues } from 'react-hook-form';
 import type { Dispatch, SetStateAction } from 'react';
