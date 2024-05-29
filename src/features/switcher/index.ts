@@ -1,1 +1,1 @@
-export { Switcher } from './ui.js';
+export { Switcher } from './ui';
