@@ -2,15 +2,19 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Icon, Text, Button, Card } from 'src/shared/ui';
-import { mockDeposits } from 'src/shared/model';
 import { ProductStatuses } from 'src/entities/product';
 
 import { DepositsMoreInfo } from './more-info';
 
+import type { MockDeposit } from 'src/shared/model';
+
 import './styles.scss';
 
-export const DepositInfo = () => {
-    const deposit = mockDeposits[0];
+interface Props {
+    deposit: MockDeposit;
+}
+
+export const DepositInfo = ({ deposit }: Props) => {
     const [prolongation, setProlongation] = useState(false);
     const { t } = useTranslation();
 
@@ -47,7 +51,7 @@ export const DepositInfo = () => {
                         />
                     </div>
                     <div>
-                        <DepositsMoreInfo status='active' />
+                        <DepositsMoreInfo />
                     </div>
                 </div>
                 <div className='deposit-info__first-row__numbers'>

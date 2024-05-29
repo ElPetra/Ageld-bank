@@ -39,7 +39,7 @@ export const Deposits = () => {
                                   name: t('Мои депозиты'),
                                   component: (
                                       <CustomerDeposits
-                                          content={mockDeposits}
+                                          deposits={mockDeposits}
                                       />
                                   )
                               },

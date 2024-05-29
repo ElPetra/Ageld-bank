@@ -1,0 +1,49 @@
+.deposit-card {
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        row-gap: 24px;
+        column-gap: 57px;
+        width: 100%;
+
+        @media screen and (max-width: 1550px) {
+            > div {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+        }
+    }
+
+    &__title {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+
+        &__icon {
+            min-width: 70px;
+            img {
+                width: 70px;
+            }
+
+            @media screen and (max-width: 600px) {
+                min-width: 60px;
+                img {
+                    width: 60px;
+                }
+            }
+        }
+    }
+
+    &__info {
+        display: flex;
+        justify-content: space-between;
+        gap: 57px;
+        flex-wrap: wrap;
+
+        @media screen and (max-width: 1550px) {
+            gap: 30px!important;
+        }
+    }
+}
