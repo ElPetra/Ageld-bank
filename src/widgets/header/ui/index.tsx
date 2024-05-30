@@ -16,13 +16,14 @@ export const Header = () => {
                 <div className='header'>
                     <Logo />
                     <Navigation />
+                    <div className='language-button'>
+                        <Switcher />
+                    </div>
                     <MenuButton setVisible={setVisible} />
                 </div>
             </Container>
+            <div className='switcher'></div>
             <HamburgerMenu visible={visible} setVisible={setVisible} />
-            <div className='switcher'>
-                <Switcher />
-            </div>
         </header>
     );
 };

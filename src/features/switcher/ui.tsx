@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { Card, Icon, Text } from 'src/shared/ui';
+import { Card, Icon } from 'src/shared/ui';
 import { useLanguage } from 'src/entities/language';
 
 import './styles.scss';
@@ -10,16 +10,15 @@ export const Switcher = () => {
     const [open, setOpen] = useState<boolean>(false);
 
     return (
-        <>
-            <div
+        <div className='switcher'>
+            <button
                 onClick={() => {
                     setOpen(!open);
                 }}
                 className='switcher__icon'
             >
                 <Icon icon='world' />
-            </div>
-
+            </button>
             {open && (
                 <div className='switcher__modal'>
                     <Card gap='extra-small' direction='column' padding='small'>
@@ -30,7 +29,7 @@ export const Switcher = () => {
                             }}
                             className={`switcher__modal__button ${language === 'en' ? 'active' : ''}`}
                         >
-                            <Text size='s'>English</Text>
+                            English
                         </button>
                         <button
                             onClick={() => {
@@ -44,6 +43,6 @@ export const Switcher = () => {
                     </Card>
                 </div>
             )}
-        </>
+        </div>
     );
 };
