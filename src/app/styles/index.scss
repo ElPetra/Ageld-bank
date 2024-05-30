@@ -1,35 +1,59 @@
 :root {
+  --dark-1: #2B3E78;
+  --dark-2: #33457C;
+  --dark-3: #3C5293;
+  --dark-4: #586FB4;
+
+  --light-1: #FEFEFE;
+  --light-2: #F3F4F8;
+  --light-3: #EAF2FF;
+  --light-4: #D9E7FF;
+
+  --gray-1: #414650;
+  --gray-2: #BABEC5;
+
+  --accent: #1640DE;
+  --success: #4CAF50;
+  --warning: #F6BE2C;
+  --error: #F53C14;
   //тексты
-  --text-primary: #2B3E78;
-  --text-secondary: #FEFEFE;
-  --text-tertiary: #FEFEFE;
-  --text-quadruple: #4b5b93;
-  --text-light: #5D6B98;
-  --text-primary-buttons: #3c5293;
-  --text-secondary-buttons: #FEFEFE;
-  --text-buttons-disable: #414650;
-  --text-action: #1640de;
-  --text-primary-input: #3c5293;
-  --text-error: #F53C14;
-  --text-success: #4CAF50;
+  --text-primary: var(--dark-1);
+  --text-secondary: var(--light-1);
+  --text-tertiary: var(--light-1);
+  --text-quadruple: var(--dark-3);
+  --text-light: var(--dark-4);
+
+  --text-primary-buttons: var(--dark-1);
+  --text-secondary-buttons: var(--light-1);
+  --text-buttons-disable: var(--gray-1);
+
+  --text-primary-input: var(--dark-3);
+
+  --text-action: var(--accent);
+  --text-success: var(--success);
+  --text-error: var(--error);
   //фоны
-  --bg-primary: #FEFEFE;
-  --bg-secondary: #2B3E78;
-  --bg-tertiary: #33457C;
-  --bg-quadruple: #F3F4F8;
-  --bg-primary-buttons: #FEFEFE;
-  --bg-secondary-buttons: #2B3E78;
-  --bg-buttons-disable: #babec5;
-  --bg-primary-buttons-hover: #eaf2ff;
-  --bg-primary-buttons-pressed: #d9e7ff;
-  --bg-secondary-buttons-hover: #3c5293;
-  --bg-secondary-buttons-pressed: #586fb4;
-  --bg-action: #1640de;
-  --bg-success: #4CAF50;
-  --bg-warning: #F6BE2C;
-  --bg-error: #F53C14;
-  --bg-primary-input: #F3F4F8;
-  --bg-secondary-input: #FEFEFE;
+  --bg-primary: var(--light-1);
+  --bg-secondary: var(--dark-1);
+  --bg-tertiary: var(--dark-2);
+  --bg-quadruple: var(--light-2);
+
+  --bg-primary-buttons: var(--light-1);
+  --bg-primary-buttons-hover: var(--light-3);
+  --bg-primary-buttons-pressed: var(--light-4);
+  --bg-secondary-buttons: var(--dark-1);
+  --bg-secondary-buttons-hover: var(--dark-3);
+  --bg-secondary-buttons-pressed: var(--dark-4);
+  --bg-buttons-disable: var(--gray-2);
+
+  --bg-primary-input: var(--light-2);
+  --bg-secondary-input: var(--light-1);
+
+  --bg-action:  var(--accent);
+  --bg-success: var(--success);
+  --bg-warning: var(--warning);
+  --bg-error: var(--error);
+
   --small-border-radius: 4px;
   --medium-border-radius: 8px;
   --large-border-radius: 12px;
