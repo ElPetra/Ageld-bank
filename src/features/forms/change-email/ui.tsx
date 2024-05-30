@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -32,6 +34,7 @@ interface Props {
     email: string;
 }
 export const EmailForm = ({ email }: Props) => {
+    const { t } = useTranslation();
     const {
         register,
         handleSubmit,
@@ -77,7 +80,7 @@ export const EmailForm = ({ email }: Props) => {
                             setIsClicked(false);
                         }}
                     >
-                        Отменить
+                        {t('Отменить')}
                     </Button>
                     <Button
                         variant='secondary'
@@ -86,7 +89,7 @@ export const EmailForm = ({ email }: Props) => {
                         type='submit'
                         disabled={!isDirty || !isValid}
                     >
-                        Сохранить
+                        {t('Сохранить')}
                     </Button>
                 </div>
             ) : (
@@ -97,7 +100,7 @@ export const EmailForm = ({ email }: Props) => {
                     type='submit'
                     onClick={() => setIsClicked(true)}
                 >
-                    {email ? 'Изменить' : 'Добавить'}
+                    {t(email ? 'Изменить' : 'Добавить')}
                 </Button>
             )}
         </Form>

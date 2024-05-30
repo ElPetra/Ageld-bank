@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import { useEffect } from 'react';
 
 import { Link, Container, Preloader } from 'src/shared/ui';
@@ -9,12 +11,11 @@ import { Menu } from 'src/features/menu';
 import { ChangePasswordForm } from 'src/features/forms';
 import { MultiStepForm } from 'src/features/multi-step-form';
 
-import { options } from '../model';
-
 import { PersonalData } from './personal-data';
 
 export const PersonalPage = () => {
     const { signedOut } = useAuth();
+    const { t } = useTranslation();
     const { data: personalInfo, isLoading, error } = useGetInfoQuery();
 
     useEffect(() => {
@@ -34,19 +35,19 @@ export const PersonalPage = () => {
                     elements={[
                         {
                             id: 1,
-                            name: 'Личные данные',
+                            name: t('Личные данные'),
                             component: <PersonalData info={personalInfo} />
                         },
                         {
                             id: 2,
-                            name: 'Безопасность',
+                            name: t('Безопасность'),
                             component: (
                                 <MultiStepForm
                                     variant='change-password'
                                     forms={[
                                         {
                                             id: 1,
-                                            title: 'Изменить пароль',
+                                            title: t('Изменить пароль'),
                                             component: <ChangePasswordForm />
                                         }
                                         // {
@@ -65,12 +66,61 @@ export const PersonalPage = () => {
                         },
                         {
                             id: 3,
-                            name: 'Уведомления',
+                            name: t('Уведомления'),
                             component: (
                                 <>
-                                    <CheckboxGroup options={options} />
+                                    <CheckboxGroup
+                                        options={[
+                                            {
+                                                title: t(
+                                                    'Способ получения уведомлений'
+                                                ),
+                                                checkboxes: [
+                                                    {
+                                                        label: t(
+                                                            'Email-оповещения'
+                                                        )
+                                                    },
+                                                    {
+                                                        label: t(
+                                                            'SMS-оповещения'
+                                                        ),
+                                                        defaultIsChecked: true
+                                                    },
+                                                    {
+                                                        label: t(
+                                                            'Push-оповещения'
+                                                        )
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                title: t(
+                                                    'Категория уведомлений'
+                                                ),
+                                                checkboxes: [
+                                                    {
+                                                        label: t(
+                                                            'Денежные операции (отправить/оплатить/получить)'
+                                                        ),
+                                                        defaultIsChecked: true
+                                                    },
+                                                    {
+                                                        label: t(
+                                                            'Важные обновления'
+                                                        )
+                                                    },
+                                                    {
+                                                        label: t(
+                                                            'Новости/акции'
+                                                        )
+                                                    }
+                                                ]
+                                            }
+                                        ]}
+                                    />
                                     <Link variant='underline' to='/'>
-                                        История уведомлений
+                                        {t('История уведомлений')}
                                     </Link>
                                 </>
                             )

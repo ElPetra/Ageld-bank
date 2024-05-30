@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 
@@ -19,6 +21,7 @@ interface Props {
 }
 
 export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
+    const { t } = useTranslation();
     const {
         register,
         handleSubmit,
@@ -52,7 +55,7 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
                     register={register}
                     label='oldPassword'
                     variant='confirm'
-                    placeholder='Текущий пароль'
+                    placeholder={t('Текущий пароль')}
                     error={error}
                 />
                 <PasswordInput
@@ -60,7 +63,7 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
                     register={register}
                     label='newPassword'
                     variant='create'
-                    placeholder='Новый пароль'
+                    placeholder={t('Новый пароль')}
                     isDirty={watch('newPassword') !== ''}
                     error={getFieldErrorMessage(errors.newPassword?.message)}
                 />
@@ -68,7 +71,7 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
                     size='medium'
                     register={register}
                     label='newPassword2'
-                    placeholder='Подтвердите новый пароль'
+                    placeholder={t('Подтвердите новый пароль')}
                     variant='confirm'
                     error={getFieldErrorMessage(errors.newPassword2?.message)}
                 />
@@ -79,7 +82,7 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
                 type='submit'
                 disabled={!isDirty}
             >
-                Продолжить
+                {t('Продолжить')}
             </Button>
         </Form>
     );
