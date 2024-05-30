@@ -16,13 +16,14 @@
     border-radius: var(--small-border-radius);;
     margin-right: 10px;
     position: relative;
-    border: solid 1px var(--text-quadruple);
+    border: solid 1px var(--text-primary);
   }
+
   &__input:checked + &__control::before {
     content: '';
     position: absolute;
-    left: 6px;
-    top: 2px;
+    left: 6.5px;
+    top: 2.5px;
     width: 6px;
     height: 10px;
     border: solid var(--text-secondary);
@@ -30,6 +31,6 @@
     transform: rotate(45deg);
   }
   &__input:checked + &__control {
-    background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 81.77%);
+    background: var(--bg-secondary);
   }
 }
