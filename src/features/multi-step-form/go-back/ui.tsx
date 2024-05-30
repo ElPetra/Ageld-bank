@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import { Icon, Text } from 'src/shared/ui';
 
 import './styles.scss';
-import i18n from 'src/shared/model/i18n';
 
 interface Props {
     onClick?: () => void;
@@ -11,6 +11,7 @@ interface Props {
 
 export const BackButton = ({ onClick }: Props) => {
     const navigate = useNavigate();
+    const { t } = useTranslation();
 
     return (
         <button
@@ -18,7 +19,7 @@ export const BackButton = ({ onClick }: Props) => {
             onClick={() => (onClick ? onClick() : navigate(-1))}
         >
             <Icon icon='arrow-icon' />
-            <Text weight='medium'>{i18n.t('Назад')}</Text>
+            <Text weight='medium'>{t('Назад')}</Text>
         </button>
     );
 };

@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+
 import { Icon, Input } from 'src/shared/ui';
-import i18n from 'src/shared/model/i18n';
 
 import type { ChangeEvent, InputHTMLAttributes } from 'react';
 import type { FieldValues, UseFormRegister } from 'react-hook-form';
@@ -15,6 +16,7 @@ interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
 }
 
 export const PhoneInput = ({ clear, isError, error, ...props }: Props) => {
+    const { t } = useTranslation();
     const [value, setValue] = useState<string>('');
     const inputRef = useRef<HTMLInputElement>(null);
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -50,7 +52,7 @@ export const PhoneInput = ({ clear, isError, error, ...props }: Props) => {
             type='text'
             minLength={18}
             maxLength={18}
-            placeholder={i18n.t('Номер телефона')}
+            placeholder={t('Номер телефона')}
             size='large'
             value={value}
             onChange={handleChange}
@@ -58,7 +60,7 @@ export const PhoneInput = ({ clear, isError, error, ...props }: Props) => {
             error={
                 error ||
                 (isError || (value !== '' && value.length < 18)
-                    ? i18n.t('Номер телефона должен содержать 11 цифр')
+                    ? t('Номер телефона должен содержать 11 цифр')
                     : '')
             }
             {...props}

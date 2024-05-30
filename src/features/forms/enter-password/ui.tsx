@@ -1,12 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 
 import { PasswordInput } from 'src/features/inputs';
 import { useAuth } from 'src/entities/user';
 import { Button, Form } from 'src/shared/ui';
 
 import { RouteName } from 'src/shared/model';
-import i18n from 'src/shared/model/i18n';
 
 import type { FieldValues } from 'react-hook-form';
 import type { Dispatch, SetStateAction } from 'react';
@@ -27,6 +27,7 @@ export const EnterPasswordForm = ({ isLast, setFormStep, phone }: Props) => {
         reValidateMode: 'onChange',
         defaultValues: { password: '' }
     });
+    const { t } = useTranslation();
     const navigate = useNavigate();
     const { signedIn, error } = useAuth();
 
@@ -51,7 +52,7 @@ export const EnterPasswordForm = ({ isLast, setFormStep, phone }: Props) => {
                 type='submit'
                 disabled={!isDirty || !isValid}
             >
-                {i18n.t('Продолжить')}
+                {t('Продолжить')}
             </Button>
         </Form>
     );

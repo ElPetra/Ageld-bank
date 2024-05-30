@@ -1,7 +1,8 @@
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
+
 import { useAuth } from 'src/entities/user';
 import { Button, Form, Text } from 'src/shared/ui';
-import i18n from 'src/shared/model/i18n';
 
 import { CodeInput } from './code-input';
 
@@ -24,6 +25,7 @@ export const CodeForm = ({ isLast, setFormStep, phone }: Props) => {
         reValidateMode: 'onChange',
         defaultValues: { code: '' }
     });
+    const { t } = useTranslation();
     const { checkedCode, error } = useAuth();
 
     const onSubmit = async (data: FieldValues) => {
@@ -38,7 +40,7 @@ export const CodeForm = ({ isLast, setFormStep, phone }: Props) => {
     return (
         <Form onSubmit={handleSubmit(onSubmit)}>
             <Text size='xs'>
-                {i18n.t(
+                {t(
                     'На Ваш номер телефона отправлен 6-значный код подтверждения'
                 )}
             </Text>
@@ -54,7 +56,7 @@ export const CodeForm = ({ isLast, setFormStep, phone }: Props) => {
                 type='submit'
                 disabled={!isDirty || !isValid}
             >
-                {i18n.t('Далее')}
+                {t('Далее')}
             </Button>
         </Form>
     );

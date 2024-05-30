@@ -1,11 +1,12 @@
 import { useTranslation } from 'react-i18next';
-import i18n from 'src/shared/model/i18n';
+
 import { AuthStatus, RouteName } from 'src/shared/model';
 import { Link } from 'src/shared/ui';
 import { useAuth } from 'src/entities/user';
 import { Logout } from 'src/features/logout';
 
 import type { Dispatch, SetStateAction } from 'react';
+
 import './styles.scss';
 
 interface Props {
@@ -35,15 +36,15 @@ export const Navigation = ({ direction = 'row', setVisible }: Props) => {
                 {authStatus === AuthStatus.SignedIn ? (
                     <>
                         <Link to={RouteName.PERSONAL_PAGE}>
-                            {i18n.t('Личные данные')}
+                            {t('Личные данные')}
                         </Link>
                         <Logout />
                     </>
                 ) : (
                     <>
-                        <Link to={RouteName.LOGIN_PAGE}>{i18n.t('Войти')}</Link>
+                        <Link to={RouteName.LOGIN_PAGE}>{t('Войти')}</Link>
                         <Link to={RouteName.REGISTRATION_PAGE}>
-                            {i18n.t('Регистрация')}
+                            {t('Регистрация')}
                         </Link>
                     </>
                 )}
