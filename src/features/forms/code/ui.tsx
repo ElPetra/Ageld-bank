@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
-
 import { useAuth } from 'src/entities/user';
 import { Button, Form, Text } from 'src/shared/ui';
+import i18n from 'src/shared/model/i18n';
 
 import { CodeInput } from './code-input';
 
@@ -24,7 +24,6 @@ export const CodeForm = ({ isLast, setFormStep, phone }: Props) => {
         reValidateMode: 'onChange',
         defaultValues: { code: '' }
     });
-
     const { checkedCode, error } = useAuth();
 
     const onSubmit = async (data: FieldValues) => {
@@ -39,7 +38,9 @@ export const CodeForm = ({ isLast, setFormStep, phone }: Props) => {
     return (
         <Form onSubmit={handleSubmit(onSubmit)}>
             <Text size='xs'>
-                На Ваш номер телефона отправлен 6-значный код подтверждения
+                {i18n.t(
+                    'На Ваш номер телефона отправлен 6-значный код подтверждения'
+                )}
             </Text>
             <CodeInput
                 label='code'
@@ -53,7 +54,7 @@ export const CodeForm = ({ isLast, setFormStep, phone }: Props) => {
                 type='submit'
                 disabled={!isDirty || !isValid}
             >
-                Далее
+                {i18n.t('Далее')}
             </Button>
         </Form>
     );

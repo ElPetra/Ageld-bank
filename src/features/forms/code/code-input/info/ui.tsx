@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { Button, Text } from 'src/shared/ui';
 import { useAuth } from 'src/entities/user';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
     phone: string;
@@ -10,6 +11,7 @@ interface Props {
 export const Info = ({ phone }: Props) => {
     const [seconds, setSeconds] = useState<number>(30);
     const { generatedCode } = useAuth();
+    const { t } = useTranslation();
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -25,7 +27,8 @@ export const Info = ({ phone }: Props) => {
         <div className='code-input__info'>
             {seconds > 0 ? (
                 <Text size='xs'>
-                    Повторная отправка через 0:
+                    {t('Повторная отправка через')}
+                    {' 0:'}
                     {seconds < 10 ? '0' : ''}
                     {seconds}
                 </Text>
@@ -37,7 +40,7 @@ export const Info = ({ phone }: Props) => {
                         setSeconds(30);
                     }}
                 >
-                    <Text size='xs'>Отправить смс еще раз</Text>
+                    <Text size='xs'>{t('Отправить смс еще раз')}</Text>
                 </Button>
             )}
         </div>

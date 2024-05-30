@@ -1,5 +1,5 @@
 import { type InputHTMLAttributes, useRef, useState } from 'react';
-
+import i18n from 'src/shared/model/i18n';
 import { RouteName } from 'src/shared/model';
 import { Icon, Input, Link, Text } from 'src/shared/ui';
 
@@ -8,7 +8,6 @@ import { PasswordRequirements } from './password-requirements';
 import { InfoCard } from './info-card';
 
 import type { FieldValues, UseFormRegister } from 'react-hook-form';
-
 import './styles.scss';
 
 interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
@@ -25,7 +24,7 @@ interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
 
 export const PasswordInput = ({
     isError,
-    placeholder = 'Пароль',
+    placeholder = i18n.t('Пароль'),
     variant = 'exist',
     error,
     width = 'max',
@@ -80,7 +79,7 @@ export const PasswordInput = ({
                             to={RouteName.RECOVERY_PASSWORD_PAGE}
                             variant='action'
                         >
-                            Восстановление пароля
+                            {i18n.t('Восстановление пароля')}
                         </Link>
                     </Text>
                 </div>

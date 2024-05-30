@@ -4,11 +4,14 @@ import { Container } from 'src/shared/ui';
 import { MessageCard } from 'src/entities/message';
 import { MultiStepForm } from 'src/features/multi-step-form';
 import { PhoneForm, CodeForm, ConfirmPasswordForm } from 'src/features/forms';
+import { useTranslation } from 'react-i18next';
 
 const SUCCESS = 'Кабинет пользователя успешно \n зарегистрирован';
 
 export const RegistrationPage = () => {
     const [phone, setPhone] = useState<string>('');
+    const { t } = useTranslation();
+
     return (
         <Container>
             <MultiStepForm
@@ -16,7 +19,7 @@ export const RegistrationPage = () => {
                 forms={[
                     {
                         id: 1,
-                        title: 'Регистрация',
+                        title: t('Регистрация'),
                         component: (
                             <PhoneForm
                                 variant='registration'
@@ -26,12 +29,12 @@ export const RegistrationPage = () => {
                     },
                     {
                         id: 2,
-                        title: 'Введите код из смс',
+                        title: t('Введите код из смс'),
                         component: <CodeForm phone={phone} />
                     },
                     {
                         id: 3,
-                        title: 'Придумайте пароль',
+                        title: t('Придумайте пароль'),
                         component: (
                             <ConfirmPasswordForm
                                 variant='registration'
