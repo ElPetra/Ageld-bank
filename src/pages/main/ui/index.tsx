@@ -19,7 +19,6 @@ import { Deposits } from 'src/widgets/deposits';
 
 import { ProtectedMain } from './protected';
 
-
 export const MainPage = () => {
     const { t } = useTranslation();
     return (
