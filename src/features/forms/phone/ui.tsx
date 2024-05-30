@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useAuth } from 'src/entities/user';
 import { Button, Form, Link, Text } from 'src/shared/ui';
 import { RouteName } from 'src/shared/model';
+import { useTranslation } from 'react-i18next';
 
 import { PhoneInput } from './phone-input';
 
@@ -34,7 +35,7 @@ export const PhoneForm = ({
         defaultValues: { phone: '' }
     });
     const { checkedMissRegistration, checkedRegistration, error } = useAuth();
-
+    const { t } = useTranslation();
     const handleLinkClick = (linkId: number) => {
         if (!clickedLinks.includes(linkId)) {
             setClickedLinks([...clickedLinks, linkId]);
@@ -73,7 +74,7 @@ export const PhoneForm = ({
             {variant === 'registration' && (
                 <>
                     <Text size='xs'>
-                        Нажав кнопку «Далее», вы соглашаетесь с &nbsp;
+                        {t('Нажав кнопку «Далее», вы соглашаетесь с ')}&nbsp;
                         <Link
                             id='service_rules'
                             onClick={() => handleLinkClick(1)}
@@ -84,9 +85,11 @@ export const PhoneForm = ({
                             rel='noreferrer'
                             variant='action'
                         >
-                            Правилами дистанционного банковского обслуживания
+                            {t(
+                                'Правилами дистанционного банковского обслуживания'
+                            )}
                         </Link>
-                        &nbsp; и &nbsp;
+                        &nbsp; {t('и')} &nbsp;
                         <Link
                             id='privacy_policy'
                             to={
@@ -97,12 +100,13 @@ export const PhoneForm = ({
                             rel='noreferrer'
                             variant='action'
                         >
-                            Политикой конфиденциальности
+                            {t('Политикой конфиденциальности')}
                         </Link>
-                        &nbsp; и даёте согласие на сбор и обработку информации
+                        &nbsp;{' '}
+                        {t('и даёте согласие на сбор и обработку информации')}
                     </Text>
                     <Button variant='secondary' size='large' type='button'>
-                        <Link to={RouteName.MAIN_PAGE}>Отклонить</Link>
+                        <Link to={RouteName.MAIN_PAGE}>{t('Отклонить')}</Link>
                     </Button>
                 </>
             )}
@@ -116,7 +120,7 @@ export const PhoneForm = ({
                     (variant === 'registration' ? !allLinksClicked : false)
                 }
             >
-                Далее
+                {t('Далее')}
             </Button>
         </Form>
     );

@@ -192,10 +192,14 @@ export const UniversalCardCard = ({ card, children }: Props) => {
                 <div className='universal-card-card__second__button'>
                     {isCustomerCard(card) ? (
                         <Link to={link}>
-                            <Button variant='secondary'>{i18next.t(buttonText)}</Button>
+                            <Button variant='secondary'>
+                                {i18next.t(buttonText)}
+                            </Button>
                         </Link>
                     ) : (
-                        <Button variant='secondary'>{i18next.t(buttonText)}</Button>
+                        <Button variant='secondary'>
+                            {i18next.t(buttonText)}
+                        </Button>
                     )}
                     {isCardProduct(card) && (
                         <Link to={link}>

@@ -1,3 +1,4 @@
+import { REQUISITES } from 'src/shared/model';
 import { MoreInfoButton } from 'src/features/drop-down';
 
 import {
@@ -6,7 +7,6 @@ import {
     BLOCK_ACCOUNT,
     CLOSE_ACCOUNT,
     MAKE_ACCOUNT_MAIN,
-    REQUISITES,
     UNLOCK_ACCOUNT
 } from '../../../model';
 

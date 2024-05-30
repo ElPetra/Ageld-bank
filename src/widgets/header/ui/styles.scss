@@ -5,23 +5,12 @@
   gap: 60px;
   position: relative;
 }
-.switcher {
-  position: absolute;
-  right: 30px;
-  top: 35px;
-}
-@media screen and (max-width: 900px) {
-  .switcher {
-    right: 70px;
-  }
-}
-@media screen and (max-width: 600px) {
-  .switcher {
-    right: 50px;
-  }
-}
-@media screen and (max-width: 390px) {
-  .switcher {
-    top: 54px;
+
+.language-button {
+  display: flex;
+  align-items: center;
+
+  @media screen and (max-width: 600px) {
+    display: none;
   }
 }

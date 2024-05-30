@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import { Icon, Text } from 'src/shared/ui';
 
@@ -10,6 +11,7 @@ interface Props {
 
 export const BackButton = ({ onClick }: Props) => {
     const navigate = useNavigate();
+    const { t } = useTranslation();
 
     return (
         <button
@@ -17,7 +19,7 @@ export const BackButton = ({ onClick }: Props) => {
             onClick={() => (onClick ? onClick() : navigate(-1))}
         >
             <Icon icon='arrow-icon' />
-            <Text weight='medium'>Назад</Text>
+            <Text weight='medium'>{t('Назад')}</Text>
         </button>
     );
 };

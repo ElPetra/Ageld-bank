@@ -11,7 +11,6 @@ interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
     placeholder?: string;
     size?: 'extra-small' | 'small' | 'medium' | 'large';
     width?: 'auto' | 'max';
-    variant?: 'primary' | 'secondary';
     isError?: boolean;
     error?: string;
     label?: string;
@@ -26,7 +25,6 @@ export const Input = memo(
         placeholder,
         value,
         reference,
-        variant = 'primary',
         size = 'medium',
         width = 'auto',
         children,
@@ -44,7 +42,7 @@ export const Input = memo(
         const fieldClass = cn('field', size, width, {
             error: error || isError
         });
-        const inputContainerClass = cn('input', size, width, variant, {
+        const inputContainerClass = cn('input', size, width, {
             error: error || isError,
             disabled: disabled
         });

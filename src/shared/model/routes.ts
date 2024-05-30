@@ -7,7 +7,7 @@ export const RouteName = {
     RECOVERY_PASSWORD_PAGE: '/recovery',
     PERSONAL_PAGE: '/personal',
     CARD_PAGE: '/card',
-    DEPOSIT_PAGE: '/deposit-products',
+    DEPOSIT_PAGE: '/deposit',
     ACCOUNT_PAGE: '/account',
     CARD_PRODUCT_PAGE: '/card-product',
     NOTIFICATION_HISTORY_PAGE: '/notifications_history',
@@ -21,6 +21,7 @@ export interface RouteDescription {
 }
 
 export const CREATE = 'create';
+export const EXTEND = 'extend';
 
 export const MAIN = '';
 export const CARDS = 'cards';

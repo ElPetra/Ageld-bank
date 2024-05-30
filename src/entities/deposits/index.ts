@@ -1,1 +1,1 @@
-export { DepositCard } from './deposit-card';
+export { CustomerDepositCard } from './customer-deposit-card';

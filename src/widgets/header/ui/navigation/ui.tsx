@@ -26,23 +26,25 @@ export const Navigation = ({ direction = 'row', setVisible }: Props) => {
                 <Link to={RouteName.ATMS_AND_BRANCHES}>
                     {t('Банкоматы и отделения')}
                 </Link>
-                <Link to={RouteName.MAIN_PAGE}>Курсы валют</Link>
-                <Link to={RouteName.CONTACTS_PAGE}>Контакты</Link>
-                <Link to={RouteName.MAIN_PAGE}>Список услуг</Link>
-                <Link to={RouteName.MAIN_PAGE}>Документы</Link>
-                <Link to={RouteName.MAIN_PAGE}>Вопросы и ответы</Link>
+                <Link to={RouteName.MAIN_PAGE}>{t('Курсы валют')}</Link>
+                <Link to={RouteName.CONTACTS_PAGE}>{t('Контакты')}</Link>
+                <Link to={RouteName.MAIN_PAGE}>{t('Список услуг')}</Link>
+                <Link to={RouteName.MAIN_PAGE}>{t('Документы')}</Link>
+                <Link to={RouteName.MAIN_PAGE}>{t('Вопросы и ответы')}</Link>
             </ul>
             <ul className='navigation__additional'>
                 {authStatus === AuthStatus.SignedIn ? (
                     <>
-                        <Link to={RouteName.PERSONAL_PAGE}>Личные данные</Link>
+                        <Link to={RouteName.PERSONAL_PAGE}>
+                            {t('Личные данные')}
+                        </Link>
                         <Logout />
                     </>
                 ) : (
                     <>
-                        <Link to={RouteName.LOGIN_PAGE}>Войти</Link>
+                        <Link to={RouteName.LOGIN_PAGE}>{t('Войти')}</Link>
                         <Link to={RouteName.REGISTRATION_PAGE}>
-                            Регистрация
+                            {t('Регистрация')}
                         </Link>
                     </>
                 )}

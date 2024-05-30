@@ -23,14 +23,7 @@
     padding: 16px 24px;
     border-radius: var(--medium-border-radius);
     transition: box-shadow ease .5s;
-
-    &.primary {
-      background: var(--bg-primary-input);
-    }
-
-    &.secondary {
-      background: var(--bg-secondary-input);
-    }
+    background: var(--bg-primary-input);
 
     &.disabled {
       opacity: 0.8;

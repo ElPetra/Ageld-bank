@@ -24,7 +24,7 @@ export function LanguageProvider({ children }: Props) {
             setLanguage(Language.English);
             i18n.changeLanguage('en').then();
         }
-    }, []);
+    }, [i18n]);
 
     const defaultValue = useMemo(
         () => ({

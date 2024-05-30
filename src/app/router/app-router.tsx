@@ -9,7 +9,8 @@ import { RecoveryPasswordPage } from 'src/pages/recovery';
 import { PersonalPage } from 'src/pages/personal';
 import { NotificationHistoryPage } from 'src/pages/notification';
 import { CardPage } from 'src/pages/card';
-import { DepositPage } from 'src/pages/deposits';
+import { DepositPage } from 'src/pages/deposit';
+import { DepositExtensionPage } from 'src/pages/deposit-extension';
 import { AccountPage } from 'src/pages/account';
 import { AccountCreationPage } from 'src/pages/account-creation';
 import { CardProductPage } from 'src/pages/card-product';
@@ -17,7 +18,7 @@ import { ContactsPage } from 'src/pages/contacts';
 import { ATMsBranchesPage } from 'src/pages/atms-branches';
 
 import { useAuth } from 'src/entities/user';
-import { AuthStatus, CREATE, RouteName } from 'src/shared/model';
+import { AuthStatus, CREATE, EXTEND, RouteName } from 'src/shared/model';
 import { Preloader } from 'src/shared/ui';
 
 import { ProtectedRoute } from './protected-route';
@@ -82,6 +83,10 @@ const authRoutes: RouteDescription[] = [
     {
         path: CARD_PAGE + '/:id',
         component: CardPage
+    },
+    {
+        path: DEPOSIT_PAGE + '/:id/' + EXTEND,
+        component: DepositExtensionPage
     },
     {
         path: DEPOSIT_PAGE + '/:id',

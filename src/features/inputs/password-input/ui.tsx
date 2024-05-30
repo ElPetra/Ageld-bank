@@ -1,4 +1,5 @@
-import { type InputHTMLAttributes, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { RouteName } from 'src/shared/model';
 import { Icon, Input, Link, Text } from 'src/shared/ui';
@@ -7,6 +8,7 @@ import { useCapslock } from './lib';
 import { PasswordRequirements } from './password-requirements';
 import { InfoCard } from './info-card';
 
+import type { InputHTMLAttributes } from 'react';
 import type { FieldValues, UseFormRegister } from 'react-hook-form';
 
 import './styles.scss';
@@ -25,7 +27,7 @@ interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
 
 export const PasswordInput = ({
     isError,
-    placeholder = 'Пароль',
+    placeholder,
     variant = 'exist',
     error,
     width = 'max',
@@ -33,6 +35,7 @@ export const PasswordInput = ({
     isDirty,
     ...props
 }: Props) => {
+    const { t } = useTranslation();
     const [open, setOpen] = useState<boolean>(false);
     const [value, setValue] = useState<string>('');
     const [isFocused, setFocused] = useState<boolean>(false);
@@ -43,7 +46,7 @@ export const PasswordInput = ({
         <div className='password-input'>
             <Input
                 type={open ? 'text' : 'password'}
-                placeholder={placeholder}
+                placeholder={placeholder || t('Пароль')}
                 size={size}
                 width={width}
                 value={value}
@@ -70,7 +73,7 @@ export const PasswordInput = ({
                 <InfoCard
                     icon='warning-icon'
                     color='error'
-                    message='Включен CapsLock'
+                    message={t('Включен CapsLock')}
                 />
             )}
             {variant === 'exist' && (
@@ -80,7 +83,7 @@ export const PasswordInput = ({
                             to={RouteName.RECOVERY_PASSWORD_PAGE}
                             variant='action'
                         >
-                            Восстановление пароля
+                            {t('Восстановление пароля')}
                         </Link>
                     </Text>
                 </div>

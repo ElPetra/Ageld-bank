@@ -1,10 +1,9 @@
+import { useTranslation } from 'react-i18next';
+
 import {
     RouteName,
     AuthStatus,
     DEPOSITS,
-    CUSTOMER_DEPOSITS,
-    DEPOSITS_TITLE,
-    DEPOSITS_OFFERED,
     mockDeposits,
     DepositsRouteName,
     DepositsGuestRouteName
@@ -18,10 +17,11 @@ import { DepositProducts } from './deposit-products';
 
 export const Deposits = () => {
     const { authStatus } = useAuth();
+    const { t } = useTranslation();
     return (
         <div>
             <Text tag='h2' size='m' weight='medium'>
-                {DEPOSITS_TITLE}
+                {t('Депозиты')}
             </Text>
             <Menu
                 href={RouteName.MAIN_PAGE + '/' + DEPOSITS}
@@ -36,23 +36,23 @@ export const Deposits = () => {
                         ? [
                               {
                                   id: 1,
-                                  name: CUSTOMER_DEPOSITS,
+                                  name: t('Мои депозиты'),
                                   component: (
                                       <CustomerDeposits
-                                          content={mockDeposits}
+                                          deposits={mockDeposits}
                                       />
                                   )
                               },
                               {
                                   id: 2,
-                                  name: DEPOSITS_OFFERED,
+                                  name: t('Депозиты A-geld'),
                                   component: <DepositProducts />
                               }
                           ]
                         : [
                               {
                                   id: 1,
-                                  name: DEPOSITS_OFFERED,
+                                  name: t('Депозиты A-geld'),
                                   component: <DepositProducts />
                               }
                           ]

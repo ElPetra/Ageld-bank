@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useTranslation } from 'react-i18next';
 
 import { PasswordInput } from 'src/features/inputs';
 import { useAuth } from 'src/entities/user';
@@ -36,9 +37,8 @@ export const ConfirmPasswordForm = ({
         defaultValues: { password1: '', password2: '' },
         resolver: yupResolver<FieldValues>(confirmPasswordSchema)
     });
-
+    const { t } = useTranslation();
     const navigate = useNavigate();
-
     const { createdProfile, error } = useAuth();
 
     const onSubmit = async (data: FieldValues) => {
@@ -72,8 +72,8 @@ export const ConfirmPasswordForm = ({
                 label='password2'
                 placeholder={
                     variant === 'recovery'
-                        ? 'Подтвердите новый пароль'
-                        : 'Подтвердите пароль'
+                        ? t('Подтвердите новый пароль')
+                        : t('Подтвердите пароль')
                 }
                 variant='confirm'
                 error={getFieldErrorMessage(errors.password2?.message)}
@@ -84,7 +84,7 @@ export const ConfirmPasswordForm = ({
                 type='submit'
                 disabled={!isDirty}
             >
-                Отправить
+                {t('Отправить')}
             </Button>
         </Form>
     );

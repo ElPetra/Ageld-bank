@@ -191,6 +191,14 @@ export const useAuth = () => {
         [getError, getAccessToken, createAccount]
     );
 
+    const extendedDeposit = useCallback(
+        async (id: string, term: number): Promise<void | string> => {
+            console.log('extend', id, 'for', term);
+            setIsLoading(false);
+        },
+        []
+    );
+
     return {
         authStatus,
         getAccessToken,
@@ -206,6 +214,7 @@ export const useAuth = () => {
         changedEmail,
         addedEmail,
         createdAccount,
+        extendedDeposit,
         setError,
         error,
         isLoading

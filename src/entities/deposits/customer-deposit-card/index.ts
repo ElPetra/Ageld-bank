@@ -1,0 +1,1 @@
+export { CustomerDepositCard } from './ui';

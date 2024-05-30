@@ -1,0 +1,1 @@
+export { DepositExtensionPage } from './ui';
