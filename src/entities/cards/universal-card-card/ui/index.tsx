@@ -97,8 +97,7 @@ export const UniversalCardCard = ({ card, children }: Props) => {
                                       )
                                     : t(typeCard[card.type]) +
                                       ' ' +
-                                      t('карта') +
-                                      '.' +
+                                      t('карта. ') +
                                       t('Надежная карта на каждый день')}
                             </Text>
                         )}
