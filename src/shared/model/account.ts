@@ -9,9 +9,6 @@ export const DEPOSIT_ACCOUNT = i18n.t('Депозитный счет');
 
 export const ACCOUNT_NUMBER_REPLACEMENT = '**************';
 
-export const CREATE_ACCOUNT = i18n.t('Открыть счет');
-export const GO_TO_ACCOUNT_LIST = i18n.t('Перейти к списку счетов');
-
 export type AccountType = 'credit' | 'debit' | 'deposit';
 
 export interface AccountDetails {

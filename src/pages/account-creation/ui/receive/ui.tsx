@@ -1,7 +1,8 @@
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 
 import { Button, Card, Columns, Form, Radio, Text } from 'src/shared/ui';
-import { useTranslation } from 'react-i18next';
+import i18n from 'src/shared/model/i18n';
 
 import type { Dispatch, SetStateAction } from 'react';
 import type { FieldValues } from 'react-hook-form';
@@ -9,11 +10,11 @@ import type { FieldValues } from 'react-hook-form';
 const ReceiveTypes = [
     {
         id: 'inOffice',
-        text: 'Заберу в офисе банка'
+        text: i18n.t('Заберу в офисе банка')
     },
     {
         id: 'delivery',
-        text: 'Потребуется доставка'
+        text: i18n.t('Потребуется доставка')
     }
 ];
 
