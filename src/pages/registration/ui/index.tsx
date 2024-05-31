@@ -1,12 +1,10 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { Container } from 'src/shared/ui';
 import { MessageCard } from 'src/entities/message';
 import { MultiStepForm } from 'src/features/multi-step-form';
 import { PhoneForm, CodeForm, ConfirmPasswordForm } from 'src/features/forms';
-import { useTranslation } from 'react-i18next';
-
-const SUCCESS = 'Кабинет пользователя успешно \n зарегистрирован';
 
 export const RegistrationPage = () => {
     const [phone, setPhone] = useState<string>('');
@@ -49,8 +47,10 @@ export const RegistrationPage = () => {
                             <MessageCard
                                 icon='paper-airplane-lady'
                                 width={400}
-                                title={SUCCESS}
-                                buttonText='Войти в кабинет'
+                                title={t(
+                                    'Кабинет пользователя успешно \n зарегистрирован'
+                                )}
+                                buttonText={t('Войти в кабинет')}
                             />
                         ),
                         isResult: true

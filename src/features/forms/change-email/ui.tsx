@@ -100,7 +100,7 @@ export const EmailForm = ({ email }: Props) => {
                     type='submit'
                     onClick={() => setIsClicked(true)}
                 >
-                    {t(email ? 'Изменить' : 'Добавить')}
+                    {email ? t('Изменить') : t('Добавить')}
                 </Button>
             )}
         </Form>

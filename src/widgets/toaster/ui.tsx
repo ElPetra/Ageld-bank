@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { toast, ToastBar, Toaster } from 'react-hot-toast';
+import { ToastBar, Toaster } from 'react-hot-toast';
 
 import { Icon, Text } from 'src/shared/ui';
 

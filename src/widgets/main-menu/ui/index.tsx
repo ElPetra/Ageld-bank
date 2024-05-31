@@ -33,7 +33,7 @@ export const MainMenu = () => {
         <div className='main-menu'>
             <div className='main-menu__first-col'>
                 <MainMenuBlock
-                    title='Мои карты'
+                    title={t('Мои карты')}
                     href={RouteName.MAIN_PAGE + '/' + CARDS}
                 >
                     {cards?.map(el => (

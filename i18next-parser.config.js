@@ -27,12 +27,7 @@ export default {
     namespaceSeparator: ':',
     output: 'src/shared/model/i18n/locales/$LOCALE/$LOCALE.json',
     pluralSeparator: '_',
-    input: [
-        'src/shared/**/*.{tsx,ts}',
-        'src/widgets/**/*.{tsx,ts}',
-        'src/entities/**/*.{tsx,ts}',
-        'src/features/**/*.{tsx,ts}'
-    ],
+    input: ['src/**/*.{tsx,ts}'],
     sort: false,
     verbose: false,
     failOnWarnings: false,
@@ -42,3 +37,4 @@ export default {
     i18nextOptions: null,
     yamlOptions: null
 };
+//'src/**/*.{tsx,ts}'
