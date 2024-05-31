@@ -26,7 +26,7 @@ export default {
     keySeparator: false,
     namespaceSeparator: false,
     output: 'src/shared/model/i18n/locales/$LOCALE/$LOCALE.json',
-    pluralSeparator: '_',
+    pluralSeparator: false,
     input: ['src/**/*.{tsx,ts}'],
     sort: false,
     verbose: false,

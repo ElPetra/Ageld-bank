@@ -57,9 +57,7 @@ export const DepositInfo = ({ deposit }: Props) => {
                 <div className='deposit-info__first-row__numbers'>
                     <div className='deposit-info__first-row__number'>
                         <div>
-                            <Text color='quadruple'>
-                                {'№ ' + t('счета') + ': '}
-                            </Text>
+                            <Text color='quadruple'>{t('№ счета : ')}</Text>
                             <Text color='quadruple'>{deposit.id}</Text>
                         </div>
                         <button onClick={handleCopyDepositId}>
@@ -69,7 +67,7 @@ export const DepositInfo = ({ deposit }: Props) => {
                     <div className='deposit-info__first-row__number'>
                         <div>
                             <Text color='quadruple'>
-                                {'№ ' + t('счета с процентами') + ': '}
+                                {t('№ счета с процентами : ')}
                             </Text>
                             <Text color='quadruple'>
                                 {deposit.subAccountNum}
