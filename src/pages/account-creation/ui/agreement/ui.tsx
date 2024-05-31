@@ -33,7 +33,7 @@ export const Agreement = ({
                 return curr + 1;
             });
         }
-    };
+    }; //Todo: не переводится на данный момент никак
     return (
         <Form onSubmit={onSubmit}>
             <Card

@@ -1,13 +1,9 @@
 import { AccountCard } from 'src/entities/accounts';
 import { MessageCard } from 'src/entities/message';
 import { ProductStatuses } from 'src/entities/product';
-import {
-    CREATE,
-    CREATE_ACCOUNT,
-    ACCOUNTS_NOT_FOUND,
-    RouteName
-} from 'src/shared/model';
+import { CREATE, RouteName } from 'src/shared/model';
 import { Columns } from 'src/shared/ui';
+import { useTranslation } from 'react-i18next';
 
 import type { Account } from 'src/shared/model';
 
@@ -16,6 +12,7 @@ interface Props {
 }
 
 export const AccountList = ({ accounts }: Props) => {
+    const { t } = useTranslation();
     return (
         <div>
             {accounts.length ? (
@@ -32,8 +29,10 @@ export const AccountList = ({ accounts }: Props) => {
                 </Columns>
             ) : (
                 <MessageCard
-                    title={ACCOUNTS_NOT_FOUND}
-                    buttonText={CREATE_ACCOUNT}
+                    title={t(
+                        'На данный момент \n у Вас нет соответствующих счетов'
+                    )}
+                    buttonText={t('Открыть счет')}
                     buttonLink={RouteName.ACCOUNT_PAGE + '/' + CREATE}
                 />
             )}
