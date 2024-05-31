@@ -4,12 +4,6 @@ import { useGetAccountsQuery } from 'src/shared/api';
 import { Preloader, Text } from 'src/shared/ui';
 import {
     ACCOUNTS,
-    MY_ACCOUNTS,
-    OPENED_ACCOUNTS,
-    OPEN_ACCOUNT_REQUEST,
-    CLOSED_ACCOUNTS,
-    BLOCKED_ACCOUNTS,
-    ALL_CURRENCY,
     AccountsRouteName,
     currencyFilters,
     RouteName
@@ -17,6 +11,7 @@ import {
 import { useAuth } from 'src/entities/user';
 import { FilterBar } from 'src/entities/filter';
 import { Menu } from 'src/features/menu';
+import { useTranslation } from 'react-i18next';
 
 import { filterAccounts } from '../lib';
 
@@ -25,8 +20,8 @@ import { AccountList } from './list';
 export const Accounts = () => {
     const { signedOut } = useAuth();
     const { data: accounts, isLoading, error } = useGetAccountsQuery();
-
-    const [currency, setCurrency] = useState<string>(ALL_CURRENCY);
+    const { t } = useTranslation();
+    const [currency, setCurrency] = useState<string>('Все');
 
     useEffect(() => {
         if (error) {
@@ -39,7 +34,7 @@ export const Accounts = () => {
     ) : (
         <>
             <Text tag='h2' size='m' weight='medium'>
-                {MY_ACCOUNTS}
+                {t('Мои счета')}
             </Text>
             <Menu
                 href={RouteName.MAIN_PAGE + '/' + ACCOUNTS}
@@ -48,7 +43,7 @@ export const Accounts = () => {
                 elements={[
                     {
                         id: 1,
-                        name: OPENED_ACCOUNTS,
+                        name: t('Открытые счета'),
                         component: (
                             <AccountList
                                 accounts={filterAccounts(
@@ -61,12 +56,12 @@ export const Accounts = () => {
                     },
                     {
                         id: 2,
-                        name: OPEN_ACCOUNT_REQUEST,
+                        name: t('Заявки на открытие счета'),
                         component: <AccountList accounts={[]} />
                     },
                     {
                         id: 3,
-                        name: CLOSED_ACCOUNTS,
+                        name: t('Закрытые счета'),
                         component: (
                             <AccountList
                                 accounts={filterAccounts(
@@ -79,7 +74,7 @@ export const Accounts = () => {
                     },
                     {
                         id: 4,
-                        name: BLOCKED_ACCOUNTS,
+                        name: t('Заблокированные счета'),
                         component: (
                             <AccountList
                                 accounts={filterAccounts(

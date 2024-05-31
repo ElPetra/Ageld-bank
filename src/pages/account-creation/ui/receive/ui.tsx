@@ -1,11 +1,7 @@
 import { useForm } from 'react-hook-form';
 
 import { Button, Card, Columns, Form, Radio, Text } from 'src/shared/ui';
-import {
-    CREATE_ACCOUNT,
-    CARD_DELIVERY_REQUIRED,
-    GET_CARD_IN_OFFICE
-} from 'src/shared/model';
+import { useTranslation } from 'react-i18next';
 
 import type { Dispatch, SetStateAction } from 'react';
 import type { FieldValues } from 'react-hook-form';
@@ -13,11 +9,11 @@ import type { FieldValues } from 'react-hook-form';
 const ReceiveTypes = [
     {
         id: 'inOffice',
-        text: GET_CARD_IN_OFFICE
+        text: 'Заберу в офисе банка'
     },
     {
         id: 'delivery',
-        text: CARD_DELIVERY_REQUIRED
+        text: 'Потребуется доставка'
     }
 ];
 
@@ -36,7 +32,7 @@ export const ReceivingVariant = ({ isLast, setFormStep }: Props) => {
         mode: 'onTouched',
         reValidateMode: 'onChange'
     });
-
+    const { t } = useTranslation();
     const onSubmit = () => {
         if (setFormStep && !isLast) {
             setFormStep(curr => {
@@ -66,7 +62,7 @@ export const ReceivingVariant = ({ isLast, setFormStep }: Props) => {
                             >
                                 <div>
                                     <Text size='m' weight='medium'>
-                                        {el.text}
+                                        {t(el.text)}
                                     </Text>
                                 </div>
                             </Radio>
@@ -74,7 +70,7 @@ export const ReceivingVariant = ({ isLast, setFormStep }: Props) => {
                     ))}
                 </Columns>
                 <Button disabled={!isDirty} type='submit' variant='secondary'>
-                    <div>{CREATE_ACCOUNT}</div>
+                    <div>{t('Открыть счет')}</div>
                 </Button>
             </Card>
         </Form>
