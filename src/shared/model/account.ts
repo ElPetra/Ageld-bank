@@ -2,8 +2,6 @@ import i18n from 'src/shared/model/i18n';
 
 import type { Currency, ProductStatus } from 'src/shared/model';
 
-export const ACCOUNTS_TITLE = i18n.t('Счета');
-
 export const CREDIT_ACCOUNT = i18n.t('Кредитный счет');
 export const DEBIT_ACCOUNT = i18n.t('Дебетовый счет');
 export const DEPOSIT_ACCOUNT = i18n.t('Депозитный счет');

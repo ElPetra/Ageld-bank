@@ -1,19 +1,10 @@
-import i18next from 'src/shared/model/i18n';
+import { useTranslation } from 'react-i18next';
 
 import { Button, Card, Icon, Image, Link, Text } from 'src/shared/ui';
 import {
-    CARD_BALANCE,
-    CARD_CURRENCY,
-    CARD_LEVEL,
-    CARD_NUMBER,
     CARD_NUMBER_REPLACEMENT,
-    EXPIRY_DATE,
-    INFO_ABOUT_CARD,
-    MORE_DETAILS,
-    REQUEST_CARD,
     RouteName,
     RUB,
-    VIRTUAL,
     typeCard
 } from 'src/shared/model';
 import { formatExpirationDate, getIconName } from 'src/shared/lib';
@@ -48,18 +39,13 @@ function getFirstUpperCase(str: string): string {
 }
 
 export const UniversalCardCard = ({ card, children }: Props) => {
+    const { t } = useTranslation();
     const cardRoute =
         'status' in card ? RouteName.CARD_PAGE : RouteName.CARD_PRODUCT_PAGE;
     const link =
         isCustomerCard(card) || isCardProduct(card)
             ? cardRoute + '/' + card.id
             : '';
-
-    const buttonText = isCustomerCard(card)
-        ? INFO_ABOUT_CARD
-        : isCardDetails(card)
-          ? 'Перевести'
-          : REQUEST_CARD;
 
     const handleCopyCard = () => {
         isCardDetails(card) && navigator.clipboard.writeText(card.number);
@@ -83,7 +69,7 @@ export const UniversalCardCard = ({ card, children }: Props) => {
                         <div className='universal-card-card__second__info__text__name'>
                             <LinkCard link={link}>
                                 <Text size='l' weight='bold'>
-                                    {`A-Geld Card ${i18next.t(card.name)}`}
+                                    {`A-Geld Card ${card.name}`}
                                 </Text>
                             </LinkCard>
                             {children ? (
@@ -109,8 +95,9 @@ export const UniversalCardCard = ({ card, children }: Props) => {
                                           /.{12}/gm,
                                           CARD_NUMBER_REPLACEMENT
                                       )
-                                    : i18next.t(typeCard[card.type]) +
-                                      ' карта. Надежная карта на каждый день'}
+                                    : t(typeCard[card.type]) +
+                                      t(' карта.') +
+                                      t('Надежная карта на каждый день')}
                             </Text>
                         )}
                     </div>
@@ -119,11 +106,11 @@ export const UniversalCardCard = ({ card, children }: Props) => {
                             <>
                                 <Detail
                                     value={getFirstUpperCase(card.level)}
-                                    description={i18next.t(CARD_LEVEL)}
+                                    description={t('Уровень премиальность')}
                                 />
                                 <Detail
                                     value={RUB}
-                                    description={i18next.t(CARD_CURRENCY)}
+                                    description={t('Валюта счета')}
                                 />
                             </>
                         )}
@@ -131,15 +118,15 @@ export const UniversalCardCard = ({ card, children }: Props) => {
                             <>
                                 <Detail
                                     value={getFirstUpperCase(card.level)}
-                                    description={i18next.t(CARD_LEVEL)}
+                                    description={t('Уровень премиальность')}
                                 />
                                 <Detail
-                                    value={card.isVirtual ? 'Да' : 'Нет'}
-                                    description={i18next.t(VIRTUAL)}
+                                    value={card.isVirtual ? t('Да') : t('Нет')}
+                                    description={t('Виртуальная')}
                                 />
                                 <Detail
                                     value={card.feeUse + ' ₽'}
-                                    description='Плата за использование'
+                                    description={t('Плата за использование')}
                                 />
                             </>
                         )}
@@ -149,15 +136,15 @@ export const UniversalCardCard = ({ card, children }: Props) => {
                                     value={formatExpirationDate(
                                         card.expirationAt
                                     )}
-                                    description={EXPIRY_DATE}
+                                    description={t('Срок действия')}
                                 />
                                 <Detail
                                     value='1000 ₽' // Данные пока не преходят с api
-                                    description={CARD_BALANCE}
+                                    description={t('Баланс')}
                                 />
                                 <Detail
                                     value={RUB}
-                                    description={CARD_CURRENCY}
+                                    description={t('Валюта счета')}
                                 />
                             </>
                         )}
@@ -169,7 +156,7 @@ export const UniversalCardCard = ({ card, children }: Props) => {
                                             /.{12}/gm,
                                             CARD_NUMBER_REPLACEMENT
                                         )}
-                                        description={CARD_NUMBER}
+                                        description={t('Номер карты')}
                                     />
                                     <button onClick={handleCopyCard}>
                                         <Icon icon='copy-icon' />
@@ -179,11 +166,11 @@ export const UniversalCardCard = ({ card, children }: Props) => {
                                     value={formatExpirationDate(
                                         card.expirationAt
                                     )}
-                                    description={EXPIRY_DATE}
+                                    description={t('Срок действия')}
                                 />
                                 <Detail
                                     value={RUB}
-                                    description={CARD_CURRENCY}
+                                    description={t('Валюта счета')}
                                 />
                             </>
                         )}
@@ -193,17 +180,19 @@ export const UniversalCardCard = ({ card, children }: Props) => {
                     {isCustomerCard(card) ? (
                         <Link to={link}>
                             <Button variant='secondary'>
-                                {i18next.t(buttonText)}
+                                {t('Информация по карте')}
                             </Button>
                         </Link>
                     ) : (
                         <Button variant='secondary'>
-                            {i18next.t(buttonText)}
+                            {isCardDetails(card)
+                                ? t('Перевести')
+                                : t('Оформить карту')}
                         </Button>
                     )}
                     {isCardProduct(card) && (
                         <Link to={link}>
-                            <Button>{i18next.t(MORE_DETAILS)}</Button>
+                            <Button>{t('Показать больше')}</Button>
                         </Link>
                     )}
                 </div>

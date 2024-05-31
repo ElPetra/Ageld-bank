@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import { Button } from 'src/shared/ui';
 
 import './styles.scss';
@@ -14,6 +16,7 @@ export const Pagination = ({
     onPageChange,
     pageNumbers
 }: Props) => {
+    const { t } = useTranslation();
     return (
         <nav>
             <ul className='pagination'>
@@ -23,7 +26,7 @@ export const Pagination = ({
                             variant='link'
                             onClick={() => onPageChange(currentPage - 1)}
                         >
-                            Назад
+                            {t('Назад')}
                         </Button>
                     </li>
                 )}
@@ -48,7 +51,7 @@ export const Pagination = ({
                             onClick={() => onPageChange(currentPage + 1)}
                             variant='link'
                         >
-                            Вперед
+                            {t('Вперед')}
                         </Button>
                     </li>
                 )}

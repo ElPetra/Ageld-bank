@@ -27,7 +27,12 @@ export default {
     namespaceSeparator: ':',
     output: 'src/shared/model/i18n/locales/$LOCALE/$LOCALE.json',
     pluralSeparator: '_',
-    input: ['src/**/*.{ts,tsx}'],
+    input: [
+        'src/shared/**/*.{tsx,ts}',
+        'src/widgets/**/*.{tsx,ts}',
+        'src/entities/**/*.{tsx,ts}',
+        'src/features/**/*.{tsx,ts}'
+    ],
     sort: false,
     verbose: false,
     failOnWarnings: false,

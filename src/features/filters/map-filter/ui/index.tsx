@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { Button, Card, Icon, Text } from 'src/shared/ui';
 import { CheckboxGroup } from 'src/entities/filter';
@@ -8,6 +9,7 @@ import { options } from '../model';
 import './styles.scss';
 
 export const MapFilter = () => {
+    const { t } = useTranslation();
     const [filters, setFilters] = useState<Record<string, string>>({});
     const [open, setOpen] = useState<boolean>(false);
     return (
@@ -23,7 +25,7 @@ export const MapFilter = () => {
                     padding='small-medium'
                 >
                     <Icon icon='filter-lines' />
-                    <Text weight='bold'>Фильтр</Text>
+                    <Text weight='bold'>{t('Фильтр')}</Text>
                 </Card>
             </button>
             {open && (
@@ -37,7 +39,7 @@ export const MapFilter = () => {
                         <div className='map__filter__modal__button'>
                             <div>
                                 <Icon icon='filter-lines' />
-                                <Text weight='bold'>Фильтр</Text>
+                                <Text weight='bold'>{t('Фильтр')}</Text>
                             </div>
                             <button
                                 className='map__filter__modal__button__close'
@@ -53,7 +55,7 @@ export const MapFilter = () => {
                                 variant='secondary'
                                 onClick={() => setOpen(false)}
                             >
-                                Применить фильтр
+                                {t('Применить фильтр')}
                             </Button>
                             <Button
                                 size='small'
@@ -62,7 +64,7 @@ export const MapFilter = () => {
                                     setFilters({});
                                 }}
                             >
-                                Отменить
+                                {t('Отменить')}
                             </Button>
                         </div>
                     </Card>

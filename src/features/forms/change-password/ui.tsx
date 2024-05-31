@@ -65,7 +65,7 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
                     variant='create'
                     placeholder={t('Новый пароль')}
                     isDirty={watch('newPassword') !== ''}
-                    error={getFieldErrorMessage(errors.newPassword?.message)}
+                    error={t(getFieldErrorMessage(errors.newPassword?.message))}
                 />
                 <PasswordInput
                     size='medium'
@@ -73,7 +73,9 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
                     label='newPassword2'
                     placeholder={t('Подтвердите новый пароль')}
                     variant='confirm'
-                    error={getFieldErrorMessage(errors.newPassword2?.message)}
+                    error={t(
+                        getFieldErrorMessage(errors.newPassword2?.message)
+                    )}
                 />
             </div>
             <Button

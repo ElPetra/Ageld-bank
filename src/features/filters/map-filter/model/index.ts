@@ -1,37 +1,18 @@
-const CURRENCY_EXCHANGE = 'Обмен валюты';
-const ATM = 'Банкомат';
-const INSURANCE = 'Страхование';
-const BANK_TRANSFERS = 'Банковские переводы';
-const LOANS = 'Кредиты';
-const WITHDRAWAL_FROM_CARD = 'Снятие с карты';
-const TOP_CARD_ACCOUNT = 'Пополнение карты/счета';
+import i18n from 'src/shared/model/i18n';
 
 export const options = [
     {
-        title: 'Тип объекта',
+        title: i18n.t('Тип объекта'),
         checkboxes: [
-            { label: 'Банкоматы' },
-            { label: 'Инфокиоск' },
-            { label: 'Главный офис' },
-            { label: 'Отделения банка' },
-            { label: 'Обменый пункт' }
+            { label: i18n.t('Банкоматы') },
+            { label: i18n.t('Инфокиоск') },
+            { label: i18n.t('Главный офис') },
+            { label: i18n.t('Отделения банка') },
+            { label: i18n.t('Обменый пункт') }
         ]
     },
     {
-        title: 'Статус работы',
-        checkboxes: [{ label: 'Работает' }]
+        title: i18n.t('Статус работы'),
+        checkboxes: [{ label: i18n.t('Работает') }]
     }
-    // {
-    //     title: 'Услуги отделения',
-    //     checkboxes: [
-    //         { label: CURRENCY_EXCHANGE },
-    //         { label: ATM },
-    //         { label: INSURANCE },
-    //         { label: BANK_TRANSFERS },
-    //         { label: DEPOSITS },
-    //         { label: LOANS },
-    //         { label: WITHDRAWAL_FROM_CARD },
-    //         { label: TOP_CARD_ACCOUNT }
-    //     ]
-    // }
 ];

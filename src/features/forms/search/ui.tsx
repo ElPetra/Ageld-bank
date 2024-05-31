@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 
 import { Form, Icon, Input } from 'src/shared/ui';
 
@@ -10,7 +11,8 @@ interface Props {
     size?: 'extra-small' | 'small' | 'medium' | 'large';
 }
 
-export const SearchForm = ({ label = 'Поиск', size = 'large' }: Props) => {
+export const SearchForm = ({ label, size = 'large' }: Props) => {
+    const { t } = useTranslation();
     const [value, setValue] = useState<string>('');
     const inputRef = useRef<HTMLInputElement>(null);
 
@@ -28,7 +30,7 @@ export const SearchForm = ({ label = 'Поиск', size = 'large' }: Props) => {
         >
             <Input
                 type='text'
-                placeholder={label}
+                placeholder={label || t('Поиск')}
                 size={size}
                 width='max'
                 value={value}

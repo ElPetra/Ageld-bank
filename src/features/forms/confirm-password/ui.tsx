@@ -76,7 +76,7 @@ export const ConfirmPasswordForm = ({
                         : t('Подтвердите пароль')
                 }
                 variant='confirm'
-                error={getFieldErrorMessage(errors.password2?.message)}
+                error={t(getFieldErrorMessage(errors.password2?.message))}
             />
             <Button
                 variant='secondary'

@@ -1,14 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import {
-    MAIN_TITLE,
-    CARDS_TITLE,
-    ACCOUNTS_TITLE,
-    TRANSFERS_TITLE,
-    PAYMENTS_TITLE,
-    LOANS_TITLE,
-    MainRouteName
-} from 'src/shared/model';
+import { MainRouteName } from 'src/shared/model';
 import { Container } from 'src/shared/ui';
 import { Menu } from 'src/features/menu';
 import { MainMenu } from 'src/widgets/main-menu';
@@ -27,7 +19,7 @@ export const MainPage = () => {
                 elements={[
                     {
                         id: 1,
-                        name: t(MAIN_TITLE),
+                        name: t('Главная'),
                         component: (
                             <ProtectedMain>
                                 <MainMenu />
@@ -36,12 +28,12 @@ export const MainPage = () => {
                     },
                     {
                         id: 2,
-                        name: t(CARDS_TITLE),
+                        name: t('Карты'),
                         component: <Cards />
                     },
                     {
                         id: 3,
-                        name: t(ACCOUNTS_TITLE),
+                        name: t('Счета'),
                         component: (
                             <ProtectedMain>
                                 <Accounts />
@@ -50,18 +42,18 @@ export const MainPage = () => {
                     },
                     {
                         id: 4,
-                        name: t(TRANSFERS_TITLE),
-                        component: <div>{t(TRANSFERS_TITLE)}</div>
+                        name: t('Переводы'),
+                        component: <div>{t('Переводы')}</div>
                     },
                     {
                         id: 5,
-                        name: t(PAYMENTS_TITLE),
-                        component: <div>{t(PAYMENTS_TITLE)}</div>
+                        name: t('Платежи'),
+                        component: <div>{t('Платежи')}</div>
                     },
                     {
                         id: 6,
-                        name: t(LOANS_TITLE),
-                        component: <div>{t(LOANS_TITLE)}</div>
+                        name: t('Кредиты'),
+                        component: <div>{t('Кредиты')}</div>
                     },
                     {
                         id: 7,
