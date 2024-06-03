@@ -1,6 +1,7 @@
 import { Text } from 'src/shared/ui';
 
 import './styles.scss';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
     filters: string[];
@@ -9,6 +10,7 @@ interface Props {
 }
 
 export const FilterBar = ({ filters, current, setCurrent }: Props) => {
+    const { t } = useTranslation();
     return (
         <div className='filter-bar'>
             {filters.map(el => (
@@ -17,7 +19,7 @@ export const FilterBar = ({ filters, current, setCurrent }: Props) => {
                     key={el}
                     className={`filter-bar__button ${current === el ? 'active' : ''}`}
                 >
-                    <Text weight='medium'>{el}</Text>
+                    <Text weight='medium'>{t(el)}</Text>
                 </button>
             ))}
         </div>

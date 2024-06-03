@@ -3,9 +3,6 @@ import { useTranslation } from 'react-i18next';
 import {
     AuthStatus,
     CARDS,
-    CARD_PRODUCTS,
-    CUSTOMER_CARDS,
-    CARDS_TITLE,
     CardsRouteName,
     RouteName,
     CardsGuestRouteName
@@ -23,7 +20,7 @@ export const Cards = () => {
     return (
         <>
             <Text tag='h2' size='m' weight='medium'>
-                {t(CARDS_TITLE)}
+                {t('Карты')}
             </Text>
             <Menu
                 href={RouteName.MAIN_PAGE + '/' + CARDS}
@@ -38,19 +35,19 @@ export const Cards = () => {
                         ? [
                               {
                                   id: 1,
-                                  name: t(CUSTOMER_CARDS),
+                                  name: t('Мои карты'),
                                   component: <CustomerCards />
                               },
                               {
                                   id: 2,
-                                  name: t(CARD_PRODUCTS),
+                                  name: t('Карточные продукты'),
                                   component: <CardProducts />
                               }
                           ]
                         : [
                               {
                                   id: 1,
-                                  name: t(CARD_PRODUCTS),
+                                  name: t('Карточные продукты'),
                                   component: <CardProducts />
                               }
                           ]

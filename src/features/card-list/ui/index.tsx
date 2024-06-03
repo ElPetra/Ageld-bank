@@ -1,9 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 import {
-    CARDS_NOT_FOUND,
     CREATE,
-    CREATE_CARD,
     paymentSystemFilters,
     RouteName,
     typeCardFilters
@@ -84,8 +82,10 @@ export const CardList = ({ cards, isLoading }: Props) => {
                         </div>
                     ) : (
                         <MessageCard
-                            title={t(CARDS_NOT_FOUND)}
-                            buttonText={t(CREATE_CARD)}
+                            title={t(
+                                'На данный момент \n у Вас нет соответствующих карт'
+                            )}
+                            buttonText={t('Создать карту')}
                             buttonLink={RouteName.CARD_PAGE + '/' + CREATE}
                         />
                     )}

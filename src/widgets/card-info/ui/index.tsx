@@ -1,5 +1,6 @@
+import { useTranslation } from 'react-i18next';
+
 import { Columns, Preloader } from 'src/shared/ui';
-import { CARDS_NOT_FOUND, CREATE_CARD } from 'src/shared/model';
 import { UniversalCardCard, Detail } from 'src/entities/cards';
 import { ProductStatuses } from 'src/entities/product';
 import { MessageCard } from 'src/entities/message';
@@ -25,6 +26,7 @@ interface Props {
 }
 
 export const CardInfo = ({ card, isLoading }: Props) => {
+    const { t } = useTranslation();
     return isLoading ? (
         <Preloader />
     ) : (
@@ -42,7 +44,7 @@ export const CardInfo = ({ card, isLoading }: Props) => {
                     </UniversalCardCard>
                     {'status' in card ? (
                         <>
-                            <Segment title='Действия с картой'>
+                            <Segment title={t('Информация по карте')}>
                                 <Columns number='3'>
                                     {cardInfo.map(el => (
                                         <div key={el.id}>
@@ -51,7 +53,7 @@ export const CardInfo = ({ card, isLoading }: Props) => {
                                     ))}
                                 </Columns>
                             </Segment>
-                            <Segment title='Действия с картой'>
+                            <Segment title={t('Действия с картой')}>
                                 <Columns number='3'>
                                     {cardActions.map(el => (
                                         <div key={el.id}>
@@ -63,33 +65,33 @@ export const CardInfo = ({ card, isLoading }: Props) => {
                         </>
                     ) : (
                         <>
-                            <Segment title='Условия'>
+                            <Segment title={t('Условия')}>
                                 <Columns number='3' rowGap='small'>
                                     {card.conditions.map(el => (
                                         <div key={el.key}>
                                             <Detail
                                                 value={el.value + ' ₽'}
-                                                description={
+                                                description={t(
                                                     conditionsMatcher[
                                                         el.key as keyof typeof conditionsMatcher
                                                     ]
-                                                }
+                                                )}
                                             />
                                         </div>
                                     ))}
                                 </Columns>
                             </Segment>
-                            <Segment title='Лимиты'>
+                            <Segment title={t('Лимиты')}>
                                 <Columns number='3' rowGap='small'>
                                     {card.limits.map(el => (
                                         <div key={el.key}>
                                             <Detail
                                                 value={el.value + ' ₽'}
-                                                description={
+                                                description={t(
                                                     limitsMatcher[
                                                         el.key as keyof typeof limitsMatcher
                                                     ]
-                                                }
+                                                )}
                                             />
                                         </div>
                                     ))}
@@ -99,7 +101,12 @@ export const CardInfo = ({ card, isLoading }: Props) => {
                     )}
                 </>
             ) : (
-                <MessageCard title={CARDS_NOT_FOUND} buttonText={CREATE_CARD} />
+                <MessageCard
+                    title={t(
+                        'На данный момент \n у Вас нет соответствующих карт'
+                    )}
+                    buttonText={t('Создать карту')}
+                />
             )}
         </div>
     );

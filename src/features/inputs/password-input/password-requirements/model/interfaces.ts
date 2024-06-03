@@ -10,8 +10,3 @@ export interface MatchesResult {
     isMatches: boolean;
     message: string;
 }
-
-export interface PasswordMatchArgs {
-    password: string;
-    requirements: Record<string, boolean | string>;
-}

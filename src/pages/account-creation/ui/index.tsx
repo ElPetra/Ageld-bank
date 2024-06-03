@@ -59,11 +59,11 @@ export const AccountCreationPage = () => {
                             <Preloader />
                         ) : (
                             <MessageCard
-                                title={t(
+                                title={
                                     error
-                                        ? 'Не удалось открыть счет'
-                                        : 'Мы открыли вам счет!'
-                                )}
+                                        ? t('Не удалось открыть счет')
+                                        : t('Мы открыли вам счет!')
+                                }
                                 width={275}
                                 icon={
                                     error

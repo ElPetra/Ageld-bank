@@ -6,4 +6,3 @@ export * from './info';
 export * from './account';
 export * from './deposits';
 export * from './language';
-export * from './main';

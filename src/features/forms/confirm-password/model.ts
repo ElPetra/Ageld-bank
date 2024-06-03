@@ -1,5 +1,7 @@
 import * as yup from 'yup';
 
+import i18n from 'src/shared/model/i18n';
+
 export const confirmPasswordSchema = yup.object().shape({
     password1: yup
         .string()
@@ -8,11 +10,11 @@ export const confirmPasswordSchema = yup.object().shape({
                 '^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!\\\\"#$%&\'()*+,\\-.\\/:;<=>?@[\\]^_{|}~])+[A-Za-z0-9!\\\\"#$%&\'()*+,\\-.\\/:;<=>?@[\\]^_{|}~]{6,20}$',
                 'gm'
             ),
-            'Пароль должен быть валидным'
+            i18n.t('Пароль должен быть валидным')
         )
-        .required('Обязательное поле'),
+        .required(i18n.t('Обязательное поле')),
     password2: yup
         .string()
-        .oneOf([yup.ref('password1')], 'Пароли не совпадают')
-        .required('Обязательное поле')
+        .oneOf([yup.ref('password1')], i18n.t('Пароли не совпадают'))
+        .required(i18n.t('Обязательное поле'))
 });

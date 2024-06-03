@@ -1,4 +1,4 @@
-import i18next from 'src/shared/model/i18n';
+import { useTranslation } from 'react-i18next';
 
 import { Card, Icon, Text } from 'src/shared/ui';
 import { formatExpirationDate } from 'src/shared/lib';
@@ -12,6 +12,7 @@ interface Props {
 }
 
 export const SmallCardCard = ({ card }: Props) => {
+    const { t } = useTranslation();
     return (
         <Card color='quadruple' direction='column'>
             <div className='small-card-card__first-row'>
@@ -21,7 +22,7 @@ export const SmallCardCard = ({ card }: Props) => {
                         {100000}
                     </Text>
                     <Text size='xs' color='quadruple'>
-                        {i18next.t(card.name)}
+                        {card.name}
                     </Text>
                 </div>
             </div>
@@ -33,7 +34,7 @@ export const SmallCardCard = ({ card }: Props) => {
                         {card.number.substring(12, 16)}
                     </div>
                     <div className='small-card-card__preview__payment-system'>
-                        {card.paymentSystem}
+                        {t(card.paymentSystem)}
                     </div>
                 </div>
                 <Text size='xs'>{formatExpirationDate(card.expirationAt)}</Text>

@@ -3,12 +3,11 @@ import i18n from 'src/shared/model/i18n';
 import type { Currency, ProductStatus } from 'src/shared/model';
 import type { SvgIconName } from '../ui';
 
-export const ACCOUNTS_TITLE = i18n.t('Счета');
+export const CREDIT_ACCOUNT = i18n.t('Кредитный счет');
+export const DEBIT_ACCOUNT = i18n.t('Дебетовый счет');
+export const DEPOSIT_ACCOUNT = i18n.t('Депозитный счет');
 
 export const ACCOUNT_NUMBER_REPLACEMENT = '**************';
-
-export const CREATE_ACCOUNT = i18n.t('Открыть счет');
-export const GO_TO_ACCOUNT_LIST = i18n.t('Перейти к списку счетов');
 
 export type AccountType = 'credit' | 'debit' | 'deposit';
 
@@ -61,28 +60,28 @@ export interface Account {
 }
 
 export const accountTypes: Record<AccountType, string> = {
-    credit: 'Кредитный счет',
-    debit: 'Дебетовый счет',
-    deposit: 'Депозитный счет'
+    credit: CREDIT_ACCOUNT,
+    debit: DEBIT_ACCOUNT,
+    deposit: DEPOSIT_ACCOUNT
 };
 
 export const accountTypesInfo: TypeVariant[] = [
     {
         value: 'credit',
-        type: 'Кредитный счет',
-        title: 'Больше денег без лишних вложений',
+        type: CREDIT_ACCOUNT,
+        title: i18n.t('Больше денег без лишних вложений'),
         icon: 'beach-lady'
     },
     {
         value: 'debit',
-        type: 'Дебетовый счет',
-        title: 'Откройте счет не выходя из дома',
+        type: DEBIT_ACCOUNT,
+        title: i18n.t('Откройте счет не выходя из дома'),
         icon: 'paper-airplane-lady'
     },
     {
         value: 'deposit',
-        type: 'Депозитный счет',
-        title: 'Сделайте шаг навстречу мечте',
+        type: DEPOSIT_ACCOUNT,
+        title: i18n.t('Сделайте шаг навстречу мечте'),
         icon: 'businessman-icon'
     }
 ];

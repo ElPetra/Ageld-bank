@@ -52,7 +52,7 @@ export const Terms = ({ isLast, setFormStep, extendedDeposit }: Props) => {
                     max={36}
                     inputField='input'
                     sliderField='slider'
-                    unit={t('мес.')}
+                    unit={t('мес')}
                 />
                 <Button disabled={!isValid} type='submit' variant='secondary'>
                     <Text>{t('Пролонгировать депозит')}</Text>

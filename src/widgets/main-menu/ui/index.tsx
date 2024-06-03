@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import { SearchForm } from 'src/features/forms';
 import { AccountCard } from 'src/entities/accounts';
@@ -21,6 +22,7 @@ import { MainMenuCard } from './card';
 import './styles.scss';
 
 export const MainMenu = () => {
+    const { t } = useTranslation();
     const { data: cards, isLoading } = useGetCustomerCardsQuery();
     const { data: accounts, isLoading: isLoadingAccounts } =
         useGetAccountsQuery();
@@ -31,7 +33,7 @@ export const MainMenu = () => {
         <div className='main-menu'>
             <div className='main-menu__first-col'>
                 <MainMenuBlock
-                    title='Мои карты'
+                    title={t('Мои карты')}
                     href={RouteName.MAIN_PAGE + '/' + CARDS}
                 >
                     {cards?.map(el => (
@@ -45,50 +47,53 @@ export const MainMenu = () => {
                         width='max'
                         type='button'
                     >
-                        Новая карта
+                        {t('Новая карта')}
                     </Button>
                 </Link>
             </div>
             <div className='main-menu__second-col'>
                 <SearchForm />
                 <MainMenuBlock
-                    title='Переводы'
+                    title={t('Переводы')}
                     href={RouteName.MAIN_PAGE + '/' + TRANSFERS}
                 >
                     <Columns number='4'>
                         <MainMenuCard
                             icon='translations-icon'
-                            text='Между счетами'
+                            text={t('Между счетами')}
                         />
                         <MainMenuCard
                             icon='smartphone-icon'
-                            text='По номеру телефона'
+                            text={t('По номеру телефона')}
                         />
-                        <MainMenuCard icon='card-icon' text='По номеру карты' />
+                        <MainMenuCard
+                            icon='card-icon'
+                            text={t('По номеру карты')}
+                        />
 
                         <MainMenuCard
                             icon='requisites-icon'
-                            text='По реквизитам'
+                            text={t('По реквизитам')}
                         />
                     </Columns>
                 </MainMenuBlock>
                 <MainMenuBlock
-                    title='Платежи'
+                    title={t('Платежи')}
                     href={RouteName.MAIN_PAGE + '/' + PAYMENTS}
                 >
                     <Columns number='4'>
                         <MainMenuCard
                             icon='smartphone-icon'
-                            text='Мобильная связь'
+                            text={t('Мобильная связь')}
                         />
                         <MainMenuCard
                             icon='wallet-icon'
-                            text='Коммунальные платежи'
+                            text={t('Коммунальные платежи')}
                         />
                     </Columns>
                 </MainMenuBlock>
                 <MainMenuBlock
-                    title='Мои счета'
+                    title={t('Мои счета')}
                     href={RouteName.MAIN_PAGE + '/' + ACCOUNTS}
                 >
                     <Columns number='2'>

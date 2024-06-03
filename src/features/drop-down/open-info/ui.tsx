@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import { Icon, Text } from 'src/shared/ui';
 import { useDropDown } from 'src/shared/lib';
@@ -10,6 +11,7 @@ interface Props {
 }
 
 export const MoreInfoButton = ({ options }: Props) => {
+    const { t } = useTranslation();
     const [open, setOpen] = useDropDown('more__info__container');
 
     return (
@@ -25,7 +27,7 @@ export const MoreInfoButton = ({ options }: Props) => {
                     {options.map((el, index) => (
                         <Link key={index} to={el.to}>
                             <Text weight='medium' color='quadruple'>
-                                {el.text}
+                                {t(el.text)}
                             </Text>
                         </Link>
                     ))}
