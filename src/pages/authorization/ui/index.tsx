@@ -1,9 +1,9 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { Container } from 'src/shared/ui';
 import { EnterPasswordForm, PhoneForm, CodeForm } from 'src/features/forms';
 import { MultiStepForm } from 'src/features/multi-step-form';
-import { useTranslation } from 'react-i18next';
 
 export const AuthorizationPage = () => {
     const [phone, setPhone] = useState<string>('');

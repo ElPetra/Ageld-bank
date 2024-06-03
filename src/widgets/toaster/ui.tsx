@@ -26,26 +26,26 @@ export const CustomToaster = () => {
                 }
             }}
         >
-            {toast => (
-                <ToastBar toast={toast}>
+            {tst => (
+                <ToastBar toast={tst}>
                     {({ icon }) => (
                         <div className='toaster-bar'>
                             <div className='toaster-bar__icon'>
                                 {icon}
                                 <div className='toaster-bar__icon__text'>
                                     <Text size='xxs'>
-                                        {toast.type === 'success'
+                                        {tst.type === 'success'
                                             ? t('Успех')
                                             : t('Ошибка')}
                                     </Text>
                                     <Text size='xxs' weight='light'>
-                                        {toast.type === 'success'
+                                        {tst.type === 'success'
                                             ? t('Операция прошла успешно')
                                             : t('Повторите запрос позже')}
                                     </Text>
                                 </div>
                             </div>
-                            <button onClick={() => toast.dismiss(toast.id)}>
+                            <button onClick={() => toast.dismiss(tst.id)}>
                                 <Icon icon='close-icon' />
                             </button>
                         </div>

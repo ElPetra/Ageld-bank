@@ -47,9 +47,8 @@ export const UniversalCardCard = ({ card, children }: Props) => {
             ? cardRoute + '/' + card.id
             : '';
 
-    const handleCopyCard = () => {
+    const handleCopyCard = () =>
         isCardDetails(card) && navigator.clipboard.writeText(card.number);
-    };
 
     return (
         <Card

@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
-
 import { useEffect } from 'react';
+
+import i18n from 'src/shared/model/i18n';
 
 import { Link, Container, Preloader } from 'src/shared/ui';
 import { useGetInfoQuery } from 'src/shared/api';
@@ -12,6 +13,43 @@ import { ChangePasswordForm } from 'src/features/forms';
 import { MultiStepForm } from 'src/features/multi-step-form';
 
 import { PersonalData } from './personal-data';
+
+import './styles.scss';
+
+const options = [
+    {
+        title: i18n.t('Способ получения уведомлений'),
+        checkboxes: [
+            {
+                label: i18n.t('Email-оповещения')
+            },
+            {
+                label: i18n.t('SMS-оповещения'),
+                defaultIsChecked: true
+            },
+            {
+                label: i18n.t('Push-оповещения')
+            }
+        ]
+    },
+    {
+        title: i18n.t('Категория уведомлений'),
+        checkboxes: [
+            {
+                label: i18n.t(
+                    'Денежные операции (отправить/оплатить/получить)'
+                ),
+                defaultIsChecked: true
+            },
+            {
+                label: i18n.t('Важные обновления')
+            },
+            {
+                label: i18n.t('Новости/акции')
+            }
+        ]
+    }
+];
 
 export const PersonalPage = () => {
     const { signedOut } = useAuth();
@@ -50,16 +88,6 @@ export const PersonalPage = () => {
                                             title: t('Изменить пароль'),
                                             component: <ChangePasswordForm />
                                         }
-                                        // {
-                                        //     id: 2,
-                                        //     title: 'Введите код из смс',
-                                        //     component: (
-                                        //         <SmsCodeForm
-                                        //             variant='password-create'
-                                        //             passwords={passwords}
-                                        //         />
-                                        //     )
-                                        // }
                                     ]}
                                 />
                             )
@@ -68,61 +96,12 @@ export const PersonalPage = () => {
                             id: 3,
                             name: t('Уведомления'),
                             component: (
-                                <>
-                                    <CheckboxGroup
-                                        options={[
-                                            {
-                                                title: t(
-                                                    'Способ получения уведомлений'
-                                                ),
-                                                checkboxes: [
-                                                    {
-                                                        label: t(
-                                                            'Email-оповещения'
-                                                        )
-                                                    },
-                                                    {
-                                                        label: t(
-                                                            'SMS-оповещения'
-                                                        ),
-                                                        defaultIsChecked: true
-                                                    },
-                                                    {
-                                                        label: t(
-                                                            'Push-оповещения'
-                                                        )
-                                                    }
-                                                ]
-                                            },
-                                            {
-                                                title: t(
-                                                    'Категория уведомлений'
-                                                ),
-                                                checkboxes: [
-                                                    {
-                                                        label: t(
-                                                            'Денежные операции (отправить/оплатить/получить)'
-                                                        ),
-                                                        defaultIsChecked: true
-                                                    },
-                                                    {
-                                                        label: t(
-                                                            'Важные обновления'
-                                                        )
-                                                    },
-                                                    {
-                                                        label: t(
-                                                            'Новости/акции'
-                                                        )
-                                                    }
-                                                ]
-                                            }
-                                        ]}
-                                    />
+                                <div className='notifications'>
+                                    <CheckboxGroup options={options} />
                                     <Link variant='underline' to='/'>
                                         {t('История уведомлений')}
                                     </Link>
-                                </>
+                                </div>
                             )
                         }
                     ]}

@@ -1,5 +1,5 @@
-import { REQUISITES } from 'src/shared/model';
 import { MoreInfoButton } from 'src/features/drop-down';
+import { useTranslation } from 'react-i18next';
 
 import {
     ACCOUNT_STATEMENT,
@@ -7,6 +7,7 @@ import {
     BLOCK_ACCOUNT,
     CLOSE_ACCOUNT,
     MAKE_ACCOUNT_MAIN,
+    REQUISITES,
     UNLOCK_ACCOUNT
 } from '../../../model';
 
@@ -27,6 +28,7 @@ const anchors: Record<string, string> = {
 };
 
 const accountStatuses: Record<ProductStatus, string[]> = {
+    //Todo: уточнить, для чего здесь добавлена пролонгация в юнион
     active: [
         REQUISITES,
         ACCOUNT_STATEMENT,
@@ -39,8 +41,9 @@ const accountStatuses: Record<ProductStatus, string[]> = {
 };
 
 export const AccountsMoreInfo = ({ status }: Props) => {
+    const { t } = useTranslation();
     const options = accountStatuses[status].map(el => ({
-        text: el,
+        text: t(el),
         to: anchors[el] || '/'
     }));
     return <MoreInfoButton options={options} />;

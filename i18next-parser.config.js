@@ -6,7 +6,6 @@ export default {
     useKeysAsDefaultValue: true,
     indentation: 2,
     keepRemoved: false,
-    keySeparator: '.',
     lexers: {
         hbs: ['HandlebarsLexer'],
         handlebars: ['HandlebarsLexer'],
@@ -15,7 +14,7 @@ export default {
         html: ['HTMLLexer'],
 
         mjs: ['JavascriptLexer'],
-        js: ['JavascriptLexer'], // if you're writing jsx inside .js files, change this to JsxLexer
+        js: ['JavascriptLexer'],
         ts: ['JavascriptLexer'],
         jsx: ['JsxLexer'],
         tsx: ['JsxLexer'],
@@ -24,15 +23,11 @@ export default {
     },
     lineEnding: 'auto',
     locales: ['en', 'ru'],
-    namespaceSeparator: ':',
+    keySeparator: false,
+    namespaceSeparator: false,
     output: 'src/shared/model/i18n/locales/$LOCALE/$LOCALE.json',
-    pluralSeparator: '_',
-    input: [
-        'src/shared/**/*.{tsx,ts}',
-        'src/widgets/**/*.{tsx,ts}',
-        'src/entities/**/*.{tsx,ts}',
-        'src/features/**/*.{tsx,ts}'
-    ],
+    pluralSeparator: false,
+    input: ['src/**/*.{tsx,ts}'],
     sort: false,
     verbose: false,
     failOnWarnings: false,
