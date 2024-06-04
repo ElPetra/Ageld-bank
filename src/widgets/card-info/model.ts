@@ -43,27 +43,27 @@ export const cardInfo: InfoLink[] = [
     {
         id: 1,
         text: i18n.t('Реквизиты карты'),
-        icon: 'bill-details'
+        icon: 'action-bill-details'
     },
     {
         id: 2,
         text: i18n.t('Тарифы и комиссии'),
-        icon: 'briefcase-icon'
+        icon: 'action-briefcase'
     },
     {
         id: 3,
         text: i18n.t('Лимиты'),
-        icon: 'settings-icon'
+        icon: 'action-settings'
     },
     {
         id: 4,
         text: i18n.t('История операций'),
-        icon: 'bill-details'
+        icon: 'action-bill-details'
     },
     {
         id: 5,
         text: i18n.t('Выписка'),
-        icon: 'bill-details'
+        icon: 'action-bill-details'
     }
 ];
 
@@ -71,21 +71,21 @@ export const cardActions: InfoLink[] = [
     {
         id: 1,
         text: i18n.t('Пополнить'),
-        icon: 'add-to-card'
+        icon: 'action-add-card'
     },
     {
         id: 2,
         text: i18n.t('Изменить пин-код'),
-        icon: 'password-icon'
+        icon: 'action-pin-code'
     },
     {
         id: 3,
         text: i18n.t('Запретить операции'),
-        icon: 'forbid-operations'
+        icon: 'action-close'
     },
     {
         id: 4,
         text: i18n.t('Заблокировать карту'),
-        icon: 'lock-icon'
+        icon: 'action-lock'
     }
 ];

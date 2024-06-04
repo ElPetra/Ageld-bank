@@ -28,11 +28,11 @@ export const FOR_NOT_RUS = 'Для звонков за пределами Рос
 export const constactsMatcher = [FREE_CALL_RUS, FOR_MSK, EMAIL, FOR_NOT_RUS];
 
 export const socials: Array<Socials> = [
-    { text: 'Telegram', icon: 'telegram-bot', href: '/' },
-    { text: 'Вконтакте', icon: 'vkontakte-bot', href: '/' },
-    { text: 'WhatsApp', icon: 'whats-app', href: '/' },
-    { text: 'Viber', icon: 'viber-icon', href: '/' },
-    { text: 'Чат с банком', icon: 'bank-chat', href: '/' }
+    { text: 'Telegram', icon: 'social-network-telegram', href: '/' },
+    { text: 'Вконтакте', icon: 'social-network-vk', href: '/' },
+    { text: 'WhatsApp', icon: 'social-network-whats-app', href: '/' },
+    { text: 'Viber', icon: 'social-network-viber', href: '/' },
+    { text: 'Чат с банком', icon: 'social-network-email', href: '/' }
 ];
 export const workingHoursLabels = [WEEKDAYS, SATURDAY, SUNDAY];
 
