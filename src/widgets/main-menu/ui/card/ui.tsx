@@ -3,8 +3,6 @@ import { RouteName } from 'src/shared/model';
 
 import type { SvgIconName } from 'src/shared/ui';
 
-import './styles.scss';
-
 interface Props {
     icon: SvgIconName;
     href?: string;

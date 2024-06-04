@@ -6,29 +6,32 @@ import actionLockSVG from 'src/shared/ui/icon/assets/icons/actions-lock.svg';
 import actionPinCodeSVG from 'src/shared/ui/icon/assets/icons/actions-pin-code.svg';
 import actionSettingsSVG from 'src/shared/ui/icon/assets/icons/actions-settings.svg';
 
-import eyeOpenSVG from 'src/shared/ui/icon/assets/icons/eye-open.svg';
-import eyeCloseSVG from 'src/shared/ui/icon/assets/icons/eye-close.svg';
 import logoSVG from 'src/shared/ui/icon/assets/icons/logo-icon.svg';
 import logoDarkSVG from 'src/shared/ui/icon/assets/icons/logo-dark.svg';
-import appStoreSVG from 'src/shared/ui/icon/assets/icons/app-store.svg';
-import googlePlaySVG from 'src/shared/ui/icon/assets/icons/google-play.svg';
+import logoTitleSVG from 'src/shared/ui/icon/assets/icons/logo-title.svg';
+
+import eyeOpenSVG from 'src/shared/ui/icon/assets/icons/eye-open.svg';
+import eyeCloseSVG from 'src/shared/ui/icon/assets/icons/eye-close.svg';
 import searchSVG from 'src/shared/ui/icon/assets/icons/search-icon.svg';
 import clearSVG from 'src/shared/ui/icon/assets/icons/clear-icon.svg';
 import copySVG from 'src/shared/ui/icon/assets/icons/copy-icon.svg';
 import closeSVG from 'src/shared/ui/icon/assets/icons/close-icon.svg';
 import warningSVG from 'src/shared/ui/icon/assets/icons/warning-icon.svg';
-import logoTitleSVG from 'src/shared/ui/icon/assets/icons/logo-title.svg';
 import successSVG from 'src/shared/ui/icon/assets/icons/success-icon.svg';
 import errorSVG from 'src/shared/ui/icon/assets/icons/error-icon.svg';
 import arrowSVG from 'src/shared/ui/icon/assets/icons/arrow-icon.svg';
 import menuSVG from 'src/shared/ui/icon/assets/icons/menu-icon.svg';
 import arrow2SVG from 'src/shared/ui/icon/assets/icons/arrow-2.svg';
 import arrow3SVG from 'src/shared/ui/icon/assets/icons/arrow-3.svg';
+
+import moreIconSVG from 'src/shared/ui/icon/assets/icons/more-icon.svg';
+
+import appStoreSVG from 'src/shared/ui/icon/assets/icons/app-store.svg';
+import googlePlaySVG from 'src/shared/ui/icon/assets/icons/google-play.svg';
+
 import successPopupSVG from 'src/shared/ui/icon/assets/icons/success-popup.svg';
 import errorPopupSVG from 'src/shared/ui/icon/assets/icons/error-popup.svg';
-import moreIconSVG from 'src/shared/ui/icon/assets/icons/more-icon.svg';
-import mirSVG from 'src/shared/ui/icon/assets/icons/mir-icon.svg';
-import visaSVG from 'src/shared/ui/icon/assets/icons/visa-icon.svg';
+
 import filterLinesSVG from 'src/shared/ui/icon/assets/icons/filter-lines.svg';
 import buildingSVG from 'src/shared/ui/icon/assets/icons/building-icon.svg';
 import worldSVG from 'src/shared/ui/icon/assets/icons/world.svg';
@@ -48,6 +51,9 @@ import MainMenuRequisitesSVG from 'src/shared/ui/icon/assets/icons/main-menu-req
 import MainMenuSmartphoneSVG from 'src/shared/ui/icon/assets/icons/main-menu-smartphone.svg';
 import MainMenuTranslationsSVG from 'src/shared/ui/icon/assets/icons/main-menu-translations.svg';
 import MainMenuWalletSVG from 'src/shared/ui/icon/assets/icons/main-menu-wallet.svg';
+
+import mirSVG from 'src/shared/ui/icon/assets/icons/payment-system-mir.svg';
+import visaSVG from 'src/shared/ui/icon/assets/icons/payment-system-visa.svg';
 
 import socialNetworkEmailSVG from 'src/shared/ui/icon/assets/icons/social-network-email.svg';
 import socialNetworkTelegramSVG from 'src/shared/ui/icon/assets/icons/social-network-telegram.svg';
@@ -74,32 +80,33 @@ export const SVG = {
     'action-pin-code': actionPinCodeSVG,
     'action-settings': actionSettingsSVG,
 
-    'eye-open': eyeOpenSVG,
-    'eye-close': eyeCloseSVG,
     'logo-icon': logoSVG,
     'logo-dark': logoDarkSVG,
-    'app-store': appStoreSVG,
-    'google-play': googlePlaySVG,
+    'logo-title': logoTitleSVG,
+
+    'eye-open': eyeOpenSVG,
+    'eye-close': eyeCloseSVG,
     'search-icon': searchSVG,
     'clear-icon': clearSVG,
     'copy-icon': copySVG,
     'close-icon': closeSVG,
     'warning-icon': warningSVG,
-    'logo-title': logoTitleSVG,
     'success-icon': successSVG,
     'error-icon': errorSVG,
     'arrow-icon': arrowSVG,
     'menu-icon': menuSVG,
     'arrow-2': arrow2SVG,
     'arrow-3': arrow3SVG,
-    'success-popup': successPopupSVG,
-    'error-popup': errorPopupSVG,
     'more-icon': moreIconSVG,
-    'mir-icon': mirSVG,
-    'visa-icon': visaSVG,
     'filter-lines': filterLinesSVG,
     'building-icon': buildingSVG,
     world: worldSVG,
+
+    'app-store': appStoreSVG,
+    'google-play': googlePlaySVG,
+
+    'success-popup': successPopupSVG,
+    'error-popup': errorPopupSVG,
 
     eur: eurSVG,
     rub: rubSVG,
@@ -116,6 +123,9 @@ export const SVG = {
     'main-menu-smartphone': MainMenuSmartphoneSVG,
     'main-menu-translations': MainMenuTranslationsSVG,
     'main-menu-wallet': MainMenuWalletSVG,
+
+    mir: mirSVG,
+    visa: visaSVG,
 
     'social-network-email': socialNetworkEmailSVG,
     'social-network-telegram': socialNetworkTelegramSVG,

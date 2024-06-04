@@ -59,20 +59,20 @@ export const MainMenu = () => {
                 >
                     <Columns number='4'>
                         <MainMenuCard
-                            icon='translations-icon'
+                            icon='main-menu-translations'
                             text={t('Между счетами')}
                         />
                         <MainMenuCard
-                            icon='smartphone-icon'
+                            icon='main-menu-smartphone'
                             text={t('По номеру телефона')}
                         />
                         <MainMenuCard
-                            icon='card-icon'
+                            icon='main-menu-smartphone'
                             text={t('По номеру карты')}
                         />
 
                         <MainMenuCard
-                            icon='requisites-icon'
+                            icon='main-menu-requisites'
                             text={t('По реквизитам')}
                         />
                     </Columns>
@@ -83,11 +83,11 @@ export const MainMenu = () => {
                 >
                     <Columns number='4'>
                         <MainMenuCard
-                            icon='smartphone-icon'
+                            icon='main-menu-smartphone'
                             text={t('Мобильная связь')}
                         />
                         <MainMenuCard
-                            icon='wallet-icon'
+                            icon='main-menu-wallet'
                             text={t('Коммунальные платежи')}
                         />
                     </Columns>

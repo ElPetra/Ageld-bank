@@ -79,7 +79,8 @@ export const PhoneForm = ({
                             id='service_rules'
                             onClick={() => handleLinkClick(1)}
                             to={
-                                RouteName.MAIN_PAGE + 'src/assets/terms-RBS.pdf'
+                                RouteName.MAIN_PAGE +
+                                '/src/assets/terms-RBS.pdf'
                             }
                             target='_blank'
                             rel='noreferrer'
@@ -93,7 +94,8 @@ export const PhoneForm = ({
                         <Link
                             id='privacy_policy'
                             to={
-                                RouteName.MAIN_PAGE + 'src/assets/terms-RBS.pdf'
+                                RouteName.MAIN_PAGE +
+                                '/src/assets/terms-RBS.pdf'
                             }
                             onClick={() => handleLinkClick(2)}
                             target='_blank'

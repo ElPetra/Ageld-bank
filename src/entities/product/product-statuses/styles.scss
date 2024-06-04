@@ -26,13 +26,13 @@
             &-main {
                 background-color: var(--bg-action);
             }
-            &-active, &-capitalization{
+            &-active, &-capitalization {
                 background-color: var(--bg-success);
             }
-            &-closed{
+            &-closed {
                 background-color: var(--bg-warning);
             }
-            &-blocked{
+            &-blocked {
                 background-color: var(--bg-error);
             }
             &-autoprolongation {
