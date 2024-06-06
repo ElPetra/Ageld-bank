@@ -13,7 +13,7 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
     variant?: 'primary' | 'secondary' | 'link';
     width?: 'auto' | 'max';
     status?: 'active' | undefined;
-    cursorNotAllowed?: 'not-allowed';
+    cursorNotAllowed?: boolean;
     children: ReactNode;
 }
 
