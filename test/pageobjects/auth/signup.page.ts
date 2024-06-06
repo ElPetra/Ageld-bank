@@ -39,10 +39,10 @@ class SignUpPage extends AuthPage {
         return $(`div[data-testid="${requirments[4]}"]`)
     }
     public checkIsComplied(component:ChainablePromiseElement){
-        return component.$('img[data-testid="success-icon"]')
+        return component.$('img[data-testid="success"]')
     }
     public checkIsViolated(component:ChainablePromiseElement){
-        return component.$('img[data-testid="error-icon"]')
+        return component.$('img[data-testid="error"]')
     }
     public get passwordInput(){
         return $('input[name="password1"]')

@@ -37,7 +37,7 @@ export function BankObjectCard({
             padding='small-medium'
         >
             <div className='bank-object__name'>
-                <Icon icon='building-icon' />
+                <Icon icon='building' />
                 <Text weight='bold' size='m'>
                     {objectTypeName[bankObject.objectTypeName] +
                         ' №' +
@@ -67,7 +67,7 @@ export function BankObjectCard({
                 }}
             >
                 <div>Показать полную информацию</div>
-                <Icon icon='arrow-3' />
+                <Icon icon='arrow-right-accent' />
             </button>
         </Card>
     );

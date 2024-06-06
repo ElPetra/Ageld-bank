@@ -24,7 +24,7 @@ export const MapFilter = () => {
                     borderRadius='extra-large'
                     padding='small-medium'
                 >
-                    <Icon icon='filter-lines' />
+                    <Icon icon='filter' />
                     <Text weight='bold'>{t('Фильтр')}</Text>
                 </Card>
             </button>
@@ -38,27 +38,27 @@ export const MapFilter = () => {
                     >
                         <div className='map__filter__modal__button'>
                             <div>
-                                <Icon icon='filter-lines' />
+                                <Icon icon='filter' />
                                 <Text weight='bold'>{t('Фильтр')}</Text>
                             </div>
                             <button
                                 className='map__filter__modal__button__close'
                                 onClick={() => setOpen(false)}
                             >
-                                <Icon icon='close-icon' />
+                                <Icon icon='close' />
                             </button>
                         </div>
                         <CheckboxGroup options={options} variant='secondary' />
                         <div className='map__filter__buttons'>
                             <Button
-                                size='small'
+                                width='max'
                                 variant='secondary'
                                 onClick={() => setOpen(false)}
                             >
                                 {t('Применить фильтр')}
                             </Button>
                             <Button
-                                size='small'
+                                width='max'
                                 onClick={() => {
                                     setOpen(false);
                                     setFilters({});

@@ -73,7 +73,7 @@ export const PhoneInput = ({ clear, isError, error, ...props }: Props) => {
                     setValue('');
                 }}
             >
-                <Icon icon='clear-icon' />
+                <Icon icon='clear' />
             </button>
         </Input>
     );

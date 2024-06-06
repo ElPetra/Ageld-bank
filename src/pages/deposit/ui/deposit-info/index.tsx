@@ -61,7 +61,7 @@ export const DepositInfo = ({ deposit }: Props) => {
                             <Text color='quadruple'>{deposit.id}</Text>
                         </div>
                         <button onClick={handleCopyDepositId}>
-                            <Icon icon='copy-icon' />
+                            <Icon icon='copy' />
                         </button>
                     </div>
                     <div className='deposit-info__first-row__number'>
@@ -74,7 +74,7 @@ export const DepositInfo = ({ deposit }: Props) => {
                             </Text>
                         </div>
                         <button onClick={handleCopyDepositAccount}>
-                            <Icon icon='copy-icon' />
+                            <Icon icon='copy' />
                         </button>
                     </div>
                 </div>

@@ -160,7 +160,7 @@ export const UniversalCardCard = ({ card, children }: Props) => {
                                         description={t('Номер карты')}
                                     />
                                     <button onClick={handleCopyCard}>
-                                        <Icon icon='copy-icon' />
+                                        <Icon icon='copy' />
                                     </button>
                                 </div>
                                 <Detail

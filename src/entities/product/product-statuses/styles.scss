@@ -8,16 +8,23 @@
             flex-wrap: wrap;
         }
         height: 32px;
+
+        .product-statuses__status {
+            padding: 4px 12px;
+        }
     }
 
     &__column {
         height: 56px;
         flex-direction: column;
         align-items: flex-end;
+
+        .product-statuses__status {
+            padding: 8px 12px;
+        }
     }
 
     &__status {
-        padding: 4px 12px;
         border-radius: var(--large-border-radius);
         width: max-content;
         display: flex;

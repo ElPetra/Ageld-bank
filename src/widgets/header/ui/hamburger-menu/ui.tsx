@@ -21,7 +21,7 @@ export function HamburgerMenu({ visible, setVisible }: Props) {
                         <Icon icon='logo-dark' width={40} />
                     </Link>
                     <button onClick={() => setVisible(false)}>
-                        <Icon icon='close-icon' />
+                        <Icon icon='close' />
                     </button>
                 </div>
                 <div className='hamburger-menu__content'>

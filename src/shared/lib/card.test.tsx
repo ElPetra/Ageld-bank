@@ -1,11 +1,11 @@
 import { getIconName } from './card';
 
 describe('getIconName', () => {
-    it('returns "visa-icon" for "VISA"', () => {
+    it('returns "visa" for "VISA"', () => {
         expect(getIconName('VISA')).toBe('visa');
     });
 
-    it('returns "mir-icon" for "МИР"', () => {
+    it('returns "mir" for "МИР"', () => {
         expect(getIconName('МИР')).toBe('mir');
     });
 });

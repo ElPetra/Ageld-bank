@@ -23,7 +23,7 @@ export const MainMenuBlock = ({
                     <Text size='m' weight='medium'>
                         {title}
                     </Text>
-                    <Icon icon='arrow-2' />
+                    <Icon icon='arrow-right' />
                 </div>
             </Link>
             {children}

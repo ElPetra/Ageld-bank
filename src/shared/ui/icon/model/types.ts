@@ -6,35 +6,33 @@ import actionLockSVG from 'src/shared/ui/icon/assets/icons/actions-lock.svg';
 import actionPinCodeSVG from 'src/shared/ui/icon/assets/icons/actions-pin-code.svg';
 import actionSettingsSVG from 'src/shared/ui/icon/assets/icons/actions-settings.svg';
 
-import logoSVG from 'src/shared/ui/icon/assets/icons/logo-icon.svg';
+import logoSVG from 'src/shared/ui/icon/assets/icons/logo.svg';
 import logoDarkSVG from 'src/shared/ui/icon/assets/icons/logo-dark.svg';
 import logoTitleSVG from 'src/shared/ui/icon/assets/icons/logo-title.svg';
 
 import eyeOpenSVG from 'src/shared/ui/icon/assets/icons/eye-open.svg';
 import eyeCloseSVG from 'src/shared/ui/icon/assets/icons/eye-close.svg';
-import searchSVG from 'src/shared/ui/icon/assets/icons/search-icon.svg';
-import clearSVG from 'src/shared/ui/icon/assets/icons/clear-icon.svg';
-import copySVG from 'src/shared/ui/icon/assets/icons/copy-icon.svg';
-import closeSVG from 'src/shared/ui/icon/assets/icons/close-icon.svg';
-import warningSVG from 'src/shared/ui/icon/assets/icons/warning-icon.svg';
-import successSVG from 'src/shared/ui/icon/assets/icons/success-icon.svg';
-import errorSVG from 'src/shared/ui/icon/assets/icons/error-icon.svg';
-import arrowSVG from 'src/shared/ui/icon/assets/icons/arrow-icon.svg';
-import menuSVG from 'src/shared/ui/icon/assets/icons/menu-icon.svg';
-import arrow2SVG from 'src/shared/ui/icon/assets/icons/arrow-2.svg';
-import arrow3SVG from 'src/shared/ui/icon/assets/icons/arrow-3.svg';
+import searchSVG from 'src/shared/ui/icon/assets/icons/search.svg';
+import clearSVG from 'src/shared/ui/icon/assets/icons/clear.svg';
+import copySVG from 'src/shared/ui/icon/assets/icons/copy.svg';
 
-import moreIconSVG from 'src/shared/ui/icon/assets/icons/more-icon.svg';
+import arrowLeftAccentSVG from 'src/shared/ui/icon/assets/icons/arrow-left-accent.svg';
+import arrowRightSVG from 'src/shared/ui/icon/assets/icons/arrow-right.svg';
+import arrowRightAccentSVG from 'src/shared/ui/icon/assets/icons/arrow-right-accent.svg';
 
-import appStoreSVG from 'src/shared/ui/icon/assets/icons/app-store.svg';
-import googlePlaySVG from 'src/shared/ui/icon/assets/icons/google-play.svg';
+import menuSVG from 'src/shared/ui/icon/assets/icons/menu.svg';
+
+import closeSVG from 'src/shared/ui/icon/assets/icons/close.svg';
+import filterSVG from 'src/shared/ui/icon/assets/icons/filter.svg';
+import moreSVG from 'src/shared/ui/icon/assets/icons/more.svg';
+import buildingSVG from 'src/shared/ui/icon/assets/icons/building.svg';
+
+import successSVG from 'src/shared/ui/icon/assets/icons/success.svg';
+import errorSVG from 'src/shared/ui/icon/assets/icons/error.svg';
+import warningSVG from 'src/shared/ui/icon/assets/icons/warning.svg';
 
 import successPopupSVG from 'src/shared/ui/icon/assets/icons/success-popup.svg';
 import errorPopupSVG from 'src/shared/ui/icon/assets/icons/error-popup.svg';
-
-import filterLinesSVG from 'src/shared/ui/icon/assets/icons/filter-lines.svg';
-import buildingSVG from 'src/shared/ui/icon/assets/icons/building-icon.svg';
-import worldSVG from 'src/shared/ui/icon/assets/icons/world.svg';
 
 import usdSVG from 'src/shared/ui/icon/assets/icons/currency-usd.svg';
 import rubSVG from 'src/shared/ui/icon/assets/icons/currency-rub.svg';
@@ -51,6 +49,7 @@ import MainMenuRequisitesSVG from 'src/shared/ui/icon/assets/icons/main-menu-req
 import MainMenuSmartphoneSVG from 'src/shared/ui/icon/assets/icons/main-menu-smartphone.svg';
 import MainMenuTranslationsSVG from 'src/shared/ui/icon/assets/icons/main-menu-translations.svg';
 import MainMenuWalletSVG from 'src/shared/ui/icon/assets/icons/main-menu-wallet.svg';
+import worldSVG from 'src/shared/ui/icon/assets/icons/world.svg';
 
 import mirSVG from 'src/shared/ui/icon/assets/icons/payment-system-mir.svg';
 import visaSVG from 'src/shared/ui/icon/assets/icons/payment-system-visa.svg';
@@ -60,6 +59,9 @@ import socialNetworkTelegramSVG from 'src/shared/ui/icon/assets/icons/social-net
 import socialNetworkViberSVG from 'src/shared/ui/icon/assets/icons/social-network-viber.svg';
 import socialNetworkVkSVG from 'src/shared/ui/icon/assets/icons/social-network-vkontakte.svg';
 import socialNetworkWhatsAppSVG from 'src/shared/ui/icon/assets/icons/social-network-whats-app.svg';
+
+import appStoreSVG from 'src/shared/ui/icon/assets/icons/app-store.svg';
+import googlePlaySVG from 'src/shared/ui/icon/assets/icons/google-play.svg';
 
 import beachLadySVG from 'src/shared/ui/icon/assets/icons/illustration-beach-lady.svg';
 import businessmanIconSVG from 'src/shared/ui/icon/assets/icons/illustration-businessman.svg';
@@ -80,30 +82,32 @@ export const SVG = {
     'action-pin-code': actionPinCodeSVG,
     'action-settings': actionSettingsSVG,
 
-    'logo-icon': logoSVG,
+    logo: logoSVG,
     'logo-dark': logoDarkSVG,
     'logo-title': logoTitleSVG,
 
     'eye-open': eyeOpenSVG,
     'eye-close': eyeCloseSVG,
-    'search-icon': searchSVG,
-    'clear-icon': clearSVG,
-    'copy-icon': copySVG,
-    'close-icon': closeSVG,
-    'warning-icon': warningSVG,
-    'success-icon': successSVG,
-    'error-icon': errorSVG,
-    'arrow-icon': arrowSVG,
-    'menu-icon': menuSVG,
-    'arrow-2': arrow2SVG,
-    'arrow-3': arrow3SVG,
-    'more-icon': moreIconSVG,
-    'filter-lines': filterLinesSVG,
-    'building-icon': buildingSVG,
+    search: searchSVG,
+    clear: clearSVG,
+    copy: copySVG,
+
+    close: closeSVG,
+    filter: filterSVG,
+    more: moreSVG,
+    building: buildingSVG,
+
+    'arrow-left-accent': arrowLeftAccentSVG,
+    'arrow-right': arrowRightSVG,
+    'arrow-right-accent': arrowRightAccentSVG,
+
+    menu: menuSVG,
+
     world: worldSVG,
 
-    'app-store': appStoreSVG,
-    'google-play': googlePlaySVG,
+    success: successSVG,
+    error: errorSVG,
+    warning: warningSVG,
 
     'success-popup': successPopupSVG,
     'error-popup': errorPopupSVG,
@@ -132,6 +136,9 @@ export const SVG = {
     'social-network-viber': socialNetworkViberSVG,
     'social-network-vk': socialNetworkVkSVG,
     'social-network-whats-app': socialNetworkWhatsAppSVG,
+
+    'app-store': appStoreSVG,
+    'google-play': googlePlaySVG,
 
     'beach-lady': beachLadySVG,
     'businessman-icon': businessmanIconSVG,
