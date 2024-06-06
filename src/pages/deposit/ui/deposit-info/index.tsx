@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Icon, Text, Button, Card } from 'src/shared/ui';
@@ -15,7 +14,6 @@ interface Props {
 }
 
 export const DepositInfo = ({ deposit }: Props) => {
-    const [prolongation, setProlongation] = useState(false);
     const { t } = useTranslation();
 
     const handleCopyDepositId = () => {
@@ -43,11 +41,7 @@ export const DepositInfo = ({ deposit }: Props) => {
                         <ProductStatuses isMaster={false} status={'active'} />
                         <ProductStatuses
                             isMaster={false}
-                            status={
-                                prolongation
-                                    ? 'autoprolongation'
-                                    : 'autoprolongationoff'
-                            }
+                            status={'autoprolongation'}
                         />
                     </div>
                     <div>

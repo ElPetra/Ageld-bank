@@ -14,18 +14,11 @@ export interface Props extends ImgHTMLAttributes<HTMLImageElement> {
 }
 
 export const Icon = memo(
-    ({
-        icon,
-        width,
-        height,
-        widthAndHeight,
-        className,
-        shouldExistTestId
-    }: Props) => (
+    ({ icon, widthAndHeight, className, shouldExistTestId }: Props) => (
         <img
             src={SVG[icon]}
-            width={widthAndHeight || width || 24}
-            height={widthAndHeight || height || 24}
+            width={widthAndHeight || 24}
+            height={widthAndHeight || 24}
             alt=''
             data-testid={shouldExistTestId ? icon : undefined}
             className={className}
