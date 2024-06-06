@@ -8,7 +8,7 @@ import type { FieldValues } from 'react-hook-form';
 
 interface Props {
     label?: string;
-    size?: 'extra-small' | 'small' | 'medium' | 'large';
+    size?: 'small' | 'medium' | 'large';
 }
 
 export const SearchForm = ({ label, size = 'large' }: Props) => {

@@ -9,7 +9,7 @@ import './styles.scss';
 
 interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
     placeholder?: string;
-    size?: 'extra-small' | 'small' | 'medium' | 'large';
+    size?: 'small' | 'medium' | 'large';
     width?: 'auto' | 'max';
     isError?: boolean;
     error?: string;
@@ -47,13 +47,13 @@ export const Input = memo(
             disabled: disabled
         });
         const inputClass = cn({
-            'with-label': size != 'extra-small' && size != 'medium' && value,
+            'with-label': size != 'medium' && value,
             error: error
         });
         return (
             <div className={fieldClass}>
                 <div className={inputContainerClass} ref={reference}>
-                    {size != 'extra-small' && size != 'medium' && value && (
+                    {size != 'medium' && value && (
                         <div className='label'>{placeholder}</div>
                     )}
                     {register ? (

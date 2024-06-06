@@ -51,7 +51,6 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
         <Form onSubmit={handleSubmit(onSubmit)}>
             <div className='change-password'>
                 <PasswordInput
-                    size='medium'
                     register={register}
                     label='oldPassword'
                     variant='confirm'
@@ -59,7 +58,6 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
                     error={error}
                 />
                 <PasswordInput
-                    size='medium'
                     register={register}
                     label='newPassword'
                     variant='create'
@@ -68,7 +66,6 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
                     error={t(getFieldErrorMessage(errors.newPassword?.message))}
                 />
                 <PasswordInput
-                    size='medium'
                     register={register}
                     label='newPassword2'
                     placeholder={t('Подтвердите новый пароль')}

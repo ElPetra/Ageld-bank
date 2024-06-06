@@ -64,7 +64,7 @@ export const ATMsBranchesPage = () => {
                                     <div className='map__search'>
                                         <SearchForm
                                             label='Поиск по адресу или названию'
-                                            size='extra-small'
+                                            size='medium'
                                         />
                                     </div>
                                 </Card>
