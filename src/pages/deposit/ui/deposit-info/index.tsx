@@ -41,7 +41,7 @@ export const DepositInfo = ({ deposit }: Props) => {
                         <ProductStatuses isMaster={false} status={'active'} />
                         <ProductStatuses
                             isMaster={false}
-                            status={'autoprolongation'}
+                            status='autoprolongation'
                         />
                     </div>
                     <div>
