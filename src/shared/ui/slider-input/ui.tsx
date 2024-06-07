@@ -31,7 +31,7 @@ export const SliderInput = ({
 }: Props) => {
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
-        setValue(inputField, value);
+        setValue(inputField, value, { shouldValidate: true });
         setValue(sliderField, value);
     };
 

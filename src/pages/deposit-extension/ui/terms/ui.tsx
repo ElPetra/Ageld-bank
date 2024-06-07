@@ -54,7 +54,12 @@ export const Terms = ({ isLast, setFormStep, extendedDeposit }: Props) => {
                     sliderField='slider'
                     unit={t('мес')}
                 />
-                <Button disabled={!isValid} type='submit' variant='secondary'>
+                <Button
+                    cursorNotAllowed={!isValid}
+                    disabled={!isValid}
+                    type='submit'
+                    variant='secondary'
+                >
                     <Text>{t('Пролонгировать депозит')}</Text>
                 </Button>
             </Card>
