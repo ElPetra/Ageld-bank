@@ -24,7 +24,7 @@ export const FormCard = ({ title, variant = 'none', children }: Props) => {
             {variant !== 'none' && (
                 <div className='form-card__link'>
                     <Text align='center'>
-                        {variant === 'login' && t('У вас уже есть аккаунт?')}
+                        {variant === 'login' && t('У вас нет аккаунта?')}
                         {variant === 'registration' &&
                             t('У вас уже есть аккаунт?')}
                         &nbsp;

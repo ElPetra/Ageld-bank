@@ -67,7 +67,7 @@ export const MainMenu = () => {
                             text={t('По номеру телефона')}
                         />
                         <MainMenuCard
-                            icon='main-menu-smartphone'
+                            icon='main-menu-card'
                             text={t('По номеру карты')}
                         />
 

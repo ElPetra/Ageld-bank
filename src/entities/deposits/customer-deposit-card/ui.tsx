@@ -32,7 +32,7 @@ export const CustomerDepositCard = ({ deposit }: Props) => {
                         <Text weight='bold' size='l'>
                             {deposit.interestRate}
                         </Text>
-                        <Text weight='light' color='quadruple' size='xs'>
+                        <Text color='quadruple' size='xs'>
                             {t('Процентная ставка')}
                         </Text>
                     </div>
@@ -40,7 +40,7 @@ export const CustomerDepositCard = ({ deposit }: Props) => {
                         <Text weight='bold' size='l'>
                             {`${deposit.balance} ${deposit.currency.toUpperCase()}`}
                         </Text>
-                        <Text weight='light' color='quadruple' size='xs'>
+                        <Text color='quadruple' size='xs'>
                             {t('Сумма на депозитном счете')}
                         </Text>
                     </div>
@@ -48,7 +48,7 @@ export const CustomerDepositCard = ({ deposit }: Props) => {
                         <Text weight='bold' size='l'>
                             {deposit.closed}
                         </Text>
-                        <Text weight='light' color='quadruple' size='xs'>
+                        <Text color='quadruple' size='xs'>
                             {t('Окончание срока вклада')}
                         </Text>
                     </div>
