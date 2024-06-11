@@ -63,7 +63,6 @@ export const CurrencyVariant = ({
     return (
         <Form onSubmit={handleSubmit(onSubmit)}>
             <Card
-                color='quadruple'
                 gap='medium'
                 padding='large'
                 borderRadius='extra-large'

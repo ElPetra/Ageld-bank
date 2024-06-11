@@ -15,12 +15,7 @@ export const InfoLinkCard = ({ info }: Props) => {
     const { t } = useTranslation();
     return (
         <Link to='/'>
-            <Card
-                color='quadruple'
-                padding='medium'
-                borderRadius='extra-large'
-                align='center'
-            >
+            <Card padding='medium' borderRadius='extra-large' align='center'>
                 <div className='info-link-card__icon'>
                     <Icon icon={info.icon} />
                 </div>

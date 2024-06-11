@@ -12,7 +12,7 @@ export const LogoPhone = () => {
         <div className='logo-phone'>
             <div className='footer__contacts'>
                 <Link to={RouteName.MAIN_PAGE}>
-                    <Icon icon='logo' width={59} height={67} />
+                    <Icon icon='logo-light-text' width={59} height={67} />
                 </Link>
                 <div>
                     <Text size='l'>

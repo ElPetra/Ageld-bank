@@ -24,9 +24,6 @@ export const CheckboxGroup = ({ options, variant = 'primary' }: Props) => {
                         weight='bold'
                         size={variant === 'secondary' ? 's' : 'm'}
                         tag='span'
-                        color={
-                            variant === 'secondary' ? 'quadruple' : 'inherit'
-                        }
                     >
                         {t(title)}
                     </Text>

@@ -19,6 +19,7 @@ export const MapFilter = () => {
                 onClick={() => setOpen(true)}
             >
                 <Card
+                    color='secondary'
                     gap='extra-small'
                     align='center'
                     borderRadius='extra-large'
@@ -31,6 +32,7 @@ export const MapFilter = () => {
             {open && (
                 <div className='map__filter__modal'>
                     <Card
+                        color='secondary'
                         gap='medium'
                         direction='column'
                         borderRadius='extra-large'

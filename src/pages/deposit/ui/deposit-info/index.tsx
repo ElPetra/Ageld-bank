@@ -26,7 +26,6 @@ export const DepositInfo = ({ deposit }: Props) => {
 
     return (
         <Card
-            color='quadruple'
             direction='column'
             gap='large'
             padding='large'
@@ -35,7 +34,7 @@ export const DepositInfo = ({ deposit }: Props) => {
             <div className='deposit-info__first-row'>
                 <div className='deposit-info__first-row__main'>
                     <div className='deposit-info__first-row__main__info'>
-                        <Text color='light' size='l' weight='regular'>
+                        <Text size='l' weight='bold'>
                             {deposit.name}
                         </Text>
                         <ProductStatuses isMaster={false} status={'active'} />
@@ -51,8 +50,8 @@ export const DepositInfo = ({ deposit }: Props) => {
                 <div className='deposit-info__first-row__numbers'>
                     <div className='deposit-info__first-row__number'>
                         <div>
-                            <Text color='quadruple'>{t('№ счета : ')}</Text>
-                            <Text color='quadruple'>{deposit.id}</Text>
+                            <Text color='tertiary'>{t('№ счета : ')}</Text>
+                            <Text color='tertiary'>{deposit.id}</Text>
                         </div>
                         <button onClick={handleCopyDepositId}>
                             <Icon icon='copy' />
@@ -60,10 +59,10 @@ export const DepositInfo = ({ deposit }: Props) => {
                     </div>
                     <div className='deposit-info__first-row__number'>
                         <div>
-                            <Text color='quadruple'>
+                            <Text color='tertiary'>
                                 {t('№ счета с процентами : ')}
                             </Text>
-                            <Text color='quadruple'>
+                            <Text color='tertiary'>
                                 {deposit.subAccountNum}
                             </Text>
                         </div>
@@ -76,7 +75,7 @@ export const DepositInfo = ({ deposit }: Props) => {
             <div className='deposit-info__second-row'>
                 <div className='deposit-info__second-row__info'>
                     <div>
-                        <Text color='quadruple' size='xs'>
+                        <Text color='tertiary' size='xs'>
                             {t('Схема депозита')}
                         </Text>
                         <Text weight='medium' size='m'>
@@ -84,7 +83,7 @@ export const DepositInfo = ({ deposit }: Props) => {
                         </Text>
                     </div>
                     <div>
-                        <Text color='quadruple' size='xs'>
+                        <Text color='tertiary' size='xs'>
                             {t('Длительность существования')}
                         </Text>
                         <Text weight='medium' size='m'>
@@ -92,7 +91,7 @@ export const DepositInfo = ({ deposit }: Props) => {
                         </Text>
                     </div>
                     <div>
-                        <Text color='quadruple' size='xs'>
+                        <Text color='tertiary' size='xs'>
                             {t('Процентная ставка')}
                         </Text>
                         <Text weight='medium' size='m'>
@@ -100,7 +99,7 @@ export const DepositInfo = ({ deposit }: Props) => {
                         </Text>
                     </div>
                     <div>
-                        <Text color='quadruple' size='xs'>
+                        <Text color='tertiary' size='xs'>
                             {t('Cтавка при досрочном отзыве')}
                         </Text>
                         <Text weight='medium' size='m'>
@@ -108,7 +107,7 @@ export const DepositInfo = ({ deposit }: Props) => {
                         </Text>
                     </div>
                     <div>
-                        <Text color='quadruple' size='xs'>
+                        <Text color='tertiary' size='xs'>
                             {t('Отзывной')}
                         </Text>
                         <Text weight='medium' size='m'>
@@ -119,7 +118,7 @@ export const DepositInfo = ({ deposit }: Props) => {
                 <div className='deposit-info__second-row__second-column'>
                     <div className='deposit-info__second-row__second-column__balances'>
                         <div>
-                            <Text size='xs' color='quadruple'>
+                            <Text size='xs' color='tertiary'>
                                 {t('Сумма на депозитном счете')}
                             </Text>
                             <Text size='l' weight='bold'>
@@ -127,7 +126,7 @@ export const DepositInfo = ({ deposit }: Props) => {
                             </Text>
                         </div>
                         <div>
-                            <Text size='xs' color='quadruple'>
+                            <Text size='xs' color='tertiary'>
                                 {t('Изначальная сумма депозита')}
                             </Text>
                             <Text size='l' weight='bold'>

@@ -25,6 +25,7 @@ export function BankObjectCard({
 }: Props) {
     return (
         <Card
+            color='secondary'
             key={bankObject.objectNumber}
             status={
                 bankObject.latitude === current?.latitude &&
@@ -53,7 +54,7 @@ export function BankObjectCard({
                     color={
                         getStatus(bankObject.schedule).includes('Открыто')
                             ? 'action'
-                            : 'quadruple'
+                            : 'tertiary'
                     }
                 >
                     {getStatus(bankObject.schedule)}

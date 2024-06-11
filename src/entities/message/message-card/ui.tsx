@@ -8,7 +8,7 @@ import './styles.scss';
 interface Props {
     title: string;
     text?: string;
-    color?: 'primary' | 'quadruple';
+    color?: 'primary' | 'secondary';
     gap?: 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large';
     padding?: 'small' | 'small-medium' | 'medium' | 'large' | 'extra-large';
     width?: number;
@@ -22,7 +22,7 @@ interface Props {
 export const MessageCard = ({
     title,
     text,
-    color = 'quadruple',
+    color = 'primary',
     gap = 'large',
     padding = 'extra-large',
     width,

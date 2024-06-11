@@ -5,7 +5,7 @@ import type { ReactNode } from 'react';
 import './styles.scss';
 
 interface Props {
-    variant?: 'primary' | 'secondary' | 'tertiary' | 'none';
+    variant?: 'primary' | 'secondary';
     children?: ReactNode;
 }
 

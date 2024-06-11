@@ -40,7 +40,7 @@ export function BankObjectInfoMenu({ visible, setVisible, current }: Props) {
                                         current.objectNumber}
                                 </Text>
                             </div>
-                            <Text color='quadruple'>{getAddress(current)}</Text>
+                            <Text color='tertiary'>{getAddress(current)}</Text>
                         </div>
                         <div className='bank-object-info__schedule'>
                             {getSchedule(current.schedule)}
@@ -52,7 +52,7 @@ export function BankObjectInfoMenu({ visible, setVisible, current }: Props) {
                                         'Открыто'
                                     )
                                         ? 'action'
-                                        : 'quadruple'
+                                        : 'tertiary'
                                 }
                             >
                                 {getStatus(current.schedule)}

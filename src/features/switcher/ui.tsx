@@ -20,7 +20,12 @@ export const Switcher = () => {
 
             {open && (
                 <div className='switcher__modal'>
-                    <Card gap='extra-small' direction='column' padding='small'>
+                    <Card
+                        color='secondary'
+                        gap='extra-small'
+                        direction='column'
+                        padding='small'
+                    >
                         <button
                             onClick={() => {
                                 i18n.changeLanguage(

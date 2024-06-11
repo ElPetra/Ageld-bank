@@ -9,7 +9,7 @@
             align-items: center;
             gap: 20px;
             border-radius: var(--extra-large-border-radius);
-            background-color: var(--bg-quadruple);
+            background-color: var(--bg-primary-card);
             @media screen and (max-width: 500px)  {
                 min-width: unset;
                 width: 380px;

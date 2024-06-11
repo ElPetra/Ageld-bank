@@ -6,9 +6,10 @@ import actionLockSVG from 'src/shared/ui/icon/assets/icons/actions-lock.svg';
 import actionPinCodeSVG from 'src/shared/ui/icon/assets/icons/actions-pin-code.svg';
 import actionSettingsSVG from 'src/shared/ui/icon/assets/icons/actions-settings.svg';
 
-import logoSVG from 'src/shared/ui/icon/assets/icons/logo.svg';
-import logoDarkSVG from 'src/shared/ui/icon/assets/icons/logo-dark.svg';
-import logoTitleSVG from 'src/shared/ui/icon/assets/icons/logo-title.svg';
+import logoLightTextSVG from 'src/shared/ui/icon/assets/icons/logo-light-text.svg';
+import logoAccentTextSVG from 'src/shared/ui/icon/assets/icons/logo-accent-text.svg';
+import logoLightSVG from 'src/shared/ui/icon/assets/icons/logo-light.svg';
+import logoAccentSVG from 'src/shared/ui/icon/assets/icons/logo-accent.svg';
 
 import eyeOpenSVG from 'src/shared/ui/icon/assets/icons/eye-open.svg';
 import eyeCloseSVG from 'src/shared/ui/icon/assets/icons/eye-close.svg';
@@ -64,11 +65,10 @@ import appStoreSVG from 'src/shared/ui/icon/assets/icons/app-store.svg';
 import googlePlaySVG from 'src/shared/ui/icon/assets/icons/google-play.svg';
 
 import beachLadySVG from 'src/shared/ui/icon/assets/icons/illustration-beach-lady.svg';
-import businessmanIconSVG from 'src/shared/ui/icon/assets/icons/illustration-businessman.svg';
+import businessmanSVG from 'src/shared/ui/icon/assets/icons/illustration-businessman.svg';
 import documentsFolderLadySVG from 'src/shared/ui/icon/assets/icons/illustration-documents-folder-lady.svg';
 import failureLadySVG from 'src/shared/ui/icon/assets/icons/illustration-failure-lady.svg';
 import paperAirplaneLadySVG from 'src/shared/ui/icon/assets/icons/illustration-paper-airplane-lady.svg';
-import plantLadySVG from 'src/shared/ui/icon/assets/icons/illustration-plant-lady.svg';
 import questionLadySVG from 'src/shared/ui/icon/assets/icons/illustration-question-lady.svg';
 
 export type PngImageNames = 'classic' | 'gold' | 'platinum' | 'premium';
@@ -82,9 +82,10 @@ export const SVG = {
     'action-pin-code': actionPinCodeSVG,
     'action-settings': actionSettingsSVG,
 
-    logo: logoSVG,
-    'logo-dark': logoDarkSVG,
-    'logo-title': logoTitleSVG,
+    'logo-light-text': logoLightTextSVG,
+    'logo-accent-text': logoAccentTextSVG,
+    'logo-light': logoLightSVG,
+    'logo-accent': logoAccentSVG,
 
     'eye-open': eyeOpenSVG,
     'eye-close': eyeCloseSVG,
@@ -141,11 +142,10 @@ export const SVG = {
     'google-play': googlePlaySVG,
 
     'beach-lady': beachLadySVG,
-    'businessman-icon': businessmanIconSVG,
+    businessman: businessmanSVG,
     'documents-folder-lady': documentsFolderLadySVG,
     'failure-lady': failureLadySVG,
     'paper-airplane-lady': paperAirplaneLadySVG,
-    'plant-lady': plantLadySVG,
     'question-lady': questionLadySVG
 };
 export type SvgIconName = keyof typeof SVG;
