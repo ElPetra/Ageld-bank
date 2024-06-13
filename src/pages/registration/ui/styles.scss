@@ -1,0 +1,11 @@
+.welcome__wrapper {
+    display:flex;
+    align-items:center;
+    justify-content:space-around;
+}
+.welcome__left-side{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap:wrap;
+}

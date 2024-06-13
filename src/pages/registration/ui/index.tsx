@@ -6,12 +6,15 @@ import { MessageCard } from 'src/entities/message';
 import { MultiStepForm } from 'src/features/multi-step-form';
 import { PhoneForm, CodeForm, ConfirmPasswordForm } from 'src/features/forms';
 
+import Welcome from './welcome';
+
 export const RegistrationPage = () => {
     const [phone, setPhone] = useState<string>('');
     const { t } = useTranslation();
 
     return (
         <Container>
+            <Welcome></Welcome>
             <MultiStepForm
                 variant='registration'
                 forms={[
