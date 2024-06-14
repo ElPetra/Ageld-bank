@@ -18,7 +18,7 @@ export const AccountInfo = ({ account }: Props) => {
     const handleCopyAccount = () => {
         navigator.clipboard.writeText(account.number);
     };
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     //Todo: некоторые кастомные места, вроде причины блокировки, не обернуть в "t"
     return (
         <Card
@@ -66,7 +66,7 @@ export const AccountInfo = ({ account }: Props) => {
                             {t('Дата открытия счета')}
                         </Text>
                         <Text weight='medium'>
-                            {formatDate(account.createdAt, i18n.language)}
+                            {formatDate(account.createdAt)}
                         </Text>
                     </div>
                     {account.status === 'closed' && account.closedAt && (
@@ -75,7 +75,7 @@ export const AccountInfo = ({ account }: Props) => {
                                 {t('Дата закрытия счета')}
                             </Text>
                             <Text weight='medium'>
-                                {formatDate(account.closedAt, i18n.language)}
+                                {formatDate(account.closedAt)}
                             </Text>
                         </div>
                     )}
