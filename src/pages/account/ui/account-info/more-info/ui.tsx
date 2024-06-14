@@ -46,7 +46,7 @@ const accountStatuses: {
 
 export const AccountsMoreInfo = ({ status }: Props) => {
     const { t } = useTranslation();
-    // @ts-ignore
+    // @ts-expect-error тип данных будет переписан
     const options = accountStatuses[status].map(el => ({
         text: t(el),
         to: anchors[el] || '/'

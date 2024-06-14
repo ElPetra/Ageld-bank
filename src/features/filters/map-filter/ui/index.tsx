@@ -10,7 +10,7 @@ import './styles.scss';
 
 export const MapFilter = () => {
     const { t } = useTranslation();
-    const [filters, setFilters] = useState<Record<string, string>>({});
+    const [, setFilters] = useState<Record<string, string>>({});
     const [open, setOpen] = useState<boolean>(false);
     return (
         <div className='map__filter'>

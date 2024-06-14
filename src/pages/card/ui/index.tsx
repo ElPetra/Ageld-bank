@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 
 import { Container } from 'src/shared/ui';
 import { useGetCustomerCardDetailsQuery } from 'src/shared/api';
@@ -8,7 +7,6 @@ import { CardInfo } from 'src/widgets/card-info';
 
 export const CardPage = () => {
     const { signedOut } = useAuth();
-    const { id } = useParams();
     const {
         data: cardDetails,
         isLoading,
