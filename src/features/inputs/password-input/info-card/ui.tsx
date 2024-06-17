@@ -6,7 +6,7 @@ import './styles.scss';
 interface Props {
     testId?: string;
     icon: SvgIconName;
-    color?: 'inherit' | 'success' | 'error';
+    color?: 'success' | 'error';
     message: string;
 }
 

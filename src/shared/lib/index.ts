@@ -5,5 +5,3 @@ export * from './card';
 export * from './trasnform';
 export * from './type-guards';
 export * from './card-hooks';
-export * from './language';
-export * from './language';

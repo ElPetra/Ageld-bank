@@ -5,8 +5,8 @@ import type { SvgIconName } from 'src/shared/ui';
 export const getIconName = (payment: PaymentSystem): SvgIconName => {
     switch (payment) {
         case 'VISA':
-            return 'visa-icon';
+            return 'visa';
         case 'МИР':
-            return 'mir-icon';
+            return 'mir';
     }
 };

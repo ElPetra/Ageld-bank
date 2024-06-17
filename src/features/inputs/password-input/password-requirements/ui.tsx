@@ -1,4 +1,5 @@
 import { memo, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { InfoCard } from '../info-card';
 
@@ -30,6 +31,7 @@ export const PasswordRequirements = memo(
             });
             return result;
         }, [requirements, password]);
+        const { t } = useTranslation();
 
         return (
             <div className='password-requirements'>
@@ -40,11 +42,11 @@ export const PasswordRequirements = memo(
                             key={i}
                             icon={
                                 matchesResult[el].isMatches
-                                    ? 'success-icon'
-                                    : 'error-icon'
+                                    ? 'success'
+                                    : 'error'
                             }
                             testId={el}
-                            message={matchesResult[el].message}
+                            message={t(matchesResult[el].message)}
                         />
                     ))}
             </div>

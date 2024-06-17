@@ -1,48 +1,56 @@
 import { useState } from 'react';
-
-import { Card, Icon } from 'src/shared/ui';
-import { useLanguage } from 'src/entities/language';
-
+import { Card, Icon, Text } from 'src/shared/ui';
 import './styles.scss';
+import { useTranslation } from 'react-i18next';
 
 export const Switcher = () => {
-    const { language, changeLanguage } = useLanguage();
+    const { i18n } = useTranslation();
     const [open, setOpen] = useState<boolean>(false);
 
     return (
-        <div className='switcher'>
-            <button
+        <>
+            <div
                 onClick={() => {
                     setOpen(!open);
                 }}
                 className='switcher__icon'
             >
                 <Icon icon='world' />
-            </button>
+            </div>
+
             {open && (
                 <div className='switcher__modal'>
-                    <Card gap='extra-small' direction='column' padding='small'>
+                    <Card
+                        color='secondary'
+                        gap='extra-small'
+                        direction='column'
+                        padding='small'
+                    >
                         <button
                             onClick={() => {
-                                changeLanguage();
+                                i18n.changeLanguage(
+                                    i18n.language === 'en' ? 'ru' : 'en'
+                                );
                                 setOpen(false);
                             }}
-                            className={`switcher__modal__button ${language === 'en' ? 'active' : ''}`}
+                            className={`switcher__modal__button ${i18n.language === 'en' ? 'active' : ''}`}
                         >
-                            English
+                            <Text size='s'>English</Text>
                         </button>
                         <button
                             onClick={() => {
-                                changeLanguage();
+                                i18n.changeLanguage(
+                                    i18n.language === 'ru' ? 'en' : 'ru'
+                                );
                                 setOpen(false);
                             }}
-                            className={`switcher__modal__button ${language === 'ru' ? 'active' : ''}`}
+                            className={`switcher__modal__button ${i18n.language === 'ru' ? 'active' : ''}`}
                         >
                             Русский
                         </button>
                     </Card>
                 </div>
             )}
-        </div>
+        </>
     );
 };

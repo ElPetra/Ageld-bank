@@ -2,15 +2,7 @@ import { formatDate } from 'src/shared/lib';
 import { Button, Card, Icon, Text } from 'src/shared/ui';
 import { accountTypes, currencySymbol } from 'src/shared/model';
 import { ProductStatuses } from 'src/entities/product';
-
-import {
-    ACCOUNT_BALANCE,
-    ACCOUNT_BLOCK_REASON,
-    ACCOUNT_CLOSED_DATE,
-    ACCOUNT_NUMBER,
-    ACCOUNT_OPENED_DATE,
-    MAKE_TRANSFER
-} from '../../model';
+import { useTranslation } from 'react-i18next';
 
 import { AccountsMoreInfo } from './more-info';
 
@@ -26,10 +18,10 @@ export const AccountInfo = ({ account }: Props) => {
     const handleCopyAccount = () => {
         navigator.clipboard.writeText(account.number);
     };
-
+    const { t } = useTranslation();
+    //Todo: некоторые кастомные места, вроде причины блокировки, не обернуть в "t"
     return (
         <Card
-            color='quadruple'
             justify='space-between'
             gap='large'
             padding='large'
@@ -42,7 +34,7 @@ export const AccountInfo = ({ account }: Props) => {
                         <div className='account-info__main__info'>
                             <div className='account-info__main__info__first-row'>
                                 <Text size='m' weight='medium'>
-                                    {accountTypes[account.type]}
+                                    {t(accountTypes[account.type])}
                                 </Text>
                                 <ProductStatuses
                                     isMaster={account.isMaster}
@@ -51,15 +43,15 @@ export const AccountInfo = ({ account }: Props) => {
                             </div>
                             <div className='account-info__main__info__second-row'>
                                 <div>
-                                    <Text color='quadruple'>
-                                        {ACCOUNT_NUMBER}
+                                    <Text color='tertiary'>
+                                        {t('№ счета: ')}
                                     </Text>
-                                    <Text color='quadruple'>
+                                    <Text color='tertiary'>
                                         {account.number}
                                     </Text>
                                 </div>
                                 <button onClick={handleCopyAccount}>
-                                    <Icon icon='copy-icon' />
+                                    <Icon icon='copy' />
                                 </button>
                             </div>
                         </div>
@@ -70,8 +62,8 @@ export const AccountInfo = ({ account }: Props) => {
                 </div>
                 <div className='account-info__second-row'>
                     <div>
-                        <Text size='xs' color='quadruple'>
-                            {ACCOUNT_OPENED_DATE}
+                        <Text size='xs' color='tertiary'>
+                            {t('Дата открытия счета')}
                         </Text>
                         <Text weight='medium'>
                             {formatDate(account.createdAt)}
@@ -79,8 +71,8 @@ export const AccountInfo = ({ account }: Props) => {
                     </div>
                     {account.status === 'closed' && account.closedAt && (
                         <div>
-                            <Text size='xs' color='quadruple'>
-                                {ACCOUNT_CLOSED_DATE}
+                            <Text size='xs' color='tertiary'>
+                                {t('Дата закрытия счета')}
                             </Text>
                             <Text weight='medium'>
                                 {formatDate(account.closedAt)}
@@ -89,8 +81,8 @@ export const AccountInfo = ({ account }: Props) => {
                     )}
                     {account.status === 'blocked' && (
                         <div>
-                            <Text size='xs' color='quadruple'>
-                                {ACCOUNT_BLOCK_REASON}
+                            <Text size='xs' color='tertiary'>
+                                {t('Причина блокировки')}
                             </Text>
                             <Text weight='medium'>{account.blockReason}</Text>
                         </div>
@@ -100,13 +92,13 @@ export const AccountInfo = ({ account }: Props) => {
             <div className='account-info__second-column'>
                 <div className='account-info__balance'>
                     <Text size='m' weight='medium'>
-                        {ACCOUNT_BALANCE}
+                        {t('Баланс') + ': '}
                         {account.balance + ' '}
                         {currencySymbol[account.currency]}
                     </Text>
                     <AccountsMoreInfo status={account.status} />
                 </div>
-                <Button variant='secondary'>{MAKE_TRANSFER}</Button>
+                <Button variant='secondary'>{t('Перевод')}</Button>
             </div>
         </Card>
     );

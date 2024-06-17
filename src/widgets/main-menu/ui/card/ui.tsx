@@ -3,8 +3,6 @@ import { RouteName } from 'src/shared/model';
 
 import type { SvgIconName } from 'src/shared/ui';
 
-import './styles.scss';
-
 interface Props {
     icon: SvgIconName;
     href?: string;
@@ -19,7 +17,7 @@ export const MainMenuCard = ({
     return (
         <div>
             <Link to={href}>
-                <Card color='quadruple' direction='column'>
+                <Card direction='column'>
                     <Icon icon={icon} widthAndHeight={32} />
                     <Text weight='medium'>{text}</Text>
                 </Card>

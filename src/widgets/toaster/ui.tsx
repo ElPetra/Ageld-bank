@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import { toast, ToastBar, Toaster } from 'react-hot-toast';
 
 import { Icon, Text } from 'src/shared/ui';
@@ -5,6 +7,7 @@ import { Icon, Text } from 'src/shared/ui';
 import './styles.scss';
 
 export const CustomToaster = () => {
+    const { t } = useTranslation();
     return (
         <Toaster
             position='top-right'
@@ -23,27 +26,27 @@ export const CustomToaster = () => {
                 }
             }}
         >
-            {t => (
-                <ToastBar toast={t}>
+            {tst => (
+                <ToastBar toast={tst}>
                     {({ icon }) => (
                         <div className='toaster-bar'>
                             <div className='toaster-bar__icon'>
                                 {icon}
                                 <div className='toaster-bar__icon__text'>
                                     <Text size='xxs'>
-                                        {t.type === 'success'
-                                            ? 'Успех'
-                                            : 'Ошибка'}
+                                        {tst.type === 'success'
+                                            ? t('Успех')
+                                            : t('Ошибка')}
                                     </Text>
                                     <Text size='xxs' weight='light'>
-                                        {t.type === 'success'
-                                            ? 'Операция прошла успешно'
-                                            : 'Повторите запрос позже'}
+                                        {tst.type === 'success'
+                                            ? t('Операция прошла успешно')
+                                            : t('Повторите запрос позже')}
                                     </Text>
                                 </div>
                             </div>
-                            <button onClick={() => toast.dismiss(t.id)}>
-                                <Icon icon='close-icon' />
+                            <button onClick={() => toast.dismiss(tst.id)}>
+                                <Icon icon='close' />
                             </button>
                         </div>
                     )}

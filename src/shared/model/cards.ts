@@ -8,24 +8,7 @@ export type CardType = 'CREDIT' | 'DEBIT' | 'DEPOSIT';
 export type CardLevel = 'CLASSIC' | 'GOLD' | 'PLATINUM' | 'PREMIUM';
 export type PaymentSystem = 'МИР' | 'VISA';
 
-export const CARDS_TITLE = i18n.t('Карты');
-export const CREATE_CARD = i18n.t('Создать карту');
-export const VIRTUAL = i18n.t('Виртуальная');
-export const CARDS_NOT_FOUND = i18n.t(
-    'На данный момент \n у Вас нет соответствующих карт'
-);
 export const CARD_NUMBER_REPLACEMENT = '**** **** **** ';
-export const CARD_NUMBER = i18n.t('Номер карты');
-export const CARD_BALANCE = i18n.t('Баланс');
-export const CARD_CURRENCY = i18n.t('Валюта счета');
-export const CARD_LEVEL = i18n.t('Уровень премиальность');
-export const INFO_ABOUT_CARD = i18n.t('Информация по карте');
-export const REQUEST_CARD = i18n.t('Оформить карту');
-export const MORE_DETAILS = i18n.t('Показать больше');
-export const EXPIRY_DATE = i18n.t('Срок действия');
-export const CUSTOMER_CARDS = i18n.t('Мои карты');
-export const CARD_PRODUCTS = i18n.t('Карточные продукты');
-
 export const ALL_CARD = i18n.t('Bce');
 export const CREDIT_CARD = i18n.t('Кредитная');
 export const DEBIT_CARD = i18n.t('Дебетовая');

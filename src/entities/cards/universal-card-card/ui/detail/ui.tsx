@@ -14,7 +14,7 @@ export const Detail = ({ value, description }: Props) => {
             <Text size='m' weight='medium'>
                 {value}
             </Text>
-            <Text size='xs' color='quadruple'>
+            <Text size='xs' color='tertiary'>
                 {i18next.t(description)}
             </Text>
         </div>

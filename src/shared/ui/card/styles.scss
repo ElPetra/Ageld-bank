@@ -36,11 +36,11 @@
   }
 
   &.primary {
-    background-color: var(--bg-primary);
+    background-color: var(--bg-primary-card);
   }
 
-  &.quadruple {
-    background-color: var(--bg-quadruple);
+  &.secondary {
+    background-color: var(--bg-secondary-card);
   }
 
   &.extra-small-gap {

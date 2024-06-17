@@ -2,6 +2,10 @@
   &__name {
     display: flex;
     gap: 12px;
+
+    > img {
+      width: 24px;
+    }
   }
 
   &__schedule {

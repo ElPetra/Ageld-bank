@@ -51,7 +51,6 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
         <Form onSubmit={handleSubmit(onSubmit)}>
             <div className='change-password'>
                 <PasswordInput
-                    size='medium'
                     register={register}
                     label='oldPassword'
                     variant='confirm'
@@ -59,21 +58,21 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
                     error={error}
                 />
                 <PasswordInput
-                    size='medium'
                     register={register}
                     label='newPassword'
                     variant='create'
                     placeholder={t('Новый пароль')}
                     isDirty={watch('newPassword') !== ''}
-                    error={getFieldErrorMessage(errors.newPassword?.message)}
+                    error={t(getFieldErrorMessage(errors.newPassword?.message))}
                 />
                 <PasswordInput
-                    size='medium'
                     register={register}
                     label='newPassword2'
                     placeholder={t('Подтвердите новый пароль')}
                     variant='confirm'
-                    error={getFieldErrorMessage(errors.newPassword2?.message)}
+                    error={t(
+                        getFieldErrorMessage(errors.newPassword2?.message)
+                    )}
                 />
             </div>
             <Button
@@ -82,7 +81,7 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
                 type='submit'
                 disabled={!isDirty}
             >
-                {t('Продолжить')}
+                {t('Сменить пароль')}
             </Button>
         </Form>
     );

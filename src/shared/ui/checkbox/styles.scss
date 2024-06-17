@@ -16,7 +16,7 @@
     border-radius: var(--small-border-radius);;
     margin-right: 10px;
     position: relative;
-    border: solid 1px var(--text-primary);
+    border: solid 1px var(--text-action);
   }
 
   &__input:checked + &__control::before {
@@ -31,6 +31,6 @@
     transform: rotate(45deg);
   }
   &__input:checked + &__control {
-    background: var(--bg-secondary);
+    background: var(--text-action);
   }
 }

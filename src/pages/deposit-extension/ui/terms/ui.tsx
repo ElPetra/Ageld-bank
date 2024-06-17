@@ -38,7 +38,6 @@ export const Terms = ({ isLast, setFormStep, extendedDeposit }: Props) => {
     return (
         <Form onSubmit={handleSubmit(onSubmit)}>
             <Card
-                color='quadruple'
                 gap='medium'
                 padding='large'
                 borderRadius='extra-large'
@@ -52,9 +51,14 @@ export const Terms = ({ isLast, setFormStep, extendedDeposit }: Props) => {
                     max={36}
                     inputField='input'
                     sliderField='slider'
-                    unit={t('мес.')}
+                    unit={t('мес')}
                 />
-                <Button disabled={!isValid} type='submit' variant='secondary'>
+                <Button
+                    cursorNotAllowed={!isValid}
+                    disabled={!isValid}
+                    type='submit'
+                    variant='secondary'
+                >
                     <Text>{t('Пролонгировать депозит')}</Text>
                 </Button>
             </Card>

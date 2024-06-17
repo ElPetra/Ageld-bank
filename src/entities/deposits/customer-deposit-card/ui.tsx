@@ -15,14 +15,14 @@ interface Props {
 export const CustomerDepositCard = ({ deposit }: Props) => {
     const { t } = useTranslation();
     return (
-        <Card color='quadruple' padding='medium'>
+        <Card padding='medium'>
             <div className='deposit-card__container'>
                 <div className='deposit-card__title'>
                     <div className='deposit-card__title__icon'>
                         <Icon icon={deposit.icon} />
                     </div>
                     <Link to={RouteName.DEPOSIT_PAGE + '/' + deposit.id}>
-                        <Text weight='bold' size='l'>
+                        <Text weight='bold' size='m'>
                             {deposit.name}
                         </Text>
                     </Link>
@@ -32,7 +32,7 @@ export const CustomerDepositCard = ({ deposit }: Props) => {
                         <Text weight='bold' size='l'>
                             {deposit.interestRate}
                         </Text>
-                        <Text weight='light' color='quadruple' size='xs'>
+                        <Text color='tertiary' size='xs'>
                             {t('Процентная ставка')}
                         </Text>
                     </div>
@@ -40,7 +40,7 @@ export const CustomerDepositCard = ({ deposit }: Props) => {
                         <Text weight='bold' size='l'>
                             {`${deposit.balance} ${deposit.currency.toUpperCase()}`}
                         </Text>
-                        <Text weight='light' color='quadruple' size='xs'>
+                        <Text color='tertiary' size='xs'>
                             {t('Сумма на депозитном счете')}
                         </Text>
                     </div>
@@ -48,7 +48,7 @@ export const CustomerDepositCard = ({ deposit }: Props) => {
                         <Text weight='bold' size='l'>
                             {deposit.closed}
                         </Text>
-                        <Text weight='light' color='quadruple' size='xs'>
+                        <Text color='tertiary' size='xs'>
                             {t('Окончание срока вклада')}
                         </Text>
                     </div>

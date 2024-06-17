@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 
 import { Form, Icon, Input } from 'src/shared/ui';
 
@@ -7,10 +8,11 @@ import type { FieldValues } from 'react-hook-form';
 
 interface Props {
     label?: string;
-    size?: 'extra-small' | 'small' | 'medium' | 'large';
+    size?: 'small' | 'medium' | 'large';
 }
 
-export const SearchForm = ({ label = 'Поиск', size = 'large' }: Props) => {
+export const SearchForm = ({ label, size = 'large' }: Props) => {
+    const { t } = useTranslation();
     const [value, setValue] = useState<string>('');
     const inputRef = useRef<HTMLInputElement>(null);
 
@@ -21,14 +23,10 @@ export const SearchForm = ({ label = 'Поиск', size = 'large' }: Props) => {
     });
 
     return (
-        <Form
-            onSubmit={handleSubmit(data => {
-                console.log(data.search);
-            })}
-        >
+        <Form onSubmit={handleSubmit(() => {})}>
             <Input
                 type='text'
-                placeholder={label}
+                placeholder={label || t('Поиск')}
                 size={size}
                 width='max'
                 value={value}
@@ -38,7 +36,7 @@ export const SearchForm = ({ label = 'Поиск', size = 'large' }: Props) => {
                 register={register}
             >
                 <button>
-                    <Icon icon='search-icon' />
+                    <Icon icon='search' />
                 </button>
             </Input>
         </Form>

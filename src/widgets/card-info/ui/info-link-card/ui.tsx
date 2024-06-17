@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import { Card, Icon, Text } from 'src/shared/ui';
 
@@ -11,18 +12,14 @@ interface Props {
 }
 
 export const InfoLinkCard = ({ info }: Props) => {
+    const { t } = useTranslation();
     return (
         <Link to='/'>
-            <Card
-                color='quadruple'
-                padding='medium'
-                borderRadius='extra-large'
-                align='center'
-            >
+            <Card padding='medium' borderRadius='extra-large' align='center'>
                 <div className='info-link-card__icon'>
                     <Icon icon={info.icon} />
                 </div>
-                <Text weight='medium'>{info.text}</Text>
+                <Text weight='medium'>{t(info.text)}</Text>
             </Card>
         </Link>
     );

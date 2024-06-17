@@ -1,55 +1,57 @@
 :root {
-  --dark-1: #2B3E78;
-  --dark-2: #33457C;
-  --dark-3: #3C5293;
-  --dark-4: #586FB4;
+  --dark-1: #2A2A2A;
+  --dark-2: #414650;
+  --dark-3: #BABEC5;
+  --dark-4: #F6F7FA;
 
   --light-1: #FEFEFE;
-  --light-2: #F3F4F8;
-  --light-3: #EAF2FF;
-  --light-4: #D9E7FF;
+  --light-2: #F8F3F3;
+  --light-3: #FFEAEA;
+  --light-4: #FFD9D9;
 
-  --gray-1: #414650;
-  --gray-2: #BABEC5;
+  --accent-1: #C61818;
+  --accent-2: #D53E42;
+  --accent-3: #E4656C;
 
-  --accent: #1640DE;
   --success: #4CAF50;
   --warning: #F6BE2C;
   --error: #F53C14;
-  //тексты
+
+  //Text
   --text-primary: var(--dark-1);
   --text-secondary: var(--light-1);
-  --text-tertiary: var(--light-1);
+  --text-tertiary: var(--dark-2);
   --text-quadruple: var(--dark-3);
-  --text-light: var(--dark-4);
 
-  --text-primary-buttons: var(--dark-1);
+  --text-primary-buttons: var(--accent-1);
   --text-secondary-buttons: var(--light-1);
-  --text-buttons-disable: var(--gray-1);
+  --text-buttons-disable: var(--dark-2);
 
-  --text-primary-input: var(--dark-3);
+  --text-primary-input: var(--dark-2);
 
-  --text-action: var(--accent);
+  --text-action: var(--accent-1);
   --text-success: var(--success);
   --text-error: var(--error);
-  //фоны
+
+  //Background
   --bg-primary: var(--light-1);
-  --bg-secondary: var(--dark-1);
-  --bg-tertiary: var(--dark-2);
-  --bg-quadruple: var(--light-2);
+  --bg-secondary: var(--accent-2);
 
   --bg-primary-buttons: var(--light-1);
   --bg-primary-buttons-hover: var(--light-3);
   --bg-primary-buttons-pressed: var(--light-4);
-  --bg-secondary-buttons: var(--dark-1);
-  --bg-secondary-buttons-hover: var(--dark-3);
-  --bg-secondary-buttons-pressed: var(--dark-4);
-  --bg-buttons-disable: var(--gray-2);
+  --bg-secondary-buttons: var(--accent-1);
+  --bg-secondary-buttons-hover: var(--accent-2);
+  --bg-secondary-buttons-pressed: var(--accent-3);
+  --bg-buttons-disable: var(--dark-3);
 
-  --bg-primary-input: var(--light-2);
+  --bg-primary-input: var(--dark-4);
   --bg-secondary-input: var(--light-1);
 
-  --bg-action:  var(--accent);
+  --bg-primary-card: var(--dark-4);
+  --bg-secondary-card: var(--light-1);
+
+  --bg-action:  var(--accent-1);
   --bg-success: var(--success);
   --bg-warning: var(--warning);
   --bg-error: var(--error);

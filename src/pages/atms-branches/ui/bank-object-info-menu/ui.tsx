@@ -25,7 +25,7 @@ export function BankObjectInfoMenu({ visible, setVisible, current }: Props) {
                         className='bank-object-info__button'
                         onClick={() => setVisible(false)}
                     >
-                        <Icon icon='arrow-icon' />
+                        <Icon icon='arrow-left-accent' />
                         <Text color='action'>Вернуться к списку</Text>
                     </button>
                 </div>
@@ -33,17 +33,16 @@ export function BankObjectInfoMenu({ visible, setVisible, current }: Props) {
                     <>
                         <div className='bank-object-info__name'>
                             <div>
-                                <Icon
-                                    icon='building-icon'
-                                    widthAndHeight={32}
-                                />
+                                <Icon icon='building' widthAndHeight={32} />
                                 <Text weight='bold' size='l'>
                                     {objectTypeName[current.objectTypeName] +
                                         ' №' +
                                         current.objectNumber}
                                 </Text>
                             </div>
-                            <Text color='quadruple'>{getAddress(current)}</Text>
+                            <Text weight='medium' color='tertiary'>
+                                {getAddress(current)}
+                            </Text>
                         </div>
                         <div className='bank-object-info__schedule'>
                             {getSchedule(current.schedule)}
@@ -55,7 +54,7 @@ export function BankObjectInfoMenu({ visible, setVisible, current }: Props) {
                                         'Открыто'
                                     )
                                         ? 'action'
-                                        : 'quadruple'
+                                        : 'tertiary'
                                 }
                             >
                                 {getStatus(current.schedule)}

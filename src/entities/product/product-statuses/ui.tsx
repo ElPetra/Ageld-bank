@@ -1,7 +1,7 @@
-import i18next from 'src/shared/model/i18n';
+import { useTranslation } from 'react-i18next';
 
 import { Text } from 'src/shared/ui';
-import { MASTER_PRODUCT, productStatuses } from 'src/shared/model';
+import { productStatuses } from 'src/shared/model';
 
 import type { ProductStatus } from 'src/shared/model';
 
@@ -18,6 +18,7 @@ export const ProductStatuses = ({
     status,
     direction = 'row'
 }: Props) => {
+    const { t } = useTranslation();
     return (
         <div className={`product-statuses product-statuses__${direction}`}>
             {isMaster && (
@@ -26,7 +27,7 @@ export const ProductStatuses = ({
                         weight='medium'
                         size={direction === 'column' ? 'xxs' : 's'}
                     >
-                        {i18next.t(MASTER_PRODUCT)}
+                        {t('Основной')}
                     </Text>
                 </div>
             )}
@@ -37,7 +38,7 @@ export const ProductStatuses = ({
                     weight='medium'
                     size={direction === 'column' ? 'xxs' : 's'}
                 >
-                    {i18next.t(productStatuses[status])}
+                    {t(productStatuses[status])}
                 </Text>
             </div>
         </div>

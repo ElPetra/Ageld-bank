@@ -1,7 +1,8 @@
 import { useForm } from 'react-hook-form';
 
 import { Icon, Text, Radio, Form, Button, Card, Columns } from 'src/shared/ui';
-import { CREATE_ACCOUNT, EUR, RUB, USD } from 'src/shared/model';
+import { EUR, RUB, USD } from 'src/shared/model';
+import { useTranslation } from 'react-i18next';
 
 import type { FieldValues } from 'react-hook-form';
 import type { Dispatch, SetStateAction } from 'react';
@@ -49,7 +50,7 @@ export const CurrencyVariant = ({
         mode: 'onTouched',
         reValidateMode: 'onChange'
     });
-
+    const { t } = useTranslation();
     const onSubmit = (data: FieldValues) => {
         setCurrencyName(data.currencyName);
         if (setFormStep && !isLast) {
@@ -62,7 +63,6 @@ export const CurrencyVariant = ({
     return (
         <Form onSubmit={handleSubmit(onSubmit)}>
             <Card
-                color='quadruple'
                 gap='medium'
                 padding='large'
                 borderRadius='extra-large'
@@ -89,7 +89,7 @@ export const CurrencyVariant = ({
                     ))}
                 </Columns>
                 <Button disabled={!isDirty} type='submit' variant='secondary'>
-                    <div>{CREATE_ACCOUNT}</div>
+                    <div>{t('Открыть счет')}</div>
                 </Button>
             </Card>
         </Form>

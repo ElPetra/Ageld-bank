@@ -1,19 +1,10 @@
-// AccountPage
-export const ACCOUNT_INFO = 'Информация о счете';
-export const ACCOUNT_OPERATIONS = 'История операций';
-
-// AccountInfo
-export const ACCOUNT_NUMBER = '№ счета: ';
-export const ACCOUNT_OPENED_DATE = 'Дата открытия счета';
-export const ACCOUNT_CLOSED_DATE = 'Дата закрытия счета';
-export const ACCOUNT_BLOCK_REASON = 'Причина блокировки';
-export const ACCOUNT_BALANCE = 'Баланс: ';
-export const MAKE_TRANSFER = 'Перевод';
+import i18n from 'src/shared/model/i18n';
 
 // AccountsMoreInfo
-export const ACCOUNT_STATEMENT = 'Выписка по счету';
-export const MAKE_ACCOUNT_MAIN = 'Сделать основным';
-export const CLOSE_ACCOUNT = 'Закрыть счет';
-export const BLOCK_ACCOUNT = 'Заблокировать счет';
-export const UNLOCK_ACCOUNT = 'Разблокировать счет';
-export const APPLICATION_STATUS = 'Статус заявки';
+export const REQUISITES = i18n.t('Реквизиты');
+export const ACCOUNT_STATEMENT = i18n.t('Выписка по счету');
+export const MAKE_ACCOUNT_MAIN = i18n.t('Сделать основным');
+export const CLOSE_ACCOUNT = i18n.t('Закрыть счет');
+export const BLOCK_ACCOUNT = i18n.t('Заблокировать счет');
+export const UNLOCK_ACCOUNT = i18n.t('Разблокировать счет');
+export const APPLICATION_STATUS = i18n.t('Статус заявки');

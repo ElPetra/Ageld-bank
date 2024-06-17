@@ -1,13 +1,13 @@
-import { useTranslation } from 'react-i18next';
-
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useTranslation } from 'react-i18next';
 import * as yup from 'yup';
 
 import { useAuth } from 'src/entities/user';
 import { Button, Form } from 'src/shared/ui';
 import { getFieldErrorMessage } from 'src/shared/lib';
+import i18n from 'src/shared/model/i18n';
 
 import { EmailInput } from './email-input';
 
@@ -22,10 +22,10 @@ const schema = yup
             .string()
             .matches(
                 /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/,
-                'Email должен быть валидным'
+                i18n.t('Email должен быть валидным')
             )
-            .min(8, 'Email должен содержать от 8 до 50 символов')
-            .max(50, 'Email должен содержать от 8 до 50 символов')
+            .min(8, i18n.t('Email должен содержать от 8 до 50 символов'))
+            .max(50, i18n.t('Email должен содержать от 8 до 50 символов'))
             .required()
     })
     .required();
@@ -63,7 +63,7 @@ export const EmailForm = ({ email }: Props) => {
             <EmailInput
                 label='email'
                 register={register}
-                error={getFieldErrorMessage(errors.email?.message) || error}
+                error={t(getFieldErrorMessage(errors.email?.message)) || error}
                 value={email || ''}
                 disabled={!isClicked}
             />
@@ -100,7 +100,7 @@ export const EmailForm = ({ email }: Props) => {
                     type='submit'
                     onClick={() => setIsClicked(true)}
                 >
-                    {t(email ? 'Изменить' : 'Добавить')}
+                    {email ? t('Изменить') : t('Добавить')}
                 </Button>
             )}
         </Form>

@@ -1,28 +1,36 @@
+import i18n from 'src/shared/model/i18n';
+
 import type { SvgIconName } from 'src/shared/ui';
 
 export const conditionsMatcher = {
-    conditionWithdraw: 'Комиссия за снятие наличных в банкомате другого банка',
-    conditionPartnerWithdraw:
-        'Комиссия за снятие наличных в банкомате банка-партнёра',
-    conditionWorldWithdraw:
-        'Комиссия за снятие наличных в другой валюте в банкоматах банков за рубежом',
-    conditionTransaction: 'Комиссия за переводы при исчерпании лимита',
-    conditionPay: 'Комиссия за оплату при исчерпании лимита'
+    conditionWithdraw: i18n.t(
+        'Комиссия за снятие наличных в банкомате другого банка'
+    ),
+    conditionPartnerWithdraw: i18n.t(
+        'Комиссия за снятие наличных в банкомате банка-партнёра'
+    ),
+    conditionWorldWithdraw: i18n.t(
+        'Комиссия за снятие наличных в другой валюте в банкоматах банков за рубежом'
+    ),
+    conditionTransaction: i18n.t('Комиссия за переводы при исчерпании лимита'),
+    conditionPay: i18n.t('Комиссия за оплату при исчерпании лимита')
 };
 
 export const limitsMatcher = {
-    withdrawLimitDay: 'Лимит на снятие денег в день',
-    withdrawLimitMonth: 'Лимит на снятие денег в месяц',
-    transactionLimitDay: 'Лимит на сумму переводов в день',
-    transactionLimitMonth: 'Лимит на сумму переводов в месяц',
-    payLimitDay: 'Лимит на безналичные платежи в день',
-    payLimitMonth: 'Лимит на безналичные платежи в месяц',
-    overWithdrawDay: 'Лимит на снятие денег в день без комиссии',
-    overWithdrawMonth: 'Лимит на снятие денег в месяц без комиссии',
-    overTransactionDay: 'Лимит на сумму переводов в день без комиссии',
-    overTransactionMonth: 'Лимит на сумму переводов в месяц без комиссии',
-    overPayDay: 'Лимит на безналичные платежи в день без комиссии',
-    overPayMonth: 'Лимит на безналичные платежи в месяц без комиссии'
+    withdrawLimitDay: i18n.t('Лимит на снятие денег в день'),
+    withdrawLimitMonth: i18n.t('Лимит на снятие денег в месяц'),
+    transactionLimitDay: i18n.t('Лимит на сумму переводов в день'),
+    transactionLimitMonth: i18n.t('Лимит на сумму переводов в месяц'),
+    payLimitDay: i18n.t('Лимит на безналичные платежи в день'),
+    payLimitMonth: i18n.t('Лимит на безналичные платежи в месяц'),
+    overWithdrawDay: i18n.t('Лимит на снятие денег в день без комиссии'),
+    overWithdrawMonth: i18n.t('Лимит на снятие денег в месяц без комиссии'),
+    overTransactionDay: i18n.t('Лимит на сумму переводов в день без комиссии'),
+    overTransactionMonth: i18n.t(
+        'Лимит на сумму переводов в месяц без комиссии'
+    ),
+    overPayDay: i18n.t('Лимит на безналичные платежи в день без комиссии'),
+    overPayMonth: i18n.t('Лимит на безналичные платежи в месяц без комиссии')
 };
 
 export interface InfoLink {
@@ -34,49 +42,50 @@ export interface InfoLink {
 export const cardInfo: InfoLink[] = [
     {
         id: 1,
-        text: 'Реквизиты карты',
-        icon: 'bill-details'
+        text: i18n.t('Реквизиты карты'),
+        icon: 'action-bill-details'
     },
     {
         id: 2,
-        text: 'Тарифы и комиссии',
-        icon: 'briefcase-icon'
+        text: i18n.t('Тарифы и комиссии'),
+        icon: 'action-briefcase'
     },
     {
         id: 3,
-        text: 'Лимиты',
-        icon: 'settings-icon'
+        text: i18n.t('Лимиты'),
+        icon: 'action-settings'
     },
     {
         id: 4,
-        text: 'История операций',
-        icon: 'bill-details'
+        text: i18n.t('История операций'),
+        icon: 'action-bill-details'
     },
     {
         id: 5,
-        text: 'Выписка',
-        icon: 'bill-details'
+        text: i18n.t('Выписка'),
+        icon: 'action-bill-details'
     }
 ];
+
 export const cardActions: InfoLink[] = [
     {
         id: 1,
-        text: 'Пополнить',
-        icon: 'add-to-card'
+        text: i18n.t('Пополнить'),
+        icon: 'action-add-card'
     },
     {
         id: 2,
-        text: 'Изменить пин-код',
-        icon: 'password-icon'
+        text: i18n.t('Изменить пин-код'),
+        icon: 'action-pin-code'
     },
     {
         id: 3,
-        text: 'Запретить операции',
-        icon: 'forbid-operations'
+        text: i18n.t('Запретить операции'),
+        icon: 'action-close'
     },
     {
         id: 4,
-        text: 'Заблокировать карту',
-        icon: 'lock-icon'
+        text: i18n.t('Заблокировать карту'),
+        icon: 'action-lock'
     }
 ];

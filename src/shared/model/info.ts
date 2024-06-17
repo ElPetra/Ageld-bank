@@ -1,9 +1,11 @@
+import i18n from 'src/shared/model/i18n';
+
 export const objectTypeName = {
-    ATM: 'Банкомат',
-    kiosk: 'Инфокиоск',
-    head: 'Главный офис',
-    branch: 'Отделение банка',
-    exchange: 'Обменный пункт'
+    ATM: i18n.t('Банкомат'),
+    kiosk: i18n.t('Инфокиоск'),
+    head: i18n.t('Главный офис'),
+    branch: i18n.t('Отделение банка'),
+    exchange: i18n.t('Обменный пункт')
 };
 
 type ObjectType = keyof typeof objectTypeName;

@@ -71,7 +71,7 @@ export const PasswordInput = ({
             </Input>
             {capslockFlag && (
                 <InfoCard
-                    icon='warning-icon'
+                    icon='warning'
                     color='error'
                     message={t('Включен CapsLock')}
                 />
