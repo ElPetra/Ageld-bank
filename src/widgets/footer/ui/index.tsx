@@ -9,7 +9,7 @@ export const Footer = () => (
         <Container variant='secondary'>
             <LogoPhone />
         </Container>
-        <Container variant='tertiary'>
+        <Container variant='secondary'>
             <Menu />
             <Info />
         </Container>

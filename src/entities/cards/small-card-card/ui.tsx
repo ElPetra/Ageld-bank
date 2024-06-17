@@ -14,14 +14,14 @@ interface Props {
 export const SmallCardCard = ({ card }: Props) => {
     const { t } = useTranslation();
     return (
-        <Card color='quadruple' direction='column'>
+        <Card direction='column'>
             <div className='small-card-card__first-row'>
                 <Icon widthAndHeight={40} icon='rub' />
                 <div className='small-card-card__info'>
                     <Text size='m' weight='medium'>
                         {100000}
                     </Text>
-                    <Text size='xs' color='quadruple'>
+                    <Text size='xs' color='tertiary'>
                         {card.name}
                     </Text>
                 </div>

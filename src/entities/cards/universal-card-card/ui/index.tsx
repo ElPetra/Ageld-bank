@@ -51,12 +51,7 @@ export const UniversalCardCard = ({ card, children }: Props) => {
         isCardDetails(card) && navigator.clipboard.writeText(card.number);
 
     return (
-        <Card
-            color='quadruple'
-            padding='large'
-            gap='extra-large'
-            className='universal-card-card'
-        >
+        <Card padding='large' gap='extra-large' className='universal-card-card'>
             <div className='universal-card-card__image'>
                 <LinkCard link={link}>
                     <Image src={card.image} />
@@ -88,7 +83,7 @@ export const UniversalCardCard = ({ card, children }: Props) => {
                                 {card.balance + ' ₽'}
                             </Text>
                         ) : (
-                            <Text color='quadruple'>
+                            <Text color='tertiary'>
                                 {isCustomerCard(card)
                                     ? card.number.replace(
                                           /.{12}/gm,

@@ -2,7 +2,7 @@
 
 exports[`Text ui match snapshot 1`] = `
 <div
-  class="text text-inherit s regular left"
+  class="text s regular left"
 >
   Text
 </div>

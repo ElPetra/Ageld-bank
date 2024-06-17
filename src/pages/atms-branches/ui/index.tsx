@@ -47,6 +47,7 @@ export const ATMsBranchesPage = () => {
                         <div className='map__forward-container__right'>
                             <div className='map__forward-container__col'>
                                 <Card
+                                    color='secondary'
                                     direction='column'
                                     borderRadius='extra-large'
                                     padding='small-medium'
@@ -73,7 +74,6 @@ export const ATMsBranchesPage = () => {
                                         key={el.objectNumber}
                                         bankObject={el}
                                         setVisible={setVisible}
-                                        current={current}
                                         setCurrent={setCurrent}
                                     />
                                 ))}

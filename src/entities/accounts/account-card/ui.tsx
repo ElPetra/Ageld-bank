@@ -24,7 +24,7 @@ export const AccountCard = ({ account, children }: Props) => {
     return (
         <div>
             <Link to={RouteName.ACCOUNT_PAGE + '/' + account.number}>
-                <Card color='quadruple' gap='medium' justify='space-between'>
+                <Card gap='medium' justify='space-between'>
                     <div className='account__card__column'>
                         <Icon widthAndHeight={40} icon={account.currency} />
                         <div className='account__card__info'>
@@ -34,7 +34,7 @@ export const AccountCard = ({ account, children }: Props) => {
                                     ACCOUNT_NUMBER_REPLACEMENT
                                 )}
                             </Text>
-                            <Text weight='medium' color='light'>
+                            <Text weight='medium' color='tertiary'>
                                 {i18next.t(accountTypes[account.type])}
                             </Text>
                         </div>

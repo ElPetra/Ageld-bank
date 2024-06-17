@@ -6,7 +6,7 @@ import './styles.scss';
 
 interface Props {
     children: ReactNode;
-    color?: 'primary' | 'quadruple';
+    color?: 'primary' | 'secondary';
     gap?: 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large';
     borderRadius?: 'small' | 'medium' | 'large' | 'extra-large';
     padding?: 'small' | 'small-medium' | 'medium' | 'large' | 'extra-large';

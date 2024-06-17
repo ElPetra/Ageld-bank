@@ -40,7 +40,6 @@ export const Agreement = ({
     return (
         <Form onSubmit={onSubmit}>
             <Card
-                color='quadruple'
                 gap='medium'
                 padding='large'
                 borderRadius='extra-large'

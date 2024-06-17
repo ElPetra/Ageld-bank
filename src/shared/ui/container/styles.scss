@@ -9,11 +9,6 @@
     color: var(--text-secondary);
   }
 
-  &.tertiary {
-    background: var(--bg-tertiary);
-    color: var(--text-tertiary);
-  }
-
   @media screen and (max-width: 600px) {
     .container {
       padding: 0 15px !important;

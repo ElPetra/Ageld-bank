@@ -1,6 +1,18 @@
-.bank-contacts {
+.contacts-page {
     display: flex;
     flex-direction: column;
     gap: 24px;
-    margin: auto auto 32px;
+    margin-bottom: 32px;
+
+    &__blocks {
+        display: flex;
+        flex-direction: column;
+        gap: 64px;
+
+        > div {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+    }
 }

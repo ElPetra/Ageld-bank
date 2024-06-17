@@ -13,25 +13,14 @@ import './styles.scss';
 interface Props {
     bankObject: BankObject;
     setVisible: Dispatch<SetStateAction<boolean>>;
-    current: BankObject | undefined;
     setCurrent: Dispatch<SetStateAction<BankObject | undefined>>;
 }
 
-export function BankObjectCard({
-    bankObject,
-    setVisible,
-    current,
-    setCurrent
-}: Props) {
+export function BankObjectCard({ bankObject, setVisible, setCurrent }: Props) {
     return (
         <Card
+            color='secondary'
             key={bankObject.objectNumber}
-            status={
-                bankObject.latitude === current?.latitude &&
-                bankObject.longitude === current?.longitude
-                    ? 'active'
-                    : ''
-            }
             direction='column'
             borderRadius='extra-large'
             padding='small-medium'
@@ -44,7 +33,7 @@ export function BankObjectCard({
                         bankObject.objectNumber}
                 </Text>
             </div>
-            <div>{getAddress(bankObject)}</div>
+            <Text weight='medium'>{getAddress(bankObject)}</Text>
             <div className='bank-object__schedule'>
                 {getSchedule(bankObject.schedule)}
             </div>
@@ -53,7 +42,7 @@ export function BankObjectCard({
                     color={
                         getStatus(bankObject.schedule).includes('Открыто')
                             ? 'action'
-                            : 'quadruple'
+                            : 'tertiary'
                     }
                 >
                     {getStatus(bankObject.schedule)}

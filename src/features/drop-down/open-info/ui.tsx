@@ -26,7 +26,7 @@ export const MoreInfoButton = ({ options }: Props) => {
                 <div className='more__info__dropdown'>
                     {options.map((el, index) => (
                         <Link key={index} to={el.to}>
-                            <Text weight='medium' color='quadruple'>
+                            <Text weight='medium' color='tertiary'>
                                 {t(el.text)}
                             </Text>
                         </Link>

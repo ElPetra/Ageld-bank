@@ -38,7 +38,6 @@ export const Terms = ({ isLast, setFormStep, extendedDeposit }: Props) => {
     return (
         <Form onSubmit={handleSubmit(onSubmit)}>
             <Card
-                color='quadruple'
                 gap='medium'
                 padding='large'
                 borderRadius='extra-large'

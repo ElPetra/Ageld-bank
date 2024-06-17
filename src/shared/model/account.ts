@@ -82,7 +82,7 @@ export const accountTypesInfo: TypeVariant[] = [
         value: 'deposit',
         type: DEPOSIT_ACCOUNT,
         title: i18n.t('Сделайте шаг навстречу мечте'),
-        icon: 'businessman-icon'
+        icon: 'businessman'
     }
 ];
 

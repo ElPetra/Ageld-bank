@@ -1,0 +1,17 @@
+.contacts-page__contacts-block {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__contacts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+
+    > div {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+  }
+}

@@ -61,6 +61,10 @@
     text-align: right;
   }
 
+  &.text-action {
+    color: var(--text-action);
+  }
+
   &.text-success {
     color: var(--text-success);
   }
@@ -69,20 +73,12 @@
     color: var(--text-error);
   }
 
+  &.text-tertiary {
+    color: var(--text-tertiary);
+  }
+
   &.text-quadruple {
     color: var(--text-quadruple);
-  }
-
-  &.text-action {
-    color: var(--text-action);
-  }
-
-  &.text-light {
-    color: var(--text-light);
-  }
-
-  &.text-inherit {
-    color: inherit;
   }
   
   &.flex{

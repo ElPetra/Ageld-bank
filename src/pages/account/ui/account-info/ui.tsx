@@ -18,11 +18,10 @@ export const AccountInfo = ({ account }: Props) => {
     const handleCopyAccount = () => {
         navigator.clipboard.writeText(account.number);
     };
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     //Todo: некоторые кастомные места, вроде причины блокировки, не обернуть в "t"
     return (
         <Card
-            color='quadruple'
             justify='space-between'
             gap='large'
             padding='large'
@@ -44,10 +43,10 @@ export const AccountInfo = ({ account }: Props) => {
                             </div>
                             <div className='account-info__main__info__second-row'>
                                 <div>
-                                    <Text color='quadruple'>
+                                    <Text color='tertiary'>
                                         {t('№ счета: ')}
                                     </Text>
-                                    <Text color='quadruple'>
+                                    <Text color='tertiary'>
                                         {account.number}
                                     </Text>
                                 </div>
@@ -63,26 +62,26 @@ export const AccountInfo = ({ account }: Props) => {
                 </div>
                 <div className='account-info__second-row'>
                     <div>
-                        <Text size='xs' color='quadruple'>
+                        <Text size='xs' color='tertiary'>
                             {t('Дата открытия счета')}
                         </Text>
                         <Text weight='medium'>
-                            {formatDate(account.createdAt, i18n.language)}
+                            {formatDate(account.createdAt)}
                         </Text>
                     </div>
                     {account.status === 'closed' && account.closedAt && (
                         <div>
-                            <Text size='xs' color='quadruple'>
+                            <Text size='xs' color='tertiary'>
                                 {t('Дата закрытия счета')}
                             </Text>
                             <Text weight='medium'>
-                                {formatDate(account.closedAt, i18n.language)}
+                                {formatDate(account.closedAt)}
                             </Text>
                         </div>
                     )}
                     {account.status === 'blocked' && (
                         <div>
-                            <Text size='xs' color='quadruple'>
+                            <Text size='xs' color='tertiary'>
                                 {t('Причина блокировки')}
                             </Text>
                             <Text weight='medium'>{account.blockReason}</Text>
