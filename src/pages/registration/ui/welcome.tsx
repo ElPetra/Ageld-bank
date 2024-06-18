@@ -41,7 +41,7 @@ export default function Welcome({ setShowForm }: WelcomeProps) {
                     {t('Регистрация')}
                 </Button>
                 <div className='welcome__auth-redirect'>
-                    <Text>{t('У вас уже есть аккаунт') + '?'} </Text>
+                    <Text>{t('У вас уже есть аккаунт?')} </Text>
                     <Link to={RouteName.LOGIN_PAGE} variant='action'>
                         {t('Авторизуйтесь')}
                     </Link>
