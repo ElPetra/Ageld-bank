@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { useTranslation } from 'react-i18next';
 import { Text, Button, Image, Link } from 'src/shared/ui';
 import { RouteName } from 'src/shared/model';
 
@@ -8,11 +8,12 @@ interface WelcomeProps {
     setShowForm: React.Dispatch<React.SetStateAction<boolean>>;
 }
 export default function Welcome({ setShowForm }: WelcomeProps) {
+    const { t } = useTranslation();
     return (
         <div className='welcome__wrapper'>
             <div className='welcome__left-side'>
                 <Text weight='bold' size='l' align='center'>
-                    Добро пожаловать в интернет-банкинг A-Geld
+                    {t('Добро пожаловать в интернет-банкинг A-Geld')}
                 </Text>
                 <Text
                     align='center'
@@ -20,12 +21,15 @@ export default function Welcome({ setShowForm }: WelcomeProps) {
                     weight='medium'
                     lineHeight='unset'
                 >
-                    Доступ в личный кабинет возможен с телефонного номера,
-                    указанного при открытии счета в нашем банке
+                    {t(
+                        'Доступ в личный кабинет возможен с телефонного номера, указанного при открытии счета в нашем банке'
+                    )}
                 </Text>
                 <Text align='center' size='s'>
-                    Для создания кабинета пользователя нажмите кнопку
-                    &quot;Регистрация&quot;
+                    {t(
+                        'Для создания кабинета пользователя нажмите кнопку  Регистрация'
+                    )}
+                    ;
                 </Text>
                 <Button
                     width='max'
@@ -34,12 +38,12 @@ export default function Welcome({ setShowForm }: WelcomeProps) {
                         setShowForm(true);
                     }}
                 >
-                    Регистрация
+                    {t('Регистрация')}
                 </Button>
                 <div className='welcome__auth-redirect'>
-                    <Text>У вас уже есть аккаунт?</Text>
+                    <Text>{t('У вас уже есть аккаунт') + '?'} </Text>
                     <Link to={RouteName.LOGIN_PAGE} variant='action'>
-                        Авторизуйтесь
+                        {t('Авторизуйтесь')}
                     </Link>
                 </div>
             </div>

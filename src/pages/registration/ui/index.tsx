@@ -12,7 +12,6 @@ export const RegistrationPage = () => {
     const [phone, setPhone] = useState<string>('');
     const [showForm, setShowForm] = useState<boolean>(false);
     const { t } = useTranslation();
-
     return (
         <Container>
             {!showForm && <Welcome setShowForm={setShowForm} />}
