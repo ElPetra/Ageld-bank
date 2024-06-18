@@ -18,7 +18,7 @@ export function HamburgerMenu({ visible, setVisible }: Props) {
             <div className='hamburger-menu'>
                 <div className='hamburger-menu__header'>
                     <Link to={RouteName.MAIN_PAGE}>
-                        <Icon icon='logo-dark' width={40} />
+                        <Icon icon='logo-accent-text' width={40} />
                     </Link>
                     <button onClick={() => setVisible(false)}>
                         <Icon icon='close' />

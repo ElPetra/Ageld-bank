@@ -74,7 +74,6 @@ export const ATMsBranchesPage = () => {
                                         key={el.objectNumber}
                                         bankObject={el}
                                         setVisible={setVisible}
-                                        current={current}
                                         setCurrent={setCurrent}
                                     />
                                 ))}

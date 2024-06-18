@@ -23,11 +23,7 @@ export const SearchForm = ({ label, size = 'large' }: Props) => {
     });
 
     return (
-        <Form
-            onSubmit={handleSubmit(data => {
-                console.log(data.search);
-            })}
-        >
+        <Form onSubmit={handleSubmit(() => {})}>
             <Input
                 type='text'
                 placeholder={label || t('Поиск')}

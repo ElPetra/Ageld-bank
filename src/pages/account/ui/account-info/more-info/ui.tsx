@@ -27,7 +27,11 @@ const anchors: Record<string, string> = {
     [BLOCK_ACCOUNT]: 'block'
 };
 
-const accountStatuses: Record<ProductStatus, string[]> = {
+const accountStatuses: {
+    blocked: string[],
+    active: string[],
+    closed: string[]
+} = {
     //Todo: уточнить, для чего здесь добавлена пролонгация в юнион
     active: [
         REQUISITES,
@@ -42,6 +46,7 @@ const accountStatuses: Record<ProductStatus, string[]> = {
 
 export const AccountsMoreInfo = ({ status }: Props) => {
     const { t } = useTranslation();
+    // @ts-expect-error тип данных будет переписан
     const options = accountStatuses[status].map(el => ({
         text: t(el),
         to: anchors[el] || '/'

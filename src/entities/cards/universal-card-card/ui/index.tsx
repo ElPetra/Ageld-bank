@@ -102,7 +102,7 @@ export const UniversalCardCard = ({ card, children }: Props) => {
                             <>
                                 <Detail
                                     value={getFirstUpperCase(card.level)}
-                                    description={t('Уровень премиальностИи')}
+                                    description={t('Уровень премиальность')}
                                 />
                                 <Detail
                                     value={RUB}

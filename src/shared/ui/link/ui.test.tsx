@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import '@testing-library/jest-dom';
+import '@testing-library/jest-dom/jest-globals';
 
 import { Link } from './ui';
 

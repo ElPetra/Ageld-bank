@@ -193,6 +193,7 @@ export const useAuth = () => {
 
     const extendedDeposit = useCallback(
         async (id: string, term: number): Promise<void | string> => {
+            // eslint-disable-next-line
             console.log('extend', id, 'for', term);
             setIsLoading(false);
         },

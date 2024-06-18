@@ -81,7 +81,7 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
                 type='submit'
                 disabled={!isDirty}
             >
-                {t('Продолжить')}
+                {t('Сменить пароль')}
             </Button>
         </Form>
     );

@@ -12,7 +12,12 @@ export const PersonalData = ({ info }: Props) => {
         <UserCard
             fullName={`${info.lastName} ${info.firstName} ${info.middleName}`}
         >
-            <Contacts phone={info.phoneNumber}>
+            <Contacts
+                phone={info.phoneNumber.replace(
+                    /(\d)(\d{3})(\d{3})(\d{2})(\d)/,
+                    '+7 ($2) $3-$4-$5'
+                )}
+            >
                 <EmailForm email={info.email} key={info.email} />
             </Contacts>
             <Address

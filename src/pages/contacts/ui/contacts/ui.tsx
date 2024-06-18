@@ -23,31 +23,25 @@ export const Contacts = () => {
                         {'Горячая линия для частных лиц'}
                     </Text>
                     <div className='contacts-page__contacts-block__contacts'>
-                        {Object.keys(individuals).map(el => (
+                        {(
+                            Object.keys(individuals) as Array<
+                                keyof typeof individuals
+                            >
+                        ).map(el => (
                             <div key={el}>
                                 <Link
                                     to={
                                         (el !== 'email' ? 'tel:' : 'mailto:') +
-                                        individuals[
-                                            el as keyof typeof individuals
-                                        ]
+                                        individuals[el]
                                     }
                                     target='_blank'
                                 >
                                     <Text weight='medium'>
-                                        {
-                                            individuals[
-                                                el as keyof typeof individuals
-                                            ]
-                                        }
+                                        {individuals[el]}
                                     </Text>
                                 </Link>
                                 <Text weight='medium' color='tertiary'>
-                                    {
-                                        contactsMatcher[
-                                            el as keyof typeof individuals
-                                        ]
-                                    }
+                                    {contactsMatcher[el]}
                                 </Text>
                             </div>
                         ))}
@@ -58,29 +52,23 @@ export const Contacts = () => {
                         {'Горячая линия корпоративным клиентам'}
                     </Text>
                     <div className='contacts-page__contacts-block__contacts'>
-                        {Object.keys(corporate).map(el => (
+                        {(
+                            Object.keys(corporate) as Array<
+                                keyof typeof corporate
+                            >
+                        ).map(el => (
                             <div key={el}>
                                 <Link
                                     to={
                                         (el !== 'email' ? 'tel:' : 'mailto:') +
-                                        corporate[el as keyof typeof corporate]
+                                        corporate[el]
                                     }
                                     target='_blank'
                                 >
-                                    <Text weight='medium'>
-                                        {
-                                            corporate[
-                                                el as keyof typeof corporate
-                                            ]
-                                        }
-                                    </Text>
+                                    <Text weight='medium'>{corporate[el]}</Text>
                                 </Link>
                                 <Text weight='medium' color='tertiary'>
-                                    {
-                                        contactsMatcher[
-                                            el as keyof typeof corporate
-                                        ]
-                                    }
+                                    {contactsMatcher[el]}
                                 </Text>
                             </div>
                         ))}
@@ -91,25 +79,21 @@ export const Contacts = () => {
                         {'Техническая поддержка'}
                     </Text>
                     <div className='contacts-page__contacts-block__contacts'>
-                        {Object.keys(support).map(el => (
+                        {(
+                            Object.keys(support) as Array<keyof typeof support>
+                        ).map(el => (
                             <div key={el}>
                                 <Link
                                     to={
                                         (el !== 'email' ? 'tel:' : 'mailto:') +
-                                        support[el as keyof typeof support]
+                                        support[el]
                                     }
                                     target='_blank'
                                 >
-                                    <Text weight='medium'>
-                                        {support[el as keyof typeof support]}
-                                    </Text>
+                                    <Text weight='medium'>{support[el]}</Text>
                                 </Link>
                                 <Text weight='medium' color='tertiary'>
-                                    {
-                                        contactsMatcher[
-                                            el as keyof typeof support
-                                        ]
-                                    }
+                                    {contactsMatcher[el]}
                                 </Text>
                             </div>
                         ))}

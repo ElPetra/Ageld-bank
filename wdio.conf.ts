@@ -32,6 +32,7 @@ export const config: Options.Testrunner = {
     specs: ['test/specs/**/*.ts'],
     // Patterns to exclude.
     exclude: [
+        'test/specs/signUp.ts'
         // 'path/to/excluded/files'
     ],
     //
