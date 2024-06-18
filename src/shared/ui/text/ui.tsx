@@ -11,6 +11,7 @@ interface Props {
     weight?: 'light' | 'regular' | 'medium' | 'bold' | 'extra-bold';
     color?: 'action' | 'success' | 'error' | 'tertiary' | 'quadruple';
     align?: 'center' | 'left' | 'right';
+    lineHeight?: 'unset';
     display?: 'flex';
     children: ReactNode;
 }
@@ -22,11 +23,12 @@ export const Text = memo(
         weight = 'regular',
         align = 'left',
         color,
+        lineHeight,
         children,
         display
     }: Props) => {
         const Element = tag || 'div';
-        const textClass = cn('text', size, weight, align, display, {
+        const textClass = cn('text', size, weight, align, display, lineHeight, {
             [`text-${color}`]: color
         });
 

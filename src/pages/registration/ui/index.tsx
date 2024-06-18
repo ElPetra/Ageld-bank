@@ -6,57 +6,62 @@ import { MessageCard } from 'src/entities/message';
 import { MultiStepForm } from 'src/features/multi-step-form';
 import { PhoneForm, CodeForm, ConfirmPasswordForm } from 'src/features/forms';
 
+import Welcome from './welcome';
+
 export const RegistrationPage = () => {
     const [phone, setPhone] = useState<string>('');
+    const [showForm, setShowForm] = useState<boolean>(false);
     const { t } = useTranslation();
-
     return (
         <Container>
-            <MultiStepForm
-                variant='registration'
-                forms={[
-                    {
-                        id: 1,
-                        title: t('Регистрация'),
-                        component: (
-                            <PhoneForm
-                                variant='registration'
-                                setPhone={setPhone}
-                            />
-                        )
-                    },
-                    {
-                        id: 2,
-                        title: t('Введите код из смс'),
-                        component: <CodeForm phone={phone} />
-                    },
-                    {
-                        id: 3,
-                        title: t('Придумайте пароль'),
-                        component: (
-                            <ConfirmPasswordForm
-                                variant='registration'
-                                phone={phone}
-                            />
-                        )
-                    },
-                    {
-                        id: 4,
-                        title: '',
-                        component: (
-                            <MessageCard
-                                icon='paper-airplane-lady'
-                                width={400}
-                                title={t(
-                                    'Кабинет пользователя успешно \n зарегистрирован'
-                                )}
-                                buttonText={t('Войти в кабинет')}
-                            />
-                        ),
-                        isResult: true
-                    }
-                ]}
-            />
+            {!showForm && <Welcome setShowForm={setShowForm} />}
+            {showForm && (
+                <MultiStepForm
+                    variant='registration'
+                    forms={[
+                        {
+                            id: 1,
+                            title: t('Регистрация'),
+                            component: (
+                                <PhoneForm
+                                    variant='registration'
+                                    setPhone={setPhone}
+                                />
+                            )
+                        },
+                        {
+                            id: 2,
+                            title: t('Введите код из смс'),
+                            component: <CodeForm phone={phone} />
+                        },
+                        {
+                            id: 3,
+                            title: t('Придумайте пароль'),
+                            component: (
+                                <ConfirmPasswordForm
+                                    variant='registration'
+                                    phone={phone}
+                                />
+                            )
+                        },
+                        {
+                            id: 4,
+                            title: '',
+                            component: (
+                                <MessageCard
+                                    icon='paper-airplane-lady'
+                                    width={400}
+                                    title={t(
+                                        'Кабинет пользователя успешно \n зарегистрирован'
+                                    )}
+                                    buttonText={t('Войти в кабинет')}
+                                />
+                            ),
+                            isResult: true
+                        }
+                    ]}
+                />
+            )}
         </Container>
     );
 };
