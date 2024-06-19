@@ -71,7 +71,7 @@ import failureLadySVG from 'src/shared/ui/icon/assets/icons/illustration-failure
 import paperAirplaneLadySVG from 'src/shared/ui/icon/assets/icons/illustration-paper-airplane-lady.svg';
 import questionLadySVG from 'src/shared/ui/icon/assets/icons/illustration-question-lady.svg';
 
-export type PngImageNames = 'classic' | 'gold' | 'platinum' | 'premium' | 'welcome';
+export type PngImageNames = 'classic' | 'gold' | 'platinum' | 'premium' | 'welcome' | 'logored';
 
 export const SVG = {
     'action-add-card': actionAddCardSVG,
