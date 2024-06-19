@@ -3,6 +3,30 @@ import type { Currency } from 'src/shared/model';
 
 import type { ProductStatus } from 'src/shared/model';
 
+export const depositCapitalization: Record<0 | 1 | 2 | 3 | 4 | 5, string> = {
+    0: 'Без капитализации',
+    1: 'Ежедневная',
+    2: 'Ежемесячная',
+    3: ' Ежеквартальная',
+    4: 'Полугодовая',
+    5: 'Ежегодная'
+};
+
+export interface DepositProduct {
+    id: string;
+    name: string;
+    currency: Currency;
+    dayMin: number;
+    dayMax: number;
+    amountMin: number;
+    amountMax: number;
+    capitalization: 0 | 1 | 2 | 3 | 4 | 5;
+    replenishment: boolean;
+    withdrawal: number;
+    revocable: boolean;
+    percentRate: number;
+}
+
 export interface MockDeposit {
     id: number;
     currency: Currency;
@@ -21,11 +45,7 @@ export interface MockDeposit {
     untimelyWithdrawalInterestRate: string;
     subAccountNum: number;
 }
-export interface DepositProduct {
-    nameProduct: string;
-    imageUrl: string;
-    depositProductId: string;
-}
+
 export interface balanceProps {
     deposit: MockDeposit;
     startBalance: number;

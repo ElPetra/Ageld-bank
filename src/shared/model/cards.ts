@@ -9,7 +9,7 @@ export type CardLevel = 'CLASSIC' | 'GOLD' | 'PLATINUM' | 'PREMIUM';
 export type PaymentSystem = 'МИР' | 'VISA';
 
 export const CARD_NUMBER_REPLACEMENT = '**** **** **** ';
-export const ALL_CARD = i18n.t('Bce');
+export const ALL = i18n.t('Bce');
 export const CREDIT_CARD = i18n.t('Кредитная');
 export const DEBIT_CARD = i18n.t('Дебетовая');
 export const DEPOSIT_CARD = i18n.t('Депозитная');
@@ -22,13 +22,8 @@ export const typeCard: Record<CardType, string> = {
     DEPOSIT: DEPOSIT_CARD
 };
 
-export const typeCardFilters = [
-    ALL_CARD,
-    CREDIT_CARD,
-    DEBIT_CARD,
-    DEPOSIT_CARD
-];
-export const paymentSystemFilters = [ALL_CARD, MIR_CARD, VISA_CARD];
+export const typeCardFilters = [ALL, CREDIT_CARD, DEBIT_CARD, DEPOSIT_CARD];
+export const paymentSystemFilters = [ALL, MIR_CARD, VISA_CARD];
 
 export interface CustomerCard {
     id: string;

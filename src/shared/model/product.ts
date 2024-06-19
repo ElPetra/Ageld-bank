@@ -7,6 +7,7 @@ export const RUB = 'RUB';
 export const EUR = 'EUR';
 export const USD = 'USD';
 
+export const currencyMinFilters = [RUB, USD, EUR];
 export const currencyFilters = [ALL_CURRENCY, RUB, USD, EUR];
 
 export const currencySymbol = {

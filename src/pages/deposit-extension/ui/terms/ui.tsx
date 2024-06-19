@@ -22,7 +22,7 @@ export const Terms = ({ isLast, setFormStep, extendedDeposit }: Props) => {
         setValue,
         formState: { isValid }
     } = useForm<FieldValues>({
-        defaultValues: { input: 3, slider: 3 },
+        defaultValues: { dayInput: 30, daySlider: 30 },
         mode: 'onTouched',
         reValidateMode: 'onChange'
     });
@@ -44,21 +44,17 @@ export const Terms = ({ isLast, setFormStep, extendedDeposit }: Props) => {
                 direction='column'
             >
                 <SliderInput
+                    variant='secondary'
                     register={register}
                     setValue={setValue}
                     label={t('Срок пролонгации')}
-                    min={3}
-                    max={36}
-                    inputField='input'
-                    sliderField='slider'
-                    unit={t('мес')}
+                    min={30}
+                    max={1080}
+                    inputField='dayInput'
+                    sliderField='daySlider'
+                    unit={t('дней')}
                 />
-                <Button
-                    cursorNotAllowed={!isValid}
-                    disabled={!isValid}
-                    type='submit'
-                    variant='secondary'
-                >
+                <Button disabled={!isValid} type='submit' variant='secondary'>
                     <Text>{t('Пролонгировать депозит')}</Text>
                 </Button>
             </Card>

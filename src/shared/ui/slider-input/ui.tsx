@@ -8,6 +8,7 @@ import type {
 import './styles.scss';
 
 interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
+    variant?: 'primary' | 'secondary';
     label: string;
     min: number;
     max: number;
@@ -19,6 +20,7 @@ interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
 }
 
 export const SliderInput = ({
+    variant = 'primary',
     label,
     min,
     max,
@@ -40,7 +42,7 @@ export const SliderInput = ({
             <label>{label}</label>
             <div className='slider-input__inputs'>
                 <div className='slider-input__input'>
-                    <div>
+                    <div className={variant}>
                         <input
                             {...register(inputField, {
                                 required: true,

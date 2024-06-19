@@ -16,6 +16,7 @@ import { AccountCreationPage } from 'src/pages/account-creation';
 import { CardProductPage } from 'src/pages/card-product';
 import { ContactsPage } from 'src/pages/contacts';
 import { ATMsBranchesPage } from 'src/pages/atms-branches';
+import { DepositProductPage } from 'src/pages/deposit-product';
 
 import { useAuth } from 'src/entities/user';
 import { AuthStatus, CREATE, EXTEND, RouteName } from 'src/shared/model';
@@ -32,6 +33,7 @@ const {
     CARD_PRODUCT_PAGE,
     CARD_PAGE,
     DEPOSIT_PAGE,
+    DEPOSIT_PRODUCT_PAGE,
     ACCOUNT_PAGE,
     PERSONAL_PAGE,
     NOTIFICATION_HISTORY_PAGE,
@@ -68,6 +70,10 @@ const publicRoutes: RouteDescription[] = [
     {
         path: CARD_PRODUCT_PAGE + '/:id',
         component: CardProductPage
+    },
+    {
+        path: DEPOSIT_PRODUCT_PAGE + '/:id',
+        component: DepositProductPage
     }
 ];
 

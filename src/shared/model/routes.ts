@@ -7,9 +7,10 @@ export const RouteName = {
     RECOVERY_PASSWORD_PAGE: '/recovery',
     PERSONAL_PAGE: '/personal',
     CARD_PAGE: '/card',
-    DEPOSIT_PAGE: '/deposit',
-    ACCOUNT_PAGE: '/account',
     CARD_PRODUCT_PAGE: '/card-product',
+    ACCOUNT_PAGE: '/account',
+    DEPOSIT_PAGE: '/deposit',
+    DEPOSIT_PRODUCT_PAGE: '/deposit-product',
     NOTIFICATION_HISTORY_PAGE: '/notifications_history',
     ATMS_AND_BRANCHES: '/locate-us',
     CONTACTS_PAGE: '/contacts'

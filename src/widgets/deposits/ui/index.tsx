@@ -4,7 +4,6 @@ import {
     RouteName,
     AuthStatus,
     DEPOSITS,
-    mockDeposits,
     DepositsRouteName,
     DepositsGuestRouteName
 } from 'src/shared/model';
@@ -37,11 +36,7 @@ export const Deposits = () => {
                               {
                                   id: 1,
                                   name: t('Мои депозиты'),
-                                  component: (
-                                      <CustomerDeposits
-                                          deposits={mockDeposits}
-                                      />
-                                  )
+                                  component: <CustomerDeposits />
                               },
                               {
                                   id: 2,
