@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-
 import { Container } from 'src/shared/ui';
 import { EnterPasswordForm, PhoneForm, CodeForm } from 'src/features/forms';
 import { MultiStepForm } from 'src/features/multi-step-form';
@@ -16,7 +15,7 @@ export const AuthorizationPage = () => {
                 forms={[
                     {
                         id: 1,
-                        title: t('Войдите в личный кабинет'),
+                        title: t('Авторизация'),
                         component: (
                             <PhoneForm variant='login' setPhone={setPhone} />
                         )
