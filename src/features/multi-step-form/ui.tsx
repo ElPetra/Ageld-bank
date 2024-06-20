@@ -1,6 +1,6 @@
 import { cloneElement, useState } from 'react';
 
-import { Image } from 'src/shared/ui';
+import { Icon } from 'src/shared/ui';
 
 import { BackButton } from './go-back';
 import { FormCard } from './form-card';
@@ -22,7 +22,9 @@ export const MultiStepForm = ({ variant = 'none', forms }: Props) => {
             {(variant == 'registration' ||
                 variant == 'login' ||
                 variant == 'recovery') && (
-                <Image image='logored' width='73px' height='69px' />
+                <div className='multi-step-form__logo'>
+                    <Icon icon='logo-accent' width={73} />
+                </div>
             )}
             {formStep > 1 && !forms[formStep - 1].isResult && (
                 <BackButton
