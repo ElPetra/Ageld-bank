@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { useAuth } from 'src/entities/user';
-import { Button, Form, Link, Text } from 'src/shared/ui';
+import { Button, Form, Link, Text, Image } from 'src/shared/ui';
 import { RouteName } from 'src/shared/model';
 import { useTranslation } from 'react-i18next';
 
