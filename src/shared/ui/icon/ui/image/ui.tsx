@@ -1,24 +1,20 @@
 import { memo } from 'react';
 
-import type { ImgHTMLAttributes } from 'react';
+import { PNG } from '../../model';
 
-import type { PngImageNames } from '../../model/types';
+import type { ImgHTMLAttributes } from 'react';
+import type { PngImageNames } from '../../model';
 
 export interface Props extends ImgHTMLAttributes<HTMLImageElement> {
-    image?: PngImageNames;
+    image: PngImageNames;
     widthAndHeight?: number;
-    src?: string;
     className?: string;
 }
 
 export const Image = memo(
-    ({ image, width, height, src, widthAndHeight, className }: Props) => (
+    ({ image, width, height, widthAndHeight, className }: Props) => (
         <img
-            src={
-                image
-                    ? '/src/shared/ui/icon/assets/images/' + image + '.png'
-                    : src
-            }
+            src={PNG[image]}
             {...(widthAndHeight || width
                 ? { width: widthAndHeight || width }
                 : {})}

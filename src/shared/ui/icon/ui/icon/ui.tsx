@@ -1,8 +1,9 @@
 import { memo } from 'react';
-import { SVG } from 'src/shared/ui/icon/model/types';
 
-import type { SvgIconName } from 'src/shared/ui/icon/model/types';
+import { SVG } from '../../model';
+
 import type { ImgHTMLAttributes } from 'react';
+import type { SvgIconName } from '../../model';
 
 export interface Props extends ImgHTMLAttributes<HTMLImageElement> {
     icon: SvgIconName;
