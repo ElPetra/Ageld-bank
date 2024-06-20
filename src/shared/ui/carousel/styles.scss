@@ -1,0 +1,14 @@
+.carousel_outer_container{
+    height: 1px;
+    min-height: 500px;
+    width: 100%;
+    display: flex;
+    flex-direction:column;
+    justify-content:start;
+    align-items:center;
+    max-width: 450px;
+    gap: 20px;
+    @media screen and (max-width: 450px) {
+      min-height: 700px;
+    }
+  }
