@@ -76,7 +76,8 @@ export type PngImageNames =
     | 'gold'
     | 'platinum'
     | 'premium'
-    | 'laptop-guy';
+    | 'laptop-guy'
+    | 'welcome';
 
 export const SVG = {
     'action-add-card': actionAddCardSVG,

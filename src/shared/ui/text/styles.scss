@@ -60,6 +60,9 @@
   &.right {
     text-align: right;
   }
+  &.unset {
+    line-height: unset;
+  }
 
   &.text-action {
     color: var(--text-action);
