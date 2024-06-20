@@ -1,5 +1,4 @@
-import { Carousel } from 'src/shared/ui/carousel';
-import { GalleryCard } from 'src/shared/ui/carousel/ui/carousel-galery/galery-card';
+import { Carousel, GalleryCard } from 'src/shared/ui';
 
 const mainMenuContent: Array<JSX.Element> = [
     <GalleryCard

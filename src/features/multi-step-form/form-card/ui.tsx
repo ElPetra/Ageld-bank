@@ -17,7 +17,17 @@ export const FormCard = ({ title, variant = 'none', children }: Props) => {
     const { t } = useTranslation();
     return (
         <div className='form-card'>
-            <Text size='l' weight='bold' align='center'>
+            <Text
+                size='l'
+                weight='bold'
+                align={
+                    variant == 'registration' ||
+                    variant == 'login' ||
+                    variant == 'recovery'
+                        ? 'center'
+                        : 'left'
+                }
+            >
                 {title}
             </Text>
             <div className='form-card__content'>{children}</div>

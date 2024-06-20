@@ -1,20 +1,23 @@
-.main-menu{
-    &_aside{
+.main-menu {
+    &_aside {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        gap: 24px;
         width: 350px;
         @media screen and (max-width: 800px) {
             width: 100%;
-            margin-bottom: 20px;
         }
-        
-        
+
+        > div {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
     }
-    &_card{
+
+    &_card {
         width: 200px;
         height: fit-content;
-        margin-bottom: 20px;
         @media screen and (max-width: 800px) {
             width: 100%;
             flex-direction: row !important;

@@ -19,7 +19,11 @@ export const MultiStepForm = ({ variant = 'none', forms }: Props) => {
 
     return (
         <div className={`multi-step-form ${variant}`}>
-            <Image image='logored' width='73px' height='69px' />
+            {(variant == 'registration' ||
+                variant == 'login' ||
+                variant == 'recovery') && (
+                <Image image='logored' width='73px' height='69px' />
+            )}
             {formStep > 1 && !forms[formStep - 1].isResult && (
                 <BackButton
                     onClick={() => {
