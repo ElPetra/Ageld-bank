@@ -12,9 +12,9 @@ export interface Props extends ImgHTMLAttributes<HTMLImageElement> {
 }
 
 export const Image = memo(
-    ({ image, width, height, widthAndHeight, className }: Props) => (
+    ({ image, width, height, src, widthAndHeight, className }: Props) => (
         <img
-            src={PNG[image]}
+            src={src || PNG[image]}
             {...(widthAndHeight || width
                 ? { width: widthAndHeight || width }
                 : {})}
