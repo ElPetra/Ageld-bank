@@ -1,0 +1,1 @@
+export { InfoMain } from './ui';

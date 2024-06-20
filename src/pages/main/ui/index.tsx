@@ -20,11 +20,7 @@ export const MainPage = () => {
                     {
                         id: 1,
                         name: t('Главная'),
-                        component: (
-                            <ProtectedMain>
-                                <MainMenu />
-                            </ProtectedMain>
-                        )
+                        component: <MainMenu />
                     },
                     {
                         id: 2,

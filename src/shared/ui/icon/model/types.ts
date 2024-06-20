@@ -10,7 +10,7 @@ import logoLightTextSVG from 'src/shared/ui/icon/assets/icons/logo-light-text.sv
 import logoAccentTextSVG from 'src/shared/ui/icon/assets/icons/logo-accent-text.svg';
 import logoLightSVG from 'src/shared/ui/icon/assets/icons/logo-light.svg';
 import logoAccentSVG from 'src/shared/ui/icon/assets/icons/logo-accent.svg';
-
+import pinkishSemicircleSVG from 'src/shared/ui/icon/assets/icons/pinkish-semicircle.svg';
 import eyeOpenSVG from 'src/shared/ui/icon/assets/icons/eye-open.svg';
 import eyeCloseSVG from 'src/shared/ui/icon/assets/icons/eye-close.svg';
 import searchSVG from 'src/shared/ui/icon/assets/icons/search.svg';
@@ -76,6 +76,7 @@ export type PngImageNames =
     | 'gold'
     | 'platinum'
     | 'premium'
+    | 'laptop-guy'
     | 'welcome';
 
 export const SVG = {
@@ -151,6 +152,7 @@ export const SVG = {
     'documents-folder-lady': documentsFolderLadySVG,
     'failure-lady': failureLadySVG,
     'paper-airplane-lady': paperAirplaneLadySVG,
-    'question-lady': questionLadySVG
+    'question-lady': questionLadySVG,
+    'pinkish-semicircle': pinkishSemicircleSVG
 };
 export type SvgIconName = keyof typeof SVG;
