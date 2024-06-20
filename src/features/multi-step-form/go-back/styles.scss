@@ -2,6 +2,8 @@
   color: var(--text-action);
   display: flex;
   gap: 4px;
+  align-self:baseline;
+  padding-bottom: 32px;
 
   &__top {
     margin-top: 24px;
