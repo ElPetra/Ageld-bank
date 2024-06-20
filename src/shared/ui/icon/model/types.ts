@@ -80,12 +80,6 @@ import goldPNG from 'src/shared/ui/icon/assets/images/gold.png';
 import platinumPNG from 'src/shared/ui/icon/assets/images/platinum.png';
 import premiumPNG from 'src/shared/ui/icon/assets/images/premium.png';
 
-// | 'classic'
-// | 'gold'
-// | 'platinum'
-// | 'premium'
-// | 'laptop-guy'
-// | 'welcome';
 export const PNG = {
     welcome: welcomePNG,
     'laptop-guy': laptopGuyPNG,
