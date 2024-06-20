@@ -79,7 +79,7 @@ import classicPNG from 'src/shared/ui/icon/assets/images/classic.png';
 import goldPNG from 'src/shared/ui/icon/assets/images/gold.png';
 import platinumPNG from 'src/shared/ui/icon/assets/images/platinum.png';
 import premiumPNG from 'src/shared/ui/icon/assets/images/premium.png';
-import logoredPNG from 'src/shared/ui/icon/assets/images/logored.png'
+import logoredPNG from 'src/shared/ui/icon/assets/images/logored.png';
 export const PNG = {
     welcome: welcomePNG,
     'laptop-guy': laptopGuyPNG,
