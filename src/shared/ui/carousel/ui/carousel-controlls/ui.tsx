@@ -2,6 +2,7 @@ import cn from 'classnames';
 import { type RefObject } from 'react';
 import { useCarouselControlls } from 'src/shared/lib/carousel';
 import './styles.scss';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
     containerRef: RefObject<HTMLDivElement>;
@@ -11,6 +12,7 @@ interface Props {
 export const Controlls = ({ containerRef, angle }: Props) => {
     const { changeRotateByArrow, changeRotateByControl, active } =
         useCarouselControlls(containerRef, angle);
+    const { t } = useTranslation();
     const controllClasses = (el: 'center' | 'prev' | 'next') =>
         cn({
             controll: true,
@@ -25,7 +27,7 @@ export const Controlls = ({ containerRef, angle }: Props) => {
                 >
                     <div
                         className={controllClasses('prev')}
-                        aria-label='предыдущий слайд'
+                        aria-label={t('предыдущий слайд')}
                         role='button'
                     ></div>
                 </div>
@@ -35,7 +37,7 @@ export const Controlls = ({ containerRef, angle }: Props) => {
                 >
                     <div
                         className={controllClasses('center')}
-                        aria-label='актуальный слайд'
+                        aria-label={t('актуальный слайд')}
                         role='button'
                     ></div>
                 </div>
@@ -45,7 +47,7 @@ export const Controlls = ({ containerRef, angle }: Props) => {
                 >
                     <div
                         className={controllClasses('next')}
-                        aria-label='следующий слайд'
+                        aria-label={t('следующий слайд')}
                         role='button'
                     ></div>
                 </div>
@@ -57,7 +59,7 @@ export const Controlls = ({ containerRef, angle }: Props) => {
                 >
                     <div
                         className='arrow controll'
-                        aria-label='предыдущая группа'
+                        aria-label={t('переключить назад')}
                         role='button'
                     ></div>
                 </div>
@@ -67,7 +69,7 @@ export const Controlls = ({ containerRef, angle }: Props) => {
                 >
                     <div
                         className='arrow controll'
-                        aria-label='следующая группа'
+                        aria-label={t('переключить вперед')}
                         role='button'
                     ></div>
                 </div>

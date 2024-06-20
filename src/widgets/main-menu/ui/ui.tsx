@@ -1,14 +1,18 @@
 import { Image, Text } from 'src/shared/ui';
 
-import './styles.scss';
+import { useTranslation } from 'react-i18next';
+
 import { InfoMain } from './info';
 import { CarouselMain } from './carousel';
 
+import './styles.scss';
+
 export function MainMenu() {
+    const { t } = useTranslation();
     return (
         <>
             <Text tag='h1' weight='bold' size='l'>
-                Банк A-Geld - место, где работают ваши деньги
+                {t('Банк A-Geld - место, где работают ваши деньги')}
             </Text>
             <div className='main-menu_container'>
                 <InfoMain />
