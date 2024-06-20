@@ -6,7 +6,7 @@ import type { ImgHTMLAttributes } from 'react';
 import type { PngImageNames } from '../../model';
 
 export interface Props extends ImgHTMLAttributes<HTMLImageElement> {
-    image: PngImageNames;
+    image?: PngImageNames;
     widthAndHeight?: number;
     className?: string;
 }
@@ -14,7 +14,7 @@ export interface Props extends ImgHTMLAttributes<HTMLImageElement> {
 export const Image = memo(
     ({ image, width, height, src, widthAndHeight, className }: Props) => (
         <img
-            src={src || PNG[image]}
+            src={src || (image && PNG[image])}
             {...(widthAndHeight || width
                 ? { width: widthAndHeight || width }
                 : {})}
