@@ -13,7 +13,7 @@ export default function Welcome({ setShowForm }: WelcomeProps) {
         <div className='welcome__wrapper'>
             <div className='welcome__left-side'>
                 <Text weight='bold' size='l' align='center'>
-                    {t('Добро пожаловать в интернет-банкинг A-Geld')}
+                    {t('Добро пожаловать в \n интернет-банкинг A-Geld')}
                 </Text>
                 <Text
                     align='center'
@@ -22,17 +22,17 @@ export default function Welcome({ setShowForm }: WelcomeProps) {
                     lineHeight='unset'
                 >
                     {t(
-                        'Доступ в личный кабинет возможен с телефонного номера, указанного при открытии счета в нашем банке'
+                        'Доступ в личный кабинет возможен с телефонного \n номера, указанного при открытии счета в нашем банке'
                     )}
                 </Text>
                 <Text align='center' size='s'>
                     {t(
-                        'Для создания кабинета пользователя нажмите кнопку  Регистрация'
+                        'Для создания кабинета пользователя нажмите кнопку Регистрация'
                     )}
-                    ;
                 </Text>
                 <Button
                     width='max'
+                    size='large'
                     variant='secondary'
                     onClick={() => {
                         setShowForm(true);
@@ -42,12 +42,13 @@ export default function Welcome({ setShowForm }: WelcomeProps) {
                 </Button>
                 <div className='welcome__auth-redirect'>
                     <Text>{t('У вас уже есть аккаунт?')} </Text>
+                    &nbsp;
                     <Link to={RouteName.LOGIN_PAGE} variant='action'>
                         {t('Авторизуйтесь')}
                     </Link>
                 </div>
             </div>
-            <Image image='welcome'></Image>
+            <Image image='welcome' />
         </div>
     );
 }

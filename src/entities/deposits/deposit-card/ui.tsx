@@ -23,9 +23,7 @@ export const DepositCard = ({ deposit }: Props) => {
                             {deposit.name}
                         </Text>
                         <Text size='xs' color='tertiary'>
-                            {t('До 30 сентября оформите депозит с услугой') +
-                                ' ' +
-                                deposit.name}
+                            {t('До 30 сентября оформите ') + ' ' + deposit.name}
                         </Text>
                     </div>
                     <div className='deposit-card__info__main__icon'>
@@ -71,7 +69,7 @@ export const DepositCard = ({ deposit }: Props) => {
                             </Text>
                         </div>
                         <Text color='tertiary' size='xs'>
-                            {t('Срок депозит')}
+                            {t('Срок депозита')}
                         </Text>
                     </div>
                 </div>

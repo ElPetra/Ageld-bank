@@ -32,7 +32,7 @@ export const FormCard = ({ title, variant = 'none', children }: Props) => {
                             to={
                                 variant === 'login'
                                     ? RouteName.REGISTRATION_PAGE
-                                    : RouteName.MAIN_PAGE
+                                    : RouteName.LOGIN_PAGE
                             }
                             variant='action'
                         >

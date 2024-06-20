@@ -100,7 +100,7 @@ export const DepositInfo = ({ deposit }: Props) => {
                     </div>
                     <div>
                         <Text color='tertiary' size='xs'>
-                            {t('Cтавка при досрочном отзыве')}
+                            {t('Ставка при досрочном отзыве')}
                         </Text>
                         <Text weight='medium' size='m'>
                             {deposit.untimelyWithdrawalInterestRate}

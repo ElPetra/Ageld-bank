@@ -10,7 +10,7 @@ import logoLightTextSVG from 'src/shared/ui/icon/assets/icons/logo-light-text.sv
 import logoAccentTextSVG from 'src/shared/ui/icon/assets/icons/logo-accent-text.svg';
 import logoLightSVG from 'src/shared/ui/icon/assets/icons/logo-light.svg';
 import logoAccentSVG from 'src/shared/ui/icon/assets/icons/logo-accent.svg';
-import pinkishSemicircleSVG from 'src/shared/ui/icon/assets/icons/pinkish-semicircle.svg';
+
 import eyeOpenSVG from 'src/shared/ui/icon/assets/icons/eye-open.svg';
 import eyeCloseSVG from 'src/shared/ui/icon/assets/icons/eye-close.svg';
 import searchSVG from 'src/shared/ui/icon/assets/icons/search.svg';
@@ -71,13 +71,31 @@ import failureLadySVG from 'src/shared/ui/icon/assets/icons/illustration-failure
 import paperAirplaneLadySVG from 'src/shared/ui/icon/assets/icons/illustration-paper-airplane-lady.svg';
 import questionLadySVG from 'src/shared/ui/icon/assets/icons/illustration-question-lady.svg';
 
-export type PngImageNames =
-    | 'classic'
-    | 'gold'
-    | 'platinum'
-    | 'premium'
-    | 'laptop-guy'
-    | 'welcome';
+import pinkishSemicircleSVG from 'src/shared/ui/icon/assets/icons/pinkish-semicircle.svg';
+
+import welcomePNG from 'src/shared/ui/icon/assets/images/welcome.png';
+import laptopGuyPNG from 'src/shared/ui/icon/assets/images/laptop-guy.png';
+import classicPNG from 'src/shared/ui/icon/assets/images/classic.png';
+import goldPNG from 'src/shared/ui/icon/assets/images/gold.png';
+import platinumPNG from 'src/shared/ui/icon/assets/images/platinum.png';
+import premiumPNG from 'src/shared/ui/icon/assets/images/premium.png';
+
+// | 'classic'
+// | 'gold'
+// | 'platinum'
+// | 'premium'
+// | 'laptop-guy'
+// | 'welcome';
+export const PNG = {
+    welcome: welcomePNG,
+    'laptop-guy': laptopGuyPNG,
+    classic: classicPNG,
+    gold: goldPNG,
+    platinum: platinumPNG,
+    premium: premiumPNG
+};
+
+export type PngImageNames = keyof typeof PNG;
 
 export const SVG = {
     'action-add-card': actionAddCardSVG,
@@ -153,6 +171,8 @@ export const SVG = {
     'failure-lady': failureLadySVG,
     'paper-airplane-lady': paperAirplaneLadySVG,
     'question-lady': questionLadySVG,
+
     'pinkish-semicircle': pinkishSemicircleSVG
 };
+
 export type SvgIconName = keyof typeof SVG;
