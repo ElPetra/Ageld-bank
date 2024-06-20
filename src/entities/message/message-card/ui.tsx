@@ -51,7 +51,7 @@ export const MessageCard = ({
                     {text && <Text align='center'>{text}</Text>}
                 </div>
 
-                <Icon width={width || 172} icon={icon || 'question-lady'} />
+                <Icon width={width || 300} icon={icon || 'question-lady'} />
                 {buttonText && (
                     <div className='message-card__button'>
                         {onClick ? (

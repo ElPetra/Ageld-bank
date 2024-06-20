@@ -1,24 +1,18 @@
 import { useTranslation } from 'react-i18next';
 
-import { CREATE, RouteName } from 'src/shared/model';
+import { CREATE, mockDeposits, RouteName } from 'src/shared/model';
 import { MessageCard } from 'src/entities/message';
 import { CustomerDepositCard } from 'src/entities/deposits';
 
-import type { MockDeposit } from 'src/shared/model';
-
 import './styles.scss';
 
-interface Props {
-    deposits: MockDeposit[];
-}
-
-export const CustomerDeposits = ({ deposits }: Props) => {
+export const CustomerDeposits = () => {
     const { t } = useTranslation();
     return (
         <>
-            {deposits.length ? (
+            {mockDeposits.length ? (
                 <div className='customer-deposits-list'>
-                    {deposits.map(el => (
+                    {mockDeposits.map(el => (
                         <CustomerDepositCard key={el.id} deposit={el} />
                     ))}
                 </div>

@@ -16,9 +16,9 @@ export const CustomerDepositCard = ({ deposit }: Props) => {
     const { t } = useTranslation();
     return (
         <Card padding='medium'>
-            <div className='deposit-card__container'>
-                <div className='deposit-card__title'>
-                    <div className='deposit-card__title__icon'>
+            <div className='customer-deposit-card__container'>
+                <div className='customer-deposit-card__title'>
+                    <div className='customer-deposit-card__title__icon'>
                         <Icon icon={deposit.icon} />
                     </div>
                     <Link to={RouteName.DEPOSIT_PAGE + '/' + deposit.id}>
@@ -27,7 +27,7 @@ export const CustomerDepositCard = ({ deposit }: Props) => {
                         </Text>
                     </Link>
                 </div>
-                <div className='deposit-card__info'>
+                <div className='customer-deposit-card__info'>
                     <div>
                         <Text weight='bold' size='l'>
                             {deposit.interestRate}

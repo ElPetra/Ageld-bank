@@ -13,7 +13,6 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
     variant?: 'primary' | 'secondary' | 'link';
     width?: 'auto' | 'max';
     status?: 'active' | undefined;
-    cursorNotAllowed?: boolean;
     children: ReactNode;
 }
 
@@ -24,12 +23,11 @@ export const Button = memo(
         disabled = false,
         variant = 'primary',
         width = 'auto',
-        cursorNotAllowed,
         status,
         children,
         ...props
     }: Props) => {
-        const buttonClass = cn(size, width, status, cursorNotAllowed, {
+        const buttonClass = cn(size, width, status, {
             button: variant !== 'link',
             [variant]: !disabled
         });

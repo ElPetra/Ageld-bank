@@ -1,7 +1,7 @@
 import { type Socials } from './types';
 //Часы работы
-export const CONSULT_INDIVID_HOURS = ['с 8 до 20ч', 'с 9 до 13ч', 'выходной'];
-export const CONSULT_JURIDIC_HOURS = ['с 8 до 20ч', 'с 9 до 13ч', 'выходной'];
+export const CONSULT_INDIVID_HOURS = ['8:00-20:00', '9:00-13:00', 'выходной'];
+export const CONSULT_JURIDIC_HOURS = ['8:00-20:00', '9:00-13:00', 'выходной'];
 
 export const contactsMatcher = {
     forRus: 'Бесплатный звонок по России',
@@ -37,7 +37,7 @@ export const socials: Array<Socials> = [
     { text: 'Чат с банком', icon: 'social-network-email', href: '/' }
 ];
 export const workingHoursLabels = [
-    'Будние дни: ',
+    'Понедельник - Пятница: ',
     'Суббота: ',
-    'Воскресенье: '
+    'Воскресенье - '
 ];

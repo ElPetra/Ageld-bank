@@ -1,0 +1,1 @@
+export { DepositProductPage } from './ui';
