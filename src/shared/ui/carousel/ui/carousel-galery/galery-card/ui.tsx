@@ -1,14 +1,15 @@
 import { Button, Card, Text } from 'src/shared/ui';
 import './styles.scss';
-import { type ReactNode } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
     title: string;
-    content: string | ReactNode;
+    content: string;
     button: string;
 }
 
 export const GalleryCard = ({ title = 'Новинка!', content, button }: Props) => {
+    const { t } = useTranslation();
     return (
         <Card
             className='gallery_card'
@@ -19,11 +20,11 @@ export const GalleryCard = ({ title = 'Новинка!', content, button }: Prop
             padding='medium'
         >
             <Text size='m' weight='bold' align='center'>
-                {title}
+                {t(title)}
             </Text>
-            <Text size='m'>{content}</Text>
+            <Text size='m'>{t(content)}</Text>
             <Button variant='secondary' size='medium' width='max'>
-                {button}
+                {t(button)}
             </Button>
         </Card>
     );

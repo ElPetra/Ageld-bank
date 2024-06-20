@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Card, Icon, Text } from 'src/shared/ui';
 import './styles.scss';
+import { useTranslation } from 'react-i18next';
 
 const exchangeRates = {
     USD: '91.34 / 98.21',
@@ -9,10 +10,11 @@ const exchangeRates = {
 };
 
 export function InfoMain() {
+    const { t } = useTranslation();
     return (
         <div className='main-menu_aside'>
             <Text size='m' weight='bold'>
-                Курсы валют:
+                {t('Курсы валют:')}
             </Text>
             <Card
                 className='main-menu_card'
@@ -38,7 +40,7 @@ export function InfoMain() {
                 >{`CNY: ${exchangeRates.CNY}`}</Text>
                 <Link to='/'>
                     <Text tag='span' color='action' weight='medium' size='s'>
-                        Больше валют{' '}
+                        {t('Больше валют ')}
                         <Icon
                             icon='arrow-right-accent'
                             color='action'
@@ -48,7 +50,7 @@ export function InfoMain() {
                 </Link>
             </Card>
             <Text size='m' weight='bold'>
-                О банке:
+                {t('О банке:')}
             </Text>
             <Card
                 className='main-menu_card'
@@ -57,7 +59,7 @@ export function InfoMain() {
                 gap='extra-small'
             >
                 <Text tag='span' weight='bold' size='s'>
-                    Первый в рейтинге
+                    {t('Первый в рейтинге')}
                 </Text>
                 <Link to='/'>
                     <Text tag='span' weight='bold' size='s' color='action'>
@@ -72,15 +74,15 @@ export function InfoMain() {
                 borderRadius='large'
             >
                 <Text weight='bold' size='s'>
-                    Самые
+                    {t('Самые')}
                 </Text>
                 <Link to='/'>
                     <Text weight='bold' size='s' color='action'>
-                        доходные
+                        {t('доходные')}
                     </Text>
                 </Link>
                 <Text weight='bold' size='s'>
-                    депозиты
+                    {t('депозиты')}
                 </Text>
             </Card>
         </div>

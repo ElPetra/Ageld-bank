@@ -31,6 +31,7 @@
     text-wrap: wrap;
     position: absolute;
     box-shadow: 0px 15px 20px 0px #0000000D;
+    white-space: break-spaces;
     @media screen and (max-width: 450px) {
       min-height: 500px;
     }

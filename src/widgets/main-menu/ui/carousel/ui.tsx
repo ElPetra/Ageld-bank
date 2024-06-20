@@ -1,13 +1,12 @@
 import { Carousel } from 'src/shared/ui/carousel';
 import { GalleryCard } from 'src/shared/ui/carousel/ui/carousel-galery/galery-card';
 
-//Todo: нужно проставить переносы \n
 const mainMenuContent: Array<JSX.Element> = [
     <GalleryCard
         key={0}
         title={'Депозит Premium'}
         content={
-            'Можем закрыть в любой момент времени, без перерасчета % Возможность частичного снятия Возможность пополнения Срок от 180 дней и выше'
+            'Можем закрыть в любой момент времени, без перерасчета % Возможность частичного снятия Возможность пополнения\nСрок от 180 дней и выше'
         }
         button={'Открыть депозит'}
     />,
@@ -15,10 +14,7 @@ const mainMenuContent: Array<JSX.Element> = [
         key={1}
         title={'Кредитная карта'}
         content={
-            <>
-                Целый год без %<br />
-                Бесплатное обслуживание и кэшбэк за все покупки
-            </>
+            'Целый год без %\nБесплатное обслуживание и кэшбэк за все покупки'
         }
         button={'Получить карту'}
     />,
