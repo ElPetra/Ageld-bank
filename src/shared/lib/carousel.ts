@@ -56,7 +56,7 @@ export const useCarouselControlls = (
                 return;
             } else if (e.pressure === 0.5) {
                 swipeOn('pk', e);
-            } else if (e.pressure > 1) {
+            } else if (e.pressure >= 1) {
                 swipeOn('mob', e);
             }
         }
