@@ -8,6 +8,11 @@ export const getErrorMessage = (
     (error && 'data' in error && typeof error.data == 'string' && error.data) ||
     '';
 
+export const isErrorStatusUnauthorized = (
+    error: FetchBaseQueryError | SerializedError | undefined
+): boolean =>
+    !!(error && 'originalStatus' in error && error.originalStatus === 401);
+
 export const getFieldErrorMessage = (
     message:
         | string

@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
+import { isErrorStatusUnauthorized } from 'src/shared/lib';
 import { useGetAccountDetailsQuery } from 'src/shared/api';
 import { ACCOUNTS, RouteName } from 'src/shared/model';
 import { Container, Preloader } from 'src/shared/ui';
@@ -8,7 +10,6 @@ import { MessageCard } from 'src/entities/message';
 import { useAuth } from 'src/entities/user';
 import { Menu } from 'src/features/menu';
 import { BackButton } from 'src/features/multi-step-form';
-import { useTranslation } from 'react-i18next';
 
 import { AccountInfo } from './account-info';
 import { AccountOperations } from './account-operations';
@@ -26,7 +27,7 @@ export const AccountPage = () => {
     });
 
     useEffect(() => {
-        if (error) {
+        if (isErrorStatusUnauthorized(error)) {
             return signedOut();
         }
     }, [error, signedOut]);
