@@ -5,6 +5,7 @@ import i18n from 'src/shared/model/i18n';
 
 import { Link, Container, Preloader } from 'src/shared/ui';
 import { useGetInfoQuery } from 'src/shared/api';
+import { isErrorStatusUnauthorized } from 'src/shared/lib';
 import { PersonalRouteName, RouteName } from 'src/shared/model';
 import { useAuth } from 'src/entities/user';
 import { CheckboxGroup } from 'src/entities/filter';
@@ -57,7 +58,7 @@ export const PersonalPage = () => {
     const { data: personalInfo, isLoading, error } = useGetInfoQuery();
 
     useEffect(() => {
-        if (error) {
+        if (isErrorStatusUnauthorized(error)) {
             return signedOut();
         }
     }, [error, signedOut]);

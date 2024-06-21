@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { useGetAccountsQuery } from 'src/shared/api';
 import { Preloader, Text } from 'src/shared/ui';
+import { isErrorStatusUnauthorized } from 'src/shared/lib';
 import {
     ACCOUNTS,
     AccountsRouteName,
@@ -24,7 +25,7 @@ export const Accounts = () => {
     const [currency, setCurrency] = useState<string>('Все');
 
     useEffect(() => {
-        if (error) {
+        if (isErrorStatusUnauthorized(error)) {
             return signedOut();
         }
     }, [error, signedOut]);
