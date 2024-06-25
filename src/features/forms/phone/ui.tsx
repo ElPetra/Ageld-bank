@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { useAuth } from 'src/entities/user';
-import { Button, Form, Link, Text } from 'src/shared/ui';
+import { Button, Checkbox, Form, Link, Text } from 'src/shared/ui';
 import { RouteName } from 'src/shared/model';
 import { useTranslation } from 'react-i18next';
 
@@ -10,6 +10,8 @@ import { PhoneInput } from './phone-input';
 
 import type { FieldValues } from 'react-hook-form';
 import type { Dispatch, SetStateAction } from 'react';
+
+import './styles.scss';
 
 interface Props {
     variant?: 'login' | 'registration' | 'recovery';
@@ -24,6 +26,8 @@ export const PhoneForm = ({
     setPhone
 }: Props) => {
     const [clickedLinks, setClickedLinks] = useState<number[]>([]);
+    const [isConfirmed, setIsConfirmed] = useState(false);
+
     const {
         register,
         setValue,
@@ -41,7 +45,7 @@ export const PhoneForm = ({
             setClickedLinks([...clickedLinks, linkId]);
         }
     };
-    const allLinksClicked = clickedLinks.length === 2;
+    const allLinksClicked = clickedLinks.length === 1;
     const onSubmit = async (data: FieldValues) => {
         const phone: string = data.phone.replace(/\D/gm, '');
         setPhone(phone);
@@ -72,9 +76,14 @@ export const PhoneForm = ({
                 error={error}
             />
             {variant === 'registration' && (
-                <>
-                    <Text size='xs'>
-                        {t('Нажав кнопку «Далее», вы соглашаетесь с ')}&nbsp;
+                <div className='phone-form__registration'>
+                    <Checkbox
+                        onCheckbox={() => setIsConfirmed(prev => !prev)}
+                        label={''}
+                    />
+                    <Text>
+                        {t('Нажав кнопку "Принять" вы соглашаетесь с текстом')}
+                        &nbsp;
                         <Link
                             id='service_rules'
                             onClick={() => handleLinkClick(1)}
@@ -86,31 +95,10 @@ export const PhoneForm = ({
                             rel='noreferrer'
                             variant='action'
                         >
-                            {t(
-                                'Правилами дистанционного банковского обслуживания'
-                            )}
+                            {t('Публичного договора')}
                         </Link>
-                        &nbsp; {t('и')} &nbsp;
-                        <Link
-                            id='privacy_policy'
-                            to={
-                                RouteName.MAIN_PAGE +
-                                '/src/assets/terms-RBS.pdf'
-                            }
-                            onClick={() => handleLinkClick(2)}
-                            target='_blank'
-                            rel='noreferrer'
-                            variant='action'
-                        >
-                            {t('Политикой конфиденциальности')}
-                        </Link>
-                        &nbsp;{' '}
-                        {t('и даёте согласие на сбор и обработку информации')}
                     </Text>
-                    <Button variant='secondary' size='large' type='button'>
-                        <Link to={RouteName.MAIN_PAGE}>{t('Отклонить')}</Link>
-                    </Button>
-                </>
+                </div>
             )}
             <Button
                 variant='secondary'
@@ -119,11 +107,18 @@ export const PhoneForm = ({
                 disabled={
                     !isDirty ||
                     !isValid ||
-                    (variant === 'registration' ? !allLinksClicked : false)
+                    (variant === 'registration'
+                        ? !allLinksClicked || !isConfirmed
+                        : false)
                 }
             >
-                {t('Далее')}
+                {t('Принять')}
             </Button>
+            {variant === 'registration' && (
+                <Button size='large' type='button'>
+                    <Link to={RouteName.MAIN_PAGE}>{t('Отклонить')}</Link>
+                </Button>
+            )}
         </Form>
     );
 };

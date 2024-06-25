@@ -1,9 +1,9 @@
 import cn from 'classnames';
 import { type RefObject } from 'react';
 import { useCarouselControlls } from 'src/shared/lib/carousel';
-import './styles.scss';
 import { useTranslation } from 'react-i18next';
 
+import './styles.scss';
 interface Props {
     containerRef: RefObject<HTMLDivElement>;
     angle: number;

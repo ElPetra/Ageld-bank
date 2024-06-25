@@ -8,7 +8,7 @@ import {
     ZoomControl
 } from '@pbe/react-yandex-maps';
 
-import { Card, Text, MapDotSVG } from 'src/shared/ui';
+import { Card, MapDotSVG } from 'src/shared/ui';
 import { MapFilter } from 'src/features/filters';
 import { SearchForm } from 'src/features/forms';
 
@@ -55,6 +55,7 @@ export const ATMsBranchesPage = () => {
                                     borderRadius='extra-large'
                                     padding='small-medium'
                                 >
+<<<<<<< HEAD
                                     <Text weight='bold' size='m' display='flex'>
                                         {t('Объекты в')}&nbsp;
                                         <Text
@@ -65,6 +66,8 @@ export const ATMsBranchesPage = () => {
                                             {t('Москве')}
                                         </Text>
                                     </Text>
+=======
+>>>>>>> develop
                                     <div className='map__search'>
                                         <SearchForm
                                             label={t(
@@ -128,3 +131,14 @@ export const ATMsBranchesPage = () => {
         </>
     );
 };
+
+// <Text weight='bold' size='m' display='flex'>
+//     Объекты в&nbsp;
+//     <Text
+//         weight='bold'
+//         size='m'
+//         color='action'
+//     >
+//         Москве
+//     </Text>
+// </Text>

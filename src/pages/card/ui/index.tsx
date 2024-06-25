@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 
 import { Container } from 'src/shared/ui';
 import { useGetCustomerCardDetailsQuery } from 'src/shared/api';
+import { isErrorStatusUnauthorized } from 'src/shared/lib';
 import { useAuth } from 'src/entities/user';
 import { CardInfo } from 'src/widgets/card-info';
 
@@ -15,7 +16,7 @@ export const CardPage = () => {
         id: 'cdaeb5ef-f132-4042-98c3-364020463e6a' // данные пока не приходят с api
     });
     useEffect(() => {
-        if (error) {
+        if (isErrorStatusUnauthorized(error)) {
             return signedOut();
         }
     }, [error, signedOut]);
