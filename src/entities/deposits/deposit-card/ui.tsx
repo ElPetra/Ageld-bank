@@ -50,7 +50,7 @@ export const DepositCard = ({ deposit }: Props) => {
                                 {t('от')}
                             </Text>
                             <Text weight='medium' size='m'>
-                                {deposit.amountMin +
+                                {deposit.amountMin.toLocaleString() +
                                     ' ' +
                                     deposit.currency.toUpperCase()}
                             </Text>
