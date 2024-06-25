@@ -55,19 +55,6 @@ export const ATMsBranchesPage = () => {
                                     borderRadius='extra-large'
                                     padding='small-medium'
                                 >
-<<<<<<< HEAD
-                                    <Text weight='bold' size='m' display='flex'>
-                                        {t('Объекты в')}&nbsp;
-                                        <Text
-                                            weight='bold'
-                                            size='m'
-                                            color='action'
-                                        >
-                                            {t('Москве')}
-                                        </Text>
-                                    </Text>
-=======
->>>>>>> develop
                                     <div className='map__search'>
                                         <SearchForm
                                             label={t(
