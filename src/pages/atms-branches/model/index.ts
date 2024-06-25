@@ -13,8 +13,7 @@ export const data: BankObject[] = [
         houseNumber: '3B',
         objectTypeName: 'branch',
         schedule:
-            'Понедельник - Пятница: 9:00-19:00 ' +
-            'Cуббота: 10:00-15:00. Воскресенье - выходной'
+            'Понедельник - Пятница: 9:00-19:00 Cуббота: 10:00-15:00 Воскресенье - выходной'
     },
     {
         objectNumber: 2,
@@ -27,7 +26,7 @@ export const data: BankObject[] = [
         houseNumber: '4B',
         objectTypeName: 'branch',
         schedule:
-            'Понедельник - Пятница: 10:00-14:00 Cуббота: 11:00-13:00. Воскресенье - выходной'
+            'Понедельник - Пятница: 10:00-14:00 Cуббота: 11:00-13:00 Воскресенье - выходной'
     },
     {
         objectNumber: 3,

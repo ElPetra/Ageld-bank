@@ -12,18 +12,21 @@ import { Card, Text, MapDotSVG } from 'src/shared/ui';
 import { MapFilter } from 'src/features/filters';
 import { SearchForm } from 'src/features/forms';
 
+import { useTranslation } from 'react-i18next';
+
 import { data } from '../model';
 
 import { BankObjectCard } from './bank-object-card';
+
 import { BankObjectInfoMenu } from './bank-object-info-menu';
 
 import type { BankObject } from 'src/shared/model';
-
 import './styles.scss';
 
 export const ATMsBranchesPage = () => {
     const [visible, setVisible] = useState<boolean>(false);
     const [current, setCurrent] = useState<BankObject | undefined>();
+    const { t } = useTranslation();
 
     return (
         <>
@@ -53,18 +56,20 @@ export const ATMsBranchesPage = () => {
                                     padding='small-medium'
                                 >
                                     <Text weight='bold' size='m' display='flex'>
-                                        Объекты в&nbsp;
+                                        {t('Объекты в')}&nbsp;
                                         <Text
                                             weight='bold'
                                             size='m'
                                             color='action'
                                         >
-                                            Москве
+                                            {t('Москве')}
                                         </Text>
                                     </Text>
                                     <div className='map__search'>
                                         <SearchForm
-                                            label='Поиск по адресу или названию'
+                                            label={t(
+                                                'Поиск по адресу или названию'
+                                            )}
                                             size='medium'
                                         />
                                     </div>
