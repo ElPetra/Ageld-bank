@@ -1,6 +1,6 @@
 import i18n from 'src/shared/model/i18n';
 
-import type { Currency } from 'src/shared/model';
+import type { Currency, CurrencyResponse } from 'src/shared/model';
 
 export const depositTermFilters = [
     i18n.t('2 месяца'),
@@ -29,7 +29,7 @@ export const depositWithdrawal: Record<1 | 2 | 3, string> = {
 };
 
 export interface DepositProduct {
-    id: string;
+    id: number;
     name: string;
     currency: Currency;
     dayMin: number;
@@ -44,13 +44,18 @@ export interface DepositProduct {
 }
 
 export interface CustomerDeposit {
-    productId: string;
+    productId?: string;
     name: string;
     currency: Currency;
-    balance: number;
-    closedAt: string;
-    number: string;
+    balance?: number;
+    closedAt?: string;
+    number?: string;
     id: number;
+    typeCapitalization?: boolean;
+    limitAmountMin?: 0.0;
+    limitMonthsMin?: 1;
+    typeRevocable?: false;
+    depositProductStatus?: true;
 }
 
 export interface CustomerDepositDetails {
@@ -112,3 +117,13 @@ export const mockDeposits: CustomerDeposit[] = [
         productId: '1234567'
     }
 ];
+export type DepositsResponse = {
+    id: number,
+    productName: string,
+    currencyName: CurrencyResponse,
+    typeCapitalization: boolean,
+    limitAmountMin: number,
+    limitMonthsMin: number,
+    typeRevocable: false,
+    depositProductStatus: boolean
+};
