@@ -33,8 +33,8 @@ export const SliderInput = ({
 }: Props) => {
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
-        setValue(inputField, value, { shouldValidate: true });
-        setValue(sliderField, value);
+        setValue(inputField, Number(value), { shouldValidate: true });
+        setValue(sliderField, Number(value));
     };
 
     return (
@@ -72,8 +72,8 @@ export const SliderInput = ({
                         />
                     </div>
                     <div className='slider-input__slider__min-max'>
-                        <span>{min}</span>
-                        <span>{max}</span>
+                        <span>{min.toLocaleString()}</span>
+                        <span>{max.toLocaleString()}</span>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,22 @@
+.deposit-calculator {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    > div:last-child {
+      max-width: 608px;
+    }
+  }
+
+  &__switchers {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+}

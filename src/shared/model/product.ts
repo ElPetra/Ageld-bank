@@ -16,19 +16,10 @@ export const currencySymbol = {
     usd: '$'
 };
 
-export type ProductStatus =
-    | 'active'
-    | 'closed'
-    | 'blocked'
-    | 'autoprolongation'
-    | 'autoprolongationoff';
-
-export const REQUISITES = i18n.t('Реквизиты');
+export type ProductStatus = 'active' | 'closed' | 'blocked';
 
 export const productStatuses: Record<ProductStatus, string> = {
     active: i18n.t('Активный'),
     closed: i18n.t('Закрытый'),
-    blocked: i18n.t('Заблокированный'),
-    autoprolongation: i18n.t('Автопролонгация'),
-    autoprolongationoff: i18n.t('Автопролонгация отключена')
+    blocked: i18n.t('Заблокированный')
 };

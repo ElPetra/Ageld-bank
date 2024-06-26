@@ -1,0 +1,44 @@
+.switcher {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  &__input {
+    position: relative;
+    width: 51px;
+    height: 31px;
+
+    input[type="checkbox"] {
+      display: none;
+      &:checked + .switch::before {
+        transform: translateX(20px);
+      }
+      &:checked + .switch {
+        background: var(--bg-action);
+      }
+    }
+
+    .switch {
+      position: absolute;
+      background: var(--bg-buttons-disable);
+      border-radius: 25px;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      transition: background 0.2s ease;
+
+      &::before {
+        position: absolute;
+        content: "";
+        left: 2px;
+        top: 2px;
+        width: 27px;
+        height: 27px;
+        background: var(--bg-primary);
+        border-radius: 50%;
+        transition: transform 0.3s ease;
+      }
+    }
+  }
+}

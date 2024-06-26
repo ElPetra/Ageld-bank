@@ -1,27 +1,37 @@
 import { useTranslation } from 'react-i18next';
+import { useForm } from 'react-hook-form';
 
-import { Icon, Text, Button, Card } from 'src/shared/ui';
+import { Icon, Text, Button, Card, Switcher } from 'src/shared/ui';
+import { depositWithdrawal } from 'src/shared/model';
 import { ProductStatuses } from 'src/entities/product';
 
 import { DepositsMoreInfo } from './more-info';
 
-import type { MockDeposit } from 'src/shared/model';
+import type { FieldValues } from 'react-hook-form';
+import type { CustomerDepositDetails } from 'src/shared/model';
 
 import './styles.scss';
 
 interface Props {
-    deposit: MockDeposit;
+    deposit: CustomerDepositDetails;
 }
 
 export const DepositInfo = ({ deposit }: Props) => {
     const { t } = useTranslation();
+    const { register } = useForm<FieldValues>({
+        defaultValues: {
+            autorenStatus: deposit.autorenStatus
+        },
+        mode: 'onTouched',
+        reValidateMode: 'onChange'
+    });
 
     const handleCopyDepositId = () => {
-        navigator.clipboard.writeText(String(deposit.id));
+        navigator.clipboard.writeText(String(deposit.mainNum));
     };
 
     const handleCopyDepositAccount = () => {
-        navigator.clipboard.writeText(String(deposit.subAccountNum));
+        navigator.clipboard.writeText(String(deposit.mAccountId));
     };
 
     return (
@@ -37,10 +47,9 @@ export const DepositInfo = ({ deposit }: Props) => {
                         <Text size='l' weight='bold'>
                             {deposit.name}
                         </Text>
-                        <ProductStatuses isMaster={false} status={'active'} />
                         <ProductStatuses
                             isMaster={false}
-                            status='autoprolongation'
+                            status={deposit.productStatus ? 'active' : 'closed'}
                         />
                     </div>
                     <div>
@@ -51,7 +60,7 @@ export const DepositInfo = ({ deposit }: Props) => {
                     <div className='deposit-info__first-row__number'>
                         <div>
                             <Text color='tertiary'>{t('№ счета : ')}</Text>
-                            <Text color='tertiary'>{deposit.id}</Text>
+                            <Text color='tertiary'>{deposit.mainNum}</Text>
                         </div>
                         <button onClick={handleCopyDepositId}>
                             <Icon icon='copy' />
@@ -62,9 +71,7 @@ export const DepositInfo = ({ deposit }: Props) => {
                             <Text color='tertiary'>
                                 {t('№ счета с процентами : ')}
                             </Text>
-                            <Text color='tertiary'>
-                                {deposit.subAccountNum}
-                            </Text>
+                            <Text color='tertiary'>{deposit.mAccountId}</Text>
                         </div>
                         <button onClick={handleCopyDepositAccount}>
                             <Icon icon='copy' />
@@ -76,34 +83,12 @@ export const DepositInfo = ({ deposit }: Props) => {
                 <div className='deposit-info__second-row__info'>
                     <div>
                         <Text color='tertiary' size='xs'>
-                            {t('Схема депозита')}
+                            {t('Тип продукта по сроку')}
                         </Text>
                         <Text weight='medium' size='m'>
-                            {t('Срочный')}
-                        </Text>
-                    </div>
-                    <div>
-                        <Text color='tertiary' size='xs'>
-                            {t('Длительность существования')}
-                        </Text>
-                        <Text weight='medium' size='m'>
-                            {deposit.term}
-                        </Text>
-                    </div>
-                    <div>
-                        <Text color='tertiary' size='xs'>
-                            {t('Процентная ставка')}
-                        </Text>
-                        <Text weight='medium' size='m'>
-                            {deposit.interestRate}
-                        </Text>
-                    </div>
-                    <div>
-                        <Text color='tertiary' size='xs'>
-                            {t('Ставка при досрочном отзыве')}
-                        </Text>
-                        <Text weight='medium' size='m'>
-                            {deposit.untimelyWithdrawalInterestRate}
+                            {deposit.timeLimited
+                                ? t('Срочный')
+                                : t('Бессрочный')}
                         </Text>
                     </div>
                     <div>
@@ -111,8 +96,38 @@ export const DepositInfo = ({ deposit }: Props) => {
                             {t('Отзывной')}
                         </Text>
                         <Text weight='medium' size='m'>
-                            {deposit.irrevocability ? t('Да') : t('Нет')}
+                            {deposit.revocable ? t('Да') : t('Нет')}
                         </Text>
+                    </div>
+                    <div>
+                        <Text color='tertiary' size='xs'>
+                            {t('Процентная ставка')}
+                        </Text>
+                        <Text weight='medium' size='m'>
+                            {deposit.percentRate + '%'}
+                        </Text>
+                    </div>
+                    <div>
+                        <Text color='tertiary' size='xs'>
+                            {t('Вид капитализации процентов')}
+                        </Text>
+                        <Text weight='medium' size='m'>
+                            {depositWithdrawal[deposit.withdrawal]}
+                        </Text>
+                    </div>
+                    <div>
+                        <Text color='tertiary' size='xs'>
+                            {t('Дата открытия')}
+                        </Text>
+                        <Text weight='medium' size='m'>
+                            {deposit.startDate}
+                        </Text>
+                    </div>
+                    <div>
+                        <Text color='tertiary' size='xs'>
+                            {t('Автоматическая пролонгации')}
+                        </Text>
+                        <Switcher register={register} field='autorenStatus' />
                     </div>
                 </div>
                 <div className='deposit-info__second-row__second-column'>
@@ -130,12 +145,16 @@ export const DepositInfo = ({ deposit }: Props) => {
                                 {t('Изначальная сумма депозита')}
                             </Text>
                             <Text size='l' weight='bold'>
-                                {`${deposit.startBalance} ${deposit.currency.toUpperCase()}`}
+                                {`${deposit.initialAmount} ${deposit.currency.toUpperCase()}`}
                             </Text>
                         </div>
                     </div>
                     <div className='deposit-info__second-row__second-column__buttons'>
-                        <Button type='button' variant='primary'>
+                        <Button
+                            type='button'
+                            variant='primary'
+                            disabled={!deposit.revocable}
+                        >
                             {t('Отозвать')}
                         </Button>
                         <Button type='button' variant='secondary'>

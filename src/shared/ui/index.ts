@@ -13,3 +13,4 @@ export * from './columns';
 export * from './aside-menu';
 export * from './slider-input';
 export * from './carousel';
+export * from './switcher';

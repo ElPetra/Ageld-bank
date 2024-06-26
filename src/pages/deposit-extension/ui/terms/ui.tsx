@@ -2,7 +2,8 @@ import { useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import { Button, Card, Form, SliderInput, Text } from 'src/shared/ui';
+import { Button, Card, Form, Text } from 'src/shared/ui';
+import { DepositTermInput } from 'src/features/inputs';
 
 import type { Dispatch, SetStateAction } from 'react';
 import type { FieldValues } from 'react-hook-form';
@@ -22,13 +23,13 @@ export const Terms = ({ isLast, setFormStep, extendedDeposit }: Props) => {
         setValue,
         formState: { isValid }
     } = useForm<FieldValues>({
-        defaultValues: { dayInput: 30, daySlider: 30 },
+        defaultValues: { termInput: 1, termSlider: 1 },
         mode: 'onTouched',
         reValidateMode: 'onChange'
     });
 
     const onSubmit = async (data: FieldValues) => {
-        await extendedDeposit(id || '', data.input);
+        await extendedDeposit(id || '', data.termInput);
         if (setFormStep && !isLast) {
             setFormStep(curr => {
                 return curr + 1;
@@ -43,17 +44,7 @@ export const Terms = ({ isLast, setFormStep, extendedDeposit }: Props) => {
                 borderRadius='extra-large'
                 direction='column'
             >
-                <SliderInput
-                    variant='secondary'
-                    register={register}
-                    setValue={setValue}
-                    label={t('Срок пролонгации')}
-                    min={30}
-                    max={1080}
-                    inputField='dayInput'
-                    sliderField='daySlider'
-                    unit={t('дней')}
-                />
+                <DepositTermInput register={register} setValue={setValue} />
                 <Button disabled={!isValid} type='submit' variant='secondary'>
                     <Text>{t('Пролонгировать депозит')}</Text>
                 </Button>
