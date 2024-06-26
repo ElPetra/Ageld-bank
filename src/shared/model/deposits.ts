@@ -53,16 +53,6 @@ export interface CustomerDeposit {
     id: number;
 }
 
-export interface CustomerDepositResponse {
-    deposit_product_id: string;
-    product_name: string;
-    currency_name: Currency;
-    current_balance: number;
-    closed_at: string;
-    deposit_account_number: string;
-    deposit_id: string;
-}
-
 export interface CustomerDepositDetails {
     name: string;
     currency: Currency;
@@ -82,27 +72,6 @@ export interface CustomerDepositDetails {
     mainNum: string;
     mAccountId?: string;
     pAccountId?: string;
-}
-
-export interface CustomerDepositDetailsResponse {
-    name: string;
-    currency: Currency;
-    time_limited: boolean;
-    revocable: boolean;
-    capitalization: 0 | 1 | 2 | 3 | 4 | 5;
-    withdrawal: 1 | 2 | 3;
-    product_status: boolean;
-    autoren_status: boolean;
-    initial_amount: number;
-    cur_balance: number;
-    perc_balance: number;
-    start_date: string;
-    end_date: string;
-    autorenew_status: boolean;
-    percent_rate: number;
-    main_num: string;
-    m_account_id?: string;
-    p_account_id?: string;
 }
 
 export interface DepositProfitability {
