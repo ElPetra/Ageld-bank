@@ -12,18 +12,21 @@ import { Card, MapDotSVG } from 'src/shared/ui';
 import { MapFilter } from 'src/features/filters';
 import { SearchForm } from 'src/features/forms';
 
+import { useTranslation } from 'react-i18next';
+
 import { data } from '../model';
 
 import { BankObjectCard } from './bank-object-card';
+
 import { BankObjectInfoMenu } from './bank-object-info-menu';
 
 import type { BankObject } from 'src/shared/model';
-
 import './styles.scss';
 
 export const ATMsBranchesPage = () => {
     const [visible, setVisible] = useState<boolean>(false);
     const [current, setCurrent] = useState<BankObject | undefined>();
+    const { t } = useTranslation();
 
     return (
         <>
@@ -54,7 +57,9 @@ export const ATMsBranchesPage = () => {
                                 >
                                     <div className='map__search'>
                                         <SearchForm
-                                            label='Поиск по адресу или названию'
+                                            label={t(
+                                                'Поиск по адресу или названию'
+                                            )}
                                             size='medium'
                                         />
                                     </div>

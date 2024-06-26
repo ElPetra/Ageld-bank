@@ -1,24 +1,26 @@
+import i18n from 'src/shared/model/i18n';
+
 import type { BankObject } from 'src/shared/model';
 
 export const getAddress = (obj: BankObject): string => {
     const getString = (value: string | undefined): string => {
         return value ? value + ', ' : '';
     };
-    const region = getString(obj.region);
-    const street = getString(obj.street);
-    const microdistrict = getString(obj.microdistrict);
+    const region = getString(i18n.t(obj.region as string));
+    const street = getString(i18n.t(obj.street as string));
+    const microdistrict = getString(i18n.t(obj.microdistrict as string));
     const buildingNumberHouse = obj.buildingNumberHouse
-        ? getString(obj.buildingNumberHouse)
+        ? getString(i18n.t(obj.buildingNumberHouse))
         : '';
 
     return (
-        obj.location +
+        i18n.t(obj.location) +
         ', ' +
         region +
         street +
         microdistrict +
         buildingNumberHouse +
-        obj.houseNumber
+        i18n.t(obj.houseNumber)
     );
 };
 
@@ -34,7 +36,7 @@ export const getStatus = (schedule: string): string => {
     };
     const getStatusByTime = (time: string, time2: string): string => {
         if (time === 'выходной') {
-            return 'Закрыто до ' + getStart(time2);
+            return i18n.t('Закрыто до ') + getStart(time2);
         } else {
             const d = new Date();
             const dayNumber = d.getDay();
@@ -46,7 +48,9 @@ export const getStatus = (schedule: string): string => {
                 dayNumber === 5 || dayNumber === 6
                     ? getStart(time2)
                     : getStart(time);
-            return status ? 'Открыто до ' + getEnd(time) : 'Закрыто до ' + end;
+            return status
+                ? i18n.t('Открыто до ') + getEnd(time)
+                : i18n.t('Закрыто до ') + end;
         }
     };
     schedule = schedule.toLowerCase();
@@ -54,7 +58,7 @@ export const getStatus = (schedule: string): string => {
         schedule.includes('без выходных') &&
         schedule.includes('круглосуточно')
     ) {
-        return 'Открыто круглосуточно';
+        return i18n.t('Открыто круглосуточно');
     } else {
         const d = new Date();
         const dayNumber = d.getDay();
@@ -70,15 +74,25 @@ export const getStatus = (schedule: string): string => {
 };
 
 export const getSchedule = (schedule: string): string => {
-    if (schedule.includes('Без выходных')) {
-        return schedule;
+    if (
+        schedule.includes('Без выходных') ||
+        schedule.includes('Seven days a week')
+    ) {
+        return i18n.t(schedule);
     } else {
-        const start = schedule.indexOf('Cуббота');
-        const end = schedule.indexOf('Воскресенье');
+        const start =
+            schedule.indexOf('Cуббота') !== -1
+                ? schedule.indexOf('Cуббота')
+                : schedule.indexOf('Saturday');
+        const end =
+            schedule.indexOf('Воскресенье') !== -1
+                ? schedule.indexOf('Воскресенье')
+                : schedule.indexOf('Sunday');
+
         return (
-            schedule.slice(0, start - 1) +
+            schedule.slice(0, start) +
             '\n' +
-            schedule.slice(start, end - 1) +
+            schedule.slice(start, end) +
             '\n' +
             schedule.slice(end, schedule.length)
         );
