@@ -1,7 +1,9 @@
+import cn from 'classnames';
+import { useTranslation } from 'react-i18next';
+
 import { Text } from 'src/shared/ui';
 
 import './styles.scss';
-import { useTranslation } from 'react-i18next';
 
 interface Props {
     variant?: 'primary' | 'secondary';
@@ -24,7 +26,9 @@ export const FilterBar = ({
                     type='button'
                     onClick={() => setCurrent(el)}
                     key={el}
-                    className={`filter-bar__button ${current === el ? 'active' : ''}  ${variant}`}
+                    className={cn('filter-bar__button', variant, {
+                        active: current === el
+                    })}
                 >
                     <Text weight='medium'>{t(el)}</Text>
                 </button>
