@@ -1,16 +1,17 @@
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
-import { Text, Card } from 'src/shared/ui';
+import { Card, Text } from 'src/shared/ui';
 
-import { corporate, individuals, support, contactsMatcher } from '../../model';
-
+import { contactsMatcher, corporate, individuals, support } from '../../model';
 import './styles.scss';
 
 export const Contacts = () => {
+    const { t } = useTranslation();
     return (
         <div>
             <Text weight='bold' size='m'>
-                {'Контакты'}
+                {t('Контакты')}
             </Text>
             <Card
                 borderRadius='extra-large'
@@ -20,7 +21,7 @@ export const Contacts = () => {
             >
                 <div className='contacts-page__contacts-block'>
                     <Text weight='medium' size='m'>
-                        {'Горячая линия для частных лиц'}
+                        {t('Горячая линия для частных лиц')}
                     </Text>
                     <div className='contacts-page__contacts-block__contacts'>
                         {(
@@ -41,7 +42,7 @@ export const Contacts = () => {
                                     </Text>
                                 </Link>
                                 <Text weight='medium' color='tertiary'>
-                                    {contactsMatcher[el]}
+                                    {t(contactsMatcher[el])}
                                 </Text>
                             </div>
                         ))}
@@ -49,7 +50,7 @@ export const Contacts = () => {
                 </div>
                 <div className='contacts-page__contacts-block'>
                     <Text weight='medium' size='m'>
-                        {'Горячая линия корпоративным клиентам'}
+                        {t('Горячая линия корпоративным клиентам')}
                     </Text>
                     <div className='contacts-page__contacts-block__contacts'>
                         {(
@@ -68,7 +69,7 @@ export const Contacts = () => {
                                     <Text weight='medium'>{corporate[el]}</Text>
                                 </Link>
                                 <Text weight='medium' color='tertiary'>
-                                    {contactsMatcher[el]}
+                                    {t(contactsMatcher[el])}
                                 </Text>
                             </div>
                         ))}
@@ -76,7 +77,7 @@ export const Contacts = () => {
                 </div>
                 <div className='contacts-page__contacts-block'>
                     <Text weight='medium' size='m'>
-                        {'Техническая поддержка'}
+                        {t('Техническая поддержка')}
                     </Text>
                     <div className='contacts-page__contacts-block__contacts'>
                         {(
@@ -93,7 +94,7 @@ export const Contacts = () => {
                                     <Text weight='medium'>{support[el]}</Text>
                                 </Link>
                                 <Text weight='medium' color='tertiary'>
-                                    {contactsMatcher[el]}
+                                    {t(contactsMatcher[el])}
                                 </Text>
                             </div>
                         ))}
