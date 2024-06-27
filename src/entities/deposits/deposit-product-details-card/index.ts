@@ -1,0 +1,1 @@
+export { DepositProductDetailsCard } from './ui';

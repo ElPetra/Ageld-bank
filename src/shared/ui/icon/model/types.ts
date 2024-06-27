@@ -1,3 +1,10 @@
+import currencySVG from 'src/shared/ui/icon/assets/icons/48-currency.svg';
+import moneySVG from 'src/shared/ui/icon/assets/icons/48-money.svg';
+import monitorSVG from 'src/shared/ui/icon/assets/icons/48-monitor.svg';
+import percentSVG from 'src/shared/ui/icon/assets/icons/48-percent.svg';
+import phoneSVG from 'src/shared/ui/icon/assets/icons/48-phone.svg';
+import switcherSVG from 'src/shared/ui/icon/assets/icons/48-switcher.svg';
+
 import actionAddCardSVG from 'src/shared/ui/icon/assets/icons/actions-add-card.svg';
 import actionBillDetailsSVG from 'src/shared/ui/icon/assets/icons/actions-bill-details.svg';
 import actionBriefcaseSVG from 'src/shared/ui/icon/assets/icons/actions-briefcase.svg';
@@ -70,6 +77,8 @@ import documentsFolderLadySVG from 'src/shared/ui/icon/assets/icons/illustration
 import failureLadySVG from 'src/shared/ui/icon/assets/icons/illustration-failure-lady.svg';
 import paperAirplaneLadySVG from 'src/shared/ui/icon/assets/icons/illustration-paper-airplane-lady.svg';
 import questionLadySVG from 'src/shared/ui/icon/assets/icons/illustration-question-lady.svg';
+import depositLadySVG from 'src/shared/ui/icon/assets/icons/illustration-deposit-lady.svg';
+import depositDetailsSVG from 'src/shared/ui/icon/assets/icons/illustration-deposit-details.svg';
 
 import pinkishSemicircleSVG from 'src/shared/ui/icon/assets/icons/pinkish-semicircle.svg';
 
@@ -92,6 +101,13 @@ export const PNG = {
 export type PngImageNames = keyof typeof PNG;
 
 export const SVG = {
+    currency: currencySVG,
+    money: moneySVG,
+    monitor: monitorSVG,
+    percent: percentSVG,
+    phone: phoneSVG,
+    switcher: switcherSVG,
+
     'action-add-card': actionAddCardSVG,
     'action-bill-details': actionBillDetailsSVG,
     'action-briefcase': actionBriefcaseSVG,
@@ -165,6 +181,8 @@ export const SVG = {
     'failure-lady': failureLadySVG,
     'paper-airplane-lady': paperAirplaneLadySVG,
     'question-lady': questionLadySVG,
+    'deposit-lady': depositLadySVG,
+    'deposit-details': depositDetailsSVG,
 
     'pinkish-semicircle': pinkishSemicircleSVG
 };

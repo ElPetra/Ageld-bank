@@ -1,8 +1,16 @@
-.action {
-  color: var(--text-action)!important;
-  text-decoration: underline!important;
+a, a:link, a:visited, a:focus, a:hover, a:active {
+  &.quadruple {
+    color: var(--text-quadruple);
+    text-decoration: underline;
+  }
+
+  &.action {
+    color: var(--text-action);
+    text-decoration: underline;
+  }
+
+  &.underline {
+    text-decoration: underline;
+  }
 }
 
-.underline {
-  text-decoration: underline!important;
-}

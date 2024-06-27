@@ -4,8 +4,6 @@ import { CREATE, mockDeposits, RouteName } from 'src/shared/model';
 import { MessageCard } from 'src/entities/message';
 import { UniversalDepositsList } from 'src/features/universal-deposit-list';
 
-import './styles.scss';
-
 export const CustomerDeposits = () => {
     const { t } = useTranslation();
     return (
