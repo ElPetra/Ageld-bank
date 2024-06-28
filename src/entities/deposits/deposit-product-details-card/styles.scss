@@ -5,7 +5,7 @@
     width: calc(67% - 32px);
 
     @media screen and (min-width: 900px) and (max-width: 1100px) {
-        width: calc(50% - 32px/2);
+        width: calc(50% - 16px);
     }
 
     @media screen and (max-width: 900px) {
@@ -18,7 +18,7 @@
         aspect-ratio: 799/499;
 
         @media screen and (min-width: 900px) and (max-width: 1100px) {
-            width: calc(50% - 32px/2);
+            width: calc(50% - 16px);
         }
 
         @media screen and (max-width: 900px) {
