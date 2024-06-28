@@ -1,18 +1,5 @@
 import { useEffect, useRef, useState, type RefObject } from 'react';
 
-function isTouchEvent(e: Event): e is TouchEvent {
-    if ('touches' in e && 'changedTouches' in e && 'targetTouches' in e) {
-        return true;
-    }
-    return false;
-}
-function isMousePointerEvent(e: Event): e is PointerEvent {
-    if ('pointerType' in e && e.pointerType === 'mouse') {
-        return true;
-    }
-    return false;
-}
-
 export const useCarouselControlls = (
     container: RefObject<HTMLDivElement>,
     angle: number
@@ -21,29 +8,27 @@ export const useCarouselControlls = (
     const active = useRef('center');
     const carouselContainer = container.current;
     useEffect(() => {
-        function swipeOn(device: string, e: PointerEvent) {
+        function swipeOn(start: number) {
             if (carouselContainer) {
                 const startTime = Date.now();
-                const startPoint = e.clientX;
+                const startPoint = start;
+                const event = 'ontouchend' in window ? 'touchend' : 'pointerup';
                 carouselContainer.addEventListener(
-                    device === 'pk' ? 'pointerup' : 'touchend',
-                    evt => {
-                        evt.preventDefault();
+                    event,
+                    e => {
+                        e.preventDefault();
                         const difTime = Date.now() - startTime;
-                        let range = 0;
-                        if (isMousePointerEvent(evt)) {
-                            range = evt.clientX;
-                        } else if (isTouchEvent(evt)) {
-                            range = evt.changedTouches[0].clientX;
-                        }
+                        const range =
+                            'clientX' in e
+                                ? e.clientX
+                                : e.changedTouches
+                                  ? e.changedTouches[0].clientX
+                                  : 0;
                         const distance = startPoint - range;
                         if (difTime <= 1500) {
+                            const direction = distance > 0 ? 'right' : 'left';
                             if (Math.abs(distance) > 100) {
-                                if (distance > 0) {
-                                    changeRotateByArrow('right');
-                                } else {
-                                    changeRotateByArrow('left');
-                                }
+                                changeRotateByArrow(direction);
                             }
                         }
                     },
@@ -52,12 +37,8 @@ export const useCarouselControlls = (
             }
         }
         function pointerHandler(e: PointerEvent) {
-            if (e.pressure === 0) {
-                return;
-            } else if (e.pressure === 0.5) {
-                swipeOn('pk', e);
-            } else if (e.pressure > 0.5) {
-                swipeOn('mob', e);
+            if (e.pressure > 0) {
+                swipeOn(e.clientX);
             }
         }
         if (carouselContainer) {
