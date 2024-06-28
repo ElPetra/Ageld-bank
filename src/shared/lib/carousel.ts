@@ -1,18 +1,5 @@
 import { useEffect, useRef, useState, type RefObject } from 'react';
 
-function isTouchEvent(e: Event): e is TouchEvent {
-    if ('touches' in e && 'changedTouches' in e && 'targetTouches' in e) {
-        return true;
-    }
-    return false;
-}
-function isMousePointerEvent(e: Event): e is PointerEvent {
-    if ('pointerType' in e && e.pointerType === 'mouse') {
-        return true;
-    }
-    return false;
-}
-
 export const useCarouselControlls = (
     container: RefObject<HTMLDivElement>,
     angle: number
@@ -21,51 +8,48 @@ export const useCarouselControlls = (
     const active = useRef('center');
     const carouselContainer = container.current;
     useEffect(() => {
-        function swipeOn(device: string, e: PointerEvent) {
+        function onPointerEnd(
+            e: PointerEvent | TouchEvent,
+            startTime: number,
+            startPoint: number
+        ) {
+            const timePassed = Date.now() - startTime;
+            const endPoint =
+                'clientX' in e
+                    ? e.clientX
+                    : e.changedTouches
+                      ? e.changedTouches[0].clientX
+                      : 0;
+            const distance = startPoint - endPoint;
+            if (timePassed <= 1500) {
+                const direction = distance > 0 ? 'right' : 'left';
+                if (Math.abs(distance) > 50) {
+                    changeRotateByArrow(direction);
+                }
+            }
+        }
+        function onPointermove(e: PointerEvent) {
+            const isPhone = 'ontouchend' in window;
+            if (e.pressure === 0 && !isPhone) {
+                return;
+            }
+            const startTime = Date.now();
+            const startPoint = e.clientX;
+            const event = isPhone ? 'touchend' : 'pointerup';
             if (carouselContainer) {
-                const startTime = Date.now();
-                const startPoint = e.clientX;
                 carouselContainer.addEventListener(
-                    device === 'pk' ? 'pointerup' : 'touchend',
-                    evt => {
-                        evt.preventDefault();
-                        const difTime = Date.now() - startTime;
-                        let range = 0;
-                        if (isMousePointerEvent(evt)) {
-                            range = evt.clientX;
-                        } else if (isTouchEvent(evt)) {
-                            range = evt.changedTouches[0].clientX;
-                        }
-                        const distance = startPoint - range;
-                        if (difTime <= 1500) {
-                            if (Math.abs(distance) > 100) {
-                                if (distance > 0) {
-                                    changeRotateByArrow('right');
-                                } else {
-                                    changeRotateByArrow('left');
-                                }
-                            }
-                        }
-                    },
+                    event,
+                    e => onPointerEnd(e, startTime, startPoint),
                     { once: true }
                 );
             }
         }
-        function pointerHandler(e: PointerEvent) {
-            if (e.pressure === 0) {
-                return;
-            } else if (e.pressure === 0.5) {
-                swipeOn('pk', e);
-            } else if (e.pressure > 0.5) {
-                swipeOn('mob', e);
-            }
-        }
         if (carouselContainer) {
-            carouselContainer.addEventListener('pointermove', pointerHandler);
+            carouselContainer.addEventListener('pointermove', onPointermove);
             return () =>
                 carouselContainer.removeEventListener(
                     'pointermove',
-                    pointerHandler
+                    onPointermove
                 );
         }
     });
