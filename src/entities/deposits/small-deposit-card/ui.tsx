@@ -1,8 +1,9 @@
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import { Button, Card, Text } from 'src/shared/ui';
 
-import type { DepositProduct } from 'src/shared/model';
+import { type DepositProduct, RouteName } from 'src/shared/model';
 
 import './styles.scss';
 
@@ -37,9 +38,11 @@ export const SmallDepositCard = ({ deposit }: Props) => {
                     </Text>
                 </div>
             </div>
-            <Button size='medium' width='max'>
-                {t('Показать больше')}
-            </Button>
+            <Link to={RouteName.DEPOSIT_PRODUCT_PAGE + '/' + deposit.id}>
+                <Button size='medium' width='max'>
+                    {t('Показать больше')}
+                </Button>
+            </Link>
         </Card>
     );
 };
