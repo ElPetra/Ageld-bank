@@ -4,7 +4,7 @@ import { ACCOUNTS, currencyMinFilters, RouteName } from 'src/shared/model';
 import { Columns, Icon, Text } from 'src/shared/ui';
 import { MessageCard } from 'src/entities/message';
 import { FilterBar } from 'src/entities/filter';
-import { DepositCard } from 'src/entities/deposits';
+import { DepositProductCard } from 'src/entities/deposits';
 import { DepositSumInput, DepositTermInput } from 'src/features/inputs';
 
 import type {
@@ -77,7 +77,7 @@ export const DepositList = ({
                 {deposits.length ? (
                     <Columns number='2'>
                         {deposits.map(el => (
-                            <DepositCard key={el.id} deposit={el} />
+                            <DepositProductCard key={el.id} deposit={el} />
                         ))}
                     </Columns>
                 ) : (
