@@ -11,7 +11,10 @@ import type {
     CardDetailsResponse,
     CardDetails,
     AccountDetailsResponse,
-    AccountDetails
+    AccountDetails,
+    DepositsResponse,
+    DepositProduct,
+    Currency
 } from 'src/shared/model';
 
 export const transformAccounts = (res: AccountResponse[]): Account[] =>
@@ -164,3 +167,20 @@ export const transformCardProductDetails = (
         }
     ]
 });
+export const transformDeposits = (
+    res: DepositsResponse[]
+): DepositProduct[] => 
+    res.map(el => ({
+        id: el.id,
+        name: el.productName,
+        currency: 'rub',
+        dayMin: el.limitMonthsMin*30,
+        dayMax: 3,
+        amountMin: 2,
+        amountMax: 3,
+        capitalization: 1,
+        replenishment: true,
+        withdrawal: 1,
+        revocable: el.typeRevocable,
+        percentRate: 123
+    }));

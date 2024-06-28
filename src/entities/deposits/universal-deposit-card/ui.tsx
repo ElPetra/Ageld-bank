@@ -2,11 +2,9 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 import { Icon, Text, Button, Card } from 'src/shared/ui';
-import {
-    type CustomerDeposit,
-    type DepositProfitability,
-    RouteName
-} from 'src/shared/model';
+import { RouteName } from 'src/shared/model';
+
+import type { CustomerDeposit, DepositProfitability } from 'src/shared/model';
 
 import './styles.scss';
 
@@ -18,9 +16,9 @@ export const UniversalDepositCard = ({ deposit }: Props) => {
     const { t } = useTranslation();
     return (
         <Card padding='medium'>
-            <div className='customer-deposit-card__container'>
-                <div className='customer-deposit-card__title'>
-                    <div className='customer-deposit-card__title__icon'>
+            <div className='universal-deposit-card__container'>
+                <div className='universal-deposit-card__title'>
+                    <div className='universal-deposit-card__title__icon'>
                         <Icon icon={deposit.currency} />
                     </div>
                     <Link to={RouteName.DEPOSIT_PAGE + '/' + deposit.id}>
@@ -29,7 +27,7 @@ export const UniversalDepositCard = ({ deposit }: Props) => {
                         </Text>
                     </Link>
                 </div>
-                <div className='customer-deposit-card__info'>
+                <div className='universal-deposit-card__info'>
                     {'number' in deposit && (
                         <div>
                             <Text weight='bold' size='l'>
