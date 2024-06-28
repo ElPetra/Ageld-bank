@@ -3,7 +3,7 @@
   flex-direction: column;
   gap: 24px;
 
-  @media screen and (min-width: 800px) and (max-width: 1550px) {
+  @media screen and (min-width: 800px) and (max-width: 1400px) {
     flex-direction: row!important;
     flex-wrap: wrap;
     > div {
@@ -12,4 +12,3 @@
     }
   }
 }
-
