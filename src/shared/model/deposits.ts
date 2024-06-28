@@ -43,6 +43,21 @@ export interface DepositProduct {
     percentRate: number;
 }
 
+export interface DepositProductDetails {
+    id: string;
+    name: string;
+    currency: Currency;
+    dayMin: number;
+    dayMax: number;
+    amountMin: number;
+    amountMax: number;
+    capitalization: 0 | 1 | 2 | 3 | 4 | 5;
+    replenishment: boolean;
+    withdrawal: 1 | 2 | 3;
+    revocable: boolean;
+    percentRate: number;
+}
+
 export interface CustomerDeposit {
     productId?: string;
     name: string;
