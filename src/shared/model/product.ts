@@ -1,7 +1,7 @@
 import i18n from 'src/shared/model/i18n';
 
 export type Currency = 'eur' | 'usd' | 'rub';
-export type CurrencyResponse = 'EUR' | 'RUB' | 'USD'
+
 export const ALL_CURRENCY = i18n.t('Все');
 export const RUB = 'RUB';
 export const EUR = 'EUR';

@@ -15,7 +15,7 @@ export const DropdownSelector = () => {
     const { register, handleSubmit, setValue } = useForm<IFormInput>();
 
     const onSubmit: SubmitHandler<IFormInput> = data => {
-        console.log(data);
+        console.log(data)
     };
 
     const capitalizationOptions: DropdownOption[] = [
@@ -40,7 +40,7 @@ export const DropdownSelector = () => {
                     {...register('capitalzation')}
                     onChange={handleSelectChange}
                 >
-                    <option value=''>Капитализация</option>
+                    <option value='Капитализация'>Капитализация</option>
                     {capitalizationOptions.map(option => (
                         <option key={option.value} value={option.value}>
                             {option.label}
