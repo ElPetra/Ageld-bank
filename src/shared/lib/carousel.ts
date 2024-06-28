@@ -37,6 +37,9 @@ export const useCarouselControlls = (
             }
         }
         function pointerHandler(e: PointerEvent) {
+            const div = document.createElement('div');
+            div.innerText = `X:${e.clientX}, pressure: ${e.pressure}`;
+            document.body.append(div);
             if (e.pressure > 0) {
                 swipeOn(e.clientX);
             }
