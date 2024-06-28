@@ -8,49 +8,48 @@ export const useCarouselControlls = (
     const active = useRef('center');
     const carouselContainer = container.current;
     useEffect(() => {
-        function swipeOn(start: number, isPhone: boolean) {
+        function onPointerEnd(
+            e: PointerEvent | TouchEvent,
+            startTime: number,
+            startPoint: number
+        ) {
+            const timePassed = Date.now() - startTime;
+            const endPoint =
+                'clientX' in e
+                    ? e.clientX
+                    : e.changedTouches
+                      ? e.changedTouches[0].clientX
+                      : 0;
+            const distance = startPoint - endPoint;
+            if (timePassed <= 1500) {
+                const direction = distance > 0 ? 'right' : 'left';
+                if (Math.abs(distance) > 50) {
+                    changeRotateByArrow(direction);
+                }
+            }
+        }
+        function onPointermove(e: PointerEvent) {
+            const isPhone = 'ontouchend' in window;
+            if (e.pressure === 0 && !isPhone) {
+                return;
+            }
+            const startTime = Date.now();
+            const startPoint = e.clientX;
+            const event = isPhone ? 'touchend' : 'pointerup';
             if (carouselContainer) {
-                const startTime = Date.now();
-                const startPoint = start;
-                const event = isPhone ? 'touchend' : 'pointerup';
                 carouselContainer.addEventListener(
                     event,
-                    e => {
-                        e.preventDefault();
-                        const difTime = Date.now() - startTime;
-                        const range =
-                            'clientX' in e
-                                ? e.clientX
-                                : e.changedTouches
-                                  ? e.changedTouches[0].clientX
-                                  : 0;
-                        const distance = startPoint - range;
-                        if (difTime <= 1500) {
-                            const direction = distance > 0 ? 'right' : 'left';
-                            if (Math.abs(distance) > 50) {
-                                changeRotateByArrow(direction);
-                            }
-                        }
-                    },
+                    e => onPointerEnd(e, startTime, startPoint),
                     { once: true }
                 );
             }
         }
-        function pointerHandler(e: PointerEvent) {
-            // const div = document.createElement('div');
-            // div.innerText = `X:${e.clientX}, pressure: ${e.pressure}`;
-            // document.body.append(div);
-            const isPhone = 'ontouchend' in window;
-            if (e.pressure > 0 || isPhone) {
-                swipeOn(e.clientX, isPhone);
-            }
-        }
         if (carouselContainer) {
-            carouselContainer.addEventListener('pointermove', pointerHandler);
+            carouselContainer.addEventListener('pointermove', onPointermove);
             return () =>
                 carouselContainer.removeEventListener(
                     'pointermove',
-                    pointerHandler
+                    onPointermove
                 );
         }
     });
