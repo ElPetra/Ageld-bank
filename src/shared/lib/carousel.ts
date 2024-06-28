@@ -8,11 +8,11 @@ export const useCarouselControlls = (
     const active = useRef('center');
     const carouselContainer = container.current;
     useEffect(() => {
-        function swipeOn(start: number) {
+        function swipeOn(start: number, isPhone: boolean) {
             if (carouselContainer) {
                 const startTime = Date.now();
                 const startPoint = start;
-                const event = 'ontouchend' in window ? 'touchend' : 'pointerup';
+                const event = isPhone ? 'touchend' : 'pointerup';
                 carouselContainer.addEventListener(
                     event,
                     e => {
@@ -27,7 +27,7 @@ export const useCarouselControlls = (
                         const distance = startPoint - range;
                         if (difTime <= 1500) {
                             const direction = distance > 0 ? 'right' : 'left';
-                            if (Math.abs(distance) > 100) {
+                            if (Math.abs(distance) > 50) {
                                 changeRotateByArrow(direction);
                             }
                         }
@@ -37,11 +37,12 @@ export const useCarouselControlls = (
             }
         }
         function pointerHandler(e: PointerEvent) {
-            const div = document.createElement('div');
-            div.innerText = `X:${e.clientX}, pressure: ${e.pressure}`;
-            document.body.append(div);
-            if (e.pressure > 0) {
-                swipeOn(e.clientX);
+            // const div = document.createElement('div');
+            // div.innerText = `X:${e.clientX}, pressure: ${e.pressure}`;
+            // document.body.append(div);
+            const isPhone = 'ontouchend' in window;
+            if (e.pressure > 0 || isPhone) {
+                swipeOn(e.clientX, isPhone);
             }
         }
         if (carouselContainer) {
