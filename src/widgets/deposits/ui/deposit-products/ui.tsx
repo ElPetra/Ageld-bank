@@ -30,7 +30,7 @@ const deposits: DepositProduct[] = [
     {
         id: '123e4567-e89b-12d3-a456-426614174006',
         name: 'Депозит A-Geld Дополнительный',
-        currency: 'eur',
+        currency: 'rub',
         dayMin: 90,
         dayMax: 900,
         amountMin: 4000,
@@ -44,7 +44,7 @@ const deposits: DepositProduct[] = [
     {
         id: '123e4567-e89b-12d3-a456-426614174007',
         name: 'Депозит A-Geld Премиальный',
-        currency: 'eur',
+        currency: 'rub',
         dayMin: 60,
         dayMax: 400,
         amountMin: 234,
@@ -58,7 +58,7 @@ const deposits: DepositProduct[] = [
     {
         id: '123e4567-e89b-12d3-a456-426614174008',
         name: 'Депозит A-Geld Длительный',
-        currency: 'usd',
+        currency: 'rub',
         dayMin: 120,
         dayMax: 1080,
         amountMin: 1200,
@@ -124,7 +124,7 @@ export const DepositProducts = () => {
                 setValue={setValue}
                 deposits={currentDeposits}
             />
-            <DepositCalculator />
+            <DepositCalculator deposits={currentDeposits} />
         </div>
     );
 };

@@ -1,39 +1,24 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
-
 import { depositTermFilters } from 'src/shared/model';
 import { Button, Card, Form, Switcher, Text } from 'src/shared/ui';
 import { FilterBar } from 'src/entities/filter';
 import { DepositSumInput, DepositTermInput } from 'src/features/inputs';
 import { UniversalDepositsList } from 'src/features/universal-deposit-list';
+import {
+    calculateDaysInYear,
+    calculateProfit,
+    convertToDays
+} from 'src/shared/lib/deposit.js';
 
 import type { FieldValues } from 'react-hook-form';
-import type { DepositProfitability } from 'src/shared/model';
-
+import type { DepositProfitability, DepositProduct } from 'src/shared/model';
 import './styles.scss';
-
-// Пока моканные данные для демонстрации интерфейса
-const profitabilityDeposits: DepositProfitability[] = [
-    {
-        id: 1,
-        name: 'A-Geld Базовый',
-        currency: 'rub',
-        percentRate: 7,
-        sum: 1110022,
-        income: 33446
-    },
-    {
-        id: 2,
-        name: 'A-Geld Стандарт',
-        currency: 'rub',
-        percentRate: 11.5,
-        sum: 1013840,
-        income: 13840
-    }
-];
-
-export const DepositCalculator = () => {
+interface Props {
+    deposits: DepositProduct[];
+}
+export const DepositCalculator = ({ deposits }: Props) => {
     const { t } = useTranslation();
     const {
         register,
@@ -54,6 +39,9 @@ export const DepositCalculator = () => {
     });
     const [term, setTerm] = useState<string>(depositTermFilters[4]);
     const [open, setOpen] = useState<boolean>(false);
+    const [profitabilityDeposits, setProfitabilityDeposits] = useState<
+        DepositProfitability[]
+    >([]);
 
     useEffect(() => {
         if (term === 'Другой срок') {
@@ -63,13 +51,47 @@ export const DepositCalculator = () => {
         }
     }, [term]);
 
+    function calculateProfitDeposits(data: FieldValues) {
+        const days = data.termInput * 30;
+        const resultTerm = convertToDays(term) || days;
+        const sumDeposit = parseInt(data.sumSlider);
+        const daysInYear = calculateDaysInYear(new Date().getFullYear());
+        const filteredDeposits = deposits.length
+            ? deposits.filter(
+                  el =>
+                      sumDeposit >= el.amountMin &&
+                      sumDeposit <= el.amountMax &&
+                      resultTerm >= el.dayMin
+              )
+            : deposits;
+
+        const newProfitabilityDeposits = filteredDeposits.map(
+            (item: DepositProduct) => {
+                const profit = calculateProfit(
+                    sumDeposit,
+                    item.percentRate,
+                    resultTerm,
+                    daysInYear
+                );
+                return {
+                    id: item.id,
+                    name: item.name,
+                    percentRate: item.percentRate,
+                    currency: item.currency,
+                    income: profit + sumDeposit,
+                    sum: profit
+                };
+            }
+        );
+        setProfitabilityDeposits(newProfitabilityDeposits);
+    }
     return (
         <div className='deposit-calculator'>
             <div className='deposit-calculator__form'>
                 <Text weight='bold' size='l'>
                     {t('Рассчитайте доходность по депозиту')}
                 </Text>
-                <Form onSubmit={handleSubmit(() => {})}>
+                <Form onSubmit={handleSubmit(calculateProfitDeposits)}>
                     <Card padding='medium' direction='column' align='center'>
                         <DepositSumInput
                             register={register}

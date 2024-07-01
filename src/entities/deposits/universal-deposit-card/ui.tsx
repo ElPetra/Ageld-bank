@@ -40,7 +40,7 @@ export const UniversalDepositCard = ({ deposit }: Props) => {
                     )}
                     {'percentRate' in deposit && (
                         <div>
-                            <Text weight='bold' size='l'>
+                            <Text weight='bold' size='m'>
                                 {deposit.percentRate + '%'}
                             </Text>
                             <Text color='tertiary' size='xs'>
@@ -72,7 +72,7 @@ export const UniversalDepositCard = ({ deposit }: Props) => {
                     )}
                     {'income' in deposit && (
                         <div>
-                            <Text weight='bold' size='l'>
+                            <Text weight='bold' size='m'>
                                 {deposit.income.toLocaleString() +
                                     ' ' +
                                     deposit.currency.toUpperCase()}
@@ -84,7 +84,7 @@ export const UniversalDepositCard = ({ deposit }: Props) => {
                     )}
                     {'sum' in deposit && (
                         <div>
-                            <Text weight='bold' size='l'>
+                            <Text weight='bold' size='m'>
                                 {deposit.sum.toLocaleString() +
                                     ' ' +
                                     deposit.currency.toUpperCase()}
