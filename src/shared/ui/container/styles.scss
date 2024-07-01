@@ -9,33 +9,33 @@
     color: var(--text-secondary);
   }
 
+  .container {
+    margin: 0 auto;
+    padding: 0 130px;
+  }
+
   @media screen and (max-width: 600px) {
     .container {
-      padding: 0 15px !important;
+      padding: 0 15px;
     }
   }
 
   @media screen and (min-width: 600px) and (max-width: 900px) {
     .container {
-      padding: 0 30px !important;
+      padding: 0 30px;
     }
   }
 
   @media screen and (min-width: 900px) and (max-width: 1400px) {
     .container {
-      padding: 0 70px !important;
+      padding: 0 70px;
     }
   }
 
   @media screen and (min-width: 1400px) and (max-width: 1500px) {
     .container {
-      padding: 0 100px !important;
+      padding: 0 100px;
     }
-  }
-
-  .container {
-    margin: 0 auto;
-    padding: 0 130px;
   }
 }
 

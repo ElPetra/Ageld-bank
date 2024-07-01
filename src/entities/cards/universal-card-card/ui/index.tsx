@@ -51,146 +51,154 @@ export const UniversalCardCard = ({ card, children }: Props) => {
         isCardDetails(card) && navigator.clipboard.writeText(card.number);
 
     return (
-        <Card padding='large' gap='extra-large' className='universal-card-card'>
-            <div className='universal-card-card__image'>
-                <LinkCard link={link}>
-                    <Image src={card.image} />
-                </LinkCard>
-            </div>
-            <div className='universal-card-card__second'>
-                <div className='universal-card-card__second__info'>
-                    <div className='universal-card-card__second__info__text'>
-                        <div className='universal-card-card__second__info__text__name'>
-                            <LinkCard link={link}>
+        <Card padding='large'>
+            <div className='universal-card-card'>
+                <div className='universal-card-card__image'>
+                    <LinkCard link={link}>
+                        <Image src={card.image} />
+                    </LinkCard>
+                </div>
+                <div className='universal-card-card__second'>
+                    <div className='universal-card-card__second__info'>
+                        <div className='universal-card-card__second__info__text'>
+                            <div className='universal-card-card__second__info__text__name'>
+                                <LinkCard link={link}>
+                                    <Text size='l' weight='bold'>
+                                        {`A-Geld Card ${card.name}`}
+                                    </Text>
+                                </LinkCard>
+                                {children ? (
+                                    children
+                                ) : (
+                                    <div className='universal-card-card__second__info__text__name__icon'>
+                                        <Icon
+                                            icon={getIconName(
+                                                card.paymentSystem
+                                            )}
+                                            width={60}
+                                            height={30}
+                                        />
+                                    </div>
+                                )}
+                            </div>
+                            {isCardDetails(card) ? (
                                 <Text size='l' weight='bold'>
-                                    {`A-Geld Card ${card.name}`}
+                                    {card.balance + ' ₽'}
                                 </Text>
-                            </LinkCard>
-                            {children ? (
-                                children
                             ) : (
-                                <div className='universal-card-card__second__info__text__name__icon'>
-                                    <Icon
-                                        icon={getIconName(card.paymentSystem)}
-                                        width={60}
-                                        height={30}
-                                    />
-                                </div>
+                                <Text color='tertiary'>
+                                    {isCustomerCard(card)
+                                        ? card.number.replace(
+                                              /.{12}/gm,
+                                              CARD_NUMBER_REPLACEMENT
+                                          )
+                                        : t(typeCard[card.type]) +
+                                          ' ' +
+                                          t('карта') +
+                                          '. ' +
+                                          t('Надежная карта на каждый день')}
+                                </Text>
                             )}
                         </div>
-                        {isCardDetails(card) ? (
-                            <Text size='l' weight='bold'>
-                                {card.balance + ' ₽'}
-                            </Text>
-                        ) : (
-                            <Text color='tertiary'>
-                                {isCustomerCard(card)
-                                    ? card.number.replace(
-                                          /.{12}/gm,
-                                          CARD_NUMBER_REPLACEMENT
-                                      )
-                                    : t(typeCard[card.type]) +
-                                      ' ' +
-                                      t('карта') +
-                                      '. ' +
-                                      t('Надежная карта на каждый день')}
-                            </Text>
-                        )}
-                    </div>
-                    <div className='universal-card-card__second__info__details'>
-                        {isCardProduct(card) && (
-                            <>
-                                <Detail
-                                    value={getFirstUpperCase(card.level)}
-                                    description={t('Уровень премиальность')}
-                                />
-                                <Detail
-                                    value={RUB}
-                                    description={t('Валюта счета')}
-                                />
-                            </>
-                        )}
-                        {isCardProductDetails(card) && (
-                            <>
-                                <Detail
-                                    value={getFirstUpperCase(card.level)}
-                                    description={t('Уровень премиальность')}
-                                />
-                                <Detail
-                                    value={card.isVirtual ? t('Да') : t('Нет')}
-                                    description={t('Виртуальная')}
-                                />
-                                <Detail
-                                    value={card.feeUse + ' ₽'}
-                                    description={t('Плата за использование')}
-                                />
-                            </>
-                        )}
-                        {isCustomerCard(card) && (
-                            <>
-                                <Detail
-                                    value={formatExpirationDate(
-                                        card.expirationAt
-                                    )}
-                                    description={t('Срок действия')}
-                                />
-                                <Detail
-                                    value='1000 ₽' // Данные пока не преходят с api
-                                    description={t('Баланс')}
-                                />
-                                <Detail
-                                    value={RUB}
-                                    description={t('Валюта счета')}
-                                />
-                            </>
-                        )}
-                        {isCardDetails(card) && (
-                            <>
-                                <div className='universal-card-card__second__info__details__copy'>
+                        <div className='universal-card-card__second__info__details'>
+                            {isCardProduct(card) && (
+                                <>
                                     <Detail
-                                        value={card.number.replace(
-                                            /.{12}/gm,
-                                            CARD_NUMBER_REPLACEMENT
-                                        )}
-                                        description={t('Номер карты')}
+                                        value={getFirstUpperCase(card.level)}
+                                        description={t('Уровень премиальность')}
                                     />
-                                    <button onClick={handleCopyCard}>
-                                        <Icon icon='copy' />
-                                    </button>
-                                </div>
-                                <Detail
-                                    value={formatExpirationDate(
-                                        card.expirationAt
-                                    )}
-                                    description={t('Срок действия')}
-                                />
-                                <Detail
-                                    value={RUB}
-                                    description={t('Валюта счета')}
-                                />
-                            </>
+                                    <Detail
+                                        value={RUB}
+                                        description={t('Валюта счета')}
+                                    />
+                                </>
+                            )}
+                            {isCardProductDetails(card) && (
+                                <>
+                                    <Detail
+                                        value={getFirstUpperCase(card.level)}
+                                        description={t('Уровень премиальность')}
+                                    />
+                                    <Detail
+                                        value={
+                                            card.isVirtual ? t('Да') : t('Нет')
+                                        }
+                                        description={t('Виртуальная')}
+                                    />
+                                    <Detail
+                                        value={card.feeUse + ' ₽'}
+                                        description={t(
+                                            'Плата за использование'
+                                        )}
+                                    />
+                                </>
+                            )}
+                            {isCustomerCard(card) && (
+                                <>
+                                    <Detail
+                                        value={formatExpirationDate(
+                                            card.expirationAt
+                                        )}
+                                        description={t('Срок действия')}
+                                    />
+                                    <Detail
+                                        value='1000 ₽' // Данные пока не преходят с api
+                                        description={t('Баланс')}
+                                    />
+                                    <Detail
+                                        value={RUB}
+                                        description={t('Валюта счета')}
+                                    />
+                                </>
+                            )}
+                            {isCardDetails(card) && (
+                                <>
+                                    <div className='universal-card-card__second__info__details__copy'>
+                                        <Detail
+                                            value={card.number.replace(
+                                                /.{12}/gm,
+                                                CARD_NUMBER_REPLACEMENT
+                                            )}
+                                            description={t('Номер карты')}
+                                        />
+                                        <button onClick={handleCopyCard}>
+                                            <Icon icon='copy' />
+                                        </button>
+                                    </div>
+                                    <Detail
+                                        value={formatExpirationDate(
+                                            card.expirationAt
+                                        )}
+                                        description={t('Срок действия')}
+                                    />
+                                    <Detail
+                                        value={RUB}
+                                        description={t('Валюта счета')}
+                                    />
+                                </>
+                            )}
+                        </div>
+                    </div>
+                    <div className='universal-card-card__second__button'>
+                        {isCustomerCard(card) ? (
+                            <Link to={link}>
+                                <Button variant='secondary'>
+                                    {t('Информация по карте')}
+                                </Button>
+                            </Link>
+                        ) : (
+                            <Button variant='secondary'>
+                                {isCardDetails(card)
+                                    ? t('Перевести')
+                                    : t('Оформить карту')}
+                            </Button>
+                        )}
+                        {isCardProduct(card) && (
+                            <Link to={link}>
+                                <Button>{t('Показать больше')}</Button>
+                            </Link>
                         )}
                     </div>
-                </div>
-                <div className='universal-card-card__second__button'>
-                    {isCustomerCard(card) ? (
-                        <Link to={link}>
-                            <Button variant='secondary'>
-                                {t('Информация по карте')}
-                            </Button>
-                        </Link>
-                    ) : (
-                        <Button variant='secondary'>
-                            {isCardDetails(card)
-                                ? t('Перевести')
-                                : t('Оформить карту')}
-                        </Button>
-                    )}
-                    {isCardProduct(card) && (
-                        <Link to={link}>
-                            <Button>{t('Показать больше')}</Button>
-                        </Link>
-                    )}
                 </div>
             </div>
         </Card>

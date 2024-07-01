@@ -12,7 +12,7 @@ interface Props {
     deposit: DepositProduct;
 }
 
-export const DepositCard = ({ deposit }: Props) => {
+export const DepositProductCard = ({ deposit }: Props) => {
     const { t } = useTranslation();
     return (
         <Card gap='medium' padding='medium' direction='column'>

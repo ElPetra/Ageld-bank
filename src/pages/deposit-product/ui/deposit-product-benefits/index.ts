@@ -1,0 +1,1 @@
+export { DepositProductBenefits } from './ui';
