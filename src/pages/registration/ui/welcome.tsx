@@ -15,12 +15,7 @@ export default function Welcome({ setShowForm }: WelcomeProps) {
                 <Text weight='bold' size='l' align='center'>
                     {t('Добро пожаловать в \n интернет-банкинг A-Geld')}
                 </Text>
-                <Text
-                    align='center'
-                    size='m'
-                    weight='medium'
-                    lineHeight='unset'
-                >
+                <Text align='center' size='m' weight='medium' lineHeight='s'>
                     {t(
                         'Доступ в личный кабинет возможен с телефонного \n номера, указанного при открытии счета в нашем банке'
                     )}

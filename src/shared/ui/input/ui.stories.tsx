@@ -11,9 +11,8 @@ const meta: Meta<typeof Input> = {
     title: 'Input',
     tags: ['autodocs'],
     argTypes: {
-        type: {
-            description: 'Стандартный type input',
-            defaultValue: { summary: 'text' }
+        placeholder: {
+            description: 'Название'
         },
         size: {
             description: 'Размер',
@@ -23,8 +22,17 @@ const meta: Meta<typeof Input> = {
             description: 'Ширина кнопки, либо стандарт, либо 100% от родителя',
             defaultValue: { summary: 'auto' }
         },
+        isError: {
+            description: 'Флаг ошибки'
+        },
         error: {
             description: 'Текст ошибки'
+        },
+        disabled: {
+            description: 'Заблокированный'
+        },
+        value: {
+            description: 'Значение'
         }
     }
 };
@@ -34,10 +42,12 @@ type Story = StoryObj<typeof Input>;
 
 export const Default: Story = {
     args: {
-        type: 'text',
         placeholder: 'Номер телефона',
         size: 'large',
         width: 'auto',
-        error: ''
+        isError: false,
+        error: '',
+        disabled: false,
+        value: '+7 (999) 999-99-99'
     }
 };

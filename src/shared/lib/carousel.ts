@@ -1,25 +1,22 @@
 import { useEffect, useRef, useState, type RefObject } from 'react';
 
 function isTouchEvent(e: Event): e is TouchEvent {
-    if ('touches' in e && 'changedTouches' in e && 'targetTouches' in e) {
-        return true;
-    }
-    return false;
-}
-function isMousePointerEvent(e: Event): e is PointerEvent {
-    if ('pointerType' in e && e.pointerType === 'mouse') {
-        return true;
-    }
-    return false;
+    return 'touches' in e && 'changedTouches' in e && 'targetTouches' in e;
 }
 
-export const useCarouselControlls = (
+function isMousePointerEvent(e: Event): e is PointerEvent {
+    return 'pointerType' in e && e.pointerType === 'mouse';
+}
+
+export const useCarouselControls = (
+    length: number,
     container: RefObject<HTMLDivElement>,
     angle: number
 ) => {
     const [curRotate, setCurRotate] = useState(0);
-    const active = useRef('center');
+    const active = useRef(0);
     const carouselContainer = container.current;
+
     useEffect(() => {
         function swipeOn(device: string, e: PointerEvent) {
             if (carouselContainer) {
@@ -40,9 +37,9 @@ export const useCarouselControlls = (
                         if (difTime <= 1500) {
                             if (Math.abs(distance) > 100) {
                                 if (distance > 0) {
-                                    changeRotateByArrow('right');
+                                    changeRotateByControl('next');
                                 } else {
-                                    changeRotateByArrow('left');
+                                    changeRotateByControl('prev');
                                 }
                             }
                         }
@@ -51,6 +48,7 @@ export const useCarouselControlls = (
                 );
             }
         }
+
         function pointerHandler(e: PointerEvent) {
             if (e.pressure === 0) {
                 return;
@@ -69,60 +67,30 @@ export const useCarouselControlls = (
                 );
         }
     });
-    function changeActive(arrow: 'left' | 'right') {
-        const { current } = active;
-        if (arrow === 'left') {
-            if (current === 'prev') {
-                return;
-            }
-            active.current = current === 'center' ? 'prev' : 'center';
-        } else {
-            if (current === 'next') {
-                return;
-            }
-            active.current = current === 'center' ? 'next' : 'center';
-        }
-    }
-    function countBlockControllsValues() {
-        if (active.current === 'prev') {
-            return [curRotate, curRotate - angle, curRotate - 2 * angle];
-        } else if (active.current === 'center') {
-            return [curRotate + angle, curRotate, curRotate - angle];
-        } else if (active.current === 'next') {
-            return [curRotate + 2 * angle, curRotate + angle, curRotate];
-        }
-        return [curRotate];
-    }
-    function changeRotateByArrow(arrow: 'left' | 'right') {
+
+    function changeRotateByControl(arrow: 'prev' | 'next') {
         const prevRotate = curRotate;
-        let nextRotate = null;
-        nextRotate = arrow === 'left' ? prevRotate + angle : prevRotate - angle;
+        const nextRotate =
+            arrow === 'prev' ? prevRotate + angle : prevRotate - angle;
         if (carouselContainer) {
-            carouselContainer.style.transform = `rotateY(${nextRotate ?? prevRotate}deg)`;
+            carouselContainer.style.transform = `rotateY(${nextRotate}deg)`;
         }
-        if (nextRotate !== null) {
-            changeActive(nextRotate > prevRotate ? 'left' : 'right');
-        }
-        setCurRotate(nextRotate ?? prevRotate);
+        active.current = (-nextRotate / angle) % length;
+        setCurRotate(nextRotate);
     }
 
-    function changeRotateByControl(control: 'prev' | 'center' | 'next') {
-        const prevRotate = curRotate;
-        let nextRotate = null;
-        const currControlIndex =
-            control === 'prev' ? 0 : control === 'center' ? 1 : 2;
-        nextRotate = countBlockControllsValues()[currControlIndex];
+    function changeRotateByIndicator(indicator: number) {
+        const nextRotate = -indicator * angle;
         if (carouselContainer) {
-            carouselContainer.style.transform = `rotateY(${nextRotate ?? prevRotate}deg)`;
+            carouselContainer.style.transform = `rotateY(${nextRotate}deg)`;
         }
-        if (nextRotate !== null) {
-            active.current = control;
-        }
-        setCurRotate(nextRotate ?? prevRotate);
+        active.current = indicator;
+        setCurRotate(nextRotate);
     }
+
     return {
-        changeRotateByArrow,
         changeRotateByControl,
+        changeRotateByIndicator,
         active: active.current
     };
 };
@@ -131,11 +99,13 @@ export const useCarousel = (length: number) => {
     const [distance, setDistance] = useState<number>(0);
     const firstRender = useRef(true);
     const angle = 360 / length;
+
     useEffect(() => {
         if (firstRender) {
             firstRender.current = false;
-            const estimatedElement =
-                document.querySelector<HTMLElement>('.carousel_element');
+            const estimatedElement = document.querySelector<HTMLElement>(
+                '.carousel-inner__element'
+            );
             if (estimatedElement) {
                 const estimatedWidth = estimatedElement.offsetWidth;
                 const edge =
@@ -148,5 +118,6 @@ export const useCarousel = (length: number) => {
             }
         }
     }, [length]);
+
     return { angle, distance };
 };

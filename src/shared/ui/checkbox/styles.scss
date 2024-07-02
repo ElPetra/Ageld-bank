@@ -1,36 +1,36 @@
 .custom-checkbox {
-
   &__label {
     cursor: pointer;
     display: flex;
     align-items: center;
+
+    input {
+      display: none;
+
+      &:checked + .checkbox-control::before {
+        content: '';
+        position: absolute;
+        left: 6.5px;
+        top: 2.5px;
+        width: 6px;
+        height: 10px;
+        border: solid var(--text-secondary);
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+      }
+
+      &:checked + .checkbox-control {
+        background: var(--text-action);
+      }
+    }
   }
 
-  &__input {
-    display: none;
-  }
-
-  &__control {
+  .checkbox-control {
     width: 20px;
     height: 20px;
     border-radius: var(--small-border-radius);;
     margin-right: 10px;
     position: relative;
     border: solid 1px var(--text-action);
-  }
-
-  &__input:checked + &__control::before {
-    content: '';
-    position: absolute;
-    left: 6.5px;
-    top: 2.5px;
-    width: 6px;
-    height: 10px;
-    border: solid var(--text-secondary);
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
-  }
-  &__input:checked + &__control {
-    background: var(--text-action);
   }
 }

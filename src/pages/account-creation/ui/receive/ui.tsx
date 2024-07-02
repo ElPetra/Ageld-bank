@@ -49,7 +49,7 @@ export const ReceivingVariant = ({ isLast, setFormStep }: Props) => {
                 padding='large'
                 borderRadius='extra-large'
                 direction='column'
-                align='left'
+                align='right'
             >
                 <Columns number='2'>
                     {ReceiveTypes.map(el => (
@@ -57,7 +57,6 @@ export const ReceivingVariant = ({ isLast, setFormStep }: Props) => {
                             <Radio
                                 register={register}
                                 value={el.id}
-                                id={el.id}
                                 field='receiving'
                             >
                                 <div>

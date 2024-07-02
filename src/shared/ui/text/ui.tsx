@@ -7,11 +7,11 @@ import './styles.scss';
 
 interface Props {
     tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'div';
-    size?: 'xs' | 'xxs' | 's' | 'm' | 'l' | 'xl';
+    size?: 'xxs' | 'xs' | 's' | 'm' | 'l' | 'xl';
     weight?: 'light' | 'regular' | 'medium' | 'bold' | 'extra-bold';
     color?: 'action' | 'success' | 'error' | 'tertiary' | 'quadruple';
     align?: 'center' | 'left' | 'right';
-    lineHeight?: 'unset';
+    lineHeight?: 'xs' | 's' | 'm' | 'l';
     display?: 'flex';
     children: ReactNode;
 }
@@ -28,8 +28,9 @@ export const Text = memo(
         display
     }: Props) => {
         const Element = tag || 'div';
-        const textClass = cn('text', size, weight, align, display, lineHeight, {
-            [`text-${color}`]: color
+        const textClass = cn('text', size, weight, align, display, {
+            [`text-${color}`]: color,
+            [`line-height-${lineHeight}`]: lineHeight
         });
 
         return <Element className={textClass}>{children}</Element>;

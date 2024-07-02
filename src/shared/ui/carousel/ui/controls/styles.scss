@@ -1,0 +1,21 @@
+.carousel-controls {
+
+  &__prev {
+    left: -25px;
+  }
+
+  &__next {
+    right: -25px;
+  }
+
+  > button {
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    top: calc(50% - 30px);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

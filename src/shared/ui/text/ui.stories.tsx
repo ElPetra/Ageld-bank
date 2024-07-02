@@ -23,6 +23,16 @@ const meta: Meta<typeof Text> = {
             description: 'Жирность',
             defaultValue: { summary: 'regular' }
         },
+        color: {
+            description: 'Цвет текста'
+        },
+        align: {
+            description: 'Выравнивание',
+            defaultValue: { summary: 'left' }
+        },
+        lineHeight: {
+            description: 'Жирность'
+        },
         children: {
             description: 'Текст'
         }
@@ -35,8 +45,9 @@ type Story = StoryObj<typeof Text>;
 export const Default: Story = {
     args: {
         tag: 'div',
-        size: 'm',
-        weight: 'medium',
+        size: 's',
+        weight: 'regular',
+        align: 'left',
         children: 'Text'
     }
 };
