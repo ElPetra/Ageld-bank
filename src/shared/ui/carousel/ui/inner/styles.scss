@@ -1,6 +1,7 @@
 .carousel-inner {
   width:100%;
   height: 352px;
+  overflow: hidden;
   
   &__container{
     height: 100%;
@@ -28,7 +29,7 @@
     }
 
     &.hidden {
-      visibility: hidden;
+
     }
   }
 }
