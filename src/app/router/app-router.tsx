@@ -11,6 +11,7 @@ import { NotificationHistoryPage } from 'src/pages/notification';
 import { CardPage } from 'src/pages/card';
 import { DepositPage } from 'src/pages/deposit';
 import { DepositExtensionPage } from 'src/pages/deposit-extension';
+import { DepositCreationPage } from 'src/pages/deposit-creation';
 import { AccountPage } from 'src/pages/account';
 import { AccountCreationPage } from 'src/pages/account-creation';
 import { CardProductPage } from 'src/pages/card-product';
@@ -93,6 +94,10 @@ const authRoutes: RouteDescription[] = [
     {
         path: DEPOSIT_PAGE + '/:id/' + EXTEND,
         component: DepositExtensionPage
+    },
+    {
+        path: DEPOSIT_PAGE + '/:id/' + CREATE,
+        component: DepositCreationPage
     },
     {
         path: DEPOSIT_PAGE + '/:id',

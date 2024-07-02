@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-
+import { useNavigate } from 'react-router-dom';
 import { RouteName } from 'src/shared/model';
 import { Icon, Text, Button, Card } from 'src/shared/ui';
 
@@ -14,6 +14,7 @@ interface Props {
 
 export const DepositProductCard = ({ deposit }: Props) => {
     const { t } = useTranslation();
+    const navigate = useNavigate();
     return (
         <Card gap='medium' padding='medium' direction='column'>
             <div className='deposit-card__info'>
@@ -83,7 +84,13 @@ export const DepositProductCard = ({ deposit }: Props) => {
                     </Link>
                 </div>
                 <div>
-                    <Button width='max' variant='secondary'>
+                    <Button
+                        onClick={() => {
+                            navigate('create');
+                        }}
+                        width='max'
+                        variant='secondary'
+                    >
                         {t('Оформить')}
                     </Button>
                 </div>
