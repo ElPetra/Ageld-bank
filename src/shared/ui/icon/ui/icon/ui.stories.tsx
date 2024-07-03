@@ -10,12 +10,19 @@ const meta: Meta<typeof Icon> = {
     title: 'Icon',
     tags: ['autodocs'],
     argTypes: {
+        icon: {
+            description: 'Название иконки'
+        },
         width: {
             description: 'Ширина',
             defaultValue: { summary: '24' }
         },
         height: {
             description: 'Высота',
+            defaultValue: { summary: '24' }
+        },
+        widthAndHeight: {
+            description: 'Ширина и высота',
             defaultValue: { summary: '24' }
         }
     }

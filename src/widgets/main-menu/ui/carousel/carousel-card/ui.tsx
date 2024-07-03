@@ -1,6 +1,6 @@
-import { Button, Card, Text } from 'src/shared/ui';
-import './styles.scss';
 import { useTranslation } from 'react-i18next';
+
+import { Button, Card, Text } from 'src/shared/ui';
 
 interface Props {
     title: string;
@@ -8,18 +8,21 @@ interface Props {
     button: string;
 }
 
-export const GalleryCard = ({ title = 'Новинка!', content, button }: Props) => {
+export const MainCarouselCard = ({
+    title = 'Новинка!',
+    content,
+    button
+}: Props) => {
     const { t } = useTranslation();
     return (
         <Card
-            className='gallery_card'
             justify='space-between'
             direction='column'
             gap='small'
             borderRadius='large'
             padding='medium'
         >
-            <Text size='m' weight='bold' align='center'>
+            <Text size='m' weight='bold'>
                 {t(title)}
             </Text>
             <Text size='m'>{t(content)}</Text>

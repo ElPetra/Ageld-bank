@@ -1,29 +1,21 @@
-.main-menu{
-    &_container{
+.main-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    &__container {
         display: flex;
-        min-height: 530px;
-        margin-top: 56px;
+        justify-content: space-between;
+        gap: 30px;
+
         @media screen and (max-width: 800px) {
             flex-wrap: wrap;
-         }
-        @media screen and (max-width: 1267px) {
-            align-items: center;
-            justify-content: center;
         }
-    }
-    &_image{
-        width: max(40%, 350px);
-        position: relative;
-        background-image: url('../../../shared//ui/icon/assets/images/pinkish-semicircle.png');
-        background-repeat: no-repeat;
-        background-size: 40%;
-        background-position-x: 70%;
-        @media screen and (max-width: 1267px) {
-            display: none;
-        }
-        @media screen and (min-width: 1768px) {
-            background-size: 30%;
-            background-position-x: 50%;
+
+        > img {
+            @media screen and (max-width: 1240px) {
+                display: none;
+            }
         }
     }
 }

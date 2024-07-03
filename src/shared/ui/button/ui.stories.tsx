@@ -12,7 +12,7 @@ const meta: Meta<typeof Button> = {
     tags: ['autodocs'],
     argTypes: {
         type: {
-            description: 'Стандартный type кнопки',
+            description: 'Тип',
             defaultValue: { summary: 'button' }
         },
         size: {
@@ -23,16 +23,15 @@ const meta: Meta<typeof Button> = {
             description: 'Вариант цветовой схемы',
             defaultValue: { summary: 'primary' }
         },
-        disabled: {
-            description: 'Недоступность',
-            defaultValue: { summary: 'false' }
-        },
         width: {
             description: 'Ширина кнопки, либо стандарт, либо 100% от родителя',
             defaultValue: { summary: 'auto' }
         },
-        status: {
-            description: 'Можно сделать кнопку принудительно активной'
+        disabled: {
+            description: 'Заблокированный'
+        },
+        children: {
+            description: 'Содержимое'
         }
     }
 };
@@ -45,9 +44,8 @@ export const Default: Story = {
         type: 'button',
         size: 'medium',
         variant: 'primary',
-        disabled: false,
         width: 'auto',
-        status: undefined,
+        disabled: false,
         children: 'Action'
     }
 };

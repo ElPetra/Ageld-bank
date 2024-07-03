@@ -1,37 +1,26 @@
-import { useState } from 'react';
+import type { InputHTMLAttributes, ReactNode } from 'react';
+import type { FieldValues, UseFormRegister } from 'react-hook-form';
 
 import './styles.scss';
 
-interface Props {
-    label: string;
-    defaultIsChecked?: boolean;
-    onCheckbox?: () => void;
+interface Props extends InputHTMLAttributes<HTMLInputElement> {
+    register?: UseFormRegister<FieldValues>;
+    field?: string;
+    children?: ReactNode;
 }
 
-export const Checkbox = ({ label, defaultIsChecked, onCheckbox }: Props) => {
-    const [isChecked, setIsChecked] = useState<boolean>(
-        defaultIsChecked || false
-    );
-
-    const toggleCheckboxChange = () => {
-        setIsChecked(!isChecked);
-        if (onCheckbox) {
-            onCheckbox();
-        }
-    };
-
+export const Checkbox = ({ register, field, children, ...props }: Props) => {
     return (
         <div className='custom-checkbox'>
             <label className='custom-checkbox__label'>
                 <input
+                    {...(register && field && register(field))}
                     className='custom-checkbox__input'
                     type='checkbox'
-                    value={label}
-                    checked={isChecked}
-                    onChange={toggleCheckboxChange}
+                    {...props}
                 />
-                <span className='custom-checkbox__control'></span>
-                {label}
+                <span className='checkbox-control'></span>
+                <div>{children}</div>
             </label>
         </div>
     );

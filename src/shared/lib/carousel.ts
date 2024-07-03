@@ -1,12 +1,14 @@
 import { useEffect, useRef, useState, type RefObject } from 'react';
 
-export const useCarouselControlls = (
+export const useCarouselControls = (
+    length: number,
     container: RefObject<HTMLDivElement>,
     angle: number
 ) => {
     const [curRotate, setCurRotate] = useState(0);
-    const active = useRef('center');
+    const active = useRef(0);
     const carouselContainer = container.current;
+
     useEffect(() => {
         function onPointerEnd(
             e: PointerEvent | TouchEvent,
@@ -22,9 +24,9 @@ export const useCarouselControlls = (
                       : 0;
             const distance = startPoint - endPoint;
             if (timePassed <= 1500) {
-                const direction = distance > 0 ? 'right' : 'left';
+                const direction = distance > 0 ? 'prev' : 'next';
                 if (Math.abs(distance) > 50) {
-                    changeRotateByArrow(direction);
+                    changeRotateByControl(direction);
                 }
             }
         }
@@ -53,60 +55,30 @@ export const useCarouselControlls = (
                 );
         }
     });
-    function changeActive(arrow: 'left' | 'right') {
-        const { current } = active;
-        if (arrow === 'left') {
-            if (current === 'prev') {
-                return;
-            }
-            active.current = current === 'center' ? 'prev' : 'center';
-        } else {
-            if (current === 'next') {
-                return;
-            }
-            active.current = current === 'center' ? 'next' : 'center';
-        }
-    }
-    function countBlockControllsValues() {
-        if (active.current === 'prev') {
-            return [curRotate, curRotate - angle, curRotate - 2 * angle];
-        } else if (active.current === 'center') {
-            return [curRotate + angle, curRotate, curRotate - angle];
-        } else if (active.current === 'next') {
-            return [curRotate + 2 * angle, curRotate + angle, curRotate];
-        }
-        return [curRotate];
-    }
-    function changeRotateByArrow(arrow: 'left' | 'right') {
+
+    function changeRotateByControl(arrow: 'prev' | 'next') {
         const prevRotate = curRotate;
-        let nextRotate = null;
-        nextRotate = arrow === 'left' ? prevRotate + angle : prevRotate - angle;
+        const nextRotate =
+            arrow === 'prev' ? prevRotate + angle : prevRotate - angle;
         if (carouselContainer) {
-            carouselContainer.style.transform = `rotateY(${nextRotate ?? prevRotate}deg)`;
+            carouselContainer.style.transform = `rotateY(${nextRotate}deg)`;
         }
-        if (nextRotate !== null) {
-            changeActive(nextRotate > prevRotate ? 'left' : 'right');
-        }
-        setCurRotate(nextRotate ?? prevRotate);
+        active.current = (-nextRotate / angle) % length;
+        setCurRotate(nextRotate);
     }
 
-    function changeRotateByControl(control: 'prev' | 'center' | 'next') {
-        const prevRotate = curRotate;
-        let nextRotate = null;
-        const currControlIndex =
-            control === 'prev' ? 0 : control === 'center' ? 1 : 2;
-        nextRotate = countBlockControllsValues()[currControlIndex];
+    function changeRotateByIndicator(indicator: number) {
+        const nextRotate = -indicator * angle;
         if (carouselContainer) {
-            carouselContainer.style.transform = `rotateY(${nextRotate ?? prevRotate}deg)`;
+            carouselContainer.style.transform = `rotateY(${nextRotate}deg)`;
         }
-        if (nextRotate !== null) {
-            active.current = control;
-        }
-        setCurRotate(nextRotate ?? prevRotate);
+        active.current = indicator;
+        setCurRotate(nextRotate);
     }
+
     return {
-        changeRotateByArrow,
         changeRotateByControl,
+        changeRotateByIndicator,
         active: active.current
     };
 };
@@ -115,11 +87,13 @@ export const useCarousel = (length: number) => {
     const [distance, setDistance] = useState<number>(0);
     const firstRender = useRef(true);
     const angle = 360 / length;
+
     useEffect(() => {
         if (firstRender) {
             firstRender.current = false;
-            const estimatedElement =
-                document.querySelector<HTMLElement>('.carousel_element');
+            const estimatedElement = document.querySelector<HTMLElement>(
+                '.carousel-inner__element'
+            );
             if (estimatedElement) {
                 const estimatedWidth = estimatedElement.offsetWidth;
                 const edge =
@@ -132,5 +106,6 @@ export const useCarousel = (length: number) => {
             }
         }
     }, [length]);
+
     return { angle, distance };
 };

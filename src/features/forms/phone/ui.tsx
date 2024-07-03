@@ -11,8 +11,6 @@ import { PhoneInput } from './phone-input';
 import type { FieldValues } from 'react-hook-form';
 import type { Dispatch, SetStateAction } from 'react';
 
-import './styles.scss';
-
 interface Props {
     variant?: 'login' | 'registration' | 'recovery';
     isLast?: boolean;
@@ -26,17 +24,16 @@ export const PhoneForm = ({
     setPhone
 }: Props) => {
     const [clickedLinks, setClickedLinks] = useState<number[]>([]);
-    const [isConfirmed, setIsConfirmed] = useState(false);
-
     const {
         register,
         setValue,
         handleSubmit,
+        watch,
         formState: { errors, isDirty, isValid }
     } = useForm<FieldValues>({
         mode: 'onTouched',
         reValidateMode: 'onChange',
-        defaultValues: { phone: '' }
+        defaultValues: { phone: '', checkbox: [] }
     });
     const { checkedMissRegistration, checkedRegistration, error } = useAuth();
     const { t } = useTranslation();
@@ -76,11 +73,7 @@ export const PhoneForm = ({
                 error={error}
             />
             {variant === 'registration' && (
-                <div className='phone-form__registration'>
-                    <Checkbox
-                        onCheckbox={() => setIsConfirmed(prev => !prev)}
-                        label={''}
-                    />
+                <Checkbox register={register} field='checkbox'>
                     <Text>
                         {t('Нажав кнопку "Принять" вы соглашаетесь с текстом')}
                         &nbsp;
@@ -98,7 +91,7 @@ export const PhoneForm = ({
                             {t('Публичного договора')}
                         </Link>
                     </Text>
-                </div>
+                </Checkbox>
             )}
             <Button
                 variant='secondary'
@@ -108,7 +101,7 @@ export const PhoneForm = ({
                     !isDirty ||
                     !isValid ||
                     (variant === 'registration'
-                        ? !allLinksClicked || !isConfirmed
+                        ? !allLinksClicked || !watch('checkbox')[0]
                         : false)
                 }
             >
