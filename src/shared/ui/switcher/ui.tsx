@@ -4,8 +4,8 @@ import type { FieldValues, UseFormRegister } from 'react-hook-form';
 import './styles.scss';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
-    register: UseFormRegister<FieldValues>;
-    field: string;
+    register?: UseFormRegister<FieldValues>;
+    field?: string;
     children?: ReactNode;
 }
 
@@ -20,7 +20,7 @@ export const Switcher = ({
         <label className='switcher'>
             <div className='switcher__input' data-testid='switcher'>
                 <input
-                    {...register(field)}
+                    {...(register && field && register(field))}
                     type='checkbox'
                     id={id}
                     {...props}

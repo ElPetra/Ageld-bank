@@ -8,11 +8,10 @@ import './styles.scss';
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
     type?: 'submit' | 'reset' | 'button';
-    disabled?: boolean;
     size?: 'medium' | 'large';
     variant?: 'primary' | 'secondary' | 'link';
     width?: 'auto' | 'max';
-    status?: 'active' | undefined;
+    disabled?: boolean;
     children: ReactNode;
 }
 
@@ -23,11 +22,10 @@ export const Button = memo(
         disabled = false,
         variant = 'primary',
         width = 'auto',
-        status,
         children,
         ...props
     }: Props) => {
-        const buttonClass = cn(size, width, status, {
+        const buttonClass = cn(size, width, {
             button: variant !== 'link',
             [variant]: !disabled
         });

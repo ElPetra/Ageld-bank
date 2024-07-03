@@ -67,7 +67,7 @@ export const CurrencyVariant = ({
                 padding='large'
                 borderRadius='extra-large'
                 direction='column'
-                align='left'
+                align='right'
             >
                 <Columns number='3'>
                     {currencies.map(el => (
@@ -75,7 +75,6 @@ export const CurrencyVariant = ({
                             <Radio
                                 register={register}
                                 value={el.value}
-                                id={el.value}
                                 field='currencyName'
                             >
                                 <div className='create__account__currency'>

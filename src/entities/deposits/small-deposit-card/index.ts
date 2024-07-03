@@ -1,0 +1,1 @@
+export { SmallDepositCard } from './ui';

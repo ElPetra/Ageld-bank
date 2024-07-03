@@ -12,6 +12,10 @@
   }
 
   &.left {
+    align-items: flex-start;
+  }
+
+  &.right {
     align-items: flex-end;
   }
 
@@ -81,10 +85,6 @@
 
   &.extra-large-padding {
     padding: 40px;
-  }
-
-  &.active {
-    box-shadow: inset 0 0 0 1px var(--bg-action);
   }
 }
 

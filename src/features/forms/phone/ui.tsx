@@ -1,17 +1,16 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 
+import publicContract from 'src/assets/public-contract.pdf';
 import { useAuth } from 'src/entities/user';
 import { Button, Checkbox, Form, Link, Text } from 'src/shared/ui';
 import { RouteName } from 'src/shared/model';
-import { useTranslation } from 'react-i18next';
 
 import { PhoneInput } from './phone-input';
 
 import type { FieldValues } from 'react-hook-form';
 import type { Dispatch, SetStateAction } from 'react';
-
-import './styles.scss';
 
 interface Props {
     variant?: 'login' | 'registration' | 'recovery';
@@ -26,17 +25,16 @@ export const PhoneForm = ({
     setPhone
 }: Props) => {
     const [clickedLinks, setClickedLinks] = useState<number[]>([]);
-    const [isConfirmed, setIsConfirmed] = useState(false);
-
     const {
         register,
         setValue,
         handleSubmit,
+        watch,
         formState: { errors, isDirty, isValid }
     } = useForm<FieldValues>({
         mode: 'onTouched',
         reValidateMode: 'onChange',
-        defaultValues: { phone: '' }
+        defaultValues: { phone: '', checkbox: [] }
     });
     const { checkedMissRegistration, checkedRegistration, error } = useAuth();
     const { t } = useTranslation();
@@ -76,21 +74,14 @@ export const PhoneForm = ({
                 error={error}
             />
             {variant === 'registration' && (
-                <div className='phone-form__registration'>
-                    <Checkbox
-                        onCheckbox={() => setIsConfirmed(prev => !prev)}
-                        label={''}
-                    />
+                <Checkbox register={register} field='checkbox'>
                     <Text>
                         {t('Нажав кнопку "Принять" вы соглашаетесь с текстом')}
                         &nbsp;
                         <Link
                             id='service_rules'
                             onClick={() => handleLinkClick(1)}
-                            to={
-                                RouteName.MAIN_PAGE +
-                                '/src/assets/terms-RBS.pdf'
-                            }
+                            to={publicContract}
                             target='_blank'
                             rel='noreferrer'
                             variant='action'
@@ -98,7 +89,7 @@ export const PhoneForm = ({
                             {t('Публичного договора')}
                         </Link>
                     </Text>
-                </div>
+                </Checkbox>
             )}
             <Button
                 variant='secondary'
@@ -108,7 +99,7 @@ export const PhoneForm = ({
                     !isDirty ||
                     !isValid ||
                     (variant === 'registration'
-                        ? !allLinksClicked || !isConfirmed
+                        ? !allLinksClicked || !watch('checkbox')[0]
                         : false)
                 }
             >

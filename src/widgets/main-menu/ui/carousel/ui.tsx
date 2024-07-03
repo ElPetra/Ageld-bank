@@ -1,32 +1,43 @@
-import { Carousel, GalleryCard } from 'src/shared/ui';
+import { useTranslation } from 'react-i18next';
 
-const mainMenuContent: Array<JSX.Element> = [
-    <GalleryCard
-        key={0}
-        title={'Депозит Premium'}
-        content={
-            'Можем закрыть в любой момент времени, без перерасчета % Возможность частичного снятия Возможность пополнения\nСрок от 180 дней и выше'
-        }
-        button={'Открыть депозит'}
-    />,
-    <GalleryCard
-        key={1}
-        title={'Кредитная карта'}
-        content={
-            'Целый год без %\nБесплатное обслуживание и кэшбэк за все покупки'
-        }
-        button={'Получить карту'}
-    />,
-    <GalleryCard
-        key={2}
-        title={'Кэшбэк на любые покупки'}
-        content={
-            'Каждый месяц выбирайте 4 категории с кэшбэком 5%. Товары для дома, цветы, такси Вам решать, на что тратить чаще в этом месяце, чтобы получить максимум выгоды'
-        }
-        button={'Хочу кэшбек!'}
-    />
-];
+import { Carousel } from 'src/shared/ui';
 
-export function CarouselMain() {
-    return <Carousel cards={mainMenuContent} />;
+import { MainCarouselCard } from './carousel-card';
+
+import './styles.scss';
+
+export function MainCarousel() {
+    const { t } = useTranslation();
+    return (
+        <div className='main-carousel'>
+            <Carousel
+                cards={[
+                    <MainCarouselCard
+                        key={0}
+                        title={t('Депозит Premium')}
+                        content={t(
+                            'Можем закрыть в любой момент времени, без перерасчета % Возможность частичного снятия Возможность пополнения\nСрок от 180 дней и выше'
+                        )}
+                        button={t('Открыть депозит')}
+                    />,
+                    <MainCarouselCard
+                        key={1}
+                        title={t('Кредитная карта')}
+                        content={t(
+                            'Целый год без %\nБесплатное обслуживание и кэшбэк за все покупки'
+                        )}
+                        button={t('Получить карту')}
+                    />,
+                    <MainCarouselCard
+                        key={2}
+                        title={t('Кэшбэк на любые покупки')}
+                        content={t(
+                            'Каждый месяц выбирайте 4 категории с кэшбэком 5%. Товары для дома, цветы, такси Вам решать, на что тратить чаще в этом месяце, чтобы получить максимум выгоды'
+                        )}
+                        button={t('Хочу кэшбэк!')}
+                    />
+                ]}
+            />
+        </div>
+    );
 }

@@ -43,10 +43,7 @@
         }
 
         @media screen and (max-width: 1400px) {
-            & {
-                flex-wrap: wrap;
-            }
-            gap: 30px!important;
+            gap: 30px;
         }
     }
 }

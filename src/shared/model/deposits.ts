@@ -47,11 +47,11 @@ export interface DepositProductDetails {
     id: string;
     name: string;
     currency: Currency;
-    dayMin: number;
-    dayMax: number;
+    monthsMin: number;
+    monthsMax: number;
     amountMin: number;
     amountMax: number;
-    capitalization: 0 | 1 | 2 | 3 | 4 | 5;
+    capitalization: boolean;
     replenishment: boolean;
     withdrawal: 1 | 2 | 3;
     revocable: boolean;

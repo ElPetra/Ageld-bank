@@ -5,8 +5,8 @@
     gap: 24px;
   }
 
-  &.error {
-    color: var(--text-error) !important;
+  .error {
+    color: var(--text-error);
     margin-top: 8px;
     font-size: 12px;
     font-weight: 400;

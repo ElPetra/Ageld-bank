@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
 import { Button, Card, Checkbox, Form, Text } from 'src/shared/ui';
 
-import type { Dispatch, FormEvent, SetStateAction } from 'react';
+import type { Dispatch, SetStateAction } from 'react';
+import type { FieldValues } from 'react-hook-form';
 
 import './styles.scss';
 
@@ -26,10 +27,13 @@ export const Agreement = ({
     createdAccount
 }: Props) => {
     const { t } = useTranslation();
-    const [isConfirmed, setIsConfirmed] = useState(false);
+    const { register, handleSubmit, watch } = useForm<FieldValues>({
+        mode: 'onTouched',
+        reValidateMode: 'onChange',
+        defaultValues: { checkbox: [] }
+    });
 
-    const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+    const onSubmit = async () => {
         await createdAccount(type, currencyName);
         if (setFormStep && !isLast) {
             setFormStep(curr => {
@@ -38,7 +42,7 @@ export const Agreement = ({
         }
     };
     return (
-        <Form onSubmit={onSubmit}>
+        <Form onSubmit={handleSubmit(onSubmit)}>
             <Card
                 gap='medium'
                 padding='large'
@@ -75,12 +79,11 @@ export const Agreement = ({
                         )}
                     </div>
                 </div>
-                <Checkbox
-                    onCheckbox={() => setIsConfirmed(prev => !prev)}
-                    label={t('Принимаю соглашение')}
-                />
+                <Checkbox register={register} field='checkbox'>
+                    {t('Принимаю соглашение')}
+                </Checkbox>
                 <Button
-                    disabled={!isConfirmed}
+                    disabled={!watch('checkbox')[0]}
                     type='submit'
                     variant='secondary'
                 >

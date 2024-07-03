@@ -1,9 +1,10 @@
-import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 
 import i18n from 'src/shared/model/i18n';
 
-import { Link, Container, Preloader } from 'src/shared/ui';
+import { Link, Container, Preloader, Form } from 'src/shared/ui';
 import { useGetInfoQuery } from 'src/shared/api';
 import { isErrorStatusUnauthorized } from 'src/shared/lib';
 import { PersonalRouteName, RouteName } from 'src/shared/model';
@@ -15,39 +16,25 @@ import { MultiStepForm } from 'src/features/multi-step-form';
 
 import { PersonalData } from './personal-data';
 
+import type { FieldValues } from 'react-hook-form';
+
 import './styles.scss';
 
 const options = [
     {
         title: i18n.t('Способ получения уведомлений'),
         checkboxes: [
-            {
-                label: i18n.t('Email-оповещения')
-            },
-            {
-                label: i18n.t('SMS-оповещения'),
-                defaultIsChecked: true
-            },
-            {
-                label: i18n.t('Push-оповещения')
-            }
+            i18n.t('Email-оповещения'),
+            i18n.t('SMS-оповещения'),
+            i18n.t('Push-оповещения')
         ]
     },
     {
         title: i18n.t('Категория уведомлений'),
         checkboxes: [
-            {
-                label: i18n.t(
-                    'Денежные операции (отправить/оплатить/получить)'
-                ),
-                defaultIsChecked: true
-            },
-            {
-                label: i18n.t('Важные обновления')
-            },
-            {
-                label: i18n.t('Новости/акции')
-            }
+            i18n.t('Денежные операции (отправить/оплатить/получить)'),
+            i18n.t('Важные обновления'),
+            i18n.t('Новости/акции')
         ]
     }
 ];
@@ -56,6 +43,16 @@ export const PersonalPage = () => {
     const { signedOut } = useAuth();
     const { t } = useTranslation();
     const { data: personalInfo, isLoading, error } = useGetInfoQuery();
+    const { register, handleSubmit } = useForm<FieldValues>({
+        defaultValues: {
+            notifications: [
+                'SMS-оповещения',
+                'Денежные операции (отправить/оплатить/получить)'
+            ]
+        },
+        mode: 'onTouched',
+        reValidateMode: 'onChange'
+    });
 
     useEffect(() => {
         if (isErrorStatusUnauthorized(error)) {
@@ -97,12 +94,18 @@ export const PersonalPage = () => {
                             id: 3,
                             name: t('Уведомления'),
                             component: (
-                                <div className='notifications'>
-                                    <CheckboxGroup options={options} />
-                                    <Link variant='underline' to='/'>
-                                        {t('История уведомлений')}
-                                    </Link>
-                                </div>
+                                <Form onSubmit={handleSubmit(() => {})}>
+                                    <div className='notifications'>
+                                        <CheckboxGroup
+                                            options={options}
+                                            register={register}
+                                            field='notifications'
+                                        />
+                                        <Link variant='underline' to='/'>
+                                            {t('История уведомлений')}
+                                        </Link>
+                                    </div>
+                                </Form>
                             )
                         }
                     ]}

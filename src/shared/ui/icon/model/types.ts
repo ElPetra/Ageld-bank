@@ -1,3 +1,10 @@
+import currencySVG from 'src/shared/ui/icon/assets/icons/48-currency.svg';
+import moneySVG from 'src/shared/ui/icon/assets/icons/48-money.svg';
+import monitorSVG from 'src/shared/ui/icon/assets/icons/48-monitor.svg';
+import percentSVG from 'src/shared/ui/icon/assets/icons/48-percent.svg';
+import phoneSVG from 'src/shared/ui/icon/assets/icons/48-phone.svg';
+import switcherSVG from 'src/shared/ui/icon/assets/icons/48-switcher.svg';
+
 import actionAddCardSVG from 'src/shared/ui/icon/assets/icons/actions-add-card.svg';
 import actionBillDetailsSVG from 'src/shared/ui/icon/assets/icons/actions-bill-details.svg';
 import actionBriefcaseSVG from 'src/shared/ui/icon/assets/icons/actions-briefcase.svg';
@@ -20,6 +27,9 @@ import copySVG from 'src/shared/ui/icon/assets/icons/copy.svg';
 import arrowLeftAccentSVG from 'src/shared/ui/icon/assets/icons/arrow-left-accent.svg';
 import arrowRightSVG from 'src/shared/ui/icon/assets/icons/arrow-right.svg';
 import arrowRightAccentSVG from 'src/shared/ui/icon/assets/icons/arrow-right-accent.svg';
+
+import arrowButtonLeftVG from 'src/shared/ui/icon/assets/icons/arrow-buttton-left.svg';
+import arrowButtonRightSVG from 'src/shared/ui/icon/assets/icons/arrow-buttton-right.svg';
 
 import menuSVG from 'src/shared/ui/icon/assets/icons/menu.svg';
 
@@ -70,8 +80,8 @@ import documentsFolderLadySVG from 'src/shared/ui/icon/assets/icons/illustration
 import failureLadySVG from 'src/shared/ui/icon/assets/icons/illustration-failure-lady.svg';
 import paperAirplaneLadySVG from 'src/shared/ui/icon/assets/icons/illustration-paper-airplane-lady.svg';
 import questionLadySVG from 'src/shared/ui/icon/assets/icons/illustration-question-lady.svg';
-
-import pinkishSemicircleSVG from 'src/shared/ui/icon/assets/icons/pinkish-semicircle.svg';
+import depositLadySVG from 'src/shared/ui/icon/assets/icons/illustration-deposit-lady.svg';
+import depositDetailsSVG from 'src/shared/ui/icon/assets/icons/illustration-deposit-details.svg';
 
 import welcomePNG from 'src/shared/ui/icon/assets/images/welcome.png';
 import laptopGuyPNG from 'src/shared/ui/icon/assets/images/laptop-guy.png';
@@ -92,6 +102,13 @@ export const PNG = {
 export type PngImageNames = keyof typeof PNG;
 
 export const SVG = {
+    currency: currencySVG,
+    money: moneySVG,
+    monitor: monitorSVG,
+    percent: percentSVG,
+    phone: phoneSVG,
+    switcher: switcherSVG,
+
     'action-add-card': actionAddCardSVG,
     'action-bill-details': actionBillDetailsSVG,
     'action-briefcase': actionBriefcaseSVG,
@@ -119,6 +136,9 @@ export const SVG = {
     'arrow-left-accent': arrowLeftAccentSVG,
     'arrow-right': arrowRightSVG,
     'arrow-right-accent': arrowRightAccentSVG,
+
+    'arrow-button-right': arrowButtonRightSVG,
+    'arrow-button-left': arrowButtonLeftVG,
 
     menu: menuSVG,
 
@@ -165,8 +185,8 @@ export const SVG = {
     'failure-lady': failureLadySVG,
     'paper-airplane-lady': paperAirplaneLadySVG,
     'question-lady': questionLadySVG,
-
-    'pinkish-semicircle': pinkishSemicircleSVG
+    'deposit-lady': depositLadySVG,
+    'deposit-details': depositDetailsSVG
 };
 
 export type SvgIconName = keyof typeof SVG;

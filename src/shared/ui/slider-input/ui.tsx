@@ -7,16 +7,16 @@ import type {
 
 import './styles.scss';
 
-interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
+interface Props extends InputHTMLAttributes<HTMLInputElement> {
     variant?: 'primary' | 'secondary';
     label: string;
     min: number;
     max: number;
     unit: string;
-    register: UseFormRegister<FieldValues>;
-    setValue: UseFormSetValue<FieldValues>;
-    inputField: string;
-    sliderField: string;
+    register?: UseFormRegister<FieldValues>;
+    setValue?: UseFormSetValue<FieldValues>;
+    inputField?: string;
+    sliderField?: string;
 }
 
 export const SliderInput = ({
@@ -33,8 +33,10 @@ export const SliderInput = ({
 }: Props) => {
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
-        setValue(inputField, Number(value), { shouldValidate: true });
-        setValue(sliderField, Number(value));
+        if (setValue && inputField && sliderField) {
+            setValue(inputField, Number(value), { shouldValidate: true });
+            setValue(sliderField, Number(value));
+        }
     };
 
     return (
@@ -44,11 +46,13 @@ export const SliderInput = ({
                 <div className='slider-input__input'>
                     <div className={variant}>
                         <input
-                            {...register(inputField, {
-                                required: true,
-                                min,
-                                max
-                            })}
+                            {...(register &&
+                                inputField &&
+                                register(inputField, {
+                                    required: true,
+                                    min,
+                                    max
+                                }))}
                             type='number'
                             onChange={handleChange}
                             {...props}
@@ -59,11 +63,13 @@ export const SliderInput = ({
                 <div className='slider-input__slider'>
                     <div className='slider-input__slider__input'>
                         <input
-                            {...register(sliderField, {
-                                required: true,
-                                min,
-                                max
-                            })}
+                            {...(register &&
+                                sliderField &&
+                                register(sliderField, {
+                                    required: true,
+                                    min,
+                                    max
+                                }))}
                             type='range'
                             onChange={handleChange}
                             min={min}
