@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 
+import publicContract from 'src/assets/public-contract.pdf';
 import { useAuth } from 'src/entities/user';
 import { Button, Checkbox, Form, Link, Text } from 'src/shared/ui';
 import { RouteName } from 'src/shared/model';
-import { useTranslation } from 'react-i18next';
 
 import { PhoneInput } from './phone-input';
 
@@ -80,10 +81,7 @@ export const PhoneForm = ({
                         <Link
                             id='service_rules'
                             onClick={() => handleLinkClick(1)}
-                            to={
-                                RouteName.MAIN_PAGE +
-                                '/src/assets/terms-RBS.pdf'
-                            }
+                            to={publicContract}
                             target='_blank'
                             rel='noreferrer'
                             variant='action'
