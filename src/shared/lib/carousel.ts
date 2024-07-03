@@ -1,13 +1,5 @@
 import { useEffect, useRef, useState, type RefObject } from 'react';
 
-function isTouchEvent(e: Event): e is TouchEvent {
-    return 'touches' in e && 'changedTouches' in e && 'targetTouches' in e;
-}
-
-function isMousePointerEvent(e: Event): e is PointerEvent {
-    return 'pointerType' in e && e.pointerType === 'mouse';
-}
-
 export const useCarouselControls = (
     length: number,
     container: RefObject<HTMLDivElement>,
@@ -18,29 +10,27 @@ export const useCarouselControls = (
     const carouselContainer = container.current;
 
     useEffect(() => {
-        function swipeOn(device: string, e: PointerEvent) {
+        function swipeOn(start: number, isPhone: boolean) {
             if (carouselContainer) {
                 const startTime = Date.now();
-                const startPoint = e.clientX;
+                const startPoint = start;
+                const event = isPhone ? 'touchend' : 'pointerup';
                 carouselContainer.addEventListener(
-                    device === 'pk' ? 'pointerup' : 'touchend',
-                    evt => {
-                        evt.preventDefault();
+                    event,
+                    e => {
+                        e.preventDefault();
                         const difTime = Date.now() - startTime;
-                        let range = 0;
-                        if (isMousePointerEvent(evt)) {
-                            range = evt.clientX;
-                        } else if (isTouchEvent(evt)) {
-                            range = evt.changedTouches[0].clientX;
-                        }
+                        const range =
+                            'clientX' in e
+                                ? e.clientX
+                                : e.changedTouches
+                                  ? e.changedTouches[0].clientX
+                                  : 0;
                         const distance = startPoint - range;
                         if (difTime <= 1500) {
-                            if (Math.abs(distance) > 100) {
-                                if (distance > 0) {
-                                    changeRotateByControl('next');
-                                } else {
-                                    changeRotateByControl('prev');
-                                }
+                            const direction = distance > 0 ? 'prev' : 'next';
+                            if (Math.abs(distance) > 50) {
+                                changeRotateByControl(direction);
                             }
                         }
                     },
@@ -48,14 +38,13 @@ export const useCarouselControls = (
                 );
             }
         }
-
         function pointerHandler(e: PointerEvent) {
-            if (e.pressure === 0) {
-                return;
-            } else if (e.pressure === 0.5) {
-                swipeOn('pk', e);
-            } else if (e.pressure > 0.5) {
-                swipeOn('mob', e);
+            // const div = document.createElement('div');
+            // div.innerText = `X:${e.clientX}, pressure: ${e.pressure}`;
+            // document.body.append(div);
+            const isPhone = 'ontouchend' in window;
+            if (e.pressure > 0 || isPhone) {
+                swipeOn(e.clientX, isPhone);
             }
         }
         if (carouselContainer) {
