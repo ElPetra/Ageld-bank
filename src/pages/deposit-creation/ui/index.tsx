@@ -5,16 +5,10 @@ import { useAuth } from 'src/entities/user';
 import { RouteName } from 'src/shared/model';
 import { useTranslation } from 'react-i18next';
 import { BackButton, MultiStepForm } from 'src/features/multi-step-form';
-import { useParams } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
-
-import { Button, Card, Form, Text } from 'src/shared/ui';
-import { DepositTermInput } from 'src/features/inputs';
 
 import { MakingDeposit } from './making-deposit';
 
-import type { Dispatch, SetStateAction } from 'react';
-import type { FieldValues } from 'react-hook-form';
+
 
 export const DepositCreationPage = () => {
     const { t } = useTranslation();
