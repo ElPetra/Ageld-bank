@@ -10,7 +10,7 @@ import {
     calculateDaysInYear,
     calculateProfit,
     convertToDays
-} from 'src/shared/lib/deposit.js';
+} from 'src/shared/lib/deposit';
 
 import type { FieldValues } from 'react-hook-form';
 import type { DepositProfitability, DepositProduct } from 'src/shared/model';
@@ -61,7 +61,10 @@ export const DepositCalculator = ({ deposits }: Props) => {
                   el =>
                       sumDeposit >= el.amountMin &&
                       sumDeposit <= el.amountMax &&
-                      resultTerm >= el.dayMin
+                      resultTerm >= el.dayMin &&
+                      resultTerm <= el.dayMax &&
+                      (!data.withReplenishment || el.replenishment) &&
+                      (!data.withPrivateWithdrawal || el.withdrawal !== 1)
               )
             : deposits;
 

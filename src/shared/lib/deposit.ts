@@ -29,3 +29,7 @@ export const calculateProfit = (
     resultTerm: number,
     daysInYear: number
 ): number => (sumDeposit * percentRate * (resultTerm / daysInYear)) / 100;
+
+export function floorDecimals(num: number) {
+    return (Math.floor(num * 100) / 100).toFixed(2);
+}

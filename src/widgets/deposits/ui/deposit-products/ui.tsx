@@ -51,7 +51,7 @@ const deposits: DepositProduct[] = [
         amountMax: 23456,
         capitalization: 4,
         replenishment: true,
-        withdrawal: 2,
+        withdrawal: 1,
         revocable: true,
         percentRate: 7.7
     },
@@ -64,7 +64,7 @@ const deposits: DepositProduct[] = [
         amountMin: 1200,
         amountMax: 400000,
         capitalization: 5,
-        replenishment: true,
+        replenishment: false,
         withdrawal: 2,
         revocable: true,
         percentRate: 11.3

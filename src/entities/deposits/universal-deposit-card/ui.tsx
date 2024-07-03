@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom';
 import { Icon, Text, Button, Card } from 'src/shared/ui';
 import { RouteName } from 'src/shared/model';
 
-import type { CustomerDeposit, DepositProfitability } from 'src/shared/model';
+import { floorDecimals } from 'src/shared/lib/deposit';
 
+import type { CustomerDeposit, DepositProfitability } from 'src/shared/model';
 import './styles.scss';
 
 interface Props {
@@ -14,6 +15,7 @@ interface Props {
 
 export const UniversalDepositCard = ({ deposit }: Props) => {
     const { t } = useTranslation();
+
     return (
         <Card padding='medium'>
             <div className='universal-deposit-card__container'>
@@ -73,7 +75,7 @@ export const UniversalDepositCard = ({ deposit }: Props) => {
                     {'income' in deposit && (
                         <div>
                             <Text weight='bold' size='m'>
-                                {deposit.income.toLocaleString() +
+                                {floorDecimals(deposit.income) +
                                     ' ' +
                                     deposit.currency.toUpperCase()}
                             </Text>
@@ -85,7 +87,7 @@ export const UniversalDepositCard = ({ deposit }: Props) => {
                     {'sum' in deposit && (
                         <div>
                             <Text weight='bold' size='m'>
-                                {deposit.sum.toLocaleString() +
+                                {floorDecimals(deposit.sum) +
                                     ' ' +
                                     deposit.currency.toUpperCase()}
                             </Text>
