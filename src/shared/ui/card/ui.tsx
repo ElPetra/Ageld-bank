@@ -25,10 +25,15 @@ export const Card = ({
     align,
     justify
 }: Props) => {
-    const cardClass = cn('card', color, direction, align, justify, {
-        [`${borderRadius}-border-radius`]: true,
-        [`${padding}-padding`]: true,
-        [`${gap}-gap`]: true
-    });
+    const cardClass = cn(
+        'card',
+        color,
+        direction,
+        align,
+        justify,
+        `${borderRadius}-border-radius`,
+        `${padding}-padding`,
+        `${gap}-gap`
+    );
     return <div className={cardClass}>{children}</div>;
 };
