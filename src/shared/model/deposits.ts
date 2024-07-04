@@ -90,7 +90,7 @@ export interface CustomerDepositDetails {
 }
 
 export interface DepositProfitability {
-    id: number;
+    id: string;
     name: string;
     currency: Currency;
     percentRate: number;

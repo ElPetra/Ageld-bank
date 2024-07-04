@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom';
 import { Icon, Text, Button, Card } from 'src/shared/ui';
 import { RouteName } from 'src/shared/model';
 
-import type { CustomerDeposit, DepositProfitability } from 'src/shared/model';
+import { floorDecimals } from 'src/shared/lib/deposit';
 
+import type { CustomerDeposit, DepositProfitability } from 'src/shared/model';
 import './styles.scss';
 
 interface Props {
@@ -14,6 +15,7 @@ interface Props {
 
 export const UniversalDepositCard = ({ deposit }: Props) => {
     const { t } = useTranslation();
+
     return (
         <Card padding='medium'>
             <div className='universal-deposit-card__container'>
@@ -40,7 +42,7 @@ export const UniversalDepositCard = ({ deposit }: Props) => {
                     )}
                     {'percentRate' in deposit && (
                         <div>
-                            <Text weight='bold' size='l'>
+                            <Text weight='bold' size='m'>
                                 {deposit.percentRate + '%'}
                             </Text>
                             <Text color='tertiary' size='xs'>
@@ -72,8 +74,8 @@ export const UniversalDepositCard = ({ deposit }: Props) => {
                     )}
                     {'income' in deposit && (
                         <div>
-                            <Text weight='bold' size='l'>
-                                {deposit.income.toLocaleString() +
+                            <Text weight='bold' size='m'>
+                                {floorDecimals(deposit.income) +
                                     ' ' +
                                     deposit.currency.toUpperCase()}
                             </Text>
@@ -84,8 +86,8 @@ export const UniversalDepositCard = ({ deposit }: Props) => {
                     )}
                     {'sum' in deposit && (
                         <div>
-                            <Text weight='bold' size='l'>
-                                {deposit.sum.toLocaleString() +
+                            <Text weight='bold' size='m'>
+                                {floorDecimals(deposit.sum) +
                                     ' ' +
                                     deposit.currency.toUpperCase()}
                             </Text>
