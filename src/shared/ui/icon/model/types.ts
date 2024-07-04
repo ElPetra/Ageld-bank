@@ -81,6 +81,7 @@ import failureLadySVG from 'src/shared/ui/icon/assets/icons/illustration-failure
 import paperAirplaneLadySVG from 'src/shared/ui/icon/assets/icons/illustration-paper-airplane-lady.svg';
 import questionLadySVG from 'src/shared/ui/icon/assets/icons/illustration-question-lady.svg';
 import depositLadySVG from 'src/shared/ui/icon/assets/icons/illustration-deposit-lady.svg';
+import confirmationLadySVG from 'src/shared/ui/icon/assets/icons/illustration-confirmation-lady.svg';
 import depositDetailsSVG from 'src/shared/ui/icon/assets/icons/illustration-deposit-details.svg';
 
 import welcomePNG from 'src/shared/ui/icon/assets/images/welcome.png';
@@ -186,6 +187,7 @@ export const SVG = {
     'paper-airplane-lady': paperAirplaneLadySVG,
     'question-lady': questionLadySVG,
     'deposit-lady': depositLadySVG,
+    'confirmation-lady': confirmationLadySVG,
     'deposit-details': depositDetailsSVG
 };
 

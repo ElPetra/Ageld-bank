@@ -17,6 +17,9 @@ interface Props {
     buttonLink?: string;
     onClick?: () => void;
     isMargin?: boolean;
+    secondButtonText?: string;
+    secondButtonLink?: string;
+    secondOnClick?: () => void;
 }
 
 export const MessageCard = ({
@@ -28,9 +31,12 @@ export const MessageCard = ({
     width,
     icon,
     buttonText,
-    buttonLink = RouteName.LOGIN_PAGE,
+    buttonLink = RouteName.MAIN_PAGE + '/',
     onClick,
-    isMargin = true
+    isMargin = true,
+    secondButtonText,
+    secondButtonLink = RouteName.MAIN_PAGE + '/',
+    secondOnClick
 }: Props) => {
     return (
         <div
@@ -53,12 +59,16 @@ export const MessageCard = ({
 
                 <Icon width={width || 300} icon={icon || 'question-lady'} />
                 {buttonText && (
-                    <div className='message-card__button'>
+                    <div
+                        className={`${secondButtonText ? 'message-card__two-button' : 'message-card__button'}`}
+                    >
                         {onClick ? (
                             <Button
                                 width='max'
                                 type='button'
-                                variant='secondary'
+                                variant={
+                                    secondButtonText ? 'primary' : 'secondary'
+                                }
                                 onClick={onClick}
                             >
                                 {buttonText}
@@ -68,12 +78,37 @@ export const MessageCard = ({
                                 <Button
                                     width='max'
                                     type='button'
-                                    variant='secondary'
+                                    variant={
+                                        secondButtonText
+                                            ? 'primary'
+                                            : 'secondary'
+                                    }
                                 >
                                     {buttonText}
                                 </Button>
                             </Link>
                         )}
+                        {secondButtonText &&
+                            (secondOnClick ? (
+                                <Button
+                                    width='max'
+                                    type='button'
+                                    variant='secondary'
+                                    onClick={secondOnClick}
+                                >
+                                    {secondButtonText}
+                                </Button>
+                            ) : (
+                                <Link to={secondButtonLink}>
+                                    <Button
+                                        width='max'
+                                        type='button'
+                                        variant='secondary'
+                                    >
+                                        {secondButtonText}
+                                    </Button>
+                                </Link>
+                            ))}
                     </div>
                 )}
             </Card>
