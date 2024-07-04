@@ -38,9 +38,18 @@ export const DropdownSelector = ({
     };
 
     const capitalizationOptions: DropdownOption[] = [
-        { value: 'Капитализация1', label: 'Капитализация1' },
-        { value: 'Капитализация2', label: 'Капитализация2' },
-        { value: 'Капитализация3', label: 'Капитализация3' }
+        {
+            value: 'Ежедневная капитализации процентов',
+            label: 'Ежедневная капитализации процентов'
+        },
+        {
+            value: 'Ежемесячная капитализация процентов',
+            label: 'Ежедневная капитализации процентов'
+        },
+        {
+            value: 'Ежеквартальная капитализация процентов',
+            label: 'Ежеквартальная капитализации процентов'
+        }
     ];
 
     const handleSelectChange = (
@@ -49,10 +58,6 @@ export const DropdownSelector = ({
         setValue('capitalzation', event.target.value);
         handleSubmit(onSubmit)();
     };
-
-    const fieldClass = cn('field', size, width, {
-        error: error || isError
-    });
 
     const selectContainerClass = cn('select-container', size, width, {
         error: error || isError,
@@ -64,9 +69,7 @@ export const DropdownSelector = ({
             <div className={selectContainerClass}>
                 <label htmlFor='capitalization'>Капитализация</label>
                 <Select
-                    components={{
-                        DropdownIndicator: () => <DropdownArrow />
-                    }}
+                    placeholder='Выберите капитализацию'
                     options={capitalizationOptions}
                     styles={{
                         container: baseStyles => ({
@@ -76,10 +79,6 @@ export const DropdownSelector = ({
                         valueContainer: baseStyles => ({
                             ...baseStyles,
                             height: '72px'
-                        }),
-                        control: (baseStyles, state) => ({
-                            ...baseStyles,
-                            borderColor: state.isFocused ? 'grey' : 'red'
                         }),
                         option: baseStyles => ({
                             ...baseStyles,

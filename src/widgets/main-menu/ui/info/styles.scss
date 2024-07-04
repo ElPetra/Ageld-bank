@@ -1,28 +1,23 @@
 .main-menu {
-    &_aside {
+    &__info {
         display: flex;
         flex-direction: column;
         gap: 24px;
-        width: 350px;
-        margin-bottom: 56px;
+        max-width: 200px;
+
         @media screen and (max-width: 800px) {
-            width: 100%;
+            flex-direction: row;
+            flex-wrap: wrap;
+            max-width: 100%;
+            > div:first-child {
+                max-width: 200px;
+            }
         }
 
         > div {
             display: flex;
             flex-direction: column;
             gap: 16px;
-        }
-    }
-
-    &_card {
-        width: 200px;
-        height: fit-content;
-        @media screen and (max-width: 800px) {
-            width: 100%;
-            flex-direction: row !important;
-            justify-content: center;
         }
     }
 }

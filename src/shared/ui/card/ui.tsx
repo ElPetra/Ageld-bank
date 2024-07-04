@@ -13,8 +13,6 @@ interface Props {
     direction?: 'column' | 'row';
     align?: 'center' | 'left' | 'right';
     justify?: 'space-between';
-    status?: 'active' | '';
-    className?: string;
 }
 
 export const Card = ({
@@ -25,23 +23,17 @@ export const Card = ({
     padding = 'small',
     direction,
     align,
-    justify,
-    status,
-    className
+    justify
 }: Props) => {
     const cardClass = cn(
         'card',
         color,
         direction,
-        status,
         align,
         justify,
-        className,
-        {
-            [`${borderRadius}-border-radius`]: true,
-            [`${padding}-padding`]: true,
-            [`${gap}-gap`]: true
-        }
+        `${borderRadius}-border-radius`,
+        `${padding}-padding`,
+        `${gap}-gap`
     );
     return <div className={cardClass}>{children}</div>;
 };

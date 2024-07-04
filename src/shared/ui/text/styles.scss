@@ -60,8 +60,21 @@
   &.right {
     text-align: right;
   }
-  &.unset {
-    line-height: unset;
+
+  &.line-height-xs {
+    line-height: 18px;
+  }
+
+  &.line-height-s {
+    line-height: 24px;
+  }
+
+  &.line-height-m {
+    line-height: 36px;
+  }
+
+  &.line-height-l {
+    line-height: 40px;
   }
 
   &.text-action {

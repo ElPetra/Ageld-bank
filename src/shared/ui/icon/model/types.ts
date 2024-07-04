@@ -28,6 +28,9 @@ import arrowLeftAccentSVG from 'src/shared/ui/icon/assets/icons/arrow-left-accen
 import arrowRightSVG from 'src/shared/ui/icon/assets/icons/arrow-right.svg';
 import arrowRightAccentSVG from 'src/shared/ui/icon/assets/icons/arrow-right-accent.svg';
 
+import arrowButtonLeftVG from 'src/shared/ui/icon/assets/icons/arrow-buttton-left.svg';
+import arrowButtonRightSVG from 'src/shared/ui/icon/assets/icons/arrow-buttton-right.svg';
+
 import menuSVG from 'src/shared/ui/icon/assets/icons/menu.svg';
 
 import closeSVG from 'src/shared/ui/icon/assets/icons/close.svg';
@@ -79,8 +82,6 @@ import paperAirplaneLadySVG from 'src/shared/ui/icon/assets/icons/illustration-p
 import questionLadySVG from 'src/shared/ui/icon/assets/icons/illustration-question-lady.svg';
 import depositLadySVG from 'src/shared/ui/icon/assets/icons/illustration-deposit-lady.svg';
 import depositDetailsSVG from 'src/shared/ui/icon/assets/icons/illustration-deposit-details.svg';
-
-import pinkishSemicircleSVG from 'src/shared/ui/icon/assets/icons/pinkish-semicircle.svg';
 
 import welcomePNG from 'src/shared/ui/icon/assets/images/welcome.png';
 import laptopGuyPNG from 'src/shared/ui/icon/assets/images/laptop-guy.png';
@@ -136,6 +137,9 @@ export const SVG = {
     'arrow-right': arrowRightSVG,
     'arrow-right-accent': arrowRightAccentSVG,
 
+    'arrow-button-right': arrowButtonRightSVG,
+    'arrow-button-left': arrowButtonLeftVG,
+
     menu: menuSVG,
 
     world: worldSVG,
@@ -182,9 +186,7 @@ export const SVG = {
     'paper-airplane-lady': paperAirplaneLadySVG,
     'question-lady': questionLadySVG,
     'deposit-lady': depositLadySVG,
-    'deposit-details': depositDetailsSVG,
-
-    'pinkish-semicircle': pinkishSemicircleSVG
+    'deposit-details': depositDetailsSVG
 };
 
 export type SvgIconName = keyof typeof SVG;

@@ -11,47 +11,34 @@ const exchangeRates = {
     CNY: '12.03 / 15.12'
 };
 
-export function InfoMain() {
+export function MainInfo() {
     const { t } = useTranslation();
     return (
-        <div className='main-menu_aside'>
+        <div className='main-menu__info'>
             <div>
                 <Text size='m' weight='bold'>
                     {t('Курсы валют:')}
                 </Text>
                 <Card
-                    className='main-menu_card'
                     direction='column'
                     gap='extra-small'
                     padding='small'
                     borderRadius='large'
                 >
-                    <Text
-                        tag='span'
-                        weight='medium'
-                        size='s'
-                    >{`USD: ${exchangeRates.USD}`}</Text>
-                    <Text
-                        tag='span'
-                        weight='medium'
-                        size='s'
-                    >{`EUR: ${exchangeRates.EUR}`}</Text>
-                    <Text
-                        tag='span'
-                        weight='medium'
-                        size='s'
-                    >{`CNY: ${exchangeRates.CNY}`}</Text>
+                    <Text weight='medium' size='s'>
+                        {`USD: ${exchangeRates.USD}`}
+                    </Text>
+                    <Text weight='medium' size='s'>
+                        {`EUR: ${exchangeRates.EUR}`}
+                    </Text>
+                    <Text weight='medium' size='s'>
+                        {`CNY: ${exchangeRates.CNY}`}
+                    </Text>
                     <Link to='/'>
-                        <Text
-                            tag='span'
-                            color='action'
-                            weight='medium'
-                            size='s'
-                        >
+                        <Text color='action' weight='medium' size='s'>
                             {t('Больше валют ')}
                             <Icon
                                 icon='arrow-right-accent'
-                                color='action'
                                 widthAndHeight={24}
                             />
                         </Text>
@@ -63,25 +50,25 @@ export function InfoMain() {
                     {t('О банке:')}
                 </Text>
                 <Card
-                    className='main-menu_card'
                     padding='small'
                     borderRadius='large'
                     gap='extra-small'
+                    align='center'
                 >
-                    <Text tag='span' weight='bold' size='s'>
+                    <Text weight='bold' size='s'>
                         {t('Первый в рейтинге')}
                     </Text>
                     <Link to='/'>
-                        <Text tag='span' weight='bold' size='s' color='action'>
+                        <Text weight='bold' size='s' color='action'>
                             Супербанки.ру
                         </Text>
                     </Link>
                 </Card>
                 <Card
-                    className='main-menu_card'
                     padding='small'
                     gap='extra-small'
                     borderRadius='large'
+                    align='center'
                 >
                     <Text weight='bold' size='s'>
                         {t('Самые')}
