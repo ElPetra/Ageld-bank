@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Preloader ui match snapshot 1`] = `
+<div
+  class="preloader"
+  data-testid="preloader"
+>
+  <div
+    class="preloader__img"
+  />
+</div>
+`;

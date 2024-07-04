@@ -2,8 +2,7 @@
 
 exports[`Link ui match snapshot 1`] = `
 <a
-  aria-current="page"
-  class="active"
+  class=""
   href="/"
 >
   link

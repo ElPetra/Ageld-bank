@@ -19,7 +19,7 @@ export const Carousel = ({ cards }: Props) => {
     const { changeRotateByIndicator, changeRotateByControl, active } =
         useCarouselControls(cards.length, containerRef, angle);
     return (
-        <div className='carousel'>
+        <div className='carousel' data-testid='carousel'>
             <div>
                 <CarouselInner
                     distance={distance}
