@@ -91,7 +91,7 @@ export const MakingDeposit = ({ isLast, setFormStep }: Props) => {
                         stretch={true}
                     />
                 </div>
-                <DropdownSelector></DropdownSelector>
+                <DropdownSelector />
                 <div className='mkdeposit__switchers'>
                     <div className='mkdeposit__switcher'>
                         <Switcher
@@ -119,10 +119,14 @@ export const MakingDeposit = ({ isLast, setFormStep }: Props) => {
                     {t('Закрытие в любой момент времени без перерасчета %')}
                 </Text>
                 <div className='mkdeposit__buttons'>
-                    <Button type='submit' variant='secondary'>
+                    <Button type='submit' variant='primary'>
                         <Text>{t('Отказаться')}</Text>
                     </Button>
-                    <Button disabled={!isValid} type='submit' variant='primary'>
+                    <Button
+                        disabled={!isValid}
+                        type='submit'
+                        variant='secondary'
+                    >
                         <Text>{t('Оформить')}</Text>
                     </Button>
                 </div>

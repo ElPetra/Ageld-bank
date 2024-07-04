@@ -1,15 +1,11 @@
-import { useForm } from 'react-hook-form';
 import Select from 'react-select';
 import cn from 'classnames';
-import { Icon } from '../icon';
-import './styles.scss';
-import type { InputHTMLAttributes } from 'react';
-import type { SubmitHandler } from 'react-hook-form';
-import { DropdownArrow } from './dropdown-arrow';
 
-interface IFormInput {
-    capitalzation: string;
-}
+import { useRef } from 'react';
+
+import './styles.scss';
+
+import type { InputHTMLAttributes } from 'react';
 
 interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
     placeholder?: string;
@@ -32,32 +28,44 @@ export const DropdownSelector = ({
     isError,
     disabled
 }: Props) => {
-    const { register, handleSubmit, setValue } = useForm<IFormInput>();
-    const onSubmit: SubmitHandler<IFormInput> = data => {
-        console.log(data);
-    };
-
+    // const { handleSubmit, setValue } = useForm<IFormInput>();
+    // const onSubmit: SubmitHandler<IFormInput> = data => {
+    //     console.log(data);
+    // };
+    const selectRef = useRef(null);
     const capitalizationOptions: DropdownOption[] = [
         {
-            value: 'Ежедневная капитализации процентов',
+            value: 'Без капитализации процентов',
+            label: 'Без капитализации процентов'
+        },
+        {
+            value: 'Ежедневная капитализация процентов',
             label: 'Ежедневная капитализации процентов'
         },
         {
             value: 'Ежемесячная капитализация процентов',
-            label: 'Ежедневная капитализации процентов'
+            label: 'Ежемесячная капитализации процентов'
         },
         {
             value: 'Ежеквартальная капитализация процентов',
             label: 'Ежеквартальная капитализации процентов'
+        },
+        {
+            value: 'Полугодовая капитализация процентов',
+            label: 'Полугодовая капитализации процентов'
+        },
+        {
+            value: 'Ежегодная капитализация процентов',
+            label: 'Ежегодная капитализация процентов'
         }
     ];
 
-    const handleSelectChange = (
-        event: React.ChangeEvent<HTMLSelectElement>
-    ) => {
-        setValue('capitalzation', event.target.value);
-        handleSubmit(onSubmit)();
-    };
+    // const handleSelectChange = (
+    //     event: React.ChangeEvent<HTMLSelectElement>
+    // ) => {
+    //     setValue('capitalzation', event.target.value);
+    //     handleSubmit(onSubmit)();
+    // };
 
     const selectContainerClass = cn('select-container', size, width, {
         error: error || isError,
@@ -65,16 +73,31 @@ export const DropdownSelector = ({
     });
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form
+        // onSubmit={
+        //     handleSubmit(onSubmit)}
+        >
             <div className={selectContainerClass}>
                 <label htmlFor='capitalization'>Капитализация</label>
                 <Select
+                    ref={selectRef}
+                    // onChange={(e:SingleValue<ChangeEvent<HTMLSelectElement>>)=>
+                    //     handleSelectChange(e)
+                    // }}
                     placeholder='Выберите капитализацию'
                     options={capitalizationOptions}
                     styles={{
                         container: baseStyles => ({
                             ...baseStyles,
-                            width: '576px'
+                            width: '50%',
+                            '@media (max-width: 1100px)': {
+                                maxWidth: '380px',
+                                width: 'unset'
+                            },
+                            '@media (max-width: 600px)': {
+                                maxWidth: '300px',
+                                width: 'unset'
+                            }
                         }),
                         valueContainer: baseStyles => ({
                             ...baseStyles,
@@ -82,8 +105,16 @@ export const DropdownSelector = ({
                         }),
                         option: baseStyles => ({
                             ...baseStyles,
-                            width: '576px',
-                            height: '72px'
+                            height: '72px',
+                            width: '50%',
+                            '@media only screen and (max-width: 1100px)': {
+                                maxWidth: '380px',
+                                width: 'unset'
+                            },
+                            '@media (max-width: 600px)': {
+                                maxWidth: '300px',
+                                width: 'unset'
+                            }
                         }),
                         indicatorSeparator: () => ({
                             display: 'none'

@@ -45,7 +45,7 @@ export const SliderInput = ({
     };
 
     return (
-        <div className='slider-input' data-testid='sliderinput'>
+        <div className={cn('slider-input', { stretch: stretch })}>
             <label>{label}</label>
             <div className='slider-input__inputs'>
                 <div className='slider-input__input'>

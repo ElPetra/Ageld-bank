@@ -19,7 +19,7 @@
     font-size: 16px;
     color: #333;
     cursor: pointer;
-    height:72px;
+    height: 72px;
 
     &.error {
       border-color: red;
@@ -33,13 +33,15 @@
     }
 
     select {
-      width: 100%;  
+      width: 100%;
     }
 
-    option {    
+    option {
       padding: 8px 12px;
       font-size: inherit;
       color: #333;
     }
   }
 }
+
+

@@ -44,3 +44,28 @@ justify-content: space-between;
     width:100%;
     justify-content: space-between;
 }
+@media only screen and (max-width: 1100px) {
+    .mkdeposit__switcher{
+        flex-direction: column;
+    }
+    .mkdeposit__sliders{
+        display:flex;
+        flex-direction: column;
+    }
+    .mkdeposit__top-row{
+        flex-direction: column;
+    }
+    .top-row__left{
+        align-items: left;
+    }
+    .mkdeposit__buttons{
+        flex-direction: column-reverse;
+        gap:15px;
+    }
+    .mkdeposit__switchers{
+        flex-direction: column;
+    }
+    .mkdeposit__switcher{
+        flex-direction: row;
+    }
+}
