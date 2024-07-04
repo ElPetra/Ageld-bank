@@ -10,6 +10,6 @@ export default defineConfig({
     },
     build: {
         outDir: 'dist'
-    },
-    server: { host: true }
+    }
+    // server: { host: true } // раскоментировать, чтобы раздавать по локальной сети приложение
 });

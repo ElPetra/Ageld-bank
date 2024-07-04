@@ -40,7 +40,7 @@ export const SliderInput = ({
     };
 
     return (
-        <div className='slider-input'>
+        <div className='slider-input' data-testid='sliderinput'>
             <label>{label}</label>
             <div className='slider-input__inputs'>
                 <div className='slider-input__input'>

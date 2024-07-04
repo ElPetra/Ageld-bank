@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Image ui match snapshot 1`] = `
+<img
+  alt=""
+  data-testid="classic"
+/>
+`;

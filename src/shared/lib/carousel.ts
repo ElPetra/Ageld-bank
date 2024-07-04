@@ -97,7 +97,7 @@ export const useCarousel = (length: number) => {
             firstRender.current = false;
             const estimatedElement = document.querySelector<HTMLElement>(
                 '.carousel-inner__element'
-            );
+            ) || { offsetWidth: 500 };
             if (estimatedElement) {
                 const estimatedWidth = estimatedElement.offsetWidth;
                 const edge =
