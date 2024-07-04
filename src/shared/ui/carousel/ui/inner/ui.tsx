@@ -31,7 +31,7 @@ export const CarouselInner = ({
                         key={index}
                         className={elementClassName(index)}
                         style={{
-                            transform: `rotateY(${index * angle}deg) translateZ(${distance + 25}px)`
+                            transform: `rotateY(${index * angle}deg) translateZ(${distance}px)`
                         }}
                     >
                         {el}
