@@ -20,7 +20,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
     setValue: UseFormSetValue<FieldValues>;
     inputField: string;
     sliderField: string;
-    stretch: boolean;
+    stretch?: boolean;
 }
 
 export const SliderInput = ({
@@ -33,7 +33,6 @@ export const SliderInput = ({
     setValue,
     inputField,
     sliderField,
-    stretch = false,
     ...props
 }: Props) => {
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
