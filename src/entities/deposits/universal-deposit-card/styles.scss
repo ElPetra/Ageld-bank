@@ -1,10 +1,10 @@
-.universal-deposit-card {
+.customer-deposit-card {
     &__container {
         display: flex;
         justify-content: space-between;
         align-items: center;
         row-gap: 24px;
-        column-gap: 24px;
+        column-gap: 57px;
         width: 100%;
 
         @media screen and (max-width: 1400px) {

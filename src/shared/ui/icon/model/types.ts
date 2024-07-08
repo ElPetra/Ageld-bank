@@ -4,7 +4,7 @@ import monitorSVG from 'src/shared/ui/icon/assets/icons/48-monitor.svg';
 import percentSVG from 'src/shared/ui/icon/assets/icons/48-percent.svg';
 import phoneSVG from 'src/shared/ui/icon/assets/icons/48-phone.svg';
 import switcherSVG from 'src/shared/ui/icon/assets/icons/48-switcher.svg';
-
+import dropdownArrowSVG from 'src/shared/ui/icon/assets/icons/dropdown-arrow.svg';
 import actionAddCardSVG from 'src/shared/ui/icon/assets/icons/actions-add-card.svg';
 import actionBillDetailsSVG from 'src/shared/ui/icon/assets/icons/actions-bill-details.svg';
 import actionBriefcaseSVG from 'src/shared/ui/icon/assets/icons/actions-briefcase.svg';
@@ -81,6 +81,7 @@ import failureLadySVG from 'src/shared/ui/icon/assets/icons/illustration-failure
 import paperAirplaneLadySVG from 'src/shared/ui/icon/assets/icons/illustration-paper-airplane-lady.svg';
 import questionLadySVG from 'src/shared/ui/icon/assets/icons/illustration-question-lady.svg';
 import depositLadySVG from 'src/shared/ui/icon/assets/icons/illustration-deposit-lady.svg';
+import confirmationLadySVG from 'src/shared/ui/icon/assets/icons/illustration-confirmation-lady.svg';
 import depositDetailsSVG from 'src/shared/ui/icon/assets/icons/illustration-deposit-details.svg';
 
 import welcomePNG from 'src/shared/ui/icon/assets/images/welcome.png';
@@ -108,7 +109,7 @@ export const SVG = {
     percent: percentSVG,
     phone: phoneSVG,
     switcher: switcherSVG,
-
+    dropdownArrow: dropdownArrowSVG,
     'action-add-card': actionAddCardSVG,
     'action-bill-details': actionBillDetailsSVG,
     'action-briefcase': actionBriefcaseSVG,
@@ -186,6 +187,7 @@ export const SVG = {
     'paper-airplane-lady': paperAirplaneLadySVG,
     'question-lady': questionLadySVG,
     'deposit-lady': depositLadySVG,
+    'confirmation-lady': confirmationLadySVG,
     'deposit-details': depositDetailsSVG
 };
 

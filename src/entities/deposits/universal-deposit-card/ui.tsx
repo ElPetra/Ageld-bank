@@ -18,9 +18,9 @@ export const UniversalDepositCard = ({ deposit }: Props) => {
 
     return (
         <Card padding='medium'>
-            <div className='universal-deposit-card__container'>
-                <div className='universal-deposit-card__title'>
-                    <div className='universal-deposit-card__title__icon'>
+            <div className='customer-deposit-card__container'>
+                <div className='customer-deposit-card__title'>
+                    <div className='customer-deposit-card__title__icon'>
                         <Icon icon={deposit.currency} />
                     </div>
                     <Link to={RouteName.DEPOSIT_PAGE + '/' + deposit.id}>
@@ -29,7 +29,7 @@ export const UniversalDepositCard = ({ deposit }: Props) => {
                         </Text>
                     </Link>
                 </div>
-                <div className='universal-deposit-card__info'>
+                <div className='customer-deposit-card__info'>
                     {'number' in deposit && (
                         <div>
                             <Text weight='bold' size='l'>

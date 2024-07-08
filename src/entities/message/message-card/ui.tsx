@@ -1,6 +1,8 @@
 import { RouteName } from 'src/shared/model';
 import { Button, Card, Icon, Link, Text } from 'src/shared/ui';
 
+import type { Dispatch, SetStateAction } from 'react';
+
 import type { SvgIconName } from 'src/shared/ui';
 
 import './styles.scss';
@@ -16,7 +18,13 @@ interface Props {
     buttonText?: string;
     buttonLink?: string;
     onClick?: () => void;
+    setFormStep?: Dispatch<SetStateAction<number>>;
+    isLast?: boolean;
     isMargin?: boolean;
+    middleOfForm?: boolean;
+    secondButtonText?: string;
+    secondButtonLink?: string;
+    secondOnClick?: () => void;
 }
 
 export const MessageCard = ({
@@ -28,10 +36,23 @@ export const MessageCard = ({
     width,
     icon,
     buttonText,
-    buttonLink = RouteName.LOGIN_PAGE,
+    buttonLink = RouteName.MAIN_PAGE + '/',
+    isMargin = true,
+    secondButtonText,
     onClick,
-    isMargin = true
+    secondButtonLink = RouteName.MAIN_PAGE + '/',
+    secondOnClick,
+    setFormStep,
+    middleOfForm,
+    isLast = false
 }: Props) => {
+    const FormStepForward = () => {
+        if (setFormStep && !isLast) {
+            setFormStep(curr => {
+                return curr + 1;
+            });
+        }
+    };
     return (
         <div
             className={`message-card ${isMargin && 'message-card__with-margin'}`}
@@ -53,27 +74,61 @@ export const MessageCard = ({
 
                 <Icon width={width || 300} icon={icon || 'question-lady'} />
                 {buttonText && (
-                    <div className='message-card__button'>
-                        {onClick ? (
+                    <div
+                        className={`${secondButtonText ? 'message-card__two-button' : 'message-card__button'}`}
+                    >
+                        {onClick || middleOfForm ? (
                             <Button
                                 width='max'
                                 type='button'
-                                variant='secondary'
-                                onClick={onClick}
+                                variant={
+                                    secondButtonText ? 'primary' : 'secondary'
+                                }
+                                onClick={onClick || FormStepForward}
                             >
                                 {buttonText}
                             </Button>
                         ) : (
                             <Link to={buttonLink}>
                                 <Button
+                                    onClick={() => {
+                                        if (middleOfForm) {
+                                            FormStepForward();
+                                        }
+                                    }}
                                     width='max'
                                     type='button'
-                                    variant='secondary'
+                                    variant={
+                                        secondButtonText
+                                            ? 'primary'
+                                            : 'secondary'
+                                    }
                                 >
                                     {buttonText}
                                 </Button>
                             </Link>
                         )}
+                        {secondButtonText &&
+                            (secondOnClick ? (
+                                <Button
+                                    width='max'
+                                    type='button'
+                                    variant='secondary'
+                                    onClick={secondOnClick}
+                                >
+                                    {secondButtonText}
+                                </Button>
+                            ) : (
+                                <Link to={secondButtonLink}>
+                                    <Button
+                                        width='max'
+                                        type='button'
+                                        variant='secondary'
+                                    >
+                                        {secondButtonText}
+                                    </Button>
+                                </Link>
+                            ))}
                     </div>
                 )}
             </Card>
