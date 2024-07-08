@@ -33,6 +33,7 @@ export const SliderInput = ({
     setValue,
     inputField,
     sliderField,
+    stretch,
     ...props
 }: Props) => {
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
