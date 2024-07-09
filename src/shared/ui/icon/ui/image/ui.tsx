@@ -9,10 +9,19 @@ export interface Props extends ImgHTMLAttributes<HTMLImageElement> {
     image?: PngImageNames;
     widthAndHeight?: number;
     className?: string;
+    shouldExistTestId?: boolean;
 }
 
 export const Image = memo(
-    ({ image, width, height, src, widthAndHeight, className }: Props) => (
+    ({
+        image,
+        width,
+        height,
+        src,
+        widthAndHeight,
+        className,
+        shouldExistTestId
+    }: Props) => (
         <img
             src={src || (image && PNG[image])}
             {...(widthAndHeight || width
@@ -23,6 +32,7 @@ export const Image = memo(
                 : {})}
             alt=''
             className={className}
+            data-testid={shouldExistTestId ? image : undefined}
         />
     )
 );

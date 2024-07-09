@@ -1,15 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Radio ui match snapshot 1`] = `
-<div
+<label
   class="radio"
   data-testid="radio"
 >
   <input
     type="radio"
   />
-  <label>
+  <div>
     Radio
-  </label>
-</div>
+  </div>
+</label>
 `;

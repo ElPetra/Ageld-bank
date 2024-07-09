@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom';
 import { Icon, Text, Button, Card } from 'src/shared/ui';
 import { RouteName } from 'src/shared/model';
 
-import type { CustomerDeposit, DepositProfitability } from 'src/shared/model';
+import { floorDecimals } from 'src/shared/lib/deposit';
 
+import type { CustomerDeposit, DepositProfitability } from 'src/shared/model';
 import './styles.scss';
 
 interface Props {
@@ -14,11 +15,12 @@ interface Props {
 
 export const UniversalDepositCard = ({ deposit }: Props) => {
     const { t } = useTranslation();
+
     return (
         <Card padding='medium'>
-            <div className='universal-deposit-card__container'>
-                <div className='universal-deposit-card__title'>
-                    <div className='universal-deposit-card__title__icon'>
+            <div className='customer-deposit-card__container'>
+                <div className='customer-deposit-card__title'>
+                    <div className='customer-deposit-card__title__icon'>
                         <Icon icon={deposit.currency} />
                     </div>
                     <Link to={RouteName.DEPOSIT_PAGE + '/' + deposit.id}>
@@ -27,7 +29,7 @@ export const UniversalDepositCard = ({ deposit }: Props) => {
                         </Text>
                     </Link>
                 </div>
-                <div className='universal-deposit-card__info'>
+                <div className='customer-deposit-card__info'>
                     {'number' in deposit && (
                         <div>
                             <Text weight='bold' size='l'>
@@ -40,7 +42,7 @@ export const UniversalDepositCard = ({ deposit }: Props) => {
                     )}
                     {'percentRate' in deposit && (
                         <div>
-                            <Text weight='bold' size='l'>
+                            <Text weight='bold' size='m'>
                                 {deposit.percentRate + '%'}
                             </Text>
                             <Text color='tertiary' size='xs'>
@@ -72,8 +74,8 @@ export const UniversalDepositCard = ({ deposit }: Props) => {
                     )}
                     {'income' in deposit && (
                         <div>
-                            <Text weight='bold' size='l'>
-                                {deposit.income.toLocaleString() +
+                            <Text weight='bold' size='m'>
+                                {floorDecimals(deposit.income) +
                                     ' ' +
                                     deposit.currency.toUpperCase()}
                             </Text>
@@ -84,8 +86,8 @@ export const UniversalDepositCard = ({ deposit }: Props) => {
                     )}
                     {'sum' in deposit && (
                         <div>
-                            <Text weight='bold' size='l'>
-                                {deposit.sum.toLocaleString() +
+                            <Text weight='bold' size='m'>
+                                {floorDecimals(deposit.sum) +
                                     ' ' +
                                     deposit.currency.toUpperCase()}
                             </Text>

@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SliderInput ui match snapshot 1`] = `
+<div
+  class="slider-input"
+  data-testid="sliderinput"
+>
+  <label>
+    Срок депозита
+  </label>
+  <div
+    class="slider-input__inputs"
+  >
+    <div
+      class="slider-input__input"
+    >
+      <div
+        class="primary"
+      >
+        <input
+          name="termInput"
+          type="number"
+        />
+      </div>
+      <span>
+        мес
+      </span>
+    </div>
+    <div
+      class="slider-input__slider"
+    >
+      <div
+        class="slider-input__slider__input"
+      >
+        <input
+          max="36"
+          min="1"
+          name="termSlider"
+          type="range"
+        />
+      </div>
+      <div
+        class="slider-input__slider__min-max"
+      >
+        <span>
+          1
+        </span>
+        <span>
+          36
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;

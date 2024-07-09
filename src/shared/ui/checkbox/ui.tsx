@@ -11,7 +11,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
 
 export const Checkbox = ({ register, field, children, ...props }: Props) => {
     return (
-        <div className='custom-checkbox'>
+        <div className='custom-checkbox' data-testid='checkbox'>
             <label className='custom-checkbox__label'>
                 <input
                     {...(register && field && register(field))}

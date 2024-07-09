@@ -4,7 +4,7 @@ import monitorSVG from 'src/shared/ui/icon/assets/icons/48-monitor.svg';
 import percentSVG from 'src/shared/ui/icon/assets/icons/48-percent.svg';
 import phoneSVG from 'src/shared/ui/icon/assets/icons/48-phone.svg';
 import switcherSVG from 'src/shared/ui/icon/assets/icons/48-switcher.svg';
-
+import dropdownArrowSVG from 'src/shared/ui/icon/assets/icons/dropdown-arrow.svg';
 import actionAddCardSVG from 'src/shared/ui/icon/assets/icons/actions-add-card.svg';
 import actionBillDetailsSVG from 'src/shared/ui/icon/assets/icons/actions-bill-details.svg';
 import actionBriefcaseSVG from 'src/shared/ui/icon/assets/icons/actions-briefcase.svg';
@@ -110,7 +110,7 @@ export const SVG = {
     percent: percentSVG,
     phone: phoneSVG,
     switcher: switcherSVG,
-
+    dropdownArrow: dropdownArrowSVG,
     'action-add-card': actionAddCardSVG,
     'action-bill-details': actionBillDetailsSVG,
     'action-briefcase': actionBriefcaseSVG,

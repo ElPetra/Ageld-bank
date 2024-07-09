@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-
 import { RouteName } from 'src/shared/model';
 import { Icon, Text, Button, Card } from 'src/shared/ui';
 
@@ -83,9 +82,11 @@ export const DepositProductCard = ({ deposit }: Props) => {
                     </Link>
                 </div>
                 <div>
-                    <Button width='max' variant='secondary'>
-                        {t('Оформить')}
-                    </Button>
+                    <Link to={'create'}>
+                        <Button width='max' variant='secondary'>
+                            {t('Оформить')}
+                        </Button>
+                    </Link>
                 </div>
             </div>
         </Card>

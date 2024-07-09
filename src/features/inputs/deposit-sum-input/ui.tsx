@@ -33,6 +33,7 @@ export const DepositSumInput = ({
             inputField='sumInput'
             sliderField='sumSlider'
             unit={currency}
+            stretch={true}
         />
     );
 };

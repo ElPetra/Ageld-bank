@@ -1,14 +1,16 @@
-.universal-deposit-card {
+.customer-deposit-card {
     &__container {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        flex-wrap: wrap;
         row-gap: 24px;
-        column-gap: 24px;
+        column-gap: 57px;
         width: 100%;
 
         @media screen and (max-width: 1400px) {
+            & {
+                flex-wrap: wrap;
+            }
             > div {
                 flex: 1 1 100%;
                 max-width: 100%;
@@ -32,8 +34,7 @@
     &__info {
         display: flex;
         justify-content: space-between;
-        gap: 60px;
-        flex-wrap: wrap;
+        gap: 40px;
 
         > div {
             display: flex;

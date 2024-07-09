@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-
+import { useNavigate } from 'react-router-dom';
 import { Button, Card, Text } from 'src/shared/ui';
 
 interface Props {
@@ -13,6 +13,7 @@ export const MainCarouselCard = ({
     content,
     button
 }: Props) => {
+    const navigate = useNavigate();
     const { t } = useTranslation();
     return (
         <Card
@@ -26,7 +27,14 @@ export const MainCarouselCard = ({
                 {t(title)}
             </Text>
             <Text size='m'>{t(content)}</Text>
-            <Button variant='secondary' size='medium' width='max'>
+            <Button
+                onClick={() => {
+                    navigate('/deposits/deposits-products/create');
+                }}
+                variant='secondary'
+                size='medium'
+                width='max'
+            >
                 {t(button)}
             </Button>
         </Card>

@@ -71,8 +71,13 @@ export const useCarouselControls = (
     }
 
     function changeRotateByIndicator(indicator: number) {
-        const prevIndicator = curRotate / angle;
-        const nextRotate = (prevIndicator - indicator) * angle;
+        const prevIndicator = -curRotate / angle;
+        const prevIndicatorNormalized =
+            prevIndicator % length >= 0
+                ? prevIndicator % length
+                : (prevIndicator % length) + length;
+        const nextRotate =
+            (prevIndicator + (indicator - prevIndicatorNormalized)) * -angle;
         if (carouselContainer) {
             carouselContainer.style.transform = `rotateY(${nextRotate}deg)`;
         }
@@ -97,7 +102,7 @@ export const useCarousel = (length: number) => {
             firstRender.current = false;
             const estimatedElement = document.querySelector<HTMLElement>(
                 '.carousel-inner__element'
-            );
+            ) || { offsetWidth: 500 };
             if (estimatedElement) {
                 const estimatedWidth = estimatedElement.offsetWidth;
                 const edge =

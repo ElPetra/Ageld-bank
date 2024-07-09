@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox ui match snapshot 1`] = `
+<div
+  class="custom-checkbox"
+  data-testid="checkbox"
+>
+  <label
+    class="custom-checkbox__label"
+  >
+    <input
+      class="custom-checkbox__input"
+      name="checkbox"
+      type="checkbox"
+    />
+    <span
+      class="checkbox-control"
+    />
+    <div>
+      <div>
+        Публичного договора
+      </div>
+    </div>
+  </label>
+</div>
+`;

@@ -1,4 +1,7 @@
+import cn from 'classnames';
+
 import type { ChangeEvent, InputHTMLAttributes } from 'react';
+
 import type {
     FieldValues,
     UseFormRegister,
@@ -13,10 +16,11 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
     min: number;
     max: number;
     unit: string;
-    register?: UseFormRegister<FieldValues>;
-    setValue?: UseFormSetValue<FieldValues>;
-    inputField?: string;
-    sliderField?: string;
+    register: UseFormRegister<FieldValues>;
+    setValue: UseFormSetValue<FieldValues>;
+    inputField: string;
+    sliderField: string;
+    stretch?: boolean;
 }
 
 export const SliderInput = ({
@@ -29,6 +33,7 @@ export const SliderInput = ({
     setValue,
     inputField,
     sliderField,
+    stretch,
     ...props
 }: Props) => {
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -40,7 +45,7 @@ export const SliderInput = ({
     };
 
     return (
-        <div className='slider-input'>
+        <div className={cn('slider-input', { stretch: stretch })}>
             <label>{label}</label>
             <div className='slider-input__inputs'>
                 <div className='slider-input__input'>
