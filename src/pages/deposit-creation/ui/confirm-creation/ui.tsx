@@ -34,7 +34,6 @@ export const ConfirmCreation = ({
             })}
         >
             <MessageCard
-                middleOfForm={true}
                 title={t('Вы действительно хотите открыть депозит?')}
                 width={256}
                 icon={'confirmation-lady'}
