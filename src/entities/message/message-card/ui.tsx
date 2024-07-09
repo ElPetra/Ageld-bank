@@ -64,7 +64,7 @@ export const MessageCard = ({
                     <div
                         className={`${secondButtonText ? 'message-card__two-button' : 'message-card__button'}`}
                     >
-                        {onClick ? (
+                        {onClick || type === 'submit' ? (
                             <Button
                                 width='max'
                                 type={type}
