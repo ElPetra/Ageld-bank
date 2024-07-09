@@ -10,12 +10,16 @@ import type {
 
 interface Props {
     variant?: 'primary' | 'secondary';
+    min?: number;
+    max?: number;
     register: UseFormRegister<FieldValues>;
     setValue: UseFormSetValue<FieldValues>;
 }
 
 export const DepositTermInput = ({
     variant = 'secondary',
+    min = 1,
+    max = 36,
     register,
     setValue
 }: Props) => {
@@ -26,8 +30,8 @@ export const DepositTermInput = ({
             register={register}
             setValue={setValue}
             label={t('Срок депозита')}
-            min={1}
-            max={36}
+            min={min}
+            max={max}
             inputField='termInput'
             sliderField='termSlider'
             unit={t('мес')}

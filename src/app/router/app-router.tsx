@@ -75,6 +75,10 @@ const publicRoutes: RouteDescription[] = [
     {
         path: DEPOSIT_PRODUCT_PAGE + '/:id',
         component: DepositProductPage
+    },
+    {
+        path: DEPOSIT_PRODUCT_PAGE + '/:id/' + CREATE,
+        component: DepositCreationPage
     }
 ];
 
@@ -94,10 +98,6 @@ const authRoutes: RouteDescription[] = [
     {
         path: DEPOSIT_PAGE + '/:id/' + EXTEND,
         component: DepositExtensionPage
-    },
-    {
-        path: DEPOSIT_PAGE + 's/:id/' + CREATE,
-        component: DepositCreationPage
     },
     {
         path: DEPOSIT_PAGE + '/:id',

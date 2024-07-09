@@ -18,6 +18,7 @@ interface Props {
     buttonText?: string;
     buttonLink?: string;
     onClick?: () => void;
+    type?: 'submit' | 'button';
     setFormStep?: Dispatch<SetStateAction<number>>;
     isLast?: boolean;
     isMargin?: boolean;
@@ -40,6 +41,7 @@ export const MessageCard = ({
     isMargin = true,
     secondButtonText,
     onClick,
+    type = 'button',
     secondButtonLink = RouteName.MAIN_PAGE + '/',
     secondOnClick,
     setFormStep,
@@ -80,7 +82,7 @@ export const MessageCard = ({
                         {onClick || middleOfForm ? (
                             <Button
                                 width='max'
-                                type='button'
+                                type={type}
                                 variant={
                                     secondButtonText ? 'primary' : 'secondary'
                                 }
@@ -89,24 +91,26 @@ export const MessageCard = ({
                                 {buttonText}
                             </Button>
                         ) : (
-                            <Link to={buttonLink}>
-                                <Button
-                                    onClick={() => {
-                                        if (middleOfForm) {
-                                            FormStepForward();
+                            <div>
+                                <Link to={buttonLink}>
+                                    <Button
+                                        onClick={() => {
+                                            if (middleOfForm) {
+                                                FormStepForward();
+                                            }
+                                        }}
+                                        width='max'
+                                        type={type}
+                                        variant={
+                                            secondButtonText
+                                                ? 'primary'
+                                                : 'secondary'
                                         }
-                                    }}
-                                    width='max'
-                                    type='button'
-                                    variant={
-                                        secondButtonText
-                                            ? 'primary'
-                                            : 'secondary'
-                                    }
-                                >
-                                    {buttonText}
-                                </Button>
-                            </Link>
+                                    >
+                                        {buttonText}
+                                    </Button>
+                                </Link>
+                            </div>
                         )}
                         {secondButtonText &&
                             (secondOnClick ? (
@@ -119,15 +123,17 @@ export const MessageCard = ({
                                     {secondButtonText}
                                 </Button>
                             ) : (
-                                <Link to={secondButtonLink}>
-                                    <Button
-                                        width='max'
-                                        type='button'
-                                        variant='secondary'
-                                    >
-                                        {secondButtonText}
-                                    </Button>
-                                </Link>
+                                <div>
+                                    <Link to={secondButtonLink}>
+                                        <Button
+                                            width='max'
+                                            type='button'
+                                            variant='secondary'
+                                        >
+                                            {secondButtonText}
+                                        </Button>
+                                    </Link>
+                                </div>
                             ))}
                     </div>
                 )}

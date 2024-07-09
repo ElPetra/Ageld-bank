@@ -2,11 +2,11 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 import { Icon, Text, Button, Card } from 'src/shared/ui';
-import { RouteName } from 'src/shared/model';
-
-import { floorDecimals } from 'src/shared/lib/deposit';
+import { CREATE, RouteName } from 'src/shared/model';
+import { floorDecimals } from 'src/shared/lib';
 
 import type { CustomerDeposit, DepositProfitability } from 'src/shared/model';
+
 import './styles.scss';
 
 interface Props {
@@ -18,18 +18,26 @@ export const UniversalDepositCard = ({ deposit }: Props) => {
 
     return (
         <Card padding='medium'>
-            <div className='customer-deposit-card__container'>
-                <div className='customer-deposit-card__title'>
-                    <div className='customer-deposit-card__title__icon'>
+            <div className='universal-deposit-card__container'>
+                <div className='universal-deposit-card__title'>
+                    <div className='universal-deposit-card__title__icon'>
                         <Icon icon={deposit.currency} />
                     </div>
-                    <Link to={RouteName.DEPOSIT_PAGE + '/' + deposit.id}>
+                    <Link
+                        to={
+                            ('number' in deposit
+                                ? RouteName.DEPOSIT_PAGE
+                                : RouteName.DEPOSIT_PRODUCT_PAGE) +
+                            '/' +
+                            deposit.id
+                        }
+                    >
                         <Text weight='bold' size='m'>
                             {deposit.name}
                         </Text>
                     </Link>
                 </div>
-                <div className='customer-deposit-card__info'>
+                <div className='universal-deposit-card__info'>
                     {'number' in deposit && (
                         <div>
                             <Text weight='bold' size='l'>
@@ -109,9 +117,23 @@ export const UniversalDepositCard = ({ deposit }: Props) => {
                             </Button>
                         </Link>
                     ) : (
-                        <Button variant='primary' size='medium' type='button'>
-                            {t('Оформить')}
-                        </Button>
+                        <Link
+                            to={
+                                RouteName.DEPOSIT_PRODUCT_PAGE +
+                                '/' +
+                                deposit.id +
+                                '/' +
+                                CREATE
+                            }
+                        >
+                            <Button
+                                variant='primary'
+                                size='medium'
+                                type='button'
+                            >
+                                {t('Оформить')}
+                            </Button>
+                        </Link>
                     )}
                 </div>
             </div>

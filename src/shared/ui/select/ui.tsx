@@ -24,16 +24,16 @@ export const Select = memo(
         options,
         variant = 'primary',
         label,
-        value,
         width = 'auto',
         isError,
         error,
         field = 'field',
         register,
-        onChange,
         ...props
     }: Props) => {
         const [open, setOpen] = useState<boolean>(false);
+        const [value, setValue] = useState<string>('');
+
         const selectorButtonClass = cn('select__button', variant, {
             error: error || isError
         });
@@ -73,7 +73,10 @@ export const Select = memo(
                                     type='radio'
                                     {...(register &&
                                         field &&
-                                        register(field, { onChange }))}
+                                        register(field, {
+                                            onChange: e =>
+                                                setValue(e.target.value)
+                                        }))}
                                     id={el.value}
                                     value={el.value}
                                     onClick={() => setOpen(false)}

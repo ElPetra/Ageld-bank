@@ -30,9 +30,6 @@ const meta: Meta<typeof Select> = {
         },
         error: {
             description: 'Текст ошибки'
-        },
-        value: {
-            description: 'Значение'
         }
     }
 };
@@ -53,7 +50,6 @@ export const Default: Story = {
         label: 'Выберите',
         width: 'auto',
         isError: false,
-        error: '',
-        value: ''
+        error: ''
     }
 };
