@@ -12,6 +12,7 @@ import { ProtectedMain } from './protected';
 
 export const MainPage = () => {
     const { t } = useTranslation();
+
     return (
         <Container>
             <Menu
@@ -61,3 +62,31 @@ export const MainPage = () => {
         </Container>
     );
 };
+
+// const [value, setValue] = useState<string>('');
+// const { register, handleSubmit } = useForm<FieldValues>({
+//     mode: 'onSubmit',
+//     reValidateMode: 'onSubmit',
+//     defaultValues: { selector: '' }
+// });
+//
+// <Card>
+//     <form onSubmit={handleSubmit(data => console.log(data))}>
+//         <Select
+//             variant='secondary'
+//             label='Variant'
+//             options={[
+//                 { value: 'Variant 1', label: 'Variant 1' },
+//                 { value: 'Variant 2', label: 'Variant 2' },
+//                 { value: 'Variant 3', label: 'Variant 3' },
+//                 { value: 'Variant 4', label: 'Variant 4' },
+//                 { value: 'Variant 5', label: 'Variant 5' }
+//             ]}
+//             register={register}
+//             onChange={e => setValue(e.target.value)}
+//             value={value}
+//             field='selector'
+//         />
+//         <input type='submit' />
+//     </form>
+// </Card>

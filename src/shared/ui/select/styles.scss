@@ -1,0 +1,115 @@
+.select {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 100%;
+  width: 580px;
+  color: var(--text-primary-input);
+  font-weight: 500;
+
+  &.max {
+    width: 100%;
+  }
+
+  &__button {
+    position: relative;
+    width: 100%;
+    border-radius: var(--medium-border-radius);
+    transition: box-shadow ease .5s;
+    height: 72px;
+    padding: 16px 24px;
+    text-align: left;
+
+    &:hover, &:focus-within, &:active, &.active {
+      box-shadow: inset 0 0 0 1px var(--text-primary-input);
+    }
+
+    &.error {
+      color: var(--text-error);
+      box-shadow: inset 0 0 0 1px var(--text-error);
+    }
+
+    &.primary {
+      background: var(--bg-primary-input);
+    }
+
+    &.secondary {
+      background: var(--bg-secondary-input);
+    }
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      &__label {
+        font-weight: 500;
+        &.selected {
+          font-size: 12px;
+          line-height: 18px;
+          font-weight: 400;
+        }
+      }
+
+      &__value {
+        font-weight: 500;
+      }
+    }
+
+    &__icon {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      transition: transform ease-in-out 0.3s;
+
+      &.open {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &__dropdown {
+    width: 100%;
+    max-height: 250px;
+    overflow-y: scroll;
+    border-radius: var(--medium-border-radius);
+
+    &.primary {
+      background: var(--bg-primary-input);
+    }
+
+    &.secondary {
+      background: var(--bg-secondary-input);
+    }
+
+    > li {
+      height: 72px;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      box-shadow: inset 0 -1px 0 0 var(--bg-primary-input);
+
+      &:last-child {
+        box-shadow: none;
+      }
+
+      > input[type="radio"] {
+        display: none;
+      }
+
+      > label {
+        width: 100%;
+
+        &:hover, &:focus-within, &:active, &.active {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  &__error {
+    color: var(--text-error);
+    font-size: 12px;
+    line-height: 18px;
+  }
+}

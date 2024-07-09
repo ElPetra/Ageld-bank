@@ -1,43 +1,42 @@
 import { memo } from 'react';
 import cn from 'classnames';
 
-import type { InputHTMLAttributes, ReactNode, RefObject } from 'react';
+import type { InputHTMLAttributes, RefObject } from 'react';
 
 import type { FieldValues, UseFormRegister } from 'react-hook-form';
 
 import './styles.scss';
 
 interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
-    placeholder?: string;
+    label?: string;
     size?: 'small' | 'medium' | 'large';
     width?: 'auto' | 'max';
     isError?: boolean;
     error?: string;
     disabled?: boolean;
-    label?: string;
+    field?: string;
     register?: UseFormRegister<FieldValues>;
     reference?: RefObject<HTMLInputElement>;
-    children?: ReactNode;
 }
 
 export const Input = memo(
     ({
-        type,
-        placeholder,
-        value,
-        reference,
+        label,
         size = 'medium',
         width = 'auto',
-        children,
-        error,
         isError,
+        error,
+        type,
+        value,
         pattern = '',
         minLength,
-        label = 'label',
+        disabled,
+        field = 'field',
         register,
         onBlur,
         onChange,
-        disabled,
+        reference,
+        children,
         ...props
     }: Props) => {
         const fieldClass = cn('field', size, width, {
@@ -55,11 +54,11 @@ export const Input = memo(
             <div className={fieldClass}>
                 <div className={inputContainerClass} ref={reference}>
                     {size != 'medium' && value && (
-                        <div className='label'>{placeholder}</div>
+                        <div className='label'>{label}</div>
                     )}
                     {register ? (
                         <input
-                            {...register(label, {
+                            {...register(field, {
                                 pattern: new RegExp(pattern),
                                 minLength,
                                 required: true,
@@ -67,7 +66,7 @@ export const Input = memo(
                                 onBlur
                             })}
                             type={type || 'text'}
-                            placeholder={placeholder || ''}
+                            placeholder={label || ''}
                             className={inputClass}
                             disabled={disabled}
                             {...props}
@@ -80,7 +79,7 @@ export const Input = memo(
                             onBlur={onBlur}
                             onChange={onChange}
                             type={type || 'text'}
-                            placeholder={placeholder || ''}
+                            placeholder={label || ''}
                             disabled={disabled}
                             className={inputClass}
                             {...props}
@@ -89,7 +88,7 @@ export const Input = memo(
                     {children && <div className='input-icon'>{children}</div>}
                 </div>
                 {error && size != 'small' && (
-                    <div className='input-error'>{error}</div>
+                    <div className='field__error'>{error}</div>
                 )}
             </div>
         );

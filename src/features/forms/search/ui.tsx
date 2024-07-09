@@ -26,13 +26,13 @@ export const SearchForm = ({ label, size = 'large' }: Props) => {
         <Form onSubmit={handleSubmit(() => {})}>
             <Input
                 type='text'
-                placeholder={label || t('Поиск')}
+                label={label || t('Поиск')}
                 size={size}
                 width='max'
                 value={value}
                 onChange={e => setValue(e.target.value)}
                 reference={inputRef}
-                label='search'
+                field='search'
                 register={register}
             >
                 <button>

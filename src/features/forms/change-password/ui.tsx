@@ -52,14 +52,14 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
             <div className='change-password-form'>
                 <PasswordInput
                     register={register}
-                    label='oldPassword'
+                    field='oldPassword'
                     variant='confirm'
                     placeholder={t('Текущий пароль')}
                     error={error}
                 />
                 <PasswordInput
                     register={register}
-                    label='newPassword'
+                    field='newPassword'
                     variant='create'
                     placeholder={t('Новый пароль')}
                     isDirty={watch('newPassword') !== ''}
@@ -67,7 +67,7 @@ export const ChangePasswordForm = ({ isLast, setFormStep }: Props) => {
                 />
                 <PasswordInput
                     register={register}
-                    label='newPassword2'
+                    field='newPassword2'
                     placeholder={t('Подтвердите новый пароль')}
                     variant='confirm'
                     error={t(

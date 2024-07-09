@@ -26,7 +26,7 @@ export const Contacts = ({ phone, children }: Props) => {
                         )}
                     </Text>
                     <Input
-                        placeholder={t('Телефон')}
+                        label={t('Телефон')}
                         value={phone}
                         disabled={true}
                         size='large'

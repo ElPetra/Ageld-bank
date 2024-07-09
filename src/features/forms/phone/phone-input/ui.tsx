@@ -11,7 +11,7 @@ interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
     isError?: boolean;
     error?: string;
     clear: () => void;
-    label: string;
+    field: string;
     register: UseFormRegister<FieldValues>;
 }
 
@@ -52,7 +52,7 @@ export const PhoneInput = ({ clear, isError, error, ...props }: Props) => {
             type='text'
             minLength={18}
             maxLength={18}
-            placeholder={t('Номер телефона')}
+            label={t('Номер телефона')}
             size='large'
             value={value}
             onChange={handleChange}
