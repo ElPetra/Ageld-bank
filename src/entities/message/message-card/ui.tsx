@@ -1,8 +1,6 @@
 import { RouteName } from 'src/shared/model';
 import { Button, Card, Icon, Link, Text } from 'src/shared/ui';
 
-import type { Dispatch, SetStateAction } from 'react';
-
 import type { SvgIconName } from 'src/shared/ui';
 
 import './styles.scss';
@@ -19,10 +17,7 @@ interface Props {
     buttonLink?: string;
     onClick?: () => void;
     type?: 'submit' | 'button';
-    setFormStep?: Dispatch<SetStateAction<number>>;
-    isLast?: boolean;
     isMargin?: boolean;
-    middleOfForm?: boolean;
     secondButtonText?: string;
     secondButtonLink?: string;
     secondOnClick?: () => void;
@@ -38,23 +33,13 @@ export const MessageCard = ({
     icon,
     buttonText,
     buttonLink = RouteName.MAIN_PAGE + '/',
+    onClick,
     isMargin = true,
     secondButtonText,
-    onClick,
     type = 'button',
     secondButtonLink = RouteName.MAIN_PAGE + '/',
-    secondOnClick,
-    setFormStep,
-    middleOfForm,
-    isLast = false
+    secondOnClick
 }: Props) => {
-    const FormStepForward = () => {
-        if (setFormStep && !isLast) {
-            setFormStep(curr => {
-                return curr + 1;
-            });
-        }
-    };
     return (
         <div
             className={`message-card ${isMargin && 'message-card__with-margin'}`}
@@ -79,14 +64,14 @@ export const MessageCard = ({
                     <div
                         className={`${secondButtonText ? 'message-card__two-button' : 'message-card__button'}`}
                     >
-                        {onClick || middleOfForm ? (
+                        {onClick ? (
                             <Button
                                 width='max'
                                 type={type}
                                 variant={
                                     secondButtonText ? 'primary' : 'secondary'
                                 }
-                                onClick={onClick || FormStepForward}
+                                onClick={onClick}
                             >
                                 {buttonText}
                             </Button>
@@ -94,11 +79,6 @@ export const MessageCard = ({
                             <div>
                                 <Link to={buttonLink}>
                                     <Button
-                                        onClick={() => {
-                                            if (middleOfForm) {
-                                                FormStepForward();
-                                            }
-                                        }}
                                         width='max'
                                         type={type}
                                         variant={
