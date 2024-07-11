@@ -81,31 +81,31 @@ export const CreateDeposit = ({
                 <Columns number='2'>
                     <Select
                         variant='secondary'
-                        label='Капитализация'
+                        label={t('Капитализация')}
                         options={[
                             {
                                 value: 'Без капитализации',
-                                label: 'Без капитализации'
+                                label: t('Без капитализации')
                             },
                             {
                                 value: 'Ежедневная',
-                                label: 'Ежедневная'
+                                label: t('Ежедневная')
                             },
                             {
                                 value: 'Ежемесячная',
-                                label: 'Ежемесячная'
+                                label: t('Ежемесячная')
                             },
                             {
                                 value: 'Ежеквартальная',
-                                label: 'Ежеквартальная'
+                                label: t('Ежеквартальная')
                             },
                             {
                                 value: 'Полугодовая',
-                                label: 'Полугодовая'
+                                label: t('Полугодовая')
                             },
                             {
                                 value: 'Ежегодная',
-                                label: 'Ежегодная'
+                                label: t('Ежегодная')
                             }
                         ]}
                         register={register}
