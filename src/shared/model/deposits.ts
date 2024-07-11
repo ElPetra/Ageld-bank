@@ -23,9 +23,9 @@ export const depositCapitalization: Record<0 | 1 | 2 | 3 | 4 | 5, string> = {
 };
 
 export const depositWithdrawal: Record<1 | 2 | 3, string> = {
-    1: 'Без возможности снятия средств',
-    2: 'До минимальной суммы',
-    3: 'В пределах начисленных процентов'
+    1: i18n.t('Без возможности снятия средств'),
+    2: i18n.t('До минимальной суммы'),
+    3: i18n.t('В пределах начисленных процентов')
 };
 
 export interface DepositProduct {
@@ -103,7 +103,7 @@ export const mockDeposits: CustomerDeposit[] = [
         id: 123456,
         currency: 'rub',
         closedAt: '15.10.2025',
-        name: 'A-Geld бессрочный',
+        name: i18n.t('A-Geld бессрочный'),
         balance: 1000,
         number: '1234567891017780',
         productId: '1234567'
@@ -112,7 +112,7 @@ export const mockDeposits: CustomerDeposit[] = [
         id: 1234567,
         currency: 'eur',
         closedAt: '15.10.2025',
-        name: 'A-Geld бессрочный',
+        name: i18n.t('A-Geld бессрочный'),
         balance: 1000,
         number: '1234567891017781',
         productId: '1234567'
@@ -121,7 +121,7 @@ export const mockDeposits: CustomerDeposit[] = [
         id: 12345678,
         currency: 'usd',
         closedAt: '15.10.2025',
-        name: 'A-Geld бессрочный',
+        name: i18n.t('A-Geld бессрочный'),
         balance: 1000,
         number: '1234567891017782',
         productId: '1234567'
