@@ -68,7 +68,7 @@ export const PhoneForm = ({
         <Form onSubmit={handleSubmit(onSubmit)}>
             <PhoneInput
                 clear={() => setValue('phone', '')}
-                label='phone'
+                field='phone'
                 register={register}
                 isError={!!errors?.phone}
                 error={error}

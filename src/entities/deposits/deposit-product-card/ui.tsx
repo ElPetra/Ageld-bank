@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { RouteName } from 'src/shared/model';
+import { CREATE, RouteName } from 'src/shared/model';
 import { Icon, Text, Button, Card } from 'src/shared/ui';
 
 import type { DepositProduct } from 'src/shared/model';
@@ -82,7 +82,15 @@ export const DepositProductCard = ({ deposit }: Props) => {
                     </Link>
                 </div>
                 <div>
-                    <Link to={'create'}>
+                    <Link
+                        to={
+                            RouteName.DEPOSIT_PRODUCT_PAGE +
+                            '/' +
+                            deposit.id +
+                            '/' +
+                            CREATE
+                        }
+                    >
                         <Button width='max' variant='secondary'>
                             {t('Оформить')}
                         </Button>

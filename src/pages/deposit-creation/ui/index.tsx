@@ -1,58 +1,71 @@
-import { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 
 import { Container } from 'src/shared/ui';
-import { isErrorStatusUnauthorized } from 'src/shared/lib';
-import { MessageCard } from 'src/entities/message';
+import { DEPOSITS, RouteName } from 'src/shared/model';
 import { useAuth } from 'src/entities/user';
-import { useGetInfoQuery } from 'src/shared/api';
-import { useTranslation } from 'react-i18next';
-import { BackButton, MultiStepForm } from 'src/features/multi-step-form';
+import { MessageCard } from 'src/entities/message';
+import { MultiStepForm } from 'src/features/multi-step-form';
 
-import { MakingDeposit } from './making-deposit';
+import { ConfirmCreation } from 'src/pages/deposit-creation/ui/confirm-creation';
+
+import { CreateDeposit } from './create-deposit';
+
+import type { FieldValues } from 'react-hook-form';
 
 export const DepositCreationPage = () => {
     const { t } = useTranslation();
-    const { signedOut } = useAuth();
-    const { error } = useGetInfoQuery();
+    const { error } = useAuth();
 
-    useEffect(() => {
-        if (isErrorStatusUnauthorized(error)) {
-            return signedOut();
-        }
-    }, [error, signedOut]);
+    const {
+        register,
+        setValue,
+        handleSubmit,
+        formState: { isDirty, isValid }
+    } = useForm<FieldValues>({
+        defaultValues: {
+            termInput: 1,
+            termSlider: 1,
+            sumInput: 10000,
+            sumSlider: 10000,
+            capitalization: '',
+            withAutoprolongation: false,
+            withReplenishment: false,
+            withDrawal: false
+        },
+        mode: 'onTouched',
+        reValidateMode: 'onChange'
+    });
+
+    const createDeposit = async (data: FieldValues) => {
+        // eslint-disable-next-line
+        console.log(data);
+    };
+
     return (
         <Container>
-            <BackButton />
             <MultiStepForm
                 variant='create-account'
                 forms={[
                     {
                         id: 1,
                         title: t('Оформить депозит'),
-                        component: <MakingDeposit />
+                        component: (
+                            <CreateDeposit
+                                register={register}
+                                setValue={setValue}
+                                isDirty={isDirty}
+                                isValid={isValid}
+                            />
+                        )
                     },
                     {
                         id: 2,
                         title: '',
                         component: (
-                            <MessageCard
-                                middleOfForm={true}
-                                title={
-                                    error
-                                        ? t('Не удалось оформить депозит')
-                                        : t(
-                                              'Вы действительно хотите открыть депозит?'
-                                          )
-                                }
-                                width={275}
-                                icon={
-                                    error
-                                        ? 'confirmation-lady'
-                                        : 'confirmation-lady'
-                                }
-                                buttonText={t('Да')}
-                                secondButtonLink={'/deposits'}
-                                secondButtonText={t('Отмена')}
+                            <ConfirmCreation
+                                handleSubmit={handleSubmit}
+                                createDeposit={createDeposit}
                             />
                         )
                     },
@@ -66,14 +79,16 @@ export const DepositCreationPage = () => {
                                         ? t('Не удалось оформить депозит')
                                         : t('Ваш депозит успешно оформлен')
                                 }
-                                width={275}
+                                width={300}
                                 icon={
                                     error
                                         ? 'failure-lady'
-                                        : 'paper-airplane-lady'
+                                        : 'documents-folder-lady'
                                 }
                                 buttonText={t('Вернуться к странице депозитов')}
-                                buttonLink={'/deposits/deposits-products'}
+                                buttonLink={
+                                    RouteName.MAIN_PAGE + '/' + DEPOSITS
+                                }
                             />
                         ),
                         isResult: true

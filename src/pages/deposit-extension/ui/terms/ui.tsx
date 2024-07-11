@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import { Button, Card, Form, Text } from 'src/shared/ui';
+import { Button, Card, Columns, Form, Text } from 'src/shared/ui';
 import { DepositTermInput } from 'src/features/inputs';
 
 import type { Dispatch, SetStateAction } from 'react';
@@ -37,18 +37,24 @@ export const Terms = ({ isLast, setFormStep, extendedDeposit }: Props) => {
         }
     };
     return (
-        <Form onSubmit={handleSubmit(onSubmit)}>
-            <Card
-                gap='medium'
-                padding='large'
-                borderRadius='extra-large'
-                direction='column'
-            >
-                <DepositTermInput register={register} setValue={setValue} />
-                <Button disabled={!isValid} type='submit' variant='secondary'>
-                    <Text>{t('Пролонгировать депозит')}</Text>
-                </Button>
-            </Card>
-        </Form>
+        <Columns number='2'>
+            <Form onSubmit={handleSubmit(onSubmit)}>
+                <Card
+                    gap='medium'
+                    padding='large'
+                    borderRadius='extra-large'
+                    direction='column'
+                >
+                    <DepositTermInput register={register} setValue={setValue} />
+                    <Button
+                        disabled={!isValid}
+                        type='submit'
+                        variant='secondary'
+                    >
+                        <Text>{t('Пролонгировать депозит')}</Text>
+                    </Button>
+                </Card>
+            </Form>
+        </Columns>
     );
 };

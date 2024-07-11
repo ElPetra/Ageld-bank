@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { AuthStatus } from 'src/shared/model/user.ts';
+import { AuthStatus } from 'src/shared/model/user';
 
 export interface UserState {
     authStatus: AuthStatus;

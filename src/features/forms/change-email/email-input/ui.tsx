@@ -8,7 +8,7 @@ import type { FieldValues, UseFormRegister } from 'react-hook-form';
 interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
     width?: 'auto' | 'max';
     error?: string;
-    label: string;
+    field: string;
     register: UseFormRegister<FieldValues>;
     disabled: boolean;
 }
@@ -23,7 +23,7 @@ export const EmailInput = ({ error, disabled, ...props }: Props) => {
     return (
         <Input
             type='text'
-            placeholder='Email'
+            label='Email'
             size='large'
             width='max'
             value={value}

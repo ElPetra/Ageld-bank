@@ -1,9 +1,11 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
 
-import { Icon, Text, Button, Card, Switcher } from 'src/shared/ui';
+import { Icon, Text, Button, Card, Switcher, Overlay } from 'src/shared/ui';
 import { depositWithdrawal } from 'src/shared/model';
 import { ProductStatuses } from 'src/entities/product';
+import { MessageCard } from 'src/entities/message';
 
 import { DepositsMoreInfo } from './more-info';
 
@@ -18,7 +20,8 @@ interface Props {
 
 export const DepositInfo = ({ deposit }: Props) => {
     const { t } = useTranslation();
-    const { register } = useForm<FieldValues>({
+    const [visible, setVisible] = useState<boolean>(false);
+    const { register, watch } = useForm<FieldValues>({
         defaultValues: {
             autorenStatus: deposit.autorenStatus
         },
@@ -127,7 +130,11 @@ export const DepositInfo = ({ deposit }: Props) => {
                         <Text color='tertiary' size='xs'>
                             {t('Автоматическая пролонгации')}
                         </Text>
-                        <Switcher register={register} field='autorenStatus' />
+                        <Switcher
+                            register={register}
+                            field='autorenStatus'
+                            onChange={() => setVisible(true)}
+                        />
                     </div>
                 </div>
                 <div className='deposit-info__second-row__second-column'>
@@ -163,6 +170,25 @@ export const DepositInfo = ({ deposit }: Props) => {
                     </div>
                 </div>
             </div>
+            <Overlay visible={visible}>
+                <MessageCard
+                    title={
+                        watch('autorenStatus')
+                            ? t(
+                                  'Вы действительно хотите включить автоматическую пролонгацию депозита?'
+                              )
+                            : t(
+                                  'Вы действительно хотите отключить автоматическую пролонгацию депозита?'
+                              )
+                    }
+                    icon={'confirmation-lady'}
+                    width={256}
+                    buttonText={t('Да')}
+                    secondButtonText={t('Отмена')}
+                    onClick={() => setVisible(false)}
+                    secondOnClick={() => setVisible(false)}
+                />
+            </Overlay>
         </Card>
     );
 };

@@ -61,7 +61,7 @@ export const EmailForm = ({ email }: Props) => {
     return (
         <Form onSubmit={handleSubmit(onSubmit)}>
             <EmailInput
-                label='email'
+                field='email'
                 register={register}
                 error={t(getFieldErrorMessage(errors.email?.message)) || error}
                 value={email || ''}
