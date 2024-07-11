@@ -1,4 +1,5 @@
 import i18n from 'src/shared/model/i18n';
+import { EUR, RUB, USD } from 'src/shared/model/product.js';
 
 import type { ProductStatus } from 'src/shared/model';
 
@@ -24,6 +25,8 @@ export const typeCard: Record<CardType, string> = {
 
 export const typeCardFilters = [ALL, CREDIT_CARD, DEBIT_CARD, DEPOSIT_CARD];
 export const paymentSystemFilters = [ALL, MIR_CARD, VISA_CARD];
+
+export const currencySystemFilters = [ALL, RUB, USD, EUR];
 
 export interface CustomerCard {
     id: string;
