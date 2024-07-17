@@ -1,1 +1,1 @@
-export { MapFilter } from './map-filter';
+export * from './map-filter';

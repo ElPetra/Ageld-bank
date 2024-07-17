@@ -12,6 +12,8 @@ i18n.use(HttpBackend)
     .use(LanguageDetector)
     .use(initReactI18next)
     .init({
+        keySeparator: false,
+        nsSeparator: false,
         fallbackLng: 'ru',
         interpolation: {
             escapeValue: false
