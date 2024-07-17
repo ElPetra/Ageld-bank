@@ -20,16 +20,13 @@ import { BankObjectCard } from './bank-object-card';
 import { BankObjectInfoMenu } from './bank-object-info-menu';
 
 import type { Dispatch, SetStateAction } from 'react';
-import type { BankObject } from 'src/shared/model';
+import type { BankObject, Coordinates } from 'src/shared/model';
 
 import './styles.scss';
 
 interface Props {
     city: string;
-    location: {
-        lat: number,
-        lon: number
-    };
+    location: Coordinates;
     getGeolocation: () => void;
     setChangeVisible: Dispatch<SetStateAction<boolean>>;
 }

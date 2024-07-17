@@ -6,12 +6,14 @@ import { BankObjectMap } from './bank-object-map';
 import { MapCityQuestionModal } from './map-city-question-modal';
 import { MapChangeCityModal } from './map-change-city-modal';
 
+import type { Coordinates } from 'src/shared/model';
+
 export const ATMsBranchesPage = () => {
     const [city, setCity] = useState<string>('');
-    const [location, setLocation] = useState<{
-        lat: number,
-        lon: number
-    }>({ lat: 55.755864, lon: 37.617698 });
+    const [location, setLocation] = useState<Coordinates>({
+        lat: 55.755864,
+        lon: 37.617698
+    });
     const [changeCityModalVisible, setChangeCityModalVisible] =
         useState<boolean>(false);
 
