@@ -37,7 +37,7 @@ interface Props {
     getCity: (latitude: number, longitude: number) => void;
     visible: boolean;
     setVisible: Dispatch<SetStateAction<boolean>>;
-    setLocation: Dispatch<SetStateAction<{ lat: number, lon: number }>>;
+    setLocation: Dispatch<SetStateAction<Coordinates>>;
 }
 
 export function MapChangeCityModal({
