@@ -1,0 +1,37 @@
+.map-change-city-modal {
+  width: 100%;
+  max-width: 628px;
+  margin: auto;
+
+  &__main {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+
+    &__close {
+      min-width: 24px;
+    }
+  }
+
+  &__popular {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &__options {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      button {
+        border-radius: var(--medium-border-radius);
+        padding: 4px 16px;
+        gap: 8px;
+        background: var(--bg-primary-card);
+      }
+    }
+  }
+}
+

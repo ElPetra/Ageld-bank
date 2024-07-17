@@ -1,131 +1,77 @@
-import { useState } from 'react';
-import {
-    GeolocationControl,
-    Map,
-    Placemark,
-    RulerControl,
-    YMaps,
-    ZoomControl
-} from '@pbe/react-yandex-maps';
+import { useCallback, useEffect, useState } from 'react';
 
-import { Card, MapDotSVG } from 'src/shared/ui';
-import { MapFilter } from 'src/features/filters';
-import { SearchForm } from 'src/features/forms';
+import { Preloader } from 'src/shared/ui';
 
-import { useTranslation } from 'react-i18next';
-
-import { data } from '../model';
-
-import { BankObjectCard } from './bank-object-card';
-
-import { BankObjectInfoMenu } from './bank-object-info-menu';
-
-import type { BankObject } from 'src/shared/model';
-import './styles.scss';
+import { BankObjectMap } from './bank-object-map';
+import { MapCityQuestionModal } from './map-city-question-modal';
+import { MapChangeCityModal } from './map-change-city-modal';
 
 export const ATMsBranchesPage = () => {
-    const [visible, setVisible] = useState<boolean>(false);
-    const [current, setCurrent] = useState<BankObject | undefined>();
-    const { t } = useTranslation();
+    const [city, setCity] = useState<string>('');
+    const [location, setLocation] = useState<{
+        lat: number,
+        lon: number
+    }>({ lat: 55.755864, lon: 37.617698 });
+    const [changeCityModalVisible, setChangeCityModalVisible] =
+        useState<boolean>(false);
 
-    return (
+    const getGeolocation = useCallback(() => {
+        if ('geolocation' in navigator) {
+            navigator.geolocation.getCurrentPosition(
+                position => {
+                    const { latitude, longitude } = position.coords;
+                    setLocation({ lat: latitude, lon: longitude });
+                    getCity(latitude, longitude);
+                },
+                () => {
+                    getCity(location.lat, location.lon);
+                }
+            );
+        } else {
+            getCity(location.lat, location.lon);
+        }
+    }, [location.lat, location.lon]);
+
+    useEffect(() => {
+        getGeolocation();
+    }, [getGeolocation]);
+
+    const getCity = (latitude: number, longitude: number): void => {
+        const ymaps = window.ymaps;
+        ymaps.ready().then(() => {
+            ymaps
+                .geocode([latitude, longitude], { kind: 'locality' })
+                .then(result => {
+                    const firstGeoObject = result.geoObjects.get(0);
+                    const obj = firstGeoObject.properties.get('name', {});
+                    const city = typeof obj === 'object' ? obj.toString() : obj;
+                    setCity(city);
+                });
+        });
+    };
+
+    return !city ? (
+        <Preloader />
+    ) : (
         <>
-            <YMaps>
-                <Map
-                    defaultState={{
-                        center: [59.95354024191497, 30.309087827396112],
-                        zoom: 15,
-                        controls: []
-                    }}
-                    modules={[
-                        'geoObject.addon.balloon',
-                        'geoObject.addon.hint'
-                    ]}
-                    className='map'
-                >
-                    <div className='map__forward-container'>
-                        <div className='map__forward-container__left'>
-                            <MapFilter />
-                        </div>
-                        <div className='map__forward-container__right'>
-                            <div className='map__forward-container__col'>
-                                <Card
-                                    color='secondary'
-                                    direction='column'
-                                    borderRadius='extra-large'
-                                    padding='small-medium'
-                                >
-                                    <div className='map__search'>
-                                        <SearchForm
-                                            label={t(
-                                                'Поиск по адресу или названию'
-                                            )}
-                                            size='medium'
-                                        />
-                                    </div>
-                                </Card>
-                                {data.map(el => (
-                                    <BankObjectCard
-                                        key={el.objectNumber}
-                                        bankObject={el}
-                                        setVisible={setVisible}
-                                        setCurrent={setCurrent}
-                                    />
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                    <div className='some'>
-                        {data.map(el => (
-                            <Placemark
-                                key={el.objectNumber}
-                                geometry={[el.latitude, el.longitude]}
-                                onClick={() => {
-                                    setVisible(true);
-                                    setCurrent(el);
-                                }}
-                                options={{
-                                    iconLayout: 'default#image',
-                                    iconImageHref: MapDotSVG
-                                }}
-                            />
-                        ))}
-                        <GeolocationControl
-                            options={{
-                                float: 'left'
-                            }}
-                        />
-                        <RulerControl
-                            options={{
-                                position: { right: 10, bottom: 30 }
-                            }}
-                        />
-                        <ZoomControl
-                            options={{
-                                size: 'large',
-                                position: { right: 10, bottom: 30 },
-                                zoomDuration: 10
-                            }}
-                        />
-                    </div>
-                </Map>
-            </YMaps>
-            <BankObjectInfoMenu
-                visible={visible}
-                setVisible={setVisible}
-                current={current}
+            <BankObjectMap
+                city={city}
+                location={location}
+                getGeolocation={getGeolocation}
+                setChangeVisible={setChangeCityModalVisible}
+            />
+            <MapCityQuestionModal
+                city={city}
+                setChangeVisible={setChangeCityModalVisible}
+            />
+            <MapChangeCityModal
+                city={city}
+                setCity={setCity}
+                getCity={getCity}
+                visible={changeCityModalVisible}
+                setVisible={setChangeCityModalVisible}
+                setLocation={setLocation}
             />
         </>
     );
 };
-
-// <Text weight='bold' size='m' display='flex'>
-//     Объекты в&nbsp;
-//     <Text
-//         weight='bold'
-//         size='m'
-//         color='action'
-//     >
-//         Москве
-//     </Text>
-// </Text>

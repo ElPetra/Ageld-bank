@@ -63,15 +63,9 @@
       flex-direction: column;
       gap: 16px;
       max-width: 378px;
+      min-width: 368px;
       max-height: calc(750px - 24px);
       overflow-y: scroll;
     }
   }
-
-  &__search {
-    max-width: 380px;
-  }
 }
-
-
-
