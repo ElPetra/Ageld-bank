@@ -69,7 +69,7 @@ export const CreateDeposit = ({
                         setValue={setValue}
                         min={10000}
                         max={500000}
-                        currency={t('RUB')}
+                        currency={'RUB'}
                     />
                     <DepositTermInput
                         register={register}

@@ -4,7 +4,7 @@ export const ATM = i18n.t('Банкомат');
 export const INFOKIOSK = i18n.t('Инфокиоск');
 export const MAIN_OFFICE = i18n.t('Главный офис');
 export const BRANCH = i18n.t('Отделение банка');
-export const EXCHANGE_OFFICE = i18n.t('Обменный пунк');
+export const EXCHANGE_OFFICE = i18n.t('Обменный пункт');
 
 export const OPTIONS_WORKS = i18n.t('Работает');
 
