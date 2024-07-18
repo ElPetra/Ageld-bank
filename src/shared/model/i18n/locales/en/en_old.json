@@ -45,5 +45,9 @@
   "3B": "3V",
   "Понедельник - Пятница: 9:00-19:00 Cуббота: 10:00-15:00 Воскресенье - выходной": "Monday - Friday: 9:00-19:00 Saturday: 10:00-15:00 Sunday - weekend",
   "Понедельник - Пятница: 10:00-14:00 Cуббота: 11:00-13:00 Воскресенье - выходной": "Monday - Friday: 10:00-14:00 Saturday: 11:00-13:00 Sunday - weekend",
-  "Без выходных, круглосуточно": "Seven days a week, around the clock"
+  "Без выходных, круглосуточно": "Seven days a week, around the clock",
+  "Открытые счета": "Opened accounts",
+  "Заявки на открытие счета": "Open account requests",
+  "Закрытые счета": "Closed accounts",
+  "Заблокированные счета": "Blocked accounts"
 }

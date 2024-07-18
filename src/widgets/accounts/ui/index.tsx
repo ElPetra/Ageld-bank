@@ -17,13 +17,14 @@ import { useTranslation } from 'react-i18next';
 import { filterAccounts } from '../lib';
 
 import { AccountList } from './list';
+import { AccountCreationCards } from './createtion-cards';
 
 export const Accounts = () => {
     const { signedOut } = useAuth();
     const { data: accounts, isLoading, error } = useGetAccountsQuery();
     const { t } = useTranslation();
     const [currency, setCurrency] = useState<string>('Все');
-
+    const [showClosed, setShowClosed] = useState<boolean>(false);
     useEffect(() => {
         if (isErrorStatusUnauthorized(error)) {
             return signedOut();
@@ -44,45 +45,60 @@ export const Accounts = () => {
                 elements={[
                     {
                         id: 1,
-                        name: t('Открытые счета'),
+                        name: t('Все'),
                         component: (
                             <AccountList
-                                accounts={filterAccounts(
+                                accounts={filterAccounts({
                                     accounts,
-                                    'active',
-                                    currency
-                                )}
+                                    currency,
+                                    notClosed: showClosed
+                                })}
+                                setShowClosed={setShowClosed}
                             />
                         )
                     },
                     {
                         id: 2,
-                        name: t('Заявки на открытие счета'),
-                        component: <AccountList accounts={[]} />
+                        name: t('Дебетовые'),
+                        component: (
+                            <AccountList
+                                accounts={filterAccounts({
+                                    accounts,
+                                    currency,
+                                    type: 'debit',
+                                    notClosed: showClosed
+                                })}
+                                setShowClosed={setShowClosed}
+                            />
+                        )
                     },
                     {
                         id: 3,
-                        name: t('Закрытые счета'),
+                        name: t('Депозитные'),
                         component: (
                             <AccountList
-                                accounts={filterAccounts(
+                                accounts={filterAccounts({
                                     accounts,
-                                    'closed',
-                                    currency
-                                )}
+                                    currency,
+                                    type: 'deposit',
+                                    notClosed: showClosed
+                                })}
+                                setShowClosed={setShowClosed}
                             />
                         )
                     },
                     {
                         id: 4,
-                        name: t('Заблокированные счета'),
+                        name: t('Кредитные'),
                         component: (
                             <AccountList
-                                accounts={filterAccounts(
+                                accounts={filterAccounts({
                                     accounts,
-                                    'blocked',
-                                    currency
-                                )}
+                                    currency,
+                                    type: 'credit',
+                                    notClosed: showClosed
+                                })}
+                                setShowClosed={setShowClosed}
                             />
                         )
                     }
@@ -94,6 +110,7 @@ export const Accounts = () => {
                     setCurrent={setCurrency}
                 />
             </Menu>
+            <AccountCreationCards />
         </>
     );
 };
