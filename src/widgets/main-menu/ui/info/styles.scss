@@ -4,13 +4,19 @@
         flex-direction: column;
         gap: 24px;
         max-width: 200px;
-
+        
         @media screen and (max-width: 800px) {
             flex-direction: row;
             flex-wrap: wrap;
             max-width: 100%;
             > div:first-child {
                 max-width: 200px;
+            }
+        }
+        @media screen and (max-width: 530px) {
+            > div:first-child, div:nth-child(2) {
+                width: 100%;
+                max-width: 100%;
             }
         }
 

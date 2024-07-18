@@ -7,7 +7,7 @@ export const CREDIT_ACCOUNT = i18n.t('Кредитный счет');
 export const DEBIT_ACCOUNT = i18n.t('Дебетовый счет');
 export const DEPOSIT_ACCOUNT = i18n.t('Депозитный счет');
 
-export const ACCOUNT_NUMBER_REPLACEMENT = '**************';
+export const ACCOUNT_NUMBER_REPLACEMENT = '****************';
 
 export type AccountType = 'credit' | 'debit' | 'deposit';
 
