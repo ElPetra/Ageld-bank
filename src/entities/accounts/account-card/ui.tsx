@@ -30,8 +30,7 @@ export const AccountCard = ({
 }: Props) => {
     const changeShowAllNumber = (e: MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        const elId =
-            (e.target as HTMLButtonElement).closest('button')?.id || '';
+        const elId = e.currentTarget.closest('button')?.id || '';
         setShowAllNumber(prev => (prev === elId ? '' : elId));
     };
     return (

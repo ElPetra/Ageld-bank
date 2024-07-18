@@ -32,9 +32,6 @@
   "Для жителей Москвы и Московской области": "For residents of Moscow and the Moscow region",
   "Вконтакте": "Vkontakte",
   "Чат с банком": "Chat with the bank",
-  "Понедельник - Пятница: ": "Monday - Friday: ",
-  "Суббота: ": "Saturday: ",
-  "Воскресенье - ": "Sunday - ",
   "выходной": "weekend",
   "Объекты в": "Objects in",
   "Москве": "Moscow",
@@ -49,5 +46,10 @@
   "Открытые счета": "Opened accounts",
   "Заявки на открытие счета": "Open account requests",
   "Закрытые счета": "Closed accounts",
-  "Заблокированные счета": "Blocked accounts"
+  "Заблокированные счета": "Blocked accounts",
+  "Банкоматы": "ATMs",
+  "Отделения банка": "Bank branches",
+  "Обменый пункт": "Exchange office",
+  "Открыто круглосуточно": "It is open around the clock",
+  "Обменный пункт": "Exchange office"
 }

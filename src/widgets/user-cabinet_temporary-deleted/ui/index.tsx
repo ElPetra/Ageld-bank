@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import { SearchForm } from 'src/features/forms';
-import { AccountCard } from 'src/entities/accounts';
 import { SmallCardCard } from 'src/entities/cards';
 import { useGetAccountsQuery, useGetCustomerCardsQuery } from 'src/shared/api';
 import { Button, Columns, Preloader } from 'src/shared/ui';
@@ -15,6 +14,7 @@ import {
 } from 'src/shared/model';
 
 import { ProductStatuses } from 'src/entities/product';
+import { AccountCard } from 'src/entities/accounts';
 
 import { MainMenuBlock } from './block';
 import { MainMenuCard } from './card';
