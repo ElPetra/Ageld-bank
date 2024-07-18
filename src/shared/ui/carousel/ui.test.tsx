@@ -2,7 +2,6 @@ import { render, screen } from '@testing-library/react';
 
 import '@testing-library/jest-dom';
 import '@testing-library/jest-dom/jest-globals';
-import { MainCarouselCard } from 'src/widgets/main-menu/ui/carousel/carousel-card';
 
 import { Carousel } from './ui';
 
@@ -22,30 +21,11 @@ describe('Carousel ui', () => {
         render(
             <Carousel
                 cards={[
-                    <MainCarouselCard
-                        key={0}
-                        title={'Депозит Premium'}
-                        content={
-                            'Можем закрыть в любой момент времени, без перерасчета % Возможность частичного снятия Возможность пополнения\nСрок от 180 дней и выше'
-                        }
-                        button={'Открыть депозит'}
-                    />,
-                    <MainCarouselCard
-                        key={1}
-                        title={'Кредитная карта'}
-                        content={
-                            'Целый год без %\nБесплатное обслуживание и кэшбэк за все покупки'
-                        }
-                        button={'Получить карту'}
-                    />,
-                    <MainCarouselCard
-                        key={2}
-                        title={'Кэшбэк на любые покупки'}
-                        content={
-                            'Каждый месяц выбирайте 4 категории с кэшбэком 5%. Товары для дома, цветы, такси Вам решать, на что тратить чаще в этом месяце, чтобы получить максимум выгоды'
-                        }
-                        button={'Хочу кэшбэк!'}
-                    />
+                    <div key={1}>Карточка 1</div>,
+                    <div key={2}>Карточка 2</div>,
+                    <div key={3}>Карточка 3</div>,
+                    <div key={4}>Карточка 4</div>,
+                    <div key={5}>Карточка 5</div>
                 ]}
             />
         );
@@ -57,30 +37,11 @@ describe('Carousel ui', () => {
         render(
             <Carousel
                 cards={[
-                    <MainCarouselCard
-                        key={0}
-                        title={'Депозит Premium'}
-                        content={
-                            'Можем закрыть в любой момент времени, без перерасчета % Возможность частичного снятия Возможность пополнения\nСрок от 180 дней и выше'
-                        }
-                        button={'Открыть депозит'}
-                    />,
-                    <MainCarouselCard
-                        key={1}
-                        title={'Кредитная карта'}
-                        content={
-                            'Целый год без %\nБесплатное обслуживание и кэшбэк за все покупки'
-                        }
-                        button={'Получить карту'}
-                    />,
-                    <MainCarouselCard
-                        key={2}
-                        title={'Кэшбэк на любые покупки'}
-                        content={
-                            'Каждый месяц выбирайте 4 категории с кэшбэком 5%. Товары для дома, цветы, такси Вам решать, на что тратить чаще в этом месяце, чтобы получить максимум выгоды'
-                        }
-                        button={'Хочу кэшбэк!'}
-                    />
+                    <div key={1}>Карточка 1</div>,
+                    <div key={2}>Карточка 2</div>,
+                    <div key={3}>Карточка 3</div>,
+                    <div key={4}>Карточка 4</div>,
+                    <div key={5}>Карточка 5</div>
                 ]}
             />
         );
