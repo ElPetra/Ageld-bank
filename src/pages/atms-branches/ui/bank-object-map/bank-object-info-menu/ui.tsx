@@ -83,7 +83,7 @@ export function BankObjectInfoMenu({ visible, setVisible, bankObject }: Props) {
                         </div>
                         {bankObject.email && (
                             <div className='bank-object-info__contacts'>
-                                <div>{t('E-mail:')}</div>
+                                <div>E-mail:</div>
                                 <Text color='action'>{bankObject.email}</Text>
                             </div>
                         )}

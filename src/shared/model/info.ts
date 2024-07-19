@@ -1,15 +1,13 @@
-import i18n from 'src/shared/model/i18n';
+export const ATM = 'Банкомат';
+export const INFOKIOSK = 'Инфокиоск';
+export const MAIN_OFFICE = 'Главный офис';
+export const BRANCH = 'Отделение банка';
+export const EXCHANGE_OFFICE = 'Обменный пункт';
 
-export const ATM = i18n.t('Банкомат');
-export const INFOKIOSK = i18n.t('Инфокиоск');
-export const MAIN_OFFICE = i18n.t('Главный офис');
-export const BRANCH = i18n.t('Отделение банка');
-export const EXCHANGE_OFFICE = i18n.t('Обменный пункт');
+export const OPTIONS_WORKS = 'Работает';
 
-export const OPTIONS_WORKS = i18n.t('Работает');
-
-export const INDIVIDUALS = i18n.t('Для физических лиц');
-export const LEGAL_ENTITIES = i18n.t('Для юридических лиц');
+export const INDIVIDUALS = 'Для физических лиц';
+export const LEGAL_ENTITIES = 'Для юридических лиц';
 
 export const objectTypeName = {
     ATM: ATM,
@@ -28,15 +26,15 @@ export const segmentName = {
 
 export const options = [
     {
-        title: i18n.t('Тип объекта'),
+        title: 'Тип объекта',
         checkboxes: [ATM, INFOKIOSK, MAIN_OFFICE, BRANCH, EXCHANGE_OFFICE]
     },
     {
-        title: i18n.t('Статус работы'),
+        title: 'Статус работы',
         checkboxes: [OPTIONS_WORKS]
     },
     {
-        title: i18n.t('По типу клиентов'),
+        title: 'По типу клиентов',
         checkboxes: [INDIVIDUALS, LEGAL_ENTITIES]
     }
 ];
