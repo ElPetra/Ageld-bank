@@ -1,13 +1,14 @@
-import { Card, Icon, Text } from 'src/shared/ui';
-
 import { useTranslation } from 'react-i18next';
+
+import { Card, Icon, Text } from 'src/shared/ui';
 import { objectTypeName } from 'src/shared/model';
+import { isOpen } from 'src/shared/lib';
 
-import { getAddress, getSchedule, getStatus } from '../../lib';
-
-import type { BankObject } from 'src/shared/model';
+import { getAddress, getSchedule, getStatus } from '../../../lib';
 
 import type { Dispatch, SetStateAction } from 'react';
+import type { BankObject } from 'src/shared/model';
+
 import './styles.scss';
 
 interface Props {
@@ -42,18 +43,22 @@ export function BankObjectCard({ bankObject, setVisible, setCurrent }: Props) {
             </div>
             <Text weight='medium'>{getAddress(bankObject)}</Text>
             <div className='bank-object__schedule'>
-                {getSchedule(t(bankObject.schedule))}
+                {t('Понедельник - Пятница: ') +
+                    getSchedule(bankObject.schedule[0]) +
+                    '\n' +
+                    t('Суббота: ') +
+                    t(getSchedule(bankObject.schedule[5])) +
+                    '\n' +
+                    t('Воскресенье - ') +
+                    t(getSchedule(bankObject.schedule[6]))}
             </div>
             <div>
                 <Text
-                    color={
-                        getStatus(bankObject.schedule).includes('Открыто') ||
-                        getStatus(bankObject.schedule).includes('Open')
-                            ? 'action'
-                            : 'tertiary'
-                    }
+                    color={isOpen(bankObject.schedule) ? 'action' : 'tertiary'}
                 >
-                    {getStatus(bankObject.schedule)}
+                    {(isOpen(bankObject.schedule)
+                        ? t('Открыто до ')
+                        : t('Закрыто до ')) + getStatus(bankObject.schedule)}
                 </Text>
             </div>
             <button

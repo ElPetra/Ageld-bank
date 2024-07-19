@@ -1,1 +1,0 @@
-export { BankObjectInfoMenu } from './ui';

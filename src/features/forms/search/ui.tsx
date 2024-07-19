@@ -9,9 +9,10 @@ import type { FieldValues } from 'react-hook-form';
 interface Props {
     label?: string;
     size?: 'small' | 'medium' | 'large';
+    onSubmit?: (data: string) => void;
 }
 
-export const SearchForm = ({ label, size = 'large' }: Props) => {
+export const SearchForm = ({ label, size = 'large', onSubmit }: Props) => {
     const { t } = useTranslation();
     const [value, setValue] = useState<string>('');
     const inputRef = useRef<HTMLInputElement>(null);
@@ -23,7 +24,13 @@ export const SearchForm = ({ label, size = 'large' }: Props) => {
     });
 
     return (
-        <Form onSubmit={handleSubmit(() => {})}>
+        <Form
+            onSubmit={handleSubmit(data => {
+                if (onSubmit) {
+                    onSubmit(data.search);
+                }
+            })}
+        >
             <Input
                 type='text'
                 label={label || t('Поиск')}

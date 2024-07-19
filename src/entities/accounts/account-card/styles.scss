@@ -9,6 +9,10 @@
         display: flex;
         flex-direction: column;
         gap: 4px;
+        
+        & :first-child>button{
+                padding: 0 10px;
+        }
     }
 
     &__balance {

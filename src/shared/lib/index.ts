@@ -1,6 +1,7 @@
 export * from './get-error-message';
 export * from './drop-down';
 export * from './format-date';
+export * from './info';
 export * from './card';
 export * from './deposit';
 export * from './trasnform';

@@ -1,12 +1,47 @@
 import i18n from 'src/shared/model/i18n';
 
+export const ATM = i18n.t('Банкомат');
+export const INFOKIOSK = i18n.t('Инфокиоск');
+export const MAIN_OFFICE = i18n.t('Главный офис');
+export const BRANCH = i18n.t('Отделение банка');
+export const EXCHANGE_OFFICE = i18n.t('Обменный пункт');
+
+export const OPTIONS_WORKS = i18n.t('Работает');
+
+export const INDIVIDUALS = i18n.t('Для физических лиц');
+export const LEGAL_ENTITIES = i18n.t('Для юридических лиц');
+
 export const objectTypeName = {
-    ATM: i18n.t('Банкомат'),
-    kiosk: i18n.t('Инфокиоск'),
-    head: i18n.t('Главный офис'),
-    branch: i18n.t('Отделение банка'),
-    exchange: i18n.t('Обменный пункт')
+    ATM: ATM,
+    kiosk: INFOKIOSK,
+    head: MAIN_OFFICE,
+    branch: BRANCH,
+    exchange: EXCHANGE_OFFICE
 };
+
+export const segmentName = {
+    private: INDIVIDUALS,
+    VIP: INDIVIDUALS,
+    corporate: LEGAL_ENTITIES,
+    small_business: LEGAL_ENTITIES
+};
+
+export const options = [
+    {
+        title: i18n.t('Тип объекта'),
+        checkboxes: [ATM, INFOKIOSK, MAIN_OFFICE, BRANCH, EXCHANGE_OFFICE]
+    },
+    {
+        title: i18n.t('Статус работы'),
+        checkboxes: [OPTIONS_WORKS]
+    },
+    {
+        title: i18n.t('По типу клиентов'),
+        checkboxes: [INDIVIDUALS, LEGAL_ENTITIES]
+    }
+];
+
+type Segment = keyof typeof segmentName;
 
 type ObjectType = keyof typeof objectTypeName;
 
@@ -21,8 +56,6 @@ export interface BankInfo {
 
 export interface BankObject {
     objectNumber: number;
-    latitude: number;
-    longitude: number;
     region?: string;
     location: string;
     street?: string;
@@ -30,5 +63,71 @@ export interface BankObject {
     buildingNumberHouse?: string;
     houseNumber: string;
     objectTypeName: ObjectType;
-    schedule: string;
+    schedule: ScheduleData;
+    phoneNumber: string;
+    email?: string;
+    segment: Segment;
+    coordinates: Coordinates;
+}
+
+export interface Coordinates {
+    lat: number;
+    lon: number;
+}
+
+export type ScheduleData = [
+    ScheduleDay | string,
+    ScheduleDay | string,
+    ScheduleDay | string,
+    ScheduleDay | string,
+    ScheduleDay | string,
+    ScheduleDay | string,
+    ScheduleDay | string
+];
+
+export interface BankObjectResponse {
+    object_type: ObjectType;
+    object_number: string;
+    region?: string;
+    area?: string;
+    location: string;
+    street_type?: string;
+    street?: string;
+    microdistrict?: string;
+    building_number_house?: string;
+    house_number: string;
+    phone_number: string;
+    schedule_data: ScheduleDataResponse;
+    email?: string;
+    segment: Segment;
+    currency_exchange: boolean;
+    replenishment: boolean;
+    replenishment_without_card: boolean;
+    withdrawal: boolean;
+    bank_transfer: boolean;
+    transfer_between_accounts: boolean;
+    credit_take: boolean;
+    credit_repayment: boolean;
+    insurance: boolean;
+    coordinates: CoordinatesResponse;
+}
+
+export interface CoordinatesResponse {
+    lat: string;
+    lon: string;
+}
+
+export interface ScheduleDataResponse {
+    monday: ScheduleDay | string;
+    tuesday: ScheduleDay | string;
+    wednesday: ScheduleDay | string;
+    thursday: ScheduleDay | string;
+    friday: ScheduleDay | string;
+    saturday: ScheduleDay | string;
+    sunday: ScheduleDay | string;
+}
+
+export interface ScheduleDay {
+    open: string;
+    close: string;
 }

@@ -26,5 +26,11 @@
   &__schedule {
     white-space: pre-wrap
   }
+
+  &__contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
 }
 
