@@ -23,9 +23,9 @@ export const depositCapitalization: Record<0 | 1 | 2 | 3 | 4 | 5, string> = {
 };
 
 export const depositWithdrawal: Record<1 | 2 | 3, string> = {
-    1: i18n.t('Без возможности снятия средств'),
-    2: i18n.t('До минимальной суммы'),
-    3: i18n.t('В пределах начисленных процентов')
+    1: 'Без возможности снятия средств',
+    2: 'До минимальной суммы',
+    3: 'В пределах начисленных процентов'
 };
 
 export interface DepositProduct {
