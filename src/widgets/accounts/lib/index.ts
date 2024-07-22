@@ -1,18 +1,27 @@
 import { ALL_CURRENCY } from 'src/shared/model';
 
-import type { Account, ProductStatus } from 'src/shared/model';
+import type { Account, AccountType } from 'src/shared/model';
 
-export const filterAccounts = (
-    accounts: Account[] | undefined,
-    status: ProductStatus,
-    currency: string
-): Account[] => {
+interface FilterArgs {
+    accounts: Account[] | undefined;
+    type?: AccountType;
+    currency: string;
+    notClosed: boolean;
+}
+
+export const filterAccounts = ({
+    accounts,
+    type,
+    currency,
+    notClosed
+}: FilterArgs): Account[] => {
     return (
         accounts?.filter(
             el =>
+                (notClosed || el.status !== 'closed') &&
                 (currency === ALL_CURRENCY ||
                     el.currency === currency.toLowerCase()) &&
-                el.status === status
+                (!type || el.type === type)
         ) || []
     );
 };

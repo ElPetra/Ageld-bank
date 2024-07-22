@@ -24,7 +24,7 @@ export const useCarouselControls = (
                       : 0;
             const distance = startPoint - endPoint;
             if (timePassed <= 1500) {
-                const direction = distance > 0 ? 'prev' : 'next';
+                const direction = distance < 0 ? 'prev' : 'next';
                 if (Math.abs(distance) > 50) {
                     changeRotateByControl(direction);
                 }

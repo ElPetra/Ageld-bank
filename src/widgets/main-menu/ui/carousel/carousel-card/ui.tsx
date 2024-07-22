@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-
+import { Link } from 'react-router-dom';
 import { Button, Card, Text } from 'src/shared/ui';
 
 interface Props {
@@ -26,9 +26,11 @@ export const MainCarouselCard = ({
                 {t(title)}
             </Text>
             <Text size='m'>{t(content)}</Text>
-            <Button variant='secondary' size='medium' width='max'>
-                {t(button)}
-            </Button>
+            <Link to={'/'}>
+                <Button variant='secondary' size='medium' width='max'>
+                    {t(button)}
+                </Button>
+            </Link>
         </Card>
     );
 };

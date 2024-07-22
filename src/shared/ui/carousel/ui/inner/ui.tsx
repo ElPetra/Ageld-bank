@@ -8,7 +8,6 @@ interface Props {
     containerRef: RefObject<HTMLDivElement>;
     distance: number;
     angle: number;
-    active: number;
     cards: ReactNode[];
 }
 
@@ -16,20 +15,18 @@ export const CarouselInner = ({
     containerRef,
     distance,
     angle,
-    active,
     cards
 }: Props) => {
-    const elementClassName = (index: number) =>
-        cn('carousel-inner__element', {
-            hidden: active !== index
-        });
+    const carouselInnerClasses = cn('carousel-inner', {
+        overflowHidden: cards.length > 3
+    });
     return (
-        <div className='carousel-inner'>
+        <div className={carouselInnerClasses}>
             <div className='carousel-inner__container' ref={containerRef}>
                 {cards.map((el, index) => (
                     <div
                         key={index}
-                        className={elementClassName(index)}
+                        className='carousel-inner__element'
                         style={{
                             transform: `rotateY(${index * angle}deg) translateZ(${distance}px)`
                         }}

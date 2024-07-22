@@ -115,7 +115,7 @@ export const DepositInfo = ({ deposit }: Props) => {
                             {t('Вид капитализации процентов')}
                         </Text>
                         <Text weight='medium' size='m'>
-                            {depositWithdrawal[deposit.withdrawal]}
+                            {t(`${depositWithdrawal[deposit.withdrawal]}`)}
                         </Text>
                     </div>
                     <div>

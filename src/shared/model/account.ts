@@ -5,7 +5,7 @@ export const CREDIT_ACCOUNT = 'Кредитный счет';
 export const DEBIT_ACCOUNT = 'Дебетовый счет';
 export const DEPOSIT_ACCOUNT = 'Депозитный счет';
 
-export const ACCOUNT_NUMBER_REPLACEMENT = '**************';
+export const ACCOUNT_NUMBER_REPLACEMENT = '****************';
 
 export type AccountType = 'credit' | 'debit' | 'deposit';
 export interface AccountDetails {
