@@ -5,8 +5,8 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 
 import enJSON from 'src/shared/model/i18n/locales/en/en.json';
 import ruJSON from 'src/shared/model/i18n/locales/ru/ru.json';
-import infoEnJSON from 'src/shared/model/i18n/locales/en/info.json';
-import infoRuJSON from 'src/shared/model/i18n/locales/ru/info.json';
+import infoEnJSON from 'src/shared/model/i18n/locales/en/en_info.json';
+import infoRuJSON from 'src/shared/model/i18n/locales/ru/ru_info.json';
 import oldEnJSON from 'src/shared/model/i18n/locales/en/en_old.json';
 import oldRuJSON from 'src/shared/model/i18n/locales/ru/ru_old.json';
 
