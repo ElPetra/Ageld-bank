@@ -17,8 +17,7 @@ const deposits: DepositProduct[] = [
         capitalization: 1,
         replenishment: true,
         withdrawal: 2,
-        revocable: true,
-        percentRate: 17.7
+        revocable: true
     },
     {
         id: '123e4567-e89b-12d3-a456-426614174006',
@@ -31,8 +30,7 @@ const deposits: DepositProduct[] = [
         capitalization: 3,
         replenishment: true,
         withdrawal: 2,
-        revocable: true,
-        percentRate: 15.5
+        revocable: true
     }
 ];
 

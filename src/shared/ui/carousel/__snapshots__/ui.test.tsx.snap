@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Carousel ui match snapshot 1`] = `
+<div
+  class="carousel"
+  data-testid="carousel"
+>
+  <div>
+    <div
+      class="carousel-inner"
+    >
+      <div
+        class="carousel-inner__container"
+      >
+        <div
+          class="carousel-inner__element"
+          style="transform: rotateY(0deg) translateZ(0px);"
+        >
+          <div>
+            Карточка 1
+          </div>
+        </div>
+        <div
+          class="carousel-inner__element hidden"
+          style="transform: rotateY(72deg) translateZ(0px);"
+        >
+          <div>
+            Карточка 2
+          </div>
+        </div>
+        <div
+          class="carousel-inner__element hidden"
+          style="transform: rotateY(144deg) translateZ(0px);"
+        >
+          <div>
+            Карточка 3
+          </div>
+        </div>
+        <div
+          class="carousel-inner__element hidden"
+          style="transform: rotateY(216deg) translateZ(0px);"
+        >
+          <div>
+            Карточка 4
+          </div>
+        </div>
+        <div
+          class="carousel-inner__element hidden"
+          style="transform: rotateY(288deg) translateZ(0px);"
+        >
+          <div>
+            Карточка 5
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="carousel-indicators"
+    >
+      <button
+        class="carousel-indicators__indicator active"
+      />
+      <button
+        class="carousel-indicators__indicator"
+      />
+      <button
+        class="carousel-indicators__indicator"
+      />
+      <button
+        class="carousel-indicators__indicator"
+      />
+      <button
+        class="carousel-indicators__indicator"
+      />
+    </div>
+  </div>
+  <div
+    class="carousel-controls"
+  >
+    <button
+      class="carousel-controls__prev"
+    >
+      <img
+        alt=""
+        height="24"
+        width="40"
+      />
+    </button>
+    <button
+      class="carousel-controls__next"
+    >
+      <img
+        alt=""
+        height="24"
+        width="40"
+      />
+    </button>
+  </div>
+</div>
+`;

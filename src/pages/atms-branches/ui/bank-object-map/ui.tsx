@@ -83,7 +83,7 @@ export function BankObjectMap({
                                                 size='m'
                                                 color='action'
                                             >
-                                                {toPrepositional(city)}
+                                                {t(toPrepositional(city))}
                                             </Text>
                                         </button>
                                     </Text>

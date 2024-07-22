@@ -1,16 +1,16 @@
-import i18n from 'src/shared/model/i18n';
-
 import type { Currency } from 'src/shared/model';
 
+export const mockDepositPercentRate = 11;
+
 export const depositTermFilters = [
-    i18n.t('2 месяца'),
-    i18n.t('3 месяца'),
-    i18n.t('6 месяцев'),
-    i18n.t('9 месяцев'),
-    i18n.t('1 год'),
-    i18n.t('2 года'),
-    i18n.t('3 года'),
-    i18n.t('Другой срок')
+    '2 месяца',
+    '3 месяца',
+    '6 месяцев',
+    '9 месяцев',
+    '1 год',
+    '2 года',
+    '3 года',
+    'Другой срок'
 ];
 
 export const depositCapitalization: Record<0 | 1 | 2 | 3 | 4 | 5, string> = {
@@ -32,15 +32,28 @@ export interface DepositProduct {
     id: string;
     name: string;
     currency: Currency;
-    dayMin: number;
-    dayMax: number;
     amountMin: number;
     amountMax: number;
+    dayMin: number;
+    dayMax: number;
     capitalization: 0 | 1 | 2 | 3 | 4 | 5;
     replenishment: boolean;
     withdrawal: 1 | 2 | 3;
     revocable: boolean;
-    percentRate: number;
+}
+
+export interface DepositProductResponse {
+    id: string;
+    name: string;
+    currency: 'EUR' | 'USD' | 'RUB';
+    amountMin: number;
+    amountMax: number;
+    dayMin: number;
+    dayMax: number;
+    capitalization: 0 | 1 | 2 | 3 | 4 | 5;
+    replenishment: boolean;
+    withdrawal: 1 | 2 | 3;
+    revocable: boolean;
 }
 
 export interface DepositProductDetails {
@@ -103,7 +116,7 @@ export const mockDeposits: CustomerDeposit[] = [
         id: 123456,
         currency: 'rub',
         closedAt: '15.10.2025',
-        name: i18n.t('A-Geld бессрочный'),
+        name: 'бессрочный',
         balance: 1000,
         number: '1234567891017780',
         productId: '1234567'
@@ -112,7 +125,7 @@ export const mockDeposits: CustomerDeposit[] = [
         id: 1234567,
         currency: 'eur',
         closedAt: '15.10.2025',
-        name: i18n.t('A-Geld бессрочный'),
+        name: 'бессрочный',
         balance: 1000,
         number: '1234567891017781',
         productId: '1234567'
@@ -121,7 +134,7 @@ export const mockDeposits: CustomerDeposit[] = [
         id: 12345678,
         currency: 'usd',
         closedAt: '15.10.2025',
-        name: i18n.t('A-Geld бессрочный'),
+        name: 'бессрочный',
         balance: 1000,
         number: '1234567891017782',
         productId: '1234567'

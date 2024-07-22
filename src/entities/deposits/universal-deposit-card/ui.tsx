@@ -33,7 +33,7 @@ export const UniversalDepositCard = ({ deposit }: Props) => {
                         }
                     >
                         <Text weight='bold' size='m'>
-                            {deposit.name}
+                            {t('Депозит A-Geld ') + deposit.name}
                         </Text>
                     </Link>
                 </div>

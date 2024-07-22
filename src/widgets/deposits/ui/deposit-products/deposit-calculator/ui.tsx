@@ -1,20 +1,23 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
-import { depositTermFilters } from 'src/shared/model';
+
+import { depositTermFilters, mockDepositPercentRate } from 'src/shared/model';
 import { Button, Card, Form, Switcher, Text } from 'src/shared/ui';
-import { FilterBar } from 'src/entities/filter';
-import { DepositSumInput, DepositTermInput } from 'src/features/inputs';
-import { UniversalDepositsList } from 'src/features/universal-deposit-list';
 import {
     calculateDaysInYear,
     calculateProfit,
     convertToDays
-} from 'src/shared/lib/deposit';
+} from 'src/shared/lib';
+import { FilterBar } from 'src/entities/filter';
+import { DepositSumInput, DepositTermInput } from 'src/features/inputs';
+import { UniversalDepositsList } from 'src/features/universal-deposit-list';
 
 import type { FieldValues } from 'react-hook-form';
 import type { DepositProfitability, DepositProduct } from 'src/shared/model';
+
 import './styles.scss';
+
 interface Props {
     deposits: DepositProduct[];
 }
@@ -72,14 +75,14 @@ export const DepositCalculator = ({ deposits }: Props) => {
             (item: DepositProduct) => {
                 const profit = calculateProfit(
                     sumDeposit,
-                    item.percentRate,
+                    mockDepositPercentRate,
                     resultTerm,
                     daysInYear
                 );
                 return {
                     id: item.id,
                     name: item.name,
-                    percentRate: item.percentRate,
+                    percentRate: mockDepositPercentRate,
                     currency: item.currency,
                     income: profit + sumDeposit,
                     sum: profit
