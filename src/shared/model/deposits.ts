@@ -1,4 +1,4 @@
-import type { Currency } from 'src/shared/model';
+import type { Currency, CurrencyResponse } from 'src/shared/model';
 
 export const mockDepositPercentRate = 11;
 
@@ -45,7 +45,7 @@ export interface DepositProduct {
 export interface DepositProductResponse {
     id: string;
     name: string;
-    currency: 'EUR' | 'USD' | 'RUB';
+    currency: CurrencyResponse;
     amountMin: number;
     amountMax: number;
     dayMin: number;
@@ -77,8 +77,18 @@ export interface CustomerDeposit {
     currency: Currency;
     balance: number;
     closedAt: string;
-    number: string;
+    account: string;
     id: number;
+}
+
+export interface CustomerDepositResponse {
+    depositProductId: string;
+    productName: string;
+    currencyName: CurrencyResponse;
+    currentBalance: number;
+    closedAt: string;
+    depositAccount: string;
+    depositId: number;
 }
 
 export interface CustomerDepositDetails {
@@ -118,7 +128,7 @@ export const mockDeposits: CustomerDeposit[] = [
         closedAt: '15.10.2025',
         name: 'бессрочный',
         balance: 1000,
-        number: '1234567891017780',
+        account: '1234567891017780',
         productId: '1234567'
     },
     {
@@ -127,7 +137,7 @@ export const mockDeposits: CustomerDeposit[] = [
         closedAt: '15.10.2025',
         name: 'бессрочный',
         balance: 1000,
-        number: '1234567891017781',
+        account: '1234567891017781',
         productId: '1234567'
     },
     {
@@ -136,7 +146,7 @@ export const mockDeposits: CustomerDeposit[] = [
         closedAt: '15.10.2025',
         name: 'бессрочный',
         balance: 1000,
-        number: '1234567891017782',
+        account: '1234567891017782',
         productId: '1234567'
     }
 ];

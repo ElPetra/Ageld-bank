@@ -1,4 +1,5 @@
 export type Currency = 'eur' | 'usd' | 'rub';
+export type CurrencyResponse = 'EUR' | 'USD' | 'RUB';
 
 export const ALL_CURRENCY = 'Все';
 export const RUB = 'RUB';

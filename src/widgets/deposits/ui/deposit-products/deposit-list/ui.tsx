@@ -104,7 +104,7 @@ export const DepositList = ({ deposits, isLoading }: Props) => {
             {isLoading ? (
                 <Preloader />
             ) : (
-                <div>
+                <>
                     {currentDeposits.length ? (
                         <Columns number='2'>
                             {currentDeposits.map(el => (
@@ -119,7 +119,7 @@ export const DepositList = ({ deposits, isLoading }: Props) => {
                             onClick={resetFilter}
                         />
                     )}
-                </div>
+                </>
             )}
         </div>
     );

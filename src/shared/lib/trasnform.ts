@@ -14,7 +14,9 @@ import type {
     AccountDetails,
     DepositProduct,
     DepositProductResponse,
-    Currency
+    Currency,
+    CustomerDeposit,
+    CustomerDepositResponse
 } from 'src/shared/model';
 
 export const transformAccounts = (res: AccountResponse[]): Account[] =>
@@ -183,4 +185,17 @@ export const transformDepositProducts = (
         replenishment: el.replenishment,
         withdrawal: el.withdrawal,
         revocable: el.revocable
+    }));
+
+export const transformCustomerDeposit = (
+    res: CustomerDepositResponse[]
+): CustomerDeposit[] =>
+    res.map(el => ({
+        productId: el.depositProductId,
+        name: el.productName,
+        currency: el.currencyName.toLowerCase() as Currency,
+        balance: el.currentBalance,
+        closedAt: el.closedAt,
+        account: el.depositAccount,
+        id: el.depositId
     }));

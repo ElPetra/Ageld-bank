@@ -38,10 +38,10 @@ export const UniversalDepositCard = ({ deposit }: Props) => {
                     </Link>
                 </div>
                 <div className='universal-deposit-card__info'>
-                    {'number' in deposit && (
+                    {'account' in deposit && (
                         <div>
                             <Text weight='bold' size='l'>
-                                {deposit.number.replace(/.{12}/gm, '******')}
+                                {deposit.account.replace(/.{12}/gm, '******')}
                             </Text>
                             <Text color='tertiary' size='xs'>
                                 {t('Номер депозитного счета')}
