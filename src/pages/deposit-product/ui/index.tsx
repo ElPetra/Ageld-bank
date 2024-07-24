@@ -6,6 +6,7 @@ import {
     RouteName
 } from 'src/shared/model';
 import { Container, Text } from 'src/shared/ui';
+import { useGetDepositProductQuery } from 'src/shared/api';
 import { MessageCard } from 'src/entities/message';
 import { DepositProductDetailsCard } from 'src/entities/deposits';
 import { BackButton } from 'src/features/multi-step-form';
@@ -32,7 +33,10 @@ const deposit: DepositProductDetails = {
 
 export const DepositProductPage = () => {
     const { t } = useTranslation();
-
+    const { data: DepositDetails } = useGetDepositProductQuery({
+        id: 'a5562a77-a301-4719-a29b-18e8b286c718' // данные пока не приходят с api
+    });
+    console.log(DepositDetails);
     return (
         <Container>
             <BackButton />
