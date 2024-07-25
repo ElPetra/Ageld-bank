@@ -5,7 +5,8 @@ import { transformCustomerDeposit } from 'src/shared/lib';
 
 import type { CustomerDeposit } from 'src/shared/model';
 
-const depositBaseUrl = import.meta.env.VITE_BASEURL_GATEWAY + '/api/v1/deposit';
+const depositBaseUrl =
+    import.meta.env.VITE_BASEURL_GATEWAY + '/api/v1/deposit/deposits';
 
 export const depositApi = createApi({
     reducerPath: 'depositApi',
@@ -21,7 +22,7 @@ export const depositApi = createApi({
     endpoints: builder => ({
         getCustomerDeposits: builder.query<CustomerDeposit[], void>({
             query: () => ({
-                url: 's',
+                url: '',
                 method: 'GET'
             }),
             transformResponse: transformCustomerDeposit
