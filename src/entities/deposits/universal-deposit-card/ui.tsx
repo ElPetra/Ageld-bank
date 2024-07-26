@@ -5,12 +5,12 @@ import { Icon, Text, Button, Card } from 'src/shared/ui';
 import { CREATE, RouteName } from 'src/shared/model';
 import { floorDecimals } from 'src/shared/lib';
 
-import type { CustomerDeposit, DepositProfitability } from 'src/shared/model';
+import type { Deposit, DepositProfitability } from 'src/shared/model';
 
 import './styles.scss';
 
 interface Props {
-    deposit: CustomerDeposit | DepositProfitability;
+    deposit: Deposit | DepositProfitability;
 }
 
 export const UniversalDepositCard = ({ deposit }: Props) => {

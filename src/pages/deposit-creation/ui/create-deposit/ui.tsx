@@ -113,7 +113,7 @@ export const CreateDeposit = ({
                     />
                 </Columns>
                 <div className='create-deposit__switchers'>
-                    <Switcher register={register} field='withAutoprolongation'>
+                    <Switcher register={register} field='withAutoProlongation'>
                         {t('Автоматическая пролонгация')}
                     </Switcher>
                     <Switcher register={register} field='withReplenishment'>

@@ -15,8 +15,10 @@ import type {
     DepositProduct,
     DepositProductResponse,
     Currency,
-    CustomerDeposit,
-    CustomerDepositResponse
+    Deposit,
+    DepositResponse,
+    DepositDetails,
+    DepositDetailsResponse
 } from 'src/shared/model';
 
 export const transformAccounts = (res: AccountResponse[]): Account[] =>
@@ -187,9 +189,7 @@ export const transformDepositProducts = (
         revocable: el.revocable
     }));
 
-export const transformCustomerDeposit = (
-    res: CustomerDepositResponse[]
-): CustomerDeposit[] =>
+export const transformDeposit = (res: DepositResponse[]): Deposit[] =>
     res.map(el => ({
         productId: el.depositProductId,
         name: el.productName,
@@ -199,3 +199,26 @@ export const transformCustomerDeposit = (
         account: el.depositAccount,
         id: el.depositId
     }));
+
+export const transformDepositDetails = (
+    res: DepositDetailsResponse
+): DepositDetails => ({
+    name: res.name,
+    currency: res.currency.toLowerCase() as Currency,
+    timeLimited: res.timeLimited,
+    revocable: res.revocable,
+    capitalization: res.capitalization,
+    withdrawal: res.withdrawal,
+    status: res.productStatus,
+    withAutoProlongation: res.autorenStatus,
+    initialAmount: res.initialAmount,
+    balance: res.curBalance,
+    percentBalance: res.percBalance,
+    startDate: res.startDate,
+    endDate: res.endDate,
+    isAutoProlongation: res.autorenewStatus,
+    percentRate: res.percentRate,
+    account: res.mainNum,
+    mAccountId: res.maccountId,
+    pAccountId: res.paccountId
+});

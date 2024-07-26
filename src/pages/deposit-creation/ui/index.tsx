@@ -29,7 +29,7 @@ export const DepositCreationPage = () => {
             sumInput: 10000,
             sumSlider: 10000,
             capitalization: '',
-            withAutoprolongation: false,
+            withAutoProlongation: false,
             withReplenishment: false,
             withDrawal: false
         },

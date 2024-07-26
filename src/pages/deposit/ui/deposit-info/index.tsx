@@ -7,15 +7,17 @@ import { depositWithdrawal } from 'src/shared/model';
 import { ProductStatuses } from 'src/entities/product';
 import { MessageCard } from 'src/entities/message';
 
+import { formatDate, getTerm } from 'src/shared/lib';
+
 import { DepositsMoreInfo } from './more-info';
 
 import type { FieldValues } from 'react-hook-form';
-import type { CustomerDepositDetails } from 'src/shared/model';
+import type { DepositDetails } from 'src/shared/model';
 
 import './styles.scss';
 
 interface Props {
-    deposit: CustomerDepositDetails;
+    deposit: DepositDetails;
 }
 
 export const DepositInfo = ({ deposit }: Props) => {
@@ -23,18 +25,33 @@ export const DepositInfo = ({ deposit }: Props) => {
     const [visible, setVisible] = useState<boolean>(false);
     const { register, watch } = useForm<FieldValues>({
         defaultValues: {
-            autorenStatus: deposit.autorenStatus
+            isAutoProlongation: deposit.isAutoProlongation
         },
         mode: 'onTouched',
         reValidateMode: 'onChange'
     });
 
     const handleCopyDepositId = () => {
-        navigator.clipboard.writeText(String(deposit.mainNum));
+        navigator.clipboard.writeText(String(deposit.account));
     };
 
     const handleCopyDepositAccount = () => {
         navigator.clipboard.writeText(String(deposit.mAccountId));
+    };
+
+    const getDay = (num: number): string => {
+        const lastDigit = num % 10;
+        const lastTwoDigits = num % 100;
+        if (lastTwoDigits >= 11 && lastTwoDigits <= 14) {
+            return t('дней');
+        }
+        if (lastDigit === 1) {
+            return t('день');
+        } else if (lastDigit >= 2 && lastDigit <= 4) {
+            return t('дня');
+        } else {
+            return t('дней');
+        }
     };
 
     return (
@@ -52,7 +69,7 @@ export const DepositInfo = ({ deposit }: Props) => {
                         </Text>
                         <ProductStatuses
                             isMaster={false}
-                            status={deposit.productStatus ? 'active' : 'closed'}
+                            status={deposit.status ? 'active' : 'closed'}
                         />
                     </div>
                     <div>
@@ -63,7 +80,7 @@ export const DepositInfo = ({ deposit }: Props) => {
                     <div className='deposit-info__first-row__number'>
                         <div>
                             <Text color='tertiary'>{t('№ счета : ')}</Text>
-                            <Text color='tertiary'>{deposit.mainNum}</Text>
+                            <Text color='tertiary'>{deposit.account}</Text>
                         </div>
                         <button onClick={handleCopyDepositId}>
                             <Icon icon='copy' />
@@ -104,6 +121,18 @@ export const DepositInfo = ({ deposit }: Props) => {
                     </div>
                     <div>
                         <Text color='tertiary' size='xs'>
+                            {t('Срок действия')}
+                        </Text>
+                        <Text weight='medium' size='m'>
+                            {getTerm(deposit.startDate, deposit.endDate) +
+                                ' ' +
+                                getDay(
+                                    getTerm(deposit.startDate, deposit.endDate)
+                                )}
+                        </Text>
+                    </div>
+                    <div>
+                        <Text color='tertiary' size='xs'>
                             {t('Процентная ставка')}
                         </Text>
                         <Text weight='medium' size='m'>
@@ -123,7 +152,7 @@ export const DepositInfo = ({ deposit }: Props) => {
                             {t('Дата открытия')}
                         </Text>
                         <Text weight='medium' size='m'>
-                            {deposit.startDate}
+                            {formatDate(deposit.startDate)}
                         </Text>
                     </div>
                     <div>
@@ -132,8 +161,9 @@ export const DepositInfo = ({ deposit }: Props) => {
                         </Text>
                         <Switcher
                             register={register}
-                            field='autorenStatus'
+                            field='isAutoProlongation'
                             onChange={() => setVisible(true)}
+                            disabled={!deposit.withAutoProlongation}
                         />
                     </div>
                 </div>
@@ -173,7 +203,7 @@ export const DepositInfo = ({ deposit }: Props) => {
             <Overlay visible={visible}>
                 <MessageCard
                     title={
-                        watch('autorenStatus')
+                        watch('isAutoProlongation')
                             ? t(
                                   'Вы действительно хотите включить автоматическую пролонгацию депозита?'
                               )
