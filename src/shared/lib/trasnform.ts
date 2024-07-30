@@ -194,7 +194,7 @@ export const transformCustomerDeposit = (
         productId: el.depositProductId,
         name: el.productName,
         currency: el.currencyName.toLowerCase() as Currency,
-        balance: el.currentBalance,
+        balance: el.currentBalance || 0,
         closedAt: el.closedAt,
         account: el.depositAccount,
         id: el.depositId

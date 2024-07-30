@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { Icon, Text, Button, Card } from 'src/shared/ui';
 import { CREATE, RouteName } from 'src/shared/model';
-import { floorDecimals } from 'src/shared/lib';
+import { floorDecimals, formatDate } from 'src/shared/lib';
 
 import type { CustomerDeposit, DepositProfitability } from 'src/shared/model';
 
@@ -41,7 +41,7 @@ export const UniversalDepositCard = ({ deposit }: Props) => {
                     {'account' in deposit && (
                         <div>
                             <Text weight='bold' size='l'>
-                                {deposit.account.replace(/.{12}/gm, '******')}
+                                {deposit.account.replace(/.{16}/gm, '******')}
                             </Text>
                             <Text color='tertiary' size='xs'>
                                 {t('Номер депозитного счета')}
@@ -73,7 +73,7 @@ export const UniversalDepositCard = ({ deposit }: Props) => {
                     {'closedAt' in deposit && (
                         <div>
                             <Text weight='bold' size='l'>
-                                {deposit.closedAt}
+                                {formatDate(deposit.closedAt)}
                             </Text>
                             <Text color='tertiary' size='xs'>
                                 {t('Окончание срока депозита')}
