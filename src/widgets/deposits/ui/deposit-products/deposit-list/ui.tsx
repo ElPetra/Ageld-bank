@@ -103,24 +103,21 @@ export const DepositList = ({ deposits, isLoading }: Props) => {
             )}
             {isLoading ? (
                 <Preloader />
+            ) : currentDeposits.length ? (
+                <Columns number='2'>
+                    {currentDeposits.map(el => (
+                        <DepositProductCard key={el.id} deposit={el} />
+                    ))}
+                </Columns>
             ) : (
-                <div>
-                    {currentDeposits.length ? (
-                        <Columns number='2'>
-                            {currentDeposits.map(el => (
-                                <DepositProductCard key={el.id} deposit={el} />
-                            ))}
-                        </Columns>
-                    ) : (
-                        <MessageCard
-                            title={t('Депозит не найден')}
-                            buttonText={t('Сбросить фильтр')}
-                            buttonLink={RouteName.MAIN_PAGE + '/' + ACCOUNTS}
-                            onClick={resetFilter}
-                        />
-                    )}
-                </div>
+                <MessageCard
+                    title={t('Депозит не найден')}
+                    buttonText={t('Сбросить фильтр')}
+                    buttonLink={RouteName.MAIN_PAGE + '/' + ACCOUNTS}
+                    onClick={resetFilter}
+                />
             )}
+            Ю
         </div>
     );
 };

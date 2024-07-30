@@ -55,41 +55,37 @@ export const CardList = ({ cards, isLoading }: Props) => {
             </div>
             {isLoading ? (
                 <Preloader />
-            ) : (
-                <div>
-                    {currentItems.length ? (
-                        <div className='card-list__list'>
-                            {currentItems.map(el => (
-                                <UniversalCardCard key={el.id} card={el}>
-                                    {'status' in el && (
-                                        <ProductStatuses
-                                            isMaster={false}
-                                            status={el.status}
-                                        />
-                                    )}
-                                </UniversalCardCard>
-                            ))}
-                            {cards.length > 10 && (
-                                <Pagination
-                                    currentPage={currentPage}
-                                    totalPages={totalPages}
-                                    onPageChange={(page: number) =>
-                                        setCurrentPage(page)
-                                    }
-                                    pageNumbers={pageNumbers}
+            ) : currentItems.length ? (
+                <div className='card-list__list'>
+                    {currentItems.map(el => (
+                        <UniversalCardCard key={el.id} card={el}>
+                            {'status' in el && (
+                                <ProductStatuses
+                                    isMaster={false}
+                                    status={el.status}
                                 />
                             )}
-                        </div>
-                    ) : (
-                        <MessageCard
-                            title={t(
-                                'На данный момент \n у Вас нет соответствующих карт'
-                            )}
-                            buttonText={t('Создать карту')}
-                            buttonLink={RouteName.CARD_PAGE + '/' + CREATE}
+                        </UniversalCardCard>
+                    ))}
+                    {cards.length > 10 && (
+                        <Pagination
+                            currentPage={currentPage}
+                            totalPages={totalPages}
+                            onPageChange={(page: number) =>
+                                setCurrentPage(page)
+                            }
+                            pageNumbers={pageNumbers}
                         />
                     )}
                 </div>
+            ) : (
+                <MessageCard
+                    title={t(
+                        'На данный момент \n у Вас нет соответствующих карт'
+                    )}
+                    buttonText={t('Создать карту')}
+                    buttonLink={RouteName.CARD_PAGE + '/' + CREATE}
+                />
             )}
         </div>
     );
