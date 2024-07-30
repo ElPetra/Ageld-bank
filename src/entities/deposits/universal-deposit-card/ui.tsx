@@ -25,7 +25,7 @@ export const UniversalDepositCard = ({ deposit }: Props) => {
                     </div>
                     <Link
                         to={
-                            ('number' in deposit
+                            ('account' in deposit
                                 ? RouteName.DEPOSIT_PAGE
                                 : RouteName.DEPOSIT_PRODUCT_PAGE) +
                             '/' +
