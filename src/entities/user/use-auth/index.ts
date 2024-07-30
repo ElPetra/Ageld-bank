@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from 'src/app/store';
 import {
     localStorageApi,
     useAddEmailMutation,
+    useAutoRenewalDepositMutation,
     useChangePasswordMutation,
     useCheckCodeMutation,
     useCheckMissRegistrationMutation,
@@ -33,11 +34,14 @@ export const useAuth = () => {
     const [checkCode] = useCheckCodeMutation();
     const [createProfile] = useCreateProfileMutation();
     const [generateToken] = useGenerateTokenMutation();
-
     const [changePassword] = useChangePasswordMutation();
     const [newEmail] = useNewEmailMutation();
     const [addEmail] = useAddEmailMutation();
+
     const [createAccount] = useCreateAccountMutation();
+
+    const [autoRenewalDeposit] = useAutoRenewalDepositMutation();
+
     const getError = useCallback(
         async (
             data:
@@ -191,6 +195,24 @@ export const useAuth = () => {
         [getError, getAccessToken, createAccount]
     );
 
+    const autoRenewedDeposit = useCallback(
+        async (
+            depositId: string,
+            isAutoProlongation: boolean
+        ): Promise<void | string> => {
+            const accessToken = await getAccessToken();
+            if (accessToken) {
+                const data = await autoRenewalDeposit({
+                    depositId,
+                    isAutoProlongation
+                });
+                setIsLoading(false);
+                return getError(data);
+            }
+        },
+        [getError, getAccessToken, autoRenewalDeposit]
+    );
+
     const extendedDeposit = useCallback(
         async (id: string, term: number): Promise<void | string> => {
             // eslint-disable-next-line
@@ -215,6 +237,7 @@ export const useAuth = () => {
         changedEmail,
         addedEmail,
         createdAccount,
+        autoRenewedDeposit,
         extendedDeposit,
         setError,
         error,
