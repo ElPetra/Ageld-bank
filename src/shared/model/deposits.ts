@@ -13,7 +13,10 @@ export const depositTermFilters = [
     'Другой срок'
 ];
 
-export const depositCapitalization: Record<0 | 1 | 2 | 3 | 4 | 5, string> = {
+export type DepositCapitalization = 0 | 1 | 2 | 3 | 4 | 5;
+export type DepositWithdrawal = 1 | 2 | 3;
+
+export const depositCapitalization: Record<DepositCapitalization, string> = {
     0: 'Без капитализации',
     1: 'Ежедневная',
     2: 'Ежемесячная',
@@ -22,10 +25,10 @@ export const depositCapitalization: Record<0 | 1 | 2 | 3 | 4 | 5, string> = {
     5: 'Ежегодная'
 };
 
-export const depositWithdrawal: Record<1 | 2 | 3, string> = {
-    1: 'Без возможности снятия средств',
+export const depositWithdrawal: Record<DepositWithdrawal, string> = {
+    1: 'Без снятия',
     2: 'До минимальной суммы',
-    3: 'В пределах начисленных процентов'
+    3: 'Снятие процентов'
 };
 
 export interface DepositProduct {
@@ -36,9 +39,9 @@ export interface DepositProduct {
     amountMax: number;
     dayMin: number;
     dayMax: number;
-    capitalization: 0 | 1 | 2 | 3 | 4 | 5;
+    capitalization: DepositCapitalization;
     replenishment: boolean;
-    withdrawal: 1 | 2 | 3;
+    withdrawal: DepositWithdrawal;
     revocable: boolean;
 }
 
@@ -50,9 +53,9 @@ export interface DepositProductResponse {
     amountMax: number;
     dayMin: number;
     dayMax: number;
-    capitalization: 0 | 1 | 2 | 3 | 4 | 5;
+    capitalization: DepositCapitalization;
     replenishment: boolean;
-    withdrawal: 1 | 2 | 3;
+    withdrawal: DepositWithdrawal;
     revocable: boolean;
 }
 
@@ -71,7 +74,7 @@ export interface DepositProductDetails {
     percentRate: number;
 }
 
-export interface CustomerDeposit {
+export interface Deposit {
     productId: string;
     name: string;
     currency: Currency;
@@ -81,7 +84,7 @@ export interface CustomerDeposit {
     id: number;
 }
 
-export interface CustomerDepositResponse {
+export interface DepositResponse {
     depositProductId: string;
     productName: string;
     currencyName: CurrencyResponse;
@@ -91,25 +94,46 @@ export interface CustomerDepositResponse {
     depositId: number;
 }
 
-export interface CustomerDepositDetails {
+export interface DepositDetails {
     name: string;
     currency: Currency;
     timeLimited: boolean;
     revocable: boolean;
-    capitalization: 0 | 1 | 2 | 3 | 4 | 5;
-    withdrawal: 1 | 2 | 3;
-    productStatus: boolean;
-    autorenStatus: boolean;
+    capitalization: DepositCapitalization;
+    withdrawal: DepositWithdrawal;
+    status: boolean;
+    withAutoProlongation: boolean;
     initialAmount: number;
     balance: number;
     percentBalance: number;
     startDate: string;
     endDate: string;
+    isAutoProlongation: boolean;
+    percentRate: number;
+    account: string;
+    mAccountId?: string;
+    pAccountId?: string;
+}
+
+export interface DepositDetailsResponse {
+    name: string;
+    currency: CurrencyResponse;
+    timeLimited: boolean;
+    revocable: boolean;
+    capitalization: DepositCapitalization;
+    withdrawal: DepositWithdrawal;
+    productStatus: boolean;
+    autorenStatus: boolean;
+    initialAmount: number;
+    curBalance: number;
+    percBalance: number;
+    startDate: string;
+    endDate: string;
     autorenewStatus: boolean;
     percentRate: number;
     mainNum: string;
-    mAccountId?: string;
-    pAccountId?: string;
+    maccountId?: string;
+    paccountId?: string;
 }
 
 export interface DepositProfitability {
@@ -120,33 +144,3 @@ export interface DepositProfitability {
     sum: number;
     income: number;
 }
-
-export const mockDeposits: CustomerDeposit[] = [
-    {
-        id: 123456,
-        currency: 'rub',
-        closedAt: '15.10.2025',
-        name: 'бессрочный',
-        balance: 1000,
-        account: '1234567891017780',
-        productId: '1234567'
-    },
-    {
-        id: 1234567,
-        currency: 'eur',
-        closedAt: '15.10.2025',
-        name: 'бессрочный',
-        balance: 1000,
-        account: '1234567891017781',
-        productId: '1234567'
-    },
-    {
-        id: 12345678,
-        currency: 'usd',
-        closedAt: '15.10.2025',
-        name: 'бессрочный',
-        balance: 1000,
-        account: '1234567891017782',
-        productId: '1234567'
-    }
-];

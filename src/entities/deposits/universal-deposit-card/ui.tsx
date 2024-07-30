@@ -5,12 +5,12 @@ import { Icon, Text, Button, Card } from 'src/shared/ui';
 import { CREATE, RouteName } from 'src/shared/model';
 import { floorDecimals, formatDate } from 'src/shared/lib';
 
-import type { CustomerDeposit, DepositProfitability } from 'src/shared/model';
+import type { Deposit, DepositProfitability } from 'src/shared/model';
 
 import './styles.scss';
 
 interface Props {
-    deposit: CustomerDeposit | DepositProfitability;
+    deposit: Deposit | DepositProfitability;
 }
 
 export const UniversalDepositCard = ({ deposit }: Props) => {
@@ -25,7 +25,7 @@ export const UniversalDepositCard = ({ deposit }: Props) => {
                     </div>
                     <Link
                         to={
-                            ('number' in deposit
+                            ('account' in deposit
                                 ? RouteName.DEPOSIT_PAGE
                                 : RouteName.DEPOSIT_PRODUCT_PAGE) +
                             '/' +

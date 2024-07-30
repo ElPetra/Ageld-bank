@@ -1,12 +1,11 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import { localStorageApi } from 'src/shared/api';
-import { transformCustomerDeposit } from 'src/shared/lib';
+import { transformDepositDetails, transformDeposit } from 'src/shared/lib';
 
-import type { CustomerDeposit } from 'src/shared/model';
+import type { DepositDetails, Deposit } from 'src/shared/model';
 
-const depositBaseUrl =
-    import.meta.env.VITE_BASEURL_GATEWAY + '/api/v1/deposit/deposits';
+const depositBaseUrl = import.meta.env.VITE_BASEURL_GATEWAY + '/api/v1/deposit';
 
 export const depositApi = createApi({
     reducerPath: 'depositApi',
@@ -20,14 +19,24 @@ export const depositApi = createApi({
         }
     }),
     endpoints: builder => ({
-        getCustomerDeposits: builder.query<CustomerDeposit[], void>({
+        getDeposits: builder.query<Deposit[], void>({
             query: () => ({
-                url: '',
+                url: '/deposits',
                 method: 'GET'
             }),
-            transformResponse: transformCustomerDeposit
+            transformResponse: transformDeposit
+        }),
+        getDepositDetails: builder.query<DepositDetails, { id: string }>({
+            query: ({ id }) => ({
+                url: '/info',
+                params: {
+                    deposit_id: id
+                },
+                method: 'GET'
+            }),
+            transformResponse: transformDepositDetails
         })
     })
 });
 
-export const { useGetCustomerDepositsQuery } = depositApi;
+export const { useGetDepositsQuery, useGetDepositDetailsQuery } = depositApi;
