@@ -65,7 +65,7 @@ export const DepositInfo = ({ deposit }: Props) => {
                 <div className='deposit-info__first-row__main'>
                     <div className='deposit-info__first-row__main__info'>
                         <Text size='l' weight='bold'>
-                            {deposit.name}
+                            {t('Депозит A-Geld ') + deposit.name}
                         </Text>
                         <ProductStatuses
                             isMaster={false}
