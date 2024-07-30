@@ -26,9 +26,9 @@ export const depositCapitalization: Record<DepositCapitalization, string> = {
 };
 
 export const depositWithdrawal: Record<DepositWithdrawal, string> = {
-    1: 'Без возможности снятия средств',
+    1: 'Без снятия',
     2: 'До минимальной суммы',
-    3: 'В пределах начисленных процентов'
+    3: 'Снятие процентов'
 };
 
 export interface DepositProduct {

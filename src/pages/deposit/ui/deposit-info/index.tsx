@@ -174,7 +174,7 @@ export const DepositInfo = ({ deposit }: Props) => {
                                 {t('Сумма на депозитном счете')}
                             </Text>
                             <Text size='l' weight='bold'>
-                                {`${deposit.balance} ${deposit.currency.toUpperCase()}`}
+                                {`${deposit.balance.toLocaleString()} ${deposit.currency.toUpperCase()}`}
                             </Text>
                         </div>
                         <div>
@@ -182,7 +182,7 @@ export const DepositInfo = ({ deposit }: Props) => {
                                 {t('Изначальная сумма депозита')}
                             </Text>
                             <Text size='l' weight='bold'>
-                                {`${deposit.initialAmount} ${deposit.currency.toUpperCase()}`}
+                                {`${deposit.initialAmount.toLocaleString()} ${deposit.currency.toUpperCase()}`}
                             </Text>
                         </div>
                     </div>
