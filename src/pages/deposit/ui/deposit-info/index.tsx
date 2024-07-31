@@ -40,7 +40,7 @@ export const DepositInfo = ({ deposit }: Props) => {
     };
 
     const handleCopyDepositAccount = () => {
-        navigator.clipboard.writeText(String(deposit.mAccountId));
+        navigator.clipboard.writeText(String(deposit.pAccountId));
     };
 
     const getDay = (num: number): string => {
@@ -90,17 +90,21 @@ export const DepositInfo = ({ deposit }: Props) => {
                             <Icon icon='copy' />
                         </button>
                     </div>
-                    <div className='deposit-info__first-row__number'>
-                        <div>
-                            <Text color='tertiary'>
-                                {t('№ счета с процентами : ')}
-                            </Text>
-                            <Text color='tertiary'>{deposit.mAccountId}</Text>
+                    {deposit.pAccountId && (
+                        <div className='deposit-info__first-row__number'>
+                            <div>
+                                <Text color='tertiary'>
+                                    {t('№ счета с процентами : ')}
+                                </Text>
+                                <Text color='tertiary'>
+                                    {deposit.pAccountId}
+                                </Text>
+                            </div>
+                            <button onClick={handleCopyDepositAccount}>
+                                <Icon icon='copy' />
+                            </button>
                         </div>
-                        <button onClick={handleCopyDepositAccount}>
-                            <Icon icon='copy' />
-                        </button>
-                    </div>
+                    )}
                 </div>
             </div>
             <div className='deposit-info__second-row'>
