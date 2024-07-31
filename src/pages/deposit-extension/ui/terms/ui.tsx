@@ -11,10 +11,13 @@ import type { FieldValues } from 'react-hook-form';
 interface Props {
     isLast?: boolean;
     setFormStep?: Dispatch<SetStateAction<number>>;
-    extendedDeposit: (id: string, term: number) => Promise<string | void>;
+    prolongedDeposit: (
+        depositId: string,
+        renewalTermsDays: number
+    ) => Promise<string | void>;
 }
 
-export const Terms = ({ isLast, setFormStep, extendedDeposit }: Props) => {
+export const Terms = ({ isLast, setFormStep, prolongedDeposit }: Props) => {
     const { t } = useTranslation();
     const { id } = useParams<string>();
     const {
@@ -29,7 +32,7 @@ export const Terms = ({ isLast, setFormStep, extendedDeposit }: Props) => {
     });
 
     const onSubmit = async (data: FieldValues) => {
-        await extendedDeposit(id || '', data.termInput);
+        await prolongedDeposit(id || '', data.termInput * 30);
         if (setFormStep && !isLast) {
             setFormStep(curr => {
                 return curr + 1;

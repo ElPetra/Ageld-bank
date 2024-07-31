@@ -13,7 +13,8 @@ import {
     useCreateProfileMutation,
     useGenerateCodeMutation,
     useGenerateTokenMutation,
-    useNewEmailMutation
+    useNewEmailMutation,
+    useProlongDepositMutation
 } from 'src/shared/api';
 import { getErrorMessage } from 'src/shared/lib';
 
@@ -40,6 +41,7 @@ export const useAuth = () => {
 
     const [createAccount] = useCreateAccountMutation();
 
+    const [prolongDeposit] = useProlongDepositMutation();
     const [autoRenewalDeposit] = useAutoRenewalDepositMutation();
 
     const getError = useCallback(
@@ -195,6 +197,24 @@ export const useAuth = () => {
         [getError, getAccessToken, createAccount]
     );
 
+    const prolongedDeposit = useCallback(
+        async (
+            depositId: string,
+            renewalTermsDays: number
+        ): Promise<void | string> => {
+            const accessToken = await getAccessToken();
+            if (accessToken) {
+                const data = await prolongDeposit({
+                    depositId,
+                    renewalTermsDays
+                });
+                setIsLoading(false);
+                return getError(data);
+            }
+        },
+        [getError, getAccessToken, prolongDeposit]
+    );
+
     const autoRenewedDeposit = useCallback(
         async (
             depositId: string,
@@ -213,15 +233,6 @@ export const useAuth = () => {
         [getError, getAccessToken, autoRenewalDeposit]
     );
 
-    const extendedDeposit = useCallback(
-        async (id: string, term: number): Promise<void | string> => {
-            // eslint-disable-next-line
-            console.log('extend', id, 'for', term);
-            setIsLoading(false);
-        },
-        []
-    );
-
     return {
         authStatus,
         getAccessToken,
@@ -237,8 +248,8 @@ export const useAuth = () => {
         changedEmail,
         addedEmail,
         createdAccount,
+        prolongedDeposit,
         autoRenewedDeposit,
-        extendedDeposit,
         setError,
         error,
         isLoading

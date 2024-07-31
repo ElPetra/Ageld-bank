@@ -12,7 +12,7 @@ import { Terms } from './terms';
 export const DepositExtensionPage = () => {
     const { t } = useTranslation();
     const { id } = useParams<string>();
-    const { extendedDeposit, error, isLoading } = useAuth();
+    const { prolongedDeposit, error, isLoading } = useAuth();
     return (
         <Container>
             <BackButton />
@@ -22,7 +22,7 @@ export const DepositExtensionPage = () => {
                     {
                         id: 1,
                         title: t('Условия пролонгации депозита'),
-                        component: <Terms extendedDeposit={extendedDeposit} />
+                        component: <Terms prolongedDeposit={prolongedDeposit} />
                     },
                     {
                         id: 2,
