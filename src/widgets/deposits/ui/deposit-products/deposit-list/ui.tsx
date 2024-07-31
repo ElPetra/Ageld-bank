@@ -117,7 +117,6 @@ export const DepositList = ({ deposits, isLoading }: Props) => {
                     onClick={resetFilter}
                 />
             )}
-            Ю
         </div>
     );
 };

@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
 
 import { Icon, Text, Button, Card, Switcher, Overlay } from 'src/shared/ui';
 import { depositWithdrawal } from 'src/shared/model';
 import { ProductStatuses } from 'src/entities/product';
+import { useAuth } from 'src/entities/user';
 import { MessageCard } from 'src/entities/message';
 
 import { formatDate, getTerm } from 'src/shared/lib';
@@ -22,8 +24,10 @@ interface Props {
 
 export const DepositInfo = ({ deposit }: Props) => {
     const { t } = useTranslation();
+    const { id } = useParams();
+    const { autoRenewedDeposit, error } = useAuth();
     const [visible, setVisible] = useState<boolean>(false);
-    const { register, watch } = useForm<FieldValues>({
+    const { register, reset, watch } = useForm<FieldValues>({
         defaultValues: {
             isAutoProlongation: deposit.isAutoProlongation
         },
@@ -32,11 +36,11 @@ export const DepositInfo = ({ deposit }: Props) => {
     });
 
     const handleCopyDepositId = () => {
-        navigator.clipboard.writeText(String(deposit.account));
+        navigator.clipboard.writeText(String(deposit.mainAccount));
     };
 
     const handleCopyDepositAccount = () => {
-        navigator.clipboard.writeText(String(deposit.mAccountId));
+        navigator.clipboard.writeText(String(deposit.percentAccount));
     };
 
     const getDay = (num: number): string => {
@@ -80,23 +84,27 @@ export const DepositInfo = ({ deposit }: Props) => {
                     <div className='deposit-info__first-row__number'>
                         <div>
                             <Text color='tertiary'>{t('№ счета : ')}</Text>
-                            <Text color='tertiary'>{deposit.account}</Text>
+                            <Text color='tertiary'>{deposit.mainAccount}</Text>
                         </div>
                         <button onClick={handleCopyDepositId}>
                             <Icon icon='copy' />
                         </button>
                     </div>
-                    <div className='deposit-info__first-row__number'>
-                        <div>
-                            <Text color='tertiary'>
-                                {t('№ счета с процентами : ')}
-                            </Text>
-                            <Text color='tertiary'>{deposit.mAccountId}</Text>
+                    {deposit.percentAccount && (
+                        <div className='deposit-info__first-row__number'>
+                            <div>
+                                <Text color='tertiary'>
+                                    {t('№ счета с процентами : ')}
+                                </Text>
+                                <Text color='tertiary'>
+                                    {deposit.percentAccount}
+                                </Text>
+                            </div>
+                            <button onClick={handleCopyDepositAccount}>
+                                <Icon icon='copy' />
+                            </button>
                         </div>
-                        <button onClick={handleCopyDepositAccount}>
-                            <Icon icon='copy' />
-                        </button>
-                    </div>
+                    )}
                 </div>
             </div>
             <div className='deposit-info__second-row'>
@@ -215,8 +223,20 @@ export const DepositInfo = ({ deposit }: Props) => {
                     width={256}
                     buttonText={t('Да')}
                     secondButtonText={t('Отмена')}
-                    onClick={() => setVisible(false)}
-                    secondOnClick={() => setVisible(false)}
+                    onClick={async () => {
+                        await autoRenewedDeposit(
+                            id || '',
+                            watch('isAutoProlongation')
+                        );
+                        if (error) {
+                            reset();
+                        }
+                        setVisible(false);
+                    }}
+                    secondOnClick={() => {
+                        reset();
+                        setVisible(false);
+                    }}
                 />
             </Overlay>
         </Card>

@@ -14,7 +14,7 @@ export const depositTermFilters = [
 ];
 
 export type DepositCapitalization = 0 | 1 | 2 | 3 | 4 | 5;
-export type DepositWithdrawal = 1 | 2 | 3;
+export type DepositWithdrawal = 0 | 1 | 2 | 3;
 
 export const depositCapitalization: Record<DepositCapitalization, string> = {
     0: 'Без капитализации',
@@ -26,6 +26,7 @@ export const depositCapitalization: Record<DepositCapitalization, string> = {
 };
 
 export const depositWithdrawal: Record<DepositWithdrawal, string> = {
+    0: 'Нет данных',
     1: 'Без снятия',
     2: 'До минимальной суммы',
     3: 'Снятие процентов'
@@ -110,7 +111,8 @@ export interface DepositDetails {
     endDate: string;
     isAutoProlongation: boolean;
     percentRate: number;
-    account: string;
+    mainAccount: string;
+    percentAccount?: string;
     mAccountId?: string;
     pAccountId?: string;
 }
@@ -132,6 +134,7 @@ export interface DepositDetailsResponse {
     autorenewStatus: boolean;
     percentRate: number;
     mainNum: string;
+    percNum?: string;
     maccountId?: string;
     paccountId?: string;
 }
