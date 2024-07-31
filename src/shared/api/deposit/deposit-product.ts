@@ -28,8 +28,8 @@ export const depositProductApi = createApi({
             {
                 query: ({ id }) => ({
                     url:
-                        import.meta.env.VITE_BASEURL_DEPOSIT +
-                        `/api/v1/deposits/${id}`,
+                        import.meta.env.VITE_BASEURL_GATEWAY +
+                        `/api/v1/deposit/deposits/${id}`,
                     method: 'GET'
                 })
             }
