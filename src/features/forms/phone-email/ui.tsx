@@ -6,34 +6,39 @@ import publicContract from 'src/assets/public-contract.pdf';
 import { Button, Checkbox, Form, Link, Text } from 'src/shared/ui';
 import { RouteName } from 'src/shared/model';
 import { useAuth } from 'src/entities/user';
-import { PhoneInput } from 'src/features/inputs';
+import { EmailInput, PhoneInput } from 'src/features/inputs';
 
 import type { FieldValues } from 'react-hook-form';
 import type { Dispatch, SetStateAction } from 'react';
+
+import './styles.scss';
 
 interface Props {
     variant?: 'login' | 'registration' | 'recovery';
     isLast?: boolean;
     setFormStep?: Dispatch<SetStateAction<number>>;
     setPhone: Dispatch<SetStateAction<string>>;
+    setEmail: Dispatch<SetStateAction<string>>;
 }
-export const PhoneForm = ({
+export const PhoneEmailForm = ({
     variant = 'login',
     isLast,
     setFormStep,
     setPhone
 }: Props) => {
     const [clickedLinks, setClickedLinks] = useState<number[]>([]);
+    const [isPhone, setIsPhone] = useState<boolean>(true);
     const {
         register,
         setValue,
+        getValues,
         handleSubmit,
         watch,
         formState: { errors, isDirty, isValid }
     } = useForm<FieldValues>({
         mode: 'onTouched',
         reValidateMode: 'onChange',
-        defaultValues: { phone: '', checkbox: [] }
+        defaultValues: { phone: '', email: '', checkbox: [] }
     });
     const { checkedMissRegistration, checkedRegistration, error } = useAuth();
     const { t } = useTranslation();
@@ -44,16 +49,23 @@ export const PhoneForm = ({
     };
     const allLinksClicked = clickedLinks.length === 1;
     const onSubmit = async (data: FieldValues) => {
-        const phone: string = data.phone.replace(/\D/gm, '');
-        setPhone(phone);
+        let fieldData: string;
+        if (isPhone) {
+            fieldData = data.phone.replace(/\D/gm, '');
+            setPhone(fieldData);
+        } else {
+            fieldData = data.email;
+            setPhone(fieldData);
+        }
+
         let isError = false;
         if (variant === 'registration') {
-            if (await checkedMissRegistration(phone)) {
+            if (await checkedMissRegistration(fieldData)) {
                 isError = true;
             }
         }
         if (variant === 'login' || variant === 'recovery') {
-            if (await checkedRegistration(phone)) {
+            if (await checkedRegistration(fieldData)) {
                 isError = true;
             }
         }
@@ -65,13 +77,45 @@ export const PhoneForm = ({
     };
     return (
         <Form onSubmit={handleSubmit(onSubmit)}>
-            <PhoneInput
-                clear={() => setValue('phone', '')}
-                field='phone'
-                register={register}
-                isError={!!errors?.phone}
-                error={error}
-            />
+            <div className='phone-email__menu'>
+                <button
+                    type='button'
+                    className={`phone-email__menu__item ${isPhone && 'active'} `}
+                    onClick={() => setIsPhone(true)}
+                >
+                    <Text size='m' weight='medium' align='center'>
+                        {t('Телефон')}
+                    </Text>
+                </button>
+                <button
+                    type='button'
+                    className={`phone-email__menu__item ${!isPhone && 'active'} `}
+                    onClick={() => setIsPhone(false)}
+                >
+                    <Text size='m' weight='medium' align='center'>
+                        Email
+                    </Text>
+                </button>
+            </div>
+            {isPhone ? (
+                <PhoneInput
+                    defaultPhone={getValues('phone')}
+                    clear={() => setValue('phone', '')}
+                    field='phone'
+                    register={register}
+                    isError={!!errors?.phone}
+                    error={error}
+                />
+            ) : (
+                <EmailInput
+                    defaultEmail={getValues('email')}
+                    clear={() => setValue('email', '')}
+                    field='email'
+                    register={register}
+                    isError={!!errors?.email}
+                    error={error}
+                />
+            )}
             {variant === 'registration' && (
                 <Checkbox register={register} field='checkbox'>
                     <Text>
