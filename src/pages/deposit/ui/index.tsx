@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import { DEPOSITS, RouteName } from 'src/shared/model';
@@ -15,6 +15,7 @@ import { DepositInfo } from './deposit-info';
 
 export const DepositPage = () => {
     const { id } = useParams();
+    const navigate = useNavigate();
     const { signedOut } = useAuth();
     const { t } = useTranslation();
     const {
@@ -35,7 +36,12 @@ export const DepositPage = () => {
                 <Preloader />
             ) : (
                 <>
-                    <BackButton />
+                    <BackButton
+                        onTop={true}
+                        onClick={() =>
+                            navigate(RouteName.MAIN_PAGE + '/' + DEPOSITS)
+                        }
+                    />
                     {deposit ? (
                         <Menu
                             variant='secondary'

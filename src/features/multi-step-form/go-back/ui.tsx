@@ -6,16 +6,17 @@ import { Icon, Text } from 'src/shared/ui';
 import './styles.scss';
 
 interface Props {
+    onTop?: boolean;
     onClick?: () => void;
 }
 
-export const BackButton = ({ onClick }: Props) => {
+export const BackButton = ({ onTop, onClick }: Props) => {
     const navigate = useNavigate();
     const { t } = useTranslation();
 
     return (
         <button
-            className={`back-button ${!onClick && 'back-button__top'}`}
+            className={`back-button ${(!onClick || onTop) && 'back-button__top'}`}
             onClick={() => (onClick ? onClick() : navigate(-1))}
         >
             <Icon icon='arrow-left-accent' />
