@@ -218,7 +218,8 @@ export const transformDepositDetails = (
     endDate: res.endDate,
     isAutoProlongation: res.autorenewStatus,
     percentRate: res.percentRate || 0,
-    account: res.mainNum,
+    mainAccount: res.mainNum,
+    percentAccount: res.percNum,
     mAccountId: res.maccountId,
     pAccountId: res.paccountId
 });

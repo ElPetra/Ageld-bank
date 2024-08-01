@@ -111,7 +111,8 @@ export interface DepositDetails {
     endDate: string;
     isAutoProlongation: boolean;
     percentRate: number;
-    account: string;
+    mainAccount: string;
+    percentAccount?: string;
     mAccountId?: string;
     pAccountId?: string;
 }
@@ -133,6 +134,7 @@ export interface DepositDetailsResponse {
     autorenewStatus: boolean;
     percentRate: number;
     mainNum: string;
+    percNum?: string;
     maccountId?: string;
     paccountId?: string;
 }
