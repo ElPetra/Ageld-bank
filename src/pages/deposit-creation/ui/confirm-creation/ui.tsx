@@ -37,10 +37,10 @@ export const ConfirmCreation = ({
                 title={t('Вы действительно хотите открыть депозит?')}
                 width={256}
                 icon={'confirmation-lady'}
-                buttonText={t('Да')}
-                type='submit'
-                secondButtonText={t('Отмена')}
-                secondButtonLink={RouteName.MAIN_PAGE + '/' + DEPOSITS}
+                buttonText={t('Отмена')}
+                buttonLink={RouteName.MAIN_PAGE + '/' + DEPOSITS}
+                secondButtonText={t('Да')}
+                secondType='submit'
             />
         </Form>
     );

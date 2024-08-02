@@ -21,6 +21,7 @@ interface Props {
     secondButtonText?: string;
     secondButtonLink?: string;
     secondOnClick?: () => void;
+    secondType?: 'submit' | 'button';
 }
 
 export const MessageCard = ({
@@ -38,7 +39,8 @@ export const MessageCard = ({
     secondButtonText,
     type = 'button',
     secondButtonLink = RouteName.MAIN_PAGE + '/',
-    secondOnClick
+    secondOnClick,
+    secondType = 'button'
 }: Props) => {
     return (
         <div
@@ -93,10 +95,10 @@ export const MessageCard = ({
                             </div>
                         )}
                         {secondButtonText &&
-                            (secondOnClick ? (
+                            (secondOnClick || secondType === 'submit' ? (
                                 <Button
                                     width='max'
-                                    type='button'
+                                    type={secondType}
                                     variant='secondary'
                                     onClick={secondOnClick}
                                 >
@@ -107,7 +109,7 @@ export const MessageCard = ({
                                     <Link to={secondButtonLink}>
                                         <Button
                                             width='max'
-                                            type='button'
+                                            type={secondType}
                                             variant='secondary'
                                         >
                                             {secondButtonText}

@@ -39,10 +39,10 @@ export const ConfirmExtension = ({
                 title={t('Вы действительно хотите пролонгировать депозит?')}
                 width={256}
                 icon={'confirmation-lady'}
-                buttonText={t('Да')}
-                type='submit'
-                secondButtonText={t('Отмена')}
-                secondButtonLink={RouteName.DEPOSIT_PAGE + '/' + id}
+                buttonText={t('Отмена')}
+                buttonLink={RouteName.DEPOSIT_PAGE + '/' + id}
+                secondButtonText={t('Да')}
+                secondType='submit'
             />
         </Form>
     );
