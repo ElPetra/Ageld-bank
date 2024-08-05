@@ -1,12 +1,17 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { Container } from 'src/shared/ui';
-import { ConfirmPasswordForm, PhoneForm, CodeForm } from 'src/features/forms';
+import {
+    ConfirmPasswordForm,
+    CodeForm,
+    PhoneEmailForm
+} from 'src/features/forms';
 import { MultiStepForm } from 'src/features/multi-step-form';
-import { useTranslation } from 'react-i18next';
 
 export const RecoveryPasswordPage = () => {
     const [phone, setPhone] = useState<string>('');
+    const [, setEmail] = useState<string>('');
     const { t } = useTranslation();
 
     return (
@@ -18,7 +23,11 @@ export const RecoveryPasswordPage = () => {
                         id: 1,
                         title: t('Восстановление пароля'),
                         component: (
-                            <PhoneForm variant='recovery' setPhone={setPhone} />
+                            <PhoneEmailForm
+                                variant='recovery'
+                                setPhone={setPhone}
+                                setEmail={setEmail}
+                            />
                         )
                     },
                     {

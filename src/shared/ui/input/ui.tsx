@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import { useTranslation } from 'react-i18next';
 import cn from 'classnames';
 
 import type { InputHTMLAttributes, RefObject } from 'react';
@@ -39,6 +40,7 @@ export const Input = memo(
         children,
         ...props
     }: Props) => {
+        const { t } = useTranslation();
         const fieldClass = cn('field', size, width, {
             error: error || isError
         });
@@ -88,7 +90,7 @@ export const Input = memo(
                     {children && <div className='input-icon'>{children}</div>}
                 </div>
                 {error && size != 'small' && (
-                    <div className='field__error'>{error}</div>
+                    <div className='field__error'>{t(error)}</div>
                 )}
             </div>
         );

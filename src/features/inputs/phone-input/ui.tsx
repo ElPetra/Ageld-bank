@@ -7,6 +7,7 @@ import type { ChangeEvent, InputHTMLAttributes } from 'react';
 import type { FieldValues, UseFormRegister } from 'react-hook-form';
 
 interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
+    defaultPhone?: string;
     width?: 'auto' | 'max';
     isError?: boolean;
     error?: string;
@@ -15,9 +16,15 @@ interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
     register: UseFormRegister<FieldValues>;
 }
 
-export const PhoneInput = ({ clear, isError, error, ...props }: Props) => {
+export const PhoneInput = ({
+    defaultPhone = '',
+    clear,
+    isError,
+    error,
+    ...props
+}: Props) => {
     const { t } = useTranslation();
-    const [value, setValue] = useState<string>('');
+    const [value, setValue] = useState<string>(defaultPhone);
     const inputRef = useRef<HTMLInputElement>(null);
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         let inputValue = e.target.value.replaceAll(/\D/gm, '');
