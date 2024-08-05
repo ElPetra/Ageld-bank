@@ -1,6 +1,8 @@
 import i18n from 'src/shared/model/i18n';
 
-import type { BankObject } from 'src/shared/model';
+import { getTime } from 'src/shared/lib';
+
+import type { BankObject, ScheduleData, ScheduleDay } from 'src/shared/model';
 
 export const getAddress = (obj: BankObject): string => {
     const getString = (value: string | undefined): string => {
@@ -24,77 +26,78 @@ export const getAddress = (obj: BankObject): string => {
     );
 };
 
-export const getStatus = (schedule: string): string => {
-    const getStart = (time: string): string => {
-        return time.split('-')[0];
-    };
-    const getEnd = (time: string): string => {
-        return time.split('-')[1];
-    };
-    const getHour = (time: string): number => {
-        return Number(time.split(':')[0]);
-    };
-    const getStatusByTime = (time: string, time2: string): string => {
-        if (time === 'выходной') {
-            return i18n.t('Закрыто до ') + getStart(time2);
+export const getStatus = (schedule: ScheduleData): string => {
+    const d = new Date();
+    const dayNumber = d.getDay();
+    const current = schedule[dayNumber - 1];
+    const next = schedule[dayNumber % 7];
+
+    const time = d.getHours() + d.getMinutes() / 60;
+
+    if (typeof current !== 'string') {
+        if (time >= getTime(current.open) && time <= getTime(current.close)) {
+            return current.close;
+        } else if (time <= getTime(current.open)) {
+            return current.open;
         } else {
-            const d = new Date();
-            const dayNumber = d.getDay();
-            const hours = d.getHours();
-            const status =
-                hours >= getHour(getStart(time)) &&
-                hours < getHour(getEnd(time));
-            const end =
-                dayNumber === 5 || dayNumber === 6
-                    ? getStart(time2)
-                    : getStart(time);
-            return status
-                ? i18n.t('Открыто до ') + getEnd(time)
-                : i18n.t('Закрыто до ') + end;
+            if (typeof next === 'string') {
+                return '00:00';
+            } else {
+                return next.open;
+            }
         }
-    };
-    schedule = schedule.toLowerCase();
-    if (
-        schedule.includes('без выходных') &&
-        schedule.includes('круглосуточно')
-    ) {
-        return i18n.t('Открыто круглосуточно');
     } else {
-        const d = new Date();
-        const dayNumber = d.getDay();
-        const scheduleArray = schedule.split(' ');
-        if (dayNumber === 1) {
-            return getStatusByTime(scheduleArray[8], scheduleArray[3]);
-        } else if (dayNumber > 0 && dayNumber < 6) {
-            return getStatusByTime(scheduleArray[3], scheduleArray[5]);
+        if (current === 'weekend') {
+            if (typeof next === 'string') {
+                return '00:00';
+            } else {
+                return next.open;
+            }
         } else {
-            return getStatusByTime(scheduleArray[5], scheduleArray[3]);
+            return '00:00';
         }
     }
 };
 
-export const getSchedule = (schedule: string): string => {
-    if (
-        schedule.includes('Без выходных') ||
-        schedule.includes('Seven days a week')
-    ) {
-        return i18n.t(schedule);
-    } else {
-        const start =
-            schedule.indexOf('Cуббота') !== -1
-                ? schedule.indexOf('Cуббота')
-                : schedule.indexOf('Saturday');
-        const end =
-            schedule.indexOf('Воскресенье') !== -1
-                ? schedule.indexOf('Воскресенье')
-                : schedule.indexOf('Sunday');
+export const getSchedule = (schedule: ScheduleDay | string): string => {
+    return typeof schedule === 'string'
+        ? schedule === 'weekend'
+            ? 'выходной'
+            : schedule
+        : schedule.open + '-' + schedule.close;
+};
 
-        return (
-            schedule.slice(0, start) +
-            '\n' +
-            schedule.slice(start, end) +
-            '\n' +
-            schedule.slice(end, schedule.length)
-        );
+export const toPrepositional = (city: string): string => {
+    const exceptions: Record<string, string> = {
+        'Нижний Новгород': 'Нижнем Новгороде',
+        'Ростов-на-Дону': 'Ростове-на-Дону',
+        'Набережные Челны': 'Набережных Челнах',
+        Ставрополь: 'Ставрополе',
+        Ярославь: 'Ярославе',
+        Орёл: 'Орле'
+    };
+
+    if (exceptions[city]) {
+        return exceptions[city];
     }
+    const cities = city.split(' ');
+    if (cities.length > 1) {
+        if (cities[1] === 'область') {
+            return `${cities[0].slice(0, -2)}ой области`;
+        }
+    }
+
+    if (city.endsWith('а') || city.endsWith('я') || city.endsWith('ь')) {
+        return `${city.slice(0, -1)}е`;
+    }
+
+    if (city.endsWith('ый') || city.endsWith('ий')) {
+        return `${city.slice(0, -2)}ом`;
+    }
+
+    if (city.endsWith('ь')) {
+        return `${city.slice(0, -1)}и`;
+    }
+
+    return `${city}е`;
 };

@@ -9,7 +9,9 @@ import {
     infoApi,
     accountApi,
     cardProductApi,
-    cardApi
+    cardApi,
+    depositProductApi,
+    depositApi
 } from 'src/shared/api';
 
 import { actionHandling } from './middleware';
@@ -23,7 +25,9 @@ const rootReducers = combineReducers({
     [infoApi.reducerPath]: infoApi.reducer,
     [cardProductApi.reducerPath]: cardProductApi.reducer,
     [cardApi.reducerPath]: cardApi.reducer,
-    [accountApi.reducerPath]: accountApi.reducer
+    [accountApi.reducerPath]: accountApi.reducer,
+    [depositProductApi.reducerPath]: depositProductApi.reducer,
+    [depositApi.reducerPath]: depositApi.reducer
 });
 
 export const store = configureStore({
@@ -38,6 +42,8 @@ export const store = configureStore({
             cardProductApi.middleware,
             cardApi.middleware,
             accountApi.middleware,
+            depositProductApi.middleware,
+            depositApi.middleware,
             actionHandling
         )
 });

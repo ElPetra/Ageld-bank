@@ -11,7 +11,14 @@ import type {
     CardDetailsResponse,
     CardDetails,
     AccountDetailsResponse,
-    AccountDetails
+    AccountDetails,
+    DepositProduct,
+    DepositProductResponse,
+    Currency,
+    Deposit,
+    DepositResponse,
+    DepositDetails,
+    DepositDetailsResponse
 } from 'src/shared/model';
 
 export const transformAccounts = (res: AccountResponse[]): Account[] =>
@@ -163,4 +170,56 @@ export const transformCardProductDetails = (
             value: res.conditionPay
         }
     ]
+});
+
+export const transformDepositProducts = (
+    res: DepositProductResponse[]
+): DepositProduct[] =>
+    res.map(el => ({
+        id: el.id,
+        name: el.name,
+        currency: el.currency.toLowerCase() as Currency,
+        amountMin: el.amountMin,
+        amountMax: el.amountMax,
+        dayMin: el.dayMin,
+        dayMax: el.dayMax,
+        capitalization: el.capitalization,
+        replenishment: el.replenishment,
+        withdrawal: el.withdrawal,
+        revocable: el.revocable
+    }));
+
+export const transformDeposit = (res: DepositResponse[]): Deposit[] =>
+    res.map(el => ({
+        productId: el.depositProductId,
+        name: el.productName,
+        currency: el.currencyName.toLowerCase() as Currency,
+        balance: el.currentBalance || 0,
+        closedAt: el.closedAt,
+        account: el.depositAccount,
+        id: el.depositId
+    }));
+
+export const transformDepositDetails = (
+    res: DepositDetailsResponse
+): DepositDetails => ({
+    name: res.name,
+    currency: res.currency.toLowerCase() as Currency,
+    timeLimited: res.timeLimited,
+    revocable: res.revocable,
+    capitalization: res.capitalization,
+    withdrawal: res.withdrawal,
+    status: res.productStatus,
+    withAutoProlongation: res.autorenStatus,
+    initialAmount: res.initialAmount,
+    balance: res.curBalance || 0,
+    percentBalance: res.percBalance || 0,
+    startDate: res.startDate,
+    endDate: res.endDate,
+    isAutoProlongation: res.autorenewStatus,
+    percentRate: res.percentRate || 0,
+    mainAccount: res.mainNum,
+    percentAccount: res.percNum,
+    mAccountId: res.maccountId,
+    pAccountId: res.paccountId
 });

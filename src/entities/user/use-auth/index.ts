@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from 'src/app/store';
 import {
     localStorageApi,
     useAddEmailMutation,
+    useAutoRenewalDepositMutation,
     useChangePasswordMutation,
     useCheckCodeMutation,
     useCheckMissRegistrationMutation,
@@ -12,7 +13,8 @@ import {
     useCreateProfileMutation,
     useGenerateCodeMutation,
     useGenerateTokenMutation,
-    useNewEmailMutation
+    useNewEmailMutation,
+    useProlongDepositMutation
 } from 'src/shared/api';
 import { getErrorMessage } from 'src/shared/lib';
 
@@ -33,11 +35,15 @@ export const useAuth = () => {
     const [checkCode] = useCheckCodeMutation();
     const [createProfile] = useCreateProfileMutation();
     const [generateToken] = useGenerateTokenMutation();
-
     const [changePassword] = useChangePasswordMutation();
     const [newEmail] = useNewEmailMutation();
     const [addEmail] = useAddEmailMutation();
+
     const [createAccount] = useCreateAccountMutation();
+
+    const [prolongDeposit] = useProlongDepositMutation();
+    const [autoRenewalDeposit] = useAutoRenewalDepositMutation();
+
     const getError = useCallback(
         async (
             data:
@@ -70,10 +76,10 @@ export const useAuth = () => {
     }, [dispatch, getAccessToken]);
 
     const checkedMissRegistration = useCallback(
-        async (phone: string): Promise<void | string> => {
-            const data = await checkMissRegistration(phone);
+        async (value: string): Promise<void | string> => {
+            const data = await checkMissRegistration(value);
             if ('data' in data) {
-                await generateCode(phone);
+                await generateCode(value);
             }
             return getError(data);
         },
@@ -81,10 +87,10 @@ export const useAuth = () => {
     );
 
     const checkedRegistration = useCallback(
-        async (phone: string): Promise<void | string> => {
-            const data = await checkRegistration(phone);
+        async (value: string): Promise<void | string> => {
+            const data = await checkRegistration(value);
             if ('data' in data) {
-                await generateCode(phone);
+                await generateCode(value);
             }
             return getError(data);
         },
@@ -92,24 +98,24 @@ export const useAuth = () => {
     );
 
     const generatedCode = useCallback(
-        async (phone: string): Promise<void | string> => {
-            const data = await generateCode(phone);
+        async (value: string): Promise<void | string> => {
+            const data = await generateCode(value);
             return getError(data);
         },
         [generateCode, getError]
     );
 
     const checkedCode = useCallback(
-        async (phone: string, code: string): Promise<void | string> => {
-            const data = await checkCode({ phone, code });
+        async (value: string, code: string): Promise<void | string> => {
+            const data = await checkCode({ phone: value, code });
             return getError(data);
         },
         [getError, checkCode]
     );
 
     const createdProfile = useCallback(
-        async (phone: string, password: string): Promise<void | string> => {
-            const missRegistration = await checkMissRegistration(phone);
+        async (value: string, password: string): Promise<void | string> => {
+            const missRegistration = await checkMissRegistration(value);
             if ('data' in missRegistration) {
                 const { customerId } = missRegistration.data;
                 const data = await createProfile({ customerId, password });
@@ -191,13 +197,40 @@ export const useAuth = () => {
         [getError, getAccessToken, createAccount]
     );
 
-    const extendedDeposit = useCallback(
-        async (id: string, term: number): Promise<void | string> => {
-            // eslint-disable-next-line
-            console.log('extend', id, 'for', term);
-            setIsLoading(false);
+    const prolongedDeposit = useCallback(
+        async (
+            depositId: string,
+            renewalTermsDays: number
+        ): Promise<void | string> => {
+            const accessToken = await getAccessToken();
+            if (accessToken) {
+                const data = await prolongDeposit({
+                    depositId,
+                    renewalTermsDays
+                });
+                setIsLoading(false);
+                return getError(data);
+            }
         },
-        []
+        [getError, getAccessToken, prolongDeposit]
+    );
+
+    const autoRenewedDeposit = useCallback(
+        async (
+            depositId: string,
+            isAutoProlongation: boolean
+        ): Promise<void | string> => {
+            const accessToken = await getAccessToken();
+            if (accessToken) {
+                const data = await autoRenewalDeposit({
+                    depositId,
+                    isAutoProlongation
+                });
+                setIsLoading(false);
+                return getError(data);
+            }
+        },
+        [getError, getAccessToken, autoRenewalDeposit]
     );
 
     return {
@@ -215,7 +248,8 @@ export const useAuth = () => {
         changedEmail,
         addedEmail,
         createdAccount,
-        extendedDeposit,
+        prolongedDeposit,
+        autoRenewedDeposit,
         setError,
         error,
         isLoading

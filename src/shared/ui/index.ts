@@ -14,3 +14,5 @@ export * from './aside-menu';
 export * from './slider-input';
 export * from './carousel';
 export * from './switcher';
+export * from './overlay';
+export * from './select';

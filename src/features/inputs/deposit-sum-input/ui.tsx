@@ -10,13 +10,17 @@ import type {
 
 interface Props {
     variant?: 'primary' | 'secondary';
+    min?: number;
+    max?: number;
+    currency?: string;
     register: UseFormRegister<FieldValues>;
     setValue: UseFormSetValue<FieldValues>;
-    currency?: string;
 }
 
 export const DepositSumInput = ({
     variant = 'secondary',
+    min = 1000,
+    max = 10000000,
     register,
     setValue,
     currency = 'RUB'
@@ -28,12 +32,11 @@ export const DepositSumInput = ({
             register={register}
             setValue={setValue}
             label={t('Сумма депозита')}
-            min={1000}
-            max={10000000}
+            min={min}
+            max={max}
             inputField='sumInput'
             sliderField='sumSlider'
             unit={currency}
-            stretch={true}
         />
     );
 };

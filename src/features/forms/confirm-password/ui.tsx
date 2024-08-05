@@ -62,14 +62,14 @@ export const ConfirmPasswordForm = ({
         <Form onSubmit={handleSubmit(onSubmit)}>
             <PasswordInput
                 register={register}
-                label='password1'
+                field='password1'
                 variant='create'
                 isError={!!errors.password1?.message}
                 error={error}
             />
             <PasswordInput
                 register={register}
-                label='password2'
+                field='password2'
                 placeholder={
                     variant === 'recovery'
                         ? t('Подтвердите новый пароль')

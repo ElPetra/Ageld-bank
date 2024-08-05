@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { RouteName } from 'src/shared/model';
+
+import { CREATE, mockDepositPercentRate, RouteName } from 'src/shared/model';
 import { Icon, Text, Button, Card } from 'src/shared/ui';
 
 import type { DepositProduct } from 'src/shared/model';
@@ -19,10 +20,12 @@ export const DepositProductCard = ({ deposit }: Props) => {
                 <div className='deposit-card__info__main'>
                     <div className='deposit-card__info__main__text'>
                         <Text size='m' weight='medium'>
-                            {deposit.name}
+                            {t('Депозит A-Geld ') + deposit.name}
                         </Text>
                         <Text size='xs' color='tertiary'>
-                            {t('До 30 сентября оформите ') + ' ' + deposit.name}
+                            {t('До 30 сентября оформите Депозит A-Geld') +
+                                ' ' +
+                                deposit.name}
                         </Text>
                     </div>
                     <div className='deposit-card__info__main__icon'>
@@ -36,7 +39,7 @@ export const DepositProductCard = ({ deposit }: Props) => {
                                 {t('до')}
                             </Text>
                             <Text weight='medium' size='m'>
-                                {deposit.percentRate + '%'}
+                                {mockDepositPercentRate + '%'}
                             </Text>
                         </div>
                         <Text color='tertiary' size='xs'>
@@ -82,7 +85,15 @@ export const DepositProductCard = ({ deposit }: Props) => {
                     </Link>
                 </div>
                 <div>
-                    <Link to={'create'}>
+                    <Link
+                        to={
+                            RouteName.DEPOSIT_PRODUCT_PAGE +
+                            '/' +
+                            deposit.id +
+                            '/' +
+                            CREATE
+                        }
+                    >
                         <Button width='max' variant='secondary'>
                             {t('Оформить')}
                         </Button>

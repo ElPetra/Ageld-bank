@@ -96,7 +96,7 @@ const authRoutes: RouteDescription[] = [
         component: DepositExtensionPage
     },
     {
-        path: DEPOSIT_PAGE + 's/:id/' + CREATE,
+        path: DEPOSIT_PRODUCT_PAGE + '/:id/' + CREATE,
         component: DepositCreationPage
     },
     {

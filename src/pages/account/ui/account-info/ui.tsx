@@ -15,8 +15,8 @@ interface Props {
 }
 
 export const AccountInfo = ({ account }: Props) => {
-    const handleCopyAccount = () => {
-        navigator.clipboard.writeText(account.number);
+    const handleCopy = (text: string) => {
+        navigator.clipboard.writeText(text);
     };
     const { t } = useTranslation();
     //Todo: некоторые кастомные места, вроде причины блокировки, не обернуть в "t"
@@ -50,7 +50,25 @@ export const AccountInfo = ({ account }: Props) => {
                                         {account.number}
                                     </Text>
                                 </div>
-                                <button onClick={handleCopyAccount}>
+                                <button
+                                    onClick={() => handleCopy(account.number)}
+                                >
+                                    <Icon icon='copy' />
+                                </button>
+                            </div>
+                            <div className='account-info__main__info__second-row'>
+                                <div>
+                                    <Text color='tertiary'>
+                                        {t('Реквизиты счета')}
+                                    </Text>
+                                </div>
+                                <button
+                                    onClick={() =>
+                                        handleCopy(
+                                            'здесь могли быть ваши реквизиты'
+                                        )
+                                    }
+                                >
                                     <Icon icon='copy' />
                                 </button>
                             </div>

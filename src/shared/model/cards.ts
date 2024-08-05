@@ -1,6 +1,3 @@
-import i18n from 'src/shared/model/i18n';
-import { EUR, RUB, USD } from 'src/shared/model/product';
-
 import type { ProductStatus } from 'src/shared/model';
 
 type CardStatusResponse = 'ACTIVE' | 'CLOSED' | 'BLOCKED';
@@ -10,11 +7,11 @@ export type CardLevel = 'CLASSIC' | 'GOLD' | 'PLATINUM' | 'PREMIUM';
 export type PaymentSystem = 'MIR' | 'Visa' | 'MasterCard';
 
 export const CARD_NUMBER_REPLACEMENT = '**** **** **** ';
-export const ALL = i18n.t('Bce');
-export const CREDIT_CARD = i18n.t('Кредитная');
-export const DEBIT_CARD = i18n.t('Дебетовая');
-export const DEPOSIT_CARD = i18n.t('Депозитная');
-export const MIR_CARD = i18n.t('МИР');
+export const ALL = 'Bce';
+export const CREDIT_CARD = 'Кредитная';
+export const DEBIT_CARD = 'Дебетовая';
+export const DEPOSIT_CARD = 'Депозитная';
+export const MIR_CARD = 'МИР';
 export const VISA_CARD = 'VISA';
 
 export const typeCard: Record<CardType, string> = {

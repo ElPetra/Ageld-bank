@@ -38,10 +38,10 @@
                 background-color: var(--bg-success);
             }
             &-closed {
-                background-color: var(--bg-warning);
+                background-color: var(--bg-buttons-disable);
             }
             &-blocked {
-                background-color: var(--bg-error);
+                background-color: var(--bg-warning);
             }
             &-autoprolongation {
                 background-color: var(--bg-success);

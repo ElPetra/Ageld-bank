@@ -1,9 +1,8 @@
 import { useRef } from 'react';
-import { useCarousel, useCarouselControls } from 'src/shared/lib/carousel';
+import { useCarousel } from 'src/shared/lib/carousel';
 
+import { CarouselControlGroup } from './ui/control-group';
 import { CarouselInner } from './ui/inner';
-import { CarouselIndicators } from './ui/indicators';
-import { CarouselControls } from './ui/controls';
 
 import type { ReactNode } from 'react';
 
@@ -16,25 +15,21 @@ interface Props {
 export const Carousel = ({ cards }: Props) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const { angle, distance } = useCarousel(cards.length);
-    const { changeRotateByIndicator, changeRotateByControl, active } =
-        useCarouselControls(cards.length, containerRef, angle);
     return (
         <div className='carousel' data-testid='carousel'>
             <div>
                 <CarouselInner
                     distance={distance}
                     angle={angle}
-                    active={active}
                     containerRef={containerRef}
                     cards={cards}
                 />
-                <CarouselIndicators
-                    cards={cards}
-                    changeRotateByIndicator={changeRotateByIndicator}
-                    active={active}
-                />
             </div>
-            <CarouselControls changeRotateByControl={changeRotateByControl} />
+            <CarouselControlGroup
+                cards={cards}
+                angle={angle}
+                containerRef={containerRef}
+            />
         </div>
     );
 };
