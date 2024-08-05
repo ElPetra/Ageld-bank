@@ -36,7 +36,7 @@ export const DepositProductDetailsCard = ({ deposit }: Props) => {
                                     {t('до')}
                                 </Text>
                                 <Text weight='medium' size='m'>
-                                    {deposit.percentRate + '%'}
+                                    {deposit.percentRate + ' %'}
                                 </Text>
                             </div>
                             <Text color='tertiary' size='xs'>
@@ -79,7 +79,9 @@ export const DepositProductDetailsCard = ({ deposit }: Props) => {
                                     {t('до')}
                                 </Text>
                                 <Text weight='medium' size='m'>
-                                    {deposit.monthsMax + ' ' + t('месяцев')}
+                                    {Math.floor(deposit.dayMax / 30) +
+                                        ' ' +
+                                        t('месяцев')}
                                 </Text>
                             </div>
                             <Text color='tertiary' size='xs'>

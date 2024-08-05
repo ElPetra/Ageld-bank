@@ -65,7 +65,7 @@ export interface DepositProductDetails {
     name: string;
     currency: Currency;
     monthsMin: number;
-    monthsMax: number;
+    dayMax: number;
     amountMin: number;
     amountMax: number;
     capitalization: boolean;

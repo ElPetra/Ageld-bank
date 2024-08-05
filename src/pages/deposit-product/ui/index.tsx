@@ -1,11 +1,8 @@
 import { useTranslation } from 'react-i18next';
 
-import {
-    type DepositProductDetails,
-    DEPOSITS,
-    RouteName
-} from 'src/shared/model';
+import { DEPOSITS, RouteName } from 'src/shared/model';
 import { Container, Text } from 'src/shared/ui';
+import { useGetDepositProductQuery } from 'src/shared/api';
 import { MessageCard } from 'src/entities/message';
 import { DepositProductDetailsCard } from 'src/entities/deposits';
 import { BackButton } from 'src/features/multi-step-form';
@@ -15,33 +12,36 @@ import { DepositProductOffers } from './deposit-product-offers';
 
 import './styles.scss';
 
-const deposit: DepositProductDetails = {
-    id: '123e4567-e89b-12d3-a456-426614174005',
-    name: 'Депозит A-Geld Базовый',
-    currency: 'rub',
-    monthsMin: 1,
-    monthsMax: 9,
-    amountMin: 1000,
-    amountMax: 100000,
-    capitalization: true,
-    replenishment: true,
-    withdrawal: 2,
-    revocable: true,
-    percentRate: 17.7
-};
+// const deposit: DepositProductDetails = {
+//     id: '123e4567-e89b-12d3-a456-426614174005',
+//     name: 'Депозит A-Geld Базовый',
+//     currency: 'rub',
+//     monthsMin: 1,
+//     dayMax: 9,
+//     amountMin: 1000,
+//     amountMax: 100000,
+//     capitalization: true,
+//     replenishment: true,
+//     withdrawal: 2,
+//     revocable: true,
+//     percentRate: 17.7
+// };
 
 export const DepositProductPage = () => {
     const { t } = useTranslation();
+    const { data: DepositDetails } = useGetDepositProductQuery({
+        id: 'b1a2c3d4-e5f6-4890-abcd-ef1234567890' // данные пока не приходят с api
+    });
 
     return (
         <Container>
             <BackButton />
-            {deposit ? (
+            {DepositDetails ? (
                 <div className='deposit-product'>
                     <Text size='l' weight='bold'>
-                        {deposit.name}
+                        {DepositDetails.name}
                     </Text>
-                    <DepositProductDetailsCard deposit={deposit} />
+                    <DepositProductDetailsCard deposit={DepositDetails} />
                     <DepositProductBenefits />
                     <DepositProductOffers />
                 </div>
