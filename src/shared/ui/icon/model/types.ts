@@ -27,6 +27,7 @@ import copySVG from 'src/shared/ui/icon/assets/icons/copy.svg';
 import arrowLeftAccentSVG from 'src/shared/ui/icon/assets/icons/arrow-left-accent.svg';
 import arrowRightSVG from 'src/shared/ui/icon/assets/icons/arrow-right.svg';
 import arrowRightAccentSVG from 'src/shared/ui/icon/assets/icons/arrow-right-accent.svg';
+import arrowBottomInputSVG from 'src/shared/ui/icon/assets/icons/arrow-bottom-input.svg';
 
 import arrowButtonLeftVG from 'src/shared/ui/icon/assets/icons/arrow-buttton-left.svg';
 import arrowButtonRightSVG from 'src/shared/ui/icon/assets/icons/arrow-buttton-right.svg';
@@ -138,6 +139,7 @@ export const SVG = {
     'arrow-left-accent': arrowLeftAccentSVG,
     'arrow-right': arrowRightSVG,
     'arrow-right-accent': arrowRightAccentSVG,
+    'arrow-bottom-input': arrowBottomInputSVG,
 
     'arrow-button-right': arrowButtonRightSVG,
     'arrow-button-left': arrowButtonLeftVG,

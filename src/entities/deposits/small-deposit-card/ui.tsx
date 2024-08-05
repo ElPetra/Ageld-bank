@@ -3,7 +3,11 @@ import { useTranslation } from 'react-i18next';
 
 import { Button, Card, Text } from 'src/shared/ui';
 
-import { type DepositProduct, RouteName } from 'src/shared/model';
+import {
+    type DepositProduct,
+    mockDepositPercentRate,
+    RouteName
+} from 'src/shared/model';
 
 import './styles.scss';
 
@@ -30,7 +34,7 @@ export const SmallDepositCard = ({ deposit }: Props) => {
                             {t('до')}
                         </Text>
                         <Text weight='medium' size='m'>
-                            {deposit.percentRate + '%'}
+                            {mockDepositPercentRate + '%'}
                         </Text>
                     </div>
                     <Text color='tertiary' size='xs'>

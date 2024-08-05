@@ -45,7 +45,7 @@ export const EnterPasswordForm = ({ isLast, setFormStep, phone }: Props) => {
 
     return (
         <Form onSubmit={handleSubmit(onSubmit)}>
-            <PasswordInput register={register} label='password' error={error} />
+            <PasswordInput register={register} field='password' error={error} />
             <Button
                 variant='secondary'
                 size='large'

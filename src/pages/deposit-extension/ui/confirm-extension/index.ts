@@ -1,0 +1,1 @@
+export { ConfirmExtension } from './ui';

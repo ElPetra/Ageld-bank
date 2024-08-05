@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { RouteName } from 'src/shared/model';
+import { CREATE, RouteName } from 'src/shared/model';
 import { Icon, Text, Button, Card, Link } from 'src/shared/ui';
 
 import type { DepositProductDetails } from 'src/shared/model';
@@ -90,9 +90,23 @@ export const DepositProductDetailsCard = ({ deposit }: Props) => {
                 </div>
                 <div className='deposit-product-details-card__buttons'>
                     <div>
-                        <Button size='medium' variant='secondary'>
-                            {t('Оформить')}
-                        </Button>
+                        <Link
+                            to={
+                                RouteName.DEPOSIT_PRODUCT_PAGE +
+                                '/' +
+                                deposit.id +
+                                '/' +
+                                CREATE
+                            }
+                        >
+                            <Button
+                                variant='secondary'
+                                size='medium'
+                                type='button'
+                            >
+                                {t('Оформить')}
+                            </Button>
+                        </Link>
                     </div>
                     <div>
                         <Link

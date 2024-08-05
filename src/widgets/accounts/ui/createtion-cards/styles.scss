@@ -1,0 +1,9 @@
+.create-account{
+    &_cards{
+        padding-top: 16px;
+        a>div{
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+}

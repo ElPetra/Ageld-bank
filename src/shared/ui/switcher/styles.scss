@@ -5,6 +5,8 @@
 
   &__input {
     position: relative;
+    min-width: 51px;
+    min-height: 31px;
     width: 51px;
     height: 31px;
 
@@ -19,6 +21,8 @@
     }
 
     .switch {
+      min-width: 51px;
+      min-height: 31px;
       position: absolute;
       background: var(--bg-buttons-disable);
       border-radius: 25px;

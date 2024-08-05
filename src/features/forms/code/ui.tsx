@@ -45,7 +45,7 @@ export const CodeForm = ({ isLast, setFormStep, phone }: Props) => {
                 )}
             </Text>
             <CodeInput
-                label='code'
+                field='code'
                 register={register}
                 error={error}
                 phone={phone}

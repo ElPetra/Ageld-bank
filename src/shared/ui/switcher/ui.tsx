@@ -14,13 +14,14 @@ export const Switcher = ({
     id,
     field,
     children,
+    onChange,
     ...props
 }: Props) => {
     return (
         <label className='switcher'>
             <div className='switcher__input' data-testid='switcher'>
                 <input
-                    {...(register && field && register(field))}
+                    {...(register && field && register(field, { onChange }))}
                     type='checkbox'
                     id={id}
                     {...props}

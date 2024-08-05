@@ -14,79 +14,42 @@ exports[`Carousel ui match snapshot 1`] = `
       >
         <div
           class="carousel-inner__element"
-          style="transform: rotateY(0deg) translateZ(25px);"
+          style="transform: rotateY(0deg) translateZ(0px);"
         >
-          <div
-            class="card primary column space-between large-border-radius medium-padding small-gap"
-          >
-            <div
-              class="text m bold left"
-            >
-              Депозит Premium
-            </div>
-            <div
-              class="text m regular left"
-            >
-              Можем закрыть в любой момент времени, без перерасчета % Возможность частичного снятия Возможность пополнения
-Срок от 180 дней и выше
-            </div>
-            <button
-              class="medium max button secondary"
-              type="button"
-            >
-              Открыть депозит
-            </button>
+          <div>
+            Карточка 1
           </div>
         </div>
         <div
           class="carousel-inner__element hidden"
-          style="transform: rotateY(120deg) translateZ(25px);"
+          style="transform: rotateY(72deg) translateZ(0px);"
         >
-          <div
-            class="card primary column space-between large-border-radius medium-padding small-gap"
-          >
-            <div
-              class="text m bold left"
-            >
-              Кредитная карта
-            </div>
-            <div
-              class="text m regular left"
-            >
-              Целый год без %
-Бесплатное обслуживание и кэшбэк за все покупки
-            </div>
-            <button
-              class="medium max button secondary"
-              type="button"
-            >
-              Получить карту
-            </button>
+          <div>
+            Карточка 2
           </div>
         </div>
         <div
           class="carousel-inner__element hidden"
-          style="transform: rotateY(240deg) translateZ(25px);"
+          style="transform: rotateY(144deg) translateZ(0px);"
         >
-          <div
-            class="card primary column space-between large-border-radius medium-padding small-gap"
-          >
-            <div
-              class="text m bold left"
-            >
-              Кэшбэк на любые покупки
-            </div>
-            <div
-              class="text m regular left"
-            >
-              Каждый месяц выбирайте 4 категории с кэшбэком 5%. Товары для дома, цветы, такси Вам решать, на что тратить чаще в этом месяце, чтобы получить максимум выгоды
-            </div>
-            <button
-              class="medium max button secondary"
-              type="button"
-            >
-              Хочу кэшбэк!
-            </button>
+          <div>
+            Карточка 3
+          </div>
+        </div>
+        <div
+          class="carousel-inner__element hidden"
+          style="transform: rotateY(216deg) translateZ(0px);"
+        >
+          <div>
+            Карточка 4
+          </div>
+        </div>
+        <div
+          class="carousel-inner__element hidden"
+          style="transform: rotateY(288deg) translateZ(0px);"
+        >
+          <div>
+            Карточка 5
           </div>
         </div>
       </div>
@@ -96,6 +59,12 @@ exports[`Carousel ui match snapshot 1`] = `
     >
       <button
         class="carousel-indicators__indicator active"
+      />
+      <button
+        class="carousel-indicators__indicator"
+      />
+      <button
+        class="carousel-indicators__indicator"
       />
       <button
         class="carousel-indicators__indicator"

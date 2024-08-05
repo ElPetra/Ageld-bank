@@ -6,7 +6,7 @@ import { Input } from './ui';
 
 describe('Input ui', () => {
     test('match snapshot', () => {
-        render(<Input placeholder='Input' />);
+        render(<Input label='Input' />);
         const input = screen.getByPlaceholderText('Input');
         expect(input).toMatchSnapshot();
     });
@@ -14,7 +14,7 @@ describe('Input ui', () => {
     test('label renders', () => {
         render(
             <Input
-                placeholder='Input'
+                label='Input'
                 size='large'
                 value='value'
                 onChange={() => {}}
@@ -25,7 +25,7 @@ describe('Input ui', () => {
     });
 
     test('label dont renders', () => {
-        render(<Input placeholder='Input' />);
+        render(<Input label='Input' />);
         const input = screen.queryByText('Input');
         expect(input).not.toBeInTheDocument();
     });
@@ -50,7 +50,7 @@ describe('Input ui', () => {
 
     test('onChange have been called', () => {
         const onChangeMock = jest.fn();
-        render(<Input onChange={onChangeMock} placeholder='Input' />);
+        render(<Input onChange={onChangeMock} label='Input' />);
         const input = screen.getByPlaceholderText('Input');
         expect(input).toBeInTheDocument();
         fireEvent.change(input, { target: { value: 'Input1' } });
@@ -59,7 +59,7 @@ describe('Input ui', () => {
 
     test('onChange have not been called', () => {
         const onChangeMock = jest.fn();
-        render(<Input onChange={onChangeMock} placeholder='Input' disabled />);
+        render(<Input onChange={onChangeMock} label='Input' disabled />);
         const input = screen.getByPlaceholderText('Input');
         expect(input).toBeInTheDocument();
         fireEvent.change(input);
@@ -68,7 +68,7 @@ describe('Input ui', () => {
 
     test('onBlur have been called', () => {
         const onBlurMock = jest.fn();
-        render(<Input onBlur={onBlurMock} placeholder='Input' />);
+        render(<Input onBlur={onBlurMock} label='Input' />);
         const input = screen.getByPlaceholderText('Input');
         expect(input).toBeInTheDocument();
         fireEvent.blur(input);

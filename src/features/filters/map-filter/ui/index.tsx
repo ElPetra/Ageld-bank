@@ -4,14 +4,22 @@ import { useTranslation } from 'react-i18next';
 
 import { Button, Card, Form, Icon, Text } from 'src/shared/ui';
 import { CheckboxGroup } from 'src/entities/filter';
+import { options } from 'src/shared/model';
 
-import { options } from '../model';
+import { getFilteredBankObjects } from '../lib';
 
+import type { Dispatch, SetStateAction } from 'react';
 import type { FieldValues } from 'react-hook-form';
+import type { BankObject } from 'src/shared/model';
 
 import './styles.scss';
 
-export const MapFilter = () => {
+interface Props {
+    bankData: BankObject[];
+    setBankObjects: Dispatch<SetStateAction<BankObject[]>>;
+}
+
+export const MapFilter = ({ bankData, setBankObjects }: Props) => {
     const { t } = useTranslation();
     const [open, setOpen] = useState<boolean>(false);
     const { register, handleSubmit, reset } = useForm<FieldValues>({
@@ -40,8 +48,11 @@ export const MapFilter = () => {
             {open && (
                 <div className='map__filter__modal'>
                     <Form
-                        onSubmit={handleSubmit(() => {
+                        onSubmit={handleSubmit(data => {
                             setOpen(false);
+                            setBankObjects(() =>
+                                getFilteredBankObjects(bankData, data.filters)
+                            );
                         })}
                     >
                         <Card
@@ -84,9 +95,10 @@ export const MapFilter = () => {
                                     onClick={() => {
                                         setOpen(false);
                                         reset();
+                                        setBankObjects(bankData);
                                     }}
                                 >
-                                    {t('Отменить')}
+                                    {t('Сбросить')}
                                 </Button>
                             </div>
                         </Card>

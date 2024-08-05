@@ -2,15 +2,15 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 import { Icon, Text, Button, Card } from 'src/shared/ui';
-import { RouteName } from 'src/shared/model';
+import { CREATE, RouteName } from 'src/shared/model';
+import { floorDecimals, formatDate } from 'src/shared/lib';
 
-import { floorDecimals } from 'src/shared/lib/deposit';
+import type { Deposit, DepositProfitability } from 'src/shared/model';
 
-import type { CustomerDeposit, DepositProfitability } from 'src/shared/model';
 import './styles.scss';
 
 interface Props {
-    deposit: CustomerDeposit | DepositProfitability;
+    deposit: Deposit | DepositProfitability;
 }
 
 export const UniversalDepositCard = ({ deposit }: Props) => {
@@ -18,22 +18,30 @@ export const UniversalDepositCard = ({ deposit }: Props) => {
 
     return (
         <Card padding='medium'>
-            <div className='customer-deposit-card__container'>
-                <div className='customer-deposit-card__title'>
-                    <div className='customer-deposit-card__title__icon'>
+            <div className='universal-deposit-card__container'>
+                <div className='universal-deposit-card__title'>
+                    <div className='universal-deposit-card__title__icon'>
                         <Icon icon={deposit.currency} />
                     </div>
-                    <Link to={RouteName.DEPOSIT_PAGE + '/' + deposit.id}>
+                    <Link
+                        to={
+                            ('account' in deposit
+                                ? RouteName.DEPOSIT_PAGE
+                                : RouteName.DEPOSIT_PRODUCT_PAGE) +
+                            '/' +
+                            deposit.id
+                        }
+                    >
                         <Text weight='bold' size='m'>
                             {deposit.name}
                         </Text>
                     </Link>
                 </div>
-                <div className='customer-deposit-card__info'>
-                    {'number' in deposit && (
+                <div className='universal-deposit-card__info'>
+                    {'account' in deposit && (
                         <div>
                             <Text weight='bold' size='l'>
-                                {deposit.number.replace(/.{12}/gm, '******')}
+                                {deposit.account.replace(/.{16}/gm, '******')}
                             </Text>
                             <Text color='tertiary' size='xs'>
                                 {t('Номер депозитного счета')}
@@ -65,7 +73,7 @@ export const UniversalDepositCard = ({ deposit }: Props) => {
                     {'closedAt' in deposit && (
                         <div>
                             <Text weight='bold' size='l'>
-                                {deposit.closedAt}
+                                {formatDate(deposit.closedAt)}
                             </Text>
                             <Text color='tertiary' size='xs'>
                                 {t('Окончание срока депозита')}
@@ -109,9 +117,23 @@ export const UniversalDepositCard = ({ deposit }: Props) => {
                             </Button>
                         </Link>
                     ) : (
-                        <Button variant='primary' size='medium' type='button'>
-                            {t('Оформить')}
-                        </Button>
+                        <Link
+                            to={
+                                RouteName.DEPOSIT_PRODUCT_PAGE +
+                                '/' +
+                                deposit.id +
+                                '/' +
+                                CREATE
+                            }
+                        >
+                            <Button
+                                variant='primary'
+                                size='medium'
+                                type='button'
+                            >
+                                {t('Оформить')}
+                            </Button>
+                        </Link>
                     )}
                 </div>
             </div>

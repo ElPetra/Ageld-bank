@@ -9,7 +9,7 @@ interface Props {
 }
 
 export const Info = ({ phone }: Props) => {
-    const [seconds, setSeconds] = useState<number>(30);
+    const [seconds, setSeconds] = useState<number>(60);
     const { generatedCode } = useAuth();
     const { t } = useTranslation();
 
@@ -37,7 +37,7 @@ export const Info = ({ phone }: Props) => {
                     variant='link'
                     onClick={() => {
                         generatedCode(phone);
-                        setSeconds(30);
+                        setSeconds(60);
                     }}
                 >
                     <Text size='xs'>{t('Отправить смс еще раз')}</Text>

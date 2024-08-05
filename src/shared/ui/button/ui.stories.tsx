@@ -24,7 +24,7 @@ const meta: Meta<typeof Button> = {
             defaultValue: { summary: 'primary' }
         },
         width: {
-            description: 'Ширина кнопки, либо стандарт, либо 100% от родителя',
+            description: 'Ширина',
             defaultValue: { summary: 'auto' }
         },
         disabled: {

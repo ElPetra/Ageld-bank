@@ -12,6 +12,7 @@ import { ProtectedMain } from './protected';
 
 export const MainPage = () => {
     const { t } = useTranslation();
+
     return (
         <Container>
             <Menu

@@ -30,35 +30,35 @@ export const Address = ({ street, house, apartment, city, index }: Props) => {
                 </Text>
                 <div className='user-address__inputs'>
                     <Input
-                        placeholder={t('Улица')}
+                        label={t('Улица')}
                         value={street}
                         disabled={true}
                         size='large'
                         width='max'
                     />
                     <Input
-                        placeholder={t('Дом')}
+                        label={t('Дом')}
                         value={house}
                         disabled={true}
                         size='large'
                         width='max'
                     />
                     <Input
-                        placeholder={t('Квартира')}
+                        label={t('Квартира')}
                         value={apartment}
                         disabled={true}
                         size='large'
                         width='max'
                     />
                     <Input
-                        placeholder={t('Город')}
+                        label={t('Город')}
                         value={city}
                         disabled={true}
                         size='large'
                         width='max'
                     />
                     <Input
-                        placeholder={t('Индекс')}
+                        label={t('Индекс')}
                         value={index}
                         disabled={true}
                         size='large'

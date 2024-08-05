@@ -3,11 +3,10 @@ import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
 import publicContract from 'src/assets/public-contract.pdf';
-import { useAuth } from 'src/entities/user';
 import { Button, Checkbox, Form, Link, Text } from 'src/shared/ui';
 import { RouteName } from 'src/shared/model';
-
-import { PhoneInput } from './phone-input';
+import { useAuth } from 'src/entities/user';
+import { PhoneInput } from 'src/features/inputs';
 
 import type { FieldValues } from 'react-hook-form';
 import type { Dispatch, SetStateAction } from 'react';
@@ -68,7 +67,7 @@ export const PhoneForm = ({
         <Form onSubmit={handleSubmit(onSubmit)}>
             <PhoneInput
                 clear={() => setValue('phone', '')}
-                label='phone'
+                field='phone'
                 register={register}
                 isError={!!errors?.phone}
                 error={error}

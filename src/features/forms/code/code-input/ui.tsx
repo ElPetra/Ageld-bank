@@ -12,12 +12,12 @@ const values = [0, 1, 2, 3, 4, 5];
 interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
     width?: 'auto' | 'max';
     error?: string;
-    label: string;
+    field: string;
     register: UseFormRegister<FieldValues>;
     phone: string;
 }
 
-export const CodeInput = ({ label, error, phone, ...props }: Props) => {
+export const CodeInput = ({ field, error, phone, ...props }: Props) => {
     const inputOnKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
         const target = e.target as HTMLInputElement;
         if (e.key !== 'Backspace' || target.value !== '') {
@@ -58,7 +58,7 @@ export const CodeInput = ({ label, error, phone, ...props }: Props) => {
                         size='small'
                         onKeyDown={inputOnKeyDown}
                         onChange={inputOnChange}
-                        label={label + '.' + el}
+                        field={field + '.' + el}
                         error={error}
                         {...props}
                     ></Input>

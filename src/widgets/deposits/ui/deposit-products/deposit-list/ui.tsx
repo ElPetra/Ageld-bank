@@ -1,43 +1,71 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useForm } from 'react-hook-form';
 
-import { ACCOUNTS, currencyMinFilters, RouteName } from 'src/shared/model';
-import { Columns, Icon, Text } from 'src/shared/ui';
+import {
+    ACCOUNTS,
+    ALL_CURRENCY,
+    currencyMinFilters,
+    RouteName,
+    RUB
+} from 'src/shared/model';
+import { Columns, Icon, Preloader, Text } from 'src/shared/ui';
 import { MessageCard } from 'src/entities/message';
 import { FilterBar } from 'src/entities/filter';
 import { DepositProductCard } from 'src/entities/deposits';
 import { DepositSumInput, DepositTermInput } from 'src/features/inputs';
 
-import type {
-    FieldValues,
-    UseFormRegister,
-    UseFormSetValue
-} from 'react-hook-form';
+import type { FieldValues } from 'react-hook-form';
 import type { DepositProduct } from 'src/shared/model';
 
 import './styles.scss';
 
 interface Props {
-    open: boolean;
-    currency: string;
-    setCurrency: (el: string) => void;
-    handleFilter: () => void;
-    resetFilter: () => void;
-    register: UseFormRegister<FieldValues>;
-    setValue: UseFormSetValue<FieldValues>;
     deposits: DepositProduct[];
+    isLoading: boolean;
 }
 
-export const DepositList = ({
-    open,
-    currency,
-    setCurrency,
-    handleFilter,
-    resetFilter,
-    register,
-    setValue,
-    deposits
-}: Props) => {
+export const DepositList = ({ deposits, isLoading }: Props) => {
     const { t } = useTranslation();
+    const [open, setOpen] = useState<boolean>(false);
+    const [currency, setCurrency] = useState<string>(ALL_CURRENCY);
+    const { register, setValue, watch, reset } = useForm<FieldValues>({
+        defaultValues: {
+            termInput: 1,
+            termSlider: 1,
+            sumInput: 1000,
+            sumSlider: 1000
+        },
+        mode: 'onTouched',
+        reValidateMode: 'onChange'
+    });
+
+    const currentDeposits = deposits.filter(
+        el =>
+            !open ||
+            (el.currency === currency.toLowerCase() &&
+                el.dayMin <= watch('termInput') * 30 &&
+                el.dayMax >= watch('termInput') * 30 &&
+                el.amountMin <= watch('sumInput') &&
+                el.amountMax >= watch('sumInput'))
+    );
+
+    const handleFilter = () => {
+        setOpen(prev => !prev);
+        if (open) {
+            setCurrency(ALL_CURRENCY);
+            reset();
+        } else {
+            setCurrency(RUB);
+        }
+    };
+
+    const resetFilter = () => {
+        setOpen(false);
+        setCurrency(ALL_CURRENCY);
+        reset();
+    };
+
     return (
         <div className='deposit-list'>
             <div
@@ -73,22 +101,22 @@ export const DepositList = ({
                     />
                 </Columns>
             )}
-            <div>
-                {deposits.length ? (
-                    <Columns number='2'>
-                        {deposits.map(el => (
-                            <DepositProductCard key={el.id} deposit={el} />
-                        ))}
-                    </Columns>
-                ) : (
-                    <MessageCard
-                        title={t('Депозит не найден')}
-                        buttonText={t('Сбросить фильтр')}
-                        buttonLink={RouteName.MAIN_PAGE + '/' + ACCOUNTS}
-                        onClick={resetFilter}
-                    />
-                )}
-            </div>
+            {isLoading ? (
+                <Preloader />
+            ) : currentDeposits.length ? (
+                <Columns number='2'>
+                    {currentDeposits.map(el => (
+                        <DepositProductCard key={el.id} deposit={el} />
+                    ))}
+                </Columns>
+            ) : (
+                <MessageCard
+                    title={t('Депозит не найден')}
+                    buttonText={t('Сбросить фильтр')}
+                    buttonLink={RouteName.MAIN_PAGE + '/' + ACCOUNTS}
+                    onClick={resetFilter}
+                />
+            )}
         </div>
     );
 };

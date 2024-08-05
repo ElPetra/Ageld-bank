@@ -19,8 +19,8 @@ interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
     variant?: 'exist' | 'create' | 'confirm';
     error?: string;
     isError?: boolean;
-    label: string;
     placeholder?: string;
+    field: string;
     register: UseFormRegister<FieldValues>;
     isDirty?: boolean;
 }
@@ -46,7 +46,7 @@ export const PasswordInput = ({
         <div className='password-input'>
             <Input
                 type={open ? 'text' : 'password'}
-                placeholder={placeholder || t('Пароль')}
+                label={placeholder || t('Пароль')}
                 size={size}
                 width={width}
                 value={value}

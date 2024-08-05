@@ -48,12 +48,12 @@ export const NOTIFICATIONS = 'notifications';
 
 export const PersonalRouteName = [PERSONAL_DATA, SAFETY, NOTIFICATIONS];
 
-export const OPENED = 'opened';
-export const OPEN_REQUEST = 'open-request';
-export const CLOSED = 'closed';
-export const BLOCKED = 'blocked';
+export const ALL_ACCOUNTS = 'all';
+export const DEBIT = 'debit';
+export const DEPOSIT = 'deposit';
+export const CREDIT = 'credit';
 
-export const AccountsRouteName = [OPENED, OPEN_REQUEST, CLOSED, BLOCKED];
+export const AccountsRouteName = [ALL_ACCOUNTS, DEBIT, DEPOSIT, CREDIT];
 
 export const MY_CARDS = 'my-cards';
 export const CARDS_PRODUCTS = 'cards-products';
