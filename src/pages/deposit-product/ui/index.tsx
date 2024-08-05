@@ -30,7 +30,7 @@ import './styles.scss';
 export const DepositProductPage = () => {
     const { t } = useTranslation();
     const { data: DepositDetails } = useGetDepositProductQuery({
-        id: 'a5562a77-a301-4719-a29b-18e8b286c718' // данные пока не приходят с api
+        id: 'b1a2c3d4-e5f6-4890-abcd-ef1234567890' // данные пока не приходят с api
     });
 
     return (

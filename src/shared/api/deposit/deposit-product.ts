@@ -27,9 +27,7 @@ export const depositProductApi = createApi({
         getDepositProduct: builder.query<DepositProductDetails, { id: string }>(
             {
                 query: ({ id }) => ({
-                    url:
-                        import.meta.env.VITE_BASEURL_GATEWAY +
-                        `/api/v1/deposit/deposits/${id}`,
+                    url: `/${id}`,
                     method: 'GET'
                 })
             }
