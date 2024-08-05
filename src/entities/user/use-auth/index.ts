@@ -76,10 +76,10 @@ export const useAuth = () => {
     }, [dispatch, getAccessToken]);
 
     const checkedMissRegistration = useCallback(
-        async (phone: string): Promise<void | string> => {
-            const data = await checkMissRegistration(phone);
+        async (value: string): Promise<void | string> => {
+            const data = await checkMissRegistration(value);
             if ('data' in data) {
-                await generateCode(phone);
+                await generateCode(value);
             }
             return getError(data);
         },
@@ -87,10 +87,10 @@ export const useAuth = () => {
     );
 
     const checkedRegistration = useCallback(
-        async (phone: string): Promise<void | string> => {
-            const data = await checkRegistration(phone);
+        async (value: string): Promise<void | string> => {
+            const data = await checkRegistration(value);
             if ('data' in data) {
-                await generateCode(phone);
+                await generateCode(value);
             }
             return getError(data);
         },
@@ -98,24 +98,24 @@ export const useAuth = () => {
     );
 
     const generatedCode = useCallback(
-        async (phone: string): Promise<void | string> => {
-            const data = await generateCode(phone);
+        async (value: string): Promise<void | string> => {
+            const data = await generateCode(value);
             return getError(data);
         },
         [generateCode, getError]
     );
 
     const checkedCode = useCallback(
-        async (phone: string, code: string): Promise<void | string> => {
-            const data = await checkCode({ phone, code });
+        async (value: string, code: string): Promise<void | string> => {
+            const data = await checkCode({ phone: value, code });
             return getError(data);
         },
         [getError, checkCode]
     );
 
     const createdProfile = useCallback(
-        async (phone: string, password: string): Promise<void | string> => {
-            const missRegistration = await checkMissRegistration(phone);
+        async (value: string, password: string): Promise<void | string> => {
+            const missRegistration = await checkMissRegistration(value);
             if ('data' in missRegistration) {
                 const { customerId } = missRegistration.data;
                 const data = await createProfile({ customerId, password });
