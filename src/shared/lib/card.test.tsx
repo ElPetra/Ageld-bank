@@ -9,7 +9,7 @@ describe('getIconName', () => {
         expect(getIconName('MIR')).toBe('mir');
     });
 
-    it('returns "master card" for "MasterCard"', () => {
-        expect(getIconName('MasterCard')).toBe('master card');
+    it('returns "masterCard" for "MasterCard"', () => {
+        expect(getIconName('MasterCard')).toBe('masterCard');
     });
 });
