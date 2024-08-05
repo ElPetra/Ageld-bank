@@ -1,5 +1,5 @@
 import i18n from 'src/shared/model/i18n';
-import { EUR, RUB, USD } from 'src/shared/model/product.js';
+import { EUR, RUB, USD } from 'src/shared/model/product';
 
 import type { ProductStatus } from 'src/shared/model';
 
@@ -7,7 +7,7 @@ type CardStatusResponse = 'ACTIVE' | 'CLOSED' | 'BLOCKED';
 
 export type CardType = 'CREDIT' | 'DEBIT' | 'DEPOSIT';
 export type CardLevel = 'CLASSIC' | 'GOLD' | 'PLATINUM' | 'PREMIUM';
-export type PaymentSystem = 'МИР' | 'VISA';
+export type PaymentSystem = 'MIR' | 'Visa' | 'MasterCard';
 
 export const CARD_NUMBER_REPLACEMENT = '**** **** **** ';
 export const ALL = i18n.t('Bce');

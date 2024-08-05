@@ -35,7 +35,7 @@ interface Props {
 }
 
 function getFirstUpperCase(str: string): string {
-    return str[0].toUpperCase() + str.slice(1).toLowerCase();
+    return str && str[0].toUpperCase() + str.slice(1).toLowerCase();
 }
 
 export const UniversalCardCard = ({ card, children }: Props) => {

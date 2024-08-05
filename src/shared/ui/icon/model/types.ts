@@ -64,6 +64,7 @@ import worldSVG from 'src/shared/ui/icon/assets/icons/world.svg';
 
 import mirSVG from 'src/shared/ui/icon/assets/icons/payment-system-mir.svg';
 import visaSVG from 'src/shared/ui/icon/assets/icons/payment-system-visa.svg';
+import mastercardSVG from 'src/shared/ui/icon/assets/icons/payment-system-mastercard.svg';
 
 import socialNetworkEmailSVG from 'src/shared/ui/icon/assets/icons/social-network-email.svg';
 import socialNetworkTelegramSVG from 'src/shared/ui/icon/assets/icons/social-network-telegram.svg';
@@ -170,6 +171,7 @@ export const SVG = {
 
     mir: mirSVG,
     visa: visaSVG,
+    masterCard: mastercardSVG,
 
     'social-network-email': socialNetworkEmailSVG,
     'social-network-telegram': socialNetworkTelegramSVG,
