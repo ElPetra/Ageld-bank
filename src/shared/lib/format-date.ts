@@ -7,13 +7,8 @@ export const formatDate = (str: string): string => {
 export const getTerm = (start: string, end: string): number => {
     start = start.split(' ')[0];
     end = end.split(' ')[0];
-    const [startYear, startMonth, startDay] = start.split('-');
-    const [endYear, endMonth, endDay] = end.split('-');
     return (
-        +endDay -
-        +startDay +
-        (+endMonth - +startMonth) * 30 +
-        (+endYear - +startYear) * 365
+        (new Date(end).getTime() - new Date(start).getTime()) / 1000 / 3600 / 24
     );
 };
 

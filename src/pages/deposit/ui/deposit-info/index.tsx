@@ -221,9 +221,13 @@ export const DepositInfo = ({ deposit }: Props) => {
                     }
                     icon={'confirmation-lady'}
                     width={256}
-                    buttonText={t('Да')}
-                    secondButtonText={t('Отмена')}
-                    onClick={async () => {
+                    buttonText={t('Отмена')}
+                    onClick={() => {
+                        reset();
+                        setVisible(false);
+                    }}
+                    secondButtonText={t('Да')}
+                    secondOnClick={async () => {
                         await autoRenewedDeposit(
                             id || '',
                             watch('isAutoProlongation')
@@ -231,10 +235,6 @@ export const DepositInfo = ({ deposit }: Props) => {
                         if (error) {
                             reset();
                         }
-                        setVisible(false);
-                    }}
-                    secondOnClick={() => {
-                        reset();
                         setVisible(false);
                     }}
                 />

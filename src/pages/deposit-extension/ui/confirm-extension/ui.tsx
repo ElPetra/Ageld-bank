@@ -1,7 +1,8 @@
+import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import { Form } from 'src/shared/ui';
-import { DEPOSITS, RouteName } from 'src/shared/model';
+import { RouteName } from 'src/shared/model';
 import { MessageCard } from 'src/entities/message';
 
 import type { Dispatch, SetStateAction } from 'react';
@@ -11,21 +12,22 @@ interface Props {
     isLast?: boolean;
     setFormStep?: Dispatch<SetStateAction<number>>;
     handleSubmit: UseFormHandleSubmit<FieldValues, FieldValues>;
-    createDeposit: (data: FieldValues) => Promise<void>;
+    prolongDeposit: (data: FieldValues) => Promise<void>;
 }
 
-export const ConfirmCreation = ({
+export const ConfirmExtension = ({
     isLast,
     setFormStep,
     handleSubmit,
-    createDeposit
+    prolongDeposit
 }: Props) => {
     const { t } = useTranslation();
+    const { id } = useParams<string>();
 
     return (
         <Form
             onSubmit={handleSubmit(async data => {
-                await createDeposit(data);
+                await prolongDeposit(data);
                 if (setFormStep && !isLast) {
                     setFormStep(curr => {
                         return curr + 1;
@@ -34,11 +36,11 @@ export const ConfirmCreation = ({
             })}
         >
             <MessageCard
-                title={t('Вы действительно хотите открыть депозит?')}
+                title={t('Вы действительно хотите пролонгировать депозит?')}
                 width={256}
                 icon={'confirmation-lady'}
                 buttonText={t('Отмена')}
-                buttonLink={RouteName.MAIN_PAGE + '/' + DEPOSITS}
+                buttonLink={RouteName.DEPOSIT_PAGE + '/' + id}
                 secondButtonText={t('Да')}
                 secondType='submit'
             />
