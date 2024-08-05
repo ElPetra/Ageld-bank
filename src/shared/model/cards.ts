@@ -1,10 +1,12 @@
+import { EUR, RUB, USD } from 'src/shared/model/product';
+
 import type { ProductStatus } from 'src/shared/model';
 
 type CardStatusResponse = 'ACTIVE' | 'CLOSED' | 'BLOCKED';
 
 export type CardType = 'CREDIT' | 'DEBIT' | 'DEPOSIT';
 export type CardLevel = 'CLASSIC' | 'GOLD' | 'PLATINUM' | 'PREMIUM';
-export type PaymentSystem = 'МИР' | 'VISA';
+export type PaymentSystem = 'MIR' | 'Visa' | 'MasterCard';
 
 export const CARD_NUMBER_REPLACEMENT = '**** **** **** ';
 export const ALL = 'Bce';
@@ -22,6 +24,8 @@ export const typeCard: Record<CardType, string> = {
 
 export const typeCardFilters = [ALL, CREDIT_CARD, DEBIT_CARD, DEPOSIT_CARD];
 export const paymentSystemFilters = [ALL, MIR_CARD, VISA_CARD];
+
+export const currencySystemFilters = [ALL, RUB, USD, EUR];
 
 export interface CustomerCard {
     id: string;

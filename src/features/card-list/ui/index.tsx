@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 import {
     CREATE,
-    paymentSystemFilters,
+    currencySystemFilters,
     RouteName,
     typeCardFilters
 } from 'src/shared/model';
@@ -27,10 +27,10 @@ export const CardList = ({ cards, isLoading }: Props) => {
     const { t } = useTranslation();
     const {
         getFilteredCards,
-        currencyPayment,
+        currentCurrency,
         setCurrencyType,
-        setCurrencyPayment,
-        currencyType
+        setCurrentCurrency,
+        currentType
     } = useCardsFilter(cards);
     const {
         currentPage,
@@ -44,13 +44,13 @@ export const CardList = ({ cards, isLoading }: Props) => {
             <div className='card-list__filters'>
                 <FilterBar
                     filters={typeCardFilters}
-                    current={currencyType}
+                    current={currentType}
                     setCurrent={setCurrencyType}
                 />
                 <FilterBar
-                    filters={paymentSystemFilters}
-                    current={currencyPayment}
-                    setCurrent={setCurrencyPayment}
+                    filters={currencySystemFilters}
+                    current={currentCurrency}
+                    setCurrent={setCurrentCurrency}
                 />
             </div>
             {isLoading ? (

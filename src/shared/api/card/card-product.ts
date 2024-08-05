@@ -29,7 +29,7 @@ export const cardProductApi = createApi({
                 query: ({ type }) => ({
                     url: '/list_card_products',
                     params: {
-                        card_product_type: type
+                        productType: type
                     },
                     method: 'GET'
                 }),
