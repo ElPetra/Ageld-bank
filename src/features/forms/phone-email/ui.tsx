@@ -24,7 +24,8 @@ export const PhoneEmailForm = ({
     variant = 'login',
     isLast,
     setFormStep,
-    setPhone
+    setPhone,
+    setEmail
 }: Props) => {
     const [clickedLinks, setClickedLinks] = useState<number[]>([]);
     const [isPhone, setIsPhone] = useState<boolean>(true);
@@ -49,13 +50,11 @@ export const PhoneEmailForm = ({
     };
     const allLinksClicked = clickedLinks.length === 1;
     const onSubmit = async (data: FieldValues) => {
-        let fieldData: string;
+        const fieldData = isPhone ? data.phone.replace(/\D/gm, '') : data.email;
         if (isPhone) {
-            fieldData = data.phone.replace(/\D/gm, '');
             setPhone(fieldData);
         } else {
-            fieldData = data.email;
-            setPhone(fieldData);
+            setEmail(fieldData);
         }
 
         let isError = false;
