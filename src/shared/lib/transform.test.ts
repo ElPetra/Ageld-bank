@@ -89,7 +89,7 @@ const customerCardResponseExample: CustomerCardResponse = {
     image: 'example',
     level: 'CLASSIC',
     nameProduct: 'example',
-    paymentSystem: 'МИР',
+    paymentSystem: 'MIR',
     statusName: 'ACTIVE',
     typeCard: 'CREDIT'
 };
@@ -101,7 +101,7 @@ const customerCardExample: CustomerCard = {
     image: 'example',
     level: 'CLASSIC',
     name: 'example',
-    paymentSystem: 'МИР',
+    paymentSystem: 'MIR',
     status: 'active',
     type: 'CREDIT'
 };
@@ -127,7 +127,7 @@ const cardDetailsResponseExample: CardDetailsResponse = {
     typeCard: 'CREDIT',
     isVirtual: true,
     level: 'CLASSIC',
-    paymentSystem: 'МИР',
+    paymentSystem: 'MIR',
     image: 'example'
 };
 
@@ -140,7 +140,7 @@ const cardDetailsExample: CardDetails = {
     type: 'CREDIT',
     isVirtual: true,
     level: 'CLASSIC',
-    paymentSystem: 'МИР',
+    paymentSystem: 'MIR',
     image: 'example'
 };
 
@@ -150,7 +150,7 @@ const cardProductResponseExample: CardProductResponse = {
     cardProductId: 'example123',
     nameProduct: 'example',
     imageUrl: 'example',
-    paymentSystem: 'VISA',
+    paymentSystem: 'Visa',
     typeCard: 'CREDIT',
     level: 'CLASSIC'
 };
@@ -159,7 +159,7 @@ const cardProduct: CardProduct = {
     id: 'example123',
     name: 'example',
     image: 'example',
-    paymentSystem: 'VISA',
+    paymentSystem: 'Visa',
     type: 'CREDIT',
     level: 'CLASSIC'
 };
@@ -175,7 +175,7 @@ const arrayOfCardProductExample = Array.from({ length: 2 }, () => cardProduct);
 const cardProductDetailsResponseExample: CardProductDetailsResponse = {
     nameProduct: 'example',
     image: 'example',
-    paymentSystem: 'VISA',
+    paymentSystem: 'Visa',
     typeCard: 'CREDIT',
     level: 'CLASSIC',
     isVirtual: true,
@@ -202,7 +202,7 @@ const cardProductDetailsResponseExample: CardProductDetailsResponse = {
 const cardProductDetailsExample: CardProductDetails = {
     name: 'example',
     image: 'example',
-    paymentSystem: 'VISA',
+    paymentSystem: 'Visa',
     type: 'CREDIT',
     level: 'CLASSIC',
     isVirtual: true,

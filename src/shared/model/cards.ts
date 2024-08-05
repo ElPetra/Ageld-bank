@@ -1,3 +1,5 @@
+import { EUR, RUB, USD } from 'src/shared/model/product';
+
 import type { ProductStatus } from 'src/shared/model';
 
 type CardStatusResponse = 'ACTIVE' | 'CLOSED' | 'BLOCKED';
