@@ -1,8 +1,9 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Button, Card, Icon, Image, Link, Text } from 'src/shared/ui';
 import { CARD_NUMBER_REPLACEMENT, RouteName, typeCard } from 'src/shared/model';
-import { formatExpirationDate, getIconName } from 'src/shared/lib';
+import { formatExpirationDate } from 'src/shared/lib';
 
 import {
     isCardDetails,
@@ -14,7 +15,7 @@ import {
 import { LinkCard } from './link-card';
 import { Detail } from './detail';
 
-import type { ReactNode } from 'react';
+import type { Dispatch, ReactNode, SetStateAction } from 'react';
 import type {
     CardDetails,
     CardProduct,
@@ -26,6 +27,8 @@ import './styles.scss';
 
 interface Props {
     card: CustomerCard | CardProduct | CardDetails | CardProductDetails;
+    currentId?: string;
+    setCurrentId?: Dispatch<SetStateAction<string>>;
     children?: ReactNode;
 }
 
@@ -33,17 +36,21 @@ function getFirstUpperCase(str: string): string {
     return str && str[0].toUpperCase() + str.slice(1).toLowerCase();
 }
 
-export const UniversalCardCard = ({ card, children }: Props) => {
+export const UniversalCardCard = ({
+    card,
+    currentId,
+    setCurrentId,
+    children
+}: Props) => {
     const { t } = useTranslation();
+    const [showNumber, setShowNumber] = useState<boolean>(false);
+
     const cardRoute =
         'status' in card ? RouteName.CARD_PAGE : RouteName.CARD_PRODUCT_PAGE;
     const link =
         isCustomerCard(card) || isCardProduct(card)
             ? cardRoute + '/' + card.id
             : '';
-
-    const handleCopyCard = () =>
-        isCardDetails(card) && navigator.clipboard.writeText(card.number);
 
     return (
         <Card padding='large'>
@@ -67,9 +74,7 @@ export const UniversalCardCard = ({ card, children }: Props) => {
                                     : 'paymentSystem' in card && (
                                           <div className='universal-card-card__second__info__text__name__icon'>
                                               <Icon
-                                                  icon={getIconName(
-                                                      card.paymentSystem
-                                                  )}
+                                                  icon={card.paymentSystem}
                                                   width={60}
                                                   height={30}
                                               />
@@ -82,16 +87,44 @@ export const UniversalCardCard = ({ card, children }: Props) => {
                                 </Text>
                             ) : (
                                 <Text color='tertiary'>
-                                    {isCustomerCard(card)
-                                        ? card.number.replace(
-                                              /.{12}/gm,
-                                              CARD_NUMBER_REPLACEMENT
-                                          )
-                                        : t(typeCard[card.type]) +
-                                          ' ' +
-                                          t('карта') +
-                                          '. ' +
-                                          t('Надежная карта на каждый день')}
+                                    {isCustomerCard(card) ? (
+                                        <>
+                                            {currentId === card.id
+                                                ? card.number
+                                                : card.number.replace(
+                                                      /.{12}/gm,
+                                                      CARD_NUMBER_REPLACEMENT
+                                                  )}
+                                            <button
+                                                aria-label='Показать номер карты полностью'
+                                                type='button'
+                                                onClick={e => {
+                                                    e.preventDefault();
+                                                    if (setCurrentId) {
+                                                        setCurrentId(prev =>
+                                                            prev === card.id
+                                                                ? ''
+                                                                : card.id
+                                                        );
+                                                    }
+                                                }}
+                                            >
+                                                <Icon
+                                                    icon={
+                                                        currentId === card.id
+                                                            ? 'eye-open'
+                                                            : 'eye-close'
+                                                    }
+                                                />
+                                            </button>
+                                        </>
+                                    ) : (
+                                        t(typeCard[card.type]) +
+                                        ' ' +
+                                        t('карта') +
+                                        '. ' +
+                                        t('Надежная карта на каждый день')
+                                    )}
                                 </Text>
                             )}
                         </div>
@@ -176,8 +209,18 @@ export const UniversalCardCard = ({ card, children }: Props) => {
                                             )}
                                             description={t('Номер карты')}
                                         />
-                                        <button onClick={handleCopyCard}>
-                                            <Icon icon='copy' />
+                                        <button
+                                            onClick={() =>
+                                                setShowNumber(prev => !prev)
+                                            }
+                                        >
+                                            <Icon
+                                                icon={
+                                                    showNumber
+                                                        ? 'eye-open'
+                                                        : 'eye-close'
+                                                }
+                                            />
                                         </button>
                                     </div>
                                     <Detail

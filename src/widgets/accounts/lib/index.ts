@@ -6,19 +6,20 @@ interface FilterArgs {
     accounts: Account[] | undefined;
     type?: AccountType;
     currency: string;
-    notClosed: boolean;
+    showClosed: boolean;
 }
 
 export const filterAccounts = ({
     accounts,
     type,
     currency,
-    notClosed
+    showClosed
 }: FilterArgs): Account[] => {
     return (
         accounts?.filter(
             el =>
-                (notClosed || el.status !== 'closed') &&
+                (showClosed ||
+                    (el.status !== 'closed' && el.status !== 'blocked')) &&
                 (currency === ALL_CURRENCY ||
                     el.currency === currency.toLowerCase()) &&
                 (!type || el.type === type)

@@ -53,7 +53,7 @@ export const Accounts = () => {
                                 accounts={filterAccounts({
                                     accounts,
                                     currency,
-                                    notClosed: showClosed
+                                    showClosed
                                 })}
                                 setShowClosed={setShowClosed}
                             />
@@ -68,7 +68,7 @@ export const Accounts = () => {
                                     accounts,
                                     currency,
                                     type: 'debit',
-                                    notClosed: showClosed
+                                    showClosed
                                 })}
                                 setShowClosed={setShowClosed}
                             />
@@ -83,7 +83,7 @@ export const Accounts = () => {
                                     accounts,
                                     currency,
                                     type: 'deposit',
-                                    notClosed: showClosed
+                                    showClosed
                                 })}
                                 setShowClosed={setShowClosed}
                             />
@@ -98,7 +98,7 @@ export const Accounts = () => {
                                     accounts,
                                     currency,
                                     type: 'credit',
-                                    notClosed: showClosed
+                                    showClosed
                                 })}
                                 setShowClosed={setShowClosed}
                             />

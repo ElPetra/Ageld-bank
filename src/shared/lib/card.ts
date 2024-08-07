@@ -1,14 +1,18 @@
-import type { PaymentSystem } from 'src/shared/model';
+import { useGetCardProductsByTypeQuery } from 'src/shared/api';
 
-import type { SvgIconName } from 'src/shared/ui';
+export const useGetCardProductsQuery = () => {
+    const { data: debitCards = [], isLoading: debitLoading } =
+        useGetCardProductsByTypeQuery({ type: 'DEBIT' });
 
-export const getIconName = (payment: PaymentSystem): SvgIconName => {
-    switch (payment) {
-        case 'Visa':
-            return 'visa';
-        case 'MIR':
-            return 'mir';
-        case 'MasterCard':
-            return 'masterCard';
-    }
+    const { data: creditCards = [], isLoading: creditLoading } =
+        useGetCardProductsByTypeQuery({
+            type: 'CREDIT'
+        });
+
+    const cards = debitCards.concat(creditCards);
+    const isLoading = debitLoading || creditLoading;
+    return {
+        isLoading,
+        cards
+    };
 };

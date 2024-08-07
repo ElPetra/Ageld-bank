@@ -14,5 +14,7 @@ export const CustomerCards = () => {
         }
     }, [error, signedOut]);
 
-    return <CardList cards={cards} isLoading={isLoading} />;
+    return (
+        <CardList cards={cards} isLoading={isLoading} isCustomerCards={true} />
+    );
 };

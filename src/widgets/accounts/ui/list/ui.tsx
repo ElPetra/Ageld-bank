@@ -17,7 +17,7 @@ interface Props {
 
 export const AccountList = ({ accounts, setShowClosed }: Props) => {
     const { t } = useTranslation();
-    const [showAllNumber, setShowAllNumber] = useState<string>('');
+    const [currentNumber, setCurrentNumber] = useState<string>('');
 
     return (
         <div className='account-list__container'>
@@ -30,8 +30,8 @@ export const AccountList = ({ accounts, setShowClosed }: Props) => {
                         <AccountCard
                             key={el.number}
                             account={el}
-                            showAllNumber={showAllNumber === el.number}
-                            setShowAllNumber={setShowAllNumber}
+                            currentNumber={currentNumber}
+                            setCurrentNumber={setCurrentNumber}
                         >
                             <ProductStatuses
                                 isMaster={el.isMaster}
