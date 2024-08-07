@@ -19,16 +19,18 @@ import {
     type DepositDetails,
     type DepositDetailsResponse,
     type PaymentSystem,
-    cardStatusesToProductStatus
+    cardStatusesToProductStatus,
+    type AccountType,
+    type ProductStatus
 } from 'src/shared/model';
 
 export const transformAccounts = (res: AccountResponse[]): Account[] =>
     res.map(el => ({
         number: el.accountNumber,
-        type: el.type,
+        type: el.type.toLowerCase() as AccountType,
         balance: el.accountBalance,
-        status: el.statusName,
-        currency: el.currencyName,
+        status: el.status.toLowerCase() as ProductStatus,
+        currency: el.currencyName.toLowerCase() as Currency,
         isMaster: el.masterAccount,
         name: el.nameAccount || ''
     }));
@@ -39,9 +41,9 @@ export const transformAccountDetails = (
     number: res.accountNumber,
     name: res.nameAccount || '',
     isMaster: res.masterAccount,
-    type: res.type,
-    currency: res.currencyName,
-    status: res.statusName,
+    type: res.type.toLowerCase() as AccountType,
+    currency: res.currencyName.toLowerCase() as Currency,
+    status: res.status.toLowerCase() as ProductStatus,
     balance: res.accountBalance,
     createdAt: res.createdAt,
     closedAt: res.closedAt,

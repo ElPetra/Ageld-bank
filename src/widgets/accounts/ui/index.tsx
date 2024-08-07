@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
 
 import { useGetAccountsQuery } from 'src/shared/api';
@@ -12,12 +13,11 @@ import {
 import { useAuth } from 'src/entities/user';
 import { FilterBar } from 'src/entities/filter';
 import { Menu } from 'src/features/menu';
-import { useTranslation } from 'react-i18next';
 
 import { filterAccounts } from '../lib';
 
 import { AccountList } from './list';
-import { AccountCreationCards } from './createtion-cards';
+import { AccountCreation } from './account-creation';
 
 export const Accounts = () => {
     const { signedOut } = useAuth();
@@ -25,6 +25,7 @@ export const Accounts = () => {
     const { t } = useTranslation();
     const [currency, setCurrency] = useState<string>('Все');
     const [showClosed, setShowClosed] = useState<boolean>(false);
+
     useEffect(() => {
         if (isErrorStatusUnauthorized(error)) {
             return signedOut();
@@ -35,6 +36,7 @@ export const Accounts = () => {
         <Preloader />
     ) : (
         <>
+            <AccountCreation />
             <Text tag='h2' size='m' weight='medium'>
                 {t('Мои счета')}
             </Text>
@@ -110,11 +112,6 @@ export const Accounts = () => {
                     setCurrent={setCurrency}
                 />
             </Menu>
-            <AccountCreationCards />
         </>
     );
 };
-
-/*
-
-*/

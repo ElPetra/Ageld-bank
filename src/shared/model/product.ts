@@ -16,6 +16,7 @@ export const currencySymbol = {
 };
 
 export type ProductStatus = 'active' | 'closed' | 'blocked';
+export type ProductStatusResponse = 'ACTIVE' | 'CLOSED' | 'BLOCKED';
 
 export const productStatuses: Record<ProductStatus, string> = {
     active: 'Активный',
