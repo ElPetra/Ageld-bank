@@ -5,7 +5,7 @@ import { transformCardDetails, transformCards } from 'src/shared/lib';
 
 import type { CardDetails, CardType, CustomerCard } from 'src/shared/model';
 
-const cardBaseUrl = import.meta.env.VITE_BASEURL_GATEWAY + '/api/v1/card';
+const cardBaseUrl = import.meta.env.VITE_BASEURL_GATEWAY + '/api/v1/cards';
 
 export const cardApi = createApi({
     reducerPath: 'cardApi',
@@ -41,10 +41,7 @@ export const cardApi = createApi({
         }),
         getCustomerCardDetails: builder.query<CardDetails, { id: string }>({
             query: ({ id }) => ({
-                url: '/info',
-                params: {
-                    card_id: id
-                },
+                url: id,
                 method: 'GET'
             }),
             transformResponse: transformCardDetails

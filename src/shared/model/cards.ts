@@ -1,99 +1,64 @@
-import { EUR, RUB, USD } from 'src/shared/model/product';
+import type {
+    ProductStatus,
+    Currency,
+    CurrencyResponse
+} from 'src/shared/model';
 
-import type { ProductStatus } from 'src/shared/model';
-
-type CardStatusResponse = 'ACTIVE' | 'CLOSED' | 'BLOCKED';
-
-export type CardType = 'CREDIT' | 'DEBIT' | 'DEPOSIT';
+export type CardType = 'CREDIT' | 'DEBIT';
 export type CardLevel = 'CLASSIC' | 'GOLD' | 'PLATINUM' | 'PREMIUM';
-export type PaymentSystem = 'MIR' | 'Visa' | 'MasterCard';
+
+export type PaymentSystemResponse = 'MIR' | 'Visa' | 'MasterCard';
+export type PaymentSystem = 'mir' | 'visa' | 'mastercard';
 
 export const CARD_NUMBER_REPLACEMENT = '**** **** **** ';
 export const ALL = 'Bce';
 export const CREDIT_CARD = 'Кредитная';
 export const DEBIT_CARD = 'Дебетовая';
-export const DEPOSIT_CARD = 'Депозитная';
-export const MIR_CARD = 'МИР';
-export const VISA_CARD = 'VISA';
+
+export type CardStatusResponse = 1 | 2 | 3;
+
+export const cardStatusesToProductStatus: Record<
+    CardStatusResponse,
+    ProductStatus
+> = {
+    1: 'active',
+    2: 'closed',
+    3: 'blocked'
+};
+
+export const cardStatuses: Record<ProductStatus, string> = {
+    active: 'Активная',
+    closed: 'Закрытая',
+    blocked: 'Заблокированная'
+};
 
 export const typeCard: Record<CardType, string> = {
     CREDIT: CREDIT_CARD,
-    DEBIT: DEBIT_CARD,
-    DEPOSIT: DEPOSIT_CARD
+    DEBIT: DEBIT_CARD
 };
 
-export const typeCardFilters = [ALL, CREDIT_CARD, DEBIT_CARD, DEPOSIT_CARD];
-export const paymentSystemFilters = [ALL, MIR_CARD, VISA_CARD];
-
-export const currencySystemFilters = [ALL, RUB, USD, EUR];
-
-export interface CustomerCard {
-    id: string;
-    number: string;
-    expirationAt: string;
-    image: string;
-    level: CardLevel;
-    name: string;
-    paymentSystem: PaymentSystem;
-    status: ProductStatus;
-    type: CardType;
-}
-
-export interface CustomerCardResponse {
-    cardId: string;
-    accountNumber: string;
-    expirationAt: string;
-    image: string;
-    level: CardLevel;
-    nameProduct: string;
-    paymentSystem: PaymentSystem;
-    statusName: CardStatusResponse;
-    typeCard: CardType;
-}
-
-export interface CardDetails {
-    number: string;
-    balance: number;
-    status: ProductStatus;
-    expirationAt: string;
-    name: string;
-    type: CardType;
-    isVirtual: boolean;
-    level: CardLevel;
-    paymentSystem: PaymentSystem;
-    image: string;
-}
-
-export interface CardDetailsResponse {
-    customerId: number;
-    cardNumber: string;
-    balance: number;
-    statusName: CardStatusResponse;
-    expirationAt: string;
-    nameProduct: string;
-    typeCard: CardType;
-    isVirtual: boolean;
-    level: CardLevel;
-    paymentSystem: PaymentSystem;
-    image: string;
-}
+export const typeCardFilters = [ALL, CREDIT_CARD, DEBIT_CARD];
 
 export interface CardProduct {
+    active: boolean;
     id: string;
     name: string;
     image: string;
     paymentSystem: PaymentSystem;
     type: CardType;
     level: CardLevel;
+    currency: Currency;
 }
 
 export interface CardProductResponse {
-    cardProductId: string;
-    nameProduct: string;
-    imageUrl: string;
-    paymentSystem: PaymentSystem;
-    typeCard: CardType;
-    level: CardLevel;
+    active: boolean;
+    id: string;
+    productName: string;
+    cardImage: string;
+    paymentSystem: PaymentSystemResponse;
+    cardType: CardType;
+    cardLevel: CardLevel;
+    currencyCode: CurrencyResponse;
 }
 
 export interface CardProductDetails {
@@ -103,34 +68,96 @@ export interface CardProductDetails {
     type: CardType;
     level: CardLevel;
     isVirtual: boolean;
-    feeUse: number;
+    cardFee: number;
+    serviceFee: number;
+    currency: Currency;
+    active: boolean;
+    cashbackLimit: number;
+    dayOperationLimit: number;
+    monthOperationLimit: number;
     limits: { key: string, value: number }[];
     conditions: { key: string, value: number }[];
 }
 
 export interface CardProductDetailsResponse {
-    nameProduct: string;
-    image: string;
-    paymentSystem: PaymentSystem;
-    typeCard: CardType;
-    level: CardLevel;
+    id: string;
+    name: string;
+    cardImage: string;
+    paymentSystem: PaymentSystemResponse;
+    cardType: CardType;
+    cardLevel: CardLevel;
     isVirtual: boolean;
-    feeUse: number;
-    withdrawLimitDay: number;
-    withdrawLimitMonth: number;
-    transactionLimitDay: number;
-    transactionLimitMonth: number;
-    payLimitDay: number;
-    payLimitMonth: number;
-    overWithdrawDay: number;
-    overWithdrawMonth: number;
-    overTransactionDay: number;
-    overTransactionMonth: number;
-    overPayDay: number;
-    overPayMonth: number;
-    conditionWithdraw: number;
-    conditionPartnerWithdraw: number;
-    conditionWorldWithdraw: number;
-    conditionTransaction: number;
-    conditionPay: number;
+    cardFee: number;
+    serviceFee: number;
+    currencyCode: CurrencyResponse;
+    active: boolean;
+    cashbackLimit: number;
+    dayOperationLimit: number;
+    monthOperationLimit: number;
+    amountDay: number;
+    amountOperation: number;
+    withdrawalOperation: number;
+    client: number;
+    partnerClient: number;
+    localCustomer: number;
+    internationalCustomer: number;
+    transferClient: number;
+    transferPartnerClient: number;
+    transferNonPartnerClient: number;
+    internationalTransfer: number;
+}
+
+export interface CustomerCard {
+    active: boolean;
+    id: string;
+    number: string;
+    expires: string;
+    image: string;
+    status: ProductStatus;
+    balance: number;
+    currency: Currency;
+    isVirtual: boolean;
+    name: string;
+    type: CardType;
+}
+
+export interface CustomerCardResponse {
+    active: boolean;
+    cardId: string;
+    cardNumber: string;
+    expires: string;
+    image: string;
+    cardStatus: CardStatusResponse;
+    balance: number;
+    currencyCode: CurrencyResponse;
+    isVirtual: boolean;
+    productName: string;
+    typeCard: CardType;
+}
+
+export interface CardDetails {
+    number: string;
+    balance: number;
+    status: ProductStatus;
+    expires: string;
+    name: string;
+    type: CardType;
+    isVirtual: boolean;
+    currency: Currency;
+    paymentSystem: PaymentSystem;
+    image: string;
+}
+
+export interface CardDetailsResponse {
+    customerId: number;
+    cardNumber: string;
+    balance: number;
+    cardStatus: CardStatusResponse;
+    expires: string;
+    productName: string;
+    cardType: CardType;
+    isVirtual: boolean;
+    currencyCode: CurrencyResponse;
+    paymentSystem: PaymentSystemResponse;
+    cardImage: string;
 }

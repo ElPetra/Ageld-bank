@@ -1,24 +1,25 @@
-import type {
-    Account,
-    AccountResponse,
-    CustomerCard,
-    CustomerCardResponse,
-    CardProductResponse,
-    CardProduct,
-    CardProductDetails,
-    CardProductDetailsResponse,
-    ProductStatus,
-    CardDetailsResponse,
-    CardDetails,
-    AccountDetailsResponse,
-    AccountDetails,
-    DepositProduct,
-    DepositProductResponse,
-    Currency,
-    Deposit,
-    DepositResponse,
-    DepositDetails,
-    DepositDetailsResponse
+import {
+    type Account,
+    type AccountResponse,
+    type CustomerCard,
+    type CustomerCardResponse,
+    type CardProductResponse,
+    type CardProduct,
+    type CardProductDetails,
+    type CardProductDetailsResponse,
+    type CardDetailsResponse,
+    type CardDetails,
+    type AccountDetailsResponse,
+    type AccountDetails,
+    type DepositProduct,
+    type DepositProductResponse,
+    type Currency,
+    type Deposit,
+    type DepositResponse,
+    type DepositDetails,
+    type DepositDetailsResponse,
+    type PaymentSystem,
+    cardStatusesToProductStatus
 } from 'src/shared/model';
 
 export const transformAccounts = (res: AccountResponse[]): Account[] =>
@@ -50,15 +51,17 @@ export const transformAccountDetails = (
 
 export const transformCards = (res: CustomerCardResponse[]): CustomerCard[] =>
     res.map(el => ({
+        active: el.active,
         id: el.cardId,
-        number: el.accountNumber,
-        expirationAt: el.expirationAt,
+        number: el.cardNumber,
+        expires: el.expires,
+        status: cardStatusesToProductStatus[el.cardStatus],
         image: el.image,
-        level: el.level,
-        name: el.nameProduct,
-        paymentSystem: el.paymentSystem,
-        status: el.statusName.toLowerCase() as ProductStatus,
-        type: el.typeCard
+        balance: el.balance,
+        name: el.productName,
+        type: el.typeCard,
+        isVirtual: el.isVirtual,
+        currency: el.currencyCode.toLowerCase() as Currency
     }));
 
 export const transformCardDetails = (
@@ -66,108 +69,94 @@ export const transformCardDetails = (
 ): CardDetails => ({
     number: res.cardNumber,
     balance: res.balance,
-    status: res.statusName.toLowerCase() as ProductStatus,
-    expirationAt: res.expirationAt,
-    name: res.nameProduct,
-    type: res.typeCard,
+    status: cardStatusesToProductStatus[res.cardStatus],
+    expires: res.expires,
+    name: res.productName,
+    type: res.cardType,
     isVirtual: res.isVirtual,
-    level: res.level,
-    paymentSystem: res.paymentSystem,
-    image: res.image
+    currency: res.currencyCode.toLowerCase() as Currency,
+    paymentSystem: res.paymentSystem.toLowerCase() as PaymentSystem,
+    image: res.cardImage
 });
 
 export const transformCardProducts = (
     res: CardProductResponse[]
 ): CardProduct[] =>
-    res.map(el => ({
-        id: el.cardProductId,
-        name: el.nameProduct,
-        image: el.imageUrl,
-        paymentSystem: el.paymentSystem,
-        type: el.typeCard,
-        level: el.level
-    }));
+    res
+        .map(el => ({
+            active: el.active,
+            id: el.id,
+            name: el.productName,
+            image: el.cardImage,
+            paymentSystem: el.paymentSystem.toLowerCase() as PaymentSystem,
+            type: el.cardType,
+            level: el.cardLevel || 'Нет данных',
+            currency: el.currencyCode.toLowerCase() as Currency
+        }))
+        .filter(el => el.active);
 
 export const transformCardProductDetails = (
     res: CardProductDetailsResponse
 ): CardProductDetails => ({
-    name: res.nameProduct,
-    image: res.image,
-    paymentSystem: res.paymentSystem,
-    type: res.typeCard,
-    level: res.level,
+    name: res.name,
+    image: res.cardImage,
+    paymentSystem: res.paymentSystem.toLowerCase() as PaymentSystem,
+    type: res.cardType,
+    level: res.cardLevel || 'Нет данных',
     isVirtual: res.isVirtual,
-    feeUse: res.feeUse,
+    currency: res.currencyCode.toLowerCase() as Currency,
+    cardFee: res.cardFee,
+    serviceFee: res.serviceFee,
+    active: res.active,
+    cashbackLimit: res.cashbackLimit,
+    dayOperationLimit: res.dayOperationLimit,
+    monthOperationLimit: res.monthOperationLimit,
     limits: [
         {
-            key: 'withdrawLimitDay',
-            value: res.withdrawLimitDay
+            key: 'amountDay',
+            value: res.amountDay
         },
         {
-            key: 'withdrawLimitMonth',
-            value: res.withdrawLimitMonth
+            key: 'amountOperation',
+            value: res.amountOperation
         },
         {
-            key: 'transactionLimitDay',
-            value: res.transactionLimitDay
-        },
-        {
-            key: 'transactionLimitMonth',
-            value: res.transactionLimitMonth
-        },
-        {
-            key: 'payLimitDay',
-            value: res.payLimitDay
-        },
-        {
-            key: 'payLimitMonth',
-            value: res.payLimitMonth
-        },
-        {
-            key: 'overWithdrawDay',
-            value: res.overWithdrawDay
-        },
-        {
-            key: 'overWithdrawMonth',
-            value: res.overWithdrawMonth
-        },
-        {
-            key: 'overTransactionDay',
-            value: res.overTransactionDay
-        },
-        {
-            key: 'overTransactionMonth',
-            value: res.overTransactionMonth
-        },
-        {
-            key: 'overPayDay',
-            value: res.overPayDay
-        },
-        {
-            key: 'overPayMonth',
-            value: res.overPayMonth
+            key: 'withdrawalOperation',
+            value: res.withdrawalOperation
         }
     ],
     conditions: [
         {
-            key: 'conditionWithdraw',
-            value: res.conditionWithdraw
+            key: 'client',
+            value: res.client
         },
         {
-            key: 'conditionPartnerWithdraw',
-            value: res.conditionPartnerWithdraw
+            key: 'partnerClient',
+            value: res.partnerClient
         },
         {
-            key: 'conditionWorldWithdraw',
-            value: res.conditionWorldWithdraw
+            key: 'localCustomer',
+            value: res.localCustomer
         },
         {
-            key: 'conditionTransaction',
-            value: res.conditionTransaction
+            key: 'internationalCustomer',
+            value: res.internationalCustomer
         },
         {
-            key: 'conditionPay',
-            value: res.conditionPay
+            key: 'transferClient',
+            value: res.transferClient
+        },
+        {
+            key: 'transferPartnerClient',
+            value: res.transferPartnerClient
+        },
+        {
+            key: 'transferNonPartnerClient',
+            value: res.transferNonPartnerClient
+        },
+        {
+            key: 'internationalTransfer',
+            value: res.internationalTransfer
         }
     ]
 });

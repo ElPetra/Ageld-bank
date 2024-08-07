@@ -1,12 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 import { Button, Card, Icon, Image, Link, Text } from 'src/shared/ui';
-import {
-    CARD_NUMBER_REPLACEMENT,
-    RouteName,
-    RUB,
-    typeCard
-} from 'src/shared/model';
+import { CARD_NUMBER_REPLACEMENT, RouteName, typeCard } from 'src/shared/model';
 import { formatExpirationDate, getIconName } from 'src/shared/lib';
 
 import {
@@ -64,22 +59,22 @@ export const UniversalCardCard = ({ card, children }: Props) => {
                             <div className='universal-card-card__second__info__text__name'>
                                 <LinkCard link={link}>
                                     <Text size='l' weight='bold'>
-                                        {`A-Geld Card ${card.name}`}
+                                        {`A-Geld ${card.name}`}
                                     </Text>
                                 </LinkCard>
-                                {children ? (
-                                    children
-                                ) : (
-                                    <div className='universal-card-card__second__info__text__name__icon'>
-                                        <Icon
-                                            icon={getIconName(
-                                                card.paymentSystem
-                                            )}
-                                            width={60}
-                                            height={30}
-                                        />
-                                    </div>
-                                )}
+                                {children
+                                    ? children
+                                    : 'paymentSystem' in card && (
+                                          <div className='universal-card-card__second__info__text__name__icon'>
+                                              <Icon
+                                                  icon={getIconName(
+                                                      card.paymentSystem
+                                                  )}
+                                                  width={60}
+                                                  height={30}
+                                              />
+                                          </div>
+                                      )}
                             </div>
                             {isCardDetails(card) ? (
                                 <Text size='l' weight='bold'>
@@ -108,7 +103,7 @@ export const UniversalCardCard = ({ card, children }: Props) => {
                                         description={t('Уровень премиальность')}
                                     />
                                     <Detail
-                                        value={RUB}
+                                        value={card.currency.toUpperCase()}
                                         description={t('Валюта счета')}
                                     />
                                 </>
@@ -116,20 +111,36 @@ export const UniversalCardCard = ({ card, children }: Props) => {
                             {isCardProductDetails(card) && (
                                 <>
                                     <Detail
-                                        value={getFirstUpperCase(card.level)}
-                                        description={t('Уровень премиальность')}
-                                    />
-                                    <Detail
                                         value={
                                             card.isVirtual ? t('Да') : t('Нет')
                                         }
                                         description={t('Виртуальная')}
                                     />
                                     <Detail
-                                        value={card.feeUse + ' ₽'}
+                                        value={card.currency.toUpperCase()}
+                                        description={t('Валюта счета')}
+                                    />
+                                    <Detail
+                                        value={
+                                            card.cardFee +
+                                            ' ' +
+                                            card.currency.toUpperCase()
+                                        }
+                                        description={t('Плата за выпуск')}
+                                    />
+                                    <Detail
+                                        value={
+                                            card.serviceFee +
+                                            ' ' +
+                                            card.currency.toUpperCase()
+                                        }
                                         description={t(
                                             'Плата за использование'
                                         )}
+                                    />
+                                    <Detail
+                                        value={getFirstUpperCase(card.level)}
+                                        description={t('Уровень премиальность')}
                                     />
                                 </>
                             )}
@@ -137,16 +148,20 @@ export const UniversalCardCard = ({ card, children }: Props) => {
                                 <>
                                     <Detail
                                         value={formatExpirationDate(
-                                            card.expirationAt
+                                            card.expires
                                         )}
                                         description={t('Срок действия')}
                                     />
                                     <Detail
-                                        value='1000 ₽' // Данные пока не преходят с api
+                                        value={
+                                            card.balance.toLocaleString() +
+                                            ' ' +
+                                            card.currency.toUpperCase()
+                                        }
                                         description={t('Баланс')}
                                     />
                                     <Detail
-                                        value={RUB}
+                                        value={card.currency.toUpperCase()}
                                         description={t('Валюта счета')}
                                     />
                                 </>
@@ -167,12 +182,12 @@ export const UniversalCardCard = ({ card, children }: Props) => {
                                     </div>
                                     <Detail
                                         value={formatExpirationDate(
-                                            card.expirationAt
+                                            card.expires
                                         )}
                                         description={t('Срок действия')}
                                     />
                                     <Detail
-                                        value={RUB}
+                                        value={card.currency.toUpperCase()}
                                         description={t('Валюта счета')}
                                     />
                                 </>

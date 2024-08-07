@@ -83,26 +83,30 @@ const accountDetailsExample: AccountDetails = {
 //cards
 
 const customerCardResponseExample: CustomerCardResponse = {
+    active: true,
     cardId: 'example123',
-    accountNumber: 'example123',
-    expirationAt: 'example',
+    lastFourDigits: 1234,
+    expires: 'example',
     image: 'example',
-    level: 'CLASSIC',
-    nameProduct: 'example',
-    paymentSystem: 'MIR',
-    statusName: 'ACTIVE',
+    productName: 'example',
+    cardStatus: 1,
+    balance: 12345,
+    isVirtual: true,
+    currencyCode: 'RUB',
     typeCard: 'CREDIT'
 };
 
 const customerCardExample: CustomerCard = {
+    active: true,
     id: 'example123',
-    number: 'example123',
-    expirationAt: 'example',
+    number: 1234,
+    expires: 'example',
     image: 'example',
-    level: 'CLASSIC',
     name: 'example',
-    paymentSystem: 'MIR',
     status: 'active',
+    balance: 12345,
+    isVirtual: true,
+    currency: 'rub',
     type: 'CREDIT'
 };
 
@@ -121,45 +125,49 @@ const cardDetailsResponseExample: CardDetailsResponse = {
     customerId: 12345,
     cardNumber: 'example123',
     balance: 12345,
-    statusName: 'ACTIVE',
-    expirationAt: 'example',
-    nameProduct: 'example',
-    typeCard: 'CREDIT',
+    cardStatus: 1,
+    expires: 'example',
+    productName: 'example',
+    cardType: 'CREDIT',
     isVirtual: true,
-    level: 'CLASSIC',
+    currencyCode: 'RUB',
     paymentSystem: 'MIR',
-    image: 'example'
+    cardImage: 'example'
 };
 
 const cardDetailsExample: CardDetails = {
     number: 'example123',
     balance: 12345,
     status: 'active',
-    expirationAt: 'example',
+    expires: 'example',
     name: 'example',
     type: 'CREDIT',
     isVirtual: true,
-    level: 'CLASSIC',
-    paymentSystem: 'MIR',
+    currency: 'rub',
+    paymentSystem: 'mir',
     image: 'example'
 };
 
 //card products
 
 const cardProductResponseExample: CardProductResponse = {
-    cardProductId: 'example123',
-    nameProduct: 'example',
-    imageUrl: 'example',
+    active: true,
+    id: 'example123',
+    productName: 'example',
+    cardImage: 'example',
     paymentSystem: 'Visa',
-    typeCard: 'CREDIT',
-    level: 'CLASSIC'
+    currencyCode: 'RUB',
+    cardType: 'CREDIT',
+    cardLevel: 'CLASSIC'
 };
 
 const cardProduct: CardProduct = {
+    active: true,
     id: 'example123',
     name: 'example',
     image: 'example',
-    paymentSystem: 'Visa',
+    paymentSystem: 'visa',
+    currency: 'rub',
     type: 'CREDIT',
     level: 'CLASSIC'
 };
@@ -173,109 +181,92 @@ const arrayOfCardProductExample = Array.from({ length: 2 }, () => cardProduct);
 //card product details
 
 const cardProductDetailsResponseExample: CardProductDetailsResponse = {
-    nameProduct: 'example',
-    image: 'example',
+    id: '1',
+    name: 'example',
+    cardImage: 'example',
     paymentSystem: 'Visa',
-    typeCard: 'CREDIT',
-    level: 'CLASSIC',
+    cardType: 'CREDIT',
+    cardLevel: 'CLASSIC',
     isVirtual: true,
-    feeUse: 12345,
-    withdrawLimitDay: 12345,
-    withdrawLimitMonth: 12345,
-    transactionLimitDay: 12345,
-    transactionLimitMonth: 12345,
-    payLimitDay: 12345,
-    payLimitMonth: 12345,
-    overWithdrawDay: 12345,
-    overWithdrawMonth: 12345,
-    overTransactionDay: 12345,
-    overTransactionMonth: 12345,
-    overPayDay: 12345,
-    overPayMonth: 12345,
-    conditionWithdraw: 12345,
-    conditionPartnerWithdraw: 12345,
-    conditionWorldWithdraw: 12345,
-    conditionTransaction: 12345,
-    conditionPay: 12345
+    cardFee: 12345,
+    serviceFee: 12345,
+    currencyCode: 'RUB',
+    active: true,
+    cashbackLimit: 12345,
+    dayOperationLimit: 12345,
+    monthOperationLimit: 12345,
+    amountDay: 12345,
+    amountOperation: 12345,
+    withdrawalOperation: 12345,
+    client: 12345,
+    partnerClient: 12345,
+    localCustomer: 12345,
+    internationalCustomer: 12345,
+    transferClient: 12345,
+    transferPartnerClient: 12345,
+    transferNonPartnerClient: 12345,
+    internationalTransfer: 12345
 };
 
 const cardProductDetailsExample: CardProductDetails = {
     name: 'example',
     image: 'example',
-    paymentSystem: 'Visa',
+    paymentSystem: 'visa',
     type: 'CREDIT',
     level: 'CLASSIC',
     isVirtual: true,
-    feeUse: 12345,
+    cardFee: 12345,
+    serviceFee: 12345,
+    currency: 'rub',
+    active: true,
+    cashbackLimit: 12345,
+    dayOperationLimit: 12345,
+    monthOperationLimit: 12345,
     limits: [
         {
-            key: 'withdrawLimitDay',
+            key: 'amountDay',
             value: 12345
         },
         {
-            key: 'withdrawLimitMonth',
+            key: 'amountOperation',
             value: 12345
         },
         {
-            key: 'transactionLimitDay',
-            value: 12345
-        },
-        {
-            key: 'transactionLimitMonth',
-            value: 12345
-        },
-        {
-            key: 'payLimitDay',
-            value: 12345
-        },
-        {
-            key: 'payLimitMonth',
-            value: 12345
-        },
-        {
-            key: 'overWithdrawDay',
-            value: 12345
-        },
-        {
-            key: 'overWithdrawMonth',
-            value: 12345
-        },
-        {
-            key: 'overTransactionDay',
-            value: 12345
-        },
-        {
-            key: 'overTransactionMonth',
-            value: 12345
-        },
-        {
-            key: 'overPayDay',
-            value: 12345
-        },
-        {
-            key: 'overPayMonth',
+            key: 'withdrawalOperation',
             value: 12345
         }
     ],
     conditions: [
         {
-            key: 'conditionWithdraw',
+            key: 'client',
             value: 12345
         },
         {
-            key: 'conditionPartnerWithdraw',
+            key: 'partnerClient',
             value: 12345
         },
         {
-            key: 'conditionWorldWithdraw',
+            key: 'localCustomer',
             value: 12345
         },
         {
-            key: 'conditionTransaction',
+            key: 'internationalCustomer',
             value: 12345
         },
         {
-            key: 'conditionPay',
+            key: 'transferClient',
+            value: 12345
+        },
+        {
+            key: 'transferPartnerClient',
+            value: 12345
+        },
+        {
+            key: 'transferNonPartnerClient',
+            value: 12345
+        },
+        {
+            key: 'internationalTransfer',
             value: 12345
         }
     ]

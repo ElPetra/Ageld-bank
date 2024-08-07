@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 import {
     CREATE,
-    currencySystemFilters,
+    currencyFilters,
     RouteName,
     typeCardFilters
 } from 'src/shared/model';
@@ -48,7 +48,7 @@ export const CardList = ({ cards, isLoading }: Props) => {
                     setCurrent={setCurrencyType}
                 />
                 <FilterBar
-                    filters={currencySystemFilters}
+                    filters={currencyFilters}
                     current={currentCurrency}
                     setCurrent={setCurrentCurrency}
                 />
@@ -62,6 +62,7 @@ export const CardList = ({ cards, isLoading }: Props) => {
                             {'status' in el && (
                                 <ProductStatuses
                                     isMaster={false}
+                                    isFemale={true}
                                     status={el.status}
                                 />
                             )}
