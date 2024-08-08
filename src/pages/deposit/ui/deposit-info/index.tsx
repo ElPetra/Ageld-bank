@@ -43,18 +43,18 @@ export const DepositInfo = ({ deposit }: Props) => {
         navigator.clipboard.writeText(String(deposit.percentAccount));
     };
 
-    const getDay = (num: number): string => {
+    const getMonth = (num: number): string => {
         const lastDigit = num % 10;
         const lastTwoDigits = num % 100;
         if (lastTwoDigits >= 11 && lastTwoDigits <= 14) {
-            return t('дней');
+            return t('месяцев');
         }
         if (lastDigit === 1) {
-            return t('день');
+            return t('месяц');
         } else if (lastDigit >= 2 && lastDigit <= 4) {
-            return t('дня');
+            return t('месяца');
         } else {
-            return t('дней');
+            return t('месяцев');
         }
     };
 
@@ -134,7 +134,7 @@ export const DepositInfo = ({ deposit }: Props) => {
                         <Text weight='medium' size='m'>
                             {getTerm(deposit.startDate, deposit.endDate) +
                                 ' ' +
-                                getDay(
+                                getMonth(
                                     getTerm(deposit.startDate, deposit.endDate)
                                 )}
                         </Text>

@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import {
     transformCardProductDetails,
     transformCardProducts
-} from 'src/shared/lib';
+} from 'src/shared/lib/trasnform-card.ts';
 
 import type {
     CardProduct,

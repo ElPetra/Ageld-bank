@@ -2,7 +2,12 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Button, Card, Icon, Image, Link, Text } from 'src/shared/ui';
-import { CARD_NUMBER_REPLACEMENT, RouteName, typeCard } from 'src/shared/model';
+import {
+    CARD_NUMBER_REPLACEMENT,
+    currencySymbol,
+    RouteName,
+    typeCard
+} from 'src/shared/model';
 import { formatExpirationDate } from 'src/shared/lib';
 
 import {
@@ -83,12 +88,14 @@ export const UniversalCardCard = ({
                             </div>
                             {isCardDetails(card) ? (
                                 <Text size='l' weight='bold'>
-                                    {card.balance + ' ₽'}
+                                    {card.balance.toLocaleString() +
+                                        ' ' +
+                                        currencySymbol[card.currency]}
                                 </Text>
                             ) : (
                                 <Text color='tertiary'>
                                     {isCustomerCard(card) ? (
-                                        <>
+                                        <div className='universal-card-card__second__info__text__eye'>
                                             {currentId === card.id
                                                 ? card.number
                                                 : card.number.replace(
@@ -117,7 +124,7 @@ export const UniversalCardCard = ({
                                                     }
                                                 />
                                             </button>
-                                        </>
+                                        </div>
                                     ) : (
                                         t(typeCard[card.type]) +
                                         ' ' +
@@ -189,7 +196,7 @@ export const UniversalCardCard = ({
                                         value={
                                             card.balance.toLocaleString() +
                                             ' ' +
-                                            card.currency.toUpperCase()
+                                            currencySymbol[card.currency]
                                         }
                                         description={t('Баланс')}
                                     />
@@ -201,7 +208,7 @@ export const UniversalCardCard = ({
                             )}
                             {isCardDetails(card) && (
                                 <>
-                                    <div className='universal-card-card__second__info__details__copy'>
+                                    <div className='universal-card-card__second__info__details__eye'>
                                         <Detail
                                             value={card.number.replace(
                                                 /.{12}/gm,

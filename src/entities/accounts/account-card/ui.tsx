@@ -36,32 +36,34 @@ export const AccountCard = ({
                         <Icon widthAndHeight={40} icon={account.currency} />
                         <div className='account__card__info'>
                             <Text weight='medium'>
-                                {currentNumber === account.number
-                                    ? account.number
-                                    : account.number.replace(
-                                          /.{16}/gm,
-                                          ACCOUNT_NUMBER_REPLACEMENT
-                                      )}
-                                <button
-                                    aria-label='Показать номер счета полностью'
-                                    type='button'
-                                    onClick={e => {
-                                        e.preventDefault();
-                                        setCurrentNumber(prev =>
-                                            prev === account.number
-                                                ? ''
-                                                : account.number
-                                        );
-                                    }}
-                                >
-                                    <Icon
-                                        icon={
-                                            currentNumber === account.number
-                                                ? 'eye-open'
-                                                : 'eye-close'
-                                        }
-                                    />
-                                </button>
+                                <div className='account__card__info__eye'>
+                                    {currentNumber === account.number
+                                        ? account.number
+                                        : account.number.replace(
+                                              /.{16}/gm,
+                                              ACCOUNT_NUMBER_REPLACEMENT
+                                          )}
+                                    <button
+                                        aria-label='Показать номер счета полностью'
+                                        type='button'
+                                        onClick={e => {
+                                            e.preventDefault();
+                                            setCurrentNumber(prev =>
+                                                prev === account.number
+                                                    ? ''
+                                                    : account.number
+                                            );
+                                        }}
+                                    >
+                                        <Icon
+                                            icon={
+                                                currentNumber === account.number
+                                                    ? 'eye-open'
+                                                    : 'eye-close'
+                                            }
+                                        />
+                                    </button>
+                                </div>
                             </Text>
                             <Text weight='medium' color='tertiary'>
                                 {t(accountTypes[account.type])}

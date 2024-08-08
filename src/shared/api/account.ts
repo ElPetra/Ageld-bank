@@ -1,7 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import { localStorageApi } from 'src/shared/api';
-import { transformAccountDetails, transformAccounts } from 'src/shared/lib';
+import {
+    transformAccountDetails,
+    transformAccounts
+} from 'src/shared/lib/trasnform.ts';
 
 import type { Account, AccountDetails } from 'src/shared/model';
 

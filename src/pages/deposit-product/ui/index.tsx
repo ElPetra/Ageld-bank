@@ -26,7 +26,7 @@ export const DepositProductPage = () => {
             {deposit ? (
                 <div className='deposit-product'>
                     <Text size='l' weight='bold'>
-                        {deposit.name}
+                        {'A-Geld ' + deposit.name}
                     </Text>
                     <DepositProductDetailsCard deposit={deposit} />
                     <DepositProductBenefits />
