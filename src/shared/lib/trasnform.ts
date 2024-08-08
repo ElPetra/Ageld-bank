@@ -9,6 +9,8 @@ import type {
     DepositDetails,
     DepositDetailsResponse,
     DepositProduct,
+    DepositProductDetails,
+    DepositProductDetailsResponse,
     DepositProductResponse,
     DepositResponse,
     ProductStatus
@@ -57,6 +59,25 @@ export const transformDepositProducts = (
         withdrawal: el.withdrawal,
         revocable: el.revocable
     }));
+
+export const transformDepositProductDetails = (
+    res: DepositProductDetailsResponse
+): DepositProductDetails => ({
+    id: res.id,
+    name: res.name,
+    currency: res.currency.toLowerCase() as Currency,
+    amountMin: res.amountMin,
+    amountMax: res.amountMax,
+    dayMin: res.dayMin,
+    dayMax: res.dayMax,
+    timeLimited: res.timeLimited,
+    capitalization: res.capitalization,
+    replenishment: res.replenishment,
+    withdrawal: res.withdrawal,
+    revocable: res.revocable,
+    penalty: res.penalty,
+    percentRate: res.percentRate || 0
+});
 
 export const transformDeposit = (res: DepositResponse[]): Deposit[] =>
     res.map(el => ({
