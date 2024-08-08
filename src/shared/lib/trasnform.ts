@@ -18,7 +18,9 @@ import type {
     Deposit,
     DepositResponse,
     DepositDetails,
-    DepositDetailsResponse
+    DepositDetailsResponse,
+    DepositProductDetailsResponse,
+    DepositProductDetails
 } from 'src/shared/model';
 
 export const transformAccounts = (res: AccountResponse[]): Account[] =>
@@ -222,4 +224,23 @@ export const transformDepositDetails = (
     percentAccount: res.percNum,
     mAccountId: res.maccountId,
     pAccountId: res.paccountId
+});
+
+export const transformDepositProductDetails = (
+    res: DepositProductDetailsResponse
+): DepositProductDetails => ({
+    id: res.id,
+    name: res.name,
+    currency: res.currency.toLowerCase() as Currency,
+    amountMin: res.amountMin,
+    amountMax: res.amountMax,
+    dayMin: res.dayMin,
+    dayMax: res.dayMax,
+    timeLimited: res.timeLimited,
+    capitalization: res.capitalization,
+    replenishment: res.replenishment,
+    withdrawal: res.withdrawal,
+    revocable: res.revocable,
+    penalty: res.penalty,
+    percentRate: res.percentRate || 0
 });
