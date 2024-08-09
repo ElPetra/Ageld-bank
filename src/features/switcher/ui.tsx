@@ -8,7 +8,7 @@ export const Switcher = () => {
     const [open, setOpen] = useState<boolean>(false);
 
     return (
-        <>
+        <div className='switcher'>
             <div
                 onClick={() => {
                     setOpen(!open);
@@ -28,9 +28,7 @@ export const Switcher = () => {
                     >
                         <button
                             onClick={() => {
-                                i18n.changeLanguage(
-                                    i18n.language === 'en' ? 'ru' : 'en'
-                                );
+                                i18n.changeLanguage('en');
                                 setOpen(false);
                             }}
                             className={`switcher__modal__button ${i18n.language === 'en' ? 'active' : ''}`}
@@ -39,9 +37,7 @@ export const Switcher = () => {
                         </button>
                         <button
                             onClick={() => {
-                                i18n.changeLanguage(
-                                    i18n.language === 'ru' ? 'en' : 'ru'
-                                );
+                                i18n.changeLanguage('ru');
                                 setOpen(false);
                             }}
                             className={`switcher__modal__button ${i18n.language === 'ru' ? 'active' : ''}`}
@@ -51,6 +47,6 @@ export const Switcher = () => {
                     </Card>
                 </div>
             )}
-        </>
+        </div>
     );
 };
