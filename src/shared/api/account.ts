@@ -1,7 +1,11 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import { localStorageApi } from 'src/shared/api';
-import { transformAccountDetails, transformAccounts } from 'src/shared/lib';
+import {
+    transformAccountDetails,
+    transformAccounts,
+    transformAccount
+} from 'src/shared/lib';
 
 import type { Account, AccountDetails } from 'src/shared/model';
 
@@ -49,6 +53,14 @@ export const accountApi = createApi({
                 method: 'GET'
             }),
             transformResponse: transformAccountDetails
+        }),
+        getAccount: builder.query<Account | undefined, void>({
+            query: () => ({
+                url: '/list_account_number',
+                method: 'GET'
+            }),
+            providesTags: ['Account'],
+            transformResponse: transformAccount
         })
     })
 });
@@ -56,5 +68,6 @@ export const accountApi = createApi({
 export const {
     useCreateAccountMutation,
     useGetAccountsQuery,
-    useGetAccountDetailsQuery
+    useGetAccountDetailsQuery,
+    useGetAccountQuery
 } = accountApi;
