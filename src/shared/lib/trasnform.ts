@@ -28,11 +28,24 @@ export const transformAccounts = (res: AccountResponse[]): Account[] =>
         number: el.accountNumber,
         type: el.type,
         balance: el.accountBalance,
-        status: el.statusName,
+        status: el.status,
         currency: el.currencyName,
         isMaster: el.masterAccount,
         name: el.nameAccount || ''
     }));
+
+export const transformAccount = (res: AccountResponse[]): Account | undefined =>
+    res
+        .map(el => ({
+            number: el.accountNumber,
+            type: el.type,
+            balance: el.accountBalance,
+            status: el.status.toLowerCase() as ProductStatus,
+            currency: el.currencyName,
+            isMaster: el.masterAccount,
+            name: el.nameAccount || ''
+        }))
+        .filter(item => item.status === 'active')[0];
 
 export const transformAccountDetails = (
     res: AccountDetailsResponse
