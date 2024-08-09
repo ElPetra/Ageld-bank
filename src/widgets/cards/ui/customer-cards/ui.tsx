@@ -7,7 +7,9 @@ import { CardList } from 'src/features/card-list';
 
 export const CustomerCards = () => {
     const { signedOut } = useAuth();
+    //const {} = useGetCustomerCardsByTypeQuery({ type: 'CREDIT' });
     const { data: cards = [], isLoading, error } = useGetCustomerCardsQuery();
+
     useEffect(() => {
         if (isErrorStatusUnauthorized(error)) {
             return signedOut();

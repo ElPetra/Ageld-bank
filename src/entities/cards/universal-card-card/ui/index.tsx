@@ -11,6 +11,7 @@ import {
 import { formatExpirationDate } from 'src/shared/lib';
 
 import {
+    getCardNumber,
     isCardDetails,
     isCardProduct,
     isCardProductDetails,
@@ -97,7 +98,7 @@ export const UniversalCardCard = ({
                                     {isCustomerCard(card) ? (
                                         <div className='universal-card-card__second__info__text__eye'>
                                             {currentId === card.id
-                                                ? card.number
+                                                ? getCardNumber(card.number)
                                                 : card.number.replace(
                                                       /.{12}/gm,
                                                       CARD_NUMBER_REPLACEMENT
@@ -208,28 +209,38 @@ export const UniversalCardCard = ({
                             )}
                             {isCardDetails(card) && (
                                 <>
-                                    <div className='universal-card-card__second__info__details__eye'>
-                                        <Detail
-                                            value={card.number.replace(
-                                                /.{12}/gm,
-                                                CARD_NUMBER_REPLACEMENT
-                                            )}
-                                            description={t('Номер карты')}
-                                        />
-                                        <button
-                                            onClick={() =>
-                                                setShowNumber(prev => !prev)
-                                            }
-                                        >
-                                            <Icon
-                                                icon={
-                                                    showNumber
-                                                        ? 'eye-open'
-                                                        : 'eye-close'
-                                                }
-                                            />
-                                        </button>
-                                    </div>
+                                    <Detail
+                                        value={
+                                            <div className='universal-card-card__second__info__details__eye'>
+                                                <div>
+                                                    {showNumber
+                                                        ? getCardNumber(
+                                                              card.number
+                                                          )
+                                                        : card.number.replace(
+                                                              /.{12}/gm,
+                                                              CARD_NUMBER_REPLACEMENT
+                                                          )}
+                                                </div>
+                                                <button
+                                                    onClick={() =>
+                                                        setShowNumber(
+                                                            prev => !prev
+                                                        )
+                                                    }
+                                                >
+                                                    <Icon
+                                                        icon={
+                                                            showNumber
+                                                                ? 'eye-open'
+                                                                : 'eye-close'
+                                                        }
+                                                    />
+                                                </button>
+                                            </div>
+                                        }
+                                        description={t('Номер карты')}
+                                    />
                                     <Detail
                                         value={formatExpirationDate(
                                             card.expires

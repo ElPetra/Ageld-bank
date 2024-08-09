@@ -24,9 +24,9 @@ export const cardApi = createApi({
             { type: CardType }
         >({
             query: ({ type }) => ({
-                url: '/cards',
+                url: '',
                 params: {
-                    type_card: type
+                    cardType: type
                 },
                 method: 'GET'
             }),
@@ -34,7 +34,7 @@ export const cardApi = createApi({
         }),
         getCustomerCards: builder.query<CustomerCard[], void>({
             query: () => ({
-                url: '/cards',
+                url: '',
                 method: 'GET'
             }),
             transformResponse: transformCards

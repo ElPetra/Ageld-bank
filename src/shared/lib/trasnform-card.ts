@@ -16,14 +16,14 @@ import type {
 export const transformCards = (res: CustomerCardResponse[]): CustomerCard[] =>
     res.map(el => ({
         active: el.active,
-        id: el.cardId,
-        number: el.cardNumber,
+        id: el.id,
+        number: el.cardNumber || '1234567890123456',
         expires: el.expires,
         status: cardStatusesToProductStatus[el.cardStatus],
         image: el.image,
         balance: el.balance,
         name: el.productName,
-        type: el.typeCard,
+        type: el.cardType,
         isVirtual: el.isVirtual,
         currency: el.currencyCode.toLowerCase() as Currency
     }));

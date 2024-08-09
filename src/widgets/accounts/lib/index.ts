@@ -1,4 +1,4 @@
-import { ALL_CURRENCY } from 'src/shared/model';
+import { ALL } from 'src/shared/model';
 
 import type { Account, AccountType } from 'src/shared/model';
 
@@ -20,8 +20,7 @@ export const filterAccounts = ({
             el =>
                 (showClosed ||
                     (el.status !== 'closed' && el.status !== 'blocked')) &&
-                (currency === ALL_CURRENCY ||
-                    el.currency === currency.toLowerCase()) &&
+                (currency === ALL || el.currency === currency.toLowerCase()) &&
                 (!type || el.type === type)
         ) || []
     );

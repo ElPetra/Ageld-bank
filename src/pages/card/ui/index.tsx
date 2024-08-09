@@ -5,15 +5,17 @@ import { useGetCustomerCardDetailsQuery } from 'src/shared/api';
 import { isErrorStatusUnauthorized } from 'src/shared/lib';
 import { useAuth } from 'src/entities/user';
 import { CardInfo } from 'src/widgets/card-info';
+import { useParams } from 'react-router-dom';
 
 export const CardPage = () => {
     const { signedOut } = useAuth();
+    const { id } = useParams();
     const {
         data: cardDetails,
         isLoading,
         error
     } = useGetCustomerCardDetailsQuery({
-        id: 'cdaeb5ef-f132-4042-98c3-364020463e6a' // данные пока не приходят с api
+        id: id || ''
     });
     useEffect(() => {
         if (isErrorStatusUnauthorized(error)) {

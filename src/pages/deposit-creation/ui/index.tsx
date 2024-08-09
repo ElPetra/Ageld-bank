@@ -28,7 +28,7 @@ export const DepositCreationPage = () => {
             termSlider: 1,
             sumInput: 10000,
             sumSlider: 10000,
-            capitalization: '',
+            capitalization: 'Без капитализации',
             withAutoProlongation: false,
             withReplenishment: false,
             withDrawal: false

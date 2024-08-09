@@ -1,3 +1,5 @@
+import { ALL } from 'src/shared/model';
+
 import type {
     ProductStatus,
     Currency,
@@ -11,7 +13,6 @@ export type PaymentSystemResponse = 'MIR' | 'Visa' | 'MasterCard';
 export type PaymentSystem = 'mir' | 'visa' | 'mastercard';
 
 export const CARD_NUMBER_REPLACEMENT = '**** **** **** ';
-export const ALL = 'Bce';
 export const CREDIT_CARD = 'Кредитная';
 export const DEBIT_CARD = 'Дебетовая';
 
@@ -123,7 +124,7 @@ export interface CustomerCard {
 
 export interface CustomerCardResponse {
     active: boolean;
-    cardId: string;
+    id: string;
     cardNumber: string;
     expires: string;
     image: string;
@@ -132,7 +133,7 @@ export interface CustomerCardResponse {
     currencyCode: CurrencyResponse;
     isVirtual: boolean;
     productName: string;
-    typeCard: CardType;
+    cardType: CardType;
 }
 
 export interface CardDetails {
