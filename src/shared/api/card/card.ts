@@ -25,7 +25,7 @@ export const cardApi = createApi({
         >({
             query: ({ type }) => ({
                 url: '',
-                params: {
+                headers: {
                     cardType: type
                 },
                 method: 'GET'
