@@ -102,7 +102,7 @@ export const PhoneForm = ({
                         : false)
                 }
             >
-                {t('Принять')}
+                {t('Продолжить')}
             </Button>
             {variant === 'registration' && (
                 <Button size='large' type='button'>

@@ -29,7 +29,6 @@ interface Props {
 export const CreateDepositForm = ({ deposit }: Props) => {
     const { t } = useTranslation();
     const { createdDeposit, error, isLoading, signedOut } = useAuth();
-    
     const { id } = useParams();
     const {
         data: account,
