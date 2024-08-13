@@ -14,7 +14,8 @@ import {
     useGenerateCodeMutation,
     useGenerateTokenMutation,
     useNewEmailMutation,
-    useProlongDepositMutation
+    useProlongDepositMutation,
+    useCreateDepositMutation
 } from 'src/shared/api';
 import { getErrorMessage } from 'src/shared/lib';
 
@@ -43,6 +44,7 @@ export const useAuth = () => {
 
     const [prolongDeposit] = useProlongDepositMutation();
     const [autoRenewalDeposit] = useAutoRenewalDepositMutation();
+    const [createDeposit] = useCreateDepositMutation();
 
     const getError = useCallback(
         async (
@@ -233,6 +235,28 @@ export const useAuth = () => {
         [getError, getAccessToken, autoRenewalDeposit]
     );
 
+    const createdDeposit = useCallback(
+        async (
+            productId: string,
+            percentRate: string,
+            timeDays: number,
+            accountId: string
+        ): Promise<void | string> => {
+            const accessToken = await getAccessToken();
+            if (accessToken) {
+                const data = await createDeposit({
+                    productId,
+                    percentRate,
+                    timeDays,
+                    accountId
+                });
+                setIsLoading(false);
+                return getError(data);
+            }
+        },
+        [getError, getAccessToken, createDeposit]
+    );
+
     return {
         authStatus,
         getAccessToken,
@@ -252,6 +276,7 @@ export const useAuth = () => {
         autoRenewedDeposit,
         setError,
         error,
-        isLoading
+        isLoading,
+        createdDeposit
     };
 };

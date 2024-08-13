@@ -40,7 +40,7 @@ export interface AccountResponse {
     accountNumber: string;
     type: AccountType;
     accountBalance: number;
-    statusName: ProductStatus;
+    status: ProductStatus;
     currencyName: Currency;
     masterAccount: boolean;
     nameAccount: null | string;

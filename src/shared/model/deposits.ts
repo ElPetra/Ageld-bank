@@ -64,17 +64,35 @@ export interface DepositProductDetails {
     id: string;
     name: string;
     currency: Currency;
-    monthsMin: number;
+    dayMin: number;
     dayMax: number;
     amountMin: number;
     amountMax: number;
-    capitalization: boolean;
+    timeLimited: boolean;
+    capitalization: DepositCapitalization;
     replenishment: boolean;
-    withdrawal: 1 | 2 | 3;
+    withdrawal: DepositWithdrawal;
     revocable: boolean;
+    penalty: number;
     percentRate: number;
 }
 
+export interface DepositProductDetailsResponse {
+    id: string;
+    name: string;
+    currency: CurrencyResponse;
+    dayMin: number;
+    dayMax: number;
+    amountMin: number;
+    amountMax: number;
+    timeLimited: boolean;
+    capitalization: DepositCapitalization;
+    replenishment: boolean;
+    withdrawal: DepositWithdrawal;
+    revocable: boolean;
+    penalty: number;
+    percentRate: number;
+}
 export interface Deposit {
     productId: string;
     name: string;
