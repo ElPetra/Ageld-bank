@@ -29,7 +29,6 @@ interface Props {
 export const CreateDepositForm = ({ deposit }: Props) => {
     const { t } = useTranslation();
     const { createdDeposit, error, isLoading, signedOut } = useAuth();
-    
     const { id } = useParams();
     const {
         data: account,
@@ -74,73 +73,65 @@ export const CreateDepositForm = ({ deposit }: Props) => {
         );
     };
 
-    return isLoadingAcount ? (
-        <Preloader />
+    if (isLoadingAcount) {
+        return <Preloader />;
+    }
+
+    return account ? (
+        <MultiStepForm
+            variant='create-account'
+            forms={[
+                {
+                    id: 1,
+                    title: t('Оформить депозит'),
+                    component: (
+                        <CreateDeposit
+                            getValues={getValues}
+                            register={register}
+                            setValue={setValue}
+                            isValid={isValid}
+                        />
+                    )
+                },
+                {
+                    id: 2,
+                    title: '',
+                    component: (
+                        <ConfirmCreation
+                            handleSubmit={handleSubmit}
+                            createDeposit={createDeposit}
+                        />
+                    )
+                },
+                {
+                    id: 3,
+                    title: '',
+                    component: isLoading ? (
+                        <Preloader />
+                    ) : (
+                        <MessageCard
+                            title={
+                                error
+                                    ? t('Не удалось оформить депозит')
+                                    : t('Ваш депозит успешно оформлен')
+                            }
+                            width={300}
+                            icon={
+                                error ? 'failure-lady' : 'documents-folder-lady'
+                            }
+                            buttonText={t('Вернуться к странице депозитов')}
+                            buttonLink={RouteName.MAIN_PAGE + '/' + DEPOSITS}
+                        />
+                    ),
+                    isResult: true
+                }
+            ]}
+        />
     ) : (
-        <>
-            {account ? (
-                <MultiStepForm
-                    variant='create-account'
-                    forms={[
-                        {
-                            id: 1,
-                            title: t('Оформить депозит'),
-                            component: (
-                                <CreateDeposit
-                                    getValues={getValues}
-                                    register={register}
-                                    setValue={setValue}
-                                    isValid={isValid}
-                                />
-                            )
-                        },
-                        {
-                            id: 2,
-                            title: '',
-                            component: (
-                                <ConfirmCreation
-                                    handleSubmit={handleSubmit}
-                                    createDeposit={createDeposit}
-                                />
-                            )
-                        },
-                        {
-                            id: 3,
-                            title: '',
-                            component: isLoading ? (
-                                <Preloader />
-                            ) : (
-                                <MessageCard
-                                    title={
-                                        error
-                                            ? t('Не удалось оформить депозит')
-                                            : t('Ваш депозит успешно оформлен')
-                                    }
-                                    width={300}
-                                    icon={
-                                        error
-                                            ? 'failure-lady'
-                                            : 'documents-folder-lady'
-                                    }
-                                    buttonText={t(
-                                        'Вернуться к странице депозитов'
-                                    )}
-                                    buttonLink={
-                                        RouteName.MAIN_PAGE + '/' + DEPOSITS
-                                    }
-                                />
-                            ),
-                            isResult: true
-                        }
-                    ]}
-                />
-            ) : (
-                <MessageCard
-                    title={t('Счет не найден')}
-                    buttonText={t('Перейти к списку счетов')}
-                    buttonLink={RouteName.MAIN_PAGE + '/' + ACCOUNTS}
-                />
-            )}
-        </>
+        <MessageCard
+            title={t('Счет не найден')}
+            buttonText={t('Перейти к списку счетов')}
+            buttonLink={RouteName.MAIN_PAGE + '/' + ACCOUNTS}
+        />
     );
 };
