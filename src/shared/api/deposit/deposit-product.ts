@@ -1,6 +1,9 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import { transformDepositProducts } from 'src/shared/lib';
+import {
+    transformDepositProducts,
+    transformDepositProductDetails
+} from 'src/shared/lib';
 
 import type { DepositProductDetails } from 'src/shared/model';
 import type { DepositProduct } from 'src/shared/model';
@@ -29,7 +32,8 @@ export const depositProductApi = createApi({
                 query: ({ id }) => ({
                     url: `/${id}`,
                     method: 'GET'
-                })
+                }),
+                transformResponse: transformDepositProductDetails
             }
         )
     })

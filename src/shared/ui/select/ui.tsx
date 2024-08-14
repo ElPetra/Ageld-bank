@@ -15,6 +15,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
     width?: 'auto' | 'max';
     isError?: boolean;
     error?: string;
+    defaultValue?: string;
     field?: string;
     register?: UseFormRegister<FieldValues>;
 }
@@ -27,12 +28,14 @@ export const Select = memo(
         width = 'auto',
         isError,
         error,
+        disabled,
+        defaultValue = '',
         field = 'field',
         register,
         ...props
     }: Props) => {
         const [open, setOpen] = useState<boolean>(false);
-        const [value, setValue] = useState<string>('');
+        const [value, setValue] = useState<string>(defaultValue);
 
         const selectorButtonClass = cn('select__button', variant, {
             error: error || isError
@@ -42,7 +45,11 @@ export const Select = memo(
                 <button
                     type='button'
                     className={selectorButtonClass}
-                    onClick={() => setOpen(!open)}
+                    onClick={() => {
+                        if (!disabled) {
+                            setOpen(!open);
+                        }
+                    }}
                 >
                     <div className='select__button__content'>
                         <div

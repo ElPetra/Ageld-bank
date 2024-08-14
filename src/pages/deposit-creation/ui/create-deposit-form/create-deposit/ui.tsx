@@ -1,5 +1,7 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useGetDepositProductQuery } from 'src/shared/api';
+import { MessageCard } from 'src/entities/message';
 
 import {
     Button,
@@ -18,7 +20,8 @@ import type { Dispatch, SetStateAction } from 'react';
 import type {
     FieldValues,
     UseFormRegister,
-    UseFormSetValue
+    UseFormSetValue,
+    UseFormGetValues
 } from 'react-hook-form';
 
 import './styles.scss';
@@ -28,8 +31,8 @@ interface Props {
     setFormStep?: Dispatch<SetStateAction<number>>;
     register: UseFormRegister<FieldValues>;
     setValue: UseFormSetValue<FieldValues>;
-    isDirty: boolean;
     isValid: boolean;
+    getValues: UseFormGetValues<FieldValues>;
 }
 
 export const CreateDeposit = ({
@@ -37,12 +40,16 @@ export const CreateDeposit = ({
     setFormStep,
     register,
     setValue,
-    isDirty,
+    getValues,
     isValid
 }: Props) => {
     const { t } = useTranslation();
+    const { id } = useParams();
+    const { data: deposit } = useGetDepositProductQuery({
+        id: id || ''
+    });
 
-    return (
+    return deposit ? (
         <Form>
             <Card gap='medium' padding='large' direction='column'>
                 <div className='create-deposit__main'>
@@ -51,12 +58,12 @@ export const CreateDeposit = ({
                             <Icon icon='rub' />
                         </div>
                         <Text size='m' weight='bold'>
-                            {t('Депозит A-Geld Базовый')}
+                            {`A-Geld ${deposit.name}`}
                         </Text>
                     </div>
                     <div className='create-deposit__main__percent_rate'>
                         <Text size='l' weight='bold'>
-                            {'18%'}
+                            {`${deposit.percentRate}%`}
                         </Text>
                         <Text color='tertiary' size='xs'>
                             {t('Процентная ставка')}
@@ -67,19 +74,21 @@ export const CreateDeposit = ({
                     <DepositSumInput
                         register={register}
                         setValue={setValue}
-                        min={10000}
-                        max={500000}
-                        currency={'RUB'}
+                        min={deposit.amountMin}
+                        max={deposit.amountMax}
+                        currency={deposit.currency.toUpperCase()}
                     />
                     <DepositTermInput
                         register={register}
                         setValue={setValue}
-                        min={1}
-                        max={36}
+                        min={Math.ceil(deposit.dayMin / 30)}
+                        max={Math.floor(deposit.dayMax / 30)}
                     />
                 </Columns>
                 <Columns number='2'>
                     <Select
+                        disabled
+                        defaultValue={getValues('capitalization')}
                         variant='secondary'
                         label={t('Капитализация')}
                         options={[
@@ -116,17 +125,23 @@ export const CreateDeposit = ({
                     <Switcher register={register} field='withAutoProlongation'>
                         {t('Автоматическая пролонгация')}
                     </Switcher>
-                    <Switcher register={register} field='withReplenishment'>
+                    <Switcher
+                        disabled
+                        register={register}
+                        field='withReplenishment'
+                    >
                         {t('С пополнением')}
                     </Switcher>
 
-                    <Switcher register={register} field='withDrawal'>
+                    <Switcher disabled register={register} field='withDrawal'>
                         {t('С частичным снятием')}
                     </Switcher>
                 </div>
-                <div>
-                    {t('Закрытие в любой момент времени без перерасчета %')}
-                </div>
+                {deposit.revocable && (
+                    <div>
+                        {t('Закрытие в любой момент времени без перерасчета %')}
+                    </div>
+                )}
                 <div className='create-deposit__buttons'>
                     <Link to={RouteName.MAIN_PAGE + '/' + DEPOSITS}>
                         <Button type='button' variant='primary'>
@@ -134,7 +149,7 @@ export const CreateDeposit = ({
                         </Button>
                     </Link>
                     <Button
-                        disabled={!isDirty || !isValid}
+                        disabled={!isValid}
                         type='button'
                         variant='secondary'
                         onClick={() => {
@@ -150,5 +165,11 @@ export const CreateDeposit = ({
                 </div>
             </Card>
         </Form>
+    ) : (
+        <MessageCard
+            title={t('Депозит не найден')}
+            buttonText={t('Перейти к списку депозитов')}
+            buttonLink={RouteName.MAIN_PAGE + '/' + DEPOSITS}
+        />
     );
 };

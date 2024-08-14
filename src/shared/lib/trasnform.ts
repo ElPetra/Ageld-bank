@@ -18,7 +18,9 @@ import type {
     Deposit,
     DepositResponse,
     DepositDetails,
-    DepositDetailsResponse
+    DepositDetailsResponse,
+    DepositProductDetailsResponse,
+    DepositProductDetails
 } from 'src/shared/model';
 
 export const transformAccounts = (res: AccountResponse[]): Account[] =>
@@ -26,11 +28,24 @@ export const transformAccounts = (res: AccountResponse[]): Account[] =>
         number: el.accountNumber,
         type: el.type,
         balance: el.accountBalance,
-        status: el.statusName,
+        status: el.status,
         currency: el.currencyName,
         isMaster: el.masterAccount,
         name: el.nameAccount || ''
     }));
+
+export const transformAccount = (res: AccountResponse[]): Account | undefined =>
+    res
+        .map(el => ({
+            number: el.accountNumber,
+            type: el.type,
+            balance: el.accountBalance,
+            status: el.status.toLowerCase() as ProductStatus,
+            currency: el.currencyName,
+            isMaster: el.masterAccount,
+            name: el.nameAccount || ''
+        }))
+        .filter(item => item.status === 'active')[0];
 
 export const transformAccountDetails = (
     res: AccountDetailsResponse
@@ -222,4 +237,23 @@ export const transformDepositDetails = (
     percentAccount: res.percNum,
     mAccountId: res.maccountId,
     pAccountId: res.paccountId
+});
+
+export const transformDepositProductDetails = (
+    res: DepositProductDetailsResponse
+): DepositProductDetails => ({
+    id: res.id,
+    name: res.name,
+    currency: res.currency.toLowerCase() as Currency,
+    amountMin: res.amountMin,
+    amountMax: res.amountMax,
+    dayMin: res.dayMin,
+    dayMax: res.dayMax,
+    timeLimited: res.timeLimited,
+    capitalization: res.capitalization,
+    replenishment: res.replenishment,
+    withdrawal: res.withdrawal,
+    revocable: res.revocable,
+    penalty: res.penalty,
+    percentRate: res.percentRate || 0
 });
