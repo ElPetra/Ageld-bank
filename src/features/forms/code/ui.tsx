@@ -56,7 +56,7 @@ export const CodeForm = ({ isLast, setFormStep, phone }: Props) => {
                 type='submit'
                 disabled={!isDirty || !isValid}
             >
-                {t('Далее')}
+                {t('Продолжить')}
             </Button>
         </Form>
     );
