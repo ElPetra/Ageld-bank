@@ -25,7 +25,8 @@ export const depositApi = createApi({
                 url: '/deposits',
                 method: 'GET'
             }),
-            transformResponse: transformDeposit
+            transformResponse: transformDeposit,
+            providesTags: ['Deposit']
         }),
         getDepositDetails: builder.query<DepositDetails, { id: string }>({
             query: ({ id }) => ({
@@ -59,6 +60,22 @@ export const depositApi = createApi({
                 body: { autorenewal: isAutoProlongation }
             }),
             invalidatesTags: ['Deposit']
+        }),
+        createDeposit: builder.mutation<
+            void,
+            {
+                productId: string,
+                percentRate: string,
+                timeDays: number,
+                accountId: string
+            }
+        >({
+            query: ({ productId, percentRate, timeDays, accountId }) => ({
+                url: '/deposits',
+                method: 'POST',
+                body: { productId, percentRate, timeDays, accountId }
+            }),
+            invalidatesTags: ['Deposit']
         })
     })
 });
@@ -67,5 +84,6 @@ export const {
     useGetDepositsQuery,
     useGetDepositDetailsQuery,
     useProlongDepositMutation,
-    useAutoRenewalDepositMutation
+    useAutoRenewalDepositMutation,
+    useCreateDepositMutation
 } = depositApi;
