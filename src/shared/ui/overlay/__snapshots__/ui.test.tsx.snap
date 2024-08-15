@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Overlay ui match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="overlay visible"
+  />
+  <div
+    class="overlay__modal visible"
+  >
+    <div
+      class="overlay__modal__content"
+    >
+      Overlay
+    </div>
+  </div>
+</DocumentFragment>
+`;
