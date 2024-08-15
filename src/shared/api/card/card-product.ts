@@ -28,7 +28,7 @@ export const cardProductApi = createApi({
                 query: ({ type }) => ({
                     url: '/products',
                     params: {
-                        cardTypes: type
+                        cardType: type
                     },
                     method: 'GET'
                 }),
@@ -40,7 +40,7 @@ export const cardProductApi = createApi({
             { id: string }
         >({
             query: ({ id }) => ({
-                url: `/products${id}`,
+                url: `/products/${id}`,
                 method: 'GET'
             }),
             transformResponse: transformCardProductDetails
