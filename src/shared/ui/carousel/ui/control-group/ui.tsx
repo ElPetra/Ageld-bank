@@ -1,4 +1,4 @@
-import { useCarouselControls } from 'src/shared/lib';
+import { useCarouselControls } from '../../lib';
 
 import { CarouselIndicators } from './indicators';
 import { CarouselControls } from './controls';
