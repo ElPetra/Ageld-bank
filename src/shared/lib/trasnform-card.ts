@@ -47,6 +47,7 @@ export const transformCardProducts = (
     res: CardProductResponse[]
 ): CardProduct[] =>
     res
+        .filter(el => el.active)
         .map(el => ({
             active: el.active,
             id: el.id,
@@ -56,8 +57,7 @@ export const transformCardProducts = (
             type: el.cardType,
             level: el.cardLevel || 'Нет данных',
             currency: el.currencyCode.toLowerCase() as Currency
-        }))
-        .filter(el => el.active);
+        }));
 
 export const transformCardProductDetails = (
     res: CardProductDetailsResponse
