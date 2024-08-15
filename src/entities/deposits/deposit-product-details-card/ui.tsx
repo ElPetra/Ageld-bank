@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 import { CREATE, RouteName } from 'src/shared/model';
-import { getGenitiveMonth } from 'src/shared/lib';
+import { getGenitiveMonthEn, getGenitiveMonthRu } from 'src/shared/lib';
 import { Icon, Text, Button, Card, Link } from 'src/shared/ui';
 
 import type { DepositProductDetails } from 'src/shared/model';
@@ -13,7 +13,7 @@ interface Props {
 }
 
 export const DepositProductDetailsCard = ({ deposit }: Props) => {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     return (
         <Card gap='large' padding='large'>
             <div className='deposit-product-details-card__image'>
@@ -82,11 +82,13 @@ export const DepositProductDetailsCard = ({ deposit }: Props) => {
                                 <Text weight='medium' size='m'>
                                     {Math.floor(deposit.dayMax / 30) +
                                         ' ' +
-                                        t(
-                                            getGenitiveMonth(
-                                                Math.floor(deposit.dayMax / 30)
-                                            )
-                                        )}
+                                        (i18n.language === 'ru'
+                                            ? getGenitiveMonthRu(
+                                                  Math.ceil(deposit.dayMin / 30)
+                                              )
+                                            : getGenitiveMonthEn(
+                                                  Math.ceil(deposit.dayMin / 30)
+                                              ))}
                                 </Text>
                             </div>
                             <Text color='tertiary' size='xs'>

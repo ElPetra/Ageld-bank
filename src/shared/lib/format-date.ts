@@ -21,10 +21,18 @@ export const formatExpirationDate = (str: string): string => {
     return `${month}/${year.substring(2, 4)}`;
 };
 
-export const getGenitiveMonth = (num: number): string => {
+export const getGenitiveMonthRu = (num: number): string => {
     if (num % 10 === 1 && num !== 11) {
         return 'месяца';
     } else {
         return 'месяцев';
+    }
+};
+
+export const getGenitiveMonthEn = (num: number): string => {
+    if (num === 1) {
+        return 'month';
+    } else {
+        return 'months';
     }
 };

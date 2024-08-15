@@ -29,6 +29,7 @@ export const transformAccounts = (res: AccountResponse[]): Account[] =>
 
 export const transformAccount = (res: AccountResponse[]): Account | undefined =>
     res
+        .filter(item => item.status === 'ACTIVE')
         .map(el => ({
             number: el.accountNumber,
             type: el.type.toLowerCase() as AccountType,
@@ -37,8 +38,7 @@ export const transformAccount = (res: AccountResponse[]): Account | undefined =>
             currency: el.currencyName.toLowerCase() as Currency,
             isMaster: el.masterAccount,
             name: el.nameAccount || ''
-        }))
-        .filter(item => item.status === 'active')[0];
+        }))[0];
 
 export const transformAccountDetails = (
     res: AccountDetailsResponse
