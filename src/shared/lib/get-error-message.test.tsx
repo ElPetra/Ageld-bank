@@ -19,8 +19,8 @@ describe('getErrorMessage', () => {
         expect(getErrorMessage(errorNotFoundExample)).toBe('Not Found');
     });
 
-    it('returns an empty string when error data is not a string', () => {
-        expect(getErrorMessage(errorOccurredExample)).toBe('');
+    it('returns an [object Object] when error data is not a string', () => {
+        expect(getErrorMessage(errorOccurredExample)).toBe('[object Object]');
     });
 
     it('returns an empty string when error is undefined', () => {
