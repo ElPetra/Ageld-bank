@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import {
     transformCardProductDetails,
     transformCardProducts
-} from 'src/shared/lib';
+} from 'src/shared/lib/trasnform-card.ts';
 
 import type {
     CardProduct,
@@ -11,8 +11,7 @@ import type {
     CardType
 } from 'src/shared/model';
 
-const cardBaseUrl =
-    import.meta.env.VITE_BASEURL_GATEWAY + '/api/v1/card/card-product';
+const cardBaseUrl = import.meta.env.VITE_BASEURL_GATEWAY + '/api/v1/cards';
 
 export const cardProductApi = createApi({
     reducerPath: 'cardProductApi',
@@ -27,31 +26,21 @@ export const cardProductApi = createApi({
         getCardProductsByType: builder.query<CardProduct[], { type: CardType }>(
             {
                 query: ({ type }) => ({
-                    url: '/list_card_products',
+                    url: '/products',
                     params: {
-                        productType: type
+                        cardType: type
                     },
                     method: 'GET'
                 }),
                 transformResponse: transformCardProducts
             }
         ),
-        getCardProducts: builder.query<CardProduct[], void>({
-            query: () => ({
-                url: '/list_card_products',
-                method: 'GET'
-            }),
-            transformResponse: transformCardProducts
-        }),
         getCardProductDetails: builder.query<
             CardProductDetails,
             { id: string }
         >({
             query: ({ id }) => ({
-                url: '/full_info_card/',
-                params: {
-                    card_product_id: id
-                },
+                url: `/products/${id}`,
                 method: 'GET'
             }),
             transformResponse: transformCardProductDetails
@@ -59,8 +48,5 @@ export const cardProductApi = createApi({
     })
 });
 
-export const {
-    useGetCardProductsByTypeQuery,
-    useGetCardProductsQuery,
-    useGetCardProductDetailsQuery
-} = cardProductApi;
+export const { useGetCardProductsByTypeQuery, useGetCardProductDetailsQuery } =
+    cardProductApi;

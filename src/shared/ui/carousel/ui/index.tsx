@@ -1,12 +1,13 @@
 import { useRef } from 'react';
-import { useCarousel } from 'src/shared/lib/carousel';
 
-import { CarouselControlGroup } from './ui/control-group';
-import { CarouselInner } from './ui/inner';
+import { useCarousel } from '../lib';
+
+import { CarouselControlGroup } from './control-group';
+import { CarouselInner } from './inner';
 
 import type { ReactNode } from 'react';
 
-import './styles.scss';
+import '../styles.scss';
 
 interface Props {
     cards: ReactNode[];

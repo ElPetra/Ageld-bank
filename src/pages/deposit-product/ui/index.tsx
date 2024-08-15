@@ -1,3 +1,4 @@
+import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import { DEPOSITS, RouteName } from 'src/shared/model';
@@ -12,36 +13,22 @@ import { DepositProductOffers } from './deposit-product-offers';
 
 import './styles.scss';
 
-// const deposit: DepositProductDetails = {
-//     id: '123e4567-e89b-12d3-a456-426614174005',
-//     name: 'Депозит A-Geld Базовый',
-//     currency: 'rub',
-//     monthsMin: 1,
-//     dayMax: 9,
-//     amountMin: 1000,
-//     amountMax: 100000,
-//     capitalization: true,
-//     replenishment: true,
-//     withdrawal: 2,
-//     revocable: true,
-//     percentRate: 17.7
-// };
-
 export const DepositProductPage = () => {
     const { t } = useTranslation();
-    const { data: DepositDetails } = useGetDepositProductQuery({
-        id: 'b1a2c3d4-e5f6-4890-abcd-ef1234567890' // данные пока не приходят с api
+    const { id } = useParams();
+    const { data: deposit } = useGetDepositProductQuery({
+        id: id || ''
     });
 
     return (
         <Container>
             <BackButton />
-            {DepositDetails ? (
+            {deposit ? (
                 <div className='deposit-product'>
                     <Text size='l' weight='bold'>
-                        {DepositDetails.name}
+                        {'A-Geld ' + deposit.name}
                     </Text>
-                    <DepositProductDetailsCard deposit={DepositDetails} />
+                    <DepositProductDetailsCard deposit={deposit} />
                     <DepositProductBenefits />
                     <DepositProductOffers />
                 </div>

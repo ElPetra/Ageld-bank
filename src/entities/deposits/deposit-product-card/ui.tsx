@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import { CREATE, mockDepositPercentRate, RouteName } from 'src/shared/model';
+import { getGenitiveMonthEn, getGenitiveMonthRu } from 'src/shared/lib';
 import { Icon, Text, Button, Card } from 'src/shared/ui';
 
 import type { DepositProduct } from 'src/shared/model';
@@ -13,14 +14,15 @@ interface Props {
 }
 
 export const DepositProductCard = ({ deposit }: Props) => {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
+
     return (
         <Card gap='medium' padding='medium' direction='column'>
             <div className='deposit-card__info'>
                 <div className='deposit-card__info__main'>
                     <div className='deposit-card__info__main__text'>
                         <Text size='m' weight='medium'>
-                            {t('Депозит A-Geld ') + deposit.name}
+                            {'A-Geld ' + deposit.name}
                         </Text>
                         <Text size='xs' color='tertiary'>
                             {t('До 30 сентября оформите Депозит A-Geld') +
@@ -67,7 +69,15 @@ export const DepositProductCard = ({ deposit }: Props) => {
                                 {t('от')}
                             </Text>
                             <Text weight='medium' size='m'>
-                                {deposit.dayMin + ' ' + t('дней')}
+                                {Math.ceil(deposit.dayMin / 30) +
+                                    ' ' +
+                                    (i18n.language === 'ru'
+                                        ? getGenitiveMonthRu(
+                                              Math.ceil(deposit.dayMin / 30)
+                                          )
+                                        : getGenitiveMonthEn(
+                                              Math.ceil(deposit.dayMin / 30)
+                                          ))}
                             </Text>
                         </div>
                         <Text color='tertiary' size='xs'>

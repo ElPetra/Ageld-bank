@@ -1,15 +1,17 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Button, Card, Icon, Image, Link, Text } from 'src/shared/ui';
 import {
     CARD_NUMBER_REPLACEMENT,
+    currencySymbol,
     RouteName,
-    RUB,
     typeCard
 } from 'src/shared/model';
-import { formatExpirationDate, getIconName } from 'src/shared/lib';
+import { formatExpirationDate } from 'src/shared/lib';
 
 import {
+    getCardNumber,
     isCardDetails,
     isCardProduct,
     isCardProductDetails,
@@ -19,7 +21,7 @@ import {
 import { LinkCard } from './link-card';
 import { Detail } from './detail';
 
-import type { ReactNode } from 'react';
+import type { Dispatch, ReactNode, SetStateAction } from 'react';
 import type {
     CardDetails,
     CardProduct,
@@ -31,6 +33,8 @@ import './styles.scss';
 
 interface Props {
     card: CustomerCard | CardProduct | CardDetails | CardProductDetails;
+    currentId?: string;
+    setCurrentId?: Dispatch<SetStateAction<string>>;
     children?: ReactNode;
 }
 
@@ -38,17 +42,21 @@ function getFirstUpperCase(str: string): string {
     return str && str[0].toUpperCase() + str.slice(1).toLowerCase();
 }
 
-export const UniversalCardCard = ({ card, children }: Props) => {
+export const UniversalCardCard = ({
+    card,
+    currentId,
+    setCurrentId,
+    children
+}: Props) => {
     const { t } = useTranslation();
+    const [showNumber, setShowNumber] = useState<boolean>(false);
+
     const cardRoute =
         'status' in card ? RouteName.CARD_PAGE : RouteName.CARD_PRODUCT_PAGE;
     const link =
         isCustomerCard(card) || isCardProduct(card)
             ? cardRoute + '/' + card.id
             : '';
-
-    const handleCopyCard = () =>
-        isCardDetails(card) && navigator.clipboard.writeText(card.number);
 
     return (
         <Card padding='large'>
@@ -64,39 +72,67 @@ export const UniversalCardCard = ({ card, children }: Props) => {
                             <div className='universal-card-card__second__info__text__name'>
                                 <LinkCard link={link}>
                                     <Text size='l' weight='bold'>
-                                        {`A-Geld Card ${card.name}`}
+                                        {`A-Geld ${card.name}`}
                                     </Text>
                                 </LinkCard>
-                                {children ? (
-                                    children
-                                ) : (
-                                    <div className='universal-card-card__second__info__text__name__icon'>
-                                        <Icon
-                                            icon={getIconName(
-                                                card.paymentSystem
-                                            )}
-                                            width={60}
-                                            height={30}
-                                        />
-                                    </div>
-                                )}
+                                {children
+                                    ? children
+                                    : 'paymentSystem' in card && (
+                                          <div className='universal-card-card__second__info__text__name__icon'>
+                                              <Icon
+                                                  icon={card.paymentSystem}
+                                                  width={60}
+                                                  height={30}
+                                              />
+                                          </div>
+                                      )}
                             </div>
                             {isCardDetails(card) ? (
                                 <Text size='l' weight='bold'>
-                                    {card.balance + ' ₽'}
+                                    {card.balance.toLocaleString() +
+                                        ' ' +
+                                        currencySymbol[card.currency]}
                                 </Text>
                             ) : (
                                 <Text color='tertiary'>
-                                    {isCustomerCard(card)
-                                        ? card.number.replace(
-                                              /.{12}/gm,
-                                              CARD_NUMBER_REPLACEMENT
-                                          )
-                                        : t(typeCard[card.type]) +
-                                          ' ' +
-                                          t('карта') +
-                                          '. ' +
-                                          t('Надежная карта на каждый день')}
+                                    {isCustomerCard(card) ? (
+                                        <div className='universal-card-card__second__info__text__eye'>
+                                            {currentId === card.id
+                                                ? getCardNumber(card.number)
+                                                : card.number.replace(
+                                                      /.{12}/gm,
+                                                      CARD_NUMBER_REPLACEMENT
+                                                  )}
+                                            <button
+                                                aria-label='Показать номер карты полностью'
+                                                type='button'
+                                                onClick={e => {
+                                                    e.preventDefault();
+                                                    if (setCurrentId) {
+                                                        setCurrentId(prev =>
+                                                            prev === card.id
+                                                                ? ''
+                                                                : card.id
+                                                        );
+                                                    }
+                                                }}
+                                            >
+                                                <Icon
+                                                    icon={
+                                                        currentId === card.id
+                                                            ? 'eye-open'
+                                                            : 'eye-close'
+                                                    }
+                                                />
+                                            </button>
+                                        </div>
+                                    ) : (
+                                        t(typeCard[card.type]) +
+                                        ' ' +
+                                        t('карта') +
+                                        '. ' +
+                                        t('Надежная карта на каждый день')
+                                    )}
                                 </Text>
                             )}
                         </div>
@@ -108,7 +144,7 @@ export const UniversalCardCard = ({ card, children }: Props) => {
                                         description={t('Уровень премиальность')}
                                     />
                                     <Detail
-                                        value={RUB}
+                                        value={card.currency.toUpperCase()}
                                         description={t('Валюта счета')}
                                     />
                                 </>
@@ -116,20 +152,36 @@ export const UniversalCardCard = ({ card, children }: Props) => {
                             {isCardProductDetails(card) && (
                                 <>
                                     <Detail
-                                        value={getFirstUpperCase(card.level)}
-                                        description={t('Уровень премиальность')}
-                                    />
-                                    <Detail
                                         value={
                                             card.isVirtual ? t('Да') : t('Нет')
                                         }
                                         description={t('Виртуальная')}
                                     />
                                     <Detail
-                                        value={card.feeUse + ' ₽'}
+                                        value={card.currency.toUpperCase()}
+                                        description={t('Валюта счета')}
+                                    />
+                                    <Detail
+                                        value={
+                                            card.cardFee +
+                                            ' ' +
+                                            card.currency.toUpperCase()
+                                        }
+                                        description={t('Плата за выпуск')}
+                                    />
+                                    <Detail
+                                        value={
+                                            card.serviceFee +
+                                            ' ' +
+                                            card.currency.toUpperCase()
+                                        }
                                         description={t(
                                             'Плата за использование'
                                         )}
+                                    />
+                                    <Detail
+                                        value={getFirstUpperCase(card.level)}
+                                        description={t('Уровень премиальность')}
                                     />
                                 </>
                             )}
@@ -137,42 +189,66 @@ export const UniversalCardCard = ({ card, children }: Props) => {
                                 <>
                                     <Detail
                                         value={formatExpirationDate(
-                                            card.expirationAt
+                                            card.expires
                                         )}
                                         description={t('Срок действия')}
                                     />
                                     <Detail
-                                        value='1000 ₽' // Данные пока не преходят с api
+                                        value={
+                                            card.balance.toLocaleString() +
+                                            ' ' +
+                                            currencySymbol[card.currency]
+                                        }
                                         description={t('Баланс')}
                                     />
                                     <Detail
-                                        value={RUB}
+                                        value={card.currency.toUpperCase()}
                                         description={t('Валюта счета')}
                                     />
                                 </>
                             )}
                             {isCardDetails(card) && (
                                 <>
-                                    <div className='universal-card-card__second__info__details__copy'>
-                                        <Detail
-                                            value={card.number.replace(
-                                                /.{12}/gm,
-                                                CARD_NUMBER_REPLACEMENT
-                                            )}
-                                            description={t('Номер карты')}
-                                        />
-                                        <button onClick={handleCopyCard}>
-                                            <Icon icon='copy' />
-                                        </button>
-                                    </div>
+                                    <Detail
+                                        value={
+                                            <div className='universal-card-card__second__info__details__eye'>
+                                                <div>
+                                                    {showNumber
+                                                        ? getCardNumber(
+                                                              card.number
+                                                          )
+                                                        : card.number.replace(
+                                                              /.{12}/gm,
+                                                              CARD_NUMBER_REPLACEMENT
+                                                          )}
+                                                </div>
+                                                <button
+                                                    onClick={() =>
+                                                        setShowNumber(
+                                                            prev => !prev
+                                                        )
+                                                    }
+                                                >
+                                                    <Icon
+                                                        icon={
+                                                            showNumber
+                                                                ? 'eye-open'
+                                                                : 'eye-close'
+                                                        }
+                                                    />
+                                                </button>
+                                            </div>
+                                        }
+                                        description={t('Номер карты')}
+                                    />
                                     <Detail
                                         value={formatExpirationDate(
-                                            card.expirationAt
+                                            card.expires
                                         )}
                                         description={t('Срок действия')}
                                     />
                                     <Detail
-                                        value={RUB}
+                                        value={card.currency.toUpperCase()}
                                         description={t('Валюта счета')}
                                     />
                                 </>

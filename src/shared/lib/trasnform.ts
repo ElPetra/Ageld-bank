@@ -1,51 +1,44 @@
 import type {
     Account,
-    AccountResponse,
-    CustomerCard,
-    CustomerCardResponse,
-    CardProductResponse,
-    CardProduct,
-    CardProductDetails,
-    CardProductDetailsResponse,
-    ProductStatus,
-    CardDetailsResponse,
-    CardDetails,
-    AccountDetailsResponse,
     AccountDetails,
-    DepositProduct,
-    DepositProductResponse,
+    AccountDetailsResponse,
+    AccountResponse,
+    AccountType,
     Currency,
     Deposit,
-    DepositResponse,
     DepositDetails,
     DepositDetailsResponse,
+    DepositProduct,
+    DepositProductDetails,
     DepositProductDetailsResponse,
-    DepositProductDetails
+    DepositProductResponse,
+    DepositResponse,
+    ProductStatus
 } from 'src/shared/model';
 
 export const transformAccounts = (res: AccountResponse[]): Account[] =>
     res.map(el => ({
         number: el.accountNumber,
-        type: el.type,
+        type: el.type.toLowerCase() as AccountType,
         balance: el.accountBalance,
-        status: el.status,
-        currency: el.currencyName,
+        status: el.status.toLowerCase() as ProductStatus,
+        currency: el.currencyName.toLowerCase() as Currency,
         isMaster: el.masterAccount,
         name: el.nameAccount || ''
     }));
 
 export const transformAccount = (res: AccountResponse[]): Account | undefined =>
     res
+        .filter(item => item.status === 'ACTIVE')
         .map(el => ({
             number: el.accountNumber,
-            type: el.type,
+            type: el.type.toLowerCase() as AccountType,
             balance: el.accountBalance,
             status: el.status.toLowerCase() as ProductStatus,
-            currency: el.currencyName,
+            currency: el.currencyName.toLowerCase() as Currency,
             isMaster: el.masterAccount,
             name: el.nameAccount || ''
-        }))
-        .filter(item => item.status === 'active')[0];
+        }))[0];
 
 export const transformAccountDetails = (
     res: AccountDetailsResponse
@@ -53,138 +46,14 @@ export const transformAccountDetails = (
     number: res.accountNumber,
     name: res.nameAccount || '',
     isMaster: res.masterAccount,
-    type: res.type,
-    currency: res.currencyName,
-    status: res.statusName,
+    type: res.type.toLowerCase() as AccountType,
+    currency: res.currencyName.toLowerCase() as Currency,
+    status: res.status.toLowerCase() as ProductStatus,
     balance: res.accountBalance,
     createdAt: res.createdAt,
     closedAt: res.closedAt,
     blockReason: res.blockReason || '',
     blockComment: res.blockComment || ''
-});
-
-export const transformCards = (res: CustomerCardResponse[]): CustomerCard[] =>
-    res.map(el => ({
-        id: el.cardId,
-        number: el.accountNumber,
-        expirationAt: el.expirationAt,
-        image: el.image,
-        level: el.level,
-        name: el.nameProduct,
-        paymentSystem: el.paymentSystem,
-        status: el.statusName.toLowerCase() as ProductStatus,
-        type: el.typeCard
-    }));
-
-export const transformCardDetails = (
-    res: CardDetailsResponse
-): CardDetails => ({
-    number: res.cardNumber,
-    balance: res.balance,
-    status: res.statusName.toLowerCase() as ProductStatus,
-    expirationAt: res.expirationAt,
-    name: res.nameProduct,
-    type: res.typeCard,
-    isVirtual: res.isVirtual,
-    level: res.level,
-    paymentSystem: res.paymentSystem,
-    image: res.image
-});
-
-export const transformCardProducts = (
-    res: CardProductResponse[]
-): CardProduct[] =>
-    res.map(el => ({
-        id: el.cardProductId,
-        name: el.nameProduct,
-        image: el.imageUrl,
-        paymentSystem: el.paymentSystem,
-        type: el.typeCard,
-        level: el.level
-    }));
-
-export const transformCardProductDetails = (
-    res: CardProductDetailsResponse
-): CardProductDetails => ({
-    name: res.nameProduct,
-    image: res.image,
-    paymentSystem: res.paymentSystem,
-    type: res.typeCard,
-    level: res.level,
-    isVirtual: res.isVirtual,
-    feeUse: res.feeUse,
-    limits: [
-        {
-            key: 'withdrawLimitDay',
-            value: res.withdrawLimitDay
-        },
-        {
-            key: 'withdrawLimitMonth',
-            value: res.withdrawLimitMonth
-        },
-        {
-            key: 'transactionLimitDay',
-            value: res.transactionLimitDay
-        },
-        {
-            key: 'transactionLimitMonth',
-            value: res.transactionLimitMonth
-        },
-        {
-            key: 'payLimitDay',
-            value: res.payLimitDay
-        },
-        {
-            key: 'payLimitMonth',
-            value: res.payLimitMonth
-        },
-        {
-            key: 'overWithdrawDay',
-            value: res.overWithdrawDay
-        },
-        {
-            key: 'overWithdrawMonth',
-            value: res.overWithdrawMonth
-        },
-        {
-            key: 'overTransactionDay',
-            value: res.overTransactionDay
-        },
-        {
-            key: 'overTransactionMonth',
-            value: res.overTransactionMonth
-        },
-        {
-            key: 'overPayDay',
-            value: res.overPayDay
-        },
-        {
-            key: 'overPayMonth',
-            value: res.overPayMonth
-        }
-    ],
-    conditions: [
-        {
-            key: 'conditionWithdraw',
-            value: res.conditionWithdraw
-        },
-        {
-            key: 'conditionPartnerWithdraw',
-            value: res.conditionPartnerWithdraw
-        },
-        {
-            key: 'conditionWorldWithdraw',
-            value: res.conditionWorldWithdraw
-        },
-        {
-            key: 'conditionTransaction',
-            value: res.conditionTransaction
-        },
-        {
-            key: 'conditionPay',
-            value: res.conditionPay
-        }
-    ]
 });
 
 export const transformDepositProducts = (
@@ -203,6 +72,25 @@ export const transformDepositProducts = (
         withdrawal: el.withdrawal,
         revocable: el.revocable
     }));
+
+export const transformDepositProductDetails = (
+    res: DepositProductDetailsResponse
+): DepositProductDetails => ({
+    id: res.id,
+    name: res.name,
+    currency: res.currency.toLowerCase() as Currency,
+    amountMin: res.amountMin,
+    amountMax: res.amountMax,
+    dayMin: res.dayMin,
+    dayMax: res.dayMax,
+    timeLimited: res.timeLimited,
+    capitalization: res.capitalization,
+    replenishment: res.replenishment,
+    withdrawal: res.withdrawal,
+    revocable: res.revocable,
+    penalty: res.penalty,
+    percentRate: res.percentRate || 0
+});
 
 export const transformDeposit = (res: DepositResponse[]): Deposit[] =>
     res.map(el => ({
@@ -237,23 +125,4 @@ export const transformDepositDetails = (
     percentAccount: res.percNum,
     mAccountId: res.maccountId,
     pAccountId: res.paccountId
-});
-
-export const transformDepositProductDetails = (
-    res: DepositProductDetailsResponse
-): DepositProductDetails => ({
-    id: res.id,
-    name: res.name,
-    currency: res.currency.toLowerCase() as Currency,
-    amountMin: res.amountMin,
-    amountMax: res.amountMax,
-    dayMin: res.dayMin,
-    dayMax: res.dayMax,
-    timeLimited: res.timeLimited,
-    capitalization: res.capitalization,
-    replenishment: res.replenishment,
-    withdrawal: res.withdrawal,
-    revocable: res.revocable,
-    penalty: res.penalty,
-    percentRate: res.percentRate || 0
 });

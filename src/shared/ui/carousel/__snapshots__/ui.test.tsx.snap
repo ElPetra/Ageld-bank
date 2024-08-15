@@ -7,7 +7,7 @@ exports[`Carousel ui match snapshot 1`] = `
 >
   <div>
     <div
-      class="carousel-inner"
+      class="carousel-inner overflowHidden"
     >
       <div
         class="carousel-inner__container"
@@ -21,7 +21,7 @@ exports[`Carousel ui match snapshot 1`] = `
           </div>
         </div>
         <div
-          class="carousel-inner__element hidden"
+          class="carousel-inner__element"
           style="transform: rotateY(72deg) translateZ(0px);"
         >
           <div>
@@ -29,7 +29,7 @@ exports[`Carousel ui match snapshot 1`] = `
           </div>
         </div>
         <div
-          class="carousel-inner__element hidden"
+          class="carousel-inner__element"
           style="transform: rotateY(144deg) translateZ(0px);"
         >
           <div>
@@ -37,7 +37,7 @@ exports[`Carousel ui match snapshot 1`] = `
           </div>
         </div>
         <div
-          class="carousel-inner__element hidden"
+          class="carousel-inner__element"
           style="transform: rotateY(216deg) translateZ(0px);"
         >
           <div>
@@ -45,7 +45,7 @@ exports[`Carousel ui match snapshot 1`] = `
           </div>
         </div>
         <div
-          class="carousel-inner__element hidden"
+          class="carousel-inner__element"
           style="transform: rotateY(288deg) translateZ(0px);"
         >
           <div>
@@ -54,25 +54,25 @@ exports[`Carousel ui match snapshot 1`] = `
         </div>
       </div>
     </div>
-    <div
-      class="carousel-indicators"
-    >
-      <button
-        class="carousel-indicators__indicator active"
-      />
-      <button
-        class="carousel-indicators__indicator"
-      />
-      <button
-        class="carousel-indicators__indicator"
-      />
-      <button
-        class="carousel-indicators__indicator"
-      />
-      <button
-        class="carousel-indicators__indicator"
-      />
-    </div>
+  </div>
+  <div
+    class="carousel-indicators"
+  >
+    <button
+      class="carousel-indicators__indicator active"
+    />
+    <button
+      class="carousel-indicators__indicator"
+    />
+    <button
+      class="carousel-indicators__indicator"
+    />
+    <button
+      class="carousel-indicators__indicator"
+    />
+    <button
+      class="carousel-indicators__indicator"
+    />
   </div>
   <div
     class="carousel-controls"

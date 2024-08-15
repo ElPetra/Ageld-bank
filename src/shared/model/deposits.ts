@@ -93,6 +93,7 @@ export interface DepositProductDetailsResponse {
     penalty: number;
     percentRate: number;
 }
+
 export interface Deposit {
     productId: string;
     name: string;

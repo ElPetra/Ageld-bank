@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 import { Text } from 'src/shared/ui';
-import { productStatuses } from 'src/shared/model';
+import { cardStatuses, productStatuses } from 'src/shared/model';
 
 import type { ProductStatus } from 'src/shared/model';
 
@@ -10,12 +10,14 @@ import './styles.scss';
 interface Props {
     isMaster: boolean;
     status: ProductStatus;
+    isFemale?: boolean;
     direction?: 'column' | 'row';
 }
 
 export const ProductStatuses = ({
     isMaster,
     status,
+    isFemale = false,
     direction = 'row'
 }: Props) => {
     const { t } = useTranslation();
@@ -38,7 +40,9 @@ export const ProductStatuses = ({
                     weight='medium'
                     size={direction === 'column' ? 'xxs' : 's'}
                 >
-                    {t(productStatuses[status])}
+                    {isFemale
+                        ? t(cardStatuses[status])
+                        : t(productStatuses[status])}
                 </Text>
             </div>
         </div>

@@ -16,7 +16,7 @@ export const DepositCreationPage = () => {
             {isLoading ? (
                 <Preloader />
             ) : (
-                <CreateDepositForm deposit={deposit} />
+                <>{deposit && <CreateDepositForm deposit={deposit} />}</>
             )}
         </Container>
     );

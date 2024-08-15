@@ -38,6 +38,7 @@ export const CardInfo = ({ card, isLoading }: Props) => {
                         {'status' in card && (
                             <ProductStatuses
                                 isMaster={false}
+                                isFemale={true}
                                 status={card.status}
                             />
                         )}
@@ -67,10 +68,44 @@ export const CardInfo = ({ card, isLoading }: Props) => {
                         <>
                             <Segment title={t('Условия')}>
                                 <Columns number='3' rowGap='small'>
+                                    <Detail
+                                        value={
+                                            t('до') +
+                                            ' ' +
+                                            card.cashbackLimit +
+                                            ' ' +
+                                            card.currency.toUpperCase()
+                                        }
+                                        description={t('Ежемесячный кэшбэк')}
+                                    />
+                                    <Detail
+                                        value={
+                                            t('до') +
+                                            ' ' +
+                                            card.monthOperationLimit +
+                                            ' ' +
+                                            t('операций')
+                                        }
+                                        description={t('по карте в месяц')}
+                                    />
+                                    <Detail
+                                        value={
+                                            t('до') +
+                                            ' ' +
+                                            card.dayOperationLimit +
+                                            ' ' +
+                                            t('операций')
+                                        }
+                                        description={t('по карте в день')}
+                                    />
                                     {card.conditions.map(el => (
                                         <div key={el.key}>
                                             <Detail
-                                                value={el.value + ' ₽'}
+                                                value={
+                                                    el.value +
+                                                    ' ' +
+                                                    card.currency.toUpperCase()
+                                                }
                                                 description={t(
                                                     conditionsMatcher[
                                                         el.key as keyof typeof conditionsMatcher
@@ -86,7 +121,11 @@ export const CardInfo = ({ card, isLoading }: Props) => {
                                     {card.limits.map(el => (
                                         <div key={el.key}>
                                             <Detail
-                                                value={el.value + ' ₽'}
+                                                value={
+                                                    el.value +
+                                                    ' ' +
+                                                    card.currency.toUpperCase()
+                                                }
                                                 description={t(
                                                     limitsMatcher[
                                                         el.key as keyof typeof limitsMatcher

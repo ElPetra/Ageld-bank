@@ -173,7 +173,7 @@ export const SVG = {
 
     mir: mirSVG,
     visa: visaSVG,
-    masterCard: mastercardSVG,
+    mastercard: mastercardSVG,
 
     'social-network-email': socialNetworkEmailSVG,
     'social-network-telegram': socialNetworkTelegramSVG,

@@ -67,6 +67,12 @@
 
           }
         }
+
+        &__eye {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
       }
 
       &__details {
@@ -75,8 +81,9 @@
         row-gap: 16px;
         flex-wrap: wrap;
 
-        &__copy {
+        &__eye {
           display: flex;
+          align-items: center;
           gap: 8px;
 
           button {

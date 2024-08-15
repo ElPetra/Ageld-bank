@@ -1,6 +1,5 @@
-import i18next from 'src/shared/model/i18n';
-
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import { Card, Icon, Text } from 'src/shared/ui';
 import {
@@ -10,7 +9,7 @@ import {
     RouteName
 } from 'src/shared/model';
 
-import type { Dispatch, MouseEvent, ReactNode, SetStateAction } from 'react';
+import type { Dispatch, ReactNode, SetStateAction } from 'react';
 import type { Account } from 'src/shared/model';
 
 import './styles.scss';
@@ -18,21 +17,17 @@ import './styles.scss';
 interface Props {
     account: Account;
     children: ReactNode;
-    showAllNumber: boolean;
-    setShowAllNumber: Dispatch<SetStateAction<string>>;
+    currentNumber: string;
+    setCurrentNumber: Dispatch<SetStateAction<string>>;
 }
 
 export const AccountCard = ({
     account,
     children,
-    showAllNumber,
-    setShowAllNumber
+    currentNumber,
+    setCurrentNumber
 }: Props) => {
-    const changeShowAllNumber = (e: MouseEvent<HTMLButtonElement>) => {
-        e.preventDefault();
-        const elId = e.currentTarget.closest('button')?.id || '';
-        setShowAllNumber(prev => (prev === elId ? '' : elId));
-    };
+    const { t } = useTranslation();
     return (
         <div>
             <Link to={RouteName.ACCOUNT_PAGE + '/' + account.number}>
@@ -41,29 +36,37 @@ export const AccountCard = ({
                         <Icon widthAndHeight={40} icon={account.currency} />
                         <div className='account__card__info'>
                             <Text weight='medium'>
-                                {showAllNumber
-                                    ? account.number
-                                    : account.number.replace(
-                                          /.{16}/gm,
-                                          ACCOUNT_NUMBER_REPLACEMENT
-                                      )}
-                                <button
-                                    aria-label='Показать номер счета полностью'
-                                    id={account.number}
-                                    type='button'
-                                    onClick={changeShowAllNumber}
-                                >
-                                    <Icon
-                                        icon={
-                                            showAllNumber
-                                                ? 'eye-open'
-                                                : 'eye-close'
-                                        }
-                                    />
-                                </button>
+                                <div className='account__card__info__eye'>
+                                    {currentNumber === account.number
+                                        ? account.number
+                                        : account.number.replace(
+                                              /.{16}/gm,
+                                              ACCOUNT_NUMBER_REPLACEMENT
+                                          )}
+                                    <button
+                                        aria-label='Показать номер счета полностью'
+                                        type='button'
+                                        onClick={e => {
+                                            e.preventDefault();
+                                            setCurrentNumber(prev =>
+                                                prev === account.number
+                                                    ? ''
+                                                    : account.number
+                                            );
+                                        }}
+                                    >
+                                        <Icon
+                                            icon={
+                                                currentNumber === account.number
+                                                    ? 'eye-open'
+                                                    : 'eye-close'
+                                            }
+                                        />
+                                    </button>
+                                </div>
                             </Text>
                             <Text weight='medium' color='tertiary'>
-                                {i18next.t(accountTypes[account.type])}
+                                {t(accountTypes[account.type])}
                             </Text>
                         </div>
                     </div>
