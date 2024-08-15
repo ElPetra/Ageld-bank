@@ -5,6 +5,6 @@ export * from './info';
 export * from './card';
 export * from './deposit';
 export * from './trasnform';
+export * from './trasnform-card';
 export * from './type-guards';
-export * from './card-hooks';
 export * from './carousel';

@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 
 import {
     ACCOUNTS,
-    ALL_CURRENCY,
+    ALL,
     currencyMinFilters,
     RouteName,
     RUB
@@ -28,7 +28,7 @@ interface Props {
 export const DepositList = ({ deposits, isLoading }: Props) => {
     const { t } = useTranslation();
     const [open, setOpen] = useState<boolean>(false);
-    const [currency, setCurrency] = useState<string>(ALL_CURRENCY);
+    const [currency, setCurrency] = useState<string>(ALL);
     const { register, setValue, watch, reset } = useForm<FieldValues>({
         defaultValues: {
             termInput: 1,
@@ -53,7 +53,7 @@ export const DepositList = ({ deposits, isLoading }: Props) => {
     const handleFilter = () => {
         setOpen(prev => !prev);
         if (open) {
-            setCurrency(ALL_CURRENCY);
+            setCurrency(ALL);
             reset();
         } else {
             setCurrency(RUB);
@@ -62,7 +62,7 @@ export const DepositList = ({ deposits, isLoading }: Props) => {
 
     const resetFilter = () => {
         setOpen(false);
-        setCurrency(ALL_CURRENCY);
+        setCurrency(ALL);
         reset();
     };
 

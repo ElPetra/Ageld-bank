@@ -1,12 +1,13 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import {
     CREATE,
-    currencySystemFilters,
+    currencyFilters,
     RouteName,
     typeCardFilters
 } from 'src/shared/model';
-import { Preloader } from 'src/shared/ui';
+import { Checkbox, Preloader, Text } from 'src/shared/ui';
 import { FilterBar, Pagination } from 'src/entities/filter';
 import { UniversalCardCard } from 'src/entities/cards';
 import { ProductStatuses } from 'src/entities/product';
@@ -21,9 +22,10 @@ import './styles.scss';
 interface Props {
     cards: CardProduct[] | CustomerCard[];
     isLoading: boolean;
+    isCustomerCards?: boolean;
 }
 
-export const CardList = ({ cards, isLoading }: Props) => {
+export const CardList = ({ cards, isLoading, isCustomerCards }: Props) => {
     const { t } = useTranslation();
     const {
         getFilteredCards,
@@ -39,6 +41,9 @@ export const CardList = ({ cards, isLoading }: Props) => {
         currentItems,
         pageNumbers
     } = usePaginationFilter(cards, getFilteredCards);
+    const [showClosed, setShowClosed] = useState<boolean>(false);
+    const [currentId, setCurrentId] = useState<string>('');
+
     return (
         <div className='card-list'>
             <div className='card-list__filters'>
@@ -48,25 +53,46 @@ export const CardList = ({ cards, isLoading }: Props) => {
                     setCurrent={setCurrencyType}
                 />
                 <FilterBar
-                    filters={currencySystemFilters}
+                    filters={currencyFilters}
                     current={currentCurrency}
                     setCurrent={setCurrentCurrency}
                 />
             </div>
+            {isCustomerCards && (
+                <Checkbox onChange={() => setShowClosed(prev => !prev)}>
+                    <Text align='center'>
+                        {t('Отобразить неактивные карты')}
+                    </Text>
+                </Checkbox>
+            )}
             {isLoading ? (
                 <Preloader />
             ) : currentItems.length ? (
                 <div className='card-list__list'>
-                    {currentItems.map(el => (
-                        <UniversalCardCard key={el.id} card={el}>
-                            {'status' in el && (
-                                <ProductStatuses
-                                    isMaster={false}
-                                    status={el.status}
-                                />
-                            )}
-                        </UniversalCardCard>
-                    ))}
+                    {currentItems
+                        .filter(
+                            el =>
+                                !('status' in el) ||
+                                showClosed ||
+                                (el.status !== 'closed' &&
+                                    el.status !== 'blocked')
+                        )
+                        .map(el => (
+                            <UniversalCardCard
+                                key={el.id}
+                                card={el}
+                                currentId={currentId}
+                                setCurrentId={setCurrentId}
+                            >
+                                {'status' in el && (
+                                    <ProductStatuses
+                                        isMaster={false}
+                                        isFemale={true}
+                                        status={el.status}
+                                    />
+                                )}
+                            </UniversalCardCard>
+                        ))}
                     {cards.length > 10 && (
                         <Pagination
                             currentPage={currentPage}

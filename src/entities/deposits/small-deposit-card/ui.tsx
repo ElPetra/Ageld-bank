@@ -22,10 +22,12 @@ export const SmallDepositCard = ({ deposit }: Props) => {
             <div className='small-deposit-card__info'>
                 <div className='small-deposit-card__info__text'>
                     <Text size='m' weight='medium'>
-                        {deposit.name}
+                        {'A-Geld ' + deposit.name}
                     </Text>
                     <Text size='xs' color='tertiary'>
-                        {t('До 30 сентября оформите ') + ' ' + deposit.name}
+                        {t('До 30 сентября оформите ') +
+                            'A-Geld ' +
+                            deposit.name}
                     </Text>
                 </div>
                 <div className='small-deposit-card__info__detail'>

@@ -1,12 +1,12 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import {
-    transformDepositProducts,
-    transformDepositProductDetails
+    transformDepositProductDetails,
+    transformDepositProducts
 } from 'src/shared/lib';
 
-import type { DepositProductDetails } from 'src/shared/model';
-import type { DepositProduct } from 'src/shared/model';
+import type { DepositProductDetails, DepositProduct } from 'src/shared/model';
+
 const depositBaseUrl =
     import.meta.env.VITE_BASEURL_GATEWAY + '/api/v1/deposit/deposit_product';
 

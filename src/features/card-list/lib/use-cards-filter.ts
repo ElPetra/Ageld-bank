@@ -17,7 +17,7 @@ export const useCardsFilter = (cards?: CardProduct[] | CustomerCard[]) => {
                 currentType === ALL || typeCard[card.type] === currentType;
             const paymentMatch =
                 currentCurrency === ALL ||
-                card.paymentSystem === currentCurrency;
+                card.currency.toUpperCase() === currentCurrency;
             return typeMatch && paymentMatch;
         });
     }, [cards, currentCurrency, currentType]);

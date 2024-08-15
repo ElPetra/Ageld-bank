@@ -28,3 +28,7 @@ export function isCardProductDetails(
 ): card is CardProductDetails {
     return !('status' in card) && !('id' in card);
 }
+
+export function getCardNumber(number: string): string {
+    return number.replace(/(\d{4})(\d{4})(\d{4})(\d{4})/, '$1 $2 $3 $4');
+}

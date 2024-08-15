@@ -1,4 +1,9 @@
-import type { Currency, ProductStatus } from 'src/shared/model';
+import type {
+    Currency,
+    CurrencyResponse,
+    ProductStatus,
+    ProductStatusResponse
+} from 'src/shared/model';
 import type { SvgIconName } from '../ui';
 
 export const CREDIT_ACCOUNT = 'Кредитный счет';
@@ -7,7 +12,9 @@ export const DEPOSIT_ACCOUNT = 'Депозитный счет';
 
 export const ACCOUNT_NUMBER_REPLACEMENT = '****************';
 
+export type AccountTypeResponse = 'CREDIT' | 'DEBIT' | 'DEPOSIT';
 export type AccountType = 'credit' | 'debit' | 'deposit';
+
 export interface AccountDetails {
     number: string;
     name: string;
@@ -26,24 +33,14 @@ export interface AccountDetailsResponse {
     accountNumber: string;
     nameAccount: null | string;
     masterAccount: boolean;
-    type: AccountType;
-    currencyName: Currency;
-    statusName: ProductStatus;
+    type: AccountTypeResponse;
+    currencyName: CurrencyResponse;
+    status: ProductStatusResponse;
     accountBalance: number;
     createdAt: string;
     closedAt: string;
     blockReason: null | string;
     blockComment: null | string;
-}
-
-export interface AccountResponse {
-    accountNumber: string;
-    type: AccountType;
-    accountBalance: number;
-    status: ProductStatus;
-    currencyName: Currency;
-    masterAccount: boolean;
-    nameAccount: null | string;
 }
 
 export interface Account {
@@ -54,6 +51,16 @@ export interface Account {
     currency: Currency;
     isMaster: boolean;
     name: string;
+}
+
+export interface AccountResponse {
+    accountNumber: string;
+    type: AccountTypeResponse;
+    accountBalance: number;
+    status: ProductStatusResponse;
+    currencyName: CurrencyResponse;
+    masterAccount: boolean;
+    nameAccount: null | string;
 }
 
 export const accountTypes: Record<AccountType, string> = {
