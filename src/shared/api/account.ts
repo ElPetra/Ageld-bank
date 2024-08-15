@@ -5,7 +5,7 @@ import {
     transformAccountDetails,
     transformAccounts,
     transformAccount
-} from 'src/shared/lib';
+} from 'src/shared/lib/trasnform.ts';
 
 import type { Account, AccountDetails } from 'src/shared/model';
 

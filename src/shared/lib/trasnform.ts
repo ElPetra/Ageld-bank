@@ -126,22 +126,3 @@ export const transformDepositDetails = (
     mAccountId: res.maccountId,
     pAccountId: res.paccountId
 });
-
-export const transformDepositProductDetails = (
-    res: DepositProductDetailsResponse
-): DepositProductDetails => ({
-    id: res.id,
-    name: res.name,
-    currency: res.currency.toLowerCase() as Currency,
-    amountMin: res.amountMin,
-    amountMax: res.amountMax,
-    dayMin: res.dayMin,
-    dayMax: res.dayMax,
-    timeLimited: res.timeLimited,
-    capitalization: res.capitalization,
-    replenishment: res.replenishment,
-    withdrawal: res.withdrawal,
-    revocable: res.revocable,
-    penalty: res.penalty,
-    percentRate: res.percentRate || 0
-});

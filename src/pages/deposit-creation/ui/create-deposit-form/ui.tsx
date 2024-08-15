@@ -32,8 +32,8 @@ export const CreateDepositForm = ({ deposit }: Props) => {
     const { id } = useParams();
     const {
         data: account,
-        error: errorAcount,
-        isLoading: isLoadingAcount
+        error: errorAccount,
+        isLoading: isLoadingAccount
     } = useGetAccountQuery();
     const {
         register,
@@ -57,10 +57,10 @@ export const CreateDepositForm = ({ deposit }: Props) => {
     });
 
     useEffect(() => {
-        if (isErrorStatusUnauthorized(errorAcount)) {
+        if (isErrorStatusUnauthorized(errorAccount)) {
             return signedOut();
         }
-    }, [errorAcount, signedOut]);
+    }, [errorAccount, signedOut]);
 
     const createDeposit = async (data: FieldValues) => {
         await createdDeposit(
@@ -73,7 +73,7 @@ export const CreateDepositForm = ({ deposit }: Props) => {
         );
     };
 
-    if (isLoadingAcount) {
+    if (isLoadingAccount) {
         return <Preloader />;
     }
 
