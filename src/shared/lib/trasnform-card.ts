@@ -20,7 +20,7 @@ export const transformCards = (res: CustomerCardResponse[]): CustomerCard[] =>
         number: el.cardNumber,
         expires: el.expires,
         status: cardStatusesToProductStatus[el.cardStatus || 2],
-        image: el.image,
+        image: el.cardImage,
         balance: el.balance,
         name: el.productName,
         type: el.cardType,
