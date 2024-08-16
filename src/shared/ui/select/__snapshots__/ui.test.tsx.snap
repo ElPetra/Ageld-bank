@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Select ui match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="select auto"
+  >
+    <button
+      class="select__button primary"
+      type="button"
+    >
+      <div
+        class="select__button__content"
+      >
+        <div
+          class="select__button__content__label"
+        >
+          Select
+        </div>
+      </div>
+      <div
+        class="select__button__icon"
+      >
+        <img
+          alt=""
+          height="24"
+          width="24"
+        />
+      </div>
+    </button>
+  </div>
+</DocumentFragment>
+`;
