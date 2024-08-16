@@ -127,7 +127,7 @@ export interface CustomerCardResponse {
     id: string;
     cardNumber: string;
     expires: string;
-    image: string;
+    cardImage: string;
     cardStatus: CardStatusResponse;
     balance: number;
     currencyCode: CurrencyResponse;
