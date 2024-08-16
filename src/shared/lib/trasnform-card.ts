@@ -17,9 +17,9 @@ export const transformCards = (res: CustomerCardResponse[]): CustomerCard[] =>
     res.map(el => ({
         active: el.active,
         id: el.id,
-        number: el.cardNumber || '1234567890123456',
+        number: el.cardNumber,
         expires: el.expires,
-        status: cardStatusesToProductStatus[el.cardStatus],
+        status: cardStatusesToProductStatus[el.cardStatus || 2],
         image: el.image,
         balance: el.balance,
         name: el.productName,
@@ -33,7 +33,7 @@ export const transformCardDetails = (
 ): CardDetails => ({
     number: res.cardNumber,
     balance: res.balance,
-    status: cardStatusesToProductStatus[res.cardStatus],
+    status: cardStatusesToProductStatus[res.cardStatus || 2],
     expires: res.expires,
     name: res.productName,
     type: res.cardType,
