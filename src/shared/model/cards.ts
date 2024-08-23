@@ -27,7 +27,7 @@ export const cardStatusesToProductStatus: Record<
     3: 'blocked'
 };
 
-export const cardStatuses: Record<ProductStatus, string> = {
+export const cardStatusesToText: Record<ProductStatus, string> = {
     active: 'Активная',
     closed: 'Закрытая',
     blocked: 'Заблокированная'

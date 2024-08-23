@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 import { CREATE, RouteName } from 'src/shared/model';
-import { getGenitiveMonthEn, getGenitiveMonthRu } from 'src/shared/lib';
+import { getMonthEn, getGenitiveMonthRu } from 'src/shared/lib';
 import { Icon, Text, Button, Card, Link } from 'src/shared/ui';
 
 import type { DepositProductDetails } from 'src/shared/model';
@@ -86,7 +86,7 @@ export const DepositProductDetailsCard = ({ deposit }: Props) => {
                                             ? getGenitiveMonthRu(
                                                   Math.ceil(deposit.dayMin / 30)
                                               )
-                                            : getGenitiveMonthEn(
+                                            : getMonthEn(
                                                   Math.ceil(deposit.dayMin / 30)
                                               ))}
                                 </Text>

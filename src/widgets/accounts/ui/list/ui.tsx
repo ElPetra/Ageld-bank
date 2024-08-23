@@ -1,7 +1,12 @@
 import { AccountCard } from 'src/entities/accounts';
 import { MessageCard } from 'src/entities/message';
 import { ProductStatuses } from 'src/entities/product';
-import { CREATE, RouteName } from 'src/shared/model';
+import {
+    CREATE,
+    productStatuses,
+    productStatusesToText,
+    RouteName
+} from 'src/shared/model';
 import { Checkbox, Columns, Text } from 'src/shared/ui';
 import { useTranslation } from 'react-i18next';
 import { useState, type Dispatch, type SetStateAction } from 'react';
@@ -35,7 +40,8 @@ export const AccountList = ({ accounts, setShowClosed }: Props) => {
                         >
                             <ProductStatuses
                                 isMaster={el.isMaster}
-                                status={el.status}
+                                status={productStatuses[el.status]}
+                                text={productStatusesToText[el.status]}
                                 direction='column'
                             />
                         </AccountCard>

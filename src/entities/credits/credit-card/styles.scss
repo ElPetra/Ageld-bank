@@ -1,0 +1,140 @@
+.deposit-info {
+    &__first-row {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        &__main {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 16px;
+
+            &__info {
+                display: flex;
+                column-gap: 24px;
+                row-gap: 4px;
+
+                @media screen and (min-width: 1000px) {
+                    height: 32px;
+                }
+
+                @media screen and (max-width: 1000px) {
+                    flex-wrap: wrap;
+                }
+            }
+        }
+
+        &__numbers {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        &__number {
+            display: flex;
+            gap: 8px;
+            align-items: flex-start;
+            > button {
+                width: 24px;
+            }
+            > div:first-child {
+                @media screen and (min-width: 500px)  {
+                    display: flex;
+                    gap: 4px;
+                    flex-wrap: wrap;
+                }
+            }
+        }
+    }
+
+    &__second-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 32px;
+
+        @media screen and (max-width: 1000px)  {
+            flex-wrap: wrap;
+            > div {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+        }
+
+        &__info {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+
+            @media screen and (max-width: 500px)  {
+                gap: 16px;
+            }
+
+            > div {
+                @media screen and (max-width: 500px)  {
+                    flex: 1 1 100%;
+                    width: 100%;
+                }
+
+                @media screen and (min-width: 500px) and (max-width: 800px) {
+                    flex: 1 1 33%;
+                    max-width: calc((100% - 40px)/2);
+                }
+
+                @media screen and (min-width: 800px) and (max-width: 1000px) {
+                    flex: 1 1 25%;
+                    max-width: calc((100% - 2*40px)/3);
+                }
+
+                @media screen and (min-width: 1000px) and (max-width: 1300px) {
+                    flex: 1 1 33%;
+                    max-width: calc((100% - 40px)/2);
+                }
+
+                @media screen and (min-width: 1300px) {
+                    flex: 1 1 25%;
+                    max-width: calc((100% - 2*40px)/3);
+                }
+            }
+        }
+        &__second-column {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+
+            @media screen and (max-width: 1000px) {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+
+            &__balances {
+                display: flex;
+                gap: 20px;
+
+                > div {
+                    width: 220px;
+                    max-width: 100%;
+                }
+
+                @media screen and (max-width: 550px) {
+                    flex-wrap: wrap;
+                    > div {
+                        width: 100%;
+                    }
+                }
+            }
+
+            &__buttons {
+                display: flex;
+                gap: 20px;
+
+                @media screen and (max-width: 550px) {
+                    flex-wrap: wrap;
+                    > button {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}

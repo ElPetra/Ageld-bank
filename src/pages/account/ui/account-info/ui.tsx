@@ -1,6 +1,11 @@
 import { formatDate } from 'src/shared/lib';
 import { Button, Card, Icon, Text } from 'src/shared/ui';
-import { accountTypes, currencySymbol } from 'src/shared/model';
+import {
+    accountTypes,
+    currencySymbol,
+    productStatuses,
+    productStatusesToText
+} from 'src/shared/model';
 import { ProductStatuses } from 'src/entities/product';
 import { useTranslation } from 'react-i18next';
 
@@ -38,7 +43,8 @@ export const AccountInfo = ({ account }: Props) => {
                                 </Text>
                                 <ProductStatuses
                                     isMaster={account.isMaster}
-                                    status={account.status}
+                                    status={productStatuses[account.status]}
+                                    text={productStatusesToText[account.status]}
                                 />
                             </div>
                             <div className='account-info__main__info__second-row'>

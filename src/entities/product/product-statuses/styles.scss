@@ -34,20 +34,14 @@
             &-main {
                 background-color: var(--bg-action);
             }
-            &-active, &-capitalization {
+            &-success {
                 background-color: var(--bg-success);
+            }
+            &-warning {
+                background-color: var(--bg-warning);
             }
             &-closed {
                 background-color: var(--bg-buttons-disable);
-            }
-            &-blocked {
-                background-color: var(--bg-warning);
-            }
-            &-autoprolongation {
-                background-color: var(--bg-success);
-            }
-            &-autoprolongationoff {
-               background-color: var(--bg-warning)
             }
         }
     }
