@@ -28,9 +28,13 @@ import arrowLeftAccentSVG from 'src/shared/ui/icon/assets/icons/arrow-left-accen
 import arrowRightSVG from 'src/shared/ui/icon/assets/icons/arrow-right.svg';
 import arrowRightAccentSVG from 'src/shared/ui/icon/assets/icons/arrow-right-accent.svg';
 import arrowBottomInputSVG from 'src/shared/ui/icon/assets/icons/arrow-bottom-input.svg';
+import arrowBottomInputAccentSVG from 'src/shared/ui/icon/assets/icons/arrow-bottom-input-accent.svg';
 
 import arrowButtonLeftVG from 'src/shared/ui/icon/assets/icons/arrow-buttton-left.svg';
 import arrowButtonRightSVG from 'src/shared/ui/icon/assets/icons/arrow-buttton-right.svg';
+
+import uploadFileSVG from 'src/shared/ui/icon/assets/icons/upload-file.svg';
+import uploadFileAccentSVG from 'src/shared/ui/icon/assets/icons/upload-file-accent.svg';
 
 import menuSVG from 'src/shared/ui/icon/assets/icons/menu.svg';
 
@@ -140,9 +144,13 @@ export const SVG = {
     'arrow-right': arrowRightSVG,
     'arrow-right-accent': arrowRightAccentSVG,
     'arrow-bottom-input': arrowBottomInputSVG,
+    'arrow-bottom-input-accent': arrowBottomInputAccentSVG,
 
     'arrow-button-right': arrowButtonRightSVG,
     'arrow-button-left': arrowButtonLeftVG,
+
+    'upload-file': uploadFileSVG,
+    'upload-file-accent': uploadFileAccentSVG,
 
     menu: menuSVG,
 

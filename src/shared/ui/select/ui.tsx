@@ -50,6 +50,7 @@ export const Select = memo(
                             setOpen(!open);
                         }
                     }}
+                    disabled={disabled}
                 >
                     <div className='select__button__content'>
                         <div
