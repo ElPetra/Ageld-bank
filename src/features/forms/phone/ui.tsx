@@ -106,7 +106,7 @@ export const PhoneForm = ({
             </Button>
             {variant === 'registration' && (
                 <Button size='large' type='button'>
-                    <Link to={RouteName.MAIN_PAGE}>{t('Отклонить')}</Link>
+                    <Link to={RouteName.MAIN_PAGE + '/'}>{t('Отклонить')}</Link>
                 </Button>
             )}
         </Form>
