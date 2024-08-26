@@ -9,6 +9,8 @@ export const RouteName = {
     CARD_PAGE: '/card',
     CARD_PRODUCT_PAGE: '/card-product',
     ACCOUNT_PAGE: '/account',
+    CREDIT_PAGE: '/credit',
+    CREDIT_PRODUCT_PAGE: '/credit-product',
     DEPOSIT_PAGE: '/deposit',
     DEPOSIT_PRODUCT_PAGE: '/deposit-product',
     NOTIFICATION_HISTORY_PAGE: '/notifications_history',

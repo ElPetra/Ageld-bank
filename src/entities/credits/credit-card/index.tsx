@@ -1,10 +1,12 @@
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-import { Text, Button, Card } from 'src/shared/ui';
+import { Text, Button, Card, Icon } from 'src/shared/ui';
 import { formatDate, getMonthEn, getMonthRu } from 'src/shared/lib';
 
+import { type Credit, RouteName } from 'src/shared/model';
+
 import type { ReactNode } from 'react';
-import type { Credit } from 'src/shared/model';
 
 import './styles.scss';
 
@@ -18,26 +20,23 @@ export const CreditCard = ({ credit, children }: Props) => {
 
     return (
         <Card
-            direction='column'
             gap='large'
             padding='large'
             borderRadius='extra-large'
+            justify='space-between'
         >
-            <div className='deposit-info__first-row'>
-                <div className='deposit-info__first-row__main'>
-                    <div className='deposit-info__first-row__main__info'>
-                        <Text size='l' weight='bold'>
-                            {t('A-Geld ') + credit.name}
-                        </Text>
-                        {children}
-                    </div>
+            <div className='credit-card__first-column'>
+                <div className='credit-card__first-column__main'>
+                    <Icon widthAndHeight={64} icon={credit.currency} />
+                    <Text size='l' weight='bold'>
+                        {t('A-Geld ') + credit.name}
+                    </Text>
+                    {children}
                 </div>
-            </div>
-            <div className='deposit-info__second-row'>
-                <div className='deposit-info__second-row__info'>
+                <div className='credit-card__first-column__info'>
                     <div>
                         <Text color='tertiary' size='xs'>
-                            {t('Срок действия')}
+                            {t('Срок кредита')}
                         </Text>
                         <Text weight='medium' size='m'>
                             {credit.term +
@@ -58,41 +57,59 @@ export const CreditCard = ({ credit, children }: Props) => {
                     {'paymentDate' in credit && credit.paymentDate && (
                         <div>
                             <Text color='tertiary' size='xs'>
-                                {t('Дата открытия')}
+                                {t('Дата следующего платежа')}
                             </Text>
                             <Text weight='medium' size='m'>
                                 {formatDate(credit.paymentDate)}
                             </Text>
                         </div>
                     )}
+                    {'repaymentDate' in credit && credit.repaymentDate && (
+                        <div>
+                            <Text color='tertiary' size='xs'>
+                                {t('Дата погашения кредита')}
+                            </Text>
+                            <Text weight='medium' size='m'>
+                                {formatDate(credit.repaymentDate)}
+                            </Text>
+                        </div>
+                    )}
                 </div>
-                <div className='deposit-info__second-row__second-column'>
-                    <div className='deposit-info__second-row__second-column__balances'>
-                        {/*<div>*/}
-                        {/*    <Text size='xs' color='tertiary'>*/}
-                        {/*        {t('Сумма на депозитном счете')}*/}
-                        {/*    </Text>*/}
-                        {/*    <Text size='l' weight='bold'>*/}
-                        {/*        {`${credit.balance.toLocaleString()} ${credit.currency.toUpperCase()}`}*/}
-                        {/*    </Text>*/}
-                        {/*</div>*/}
-                        {/*<div>*/}
-                        {/*    <Text size='xs' color='tertiary'>*/}
-                        {/*        {t('Изначальная сумма депозита')}*/}
-                        {/*    </Text>*/}
-                        {/*    <Text size='l' weight='bold'>*/}
-                        {/*        {`${credit.initialAmount.toLocaleString()} ${credit.currency.toUpperCase()}`}*/}
-                        {/*    </Text>*/}
-                        {/*</div>*/}
-                    </div>
-                    <div className='deposit-info__second-row__second-column__buttons'>
+            </div>
+            <div className='credit-card__second-column'>
+                <div className='credit-card__second-column__first-row'>
+                    {'payment' in credit && credit.payment && (
+                        <div>
+                            <Text size='xs' color='tertiary'>
+                                {t('Размер платежа')}
+                            </Text>
+                            <Text size='l' weight='bold'>
+                                {`${credit.payment.toLocaleString()} ${credit.currency.toUpperCase()}`}
+                            </Text>
+                        </div>
+                    )}
+                    {'debt' in credit && credit.debt && (
+                        <div>
+                            <Text size='xs' color='tertiary'>
+                                {t('Сумма задолжности')}
+                            </Text>
+                            <Text size='l' weight='bold' color='action'>
+                                {`${credit.debt.toLocaleString()} ${credit.currency.toUpperCase()}`}
+                            </Text>
+                        </div>
+                    )}
+                </div>
+                <div className='credit-card__second-column__buttons'>
+                    <Link to={RouteName.CREDIT_PAGE + '/' + credit.id}>
                         <Button type='button' variant='primary'>
-                            {t('Отозвать')}
+                            {t('Подробнее')}
                         </Button>
+                    </Link>
+                    {credit.status !== 'closed' && (
                         <Button type='button' variant='secondary'>
-                            {t('Пополнить')}
+                            {t('Оплатить')}
                         </Button>
-                    </div>
+                    )}
                 </div>
             </div>
         </Card>
