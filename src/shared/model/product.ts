@@ -15,11 +15,18 @@ export const currencySymbol = {
     usd: '$'
 };
 
+export type Status = 'success' | 'warning' | 'closed';
 export type ProductStatus = 'active' | 'closed' | 'blocked';
 export type ProductStatusResponse = 'ACTIVE' | 'CLOSED' | 'BLOCKED';
 
-export const productStatuses: Record<ProductStatus, string> = {
+export const productStatusesToText: Record<ProductStatus, string> = {
     active: 'Активный',
     closed: 'Закрытый',
     blocked: 'Заблокированный'
+};
+
+export const productStatuses: Record<ProductStatus, Status> = {
+    active: 'success',
+    closed: 'closed',
+    blocked: 'warning'
 };

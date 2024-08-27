@@ -4,12 +4,12 @@ import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
 
 import { Icon, Text, Button, Card, Switcher, Overlay } from 'src/shared/ui';
-import { depositWithdrawal } from 'src/shared/model';
+import { depositWithdrawal, productStatusesToText } from 'src/shared/model';
 import { ProductStatuses } from 'src/entities/product';
 import { useAuth } from 'src/entities/user';
 import { MessageCard } from 'src/entities/message';
 
-import { formatDate, getTerm } from 'src/shared/lib';
+import { formatDate, getMonthEn, getMonthRu, getTerm } from 'src/shared/lib';
 
 import { DepositsMoreInfo } from './more-info';
 
@@ -23,7 +23,7 @@ interface Props {
 }
 
 export const DepositInfo = ({ deposit }: Props) => {
-    const { t } = useTranslation();
+    const { i18n, t } = useTranslation();
     const { id } = useParams();
     const { autoRenewedDeposit, error } = useAuth();
     const [visible, setVisible] = useState<boolean>(false);
@@ -43,21 +43,6 @@ export const DepositInfo = ({ deposit }: Props) => {
         navigator.clipboard.writeText(String(deposit.percentAccount));
     };
 
-    const getMonth = (num: number): string => {
-        const lastDigit = num % 10;
-        const lastTwoDigits = num % 100;
-        if (lastTwoDigits >= 11 && lastTwoDigits <= 14) {
-            return t('месяцев');
-        }
-        if (lastDigit === 1) {
-            return t('месяц');
-        } else if (lastDigit >= 2 && lastDigit <= 4) {
-            return t('месяца');
-        } else {
-            return t('месяцев');
-        }
-    };
-
     return (
         <Card
             direction='column'
@@ -73,7 +58,12 @@ export const DepositInfo = ({ deposit }: Props) => {
                         </Text>
                         <ProductStatuses
                             isMaster={false}
-                            status={deposit.status ? 'active' : 'closed'}
+                            status={deposit.status ? 'success' : 'closed'}
+                            text={
+                                productStatusesToText[
+                                    deposit.status ? 'active' : 'closed'
+                                ]
+                            }
                         />
                     </div>
                     <div>
@@ -134,9 +124,19 @@ export const DepositInfo = ({ deposit }: Props) => {
                         <Text weight='medium' size='m'>
                             {getTerm(deposit.startDate, deposit.endDate) +
                                 ' ' +
-                                getMonth(
-                                    getTerm(deposit.startDate, deposit.endDate)
-                                )}
+                                (i18n.language === 'ru'
+                                    ? getMonthRu(
+                                          getTerm(
+                                              deposit.startDate,
+                                              deposit.endDate
+                                          )
+                                      )
+                                    : getMonthEn(
+                                          getTerm(
+                                              deposit.startDate,
+                                              deposit.endDate
+                                          )
+                                      ))}
                         </Text>
                     </div>
                     <div>

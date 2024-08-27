@@ -29,7 +29,22 @@ export const getGenitiveMonthRu = (num: number): string => {
     }
 };
 
-export const getGenitiveMonthEn = (num: number): string => {
+export const getMonthRu = (num: number): string => {
+    const lastDigit = num % 10;
+    const lastTwoDigits = num % 100;
+    if (lastTwoDigits >= 11 && lastTwoDigits <= 14) {
+        return 'месяцев';
+    }
+    if (lastDigit === 1) {
+        return 'месяц';
+    } else if (lastDigit >= 2 && lastDigit <= 4) {
+        return 'месяца';
+    } else {
+        return 'месяцев';
+    }
+};
+
+export const getMonthEn = (num: number): string => {
     if (num === 1) {
         return 'month';
     } else {

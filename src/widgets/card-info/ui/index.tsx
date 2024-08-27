@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 import { Columns, Preloader } from 'src/shared/ui';
+import { cardStatusesToText, productStatuses } from 'src/shared/model';
 import { UniversalCardCard, Detail } from 'src/entities/cards';
 import { ProductStatuses } from 'src/entities/product';
 import { MessageCard } from 'src/entities/message';
@@ -38,8 +39,8 @@ export const CardInfo = ({ card, isLoading }: Props) => {
                         {'status' in card && (
                             <ProductStatuses
                                 isMaster={false}
-                                isFemale={true}
-                                status={card.status}
+                                status={productStatuses[card.status]}
+                                text={cardStatusesToText[card.status]}
                             />
                         )}
                     </UniversalCardCard>

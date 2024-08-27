@@ -2,8 +2,10 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import {
+    cardStatusesToText,
     CREATE,
     currencyFilters,
+    productStatuses,
     RouteName,
     typeCardFilters
 } from 'src/shared/model';
@@ -87,8 +89,8 @@ export const CardList = ({ cards, isLoading, isCustomerCards }: Props) => {
                                 {'status' in el && (
                                     <ProductStatuses
                                         isMaster={false}
-                                        isFemale={true}
-                                        status={el.status}
+                                        status={productStatuses[el.status]}
+                                        text={cardStatusesToText[el.status]}
                                     />
                                 )}
                             </UniversalCardCard>

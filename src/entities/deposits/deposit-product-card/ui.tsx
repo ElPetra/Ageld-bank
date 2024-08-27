@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import { CREATE, mockDepositPercentRate, RouteName } from 'src/shared/model';
-import { getGenitiveMonthEn, getGenitiveMonthRu } from 'src/shared/lib';
+import { getMonthEn, getGenitiveMonthRu } from 'src/shared/lib';
 import { Icon, Text, Button, Card } from 'src/shared/ui';
 
 import type { DepositProduct } from 'src/shared/model';
@@ -75,7 +75,7 @@ export const DepositProductCard = ({ deposit }: Props) => {
                                         ? getGenitiveMonthRu(
                                               Math.ceil(deposit.dayMin / 30)
                                           )
-                                        : getGenitiveMonthEn(
+                                        : getMonthEn(
                                               Math.ceil(deposit.dayMin / 30)
                                           ))}
                             </Text>

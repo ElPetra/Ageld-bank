@@ -5,4 +5,5 @@ export * from './product';
 export * from './cards';
 export * from './info';
 export * from './account';
+export * from './credits';
 export * from './deposits';
