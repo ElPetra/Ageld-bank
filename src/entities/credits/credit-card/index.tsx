@@ -91,7 +91,7 @@ export const CreditCard = ({ credit, children }: Props) => {
                     {'debt' in credit && credit.debt && (
                         <div>
                             <Text size='xs' color='tertiary'>
-                                {t('Сумма задолжности')}
+                                {t('Сумма задолженности')}
                             </Text>
                             <Text size='l' weight='bold' color='action'>
                                 {`${credit.debt.toLocaleString()} ${credit.currency.toUpperCase()}`}
