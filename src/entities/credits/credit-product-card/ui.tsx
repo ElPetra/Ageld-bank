@@ -25,7 +25,7 @@ export const CreditProductCard = ({ credit }: Props) => {
                             {credit.name}
                         </Text>
                         <Text size='xs' color='tertiary'>
-                            {t('До 30 сентября оформите ', {
+                            {t('До 30 сентября оформите A-Geld', {
                                 name: credit.name
                             })}
                         </Text>

@@ -26,8 +26,9 @@ export const CreditProductDetailsCard = ({ credit }: Props) => {
                             {t('Не откладывай жизнь на завтра!')}
                         </Text>
                         <Text size='s' weight='medium'>
-                            {credit.name +
-                                t(' откроет новые горизонты для вас')}
+                            {t('откроет новые горизонты для вас', {
+                                name: credit.name
+                            })}
                         </Text>
                     </div>
                     <div className='credit-product-details-card__info__details'>

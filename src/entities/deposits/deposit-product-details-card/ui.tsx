@@ -26,8 +26,9 @@ export const DepositProductDetailsCard = ({ deposit }: Props) => {
                             {t('Не откладывай жизнь на завтра!')}
                         </Text>
                         <Text size='s' weight='medium'>
-                            {deposit.name +
-                                t(' откроет новые горизонты для вас')}
+                            {t('откроет новые горизонты для вас ', {
+                                name: deposit.name
+                            })}
                         </Text>
                     </div>
                     <div className='deposit-product-details-card__info__details'>
