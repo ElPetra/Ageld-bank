@@ -1,49 +1,44 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-import { CREATE, mockDepositPercentRate, RouteName } from 'src/shared/model';
+import { CREATE, RouteName } from 'src/shared/model';
 import { getMonthEn, getGenitiveMonthRu } from 'src/shared/lib';
 import { Icon, Text, Button, Card } from 'src/shared/ui';
 
-import type { DepositProduct } from 'src/shared/model';
+import type { CreditProduct } from 'src/shared/model';
 
 import './styles.scss';
 
 interface Props {
-    deposit: DepositProduct;
+    credit: CreditProduct;
 }
 
-export const DepositProductCard = ({ deposit }: Props) => {
+export const CreditProductCard = ({ credit }: Props) => {
     const { t, i18n } = useTranslation();
 
     return (
         <Card gap='medium' padding='medium' direction='column'>
-            <div className='deposit-card__info'>
-                <div className='deposit-card__info__main'>
-                    <div className='deposit-card__info__main__text'>
+            <div className='credit-card__info'>
+                <div className='credit-card__info__main'>
+                    <div className='credit-card__info__main__text'>
                         <Text size='m' weight='medium'>
-                            {'A-Geld ' + deposit.name}
+                            {credit.name}
                         </Text>
                         <Text size='xs' color='tertiary'>
-                            {t('До 30 сентября оформите Депозит A-Geld', {
-                                name: deposit.name
+                            {t('До 30 сентября оформите ', {
+                                name: credit.name
                             })}
                         </Text>
                     </div>
-                    <div className='deposit-card__info__main__icon'>
-                        <Icon width={64} icon={deposit.currency} />
+                    <div className='credit-card__info__main__icon'>
+                        <Icon width={64} icon={credit.currency} />
                     </div>
                 </div>
-                <div className='deposit-card__info__details'>
+                <div className='credit-card__info__details'>
                     <div>
-                        <div>
-                            <Text weight='medium' size='s'>
-                                {t('до')}
-                            </Text>
-                            <Text weight='medium' size='m'>
-                                {mockDepositPercentRate + '%'}
-                            </Text>
-                        </div>
+                        <Text weight='medium' size='m'>
+                            {credit.percentRate + '%'}
+                        </Text>
                         <Text color='tertiary' size='xs'>
                             {t('Процентная ставка')}
                         </Text>
@@ -51,12 +46,12 @@ export const DepositProductCard = ({ deposit }: Props) => {
                     <div>
                         <div>
                             <Text weight='medium' size='s'>
-                                {t('от')}
+                                {t('до')}
                             </Text>
                             <Text weight='medium' size='m'>
-                                {deposit.amountMin.toLocaleString() +
+                                {credit.amountMax.toLocaleString() +
                                     ' ' +
-                                    deposit.currency.toUpperCase()}
+                                    credit.currency.toUpperCase()}
                             </Text>
                         </div>
                         <Text color='tertiary' size='xs'>
@@ -66,17 +61,17 @@ export const DepositProductCard = ({ deposit }: Props) => {
                     <div>
                         <div>
                             <Text weight='medium' size='s'>
-                                {t('от')}
+                                {t('до')}
                             </Text>
                             <Text weight='medium' size='m'>
-                                {Math.ceil(deposit.dayMin / 30) +
+                                {Math.ceil(credit.dayMax / 30) +
                                     ' ' +
                                     (i18n.language === 'ru'
                                         ? getGenitiveMonthRu(
-                                              Math.ceil(deposit.dayMin / 30)
+                                              Math.ceil(credit.dayMax / 30)
                                           )
                                         : getMonthEn(
-                                              Math.ceil(deposit.dayMin / 30)
+                                              Math.ceil(credit.dayMax / 30)
                                           ))}
                             </Text>
                         </div>
@@ -86,20 +81,18 @@ export const DepositProductCard = ({ deposit }: Props) => {
                     </div>
                 </div>
             </div>
-            <div className='deposit-card__buttons'>
+            <div className='credit-card__buttons'>
                 <div>
-                    <Link
-                        to={RouteName.DEPOSIT_PRODUCT_PAGE + '/' + deposit.id}
-                    >
+                    <Link to={RouteName.CREDIT_PRODUCT_PAGE + '/' + credit.id}>
                         <Button width='max'>{t('Показать больше')}</Button>
                     </Link>
                 </div>
                 <div>
                     <Link
                         to={
-                            RouteName.DEPOSIT_PRODUCT_PAGE +
+                            RouteName.CREDIT_PRODUCT_PAGE +
                             '/' +
-                            deposit.id +
+                            credit.id +
                             '/' +
                             CREATE
                         }

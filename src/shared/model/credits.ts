@@ -36,3 +36,14 @@ export interface CreditProductDetails {
     amountMin: number;
     amountMax: number;
 }
+
+export interface CreditProduct {
+    id: string;
+    name: string;
+    currency: Currency;
+    percentRate: number;
+    amountMin: number;
+    amountMax: number;
+    dayMin: number;
+    dayMax: number;
+}
