@@ -2,10 +2,10 @@ import { useTranslation } from 'react-i18next';
 
 import {
     AuthStatus,
-    CARDS,
     RouteName,
     CreditsRouteName,
-    CreditsGuestRouteName
+    CreditsGuestRouteName,
+    CREDITS
 } from 'src/shared/model';
 import { Text } from 'src/shared/ui';
 import { Menu } from 'src/features/menu';
@@ -23,7 +23,7 @@ export const Credits = () => {
                 {t('Кредиты')}
             </Text>
             <Menu
-                href={RouteName.MAIN_PAGE + '/' + CARDS}
+                href={RouteName.MAIN_PAGE + '/' + CREDITS}
                 routes={
                     authStatus === AuthStatus.SignedIn
                         ? CreditsRouteName
