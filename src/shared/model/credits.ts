@@ -26,3 +26,14 @@ export interface Credit {
     debt?: number;
     repaymentDate?: string;
 }
+
+export interface CreditProduct {
+    id: string;
+    name: string;
+    currency: Currency;
+    percentRate: number;
+    amountMin: number;
+    amountMax: number;
+    dayMin: number;
+    dayMax: number;
+}

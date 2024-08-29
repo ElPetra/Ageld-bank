@@ -59,7 +59,7 @@ export const Credits = () => {
                         : [
                               {
                                   id: 1,
-                                  name: t('Карточные продукты'),
+                                  name: t('Кредиты A-Geld'),
                                   component: <CreditProducts />
                               },
                               {
