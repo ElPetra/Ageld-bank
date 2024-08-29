@@ -91,7 +91,7 @@ export const CreditCard = ({ credit, children }: Props) => {
                     {'debt' in credit && credit.debt && (
                         <div>
                             <Text size='xs' color='tertiary'>
-                                {t('Сумма задолжности')}
+                                {t('Сумма задолженности')}
                             </Text>
                             <Text size='l' weight='bold' color='action'>
                                 {`${credit.debt.toLocaleString()} ${credit.currency.toUpperCase()}`}
@@ -100,15 +100,17 @@ export const CreditCard = ({ credit, children }: Props) => {
                     )}
                 </div>
                 <div className='credit-card__second-column__buttons'>
-                    <Link to={RouteName.CREDIT_PAGE + '/' + credit.id}>
-                        <Button type='button' variant='primary'>
-                            {t('Подробнее')}
-                        </Button>
-                    </Link>
+                    <div>
+                        <Link to={RouteName.CREDIT_PAGE + '/' + credit.id}>
+                            <Button width='max'>{t('Подробнее')}</Button>
+                        </Link>
+                    </div>
                     {credit.status !== 'closed' && (
-                        <Button type='button' variant='secondary'>
-                            {t('Оплатить')}
-                        </Button>
+                        <div>
+                            <Button variant='secondary' width='max'>
+                                {t('Оплатить')}
+                            </Button>
+                        </div>
                     )}
                 </div>
             </div>

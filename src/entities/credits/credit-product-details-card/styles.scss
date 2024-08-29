@@ -1,4 +1,4 @@
-.deposit-product-details-card {
+.credit-product-details-card {
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -67,16 +67,15 @@
 
     &__buttons {
         display: flex;
-        align-items: center;
         gap: 24px;
 
-        @media screen and (min-width: 600px) {
+        @media screen and (min-width: 1100px) {
             > div {
                 width: 220px;
             }
         }
 
-        @media screen and (max-width: 600px) {
+        @media screen and (max-width: 1100px) {
             flex-wrap: wrap;
             > div {
                 width: 100%;

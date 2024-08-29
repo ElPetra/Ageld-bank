@@ -25,7 +25,7 @@ export const DepositProductCard = ({ deposit }: Props) => {
                             {'A-Geld ' + deposit.name}
                         </Text>
                         <Text size='xs' color='tertiary'>
-                            {t('До 30 сентября оформите Депозит A-Geld', {
+                            {t('До 30 сентября оформите A-Geld', {
                                 name: deposit.name
                             })}
                         </Text>

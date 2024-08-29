@@ -27,6 +27,16 @@ export interface Credit {
     repaymentDate?: string;
 }
 
+export interface CreditProductDetails {
+    id: string;
+    name: string;
+    currency: Currency;
+    percentRate: number;
+    dayMax: number;
+    amountMin: number;
+    amountMax: number;
+}
+
 export interface CreditProduct {
     id: string;
     name: string;

@@ -1,0 +1,1 @@
+export { CreditProductPage } from './ui';

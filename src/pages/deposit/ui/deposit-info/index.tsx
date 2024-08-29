@@ -195,14 +195,10 @@ export const DepositInfo = ({ deposit }: Props) => {
                         </div>
                     </div>
                     <div className='deposit-info__second-row__second-column__buttons'>
-                        <Button
-                            type='button'
-                            variant='primary'
-                            disabled={!deposit.revocable}
-                        >
+                        <Button width='max' disabled={!deposit.revocable}>
                             {t('Отозвать')}
                         </Button>
-                        <Button type='button' variant='secondary'>
+                        <Button variant='secondary' width='max'>
                             {t('Пополнить')}
                         </Button>
                     </div>

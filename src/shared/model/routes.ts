@@ -25,13 +25,14 @@ export interface RouteDescription {
 
 export const CREATE = 'create';
 export const EXTEND = 'extend';
+export const CALCULATE = 'calculate';
 
 export const MAIN = '';
 export const CARDS = 'cards';
 export const ACCOUNTS = 'accounts';
 export const TRANSFERS = 'transfers';
 export const PAYMENTS = 'payments';
-export const LOANS = 'loans';
+export const CREDITS = 'credits';
 export const DEPOSITS = 'deposits';
 
 export const MainRouteName = [
@@ -40,7 +41,7 @@ export const MainRouteName = [
     ACCOUNTS,
     TRANSFERS,
     PAYMENTS,
-    LOANS,
+    CREDITS,
     DEPOSITS
 ];
 
