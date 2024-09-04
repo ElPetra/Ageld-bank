@@ -10,6 +10,7 @@ export const RouteName = {
     CARD_PRODUCT_PAGE: '/card-product',
     ACCOUNT_PAGE: '/account',
     CREDIT_PAGE: '/credit',
+    CREDIT_APPLICATION_PAGE: '/credit-application',
     CREDIT_PRODUCT_PAGE: '/credit-product',
     DEPOSIT_PAGE: '/deposit',
     DEPOSIT_PRODUCT_PAGE: '/deposit-product',
@@ -66,9 +67,16 @@ export const CardsGuestRouteName = [CARDS_PRODUCTS];
 
 export const MY_CREDITS = 'my-credits';
 export const CREDITS_PRODUCTS = 'credits-products';
+export const CREDITS_CALCULATOR = 'credits-calculator';
+export const CREDITS_APPLICATIONS = 'credits-applications';
 
-export const CreditsRouteName = [MY_CREDITS, CREDITS_PRODUCTS];
-export const CreditsGuestRouteName = [CREDITS_PRODUCTS];
+export const CreditsRouteName = [
+    MY_CREDITS,
+    CREDITS_PRODUCTS,
+    CREDITS_CALCULATOR,
+    CREDITS_APPLICATIONS
+];
+export const CreditsGuestRouteName = [CREDITS_PRODUCTS, CREDITS_CALCULATOR];
 
 export const MY_DEPOSITS = 'my-deposits';
 export const DEPOSITS_PRODUCTS = 'deposits-products';
