@@ -26,7 +26,21 @@ export interface Credit {
     debt?: number;
     repaymentDate?: string;
 }
-
+export interface CreditDetails {
+    id: string;
+    name: string;
+    amount: number;
+    remainPay?: number;
+    currency: Currency;
+    status: CreditStatus;
+    percentRate: number;
+    term: number;
+    paymentDate?: string;
+    payment?: number;
+    debt?: number;
+    repaymentDate?: string;
+    contractNumber: string;
+}
 export interface CreditProductDetails {
     id: string;
     name: string;

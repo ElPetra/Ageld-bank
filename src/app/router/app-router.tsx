@@ -15,6 +15,7 @@ import { DepositCreationPage } from 'src/pages/deposit-creation';
 import { AccountPage } from 'src/pages/account';
 import { AccountCreationPage } from 'src/pages/account-creation';
 import { CardProductPage } from 'src/pages/card-product';
+import { CreditPage } from 'src/pages/credit';
 import { ContactsPage } from 'src/pages/contacts';
 import { ATMsBranchesPage } from 'src/pages/atms-branches';
 import { CreditProductPage } from 'src/pages/credit-product';
@@ -35,6 +36,7 @@ const {
     CARD_PRODUCT_PAGE,
     CARD_PAGE,
     CREDIT_PRODUCT_PAGE,
+    CREDIT_PAGE,
     DEPOSIT_PAGE,
     DEPOSIT_PRODUCT_PAGE,
     ACCOUNT_PAGE,
@@ -96,6 +98,10 @@ const authRoutes: RouteDescription[] = [
     {
         path: CARD_PAGE + '/:id',
         component: CardPage
+    },
+    {
+        path: CREDIT_PAGE + '/:id',
+        component: CreditPage
     },
     {
         path: DEPOSIT_PAGE + '/:id/' + EXTEND,
