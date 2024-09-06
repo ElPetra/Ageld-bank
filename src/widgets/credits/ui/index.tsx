@@ -13,6 +13,7 @@ import { useAuth } from 'src/entities/user';
 
 import { CustomerCredits } from './customer-credits';
 import { CreditProducts } from './credit-products';
+import { CreditApplications } from './credit-applications';
 
 export const Credits = () => {
     const { t } = useTranslation();
@@ -53,7 +54,7 @@ export const Credits = () => {
                               {
                                   id: 4,
                                   name: t('Поданные заявки'),
-                                  component: <div>{t('Поданные заявки')}</div>
+                                  component: <CreditApplications />
                               }
                           ]
                         : [

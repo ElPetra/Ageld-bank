@@ -1,0 +1,77 @@
+.credit-applications-card {
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        row-gap: 24px;
+        column-gap: 32px;
+        width: 100%;
+
+        @media screen and (max-width: 1400px) {
+            & {
+                flex-wrap: wrap;
+            }
+            > div {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+        }
+    }
+
+    &__main {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 24px;
+        white-space: nowrap;
+
+        &__icon {
+            min-width: 64px;
+            img {
+                width: 64px;
+            }
+        }
+
+        > a {
+            min-width: 200px;
+        }
+    }
+
+
+
+    &__second {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        row-gap: 24px;
+        column-gap: 46px;
+
+        @media screen and (max-width: 1400px) {
+            & {
+                flex-wrap: wrap;
+            }
+            > div {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+        }
+
+        &__info {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            min-width: 420px;
+
+            > div {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+            }
+
+            @media screen and (max-width: 500px) {
+                min-width: 100%;
+            }
+        }
+    }
+}
