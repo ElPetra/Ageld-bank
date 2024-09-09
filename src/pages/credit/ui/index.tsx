@@ -62,8 +62,8 @@ export const CreditPage = () => {
                         <CreditInfo credit={credit} />
                     ) : (
                         <MessageCard
-                            title={t('Депозит не найден')}
-                            buttonText={t('Перейти к списку депозитов')}
+                            title={t('Кредит не найден')}
+                            buttonText={t('Перейти к списку кредитов')}
                             buttonLink={RouteName.MAIN_PAGE + '/' + CREDITS}
                         />
                     )}

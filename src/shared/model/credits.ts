@@ -9,6 +9,10 @@ type CreditApplicationStatus =
     | 'denied'
     | 'cancelled';
 
+type CreditRateType = 'fixed';
+
+type CreditMethodObtaining = 'cash' | 'card' | 'account';
+
 export const creditStatusesToText: Record<CreditStatus, string> = {
     active: 'Активный',
     overdue: 'Просроченный',
@@ -41,6 +45,34 @@ export const creditApplicationStatuses: Record<
     processing: 'warning',
     denied: 'closed',
     cancelled: 'closed'
+};
+
+export const creditApplicationStatusesToInfo: Record<
+    CreditApplicationStatus,
+    string
+> = {
+    approved:
+        'Приглашаем Вас в офис банка с пакетом документов, указанным при зполнении анкеты.',
+    confirmed:
+        'Приглашаем Вас в офис банка с пакетом документов, указанным при зполнении анкеты.  ',
+    processing: '',
+    denied:
+        'К сожалению, банк отказал Вам в предоставлении кредита.\n' +
+        'Для получения подробной информации обратитесь в отделение банка.  ',
+    cancelled: ''
+};
+
+export const creditRateTypeToText: Record<CreditRateType, string> = {
+    fixed: 'Фиксированная'
+};
+
+export const creditMethodObtainingToText: Record<
+    CreditMethodObtaining,
+    string
+> = {
+    cash: 'Наличными',
+    card: 'На карту',
+    account: 'На счет продавца'
 };
 
 export interface Credit {
@@ -98,4 +130,20 @@ export interface CreditApplication {
     status: CreditApplicationStatus;
     amount: number;
     applicationDate: string;
+}
+
+export interface CreditApplicationDetails {
+    id: string;
+    name: string;
+    currency: Currency;
+    status: CreditApplicationStatus;
+    amount: number;
+    applicationDate: string;
+    number: string;
+    percentRate: number;
+    reviewPeriod: number;
+    term: number;
+    rateType: CreditRateType;
+    methodObtaining: CreditMethodObtaining;
+    isEarlyRepayment: boolean;
 }
