@@ -29,14 +29,12 @@
             gap: 8px;
             align-items: flex-start;
             > button {
-                width: 24px;
+                min-width: 24px;
             }
             > div:first-child {
-                @media screen and (min-width: 500px)  {
-                    display: flex;
-                    gap: 4px;
-                    flex-wrap: wrap;
-                }
+                display: flex;
+                gap: 4px;
+                flex-wrap: wrap;
             }
         }
     }
