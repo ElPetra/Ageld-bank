@@ -36,7 +36,9 @@ export const CreditApplicationCard = ({ credit }: Props) => {
             <div className='credit-application-card__first-row'>
                 <div className='credit-application-card__first-row__main'>
                     <Text size='m' weight='medium'>
-                        {t('Кредит') + ' A-Geld ' + credit.name}
+                        {t('Кредит A-Geld ', {
+                            name: credit.name
+                        })}
                     </Text>
                     <ProductStatuses
                         isMaster={false}
@@ -91,11 +93,7 @@ export const CreditApplicationCard = ({ credit }: Props) => {
                             {t('Срок рассмотрения ')}
                         </Text>
                         <Text weight='medium' size='m'>
-                            {t('До') +
-                                ' ' +
-                                credit.reviewPeriod +
-                                ' ' +
-                                t('дней')}
+                            {t('До дней', { number: credit.reviewPeriod })}
                         </Text>
                     </div>
                     <div>
