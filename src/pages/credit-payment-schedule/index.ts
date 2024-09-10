@@ -1,0 +1,1 @@
+export { CreditPaymentSchedulePage } from './ui';

@@ -301,5 +301,7 @@
   "Успех": "Success",
   "Ошибка": "Error",
   "Операция прошла успешно": "Operation completed successfully",
-  "Повторите запрос позже": "Please try again later"
+  "Повторите запрос позже": "Please try again later",
+  "Тип кредита": "Loan type",
+  "Дата заключения договора": "Date of conclusion of the contract"
 }
