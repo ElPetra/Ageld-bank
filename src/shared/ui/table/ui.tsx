@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import './style.scss';
 
 type Column = string;
@@ -9,13 +11,14 @@ interface Props {
 }
 
 export const Table = ({ columns, columnsToText, data }: Props) => {
+    const { t } = useTranslation();
     return (
         <div className='table__wrapper'>
             <table className='table'>
                 <thead>
                     <tr className='table__row'>
                         {columns.map(el => (
-                            <th key={el}>{columnsToText[el]}</th>
+                            <th key={el}>{t(columnsToText[el])}</th>
                         ))}
                     </tr>
                 </thead>

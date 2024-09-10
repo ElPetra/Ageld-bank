@@ -303,5 +303,10 @@
   "Операция прошла успешно": "Operation completed successfully",
   "Повторите запрос позже": "Please try again later",
   "Тип кредита": "Loan type",
-  "Дата заключения договора": "Date of conclusion of the contract"
+  "Дата заключения договора": "Date of conclusion of the contract",
+  "Дата платежа": "Payment date",
+  "Сумма платежа": "Payment amount",
+  "Основной долг": "Principal debt",
+  "Проценты": "Percentage",
+  "Остаток по кредиты": "Loan balance"
 }
