@@ -2,7 +2,8 @@
   --dark-1: #2A2A2A;
   --dark-2: #414650;
   --dark-3: #BABEC5;
-  --dark-4: #F6F7FA;
+  --dark-4: #E6E6E6;
+  --dark-5: #F6F7FA;
 
   --light-1: #FEFEFE;
   --light-2: #F8F3F3;
@@ -45,11 +46,12 @@
   --bg-secondary-buttons-pressed: var(--accent-3);
   --bg-buttons-disable: var(--dark-3);
 
-  --bg-primary-input: var(--dark-4);
+  --bg-primary-input: var(--dark-5);
   --bg-secondary-input: var(--light-1);
 
-  --bg-primary-card: var(--dark-4);
+  --bg-primary-card: var(--dark-5);
   --bg-secondary-card: var(--light-1);
+  --bg-tertiary-card: var(--dark-4);
 
   --bg-action:  var(--accent-1);
   --bg-success: var(--success);

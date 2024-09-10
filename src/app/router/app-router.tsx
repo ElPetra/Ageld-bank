@@ -20,9 +20,16 @@ import { ContactsPage } from 'src/pages/contacts';
 import { ATMsBranchesPage } from 'src/pages/atms-branches';
 import { CreditProductPage } from 'src/pages/credit-product';
 import { DepositProductPage } from 'src/pages/deposit-product';
+import { CreditPaymentSchedulePage } from 'src/pages/credit-payment-schedule';
 
 import { useAuth } from 'src/entities/user';
-import { AuthStatus, CREATE, EXTEND, RouteName } from 'src/shared/model';
+import {
+    AuthStatus,
+    CREATE,
+    EXTEND,
+    RouteName,
+    PAYMENT_SHEDULE
+} from 'src/shared/model';
 import { Preloader } from 'src/shared/ui';
 
 import { ProtectedRoute } from './protected-route';
@@ -102,6 +109,10 @@ const authRoutes: RouteDescription[] = [
     {
         path: CREDIT_PAGE + '/:id',
         component: CreditPage
+    },
+    {
+        path: CREDIT_PAGE + '/:id/' + PAYMENT_SHEDULE,
+        component: CreditPaymentSchedulePage
     },
     {
         path: DEPOSIT_PAGE + '/:id/' + EXTEND,

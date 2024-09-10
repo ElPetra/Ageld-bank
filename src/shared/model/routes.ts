@@ -56,6 +56,7 @@ export const ALL_ACCOUNTS = 'all';
 export const DEBIT = 'debit';
 export const DEPOSIT = 'deposit';
 export const CREDIT = 'credit';
+export const PAYMENT_SHEDULE = 'payment-schedule';
 
 export const AccountsRouteName = [ALL_ACCOUNTS, DEBIT, DEPOSIT, CREDIT];
 

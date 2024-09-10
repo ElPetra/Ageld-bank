@@ -18,3 +18,4 @@ export * from './switcher';
 export * from './overlay';
 export * from './select';
 export * from './toggle-list';
+export * from './table';

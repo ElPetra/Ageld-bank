@@ -46,6 +46,9 @@
   &.secondary {
     background-color: var(--bg-secondary-card);
   }
+  &.tertiary {
+    background-color: var(--bg-tertiary-card);
+  }
 
   &.extra-small-gap {
     gap: 8px;
