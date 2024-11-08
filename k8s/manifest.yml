@@ -30,13 +30,13 @@ spec:
         readinessProbe:
           httpGet:
             path: /
-            port: 80
+            port: 8008
           initialDelaySeconds: 5
           periodSeconds: 10
         livenessProbe:
           httpGet:
             path: /
-            port: 80
+            port: 8008
           initialDelaySeconds: 15
           periodSeconds: 20
     volumes:
@@ -54,6 +54,6 @@ spec:
   ports:
     - protocol: TCP
       port: 8080
-      targetPort: 80
-      nodePort: 31111
+      targetPort: 8008  # Порт должен быть тот же, что и containerPort
+      nodePort: 31111   # Убедитесь, что порт в диапазоне 30000-32767
   type: NodePort
