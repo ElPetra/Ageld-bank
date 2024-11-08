@@ -39,10 +39,10 @@ spec:
             port: 8008
           initialDelaySeconds: 15
           periodSeconds: 20
-    volumes:
-      - name: react-config
-        configMap:
-          name: react-config
+      volumes:
+        - name: react-config
+          configMap:
+            name: react-config
 ---
 apiVersion: v1
 kind: Service
@@ -54,6 +54,6 @@ spec:
   ports:
     - protocol: TCP
       port: 8080
-      targetPort: 8008  # Порт должен быть тот же, что и containerPort
-      nodePort: 31111   # Убедитесь, что порт в диапазоне 30000-32767
+      targetPort: 8008
+      nodePort: 31111
   type: NodePort
