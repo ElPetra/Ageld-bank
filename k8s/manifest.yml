@@ -101,6 +101,9 @@ spec:
         - name: nginx-config
           configMap:
             name: nginx-config
+      imagePullSecrets:
+        - name: mysecret
+
 ---
 apiVersion: v1
 kind: Service
