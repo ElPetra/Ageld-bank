@@ -84,7 +84,7 @@ spec:
         volumeMounts:
         - name: react-config
           mountPath: /usr/share/nginx/html
-        - name: react-config
+        - name: nginx-config
           mountPath: /etc/nginx/nginx.conf
           subPath: nginx.conf
         resources:
