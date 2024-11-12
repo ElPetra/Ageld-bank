@@ -82,8 +82,8 @@ spec:
         ports:
         - containerPort: 80
         volumeMounts:
-        - name: react-config
-          mountPath: /usr/share/nginx/html
+        # - name: react-config
+        #   mountPath: /usr/share/nginx/html
         - name: nginx-config
           mountPath: /etc/nginx/nginx.conf
           subPath: nginx.conf
@@ -95,14 +95,14 @@ spec:
             memory: "256Mi"
             cpu: "200m"
       volumes:
-        - name: react-config
-          configMap:
-            name: react-config
+        # - name: react-config
+        #   configMap:
+        #     name: react-config
         - name: nginx-config
           configMap:
             name: nginx-config
-      imagePullSecrets:
-        - name: mysecret
+      # imagePullSecrets:
+      #   - name: mysecret
 
 ---
 apiVersion: v1
