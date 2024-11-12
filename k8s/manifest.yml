@@ -17,7 +17,7 @@ spec:
         image: nginx:alpine
         imagePullPolicy: Always
         ports:
-        - containerPort: 8008
+        - containerPort: 80
         volumeMounts:
         - name: react-config
           mountPath: /usr/share/nginx/html
@@ -31,13 +31,13 @@ spec:
         readinessProbe:
           httpGet:
             path: /
-            port: 8008
+            port: 80
           initialDelaySeconds: 5
           periodSeconds: 10
         livenessProbe:
           httpGet:
             path: /
-            port: 8008
+            port: 80
           initialDelaySeconds: 15
           periodSeconds: 20
       volumes:
@@ -54,7 +54,7 @@ spec:
     app: react
   ports:
     - protocol: TCP
-      port: 8008
-      targetPort: 8008
+      port: 8080
+      targetPort: 80
       nodePort: 31111
   type: NodePort
