@@ -21,9 +21,9 @@ spec:
         volumeMounts:
         - name: react-config
           mountPath: /usr/share/nginx/html
-        - name: nginx-config
-          mountPath: /etc/nginx/conf.d/customnginx.conf
-          subPath: customnginx.conf
+        # - name: nginx-config
+        #   mountPath: /etc/nginx/conf.d/customnginx.conf
+        #   subPath: customnginx.conf
         resources:
           requests:
             memory: "128Mi"
@@ -35,9 +35,9 @@ spec:
       - name: react-config
         configMap:
           name: react-config
-      - name: nginx-config
-        configMap:
-          name: nginx-config
+      # - name: nginx-config
+      #   configMap:
+      #     name: nginx-config
 ---
 apiVersion: v1
 kind: Service
