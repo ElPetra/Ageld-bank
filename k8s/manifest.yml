@@ -22,8 +22,8 @@ spec:
         - name: react-config
           mountPath: /usr/share/nginx/html
         - name: nginx-config
-          mountPath: /etc/nginx/conf.d/customnginx.conf
-          subPath: nginx.conf
+          mountPath: /etc/nginx/conf.d
+          subPath: conf.d
         resources:
           requests:
             memory: "128Mi"
