@@ -4,40 +4,50 @@ metadata:
   name: react
 spec:
   replicas: 1
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
   selector:
     matchLabels:
       app: react
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:
         app: react
     spec:
       containers:
-      - name: nginx
-        image: nginx:alpine
-        imagePullPolicy: Always
+      - name: react
+        image: ${AND_DOCKER_REGISTRY_NAME}/${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}:${CI_COMMIT_REF_SLUG}
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80
-        volumeMounts:
-        - name: react-config
-          mountPath: /usr/share/nginx/html
-        - name: nginx-config
-          mountPath: /etc/nginx/conf.d
-          subPath: conf.d
+          protocol: TCP
         resources:
-          requests:
-            memory: "128Mi"
-            cpu: "100m"
           limits:
-            memory: "256Mi"
-            cpu: "200m"
+            cpu: 100m
+            memory: 256Mi
+          requests:
+            cpu: 100m
+            memory: 128Mi
+        volumeMounts:
+        - mountPath: /usr/share/nginx/html
+          name: react-config
+        - mountPath: /etc/nginx/conf.d/
+          name: nginx-config
+      restartPolicy: Always
+      dnsPolicy: ClusterFirst
+      terminationGracePeriodSeconds: 30
       volumes:
       - name: react-config
         configMap:
           name: react-config
+          defaultMode: 420
       - name: nginx-config
         configMap:
           name: nginx-config
+          defaultMode: 420
+
 ---
 apiVersion: v1
 kind: Service
