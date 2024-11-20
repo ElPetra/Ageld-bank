@@ -47,6 +47,9 @@ spec:
         configMap:
           name: nginx-config
           defaultMode: 420
+      imagePullSecrets:
+        - name: mysecret
+
 ---
 apiVersion: v1
 kind: Service
