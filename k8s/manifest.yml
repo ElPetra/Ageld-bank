@@ -30,10 +30,10 @@ spec:
           requests:
             cpu: 100m
             memory: 128Mi
-        volumeMounts:
-            - name: nginx-config
-              mountPath: /etc/nginx/conf.d/js.conf
-              subPath: js.conf
+        # volumeMounts:
+        #    - name: nginx-config
+        #      mountPath: /etc/nginx/conf.d/js.conf
+        #      subPath: js.conf
         # volumeMounts:
         # - mountPath: /usr/share/nginx/html
         #   name: react-config
@@ -42,14 +42,14 @@ spec:
       restartPolicy: Always
       dnsPolicy: ClusterFirst
       terminationGracePeriodSeconds: 30
-      volumes:
+      # volumes:
       # - name: react-config
       #   configMap:
       #     name: react-config
       #     defaultMode: 420
-        - name: nginx-config
-          configMap:
-            name: nginx-config
+        # - name: nginx-config
+        #  configMap:
+        #    name: nginx-config
       #     defaultMode: 420
       imagePullSecrets:
         - name: mysecret
