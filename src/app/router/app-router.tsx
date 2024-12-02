@@ -21,6 +21,7 @@ import { ATMsBranchesPage } from 'src/pages/atms-branches';
 import { CreditProductPage } from 'src/pages/credit-product';
 import { DepositProductPage } from 'src/pages/deposit-product';
 import { CreditPaymentSchedulePage } from 'src/pages/credit-payment-schedule';
+import { CreditApplicationPage } from 'src/pages/credit-application';
 
 import { useAuth } from 'src/entities/user';
 import {
@@ -51,7 +52,8 @@ const {
     NOTIFICATION_HISTORY_PAGE,
     RECOVERY_PASSWORD_PAGE,
     CONTACTS_PAGE,
-    ATMS_AND_BRANCHES
+    ATMS_AND_BRANCHES,
+    CREDIT_APPLICATION_PAGE
 } = RouteName;
 
 const publicRoutes: RouteDescription[] = [
@@ -86,6 +88,10 @@ const publicRoutes: RouteDescription[] = [
     {
         path: CREDIT_PRODUCT_PAGE + '/:id',
         component: CreditProductPage
+    },
+    {
+        path: CREDIT_APPLICATION_PAGE + '/:id',
+        component: CreditApplicationPage
     },
     {
         path: DEPOSIT_PRODUCT_PAGE + '/:id',
