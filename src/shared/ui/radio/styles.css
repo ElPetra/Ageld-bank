@@ -1,0 +1,27 @@
+.radio [type=radio] {
+  display: none;
+}
+.radio [type=radio]:checked ~ div {
+  box-shadow: inset 0 0 0 1px var(--text-action);
+}
+.radio [type=radio]:checked ~ div::before {
+  background: radial-gradient(var(--text-action) 0%, var(--text-action) 40%, transparent 50%, transparent);
+}
+.radio > div {
+  position: relative;
+  display: flex;
+  gap: 4px;
+  padding: 16px 24px;
+  background: var(--bg-primary);
+  border-radius: var(--medium-border-radius);
+}
+.radio > div:before {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  height: 16px;
+  width: 16px;
+  right: 24px;
+  top: calc(50% - 8px);
+  box-shadow: inset 0 0 0 1px var(--text-action);
+}/*# sourceMappingURL=styles.css.map */

@@ -1,13 +1,12 @@
 .questionsPage {
     display: flex;
     flex-direction: column;
-    // justify-content: flex-start;
     align-items: start;
     margin-left: 100px;
     margin-bottom: 150px;
 }
 .questionsPage__button {
-margin-top: 42px;
+    margin-top: 42px;
 }
 .questionsPage__title {
     font-size: 32px;
@@ -73,10 +72,10 @@ margin-top: 42px;
     color: rgba(198, 24, 24, 1);
 }
 .active::after {
-  content: "";
-  height: 3px;
-  background: rgba(198, 24, 24, 1);
-  display: block;
-  margin-top: 8px;
-  flex-grow: 1;
+    content: "";
+    height: 3px;
+    background: rgba(198, 24, 24, 1);
+    display: block;
+    margin-top: 8px;
+    flex-grow: 1;
 }

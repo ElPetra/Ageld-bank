@@ -1,0 +1,71 @@
+.card {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+}
+.card.space-between {
+  justify-content: space-between;
+}
+.card.center {
+  align-items: center;
+}
+.card.left {
+  align-items: flex-start;
+}
+.card.right {
+  align-items: flex-end;
+}
+.card.column {
+  flex-direction: column;
+}
+.card.extra-large-border-radius {
+  border-radius: var(--extra-large-border-radius);
+}
+.card.large-border-radius {
+  border-radius: var(--large-border-radius);
+}
+.card.medium-border-radius {
+  border-radius: var(--medium-border-radius);
+}
+.card.small-border-radius {
+  border-radius: var(--small-border-radius);
+}
+.card.primary {
+  background-color: var(--bg-primary-card);
+}
+.card.secondary {
+  background-color: var(--bg-secondary-card);
+}
+.card.tertiary {
+  background-color: var(--bg-tertiary-card);
+}
+.card.extra-small-gap {
+  gap: 8px;
+}
+.card.small-gap {
+  gap: 16px;
+}
+.card.medium-gap {
+  gap: 24px;
+}
+.card.large-gap {
+  gap: 32px;
+}
+.card.extra-large-gap {
+  gap: 60px;
+}
+.card.small-padding {
+  padding: 16px;
+}
+.card.small-medium-padding {
+  padding: 16px 24px;
+}
+.card.medium-padding {
+  padding: 24px;
+}
+.card.large-padding {
+  padding: 32px;
+}
+.card.extra-large-padding {
+  padding: 40px;
+}/*# sourceMappingURL=styles.css.map */

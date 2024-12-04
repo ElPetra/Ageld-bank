@@ -1,0 +1,10 @@
+.account-creation-card__title {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.account-creation-card__link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}/*# sourceMappingURL=styles.css.map */

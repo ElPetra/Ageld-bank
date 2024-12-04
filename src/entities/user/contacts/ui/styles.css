@@ -1,0 +1,22 @@
+.user-contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.user-contacts .user-contacts__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.user-contacts .user-contacts__row > div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1 1 33%;
+}
+@media screen and (max-width: 1100px) {
+  .user-contacts .user-contacts__row > div {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+}/*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,12 @@
+.form-div .form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.form-div > .error {
+  color: var(--text-error);
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+}/*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,13 @@
+.credit-product-benefits {
+  padding: 24px;
+}
+.credit-product-benefits > div > div {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.credit-product-benefits > div > div > div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}/*# sourceMappingURL=styles.css.map */

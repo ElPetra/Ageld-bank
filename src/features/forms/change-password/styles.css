@@ -1,0 +1,10 @@
+.change-password-form {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+@media screen and (max-width: 1100px) {
+  .change-password-form {
+    flex-direction: column;
+  }
+}/*# sourceMappingURL=styles.css.map */

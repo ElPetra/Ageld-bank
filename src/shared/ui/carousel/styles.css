@@ -1,0 +1,13 @@
+.carousel {
+  margin: 0 25px;
+  position: relative;
+  width: calc(100% - 50px);
+  max-width: 100%;
+}
+.carousel > div:first-child {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  gap: 24px;
+}/*# sourceMappingURL=styles.css.map */

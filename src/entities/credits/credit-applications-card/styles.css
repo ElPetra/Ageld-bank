@@ -1,0 +1,68 @@
+.credit-applications-card__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  row-gap: 24px;
+  -moz-column-gap: 32px;
+       column-gap: 32px;
+  width: 100%;
+}
+@media screen and (max-width: 1400px) {
+  .credit-applications-card__container {
+    flex-wrap: wrap;
+  }
+  .credit-applications-card__container > div {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+.credit-applications-card__main {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  white-space: nowrap;
+}
+.credit-applications-card__main__icon {
+  min-width: 64px;
+}
+.credit-applications-card__main__icon img {
+  width: 64px;
+}
+.credit-applications-card__main > a {
+  min-width: 200px;
+}
+.credit-applications-card__second {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  row-gap: 24px;
+  -moz-column-gap: 46px;
+       column-gap: 46px;
+}
+@media screen and (max-width: 1400px) {
+  .credit-applications-card__second {
+    flex-wrap: wrap;
+  }
+  .credit-applications-card__second > div {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+.credit-applications-card__second__info {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+  min-width: 420px;
+}
+.credit-applications-card__second__info > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+@media screen and (max-width: 500px) {
+  .credit-applications-card__second__info {
+    min-width: 100%;
+  }
+}/*# sourceMappingURL=styles.css.map */

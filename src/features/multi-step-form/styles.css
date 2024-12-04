@@ -1,0 +1,18 @@
+.multi-step-form {
+  margin: 100px auto;
+  max-width: 580px;
+}
+.multi-step-form__logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.multi-step-form.change-password {
+  margin: 0;
+  max-width: 100%;
+}
+.multi-step-form.create-account {
+  margin: 56px 0;
+  max-width: 100%;
+}/*# sourceMappingURL=styles.css.map */

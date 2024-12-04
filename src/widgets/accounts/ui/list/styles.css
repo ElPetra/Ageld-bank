@@ -1,0 +1,5 @@
+.account-list__container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}/*# sourceMappingURL=styles.css.map */

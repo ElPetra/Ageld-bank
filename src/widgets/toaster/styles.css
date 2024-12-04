@@ -1,0 +1,28 @@
+.toaster {
+  padding: 12px !important;
+  border-radius: var(--large-border-radius) !important;
+  min-width: 300px;
+  background: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+  box-shadow: 0 15px 20px 0 rgba(0, 0, 0, 0.0509803922) !important;
+  display: block !important;
+}
+.toaster-bar {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+.toaster-bar__icon {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.toaster-bar__icon__text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.toaster-bar button {
+  display: flex;
+  align-items: flex-start;
+}/*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,114 @@
+.universal-card-card {
+  display: flex;
+  gap: 60px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+@media screen and (min-width: 900px) and (max-width: 1300px) {
+  .universal-card-card {
+    gap: 40px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .universal-card-card {
+    gap: 24px;
+  }
+}
+.universal-card-card__image {
+  flex: 0 0 auto;
+  width: 33%;
+  aspect-ratio: 799/499;
+}
+.universal-card-card__image > a > img {
+  border-radius: var(--medium-border-radius);
+}
+@media screen and (min-width: 900px) and (max-width: 1100px) {
+  .universal-card-card__image {
+    width: 40%;
+  }
+}
+@media screen and (max-width: 900px) {
+  .universal-card-card__image {
+    width: 100%;
+  }
+  .universal-card-card__image img {
+    width: 100%;
+  }
+}
+.universal-card-card__second {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  justify-content: space-between;
+  width: calc(67% - 60px);
+}
+@media screen and (min-width: 1100px) and (max-width: 1300px) {
+  .universal-card-card__second {
+    width: calc(67% - 40px);
+  }
+}
+@media screen and (min-width: 900px) and (max-width: 1100px) {
+  .universal-card-card__second {
+    width: calc(60% - 40px);
+  }
+}
+@media screen and (max-width: 900px) {
+  .universal-card-card__second {
+    width: 100%;
+  }
+}
+.universal-card-card__second__info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.universal-card-card__second__info__text {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.universal-card-card__second__info__text__name {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.universal-card-card__second__info__text__name__icon {
+  display: flex;
+  height: 40px;
+}
+.universal-card-card__second__info__text__eye {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.universal-card-card__second__info__details {
+  display: flex;
+  -moz-column-gap: 60px;
+       column-gap: 60px;
+  row-gap: 16px;
+  flex-wrap: wrap;
+}
+.universal-card-card__second__info__details__eye {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.universal-card-card__second__info__details__eye button {
+  height: 36px;
+}
+.universal-card-card__second__button {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+@media screen and (max-width: 600px) {
+  .universal-card-card__second__button button, .universal-card-card__second__button a {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 600px) and (max-width: 1100px) {
+  .universal-card-card__second__button > button, .universal-card-card__second__button > a {
+    width: calc((100% - 20px) / 2);
+  }
+}/*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,17 @@
+.bank-object__name {
+  display: flex;
+  gap: 12px;
+}
+.bank-object__name > img {
+  width: 24px;
+}
+.bank-object__schedule {
+  white-space: pre-wrap;
+}
+.bank-object__info-button {
+  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-action);
+}/*# sourceMappingURL=styles.css.map */

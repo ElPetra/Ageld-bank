@@ -1,0 +1,10 @@
+.back-button {
+  color: var(--text-action);
+  display: flex;
+  gap: 4px;
+  align-self: baseline;
+  padding-bottom: 32px;
+}
+.back-button__top {
+  margin-top: 24px;
+}/*# sourceMappingURL=styles.css.map */

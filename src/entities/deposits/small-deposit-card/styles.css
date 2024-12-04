@@ -1,0 +1,23 @@
+.small-deposit-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.small-deposit-card__info__title {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.small-deposit-card__info__detail {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.small-deposit-card__info__detail > div:first-child {
+  display: flex;
+  gap: 4px;
+  align-items: flex-end;
+}
+.small-deposit-card__info__detail > div:first-child > div:first-child {
+  padding-bottom: 3px;
+}/*# sourceMappingURL=styles.css.map */

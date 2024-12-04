@@ -1,0 +1,16 @@
+.code-input {
+  width: 580px;
+  max-width: 100%;
+}
+.code-input__inputs {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+.code-input__error {
+  color: var(--text-error);
+  margin-top: 8px;
+}
+.code-input__info {
+  margin-top: 4px;
+}/*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,40 @@
+.create-deposit__main {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.create-deposit__main__title {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.create-deposit__main__title__icon {
+  min-width: 64px;
+}
+.create-deposit__main__title__icon img {
+  width: 64px;
+}
+.create-deposit__main__percent_rate {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-end;
+}
+.create-deposit__switchers {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.create-deposit__buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+@media screen and (max-width: 600px) {
+  .create-deposit__buttons > a, .create-deposit__buttons > a > button, .create-deposit__buttons > button {
+    display: flex;
+    flex: 1 1 100%;
+  }
+}/*# sourceMappingURL=styles.css.map */

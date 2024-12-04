@@ -1,0 +1,40 @@
+.main-menu {
+  display: flex;
+  gap: 50px;
+  margin: 56px 0;
+}
+@media screen and (min-width: 1300px) {
+  .main-menu {
+    gap: 95px;
+  }
+}
+@media screen and (min-width: 1100px) and (max-width: 1300px) {
+  .main-menu {
+    gap: 70px;
+  }
+}
+@media screen and (max-width: 800px) {
+  .main-menu {
+    flex-wrap: wrap;
+  }
+  .main-menu > div {
+    flex: 1 1 100%;
+  }
+}
+.main-menu__first-col {
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+@media screen and (min-width: 1100px) {
+  .main-menu__first-col {
+    min-width: 280px;
+  }
+}
+.main-menu__second-col {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}/*# sourceMappingURL=styles.css.map */

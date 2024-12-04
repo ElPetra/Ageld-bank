@@ -1,0 +1,83 @@
+:root {
+  --dark-1: #2A2A2A;
+  --dark-2: #414650;
+  --dark-3: #BABEC5;
+  --dark-4: #E6E6E6;
+  --dark-5: #F6F7FA;
+  --light-1: #FEFEFE;
+  --light-2: #F8F3F3;
+  --light-3: #FFEAEA;
+  --light-4: #FFD9D9;
+  --accent-1: #C61818;
+  --accent-2: #D53E42;
+  --accent-3: #E4656C;
+  --success: #4CAF50;
+  --warning: #F6BE2C;
+  --error: #F53C14;
+  --text-primary: var(--dark-1);
+  --text-secondary: var(--light-1);
+  --text-tertiary: var(--dark-2);
+  --text-quadruple: var(--dark-3);
+  --text-primary-buttons: var(--accent-1);
+  --text-secondary-buttons: var(--light-1);
+  --text-buttons-disable: var(--dark-2);
+  --text-primary-input: var(--dark-2);
+  --text-action: var(--accent-1);
+  --text-success: var(--success);
+  --text-error: var(--error);
+  --bg-primary: var(--light-1);
+  --bg-secondary: var(--accent-2);
+  --bg-primary-buttons: var(--light-1);
+  --bg-primary-buttons-hover: var(--light-3);
+  --bg-primary-buttons-pressed: var(--light-4);
+  --bg-secondary-buttons: var(--accent-1);
+  --bg-secondary-buttons-hover: var(--accent-2);
+  --bg-secondary-buttons-pressed: var(--accent-3);
+  --bg-buttons-disable: var(--dark-3);
+  --bg-primary-input: var(--dark-5);
+  --bg-secondary-input: var(--light-1);
+  --bg-primary-card: var(--dark-5);
+  --bg-secondary-card: var(--light-1);
+  --bg-tertiary-card: var(--dark-4);
+  --bg-action: var(--accent-1);
+  --bg-success: var(--success);
+  --bg-warning: var(--warning);
+  --bg-error: var(--error);
+  --small-border-radius: 4px;
+  --medium-border-radius: 8px;
+  --large-border-radius: 12px;
+  --extra-large-border-radius: 16px;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--text-primary);
+  background: var(--bg-primary);
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: none;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgba(43, 62, 120, 0.27);
+  border-radius: 5px;
+}
+
+#root {
+  padding: 0;
+  margin: 0;
+  height: calc(100vh + 230px);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+#root > * {
+  min-width: 0;
+}/*# sourceMappingURL=index.css.map */

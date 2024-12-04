@@ -1,0 +1,45 @@
+.universal-deposit-card__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  row-gap: 24px;
+  -moz-column-gap: 32px;
+       column-gap: 32px;
+  width: 100%;
+}
+@media screen and (max-width: 1400px) {
+  .universal-deposit-card__container {
+    flex-wrap: wrap;
+  }
+  .universal-deposit-card__container > div {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+.universal-deposit-card__title {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.universal-deposit-card__title__icon {
+  min-width: 64px;
+}
+.universal-deposit-card__title__icon img {
+  width: 64px;
+}
+.universal-deposit-card__info {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+.universal-deposit-card__info > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+@media screen and (max-width: 1400px) {
+  .universal-deposit-card__info {
+    gap: 30px;
+  }
+}/*# sourceMappingURL=styles.css.map */

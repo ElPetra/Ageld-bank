@@ -1,0 +1,24 @@
+.card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.card-list__filters {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+.card-list__filters > div:last-child {
+  justify-content: flex-end;
+}
+@media screen and (max-width: 800px) {
+  .card-list__filters {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+.card-list__list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}/*# sourceMappingURL=styles.css.map */

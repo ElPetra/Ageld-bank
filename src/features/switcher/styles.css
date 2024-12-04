@@ -1,0 +1,28 @@
+.switcher {
+  position: relative;
+}
+.switcher__icon {
+  width: 24px;
+  cursor: pointer;
+}
+.switcher__modal {
+  position: absolute;
+  top: 30px;
+  right: 0;
+  z-index: 1;
+  box-shadow: 0 15px 20px 0 rgba(0, 0, 0, 0.0509803922);
+  border-radius: var(--medium-border-radius);
+}
+.switcher__modal__button {
+  text-align: left;
+  color: var(--text-primary);
+  transition: -webkit-text-decoration 500ms ease;
+  transition: text-decoration 500ms ease;
+  transition: text-decoration 500ms ease, -webkit-text-decoration 500ms ease;
+}
+.switcher__modal__button.active {
+  text-decoration: underline;
+}
+.switcher__modal__button:hover {
+  text-decoration: underline;
+}/*# sourceMappingURL=styles.css.map */

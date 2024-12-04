@@ -1,0 +1,62 @@
+.map {
+  width: 100%;
+  min-height: 750px;
+  height: 100%;
+  position: relative;
+}
+.map__forward-container > div:first-child {
+  z-index: 2;
+}
+.map__forward-container > div {
+  position: absolute;
+  z-index: 1;
+  top: 24px;
+  max-height: 726px;
+}
+.map__forward-container__left {
+  left: 130px;
+}
+.map__forward-container__right {
+  right: 130px;
+}
+@media screen and (max-width: 600px) {
+  .map__forward-container__left {
+    left: 15px;
+  }
+  .map__forward-container__right {
+    right: 15px;
+  }
+}
+@media screen and (min-width: 600px) and (max-width: 900px) {
+  .map__forward-container__left {
+    left: 30px;
+  }
+  .map__forward-container__right {
+    right: 30px;
+  }
+}
+@media screen and (min-width: 900px) and (max-width: 1400px) {
+  .map__forward-container__left {
+    left: 70px;
+  }
+  .map__forward-container__right {
+    right: 70px;
+  }
+}
+@media screen and (min-width: 1400px) and (max-width: 1500px) {
+  .map__forward-container__left {
+    left: 100px;
+  }
+  .map__forward-container__right {
+    right: 100px;
+  }
+}
+.map__forward-container__col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 378px;
+  min-width: 368px;
+  max-height: 726px;
+  overflow-y: scroll;
+}/*# sourceMappingURL=styles.css.map */

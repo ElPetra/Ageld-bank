@@ -1,0 +1,140 @@
+.deposit-info__first-row {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.deposit-info__first-row__main {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+.deposit-info__first-row__main__info {
+  display: flex;
+  -moz-column-gap: 24px;
+       column-gap: 24px;
+  row-gap: 4px;
+}
+@media screen and (min-width: 1000px) {
+  .deposit-info__first-row__main__info {
+    height: 32px;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .deposit-info__first-row__main__info {
+    flex-wrap: wrap;
+  }
+}
+.deposit-info__first-row__numbers {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.deposit-info__first-row__number {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+.deposit-info__first-row__number > button {
+  width: 24px;
+}
+@media screen and (min-width: 500px) {
+  .deposit-info__first-row__number > div:first-child {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+}
+.deposit-info__second-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+}
+@media screen and (max-width: 1000px) {
+  .deposit-info__second-row {
+    flex-wrap: wrap;
+  }
+  .deposit-info__second-row > div {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+.deposit-info__second-row__info {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+@media screen and (max-width: 500px) {
+  .deposit-info__second-row__info {
+    gap: 16px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .deposit-info__second-row__info > div {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+}
+@media screen and (min-width: 500px) and (max-width: 800px) {
+  .deposit-info__second-row__info > div {
+    flex: 1 1 33%;
+    max-width: calc((100% - 40px) / 2);
+  }
+}
+@media screen and (min-width: 800px) and (max-width: 1000px) {
+  .deposit-info__second-row__info > div {
+    flex: 1 1 25%;
+    max-width: calc((100% - 80px) / 3);
+  }
+}
+@media screen and (min-width: 1000px) and (max-width: 1300px) {
+  .deposit-info__second-row__info > div {
+    flex: 1 1 33%;
+    max-width: calc((100% - 40px) / 2);
+  }
+}
+@media screen and (min-width: 1300px) {
+  .deposit-info__second-row__info > div {
+    flex: 1 1 25%;
+    max-width: calc((100% - 80px) / 3);
+  }
+}
+.deposit-info__second-row__second-column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+@media screen and (max-width: 1000px) {
+  .deposit-info__second-row__second-column {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+.deposit-info__second-row__second-column__balances {
+  display: flex;
+  gap: 20px;
+}
+.deposit-info__second-row__second-column__balances > div {
+  width: 220px;
+  max-width: 100%;
+}
+@media screen and (max-width: 550px) {
+  .deposit-info__second-row__second-column__balances {
+    flex-wrap: wrap;
+  }
+  .deposit-info__second-row__second-column__balances > div {
+    width: 100%;
+  }
+}
+.deposit-info__second-row__second-column__buttons {
+  display: flex;
+  gap: 20px;
+}
+@media screen and (max-width: 550px) {
+  .deposit-info__second-row__second-column__buttons {
+    flex-wrap: wrap;
+  }
+  .deposit-info__second-row__second-column__buttons > button {
+    width: 100%;
+  }
+}/*# sourceMappingURL=styles.css.map */

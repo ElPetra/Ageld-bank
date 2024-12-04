@@ -1,0 +1,36 @@
+.filter-bar {
+  display: flex;
+  align-items: center;
+}
+.filter-bar.primary {
+  gap: 8px;
+}
+@media screen and (max-width: 600px) {
+  .filter-bar.primary {
+    overflow-x: auto;
+    scroll-behavior: smooth;
+  }
+  .filter-bar.primary::-webkit-scrollbar {
+    display: none;
+  }
+}
+.filter-bar.secondary {
+  -moz-column-gap: 40px;
+       column-gap: 40px;
+  row-gap: 16px;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.filter-bar__button {
+  border-radius: var(--medium-border-radius);
+  padding: 4px 16px;
+  gap: 8px;
+}
+.filter-bar__button.secondary {
+  color: var(--text-secondary-buttons);
+  background: var(--bg-buttons-disable);
+}
+.filter-bar__button.active {
+  color: var(--text-secondary-buttons);
+  background: var(--bg-action);
+}/*# sourceMappingURL=styles.css.map */

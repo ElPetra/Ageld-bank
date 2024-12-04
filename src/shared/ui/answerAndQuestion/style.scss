@@ -1,33 +1,33 @@
 .block {
- display: flex;  
- flex-direction: column;
-  justify-content: flex-start;
-  align-items: start;
-  width: 844px;
+display: flex;  
+flex-direction: column;
+justify-content: flex-start;
+align-items: start;
+width: 844px;
 margin-bottom: 17px;
 }
 .question {
- display: flex; 
- justify-content: space-between; 
- align-items: center;  
- width: 100%;
+display: flex; 
+justify-content: space-between; 
+align-items: center;  
+width: 100%;
 }
 .question__text {
-  font-size: 20px; 
-  max-width: 796px;
-  width: 100%;
-  font-weight: 500;
-  color: rgba(42, 42, 42, 1);
+font-size: 20px; 
+max-width: 796px;
+width: 100%;
+font-weight: 500;
+color: rgba(42, 42, 42, 1);
 
 }
 .question__button {
-    cursor: pointer;
+cursor: pointer;
 }
 .answer {
-  margin-top: 17px;
-  font-size: 15px; 
-  display: flex; 
-  justify-content: flex-start;
+margin-top: 17px;
+font-size: 15px; 
+display: flex; 
+justify-content: flex-start;
 }
 .answer__text {
 width: 796px;

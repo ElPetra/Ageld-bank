@@ -1,0 +1,32 @@
+.container-background.primary {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+.container-background.secondary {
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+}
+.container-background .container {
+  margin: 0 auto;
+  padding: 0 130px;
+}
+@media screen and (max-width: 600px) {
+  .container-background .container {
+    padding: 0 15px;
+  }
+}
+@media screen and (min-width: 600px) and (max-width: 900px) {
+  .container-background .container {
+    padding: 0 30px;
+  }
+}
+@media screen and (min-width: 900px) and (max-width: 1400px) {
+  .container-background .container {
+    padding: 0 70px;
+  }
+}
+@media screen and (min-width: 1400px) and (max-width: 1500px) {
+  .container-background .container {
+    padding: 0 100px;
+  }
+}/*# sourceMappingURL=styles.css.map */

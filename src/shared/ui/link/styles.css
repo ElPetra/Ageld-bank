@@ -1,0 +1,11 @@
+a.quadruple, a:link.quadruple, a:visited.quadruple, a:focus.quadruple, a:hover.quadruple, a:active.quadruple {
+  color: var(--text-quadruple);
+  text-decoration: underline;
+}
+a.action, a:link.action, a:visited.action, a:focus.action, a:hover.action, a:active.action {
+  color: var(--text-action);
+  text-decoration: underline;
+}
+a.underline, a:link.underline, a:visited.underline, a:focus.underline, a:hover.underline, a:active.underline {
+  text-decoration: underline;
+}/*# sourceMappingURL=styles.css.map */

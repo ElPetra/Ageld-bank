@@ -1,0 +1,10 @@
+.main-menu__block {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.main-menu__block__title {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}/*# sourceMappingURL=styles.css.map */

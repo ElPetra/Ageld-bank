@@ -1,0 +1,8 @@
+.info_card {
+  display: flex;
+  gap: 8px;
+}
+.info_card div {
+  display: flex;
+  align-items: center;
+}/*# sourceMappingURL=styles.css.map */

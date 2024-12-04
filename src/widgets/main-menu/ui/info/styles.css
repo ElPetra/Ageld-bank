@@ -1,0 +1,27 @@
+.main-menu__info {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 200px;
+}
+@media screen and (max-width: 800px) {
+  .main-menu__info {
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 100%;
+  }
+  .main-menu__info > div:first-child {
+    max-width: 200px;
+  }
+}
+@media screen and (max-width: 530px) {
+  .main-menu__info > div:first-child, .main-menu__info div:nth-child(2) {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+.main-menu__info > div {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}/*# sourceMappingURL=styles.css.map */

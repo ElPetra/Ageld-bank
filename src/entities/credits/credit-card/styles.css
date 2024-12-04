@@ -1,0 +1,108 @@
+.credit-card__first-column {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+@media screen and (min-width: 1200px) {
+  .credit-card__first-column {
+    width: calc(100% - 492px);
+    max-width: 600px;
+  }
+}
+.credit-card__first-column__main {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.credit-card__first-column__info {
+  width: 100%;
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+@media screen and (max-width: 1200px) {
+  .credit-card__first-column__info {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+@media screen and (max-width: 500px) {
+  .credit-card__first-column__info {
+    gap: 16px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .credit-card__first-column__info > div {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+}
+@media screen and (min-width: 500px) and (max-width: 700px) {
+  .credit-card__first-column__info > div {
+    flex: 1 1 33%;
+    max-width: calc((100% - 40px) / 2);
+  }
+}
+@media screen and (min-width: 700px) {
+  .credit-card__first-column__info > div {
+    flex: 1 1 25%;
+    max-width: calc((100% - 80px) / 3);
+  }
+}
+.credit-card__second-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+}
+@media screen and (max-width: 1200px) {
+  .credit-card__second-column {
+    width: 100%;
+  }
+}
+.credit-card__second-column__first-row {
+  display: flex;
+  gap: 20px;
+}
+@media screen and (min-width: 1200px) {
+  .credit-card__second-column__first-row > div {
+    width: 220px;
+    max-width: 100%;
+  }
+}
+@media screen and (min-width: 550px) and (max-width: 1200px) {
+  .credit-card__second-column__first-row > div {
+    flex: 1 1 50%;
+  }
+}
+@media screen and (max-width: 550px) {
+  .credit-card__second-column__first-row {
+    flex-wrap: wrap;
+  }
+  .credit-card__second-column__first-row > div {
+    width: 100%;
+  }
+}
+.credit-card__second-column__buttons {
+  display: flex;
+  gap: 20px;
+}
+@media screen and (min-width: 1200px) {
+  .credit-card__second-column__buttons > div {
+    width: 220px;
+  }
+}
+@media screen and (min-width: 550px) and (max-width: 1200px) {
+  .credit-card__second-column__buttons > div {
+    flex: 1 1 50%;
+  }
+}
+@media screen and (max-width: 550px) {
+  .credit-card__second-column__buttons {
+    flex-wrap: wrap;
+  }
+  .credit-card__second-column__buttons > div {
+    width: 100%;
+  }
+}/*# sourceMappingURL=styles.css.map */
