@@ -30,7 +30,7 @@ export const Navigation = ({ direction = 'row', setVisible }: Props) => {
                 <Link to={RouteName.CONTACTS_PAGE}>{t('Контакты')}</Link>
                 <Link to={RouteName.MAIN_PAGE}>{t('Список услуг')}</Link>
                 <Link to={RouteName.MAIN_PAGE}>{t('Документы')}</Link>
-                <Link to={RouteName.MAIN_PAGE}>{t('Вопросы и ответы')}</Link>
+                <Link to={RouteName.QAA_PAGE}>{t('Вопросы и ответы')}</Link>
             </ul>
             <ul className='navigation__additional'>
                 {authStatus === AuthStatus.SignedIn ? (

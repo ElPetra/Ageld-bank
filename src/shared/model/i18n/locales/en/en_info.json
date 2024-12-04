@@ -60,5 +60,27 @@
   "Показать полную информацию": "Show full information",
   "Вернуться к списку": "Go back to the list",
   "Контактная информация": "Contact information",
-  "Телефон отделения:": "Branch phone number:"
+  "Телефон отделения:": "Branch phone number:",
+
+  "Часто задаваемые вопросы": "Most frequently asked questions",
+  "Общие вопросы": "General questions",
+  "О картах": "About cards",
+  "О кредитах": "About credits",
+  "О вкладах": "About deposits",
+  "О страховании": "About insurance",
+  "Не нашли нужного ответа?": "Didn't find the answer you were looking for?",
+  "Наши специалисты помогут в решении вашего вопроса": "Our specialists will help you solve your question",
+  "Выбрать способ связи": "Select a communication method",
+
+  "Дебетовые карты": "Debit cards",
+  "Что нужно, чтобы открыть дебетовую карту?": "What do I need to do to open a debit card?",
+  "Выберите подходящую по условиям, нажмите «Заказать карту» и впишите свои данные. Счёт откроем сразу — можно в этот же день переводить деньги в мобильном приложении или платить за покупки в интернете. Пластиковую карту доставим в течение нескольких дней." : "Select the appropriate one according to the conditions, click 'Order a card' and enter your details. We will open an account immediately — you can transfer money in the mobile app or pay for online purchases on the same day. We will deliver the plastic card within a few days.",
+  "Какие виды дебетовых карт есть в банке A-Geld?": "Which types of debit cards are available in the A-Geld bank?",
+  "Сколько будут действовать дебетовые карты?": "How long will the debit cards be valid?",
+  "Как изменить лимиты дебетовых карт?": "How do I change the limits on my debit cards?",
+  "Кредитные карты": "Credit cards",
+  "Что нужно, чтобы открыть кредитную карту?": "What do I need to do to open a credit card?",
+  "Что такое беспроцентный период кредитования?": "What is a zero-interest period?",
+  "Как узнать остаток задолженности?": "How do I know my outstanding debt?",
+  "Как изменить лимиты кредитных карт?": "How do I change the limits on my credit cards?"
 }

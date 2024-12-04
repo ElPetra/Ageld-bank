@@ -17,6 +17,7 @@ import { AccountCreationPage } from 'src/pages/account-creation';
 import { CardProductPage } from 'src/pages/card-product';
 import { CreditPage } from 'src/pages/credit';
 import { ContactsPage } from 'src/pages/contacts';
+import { AnswerAndQuestionPage } from 'src/pages/questions-answers';
 import { ATMsBranchesPage } from 'src/pages/atms-branches';
 import { CreditProductPage } from 'src/pages/credit-product';
 import { DepositProductPage } from 'src/pages/deposit-product';
@@ -51,6 +52,7 @@ const {
     NOTIFICATION_HISTORY_PAGE,
     RECOVERY_PASSWORD_PAGE,
     CONTACTS_PAGE,
+    QAA_PAGE,
     ATMS_AND_BRANCHES
 } = RouteName;
 
@@ -74,6 +76,10 @@ const publicRoutes: RouteDescription[] = [
     {
         path: CONTACTS_PAGE,
         component: ContactsPage
+    },
+    {
+        path: QAA_PAGE,
+        component: AnswerAndQuestionPage
     },
     {
         path: ATMS_AND_BRANCHES,
