@@ -1,0 +1,15 @@
+.universal-deposits-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+@media screen and (min-width: 800px) and (max-width: 1400px) {
+  .universal-deposits-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .universal-deposits-list > div {
+    flex: 1 1 33%;
+    max-width: calc((100% - 24px) / 2);
+  }
+}/*# sourceMappingURL=styles.css.map */

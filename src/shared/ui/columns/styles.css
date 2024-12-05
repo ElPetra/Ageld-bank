@@ -1,0 +1,73 @@
+.columns {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 24px;
+}
+.columns.center > div {
+  width: 100%;
+  margin: 0 auto;
+}
+.columns.extra-small-row-gap {
+  row-gap: 8px;
+}
+.columns.small-row-gap {
+  row-gap: 16px;
+}
+.columns.medium-row-gap {
+  row-gap: 24px;
+}
+.columns.large-row-gap {
+  row-gap: 32px;
+}
+.columns.extra-large-row-gap {
+  row-gap: 60px;
+}
+@media screen and (max-width: 1100px) {
+  .columns__4 > div {
+    flex: 1 1 33%;
+    max-width: calc((100% - 24px) / 2);
+  }
+}
+@media screen and (min-width: 1100px) and (max-width: 1300px) {
+  .columns__4 > div {
+    flex: 1 1 25%;
+    max-width: calc((100% - 48px) / 3);
+  }
+}
+@media screen and (min-width: 1300px) {
+  .columns__4 > div {
+    flex: 1 1 20%;
+    max-width: calc((100% - 72px) / 4);
+  }
+}
+@media screen and (max-width: 1100px) {
+  .columns__3 > div {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+}
+@media screen and (min-width: 1100px) and (max-width: 1300px) {
+  .columns__3 > div {
+    flex: 1 1 33%;
+    max-width: calc((100% - 24px) / 2);
+  }
+}
+@media screen and (min-width: 1300px) {
+  .columns__3 > div {
+    flex: 1 1 25%;
+    max-width: calc((100% - 48px) / 3);
+  }
+}
+@media screen and (max-width: 1300px) {
+  .columns__2 > div {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+}
+@media screen and (min-width: 1300px) {
+  .columns__2 > div {
+    flex: 1 1 33%;
+    max-width: calc((100% - 24px) / 2);
+  }
+}/*# sourceMappingURL=styles.css.map */

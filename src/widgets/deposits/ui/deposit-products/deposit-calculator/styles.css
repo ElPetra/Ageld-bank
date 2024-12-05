@@ -1,0 +1,19 @@
+.deposit-calculator {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.deposit-calculator__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.deposit-calculator__form > div:last-child {
+  max-width: 608px;
+}
+.deposit-calculator__switchers {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}/*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,8 @@
+.menu-button {
+  min-width: 24px;
+}
+@media screen and (min-width: 1450px) {
+  .menu-button {
+    display: none;
+  }
+}/*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,36 @@
+.message-card {
+  max-width: 500px;
+  width: 100%;
+  white-space: pre-wrap;
+}
+.message-card__with-margin {
+  margin: 56px auto;
+}
+.message-card__text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.message-card__button {
+  max-width: 340px;
+  width: 100%;
+}
+.message-card__two-button {
+  display: flex;
+  width: 100%;
+  gap: 20px;
+}
+.message-card__two-button > div, .message-card__two-button > button {
+  flex: 1 1 50%;
+}
+.message-card__two-button > a {
+  width: 100%;
+}
+@media screen and (max-width: 600px) {
+  .message-card__two-button {
+    flex-wrap: wrap;
+  }
+}
+.message-card__two-button > div {
+  flex: 1 1 50%;
+}/*# sourceMappingURL=styles.css.map */

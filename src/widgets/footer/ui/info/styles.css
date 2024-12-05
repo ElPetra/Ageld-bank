@@ -1,0 +1,11 @@
+.info__about {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 10px 0;
+  border-top: 1px solid;
+}
+.info .social-links {
+  display: flex;
+  gap: 16px;
+}/*# sourceMappingURL=styles.css.map */

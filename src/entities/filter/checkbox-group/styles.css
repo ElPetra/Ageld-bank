@@ -1,0 +1,15 @@
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.checkbox-group__item {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.checkbox-group__list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}/*# sourceMappingURL=styles.css.map */

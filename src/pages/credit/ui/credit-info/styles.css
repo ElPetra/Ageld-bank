@@ -1,0 +1,154 @@
+.credit-info__first-row {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.credit-info__first-row__main {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+.credit-info__first-row__main__info {
+  display: flex;
+  -moz-column-gap: 24px;
+       column-gap: 24px;
+  row-gap: 4px;
+}
+@media screen and (min-width: 1000px) {
+  .credit-info__first-row__main__info {
+    height: 32px;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .credit-info__first-row__main__info {
+    flex-wrap: wrap;
+  }
+}
+.credit-info__first-row__numbers {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.credit-info__first-row__number {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+.credit-info__first-row__number > button {
+  width: 24px;
+}
+@media screen and (min-width: 500px) {
+  .credit-info__first-row__number > div:first-child {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+}
+.credit-info__second-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+}
+@media screen and (max-width: 1000px) {
+  .credit-info__second-row {
+    flex-wrap: wrap;
+  }
+  .credit-info__second-row > div {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+.credit-info__second-row__info {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+.credit-info__second-row__info__card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+  border-radius: var(--large-border-radius);
+  background: var(--bg-tertiary-card);
+}
+.credit-info__second-row__info__second {
+  display: flex;
+  -moz-column-gap: 40px;
+       column-gap: 40px;
+  row-gap: 10px;
+  flex-wrap: wrap;
+}
+@media screen and (max-width: 500px) {
+  .credit-info__second-row__info__second {
+    gap: 16px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .credit-info__second-row__info__second > div {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+}
+@media screen and (min-width: 500px) and (max-width: 800px) {
+  .credit-info__second-row__info__second > div {
+    flex: 1 1 33%;
+    max-width: calc((100% - 40px) / 2);
+  }
+}
+@media screen and (min-width: 800px) and (max-width: 1300px) {
+  .credit-info__second-row__info__second > div {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+}
+@media screen and (min-width: 1300px) {
+  .credit-info__second-row__info__second > div {
+    flex: 1 1 33%;
+    max-width: calc((100% - 40px) / 2);
+  }
+}
+.credit-info__second-row__second-column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+@media screen and (max-width: 1000px) {
+  .credit-info__second-row__second-column {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+.credit-info__second-row__second-column__balances {
+  display: flex;
+  gap: 20px;
+}
+.credit-info__second-row__second-column__balances > div {
+  width: 220px;
+  max-width: 100%;
+}
+@media screen and (max-width: 550px) {
+  .credit-info__second-row__second-column__balances {
+    flex-wrap: wrap;
+  }
+  .credit-info__second-row__second-column__balances > div {
+    width: 100%;
+  }
+}
+.credit-info__second-row__second-column__buttons {
+  display: flex;
+  gap: 20px;
+}
+@media screen and (max-width: 550px) {
+  .credit-info__second-row__second-column__buttons {
+    flex-wrap: wrap;
+  }
+  .credit-info__second-row__second-column__buttons > button {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 550px) {
+  .credit-info__second-row__second-column__buttons {
+    min-width: 460px;
+  }
+}/*# sourceMappingURL=styles.css.map */

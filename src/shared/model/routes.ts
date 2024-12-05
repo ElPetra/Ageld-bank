@@ -16,7 +16,8 @@ export const RouteName = {
     DEPOSIT_PRODUCT_PAGE: '/deposit-product',
     NOTIFICATION_HISTORY_PAGE: '/notifications_history',
     ATMS_AND_BRANCHES: '/locate-us',
-    CONTACTS_PAGE: '/contacts'
+    CONTACTS_PAGE: '/contacts',
+    QAA_PAGE: '/qaa'
 } as const;
 
 export interface RouteDescription {

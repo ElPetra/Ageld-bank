@@ -1,0 +1,20 @@
+.main-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.main-menu__container {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+@media screen and (max-width: 800px) {
+  .main-menu__container {
+    flex-wrap: wrap;
+  }
+}
+@media screen and (max-width: 1240px) {
+  .main-menu__container > img {
+    display: none;
+  }
+}/*# sourceMappingURL=styles.css.map */

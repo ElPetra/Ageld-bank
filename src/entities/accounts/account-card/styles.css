@@ -1,0 +1,23 @@
+.account__card__column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.account__card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.account__card__info__eye {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.account__card__balance {
+  display: flex;
+  justify-content: flex-end;
+  gap: 4px;
+}
+.account__card__balance-currency {
+  padding-top: 1px;
+}/*# sourceMappingURL=styles.css.map */

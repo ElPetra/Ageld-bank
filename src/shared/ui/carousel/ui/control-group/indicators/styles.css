@@ -1,0 +1,22 @@
+.carousel-indicators {
+  width: 100%;
+  display: flex;
+  gap: 4px;
+}
+.carousel-indicators__indicator {
+  width: 100%;
+  height: 6px;
+  border-radius: 4px;
+  background-color: var(--bg-buttons-disable);
+}
+.carousel-indicators__indicator.active {
+  background-color: var(--bg-action);
+}
+
+.carousel_controls_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}/*# sourceMappingURL=styles.css.map */

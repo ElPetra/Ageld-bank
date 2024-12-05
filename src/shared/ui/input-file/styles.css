@@ -1,0 +1,78 @@
+.field-file {
+  max-width: 100%;
+  color: var(--text-primary-input);
+}
+.field-file.max {
+  width: 100%;
+}
+.field-file .input-file__full {
+  border-radius: var(--medium-border-radius);
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.field-file .input-file__full > div {
+  font-weight: 700;
+}
+.field-file .input-file__full.primary {
+  background: var(--bg-primary-input);
+}
+.field-file .input-file__full.secondary {
+  background: var(--bg-secondary-input);
+}
+.field-file .input-file__empty {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--medium-border-radius);
+  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.field-file .input-file__empty:before {
+  content: "";
+  position: absolute;
+  border: 7px dashed var(--text-primary-input);
+  border-radius: var(--medium-border-radius);
+  top: -5px;
+  bottom: -5px;
+  left: -5px;
+  right: -5px;
+}
+.field-file .input-file__empty.primary {
+  background: var(--bg-primary-input);
+}
+.field-file .input-file__empty.secondary {
+  background: var(--bg-secondary-input);
+}
+.field-file .input-file__empty.error:before {
+  border: 7px dashed var(--text-error);
+}
+.field-file .input-file__empty__label {
+  white-space: pre-wrap;
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.field-file .input-file__empty__label.error {
+  color: var(--text-error);
+}
+.field-file .input-file__empty__text {
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: 500;
+}
+.field-file .input-file__empty input[type=file] {
+  display: none;
+}
+.field-file__error {
+  color: var(--text-error);
+  margin-top: 8px;
+  font-size: 12px;
+  line-height: 18px;
+}/*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,23 @@
+.more__info__container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 6px;
+}
+.more__info__button {
+  width: 24px;
+  height: 24px;
+}
+.more__info__dropdown {
+  position: absolute;
+  top: 44px;
+  right: 0;
+  background-color: var(--bg-primary);
+  padding: 16px;
+  border-radius: var(--medium-border-radius);
+  min-width: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 15px 20px 0 rgba(0, 0, 0, 0.0509803922);
+}/*# sourceMappingURL=styles.css.map */

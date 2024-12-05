@@ -1,0 +1,44 @@
+.switcher {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.switcher__input {
+  position: relative;
+  min-width: 51px;
+  min-height: 31px;
+  width: 51px;
+  height: 31px;
+}
+.switcher__input input[type=checkbox] {
+  display: none;
+}
+.switcher__input input[type=checkbox]:checked + .switch::before {
+  transform: translateX(20px);
+}
+.switcher__input input[type=checkbox]:checked + .switch {
+  background: var(--bg-action);
+}
+.switcher__input .switch {
+  min-width: 51px;
+  min-height: 31px;
+  position: absolute;
+  background: var(--bg-buttons-disable);
+  border-radius: 25px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transition: background 0.2s ease;
+}
+.switcher__input .switch::before {
+  position: absolute;
+  content: "";
+  left: 2px;
+  top: 2px;
+  width: 27px;
+  height: 27px;
+  background: var(--bg-primary);
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}/*# sourceMappingURL=styles.css.map */

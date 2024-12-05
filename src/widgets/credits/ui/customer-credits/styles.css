@@ -1,0 +1,10 @@
+.customer-credits {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.customer-credits__list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}/*# sourceMappingURL=styles.css.map */

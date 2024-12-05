@@ -1,0 +1,98 @@
+.field {
+  max-width: 100%;
+  color: var(--text-primary-input);
+}
+.field.error {
+  color: var(--text-error);
+}
+.field.large {
+  width: 580px;
+}
+.field.medium {
+  width: 280px;
+}
+.field.max {
+  width: 100%;
+}
+.field .input {
+  position: relative;
+  border-radius: var(--medium-border-radius);
+  transition: box-shadow ease 0.5s;
+  background: var(--bg-primary-input);
+}
+.field .input.disabled {
+  opacity: 0.8;
+}
+.field .input.disabled:hover {
+  box-shadow: none;
+}
+.field .input:hover, .field .input:focus-within, .field .input:active, .field .input.active {
+  box-shadow: inset 0 0 0 1px var(--text-primary-input);
+}
+.field .input.error {
+  box-shadow: inset 0 0 0 1px var(--text-error);
+}
+.field .input.large {
+  height: 72px;
+  padding: 16px 24px;
+}
+.field .input.medium {
+  height: 56px;
+  padding: 16px 24px;
+}
+.field .input.small {
+  height: 72px;
+  max-width: 72px;
+  padding: 16px;
+}
+.field .input.small input {
+  text-align: center;
+}
+@media screen and (min-width: 600px) {
+  .field .input.small input {
+    font-size: 24px;
+    line-height: 36px;
+  }
+}
+.field .input .label {
+  display: block;
+  position: absolute;
+  font-size: 12px;
+  line-height: 18px;
+}
+.field .input input {
+  font-weight: 500;
+  width: 100%;
+  height: 100%;
+}
+.field .input input.with-label {
+  padding-top: 14px;
+}
+.field .input input:-webkit-autofill, .field .input input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--text-primary-input);
+  -webkit-box-shadow: 0 0 0 1000px var(--bg-primary-input) inset;
+}
+.field .input input.error:-webkit-autofill, .field .input input.error:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--text-error);
+}
+.field .input input::-webkit-input-placeholder {
+  color: var(--text-primary-input);
+}
+.field .input input.error::-webkit-input-placeholder {
+  color: var(--text-error);
+}
+.field .input .input-icon {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+}
+.field .input.medium .input-icon {
+  top: 15px;
+  right: 22px;
+}
+.field__error {
+  text-align: left;
+  margin-top: 8px;
+  font-size: 12px;
+  line-height: 18px;
+}/*# sourceMappingURL=styles.css.map */

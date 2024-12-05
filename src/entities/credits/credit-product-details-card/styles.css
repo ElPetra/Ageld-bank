@@ -1,0 +1,83 @@
+.credit-product-details-card {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: calc(67% - 32px);
+}
+@media screen and (min-width: 900px) and (max-width: 1100px) {
+  .credit-product-details-card {
+    width: calc(50% - 16px);
+  }
+}
+@media screen and (max-width: 900px) {
+  .credit-product-details-card {
+    width: 100%;
+  }
+}
+.credit-product-details-card__image {
+  flex: 0 0 auto;
+  width: 33%;
+  aspect-ratio: 799/499;
+}
+@media screen and (min-width: 900px) and (max-width: 1100px) {
+  .credit-product-details-card__image {
+    width: calc(50% - 16px);
+  }
+}
+@media screen and (max-width: 900px) {
+  .credit-product-details-card__image {
+    width: 100%;
+  }
+  .credit-product-details-card__image img {
+    width: 100%;
+  }
+}
+.credit-product-details-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.credit-product-details-card__info__main {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.credit-product-details-card__info__details {
+  padding: 16px 0;
+  display: flex;
+  justify-content: space-between;
+  -moz-column-gap: 24px;
+       column-gap: 24px;
+  row-gap: 16px;
+  flex-wrap: wrap;
+}
+.credit-product-details-card__info__details > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.credit-product-details-card__info__details > div > div:first-child {
+  display: flex;
+  gap: 4px;
+  align-items: flex-end;
+}
+.credit-product-details-card__info__details > div > div:first-child > div:first-child {
+  padding-bottom: 3px;
+}
+.credit-product-details-card__buttons {
+  display: flex;
+  gap: 24px;
+}
+@media screen and (min-width: 1100px) {
+  .credit-product-details-card__buttons > div {
+    width: 220px;
+  }
+}
+@media screen and (max-width: 1100px) {
+  .credit-product-details-card__buttons {
+    flex-wrap: wrap;
+  }
+  .credit-product-details-card__buttons > div {
+    width: 100%;
+  }
+}/*# sourceMappingURL=styles.css.map */

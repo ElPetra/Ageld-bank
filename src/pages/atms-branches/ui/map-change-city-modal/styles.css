@@ -1,0 +1,31 @@
+.map-change-city-modal {
+  width: 100%;
+  max-width: 628px;
+  margin: auto;
+}
+.map-change-city-modal__main {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+}
+.map-change-city-modal__main__close {
+  min-width: 24px;
+}
+.map-change-city-modal__popular {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.map-change-city-modal__popular__options {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.map-change-city-modal__popular__options button {
+  border-radius: var(--medium-border-radius);
+  padding: 4px 16px;
+  gap: 8px;
+  background: var(--bg-primary-card);
+}/*# sourceMappingURL=styles.css.map */

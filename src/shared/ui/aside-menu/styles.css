@@ -1,0 +1,45 @@
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  background: var(--text-primary);
+  opacity: 0.25;
+}
+
+.aside-menu {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 11;
+  width: 0;
+  max-width: 100%;
+  background: var(--bg-primary);
+  overflow-x: hidden;
+  visibility: hidden;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out, visibility 0.3s ease-in-out, width 0.3s ease-in-out;
+}
+.aside-menu.visible {
+  width: 45%;
+  visibility: visible;
+}
+@media screen and (max-width: 600px) {
+  .aside-menu.visible {
+    width: 75%;
+  }
+}
+@media screen and (min-width: 600px) and (max-width: 900px) {
+  .aside-menu.visible {
+    width: 60%;
+  }
+}
+.aside-menu.visible:not(.hiding) {
+  transform: translateX(0);
+}
+.aside-menu__content {
+  padding: 24px;
+}/*# sourceMappingURL=styles.css.map */

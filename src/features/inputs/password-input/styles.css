@@ -1,0 +1,10 @@
+.password-input {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+.password-input .forgot-password-link {
+  display: flex;
+  justify-content: flex-end;
+}/*# sourceMappingURL=styles.css.map */
