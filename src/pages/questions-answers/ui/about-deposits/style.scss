@@ -1,0 +1,15 @@
+.aboutDeposits, .aboutDeposits__content {
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+align-items: start;
+}
+.aboutDeposits__content {
+margin-bottom: 58px;
+}
+.aboutDeposits__title {
+margin-bottom: 17px;
+color: rgba(65, 70, 80, 1);
+font-size: 20px;
+font-weight: 400;
+}

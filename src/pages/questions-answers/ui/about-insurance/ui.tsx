@@ -2,13 +2,13 @@ import { useTranslation } from 'react-i18next';
 import { AnswerAndQuestion } from 'src/shared/ui/answerAndQuestion';
 
 import './style.scss';
-export const AboutCredits = () => {
+export const AboutInsurance = () => {
     const { t } = useTranslation();
     return (
-        <div className='aboutCredits'>
-            <div className='aboutCredits__content'>
-                <h5 className='aboutCredits__title'>
-                    {t('О самых кабальных кредитах')}
+        <div className='aboutInsurance'>
+            <div className='aboutInsurance__content'>
+                <h5 className='aboutInsurance__title'>
+                    {t('О самых бесполезных страховках')}
                 </h5>
                 <AnswerAndQuestion
                     question={t('Что нужно, чтобы открыть дебетовую карту?')}
@@ -31,9 +31,9 @@ export const AboutCredits = () => {
                     answer={t('Какой-то ответ')}
                 />
             </div>
-            <div className='aboutCredits__content'>
-                <h5 className='aboutCredits__title'>
-                    {t('О не самых кабальных кредитах')}
+            <div className='aboutInsurance__content'>
+                <h5 className='aboutInsurance__title'>
+                    {t('О полезных страховках')}
                 </h5>
                 <AnswerAndQuestion
                     question={t('Что нужно, чтобы открыть кредитную карту?')}
