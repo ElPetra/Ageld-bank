@@ -16,8 +16,12 @@ import type {
     ProductStatus
 } from 'src/shared/model';
 
-export const transformAccounts = (res: AccountResponse[]): Account[] =>
-    res.map(el => ({
+export const transformAccounts = (res: AccountResponse[]): Account[] => {
+    if (!Array.isArray(res)) {
+        throw new TypeError('Expected `res` to be an array');
+    }
+
+    return res.map(el => ({
         number: el.accountNumber,
         type: el.type.toLowerCase() as AccountType,
         balance: el.accountBalance,
@@ -26,7 +30,7 @@ export const transformAccounts = (res: AccountResponse[]): Account[] =>
         isMaster: el.masterAccount,
         name: el.nameAccount || ''
     }));
-
+};
 export const transformAccount = (res: AccountResponse[]): Account | undefined =>
     res
         .filter(item => item.status === 'ACTIVE')
