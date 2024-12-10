@@ -1,0 +1,17 @@
+.aboutCredits, .aboutCredits__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: start;
+}
+
+.aboutCredits__content {
+  margin-bottom: 58px;
+}
+
+.aboutCredits__title {
+  margin-bottom: 17px;
+  color: rgb(65, 70, 80);
+  font-size: 20px;
+  font-weight: 400;
+}/*# sourceMappingURL=style.css.map */
