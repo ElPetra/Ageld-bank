@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AnswerAndQuestion ui match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="block"
+  >
+    <div
+      class="question"
+    >
+      <p
+        class="question__text"
+      >
+        Question
+      </p>
+      <button
+        class="question__button"
+      >
+        <img
+          alt=""
+          height="24"
+          width="24"
+        />
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;

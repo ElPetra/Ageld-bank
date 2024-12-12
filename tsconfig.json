@@ -17,6 +17,7 @@
     "moduleResolution": "Node10",
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
+    "types": ["jest", "@testing-library/jest-dom"],
     "lib": [
       "DOM",
       "ES2021.String",

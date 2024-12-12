@@ -52,4 +52,4 @@ export const AboutCards = () => {
     );
 };
 
-export default AboutCards;
+// export default AboutCards;
