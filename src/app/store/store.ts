@@ -1,4 +1,5 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import registrationReducer from 'src/pages/registration/model/registrationSlice';
 
 import { userReducer } from 'src/entities/user/user-slice';
 import {
@@ -18,6 +19,7 @@ import { actionHandling } from './middleware';
 
 const rootReducers = combineReducers({
     user: userReducer,
+    registration: registrationReducer,
     [authApi.reducerPath]: authApi.reducer,
     [settingsApi.reducerPath]: settingsApi.reducer,
     [profileApi.reducerPath]: profileApi.reducer,

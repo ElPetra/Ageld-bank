@@ -1,0 +1,1 @@
+export { SecretQuestion } from './ui';

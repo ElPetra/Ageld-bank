@@ -1,11 +1,15 @@
 import type { InputHTMLAttributes, ReactNode } from 'react';
-import type { FieldValues, UseFormRegister } from 'react-hook-form';
+import type { UseFormRegister } from 'react-hook-form';
 
 import './styles.scss';
 
+type RegisterForPhoneAndCheckbox = UseFormRegister<{
+    phone: string,
+    checkbox: string[]
+}>;
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
-    register?: UseFormRegister<FieldValues>;
-    field?: string;
+    register?: RegisterForPhoneAndCheckbox;
+    field?: 'phone' | 'checkbox';
     children?: ReactNode;
 }
 

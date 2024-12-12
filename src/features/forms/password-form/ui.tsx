@@ -1,0 +1,128 @@
+import { useForm } from 'react-hook-form';
+import { Button, Form, Input, Text, Icon } from 'src/shared/ui';
+import { useDispatch } from 'react-redux';
+import { setRegistrationData } from 'src/pages/registration';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useState } from 'react';
+
+import { passwordSchema } from './validateSchema';
+
+import type { Dispatch, SetStateAction } from 'react';
+
+import './styles.scss';
+
+interface PasswordFormFields {
+    password: string;
+    confirmPassword: string;
+}
+
+interface Props {
+    setFormStep?: Dispatch<SetStateAction<number>>;
+}
+
+export const PasswordForm = ({ setFormStep }: Props) => {
+    const dispatch = useDispatch();
+
+    const [passwordVisible, setPasswordVisible] = useState(false);
+    const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors, isValid }
+    } = useForm<PasswordFormFields>({
+        resolver: yupResolver(passwordSchema),
+        mode: 'onTouched',
+        defaultValues: {
+            password: '',
+            confirmPassword: ''
+        }
+    });
+
+    const onSubmit = (data: PasswordFormFields) => {
+        dispatch(
+            setRegistrationData({
+                password: data.password
+            })
+        );
+
+        if (setFormStep) {
+            setFormStep(curr => curr + 1);
+        }
+    };
+
+    const togglePasswordVisibility = () => {
+        setPasswordVisible(prev => !prev);
+    };
+
+    const toggleConfirmPasswordVisibility = () => {
+        setConfirmPasswordVisible(prev => !prev);
+    };
+
+    return (
+        <Form onSubmit={handleSubmit(onSubmit)}>
+            <div className='password-input-wrapper'>
+                <Input
+                    label='Пароль'
+                    field='password'
+                    register={register}
+                    size='large'
+                    type={passwordVisible ? 'text' : 'password'}
+                    placeholder='Введите пароль'
+                />
+                <button
+                    type='button'
+                    className='password-toggle-btn'
+                    onClick={togglePasswordVisibility}
+                    aria-label='Показать/скрыть пароль'
+                >
+                    <Icon icon={passwordVisible ? 'eye-open' : 'eye-close'} />
+                </button>
+            </div>
+            {errors.password && (
+                <Text color='error' size='xxs'>
+                    {typeof errors.password?.message === 'string'
+                        ? errors.password.message
+                        : ''}
+                </Text>
+            )}
+
+            <div className='password-input-wrapper'>
+                <Input
+                    label='Подтвердите пароль'
+                    field='confirmPassword'
+                    register={register}
+                    size='large'
+                    type={confirmPasswordVisible ? 'text' : 'password'}
+                    placeholder='Подтвердите пароль'
+                />
+                <button
+                    type='button'
+                    className='password-toggle-btn'
+                    onClick={toggleConfirmPasswordVisibility}
+                    aria-label='Показать/скрыть подтверждение пароля'
+                >
+                    <Icon
+                        icon={confirmPasswordVisible ? 'eye-open' : 'eye-close'}
+                    />
+                </button>
+            </div>
+            {errors.confirmPassword && (
+                <Text color='error' size='xxs'>
+                    {typeof errors.confirmPassword?.message === 'string'
+                        ? errors.confirmPassword.message
+                        : ''}
+                </Text>
+            )}
+
+            <Button
+                variant='secondary'
+                size='large'
+                type='submit'
+                disabled={!isValid}
+            >
+                Продолжить
+            </Button>
+        </Form>
+    );
+};
