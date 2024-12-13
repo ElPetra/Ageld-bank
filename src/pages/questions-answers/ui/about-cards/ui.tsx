@@ -51,5 +51,3 @@ export const AboutCards = () => {
         </div>
     );
 };
-
-// export default AboutCards;
