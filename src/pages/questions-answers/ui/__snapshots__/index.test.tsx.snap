@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AnswerAndQuestionPage matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="questionsPage"
+  >
+    <div
+      class="questionsPage__button"
+    >
+      <button>
+        Back
+      </button>
+    </div>
+    <h2
+      class="questionsPage__title"
+    >
+      Часто задаваемые вопросы
+    </h2>
+    <div
+      class="questionsPage__navBar"
+    >
+      <button
+        class="questionsPage__navBar__button "
+      >
+        Общие вопросы
+      </button>
+      <button
+        class="questionsPage__navBar__button active"
+      >
+        О картах
+      </button>
+      <button
+        class="questionsPage__navBar__button "
+      >
+        О кредитах
+      </button>
+      <button
+        class="questionsPage__navBar__button "
+      >
+        О вкладах
+      </button>
+      <button
+        class="questionsPage__navBar__button "
+      >
+        О страховании
+      </button>
+    </div>
+    <div
+      class="questionsPage__content"
+    >
+      <div>
+        About Cards Content
+      </div>
+    </div>
+    <div
+      class="questionsPage__footer"
+    >
+      <p
+        class="questionsPage__footer__title"
+      >
+        Не нашли нужного ответа?
+      </p>
+      <p
+        class="questionsPage__footer__text"
+      >
+        Наши специалисты помогут в решении вашего вопроса
+      </p>
+      <button
+        class="questionsPage__footer__button"
+      >
+        Выбрать способ связи
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;

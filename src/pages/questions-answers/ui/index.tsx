@@ -88,5 +88,3 @@ export const AnswerAndQuestionPage = () => {
 
     return <>{renderContentPage()}</>;
 };
-
-export default AnswerAndQuestionPage;
