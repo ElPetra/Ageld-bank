@@ -1,5 +1,4 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-
 import { localStorageApi } from 'src/shared/api';
 import {
     transformAccountDetails,
@@ -7,7 +6,11 @@ import {
     transformAccount
 } from 'src/shared/lib/trasnform';
 
-import type { Account, AccountDetails } from 'src/shared/model';
+import type {
+    Account,
+    AccountDetails,
+    AccountResponse
+} from 'src/shared/model';
 
 const accountBaseUrl = import.meta.env.VITE_BASEURL_GATEWAY + '/api/v1/account';
 
@@ -36,14 +39,28 @@ export const accountApi = createApi({
             }),
             invalidatesTags: ['Account']
         }),
-        getAccounts: builder.query<Account[], void>({
-            query: () => ({
-                url: '/list_account_number',
-                method: 'GET'
-            }),
-            providesTags: ['Account'],
-            transformResponse: transformAccounts
-        }),
+        getAccounts: builder.query<Account[], { status: string, type: string }>(
+            {
+                query: ({ status, type }) => ({
+                    url: `/accounts?status=${status}&type=${type}`,
+                    method: 'GET'
+                }),
+                providesTags: ['Account'],
+                transformResponse: (response: {
+                    accounts: AccountResponse[]
+                }) => {
+                    if (
+                        !response.accounts ||
+                        !Array.isArray(response.accounts)
+                    ) {
+                        throw new TypeError(
+                            'Expected `response.accounts` to be an array'
+                        );
+                    }
+                    return transformAccounts(response.accounts);
+                }
+            }
+        ),
         getAccountDetails: builder.query<AccountDetails, { number: string }>({
             query: ({ number }) => ({
                 url: '/information/',

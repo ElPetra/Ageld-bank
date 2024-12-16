@@ -21,10 +21,20 @@ import { AccountCreation } from './account-creation';
 
 export const Accounts = () => {
     const { signedOut } = useAuth();
-    const { data: accounts, isLoading, error } = useGetAccountsQuery();
+    const {
+        data: accounts,
+        isLoading,
+        error
+    } = useGetAccountsQuery({ status: '', type: '' });
+    // } = useGetAccountsQuery({ status: 'ACTIVE', type: 'DEBIT' });
     const { t } = useTranslation();
     const [currency, setCurrency] = useState<string>('Все');
     const [showClosed, setShowClosed] = useState<boolean>(false);
+
+    // TODO Для отладки затем удалить
+    useEffect(() => {
+        console.log('Accounts from useGetAccountsQuery:', accounts);
+    }, [accounts]);
 
     useEffect(() => {
         if (isErrorStatusUnauthorized(error)) {
