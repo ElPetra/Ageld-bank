@@ -3,6 +3,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, Form, Input, Select } from 'src/shared/ui';
 import { useDispatch } from 'react-redux';
 import { setRegistrationData } from 'src/pages/registration';
+import { useTranslation } from 'react-i18next';
 
 import { validationSchemaPersonalInfo } from './validateSchema';
 
@@ -21,6 +22,7 @@ interface Props {
 
 export const PersonalInfo = ({ setFormStep }: Props) => {
     const dispatch = useDispatch();
+    const { t } = useTranslation();
 
     const {
         register,
@@ -33,26 +35,19 @@ export const PersonalInfo = ({ setFormStep }: Props) => {
     });
 
     const genderOptions = [
-        { value: 'Мужской', label: 'Мужской' },
-        { value: 'Женский', label: 'Женский' }
+        { value: 'Мужской', label: t('Мужской') },
+        { value: 'Женский', label: t('Женский') }
     ];
 
     const citizenshipOptions = [
-        { value: 'Российская Федерация', label: 'Российская Федерация' },
-        { value: 'Беларусь', label: 'Беларусь' },
-        { value: 'Украина', label: 'Украина' },
-        { value: 'Армения', label: 'Армения' }
+        { value: 'Российская Федерация', label: t('Российская Федерация') },
+        { value: 'Беларусь', label: t('Беларусь') },
+        { value: 'Украина', label: t('Украина') },
+        { value: 'Армения', label: t('Армения') }
     ];
 
     const onSubmit = (data: PersonalInfoFormValues) => {
-        dispatch(
-            setRegistrationData({
-                birthday: data.birthday,
-                gender: data.gender,
-                citizenship: data.citizenship
-            })
-        );
-
+        dispatch(setRegistrationData(data));
         if (setFormStep) {
             setFormStep(curr => curr + 1);
         }
@@ -61,23 +56,23 @@ export const PersonalInfo = ({ setFormStep }: Props) => {
     return (
         <Form onSubmit={handleSubmit(onSubmit)}>
             <Input
-                label='Дата рождения'
+                label={t('Дата рождения')}
                 field='birthday'
                 size='large'
                 register={register}
                 type='date'
-                placeholder='Дата рождения'
+                placeholder={t('Дата рождения')}
                 error={errors.birthday?.message}
             />
             <Select
-                label='Пол'
+                label={t('Пол')}
                 field='gender'
                 options={genderOptions}
                 register={register as unknown as UseFormRegister<FieldValues>}
                 error={errors.gender?.message}
             />
             <Select
-                label='Гражданство'
+                label={t('Гражданство')}
                 field='citizenship'
                 options={citizenshipOptions}
                 register={register as unknown as UseFormRegister<FieldValues>}
@@ -89,7 +84,7 @@ export const PersonalInfo = ({ setFormStep }: Props) => {
                 type='submit'
                 disabled={!isValid}
             >
-                Продолжить
+                {t('Продолжить')}
             </Button>
         </Form>
     );

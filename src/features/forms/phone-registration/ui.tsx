@@ -10,8 +10,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 import { validationSchemaPhoneRegistration } from './validateSchema';
 
+import type { SubmitHandler, FieldValues } from 'react-hook-form';
+
 import type { Dispatch, SetStateAction } from 'react';
-import type * as reactHookForm from 'react-hook-form';
 
 interface Props {
     isLast?: boolean;
@@ -44,7 +45,7 @@ export const PhoneRegistration = ({ isLast, setFormStep }: Props) => {
 
     const allLinksClicked = clickedLinks.length === 1;
 
-    const onSubmit: reactHookForm.SubmitHandler<reactHookForm.FieldValues> = (data) => {
+    const onSubmit: SubmitHandler<FieldValues> = data => {
         const phone = data.phone.replace(/\D/g, '');
         dispatch(
             setRegistrationData({
@@ -62,28 +63,28 @@ export const PhoneRegistration = ({ isLast, setFormStep }: Props) => {
         <Form onSubmit={handleSubmit(onSubmit)}>
             <PhoneInput
                 clear={() => setValue('phone', '')}
-                field="phone"
+                field='phone'
                 register={register}
                 isError={!!errors.phone}
             />
 
             <Controller
-                name="email"
+                name='email'
                 control={control}
                 render={({ field }) => (
                     <div>
                         <Input
                             {...field}
                             label={t('Email')}
-                            field="email"
+                            field='email'
                             register={register}
-                            size="large"
-                            type="email"
+                            size='large'
+                            type='email'
                             placeholder={t('Введите ваш email')}
                             isError={!!errors.email}
                         />
                         {errors.email && (
-                            <Text color="error" size="xxs">
+                            <Text color='error' size='xxs'>
                                 {errors.email.message}
                             </Text>
                         )}
@@ -91,17 +92,17 @@ export const PhoneRegistration = ({ isLast, setFormStep }: Props) => {
                 )}
             />
 
-            <Checkbox register={register} field="checkbox">
+            <Checkbox register={register} field='checkbox'>
                 <Text>
                     {t('Нажав кнопку "Принять" вы соглашаетесь с текстом')}
                     &nbsp;
                     <Link
-                        id="service_rules"
+                        id='service_rules'
                         onClick={() => handleLinkClick(1)}
                         to={publicContract}
-                        target="_blank"
-                        rel="noreferrer"
-                        variant="action"
+                        target='_blank'
+                        rel='noreferrer'
+                        variant='action'
                     >
                         {t('Публичного договора')}
                     </Link>
@@ -109,16 +110,16 @@ export const PhoneRegistration = ({ isLast, setFormStep }: Props) => {
             </Checkbox>
 
             <Button
-                variant="secondary"
-                size="large"
-                type="submit"
+                variant='secondary'
+                size='large'
+                type='submit'
                 disabled={!allLinksClicked || !watch('checkbox')[0]}
             >
                 {t('Продолжить')}
             </Button>
 
-            <Button size="large" type="button">
-                <Link to="/">{t('Отклонить')}</Link>
+            <Button size='large' type='button'>
+                <Link to='/'>{t('Отклонить')}</Link>
             </Button>
         </Form>
     );

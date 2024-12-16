@@ -3,6 +3,7 @@ import { Button, Form, Input } from 'src/shared/ui';
 import { useDispatch } from 'react-redux';
 import { setRegistrationData } from 'src/pages/registration';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useTranslation } from 'react-i18next';
 
 import { validationSchemaFullName } from './validateSchema';
 
@@ -21,6 +22,7 @@ interface Props {
 
 export const FullName = ({ setFormStep }: Props) => {
     const dispatch = useDispatch();
+    const { t } = useTranslation();
 
     const {
         register,
@@ -49,21 +51,21 @@ export const FullName = ({ setFormStep }: Props) => {
     return (
         <Form onSubmit={handleSubmit(onSubmit)}>
             <Input
-                label='Фамилия'
+                label={t('Фамилия')}
                 field='lastName'
                 size='large'
                 register={register}
                 error={errors.lastName?.message || ''}
             />
             <Input
-                label='Имя'
+                label={t('Имя')}
                 field='firstName'
                 size='large'
                 register={register}
                 error={errors.firstName?.message || ''}
             />
             <Input
-                label='Отчество'
+                label={t('Отчество')}
                 field='middleName'
                 size='large'
                 register={register}
@@ -75,7 +77,7 @@ export const FullName = ({ setFormStep }: Props) => {
                 type='submit'
                 disabled={!isValid}
             >
-                Продолжить
+                {t('Продолжить')}
             </Button>
         </Form>
     );

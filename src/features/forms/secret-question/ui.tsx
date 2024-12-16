@@ -3,6 +3,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, Form, Input } from 'src/shared/ui';
 import { useDispatch } from 'react-redux';
 import { setRegistrationData } from 'src/pages/registration';
+import { useTranslation } from 'react-i18next';
 
 import { validationSchemaSecret } from './validateSchema';
 
@@ -19,6 +20,7 @@ interface Props {
 
 export const SecretQuestion = ({ setFormStep }: Props) => {
     const dispatch = useDispatch();
+    const { t } = useTranslation();
 
     const {
         register,
@@ -53,7 +55,7 @@ export const SecretQuestion = ({ setFormStep }: Props) => {
                 field='secretQuestion'
                 size='large'
                 register={register}
-                placeholder='Введите секретный вопрос'
+                placeholder={t('Введите секретный вопрос')}
                 error={errors.secretQuestion?.message}
             />
             <Input
@@ -61,7 +63,7 @@ export const SecretQuestion = ({ setFormStep }: Props) => {
                 field='secretAnswer'
                 size='large'
                 register={register}
-                placeholder='Введите ответ'
+                placeholder={t('Введите ответ')}
                 error={errors.secretAnswer?.message}
             />
             <Button
@@ -70,7 +72,7 @@ export const SecretQuestion = ({ setFormStep }: Props) => {
                 type='submit'
                 disabled={!isValid}
             >
-                Продолжить
+                {t('Продолжить')}
             </Button>
         </Form>
     );

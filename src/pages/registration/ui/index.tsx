@@ -64,12 +64,12 @@ export const RegistrationPage = () => {
                         },
                         {
                             id: 5,
-                            title: 'Введите адрес регистрации',
+                            title: t('Введите адрес регистрации'),
                             component: <RegistrationAddress />
                         },
                         {
                             id: 6,
-                            title: 'Введите секретный вопрос',
+                            title: t('Введите секретный вопрос'),
                             component: <SecretQuestion />
                         },
                         {

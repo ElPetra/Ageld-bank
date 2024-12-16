@@ -3,6 +3,7 @@ import { Button, Form, Select, Input } from 'src/shared/ui';
 import { useDispatch } from 'react-redux';
 import { setRegistrationData } from 'src/pages/registration';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useTranslation } from 'react-i18next';
 
 import { documentSchema } from './validateSchema';
 
@@ -25,6 +26,7 @@ interface Props {
 
 export const DocumentForm = ({ setFormStep }: Props) => {
     const dispatch = useDispatch();
+    const { t } = useTranslation();
 
     const {
         register,
@@ -45,17 +47,17 @@ export const DocumentForm = ({ setFormStep }: Props) => {
     });
 
     const documentTypeOptions = [
-        { value: '0', label: 'Паспорт гражданина РФ' },
-        { value: '1', label: 'Свидетельство о рождении' },
-        { value: '2', label: 'Общегражданский загранпаспорт' },
-        { value: '3', label: 'Паспорт моряка/удостоверение личности моряка' }
+        { value: '0', label: t('Паспорт гражданина РФ') },
+        { value: '1', label: t('Свидетельство о рождении') },
+        { value: '2', label: t('Общегражданский загранпаспорт') },
+        { value: '3', label: t('Паспорт моряка/удостоверение личности моряка') }
     ];
 
     const countryOptions = [
-        { value: 'Российская Федерация', label: 'Российская Федерация' },
-        { value: 'Беларусь', label: 'Беларусь' },
-        { value: 'Украина', label: 'Украина' },
-        { value: 'Армения', label: 'Армения' }
+        { value: 'Российская Федерация', label: t('Российская Федерация') },
+        { value: 'Беларусь', label: t('Беларусь') },
+        { value: 'Украина', label: t('Украина') },
+        { value: 'Армения', label: t('Армения') }
     ];
 
     const onSubmit = (data: DocumentFormFields) => {
@@ -81,7 +83,7 @@ export const DocumentForm = ({ setFormStep }: Props) => {
     return (
         <Form onSubmit={handleSubmit(onSubmit)}>
             <Select
-                label='Вид документа'
+                label={t('Вид документа')}
                 field='documentTypeId'
                 options={documentTypeOptions}
                 register={register as unknown as UseFormRegister<FieldValues>}
@@ -92,11 +94,11 @@ export const DocumentForm = ({ setFormStep }: Props) => {
                 field='documentNumber'
                 size='large'
                 register={register}
-                placeholder='Введите серию и номер'
+                placeholder={t('Введите серию и номер')}
                 error={errors.documentNumber?.message}
             />
             <Select
-                label='Страна выдачи документа'
+                label={t('Страна выдачи документа')}
                 field='issuingCountry'
                 options={countryOptions}
                 register={register as unknown as UseFormRegister<FieldValues>}
@@ -107,7 +109,7 @@ export const DocumentForm = ({ setFormStep }: Props) => {
                 field='issuingAuthority'
                 size='large'
                 register={register}
-                placeholder='Введите орган, выдавший документ'
+                placeholder={t('Введите орган, выдавший документ')}
                 error={errors.issuingAuthority?.message}
             />
             <Input
@@ -115,7 +117,7 @@ export const DocumentForm = ({ setFormStep }: Props) => {
                 field='codeIssuingAuthority'
                 size='large'
                 register={register}
-                placeholder='Введите код органа'
+                placeholder={t('Введите код органа')}
                 error={errors.codeIssuingAuthority?.message}
             />
             <div className='form-container-group'>
@@ -124,7 +126,7 @@ export const DocumentForm = ({ setFormStep }: Props) => {
                     label='Дата выдачи'
                     field='issueDate'
                     register={register}
-                    placeholder='Дата выдачи'
+                    placeholder={t('Дата выдачи')}
                     error={errors.issueDate?.message}
                 />
                 <Input
@@ -132,7 +134,7 @@ export const DocumentForm = ({ setFormStep }: Props) => {
                     label='Дата истечения срока'
                     field='expirationDate'
                     register={register}
-                    placeholder='Дата истечения срока'
+                    placeholder={t('Дата истечения срока')}
                     error={errors.expirationDate?.message}
                 />
             </div>
@@ -142,7 +144,7 @@ export const DocumentForm = ({ setFormStep }: Props) => {
                 type='submit'
                 disabled={!isValid}
             >
-                Продолжить
+                {t('Продолжить')}
             </Button>
         </Form>
     );

@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { setRegistrationData } from 'src/pages/registration';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { passwordSchema } from './validateSchema';
 
@@ -22,6 +23,7 @@ interface Props {
 
 export const PasswordForm = ({ setFormStep }: Props) => {
     const dispatch = useDispatch();
+    const { t } = useTranslation();
 
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
@@ -68,7 +70,7 @@ export const PasswordForm = ({ setFormStep }: Props) => {
                     register={register}
                     size='large'
                     type={passwordVisible ? 'text' : 'password'}
-                    placeholder='Введите пароль'
+                    placeholder={t('Введите пароль')}
                 />
                 <button
                     type='button'
@@ -94,7 +96,7 @@ export const PasswordForm = ({ setFormStep }: Props) => {
                     register={register}
                     size='large'
                     type={confirmPasswordVisible ? 'text' : 'password'}
-                    placeholder='Подтвердите пароль'
+                    placeholder={t('Подтвердите пароль')}
                 />
                 <button
                     type='button'
@@ -121,7 +123,7 @@ export const PasswordForm = ({ setFormStep }: Props) => {
                 type='submit'
                 disabled={!isValid}
             >
-                Продолжить
+                {t('Продолжить')}
             </Button>
         </Form>
     );

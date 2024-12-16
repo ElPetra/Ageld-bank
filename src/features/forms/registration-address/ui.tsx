@@ -4,6 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, Form, Select, Input } from 'src/shared/ui';
 import { useDispatch } from 'react-redux';
 import { setRegistrationData } from 'src/pages/registration';
+import { useTranslation } from 'react-i18next';
 
 import { validationSchemaAdress } from './validateSchema';
 
@@ -21,6 +22,7 @@ interface Props {
 
 export const RegistrationAddress = ({ setFormStep }: Props) => {
     const dispatch = useDispatch();
+    const { t } = useTranslation();
 
     const {
         register,
@@ -73,114 +75,114 @@ export const RegistrationAddress = ({ setFormStep }: Props) => {
     };
 
     const countryOptions = [
-        { value: 'Российская Федерация', label: 'Российская Федерация' },
-        { value: 'Беларусь', label: 'Беларусь' },
-        { value: 'Украина', label: 'Украина' },
-        { value: 'Армения', label: 'Армения' }
+        { value: 'Российская Федерация', label: t('Российская Федерация') },
+        { value: 'Беларусь', label: t('Беларусь') },
+        { value: 'Украина', label: t('Украина') },
+        { value: 'Армения', label: t('Армения') }
     ];
 
     const locationTypeOptions = [
-        { value: 'Город', label: 'Город' },
-        { value: 'Деревня', label: 'Деревня' },
-        { value: 'Посёлок', label: 'Посёлок' },
-        { value: 'Хутор', label: 'Хутор' }
+        { value: 'Город', label: t('Город') },
+        { value: 'Деревня', label: t('Деревня') },
+        { value: 'Посёлок', label: t('Посёлок') },
+        { value: 'Хутор', label: t('Хутор') }
     ];
 
     const streetTypeOptions = [
-        { value: 'Улица', label: 'Улица' },
-        { value: 'Проспект', label: 'Проспект' },
-        { value: 'Бульвар', label: 'Бульвар' },
-        { value: 'Переулок', label: 'Переулок' }
+        { value: 'Улица', label: t('Улица') },
+        { value: 'Проспект', label: t('Проспект') },
+        { value: 'Бульвар', label: t('Бульвар') },
+        { value: 'Переулок', label: t('Переулок') }
     ];
 
     return (
         <Form onSubmit={handleSubmit(onSubmit)}>
             <Select
-                label='Страна'
+                label={t('Страна')}
                 field='countryCodeISO'
                 options={countryOptions}
                 register={register as unknown as UseFormRegister<FieldValues>}
                 error={errors.countryCodeISO?.message}
             />
             <Input
-                label='Район'
+                label={t('Район')}
                 field='region'
                 size='large'
                 register={register}
-                placeholder='Укажите район'
+                placeholder={t('Укажите район')}
                 error={errors.region?.message}
             />
             <Select
-                label='Тип населенного пункта'
+                label={t('Тип населенного пункта')}
                 field='locationType'
                 options={locationTypeOptions}
                 register={register as unknown as UseFormRegister<FieldValues>}
                 error={errors.locationType?.message}
             />
             <Input
-                label='Населённый пункт'
+                label={t('Населённый пункт')}
                 field='location'
                 size='large'
                 register={register}
-                placeholder='Населённый пункт'
+                placeholder={t('Населённый пункт')}
                 error={errors.location?.message}
             />
             <Select
-                label='Тип улицы'
+                label={t('Тип улицы')}
                 field='streetType'
                 options={streetTypeOptions}
                 register={register as unknown as UseFormRegister<FieldValues>}
                 error={errors.streetType?.message}
             />
             <Input
-                label='Улица'
+                label={t('Улица')}
                 field='street'
                 size='large'
                 register={register}
-                placeholder='Улица'
+                placeholder={t('Улица')}
                 error={errors.street?.message}
             />
             <div className='form-container-group'>
                 <Input
-                    label='Номер дома'
+                    label={t('Номер дома')}
                     field='houseNumber'
                     size='large'
                     register={register}
-                    placeholder='Номер дома'
+                    placeholder={t('Номер дома')}
                     error={errors.houseNumber?.message}
                 />
                 <Input
-                    label='Литера'
+                    label={t('Литера')}
                     field='litera'
                     size='large'
                     register={register}
-                    placeholder='Буква'
+                    placeholder={t('Буква')}
                     error={errors.litera?.message}
                 />
                 <Input
-                    label='Корпус'
+                    label={t('Корпус')}
                     field='buildingHouseNumber'
                     size='large'
                     register={register}
-                    placeholder='Корпус'
+                    placeholder={t('Корпус')}
                     error={errors.buildingHouseNumber?.message}
                 />
             </div>
             <div className='form-container-group'>
                 <Input
-                    label='Номер квартиры'
+                    label={t('Номер квартиры')}
                     field='apartmentNumber'
                     size='large'
                     register={register}
-                    placeholder='Номер квартиры'
+                    placeholder={t('Номер квартиры')}
                     error={errors.apartmentNumber?.message}
                 />
                 <Input
-                    label='Почтовый индекс'
+                    label={t('Почтовый индекс')}
                     field='postalCode'
                     size='large'
                     register={register}
-                    placeholder='Почтовый индекс'
+                    placeholder={t('Почтовый индекс')}
                     error={errors.postalCode?.message}
                 />
             </div>
@@ -190,7 +192,7 @@ export const RegistrationAddress = ({ setFormStep }: Props) => {
                 type='submit'
                 disabled={!isValid}
             >
-                Продолжить
+                {t('Продолжить')}
             </Button>
         </Form>
     );
