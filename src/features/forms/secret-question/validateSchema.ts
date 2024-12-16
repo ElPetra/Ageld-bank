@@ -1,0 +1,14 @@
+import * as yup from 'yup';
+
+export const validationSchemaSecret = yup.object().shape({
+    secretQuestion: yup
+        .string()
+        .required('Введите секретный вопрос')
+        .min(5, 'Секретный вопрос должен содержать минимум 5 символов')
+        .max(100, 'Секретный вопрос не может превышать 100 символов'),
+    secretAnswer: yup
+        .string()
+        .required('Введите ответ на секретный вопрос')
+        .min(3, 'Ответ должен содержать минимум 3 символа')
+        .max(50, 'Ответ не может превышать 50 символов')
+});

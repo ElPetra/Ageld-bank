@@ -1,0 +1,1 @@
+export { PhoneRegistration } from './ui';

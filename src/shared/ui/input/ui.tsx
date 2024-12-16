@@ -3,8 +3,7 @@ import { useTranslation } from 'react-i18next';
 import cn from 'classnames';
 
 import type { InputHTMLAttributes, RefObject } from 'react';
-
-import type { FieldValues, UseFormRegister } from 'react-hook-form';
+import type { UseFormRegister } from 'react-hook-form';
 
 import './styles.scss';
 
@@ -15,8 +14,9 @@ interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
     isError?: boolean;
     error?: string;
     disabled?: boolean;
-    field?: string;
-    register?: UseFormRegister<FieldValues>;
+    field: string;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    register: UseFormRegister<any>;
     reference?: RefObject<HTMLInputElement>;
 }
 
@@ -32,7 +32,7 @@ export const Input = memo(
         pattern = '',
         minLength,
         disabled,
-        field = 'field',
+        field,
         register,
         onBlur,
         onChange,
@@ -52,6 +52,7 @@ export const Input = memo(
             'with-label': size != 'medium' && value,
             error: error
         });
+
         return (
             <div className={fieldClass}>
                 <div className={inputContainerClass} ref={reference}>

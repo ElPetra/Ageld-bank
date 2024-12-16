@@ -4,8 +4,12 @@ import { useTranslation } from 'react-i18next';
 import { Icon, Input } from 'src/shared/ui';
 
 import type { ChangeEvent, InputHTMLAttributes } from 'react';
-import type { FieldValues, UseFormRegister } from 'react-hook-form';
+import type { UseFormRegister } from 'react-hook-form';
 
+type RegisterForPhoneAndCheckbox = UseFormRegister<{
+    phone: string,
+    checkbox: string[]
+}>;
 interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
     defaultPhone?: string;
     width?: 'auto' | 'max';
@@ -13,7 +17,7 @@ interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
     error?: string;
     clear: () => void;
     field: string;
-    register: UseFormRegister<FieldValues>;
+    register: RegisterForPhoneAndCheckbox;
 }
 
 export const PhoneInput = ({
