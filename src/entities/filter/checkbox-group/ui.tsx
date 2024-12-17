@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 import { Text, Checkbox } from 'src/shared/ui';
 
-import type { FieldValues, UseFormRegister } from 'react-hook-form';
+import type { UseFormRegister } from 'react-hook-form';
 
 import './styles.scss';
 
@@ -11,12 +11,19 @@ interface Options {
     checkboxes: string[];
 }
 
+interface FormValues {
+    phone: string;
+    checkbox: string[];
+}
+
 interface Props {
-    register?: UseFormRegister<FieldValues>;
+    register?: UseFormRegister<FormValues>;
     field?: string;
     options: Options[];
     variant?: 'primary' | 'secondary';
 }
+
+type AllowedFields = 'phone' | 'checkbox';
 
 export const CheckboxGroup = ({
     register,
@@ -25,6 +32,11 @@ export const CheckboxGroup = ({
     variant = 'primary'
 }: Props) => {
     const { t } = useTranslation();
+
+    const isFieldAllowed = (
+        field: string | undefined
+    ): field is AllowedFields => field === 'phone' || field === 'checkbox';
+
     return (
         <div className='checkbox-group'>
             {options.map(({ title, checkboxes }: Options) => (
@@ -39,13 +51,15 @@ export const CheckboxGroup = ({
                     <ul className='checkbox-group__list'>
                         {checkboxes.map(el => (
                             <li className='checkbox-group__list-item' key={el}>
-                                <Checkbox
-                                    register={register}
-                                    field={field}
-                                    value={el}
-                                >
-                                    {t(el)}
-                                </Checkbox>
+                                {isFieldAllowed(field) && (
+                                    <Checkbox
+                                        register={register}
+                                        field={field}
+                                        value={el}
+                                    >
+                                        {t(el)}
+                                    </Checkbox>
+                                )}
                             </li>
                         ))}
                     </ul>

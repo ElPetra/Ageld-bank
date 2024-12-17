@@ -9,7 +9,6 @@ import { options } from 'src/shared/model';
 import { getFilteredBankObjects } from '../lib';
 
 import type { Dispatch, SetStateAction } from 'react';
-import type { FieldValues } from 'react-hook-form';
 import type { BankObject } from 'src/shared/model';
 
 import './styles.scss';
@@ -22,7 +21,8 @@ interface Props {
 export const MapFilter = ({ bankData, setBankObjects }: Props) => {
     const { t } = useTranslation();
     const [open, setOpen] = useState<boolean>(false);
-    const { register, handleSubmit, reset } = useForm<FieldValues>({
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { register, handleSubmit, reset } = useForm<any>({
         defaultValues: { filters: [] },
         mode: 'onTouched',
         reValidateMode: 'onChange'

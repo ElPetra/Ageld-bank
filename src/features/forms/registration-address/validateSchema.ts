@@ -23,6 +23,7 @@ export const validationSchemaAdress = yup.object().shape({
         .required('Укажите улицу')
         .max(100, 'Улица не может превышать 100 символов')
         .default(''),
+    microdistrict: yup.string().required('Выберите микрорайон').default(''),
     houseNumber: yup
         .string()
         .required('Укажите номер дома')
@@ -32,7 +33,7 @@ export const validationSchemaAdress = yup.object().shape({
         .string()
         .max(10, 'Литера не может превышать 10 символов')
         .default(''),
-    buildingHouseNumber: yup
+    buildingNumberHouse: yup
         .string()
         .max(10, 'Корпус не может превышать 10 символов')
         .default(''),

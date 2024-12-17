@@ -39,9 +39,10 @@ export const RegistrationAddress = ({ setFormStep }: Props) => {
             location: '',
             streetType: '',
             street: '',
+            microdistrict: '',
             houseNumber: '',
             litera: '',
-            buildingHouseNumber: '',
+            buildingNumberHouse: '',
             apartmentNumber: '',
             postalCode: ''
         }
@@ -56,9 +57,10 @@ export const RegistrationAddress = ({ setFormStep }: Props) => {
             location: data.location || '',
             streetType: data.streetType || '',
             street: data.street || '',
+            microdistrict: data.microdistrict || '',
             houseNumber: data.houseNumber || '',
             litera: data.litera || '',
-            buildingHouseNumber: data.buildingHouseNumber || '',
+            buildingNumberHouse: data.buildingNumberHouse || '',
             apartmentNumber: data.apartmentNumber || '',
             postalCode: data.postalCode || ''
         };
@@ -93,6 +95,13 @@ export const RegistrationAddress = ({ setFormStep }: Props) => {
         { value: 'Проспект', label: t('Проспект') },
         { value: 'Бульвар', label: t('Бульвар') },
         { value: 'Переулок', label: t('Переулок') }
+    ];
+
+    const microdistrictOptions = [
+        { value: 'Центральный', label: t('Центральный') },
+        { value: 'Южный', label: t('Южный') },
+        { value: 'Западный', label: t('Западный') },
+        { value: 'Восточный', label: t('Восточный') }
     ];
 
     return (
@@ -142,6 +151,13 @@ export const RegistrationAddress = ({ setFormStep }: Props) => {
                 placeholder={t('Улица')}
                 error={errors.street?.message}
             />
+            <Select
+                label={t('Микрорайон')}
+                field='microdistrict'
+                options={microdistrictOptions}
+                register={register as unknown as UseFormRegister<FieldValues>}
+                error={errors.microdistrict?.message}
+            />
             <div className='form-container-group'>
                 <Input
                     label={t('Номер дома')}
@@ -161,11 +177,11 @@ export const RegistrationAddress = ({ setFormStep }: Props) => {
                 />
                 <Input
                     label={t('Корпус')}
-                    field='buildingHouseNumber'
+                    field='buildingNumberHouse'
                     size='large'
                     register={register}
                     placeholder={t('Корпус')}
-                    error={errors.buildingHouseNumber?.message}
+                    error={errors.buildingNumberHouse?.message}
                 />
             </div>
             <div className='form-container-group'>

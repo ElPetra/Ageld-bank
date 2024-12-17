@@ -368,5 +368,10 @@
   "Бульвар": "Boulevard",
   "Переулок": "Lane",
   "Буква": "Letter",
-  "Введите ответ": "Enter Answer"
+  "Введите ответ": "Enter Answer",
+  "Центральный": "Central",
+  "Южный": "Southern",
+  "Западный": "Western",
+  "Восточный": "Eastern",
+  "Микрорайон": "Microdistrict"
 }

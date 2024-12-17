@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import { Button, Card, Checkbox, Form, Text } from 'src/shared/ui';
 
 import type { Dispatch, SetStateAction } from 'react';
-import type { FieldValues } from 'react-hook-form';
 
 import './styles.scss';
 
@@ -19,6 +18,11 @@ interface Props {
     ) => Promise<string | void>;
 }
 
+interface FormValues {
+    phone: string;
+    checkbox: string[];
+}
+
 export const Agreement = ({
     isLast,
     setFormStep,
@@ -27,7 +31,7 @@ export const Agreement = ({
     createdAccount
 }: Props) => {
     const { t } = useTranslation();
-    const { register, handleSubmit, watch } = useForm<FieldValues>({
+    const { register, handleSubmit, watch } = useForm<FormValues>({
         mode: 'onTouched',
         reValidateMode: 'onChange',
         defaultValues: { checkbox: [] }
