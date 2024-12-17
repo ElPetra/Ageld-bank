@@ -32,7 +32,7 @@ export const accountApi = createApi({
             { type: string, currencyName: string }
         >({
             query: ({ type, currencyName }) => ({
-                url: '/new_account',
+                url: '/accounts',
                 method: 'POST',
                 body: { type, currencyName },
                 responseHandler: response => response.text()
