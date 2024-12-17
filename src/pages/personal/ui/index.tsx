@@ -16,8 +16,6 @@ import { MultiStepForm } from 'src/features/multi-step-form';
 
 import { PersonalData } from './personal-data';
 
-import type { FieldValues } from 'react-hook-form';
-
 import './styles.scss';
 
 const options = [
@@ -43,7 +41,8 @@ export const PersonalPage = () => {
     const { signedOut } = useAuth();
     const { t } = useTranslation();
     const { data: personalInfo, isLoading, error } = useGetInfoQuery();
-    const { register, handleSubmit } = useForm<FieldValues>({
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { register, handleSubmit } = useForm<any>({
         defaultValues: {
             notifications: [
                 'SMS-оповещения',

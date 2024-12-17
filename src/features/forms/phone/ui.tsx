@@ -30,7 +30,7 @@ export const PhoneForm = ({
         handleSubmit,
         watch,
         formState: { errors, isDirty, isValid }
-    } = useForm<FieldValues>({
+    } = useForm<{ phone: string, checkbox: string[] }>({
         mode: 'onTouched',
         reValidateMode: 'onChange',
         defaultValues: { phone: '', checkbox: [] }
