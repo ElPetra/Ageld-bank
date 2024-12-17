@@ -9,10 +9,10 @@ export interface Address {
     location: string;
     streetType: string;
     street: string;
-    // microdistrict: string; // ToDo данных нет в макете но есть в api (уточнить)
+    microdistrict: string;
     houseNumber: string;
     litera: string;
-    buildingHouseNumber: string;
+    buildingNumberHouse: string;
     apartmentNumber: string;
     postalCode: string;
 }
@@ -66,10 +66,10 @@ const initialState: RegistrationState = {
         location: '',
         streetType: '',
         street: '',
-        // microdistrict: '', // ToDo данных нет в макете но есть в api (уточнить)
+        microdistrict: '',
         houseNumber: '',
         litera: '',
-        buildingHouseNumber: '',
+        buildingNumberHouse: '',
         apartmentNumber: '',
         postalCode: ''
     },

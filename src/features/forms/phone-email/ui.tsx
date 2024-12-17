@@ -8,7 +8,7 @@ import { RouteName } from 'src/shared/model';
 import { useAuth } from 'src/entities/user';
 import { EmailInput, PhoneInput } from 'src/features/inputs';
 
-import type { FieldValues } from 'react-hook-form';
+import type { FieldValues, UseFormRegister } from 'react-hook-form';
 import type { Dispatch, SetStateAction } from 'react';
 
 import './styles.scss';
@@ -36,7 +36,7 @@ export const PhoneEmailForm = ({
         handleSubmit,
         watch,
         formState: { errors, isDirty, isValid }
-    } = useForm<FieldValues>({
+    } = useForm<{ phone: string, email: string, checkbox: string[] }>({
         mode: 'onTouched',
         reValidateMode: 'onChange',
         defaultValues: { phone: '', email: '', checkbox: [] }
@@ -110,7 +110,9 @@ export const PhoneEmailForm = ({
                     defaultEmail={getValues('email')}
                     clear={() => setValue('email', '')}
                     field='email'
-                    register={register}
+                    register={
+                        register as unknown as UseFormRegister<FieldValues>
+                    }
                     isError={!!errors?.email}
                     error={error}
                 />
