@@ -14,7 +14,8 @@ import {
     RegistrationAddress,
     SecretQuestion,
     DocumentForm,
-    PasswordForm
+    PasswordForm,
+    ActualAddress
 } from 'src/features/forms';
 
 import Welcome from './welcome';
@@ -69,21 +70,26 @@ export const RegistrationPage = () => {
                         },
                         {
                             id: 6,
+                            title: t('Введите адрес проживания'),
+                            component: <ActualAddress />
+                        },
+                        {
+                            id: 7,
                             title: t('Введите секретный вопрос'),
                             component: <SecretQuestion />
                         },
                         {
-                            id: 7,
+                            id: 8,
                             title: t('Введите паспортные данные'),
                             component: <DocumentForm />
                         },
                         {
-                            id: 8,
+                            id: 9,
                             title: t('Придумайте пароль'),
                             component: <PasswordForm />
                         },
                         {
-                            id: 9,
+                            id: 10,
                             title: '',
                             component: (
                                 <MessageCard

@@ -17,22 +17,22 @@ export const documentSchema = yup.object({
         .required('Введите серию и номер документа')
         .matches(
             DOCUMENT_NUMBER_PATTERN,
-            'Неверный формат серии и номера документа'
+            'Серия и номер документа должны быть в формате: 1234 123456'
         ),
     issuingCountry: yup.string().required('Выберите страну выдачи'),
     issuingAuthority: yup.string().required('Введите орган, выдавший документ'),
     codeIssuingAuthority: yup
         .string()
-        .matches(PHONE_PATTERN, 'Неверный формат кода органа')
+        .matches(PHONE_PATTERN, 'Код органа должен быть в формате: 123-456')
         .optional(),
     issueDate: yup
         .string()
         .required('Введите дату выдачи')
-        .matches(DATE_PATTERN, 'Некорректная дата'),
+        .matches(DATE_PATTERN, 'Дата должна быть в формате 2015-12-31'),
     expirationDate: yup
         .string()
         .required('Введите дату истечения срока')
-        .matches(DATE_PATTERN, 'Некорректная дата')
+        .matches(DATE_PATTERN, 'Дата должна быть в формате 2015-12-31')
         .test(
             'is-after-issueDate',
             'Дата истечения не может быть раньше даты выдачи',

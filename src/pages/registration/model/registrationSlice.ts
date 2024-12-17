@@ -41,6 +41,7 @@ export interface RegistrationState {
     secretAnswer: string;
     citizenship: string;
     registrationAddress: Address;
+    actualAddress: Address;
     document: Document;
     password: string;
 }
@@ -59,6 +60,21 @@ const initialState: RegistrationState = {
     secretAnswer: '',
     citizenship: '',
     registrationAddress: {
+        addressTypeId: 0,
+        countryCodeISO: '',
+        region: '',
+        locationType: '',
+        location: '',
+        streetType: '',
+        street: '',
+        microdistrict: '',
+        houseNumber: '',
+        litera: '',
+        buildingNumberHouse: '',
+        apartmentNumber: '',
+        postalCode: ''
+    },
+    actualAddress: {
         addressTypeId: 0,
         countryCodeISO: '',
         region: '',

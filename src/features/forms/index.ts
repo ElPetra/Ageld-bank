@@ -14,3 +14,4 @@ export { RegistrationAddress } from './registration-address';
 export { SecretQuestion } from './secret-question';
 export { DocumentForm } from './document-form';
 export { PasswordForm } from './password-form';
+export { ActualAddress } from './actual-address';
