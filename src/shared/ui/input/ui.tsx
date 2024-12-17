@@ -14,9 +14,9 @@ interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
     isError?: boolean;
     error?: string;
     disabled?: boolean;
-    field: string;
+    field?: string;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    register: UseFormRegister<any>;
+    register?: UseFormRegister<any>;
     reference?: RefObject<HTMLInputElement>;
 }
 
@@ -32,7 +32,7 @@ export const Input = memo(
         pattern = '',
         minLength,
         disabled,
-        field,
+        field = '',
         register,
         onBlur,
         onChange,

@@ -8,7 +8,12 @@ import { Checkbox } from './ui';
 
 describe('Checkbox ui', () => {
     test('match snapshot', () => {
-        const { result } = renderHook(() => useForm());
+        const { result } = renderHook(() =>
+            useForm<{
+                phone: string,
+                checkbox: string[]
+            }>()
+        );
         const { register } = result.current;
         render(
             <Checkbox register={register} field='checkbox'>
@@ -20,7 +25,12 @@ describe('Checkbox ui', () => {
     });
 
     test('Checkbox renders', () => {
-        const { result } = renderHook(() => useForm());
+        const { result } = renderHook(() =>
+            useForm<{
+                phone: string,
+                checkbox: string[]
+            }>()
+        );
         const { register } = result.current;
         render(
             <Checkbox register={register} field='checkbox'>
