@@ -33,11 +33,10 @@ export const actionHandling: Middleware = () => next => action => {
     ) {
         if (isRejectedWithValue(action) && isPayload(action.payload)) {
             toast.error('Ошибка');
-        }
-        if (
+        } else if (
             isFulfilled(action) &&
-            action.payload &&
-            typeof action.payload === 'string'
+            action.payload
+            // typeof action.payload === 'string'
         ) {
             toast.success('Успех');
         }

@@ -14,7 +14,7 @@ import './style.scss';
 export const AnswerAndQuestionPage = () => {
     const { t } = useTranslation();
     const navigate = useNavigate();
-    const [contentType, setContentType] = useState<string>('aboutCards');
+    const [contentType, setContentType] = useState<string>('generalQuestions');
 
     const handleButtonClick = (type: string) => {
         setContentType(type);
