@@ -1,4 +1,4 @@
-export const DOCUMENT_NUMBER_PATTERN = /^\d{4}\s?\d{6}$/;
+export const DOCUMENT_NUMBER_PATTERN = /^\d{10}$/;
 export const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
 export const PHONE_PATTERN = /^\d{3}-\d{3}$/;
 

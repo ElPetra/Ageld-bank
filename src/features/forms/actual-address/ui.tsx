@@ -6,9 +6,7 @@ import { useDispatch } from 'react-redux';
 import { setRegistrationData } from 'src/pages/registration';
 import { useTranslation } from 'react-i18next';
 
-import { useCitizenshipOptions } from '../model/forms-helpers';
-
-import { validationSchemaAdress } from './validateSchema';
+import { validationSchemaActualAddress } from './validateSchema';
 
 import type {
     SubmitHandler,
@@ -22,7 +20,7 @@ interface Props {
     setFormStep?: Dispatch<SetStateAction<number>>;
 }
 
-export const RegistrationAddress = ({ setFormStep }: Props) => {
+export const ActualAddress = ({ setFormStep }: Props) => {
     const dispatch = useDispatch();
     const { t } = useTranslation();
 
@@ -31,10 +29,10 @@ export const RegistrationAddress = ({ setFormStep }: Props) => {
         handleSubmit,
         formState: { errors, isValid }
     } = useForm<Address>({
-        resolver: yupResolver(validationSchemaAdress),
+        resolver: yupResolver(validationSchemaActualAddress),
         mode: 'onTouched',
         defaultValues: {
-            addressTypeId: 1,
+            addressTypeId: 0,
             countryCodeISO: '',
             region: '',
             locationType: '',
@@ -69,7 +67,7 @@ export const RegistrationAddress = ({ setFormStep }: Props) => {
 
         dispatch(
             setRegistrationData({
-                registrationAddress: sanitizedData
+                actualAddress: sanitizedData
             })
         );
 
@@ -77,6 +75,13 @@ export const RegistrationAddress = ({ setFormStep }: Props) => {
             setFormStep(curr => curr + 1);
         }
     };
+
+    const countryOptions = [
+        { value: 'Российская Федерация', label: t('Российская Федерация') },
+        { value: 'Беларусь', label: t('Беларусь') },
+        { value: 'Украина', label: t('Украина') },
+        { value: 'Армения', label: t('Армения') }
+    ];
 
     const locationTypeOptions = [
         { value: 'Город', label: t('Город') },
@@ -104,7 +109,7 @@ export const RegistrationAddress = ({ setFormStep }: Props) => {
             <Select
                 label={t('Страна')}
                 field='countryCodeISO'
-                options={useCitizenshipOptions()}
+                options={countryOptions}
                 register={register as unknown as UseFormRegister<FieldValues>}
                 error={errors.countryCodeISO?.message}
             />

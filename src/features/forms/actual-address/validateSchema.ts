@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-export const validationSchemaAdress = yup.object().shape({
+export const validationSchemaActualAddress = yup.object().shape({
     addressTypeId: yup.number().required('Укажите тип адреса'),
     countryCodeISO: yup.string().required('Выберите страну').default(''),
     region: yup

@@ -71,10 +71,9 @@ export const PhoneRegistration = ({ isLast, setFormStep }: Props) => {
             <Controller
                 name='email'
                 control={control}
-                render={({ field }) => (
+                render={() => (
                     <div>
                         <Input
-                            {...field}
                             label={t('Email')}
                             field='email'
                             register={register}

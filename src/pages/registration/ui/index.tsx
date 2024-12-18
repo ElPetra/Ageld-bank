@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux'; // временно для отладки
 
 import { Container } from 'src/shared/ui';
 import { MessageCard } from 'src/entities/message';
@@ -15,25 +14,14 @@ import {
     SecretQuestion,
     DocumentForm,
     PasswordForm
+    // ActualAddress
 } from 'src/features/forms';
 
 import Welcome from './welcome';
 
-import type { RootState } from 'src/app/store/store'; // временно для отладки
-
 export const RegistrationPage = () => {
     const [showForm, setShowForm] = useState<boolean>(false);
     const { t } = useTranslation();
-
-    const registrationData = useSelector(
-        (state: RootState) => state.registration
-    );
-    // блок временно для отладки
-    useEffect(() => {
-        // eslint-disable-next-line no-console
-        console.log('Registration Data:', registrationData);
-    }, [registrationData]);
-    // блок временно для отладки
 
     return (
         <Container>
@@ -67,23 +55,29 @@ export const RegistrationPage = () => {
                             title: t('Введите адрес регистрации'),
                             component: <RegistrationAddress />
                         },
+                        // На данный момент не актуально
+                        // {
+                        //     id: 6,
+                        //     title: t('Введите адрес проживания'),
+                        //     component: <ActualAddress />
+                        // },
                         {
-                            id: 6,
+                            id: 7,
                             title: t('Введите секретный вопрос'),
                             component: <SecretQuestion />
                         },
                         {
-                            id: 7,
+                            id: 8,
                             title: t('Введите паспортные данные'),
                             component: <DocumentForm />
                         },
                         {
-                            id: 8,
+                            id: 9,
                             title: t('Придумайте пароль'),
                             component: <PasswordForm />
                         },
                         {
-                            id: 9,
+                            id: 10,
                             title: '',
                             component: (
                                 <MessageCard
@@ -93,6 +87,19 @@ export const RegistrationPage = () => {
                                         'Кабинет пользователя успешно \n зарегистрирован'
                                     )}
                                     buttonText={t('Войти в кабинет')}
+                                />
+                            ),
+                            isResult: true
+                        },
+                        {
+                            id: 11,
+                            title: '',
+                            component: (
+                                <MessageCard
+                                    icon='failure-lady'
+                                    width={400}
+                                    title={t('Произошла ошибка')}
+                                    buttonText={t('Вернуться на главную')}
                                 />
                             ),
                             isResult: true

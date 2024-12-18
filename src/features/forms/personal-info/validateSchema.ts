@@ -8,7 +8,7 @@ export const validationSchemaPersonalInfo = yup.object().shape({
         .required('Дата рождения обязательна')
         .matches(
             BIRTH_DATE_PATTERN,
-            'Дата рождения должна быть в формате YYYY-MM-DD'
+            'Дата рождения должна быть в формате 01.02.2000'
         )
         .test(
             'is-not-in-future',

@@ -5,6 +5,10 @@ import { useDispatch } from 'react-redux';
 import { setRegistrationData } from 'src/pages/registration';
 import { useTranslation } from 'react-i18next';
 
+import { formatDate } from 'src/shared/lib';
+
+import { useCitizenshipOptions } from '../model/forms-helpers';
+
 import { validationSchemaPersonalInfo } from './validateSchema';
 
 import type { FieldValues, UseFormRegister } from 'react-hook-form';
@@ -35,19 +39,18 @@ export const PersonalInfo = ({ setFormStep }: Props) => {
     });
 
     const genderOptions = [
-        { value: 'Мужской', label: t('Мужской') },
-        { value: 'Женский', label: t('Женский') }
-    ];
-
-    const citizenshipOptions = [
-        { value: 'Российская Федерация', label: t('Российская Федерация') },
-        { value: 'Беларусь', label: t('Беларусь') },
-        { value: 'Украина', label: t('Украина') },
-        { value: 'Армения', label: t('Армения') }
+        { value: 'М', label: t('Мужской') },
+        { value: 'Ж', label: t('Женский') }
     ];
 
     const onSubmit = (data: PersonalInfoFormValues) => {
-        dispatch(setRegistrationData(data));
+        dispatch(
+            setRegistrationData({
+                ...data,
+                birthday: formatDate(data.birthday)
+            })
+        );
+
         if (setFormStep) {
             setFormStep(curr => curr + 1);
         }
@@ -74,7 +77,7 @@ export const PersonalInfo = ({ setFormStep }: Props) => {
             <Select
                 label={t('Гражданство')}
                 field='citizenship'
-                options={citizenshipOptions}
+                options={useCitizenshipOptions()}
                 register={register as unknown as UseFormRegister<FieldValues>}
                 error={errors.citizenship?.message}
             />

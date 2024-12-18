@@ -41,6 +41,7 @@ export interface RegistrationState {
     secretAnswer: string;
     citizenship: string;
     registrationAddress: Address;
+    actualAddress: Address;
     document: Document;
     password: string;
 }
@@ -59,7 +60,7 @@ const initialState: RegistrationState = {
     secretAnswer: '',
     citizenship: '',
     registrationAddress: {
-        addressTypeId: 0,
+        addressTypeId: 1,
         countryCodeISO: '',
         region: '',
         locationType: '',
@@ -72,6 +73,22 @@ const initialState: RegistrationState = {
         buildingNumberHouse: '',
         apartmentNumber: '',
         postalCode: ''
+    },
+    // В данной версии актуальный адрес пока не используется
+    actualAddress: {
+        addressTypeId: 2,
+        countryCodeISO: 'RUS',
+        region: 'empty',
+        locationType: 'empty',
+        location: 'empty',
+        streetType: 'empty',
+        street: 'empty',
+        microdistrict: 'empty',
+        houseNumber: '1',
+        litera: '',
+        buildingNumberHouse: '1',
+        apartmentNumber: '1',
+        postalCode: '123456'
     },
     document: {
         documentTypeId: 0,

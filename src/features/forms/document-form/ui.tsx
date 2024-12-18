@@ -5,6 +5,10 @@ import { setRegistrationData } from 'src/pages/registration';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useTranslation } from 'react-i18next';
 
+import { formatDate } from 'src/shared/lib';
+
+import { useCitizenshipOptions } from '../model/forms-helpers';
+
 import { documentSchema } from './validateSchema';
 
 import type { FieldValues, UseFormRegister } from 'react-hook-form';
@@ -47,17 +51,10 @@ export const DocumentForm = ({ setFormStep }: Props) => {
     });
 
     const documentTypeOptions = [
-        { value: '0', label: t('Паспорт гражданина РФ') },
+        { value: '0', label: t('Паспорт') },
         { value: '1', label: t('Свидетельство о рождении') },
         { value: '2', label: t('Общегражданский загранпаспорт') },
         { value: '3', label: t('Паспорт моряка/удостоверение личности моряка') }
-    ];
-
-    const countryOptions = [
-        { value: 'Российская Федерация', label: t('Российская Федерация') },
-        { value: 'Беларусь', label: t('Беларусь') },
-        { value: 'Украина', label: t('Украина') },
-        { value: 'Армения', label: t('Армения') }
     ];
 
     const onSubmit = (data: DocumentFormFields) => {
@@ -69,12 +66,11 @@ export const DocumentForm = ({ setFormStep }: Props) => {
                     issuingCountry: data.issuingCountry,
                     issuingAuthority: data.issuingAuthority,
                     codeIssuingAuthority: data.codeIssuingAuthority || '',
-                    issueDate: data.issueDate,
-                    expirationDate: data.expirationDate
+                    issueDate: formatDate(data.issueDate),
+                    expirationDate: formatDate(data.expirationDate)
                 }
             })
         );
-
         if (setFormStep) {
             setFormStep(curr => curr + 1);
         }
@@ -100,7 +96,7 @@ export const DocumentForm = ({ setFormStep }: Props) => {
             <Select
                 label={t('Страна выдачи документа')}
                 field='issuingCountry'
-                options={countryOptions}
+                options={useCitizenshipOptions()}
                 register={register as unknown as UseFormRegister<FieldValues>}
                 error={errors.issuingCountry?.message}
             />
