@@ -60,7 +60,7 @@ const initialState: RegistrationState = {
     secretAnswer: '',
     citizenship: '',
     registrationAddress: {
-        addressTypeId: 0,
+        addressTypeId: 1,
         countryCodeISO: '',
         region: '',
         locationType: '',
@@ -85,7 +85,7 @@ const initialState: RegistrationState = {
         street: 'empty',
         microdistrict: 'empty',
         houseNumber: '1',
-        litera: 'А',
+        litera: '',
         buildingNumberHouse: '1',
         apartmentNumber: '1',
         postalCode: '123456'

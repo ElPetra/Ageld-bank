@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux'; // временно для отладки
 
 import { Container } from 'src/shared/ui';
 import { MessageCard } from 'src/entities/message';
@@ -20,21 +19,9 @@ import {
 
 import Welcome from './welcome';
 
-import type { RootState } from 'src/app/store/store'; // временно для отладки
-
 export const RegistrationPage = () => {
     const [showForm, setShowForm] = useState<boolean>(false);
     const { t } = useTranslation();
-
-    const registrationData = useSelector(
-        (state: RootState) => state.registration
-    );
-    // блок временно для отладки
-    useEffect(() => {
-        // eslint-disable-next-line no-console
-        console.log('Registration Data:', registrationData);
-    }, [registrationData]);
-    // блок временно для отладки
 
     return (
         <Container>
@@ -100,6 +87,19 @@ export const RegistrationPage = () => {
                                         'Кабинет пользователя успешно \n зарегистрирован'
                                     )}
                                     buttonText={t('Войти в кабинет')}
+                                />
+                            ),
+                            isResult: true
+                        },
+                        {
+                            id: 11,
+                            title: '',
+                            component: (
+                                <MessageCard
+                                    icon='failure-lady'
+                                    width={400}
+                                    title={t('Произошла ошибка')}
+                                    buttonText={t('Вернуться на главную')}
                                 />
                             ),
                             isResult: true

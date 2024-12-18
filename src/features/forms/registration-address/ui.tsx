@@ -32,7 +32,7 @@ export const RegistrationAddress = ({ setFormStep }: Props) => {
         resolver: yupResolver(validationSchemaAdress),
         mode: 'onTouched',
         defaultValues: {
-            addressTypeId: 0,
+            addressTypeId: 1,
             countryCodeISO: '',
             region: '',
             locationType: '',
