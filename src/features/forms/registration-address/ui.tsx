@@ -6,6 +6,8 @@ import { useDispatch } from 'react-redux';
 import { setRegistrationData } from 'src/pages/registration';
 import { useTranslation } from 'react-i18next';
 
+import { useCitizenshipOptions } from '../model/forms-helpers';
+
 import { validationSchemaAdress } from './validateSchema';
 
 import type {
@@ -76,13 +78,6 @@ export const RegistrationAddress = ({ setFormStep }: Props) => {
         }
     };
 
-    const countryOptions = [
-        { value: 'RUS', label: t('Российская Федерация') },
-        { value: 'BEL', label: t('Беларусь') },
-        { value: 'UKR', label: t('Украина') },
-        { value: 'ARM', label: t('Армения') }
-    ];
-
     const locationTypeOptions = [
         { value: 'Город', label: t('Город') },
         { value: 'Деревня', label: t('Деревня') },
@@ -109,7 +104,7 @@ export const RegistrationAddress = ({ setFormStep }: Props) => {
             <Select
                 label={t('Страна')}
                 field='countryCodeISO'
-                options={countryOptions}
+                options={useCitizenshipOptions()}
                 register={register as unknown as UseFormRegister<FieldValues>}
                 error={errors.countryCodeISO?.message}
             />

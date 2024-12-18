@@ -5,6 +5,8 @@ import { useDispatch } from 'react-redux';
 import { setRegistrationData } from 'src/pages/registration';
 import { useTranslation } from 'react-i18next';
 
+import { useCitizenshipOptions } from '../model/forms-helpers';
+
 import { validationSchemaPersonalInfo } from './validateSchema';
 
 import type { FieldValues, UseFormRegister } from 'react-hook-form';
@@ -39,12 +41,12 @@ export const PersonalInfo = ({ setFormStep }: Props) => {
         { value: 'Ж', label: t('Женский') }
     ];
 
-    const citizenshipOptions = [
-        { value: 'RUS', label: t('Российская Федерация') },
-        { value: 'BEL', label: t('Беларусь') },
-        { value: 'UKR', label: t('Украина') },
-        { value: 'ARM', label: t('Армения') }
-    ];
+    // const citizenshipOptions = [
+    //     { value: 'RUS', label: t('Российская Федерация') },
+    //     { value: 'BEL', label: t('Беларусь') },
+    //     { value: 'UKR', label: t('Украина') },
+    //     { value: 'ARM', label: t('Армения') }
+    // ];
 
     const onSubmit = (data: PersonalInfoFormValues) => {
         const [year, month, day] = data.birthday.split('-');
@@ -83,7 +85,7 @@ export const PersonalInfo = ({ setFormStep }: Props) => {
             <Select
                 label={t('Гражданство')}
                 field='citizenship'
-                options={citizenshipOptions}
+                options={useCitizenshipOptions()}
                 register={register as unknown as UseFormRegister<FieldValues>}
                 error={errors.citizenship?.message}
             />

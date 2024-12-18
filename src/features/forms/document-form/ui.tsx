@@ -5,6 +5,8 @@ import { setRegistrationData } from 'src/pages/registration';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useTranslation } from 'react-i18next';
 
+import { useCitizenshipOptions } from '../model/forms-helpers';
+
 import { documentSchema } from './validateSchema';
 
 import type { FieldValues, UseFormRegister } from 'react-hook-form';
@@ -53,13 +55,6 @@ export const DocumentForm = ({ setFormStep }: Props) => {
         { value: '3', label: t('Паспорт моряка/удостоверение личности моряка') }
     ];
 
-    const countryOptions = [
-        { value: 'RUS', label: t('Российская Федерация') },
-        { value: 'BEL', label: t('Беларусь') },
-        { value: 'UKR', label: t('Украина') },
-        { value: 'ARM', label: t('Армения') }
-    ];
-
     const formatDate = (isoDate: string) => {
         const [year, month, day] = isoDate.split('-');
         return `${day}.${month}.${year}`;
@@ -104,7 +99,7 @@ export const DocumentForm = ({ setFormStep }: Props) => {
             <Select
                 label={t('Страна выдачи документа')}
                 field='issuingCountry'
-                options={countryOptions}
+                options={useCitizenshipOptions()}
                 register={register as unknown as UseFormRegister<FieldValues>}
                 error={errors.issuingCountry?.message}
             />
