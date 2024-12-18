@@ -5,6 +5,8 @@ import { setRegistrationData } from 'src/pages/registration';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useTranslation } from 'react-i18next';
 
+import { formatDate } from 'src/shared/lib';
+
 import { useCitizenshipOptions } from '../model/forms-helpers';
 
 import { documentSchema } from './validateSchema';
@@ -54,11 +56,6 @@ export const DocumentForm = ({ setFormStep }: Props) => {
         { value: '2', label: t('Общегражданский загранпаспорт') },
         { value: '3', label: t('Паспорт моряка/удостоверение личности моряка') }
     ];
-
-    const formatDate = (isoDate: string) => {
-        const [year, month, day] = isoDate.split('-');
-        return `${day}.${month}.${year}`;
-    };
 
     const onSubmit = (data: DocumentFormFields) => {
         dispatch(
