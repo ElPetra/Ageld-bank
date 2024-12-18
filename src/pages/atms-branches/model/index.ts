@@ -72,5 +72,31 @@ export const data: BankObject[] = [
             { open: '09:00', close: '18:00' },
             'weekend'
         ]
+    },
+    {
+        objectNumber: 4,
+        coordinates: {
+            lat: 55.756315,
+            lon: 37.588889
+        },
+        region: '',
+        location: 'Москва',
+        street: 'Поварская',
+        microdistrict: '',
+        buildingNumberHouse: '27',
+        houseNumber: '27',
+        objectTypeName: 'branch',
+        phoneNumber: '+7 (800) 200 06 60',
+        email: 'info.msk@a-geld.ru',
+        segment: 'private',
+        schedule: [
+            { open: '07:00', close: '18:00' },
+            { open: '07:00', close: '18:00' },
+            { open: '07:00', close: '18:00' },
+            { open: '07:00', close: '18:00' },
+            { open: '07:00', close: '18:00' },
+            { open: '09:00', close: '18:00' },
+            'weekend'
+        ]
     }
 ];
