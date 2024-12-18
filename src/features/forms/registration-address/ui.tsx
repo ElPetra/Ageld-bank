@@ -77,10 +77,10 @@ export const RegistrationAddress = ({ setFormStep }: Props) => {
     };
 
     const countryOptions = [
-        { value: 'Российская Федерация', label: t('Российская Федерация') },
-        { value: 'Беларусь', label: t('Беларусь') },
-        { value: 'Украина', label: t('Украина') },
-        { value: 'Армения', label: t('Армения') }
+        { value: 'RUS', label: t('Российская Федерация') },
+        { value: 'BEL', label: t('Беларусь') },
+        { value: 'UKR', label: t('Украина') },
+        { value: 'ARM', label: t('Армения') }
     ];
 
     const locationTypeOptions = [

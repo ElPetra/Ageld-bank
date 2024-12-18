@@ -47,18 +47,23 @@ export const DocumentForm = ({ setFormStep }: Props) => {
     });
 
     const documentTypeOptions = [
-        { value: '0', label: t('Паспорт гражданина РФ') },
+        { value: '0', label: t('Паспорт') },
         { value: '1', label: t('Свидетельство о рождении') },
         { value: '2', label: t('Общегражданский загранпаспорт') },
         { value: '3', label: t('Паспорт моряка/удостоверение личности моряка') }
     ];
 
     const countryOptions = [
-        { value: 'Российская Федерация', label: t('Российская Федерация') },
-        { value: 'Беларусь', label: t('Беларусь') },
-        { value: 'Украина', label: t('Украина') },
-        { value: 'Армения', label: t('Армения') }
+        { value: 'RUS', label: t('Российская Федерация') },
+        { value: 'BEL', label: t('Беларусь') },
+        { value: 'UKR', label: t('Украина') },
+        { value: 'ARM', label: t('Армения') }
     ];
+
+    const formatDate = (isoDate: string) => {
+        const [year, month, day] = isoDate.split('-');
+        return `${day}.${month}.${year}`;
+    };
 
     const onSubmit = (data: DocumentFormFields) => {
         dispatch(
@@ -69,12 +74,11 @@ export const DocumentForm = ({ setFormStep }: Props) => {
                     issuingCountry: data.issuingCountry,
                     issuingAuthority: data.issuingAuthority,
                     codeIssuingAuthority: data.codeIssuingAuthority || '',
-                    issueDate: data.issueDate,
-                    expirationDate: data.expirationDate
+                    issueDate: formatDate(data.issueDate),
+                    expirationDate: formatDate(data.expirationDate)
                 }
             })
         );
-
         if (setFormStep) {
             setFormStep(curr => curr + 1);
         }

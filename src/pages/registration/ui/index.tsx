@@ -14,8 +14,8 @@ import {
     RegistrationAddress,
     SecretQuestion,
     DocumentForm,
-    PasswordForm,
-    ActualAddress
+    PasswordForm
+    // ActualAddress
 } from 'src/features/forms';
 
 import Welcome from './welcome';
@@ -68,11 +68,12 @@ export const RegistrationPage = () => {
                             title: t('Введите адрес регистрации'),
                             component: <RegistrationAddress />
                         },
-                        {
-                            id: 6,
-                            title: t('Введите адрес проживания'),
-                            component: <ActualAddress />
-                        },
+                        // На данный момент не актуально
+                        // {
+                        //     id: 6,
+                        //     title: t('Введите адрес проживания'),
+                        //     component: <ActualAddress />
+                        // },
                         {
                             id: 7,
                             title: t('Введите секретный вопрос'),

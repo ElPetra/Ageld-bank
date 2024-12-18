@@ -74,20 +74,21 @@ const initialState: RegistrationState = {
         apartmentNumber: '',
         postalCode: ''
     },
+    // В данной версии актуальный адрес пока не используется
     actualAddress: {
-        addressTypeId: 0,
-        countryCodeISO: '',
-        region: '',
-        locationType: '',
-        location: '',
-        streetType: '',
-        street: '',
-        microdistrict: '',
-        houseNumber: '',
-        litera: '',
-        buildingNumberHouse: '',
-        apartmentNumber: '',
-        postalCode: ''
+        addressTypeId: 2,
+        countryCodeISO: 'RUS',
+        region: 'empty',
+        locationType: 'empty',
+        location: 'empty',
+        streetType: 'empty',
+        street: 'empty',
+        microdistrict: 'empty',
+        houseNumber: '1',
+        litera: 'А',
+        buildingNumberHouse: '1',
+        apartmentNumber: '1',
+        postalCode: '123456'
     },
     document: {
         documentTypeId: 0,

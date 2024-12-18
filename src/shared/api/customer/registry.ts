@@ -1,7 +1,9 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
+import type { RegistrationState } from 'src/pages/registration/model/registrationSlice';
+
 const registryBaseUrl =
-    import.meta.env.VITE_BASEURL_GATEWAY + '/api/v1/customer/registry';
+    import.meta.env.VITE_BASEURL_GATEWAY + '/api/v1/customer/customers';
 
 export const registryApi = createApi({
     reducerPath: 'registryApi',
@@ -12,6 +14,7 @@ export const registryApi = createApi({
             return headers;
         }
     }),
+    // Старая регистрация не удалял, оставил для совместимости
     tagTypes: ['Registry'],
     endpoints: builder => ({
         checkMissRegistration: builder.mutation<{ customerId: string }, string>(
@@ -52,6 +55,13 @@ export const registryApi = createApi({
                 method: 'POST',
                 body: { password, customerId }
             })
+        }),
+        createNewClient: builder.mutation<void, RegistrationState>({
+            query: registrationData => ({
+                url: '/new_client',
+                method: 'POST',
+                body: registrationData
+            })
         })
     })
 });
@@ -60,5 +70,6 @@ export const {
     useCreateProfileMutation,
     useCheckMissRegistrationMutation,
     useCheckStatusMutation,
-    useRecoveryPasswordMutation
+    useRecoveryPasswordMutation,
+    useCreateNewClientMutation
 } = registryApi;
