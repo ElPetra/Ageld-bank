@@ -51,10 +51,10 @@ export const DocumentForm = ({ setFormStep }: Props) => {
     });
 
     const documentTypeOptions = [
-        { value: '0', label: t('Паспорт') },
-        { value: '1', label: t('Свидетельство о рождении') },
-        { value: '2', label: t('Общегражданский загранпаспорт') },
-        { value: '3', label: t('Паспорт моряка/удостоверение личности моряка') }
+        { value: '1', label: t('Паспорт') },
+        { value: '2', label: t('Свидетельство о рождении') },
+        { value: '3', label: t('Общегражданский загранпаспорт') },
+        { value: '4', label: t('Паспорт моряка/удостоверение личности моряка') }
     ];
 
     const onSubmit = (data: DocumentFormFields) => {
