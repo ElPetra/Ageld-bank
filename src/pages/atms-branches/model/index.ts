@@ -74,7 +74,7 @@ export const data: BankObject[] = [
         ]
     },
     {
-        objectNumber: 4,
+        objectNumber: 273,
         coordinates: {
             lat: 55.756315,
             lon: 37.588889
@@ -83,8 +83,268 @@ export const data: BankObject[] = [
         location: 'Москва',
         street: 'Поварская',
         microdistrict: '',
-        buildingNumberHouse: '27',
+        buildingNumberHouse: '',
         houseNumber: '27',
+        objectTypeName: 'branch',
+        phoneNumber: '+7 (800) 200 06 60',
+        email: 'info.msk@a-geld.ru',
+        segment: 'private',
+        schedule: [
+            { open: '07:00', close: '18:00' },
+            { open: '07:00', close: '18:00' },
+            { open: '07:00', close: '18:00' },
+            { open: '07:00', close: '18:00' },
+            { open: '07:00', close: '18:00' },
+            { open: '09:00', close: '18:00' },
+            'weekend'
+        ]
+    },
+    {
+        objectNumber: 274,
+        coordinates: {
+            lat: 55.743314,
+            lon: 37.598268
+        },
+        region: '',
+        location: 'Москва',
+        street: 'Пречистенка',
+        microdistrict: '',
+        buildingNumberHouse: '',
+        houseNumber: '7',
+        objectTypeName: 'branch',
+        phoneNumber: '+7 (800) 200 06 60',
+        email: 'info.msk@a-geld.ru',
+        segment: 'private',
+        schedule: [
+            { open: '07:00', close: '18:00' },
+            { open: '07:00', close: '18:00' },
+            { open: '07:00', close: '18:00' },
+            { open: '07:00', close: '18:00' },
+            { open: '07:00', close: '18:00' },
+            { open: '09:00', close: '18:00' },
+            'weekend'
+        ]
+    },
+    {
+        objectNumber: 275,
+        coordinates: {
+            lat: 55.730365,
+            lon: 37.633634
+        },
+        region: '',
+        location: 'Москва',
+        street: 'Валовая',
+        microdistrict: '',
+        buildingNumberHouse: '',
+        houseNumber: '3',
+        objectTypeName: 'branch',
+        phoneNumber: '+7 (800) 200 06 60',
+        email: 'info.msk@a-geld.ru',
+        segment: 'private',
+        schedule: [
+            { open: '07:00', close: '18:00' },
+            { open: '07:00', close: '18:00' },
+            { open: '07:00', close: '18:00' },
+            { open: '07:00', close: '18:00' },
+            { open: '07:00', close: '18:00' },
+            { open: '09:00', close: '18:00' },
+            'weekend'
+        ]
+    },
+    {
+        objectNumber: 276,
+        coordinates: {
+            lat: 55.758802,
+            lon: 37.642698
+        },
+        region: '',
+        location: 'Москва',
+        street: 'Покровка',
+        microdistrict: '',
+        buildingNumberHouse: '',
+        houseNumber: '8',
+        objectTypeName: 'branch',
+        phoneNumber: '+7 (800) 200 06 60',
+        email: 'info.msk@a-geld.ru',
+        segment: 'private',
+        schedule: [
+            { open: '07:00', close: '18:00' },
+            { open: '07:00', close: '18:00' },
+            { open: '07:00', close: '18:00' },
+            { open: '07:00', close: '18:00' },
+            { open: '07:00', close: '18:00' },
+            { open: '09:00', close: '18:00' },
+            'weekend'
+        ]
+    },
+    {
+        objectNumber: 277,
+        coordinates: {
+            lat: 55.76759,
+            lon: 37.600945
+        },
+        region: '',
+        location: 'Москва',
+        street: 'Тверская',
+        microdistrict: '',
+        buildingNumberHouse: '',
+        houseNumber: '22',
+        objectTypeName: 'branch',
+        phoneNumber: '+7 (800) 200 06 60',
+        email: 'info.msk@a-geld.ru',
+        segment: 'private',
+        schedule: [
+            { open: '07:00', close: '18:00' },
+            { open: '07:00', close: '18:00' },
+            { open: '07:00', close: '18:00' },
+            { open: '07:00', close: '18:00' },
+            { open: '07:00', close: '18:00' },
+            { open: '09:00', close: '18:00' },
+            'weekend'
+        ]
+    },
+    {
+        objectNumber: 11,
+        coordinates: {
+            lat: 55.76759,
+            lon: 37.600945
+        },
+        region: '',
+        location: 'Москва',
+        street: 'Тверская',
+        microdistrict: '',
+        buildingNumberHouse: '',
+        houseNumber: '19',
+        objectTypeName: 'ATM',
+        phoneNumber: '',
+        email: '',
+        segment: 'private',
+        schedule: [
+            { open: '00:00', close: '24:00' },
+            { open: '00:00', close: '24:00' },
+            { open: '00:00', close: '24:00' },
+            { open: '00:00', close: '24:00' },
+            { open: '00:00', close: '24:00' },
+            { open: '00:00', close: '24:00' },
+            { open: '00:00', close: '24:00' }
+        ]
+    },
+    {
+        objectNumber: 114,
+        coordinates: {
+            lat: 55.797508,
+            lon: 37.93589
+        },
+        region: 'Балашиха',
+        location: 'Московская область',
+        street: 'Ленина',
+        microdistrict: '',
+        buildingNumberHouse: '',
+        houseNumber: '21',
+        objectTypeName: 'branch',
+        phoneNumber: '+7 (800) 200 06 60',
+        email: 'info.msk@a-geld.ru',
+        segment: 'private',
+        schedule: [
+            { open: '07:00', close: '18:00' },
+            { open: '07:00', close: '18:00' },
+            { open: '07:00', close: '18:00' },
+            { open: '07:00', close: '18:00' },
+            { open: '07:00', close: '18:00' },
+            { open: '09:00', close: '18:00' },
+            'weekend'
+        ]
+    },
+    {
+        objectNumber: 115,
+        coordinates: {
+            lat: 55.799411,
+            lon: 37.931587
+        },
+        region: 'Балашиха',
+        location: 'Московская область',
+        street: 'Крупской',
+        microdistrict: '',
+        buildingNumberHouse: '',
+        houseNumber: '9',
+        objectTypeName: 'branch',
+        phoneNumber: '+7 (800) 200 06 60',
+        email: 'info.msk@a-geld.ru',
+        segment: 'private',
+        schedule: [
+            { open: '07:00', close: '18:00' },
+            { open: '07:00', close: '18:00' },
+            { open: '07:00', close: '18:00' },
+            { open: '07:00', close: '18:00' },
+            { open: '07:00', close: '18:00' },
+            { open: '09:00', close: '18:00' },
+            'weekend'
+        ]
+    },
+    {
+        objectNumber: 231,
+        coordinates: {
+            lat: 55.430845,
+            lon: 37.548384
+        },
+        region: 'Подольск',
+        location: 'Московская область',
+        street: 'Комсомольская',
+        microdistrict: '',
+        buildingNumberHouse: '',
+        houseNumber: '46',
+        objectTypeName: 'branch',
+        phoneNumber: '+7 (800) 200 06 60',
+        email: 'info.msk@a-geld.ru',
+        segment: 'private',
+        schedule: [
+            { open: '07:00', close: '18:00' },
+            { open: '07:00', close: '18:00' },
+            { open: '07:00', close: '18:00' },
+            { open: '07:00', close: '18:00' },
+            { open: '07:00', close: '18:00' },
+            { open: '09:00', close: '18:00' },
+            'weekend'
+        ]
+    },
+    {
+        objectNumber: 232,
+        coordinates: {
+            lat: 55.434947,
+            lon: 37.541386
+        },
+        region: 'Подольск',
+        location: 'Московская область',
+        street: 'Февральская',
+        microdistrict: '',
+        buildingNumberHouse: '',
+        houseNumber: '99',
+        objectTypeName: 'branch',
+        phoneNumber: '+7 (800) 200 06 60',
+        email: 'info.msk@a-geld.ru',
+        segment: 'private',
+        schedule: [
+            { open: '07:00', close: '18:00' },
+            { open: '07:00', close: '18:00' },
+            { open: '07:00', close: '18:00' },
+            { open: '07:00', close: '18:00' },
+            { open: '07:00', close: '18:00' },
+            { open: '09:00', close: '18:00' },
+            'weekend'
+        ]
+    },
+    {
+        objectNumber: 315,
+        coordinates: {
+            lat: 56.011917,
+            lon: 37.842349
+        },
+        region: 'Пушкино',
+        location: 'Московская область',
+        street: 'Московский проспект',
+        microdistrict: '',
+        buildingNumberHouse: '',
+        houseNumber: '1',
         objectTypeName: 'branch',
         phoneNumber: '+7 (800) 200 06 60',
         email: 'info.msk@a-geld.ru',

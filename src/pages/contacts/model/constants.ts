@@ -11,22 +11,22 @@ export const contactsMatcher = {
 };
 
 export const individuals = {
-    forRus: 'x-xxx-xxx-xx-xx',
-    forMsk: 'x-xxx-xxx-xx-xx',
-    email: 'xxxxxxx@xxxxxxx',
-    forNotRus: 'x-xxx-xxx-xx-xx'
+    forRus: '+7 (800) 200 06 60',
+    forMsk: '+7 (800) 200 06 70',
+    email: 'info.msk@a-geld.ru',
+    forNotRus: '+7 (800) 200 06 80'
 };
 
 export const corporate = {
-    forRus: 'x-xxx-xxx-xx-xx',
-    forMsk: 'x-xxx-xxx-xx-xx',
-    email: 'xxxxxxx@xxxxxxx'
+    forRus: '+7 (800) 200 06 40',
+    forMsk: '+7 (800) 200 06 50',
+    email: 'info.msk@a-geld.ru'
 };
 
 export const support = {
-    forRus: 'x-xxx-xxx-xx-xx',
-    forMsk: 'x-xxx-xxx-xx-xx',
-    email: 'xxxxxxx@xxxxxxx'
+    forRus: '+7 (800) 200 06 10',
+    forMsk: '+7 (800) 200 06 20',
+    email: 'info.msk@a-geld.ru'
 };
 
 export const socials: Array<Socials> = [
