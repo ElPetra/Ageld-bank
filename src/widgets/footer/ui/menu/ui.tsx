@@ -9,14 +9,27 @@ export const Menu = () => {
     const { t } = useTranslation();
     return (
         <nav className='footer__menu'>
-            <Link to={RouteName.ATMS_AND_BRANCHES}>
+            <Link
+                to={RouteName.ATMS_AND_BRANCHES}
+                id='menu-link-atms-and-branches'
+            >
                 {t('Банкоматы и отделения')}
             </Link>
-            <Link to={RouteName.MAIN_PAGE}>{t('Курсы валют')}</Link>
-            <Link to={RouteName.CONTACTS_PAGE}>{t('Контакты')}</Link>
-            <Link to={RouteName.MAIN_PAGE}>{t('Список услуг')}</Link>
-            <Link to={RouteName.MAIN_PAGE}>{t('Документы')}</Link>
-            <Link to={RouteName.QAA_PAGE}>{t('Вопросы и ответы')}</Link>
+            <Link to={RouteName.MAIN_PAGE} id='menu-link-currency-rates'>
+                {t('Курсы валют')}
+            </Link>
+            <Link to={RouteName.CONTACTS_PAGE} id='menu-link-contacts'>
+                {t('Контакты')}
+            </Link>
+            <Link to={RouteName.MAIN_PAGE} id='menu-link-service-list'>
+                {t('Список услуг')}
+            </Link>
+            <Link to={RouteName.MAIN_PAGE} id='menu-link-documents'>
+                {t('Документы')}
+            </Link>
+            <Link to={RouteName.QAA_PAGE} id='menu-link-qaa'>
+                {t('Вопросы и ответы')}
+            </Link>
         </nav>
     );
 };

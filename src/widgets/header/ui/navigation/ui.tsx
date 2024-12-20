@@ -23,27 +23,48 @@ export const Navigation = ({ direction = 'row', setVisible }: Props) => {
                 className='navigation__default'
                 onClick={() => setVisible && setVisible(false)}
             >
-                <Link to={RouteName.ATMS_AND_BRANCHES}>
+                <Link
+                    to={RouteName.ATMS_AND_BRANCHES}
+                    id='link-atms-and-branches'
+                >
                     {t('Банкоматы и отделения')}
                 </Link>
-                <Link to={RouteName.MAIN_PAGE}>{t('Курсы валют')}</Link>
-                <Link to={RouteName.CONTACTS_PAGE}>{t('Контакты')}</Link>
-                <Link to={RouteName.MAIN_PAGE}>{t('Список услуг')}</Link>
-                <Link to={RouteName.MAIN_PAGE}>{t('Документы')}</Link>
-                <Link to={RouteName.QAA_PAGE}>{t('Вопросы и ответы')}</Link>
+                <Link to={RouteName.MAIN_PAGE} id='link-currency-rates'>
+                    {t('Курсы валют')}
+                </Link>
+                <Link to={RouteName.CONTACTS_PAGE} id='link-contacts'>
+                    {t('Контакты')}
+                </Link>
+                <Link to={RouteName.MAIN_PAGE} id='link-service-list'>
+                    {t('Список услуг')}
+                </Link>
+                <Link to={RouteName.MAIN_PAGE} id='link-documents'>
+                    {t('Документы')}
+                </Link>
+                <Link to={RouteName.QAA_PAGE} id='link-qaa'>
+                    {t('Вопросы и ответы')}
+                </Link>
             </ul>
             <ul className='navigation__additional'>
                 {authStatus === AuthStatus.SignedIn ? (
                     <>
-                        <Link to={RouteName.PERSONAL_PAGE}>
+                        <Link
+                            to={RouteName.PERSONAL_PAGE}
+                            id='link-personal-data'
+                        >
                             {t('Личные данные')}
                         </Link>
                         <Logout />
                     </>
                 ) : (
                     <>
-                        <Link to={RouteName.LOGIN_PAGE}>{t('Войти')}</Link>
-                        <Link to={RouteName.REGISTRATION_PAGE}>
+                        <Link to={RouteName.LOGIN_PAGE} id='link-login'>
+                            {t('Войти')}
+                        </Link>
+                        <Link
+                            to={RouteName.REGISTRATION_PAGE}
+                            id='link-registration'
+                        >
                             {t('Регистрация')}
                         </Link>
                     </>
