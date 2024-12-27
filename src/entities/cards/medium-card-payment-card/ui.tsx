@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { Text } from 'src/shared/ui';
 // import { formatExpirationDate } from 'src/shared/lib';
 import { currencySign } from 'src/shared/lib';
@@ -8,9 +7,11 @@ import classNames from 'classnames';
 
 import styles from './styles.module.scss';
 
-import type { CustomerCard } from 'src/shared/model';
+import type { CustomerCard, TPaySystems } from 'src/shared/model';
 
-export const MediumCardPaymentCard: React.FC<CustomerCard> = props => {
+export const MediumCardPaymentCard = (
+    props: CustomerCard & { paySystem: TPaySystems }
+) => {
     const { number, type, currency, expires, paySystem, balance } = props;
     const { t } = useTranslation();
     return (

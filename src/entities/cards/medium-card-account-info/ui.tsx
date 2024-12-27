@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { useState } from 'react';
 import { Icon, Label, Text } from 'src/shared/ui';
 import { useTranslation } from 'react-i18next';
@@ -14,7 +13,7 @@ import {
 
 import styles from './styles.module.scss';
 
-export const MediumCardAccountInfo: React.FC<AccountDetails> = props => {
+export const MediumCardAccountInfo = (props: AccountDetails) => {
     const { number, name, balance, status, currency, isMaster } = props;
 
     const [isShowNumber, setIsShowNumber] = useState(false);

@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-
 import { useTranslation } from 'react-i18next';
 
 import classNames from 'classnames';
@@ -54,16 +52,15 @@ const tempData: AccountDetails[] = [
         blockComment: ''
     }
 ];
+type TAccountsList = { className?: string };
 
-export const AccountsList: React.FC<{ classStyle?: string }> = ({
-    classStyle
-}) => {
+export const AccountsList = ({ className }: TAccountsList) => {
     const { t } = useTranslation();
     return (
         <div
             className={
-                classStyle
-                    ? classNames(classStyle, styles.listContainer)
+                className
+                    ? classNames(className, styles.listContainer)
                     : styles.listContainer
             }
         >

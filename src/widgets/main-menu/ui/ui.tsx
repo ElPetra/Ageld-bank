@@ -24,9 +24,9 @@ export function MainMenu() {
             <Input width='max' label={t('search')}>
                 <Icon icon={'search'} />
             </Input>
-            <TransfersList classStyle={styles.transfers} />
-            <PaymentsList classStyle={styles.payments} />
-            <AccountsList classStyle={styles.accounts} />
+            <TransfersList className={styles.transfers} />
+            <PaymentsList className={styles.payments} />
+            <AccountsList className={styles.accounts} />
         </div>
     ) : (
         <div className={styles.mainMenuGuestContainer}>
