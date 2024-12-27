@@ -1,0 +1,22 @@
+.label {
+  border-radius: var(--large-border-radius);
+  padding: 6px 13px;
+  height: 26px;
+  font-size: 12px;
+  line-height: 14px;
+  &.success {
+    background-color: var(--success);
+  }
+  &.warning {
+    background-color: var(--warning);
+  }
+  &.error {
+    background-color: var(--accent-1);
+  }
+  &.info {
+    background-color: rgb(122, 187, 240);
+  }
+  &.disabled {
+    background-color: var(--dark-2);
+  }
+}

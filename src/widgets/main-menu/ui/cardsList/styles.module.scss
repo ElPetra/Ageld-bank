@@ -1,0 +1,10 @@
+.listContainer {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+    .myCards {
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+    }
+}

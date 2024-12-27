@@ -14,6 +14,7 @@ interface Props {
     lineHeight?: 'xs' | 's' | 'm' | 'l';
     display?: 'flex';
     children: ReactNode;
+    className?: string;
 }
 
 export const Text = memo(
@@ -25,13 +26,22 @@ export const Text = memo(
         color,
         lineHeight,
         children,
-        display
+        display,
+        className
     }: Props) => {
         const Element = tag || 'div';
-        const textClass = cn('text', size, weight, align, display, {
-            [`text-${color}`]: color,
-            [`line-height-${lineHeight}`]: lineHeight
-        });
+        const textClass = cn(
+            'text',
+            size,
+            weight,
+            align,
+            display,
+            {
+                [`text-${color}`]: color,
+                [`line-height-${lineHeight}`]: lineHeight
+            },
+            className ? className : ''
+        );
 
         return <Element className={textClass}>{children}</Element>;
     }
