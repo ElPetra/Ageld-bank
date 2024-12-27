@@ -1,0 +1,70 @@
+.mediumCardInfo {
+  width: 279px;
+  height: 132px;
+  background-color: var(--dark-5);
+  border-radius: var(--extra-large-border-radius);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  .firstRow {
+    display: flex;
+    height: 54px;
+    .currency {
+      border: 5px solid var(--accent-1);
+      border-radius: 50%;
+      color: var(--accent-1);
+      font-size: 20px;
+      font-weight: bold;
+      width: 40px;
+      height: 40px;
+      text-align: center;
+      line-height: 30px;
+      margin-right: 17px;
+    }
+    .totalAndType {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  .secondRow {
+    display: flex;
+    justify-content: space-between;
+    .card {
+      box-sizing: border-box;
+      display: flex;
+      width: 50px;
+      height: 30px;
+      border-radius: var(--small-border-radius);
+      align-items: end;
+      justify-content: space-between;
+      color: var(--light-1);
+      padding: 0 2px 2px 4px;
+      .cardNumber {
+        font-size: 12px;
+        line-height: 12px;
+      }
+      .paySystem{
+        font-size: 7px;
+        line-height: 8px;
+        font-style: italic;
+      }
+    }
+    .classic-junior {
+      background-color: #f76705;
+    }
+    .gold {
+      background-color: #ebc500;
+    }
+    .premium {
+      background-color: #000000;
+    }
+  }
+  // &.classic {
+  //   background: #e6342a;
+  // }
+
+  // &.platinum {
+  //   background: #c5c1b4;
+  // }
+}

@@ -1,0 +1,47 @@
+.container {
+  background-color: var(--dark-5);
+  border-radius: var(--extra-large-border-radius);
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  row-gap: 16px;
+  .firstColumn {
+    display: flex;
+    flex-direction: column;
+    row-gap: 4px;
+    width: 210px;
+    .currency {
+      border: 5px solid var(--accent-1);
+      border-radius: 50%;
+      color: var(--accent-1);
+      font-size: 20px;
+      font-weight: bold;
+      width: 40px;
+      height: 40px;
+      text-align: center;
+      line-height: 30px;
+      margin-bottom: 12px;
+    }
+    .number {
+      cursor: text;
+      display: flex;
+      justify-content: space-between;
+      column-gap: 8px;
+    }
+  }
+  .secondColumn {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    align-items: end;
+    justify-content: space-between;
+    .labels {
+      display: flex;
+      flex-direction: column;
+      row-gap: 8px;
+    }
+    .balance {
+      margin-bottom: 8px;
+    }
+  }
+}

@@ -6,6 +6,8 @@ import type {
     CurrencyResponse
 } from 'src/shared/model';
 
+import type { SvgIconName } from '../ui';
+
 export type CardType = 'CREDIT' | 'DEBIT';
 export type CardLevel = 'CLASSIC' | 'GOLD' | 'PLATINUM' | 'PREMIUM';
 
@@ -120,6 +122,7 @@ export interface CustomerCard {
     isVirtual: boolean;
     name: string;
     type: CardType;
+    paySystem: TPaySystems;
 }
 
 export interface CustomerCardResponse {
@@ -162,3 +165,17 @@ export interface CardDetailsResponse {
     paymentSystem: PaymentSystemResponse;
     cardImage: string;
 }
+
+//TODO проверить реальные значения, когда будет готов бэк
+export type TPaySystems =
+    | 'gold'
+    | 'classic-junior'
+    | 'premium'
+    | 'classic'
+    | 'platinum';
+
+export type TCardIconWithName = {
+    icon?: SvgIconName,
+    name: string,
+    link: string
+};

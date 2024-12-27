@@ -374,5 +374,22 @@
   "Южный": "Южный",
   "Западный": "Западный",
   "Восточный": "Восточный",
-  "Микрорайон": "Микрорайон"
+  "Микрорайон": "Микрорайон",
+  "between accounts": "Между счетами",
+  "by banking details": "По реквизитам",
+  "by card number": "По номеру карты",
+  "by phone number": "По номеру телефона",
+  "card type credit": "Кредитная",
+  "card type debit": "Дебетовая",
+  "create card": "Новая карта",
+  "mobile communication": "Мобильная связь",
+  "main account": "Основной",
+  "my accounts": "Мои счета",
+  "my cards": "Мои карты",
+  "payments": "Платежи",
+  "search": "Поиск",
+  "status active": "Активный",
+  "status blocked": "Заблокирован",
+  "transfers": "Переводы",
+  "utility bills": "Коммунальные платежи"
 }

@@ -1,0 +1,48 @@
+.mainMenuContainer {
+    display: grid;
+    grid-template-columns: 279px 1fr;
+    column-gap: 95px;
+    row-gap: 24px;
+    grid-template-areas:
+        "cards search"
+        "cards transfers"
+        "cards payments"
+        "cards accounts";
+
+    .cards {
+        grid-area: cards;
+    }
+    .search {
+        grid-area: search;
+    }
+    .transfers {
+        grid-area: transfers;
+    }
+    .payments {
+        grid-area: payments;
+    }
+    .accounts {
+        grid-area: accounts;
+    }
+}
+
+.mainMenuGuestContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    .mainMenuGuest {
+        display: flex;
+        justify-content: space-between;
+        gap: 30px;
+        @media screen and (max-width: 800px) {
+            flex-wrap: wrap;
+        }
+
+        > img {
+            @media screen and (max-width: 1240px) {
+                display: none;
+            }
+        }
+    }
+}

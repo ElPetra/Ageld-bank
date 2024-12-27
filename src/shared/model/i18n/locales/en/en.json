@@ -373,5 +373,22 @@
   "Южный": "Southern",
   "Западный": "Western",
   "Восточный": "Eastern",
-  "Микрорайон": "Microdistrict"
+  "Микрорайон": "Microdistrict",
+  "between accounts": "Between accounts",
+  "by banking details": "By banking number",
+  "by card number": "By card number",
+  "by phone number": "By phone number",
+  "card type credit": "Credit",
+  "card type debit": "Debit",
+  "my cards": "My cards",
+  "create card": "New card",
+  "mobile communication": "Mobile communication",
+  "main account": "Main",
+  "my accounts": "My accounts",
+  "payments": "Payments",
+  "search": "Search",
+  "status active": "Active",
+  "status blocked": "Blocked",
+  "transfers": "Transfers",
+  "utility bills": "Utility bills"
 }

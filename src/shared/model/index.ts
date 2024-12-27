@@ -7,3 +7,5 @@ export * from './info';
 export * from './account';
 export * from './credits';
 export * from './deposits';
+export * from './transfers';
+

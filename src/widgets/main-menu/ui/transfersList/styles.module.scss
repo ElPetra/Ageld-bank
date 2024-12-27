@@ -1,0 +1,13 @@
+.listContainer {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+    overflow-x: hidden;
+    .cards {
+        display: flex;
+        column-gap: 24px;
+        justify-content: start;
+        cursor: pointer;
+        overflow-x: auto;
+    }
+}

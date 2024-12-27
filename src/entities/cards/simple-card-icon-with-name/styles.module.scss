@@ -1,0 +1,13 @@
+.mediumCardInfo {
+  width: 200px;
+  min-width: 130px;
+  background-color: var(--dark-5);
+  border-radius: var(--extra-large-border-radius);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  .firstRow {
+    height: 54px;
+  }
+}
