@@ -1,11 +1,10 @@
-/* eslint-disable react/prop-types */
 import { Text } from 'src/shared/ui';
 
 import styles from './styles.module.scss';
 
 type TSectionHeaderProps = { header: string };
 
-export const SectionHeader: React.FC<TSectionHeaderProps> = ({ header }) => {
+export const SectionHeader = ({ header }: TSectionHeaderProps) => {
     return (
         <div className={styles.sectionHeader}>
             <Text weight='bold' size='m'>

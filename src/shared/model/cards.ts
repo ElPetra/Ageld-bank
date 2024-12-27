@@ -122,7 +122,6 @@ export interface CustomerCard {
     isVirtual: boolean;
     name: string;
     type: CardType;
-    paySystem: TPaySystems;
 }
 
 export interface CustomerCardResponse {

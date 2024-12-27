@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { Icon, Text } from 'src/shared/ui';
 import { useTranslation } from 'react-i18next';
 
@@ -8,7 +7,7 @@ import styles from './styles.module.scss';
 
 import type { TCardIconWithName } from 'src/shared/model';
 
-export const CardIconWithName: React.FC<TCardIconWithName> = props => {
+export const CardIconWithName = (props: TCardIconWithName) => {
     const { icon, name, link } = props;
     const { t } = useTranslation();
     return (

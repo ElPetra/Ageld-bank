@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { CardIconWithName } from 'src/entities/cards';
 
 import { useTranslation } from 'react-i18next';
@@ -11,15 +10,15 @@ import { SectionHeader } from '../sectionHeader';
 
 import styles from './styles.module.scss';
 
-export const TransfersList: React.FC<{ classStyle?: string }> = ({
-    classStyle
-}) => {
+type TTransfersList = { className?: string };
+
+export const TransfersList = ({ className }: TTransfersList) => {
     const { t } = useTranslation();
     return (
         <div
             className={
-                classStyle
-                    ? classNames(classStyle, styles.listContainer)
+                className
+                    ? classNames(className, styles.listContainer)
                     : styles.listContainer
             }
         >

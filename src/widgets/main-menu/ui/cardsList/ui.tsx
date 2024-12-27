@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { MediumCardPaymentCard } from 'src/entities/cards';
 import { Button } from 'src/shared/ui';
 
@@ -10,10 +9,10 @@ import { SectionHeader } from '../sectionHeader';
 
 import styles from './styles.module.scss';
 
-import type { CustomerCard } from 'src/shared/model';
+import type { CustomerCard, TPaySystems } from 'src/shared/model';
 
 // TODO заменить на запрос к серверу
-const tempData: CustomerCard[] = [
+const tempData: (CustomerCard & { paySystem: TPaySystems })[] = [
     {
         active: true,
         id: '1',
@@ -58,7 +57,9 @@ const tempData: CustomerCard[] = [
     }
 ];
 
-export const CardsList: React.FC<{ className?: string }> = ({ className }) => {
+type TCardsList = { className?: string };
+
+export const CardsList = ({ className }: TCardsList) => {
     const { t } = useTranslation();
     return (
         <div
