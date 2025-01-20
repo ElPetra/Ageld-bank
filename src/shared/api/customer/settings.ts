@@ -32,7 +32,9 @@ export const settingsApi = createApi({
             query: email => ({
                 url: '/new_email',
                 method: 'PATCH',
-                body: { email }
+                body: { email },
+                /* добавлено, т.к. бэк отвечает строкой вместо JSON */
+                responseHandler: response => response.text()
             }),
             invalidatesTags: ['Settings']
         }),
