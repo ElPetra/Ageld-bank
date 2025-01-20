@@ -38,6 +38,7 @@ export const useAuth = () => {
     const [generateToken] = useGenerateTokenMutation();
     const [changePassword] = useChangePasswordMutation();
     const [newEmail] = useNewEmailMutation();
+
     const [addEmail] = useAddEmailMutation();
 
     const [createAccount] = useCreateAccountMutation();
