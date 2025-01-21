@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { localStorageApi } from 'src/shared/api';
 
 const profileBaseUrl =
-    import.meta.env.VITE_BASEURL_GATEWAY + '/api/v1/customer/profile';
+    import.meta.env.VITE_BASEURL_GATEWAY + '/api/v1/customer/customers';
 
 export const profileApi = createApi({
     reducerPath: 'profileApi',
@@ -24,7 +24,7 @@ export const profileApi = createApi({
             { oldPassword: string, newPassword: string }
         >({
             query: ({ oldPassword, newPassword }) => ({
-                url: '/change_password',
+                url: '/password',
                 method: 'PATCH',
                 body: { oldPassword, newPassword }
             })
